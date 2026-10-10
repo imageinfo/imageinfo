@@ -1,0 +1,46 @@
+# imageinfo
+
+A modern, approachable metadata tool, starting with **camera RAW images**.
+Full ExifTool feature parity is the long-term goal; the first delivery scope is
+deliberately focused on RAW photography workflows.
+
+**Status: requirements and research.** There is no imageinfo executable yet.
+Implementation language, frameworks, dependencies, and packaging are deliberately
+undecided. Command examples in the design documents describe proposed behavior.
+
+The project starts with three goals:
+
+- Build toward ExifTool's functionality through an explicit, evidence-based
+  compatibility program, starting with RAW format and metadata edge cases.
+- Make that power discoverable through a hierarchical CLI, contextual help at every
+  level, and optional interactive cascading menus.
+- Build a sustainable project with shared format knowledge, reproducible validation,
+  documented decisions, and a practical path for multiple maintainers.
+
+Start with the [documentation index](docs/README.md),
+[product requirements](docs/product-requirements.md), and
+[CLI requirements](docs/cli-requirements.md).
+
+Current scope includes DNG and proprietary camera RAW formats, associated XMP
+sidecars, and embedded preview metadata/extraction. Standalone rendered images,
+video, audio, documents, and archives are deferred. RAW development, rendering,
+and pixel conversion are outside this metadata tool's scope. See the
+[RAW scope](docs/raw-scope.md).
+
+The [roadmap](docs/roadmap.md) distinguishes the long-term compatibility goal from
+RAW-first delivery. The [research ledger](docs/research-sources.md) records sources and limits
+of the initial investigation. ExifTool is the independent upstream project by Phil
+Harvey and its contributors; imageinfo is not affiliated with or endorsed by it.
+
+## Project decisions
+
+Requirements and features come first. Language selection and implementation begin
+after the requirements baseline and compatibility approach are reviewed.
+Project licensing is also pending; a public repository alone does not grant an
+open-source license. No ExifTool code, tag tables, or test images are vendored here.
+
+## Local planning
+
+Work is tracked on a local localswim board. Private board data, credentials, service
+descriptors, and logs are excluded from this repository. See
+[local board setup](docs/local-board.md) for the workflow.

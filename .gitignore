@@ -1,0 +1,15 @@
+# Machine-local planning and runtime state
+/boards/
+/.local/
+/research-cache/
+*.log
+.env
+.env.*
+!.env.example
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.tmp
