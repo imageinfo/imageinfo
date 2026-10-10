@@ -15,7 +15,7 @@ metadata is the current delivery scope agreed with Terry. See [RAW scope](raw-sc
 | OD-07 | API and long-lived process contract | Embeddable and efficient repeated-call use cases belong in the target. Prioritize RAW workflows; the public protocol and versioning contract remain to be specified. | Inventory relevant upstream API and stay-open workflows, concurrency, framing, cancellation, and error handling. |
 | OD-08 | Sustainability | Publish contributor paths, format ownership, release procedures, and provenance; avoid depending on undocumented knowledge held by one person. | A governance proposal covering reviewer coverage, release access, recovery, and succession. |
 | OD-09 | Project and imported-artifact licenses | MIT accepted and locked on 2026-10-10; preserve copyright/license notices without mandatory visible UI credit. See [decision](license-decision.md). | Only third-party source/table/fixture terms and provenance remain open; the project-license choice is settled. |
-| OD-10 | Interactive menu behavior | Contextual help is mandatory. Cascading interaction is optional and must never block scripts. | Text walkthroughs and usability review for keyboard navigation, accessibility, cancellation, command preview, and non-TTY behavior. |
+| OD-10 | Interactive menu behavior | Contextual help is mandatory. Cascading interaction is optional and must never block scripts. | The [walkthrough recommendation](cli-walkthroughs/README.md) specifies keyboard/line navigation, cancellation, previews and non-TTY behavior. User review and real accessibility/usability testing remain open. |
 
 ## Explicitly deferred
 

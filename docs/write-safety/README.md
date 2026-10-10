@@ -282,11 +282,13 @@ publish, cancelled-before-publish, committed, recovered-original and recovery-re
 Publication may have happened in the latter case; never summarize it as “no changes.”
 
 The CLI's proposed exit codes remain: 0 for successful/unchanged work, 1 for total
-operation failure, 2 for invalid whole-request preflight, 3 for partial batch failure,
+operation or output/warning-policy failure, 2 for invalid whole-request preflight,
+3 for partial batch failure,
 4 for a stale/conflicting plan, 5 for post-publication verification/durability or
 recovery uncertainty, and 130 for interruption. Per-file results are authoritative;
-interrupt/partial results can include committed files. Refine mixed-error precedence
-in #0003 without hiding recovery-required outcomes or retrying committed effects.
+interrupt/partial results can include committed files. The
+[CLI result contract](../cli-walkthroughs/results.md) now proposes mixed-error
+precedence, giving recovery uncertainty priority without retrying committed effects.
 
 **WS-023 — Keep recovery private and bounded.** Restrict staging, backups, records,
 and diagnostic output appropriately; saved plans can contain sensitive metadata.
@@ -309,5 +311,6 @@ This specifies the general policy portion of GAP-004 and GAP-009. Exact privacy
 field catalogs, pairing/mapping details and runtime proof remain open on #0014,
 write-validation, using #0003 for CLI pairing choices. #0013 supplies lawful fixtures and reference observations;
 implementation work must demonstrate storage and writer profiles before enabling
-replacement. The next requirements card is **#0003, CLI walkthroughs**, which can
-now make the user-facing plan, apply, cancellation and recovery flows concrete.
+replacement. The [CLI walkthroughs](../cli-walkthroughs/README.md) now make the
+user-facing plan, apply, cancellation and recovery flows concrete; all remain
+proposals. #0007 is next for compatibility and remaining protocol specifications.

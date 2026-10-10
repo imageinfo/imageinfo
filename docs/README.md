@@ -21,6 +21,7 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |
 | [CLI requirements](cli-requirements.md) | Hierarchical help, optional menus, proposed commands, scripting, and mutation UX. |
+| [CLI walkthroughs](cli-walkthroughs/README.md) | Eight concrete user journeys, help/menu recommendations, pairing, scripting, recovery and exit precedence for card #0003. |
 | [Compatibility and validation](compatibility-and-validation.md) | Evidence needed to claim parity, fixture strategy, and write-safety tests. |
 | [Architecture principles](architecture-principles.md) | Language-independent boundaries and data requirements. |
 | [Roadmap](roadmap.md) | Staged delivery, review gates, and the next requirements work. |

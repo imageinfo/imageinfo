@@ -1,7 +1,7 @@
 {
   "$schema": "./capability-inventory.schema.json",
   "schemaVersion": 1,
-  "inventoryVersion": "2026-10-10.4",
+  "inventoryVersion": "2026-10-10.5",
   "observedOn": "2026-10-10",
   "reviewState": "draft-for-review",
   "reference": {
@@ -3448,8 +3448,8 @@
     {
       "id": "GAP-012",
       "subject": "CLI workflows and large-input boundaries",
-      "ownerCard": "cli-walkthroughs",
-      "closesWhen": "Walk through canonical command grammar, non-TTY/help behavior, selection, source/destination effects and failure output; define bounded processing.",
+      "ownerCard": "legacy-compatibility",
+      "closesWhen": "The native walkthrough recommendation is in docs/cli-walkthroughs. Complete advanced grammar, mappings, plan/result schemas and persistent framing under #0007; establish measured limits under #0008 and later validate actual CLI/help/menu/accessibility behavior. Specification review is not implementation evidence.",
       "blocks": "Claiming the proposed CLI surface is finalized or implemented."
     }
   ]

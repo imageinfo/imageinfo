@@ -1,6 +1,6 @@
 # EOS R5 CR3 capability inventory v1
 
-Status: **draft for review**, inventory revision `2026-10-10.4`, 2026-10-10. This is the deliverable for board card
+Status: **draft for review**, inventory revision `2026-10-10.5`, 2026-10-10. This is the deliverable for board card
 **#0002, capability-inventory**. Implementation coverage remains zero. No imageinfo
 executable, upstream executable experiment, or media-fixture validation is claimed.
 
@@ -240,12 +240,13 @@ in the JSON. Do not close them merely because a source contains a similarly name
 | GAP-009 | Privacy and sidecar synchronization policy | `write-validation` | General rules are in docs/write-safety. Specify exact pairing/mappings and per-profile field catalogs, then verify removal, residual/uninspectable coverage and synchronization. Logical deletion never proves secure erasure. |
 | GAP-010 | Secondary and later format breadth | `capability-inventory` | Scope and collect independent evidence for C-RAW/DPRAW, other Canon cameras and later RAW families before adding their capabilities. |
 | GAP-011 | Asset licensing and provenance | `license-provenance` | Apply the selected MIT project license while preserving and reviewing separate source/table/fixture terms before importing third-party assets. |
-| GAP-012 | CLI workflows and large-input boundaries | `cli-walkthroughs` | Walk through canonical command grammar, non-TTY/help behavior, selection, source/destination effects and failure output; define bounded processing. |
+| GAP-012 | CLI workflows and large-input boundaries | `legacy-compatibility` | Walkthroughs now specify the native recommendation. Complete advanced grammar/mappings, schemas and framing (#0007), measured limits (#0008) and later actual CLI/usability checks. |
 
 The [proposed metadata contract](../metadata-model/README.md) now supplies the data
 representation. The [fixture plan](../fixture-plan/README.md) and
 [write-safety proposal](../write-safety/README.md) now supply evidence and mutation
-contracts. Next, exercise them in CLI walkthroughs. The inventory does not complete
+contracts. The [CLI walkthrough recommendation](../cli-walkthroughs/README.md)
+now exercises them; remaining compatibility work is next. The inventory does not complete
 those follow-up cards or authorize language selection.
 
 ## Sources and provenance
@@ -303,3 +304,8 @@ from card #0005 and transfers the remaining acquisition/observation gaps to
 Revision `2026-10-10.4` links the [write-safety proposal](../write-safety/README.md)
 from card #0006 and transfers GAP-004/GAP-009 remaining profile/catalog/runtime
 evidence to `write-validation` (#0014). All capabilities remain specified.
+
+Revision `2026-10-10.5` links the [CLI walkthrough recommendation](../cli-walkthroughs/README.md)
+and assigns remaining GAP-012 specification work to `legacy-compatibility` (#0007).
+Measured limits and later implementation/usability evidence remain open; no capability
+is promoted beyond specified.

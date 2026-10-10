@@ -260,8 +260,8 @@ The examples demonstrate record integrity, not operational readiness.
 
 The [write-safety proposal](../write-safety/README.md) now defines mutation,
 preservation, refusal and recovery guarantees against these cases. The next
-requirements card is **#0003, CLI walkthroughs**, using the fixture/model/safety
-contracts. Actual storage and writer proofs are backlog work on #0014. #0010 still owns per-artifact provenance
+requirements card is **#0007, legacy-compatibility**. The
+[CLI walkthroughs](../cli-walkthroughs/README.md) now use the fixture/model/safety contracts. Actual storage and writer proofs are backlog work on #0014. #0010 still owns per-artifact provenance
 rules under the locked MIT license; the project-license choice stays settled.
 
 **#0013, corpus-baseline**, preserves the separate acquisition/reference-observation

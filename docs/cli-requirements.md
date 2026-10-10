@@ -4,6 +4,10 @@ Status: proposed user experience and interface contract; commands in this docume
 
 Current delivery scope is camera RAW metadata, associated XMP sidecars, and embedded-preview metadata/extraction. DNG and proprietary RAW families such as CR2/CR3, NEF/NRW, ARW, RAF, ORF, RW2, PEF, and SRW are the requirements horizon; each variant needs its own tested capability claim. The eventual ambition is full ExifTool feature parity, with other media families deferred to later scope decisions. No RAW pixel developing, rendering, demosaicing, or conversion is part of this CLI specification.
 
+The [CLI walkthrough recommendation](cli-walkthroughs/README.md), card #0003,
+refines this baseline with concrete help/menu flows, pairing, synchronization,
+recovery and [result/status rules](cli-walkthroughs/results.md). All remain proposals.
+
 ## What “like the AWS CLI” means
 
 The first delivered camera/format is **Canon EOS R5 CR3**. Examples below use CR3
@@ -52,6 +56,8 @@ imageinfo
     file | plan                             Check structures or an intended mutation
   plan
     show | apply                            Review and apply saved changes
+  recovery
+    list | show | resolve                   Inspect and explicitly resolve owned transactions
   backup
     list | restore | prune                  Manage recoverable originals
   batch
@@ -115,16 +121,18 @@ Help is available offline, without credentials, network requests, or reading med
 | Area | Proposed options | Contract |
 | --- | --- | --- |
 | Help/discovery | `help`, `--help`, `--version` | No operation side effects; `help` before inputs is reserved syntax; literal filenames named `help` use `--`. |
-| Interaction | `--interactive`, `--no-interactive` | Explicit opt-in, terminal-only; no implicit prompt on an invalid automated command. |
+| Interaction | `--interactive`, `--no-interactive`, `--menu-style line` | Explicit opt-in, terminal-only; no implicit prompt on an invalid automated command. |
 | Presentation | `--output text\|table\|json\|jsonl\|csv\|xml`, `--color auto\|always\|never`, `--no-pager`, `--quiet`, `--no-progress` | Unsupported output formats fail clearly for that operation; structured output overrides presentation decoration. |
-| Selection | repeated `--tag`, `--exclude-tag`, `--group`, `--recursive`, `--include-hidden`, `--follow-symlinks`, `--where`, `--with-sidecars` | RAW/XMP pairing is explicit; canonical identity is preserved; expressions have a documented safe grammar, never implicit shell execution. |
+| Selection | repeated `--tag`, `--exclude-tag`, `--group`, `--recursive`, `--include-hidden`, `--follow-symlinks`, `--where`, `--with-sidecars`, `--pairing-file <path>` | RAW/XMP pairing is explicit; canonical identity is preserved; expressions have a documented safe grammar, never implicit shell execution. |
 | Input | `--files-from <manifest>`, `--files-from0 <path-list>`, `--request-file <document>`, `--` | Define formats explicitly; never split newline-containing paths heuristically. |
 | Read representation | `--values raw\|normalized\|display\|all`, `--unknown`, `--embedded`, `--max-depth` | Original precision and provenance remain accessible; fast/partial modes state omissions. |
 | Mutation | `--dry-run`, `--apply`, `--save-plan <path>`, `--backup-dir <path>`, `--no-backup`, `--on-error stop\|continue`, `--target embedded\|sidecar`, `--sidecar-dir <path>` | Preview default; RAW embedded writes require per-variant capability; sidecar targeting is explicit; `--no-backup` cannot be inherited; continue is explicit. |
-| Identity/config | `--config <path>`, `--profile <name>`, `--schema-version <version>` | CLI > environment > named profile > user configuration > built-in defaults; output can report effective provenance. |
+| Identity/config | `--config <path>`, `--config-profile <name>`, `--schema-version <version>` | CLI > environment > named profile > user configuration > built-in defaults; output can report effective provenance. |
 | Boundaries | `--jobs <count>`, `--timeout <duration>`, `--max-bytes <size>` | Bounded resource use; no parallel writes to one physical file; failures have stable issue codes. |
 
-Use understandable string assignment for simple tags, for example `--set XMP-xmp:Label=Reviewed` in an associated sidecar. Complex typed values use `--values-file <JSON-document>` or a separately documented `--set-json` form. Setting an empty string, deleting a tag, and omitting a value are distinct operations. Lists have explicit replace/append/remove operations. Structures have explicit merge/replace policies. Parsing must not silently infer dates, booleans, or numbers from a user's intended string.
+Use understandable string assignment for simple tags, for example `--set XMP-xmp:Label=Reviewed` in an associated sidecar. Complex typed values use `--values-file <JSON-document>` or a separately documented `--set-json` form. Setting an empty string, deleting a tag, and omitting a value are distinct operations. Lists have explicit replace/append/remove operations. Structures have explicit merge/replace policies. Complex edit intents can use
+`metadata import --snapshot <snapshot.json> --intent <intent.json> <target>` under CW-004.
+The convenience `--set-json` form remains deferred. Parsing must not silently infer dates, booleans, or numbers from a user's intended string.
 
 Preview/application rules cover changes to media, metadata destinations such as sidecars, collection paths/timestamps, and backup restoration/pruning. Read-oriented reports and binary extraction may create a new explicitly named output artifact immediately, refusing existing targets by default; they also support `--dry-run`. Configuration updates use their explicit `config set/reset` action and show effective values afterward. These distinctions appear in each command's help.
 
@@ -170,8 +178,8 @@ Compare two RAW files and copy a tag to an existing associated XMP sidecar with 
 
 ```text
 imageinfo metadata diff original.cr3 edited.cr3 --output json
-imageinfo metadata copy --from original.cr3 --tag EXIF:Copyright --mapping xmp edited.xmp
-imageinfo metadata copy --from original.cr3 --tag EXIF:Copyright --mapping xmp --apply edited.xmp
+imageinfo metadata copy --from original.cr3 --tag EXIF:Copyright --mapping exif-copyright-to-xmp-rights-v1 edited.xmp
+imageinfo metadata copy --from original.cr3 --tag EXIF:Copyright --mapping exif-copyright-to-xmp-rights-v1 --apply edited.xmp
 ```
 
 Inspect a RAW timestamp, preview a correction in its existing XMP sidecar, then plan geotagging a RAW collection into associated sidecars:
@@ -229,8 +237,10 @@ not represent the required identity, provenance, and value states completely.
 The envelope adds request IDs, operation, per-file outcomes, and summary counts.
 It must not flatten the snapshot into a single object keyed by tag name. JSONL can
 emit per-file snapshot payloads with the same model revision; schema versions for
-the envelope and metadata model are independently named. Exact field placement in
-the envelope remains part of the CLI walkthrough work.
+the envelope and metadata model are independently named. Field placement, stream
+completeness, artifact outcomes and status precedence are
+now proposed in the [CLI result contract](cli-walkthroughs/results.md); an executable
+schema and persistent request framing remain follow-up work.
 
 A requested output view may omit unavailable/unrequested data only with explicit
 coverage and value states. Large binary values remain bounded references unless
@@ -245,12 +255,17 @@ JSON Lines emits typed request/file/summary records with the same schema identit
 | Status | Meaning |
 | --- | --- |
 | 0 | Requested work completed successfully, including a valid preview or help; deliberate filter exclusions are counted separately |
-| 1 | Operation failed and no requested item succeeded |
+| 1 | Operation failed without successful units, or output delivery/warning policy failed; per-file outcomes remain authoritative |
 | 2 | Invalid syntax, missing required input, configuration error, or a request that fails whole-request preflight |
-| 3 | Partial failure: some items succeeded and others failed or were unsupported under explicit continue policy |
-| 4 | Plan could not be applied because an input changed or a write conflict was detected |
+| 3 | Partial failure: some items succeeded while others failed/refused/conflicted or a dependency group remains incomplete; possible under stop or continue policy |
+| 4 | No unit succeeded and an input/destination changed or a write conflict was detected |
 | 5 | Post-publication verification/durability failed or recovery remains uncertain; results describe observed changes and recovery artifacts |
 | 130 | User cancellation/interruption; prior completed file results are reported where possible |
+
+Evaluate mixed outcomes using [the precedence table](cli-walkthroughs/results.md):
+recovery uncertainty takes precedence over cancellation, which can still leave
+committed files. Whole-request invalidity precedes application; known per-file
+capability refusals are operation failures, not syntax errors.
 
 Warnings alone do not change exit status unless `--warnings-as-errors` is enabled. Unsupported RAW or explicitly supplied out-of-scope media input is a failure by default, never a silent success. No-files-selected is an explicit result and fails unless the user opted into `--allow-empty`. Exit values are imageinfo proposals; any later RAW-specific compatibility mode must document its limited contract separately.
 
@@ -277,4 +292,4 @@ Unknown RAW metadata blocks, decoding-critical make/model and maker notes, embed
 
 ## Remaining specification decisions
 
-Use the proposed metadata and write-safety contracts in #0003 walkthroughs. Specify exact RAW/XMP pairing/discovery and mapping choices, expression grammar, plan/result serialization, recovery commands, output-format support, and mixed-error exit precedence. Exercise cancellation and partial outcomes without changing their safety guarantees. Tag-level write evidence and storage profiles remain future work. RAW-focused compatibility guidance is separate from eventual full ExifTool parity. Decide aliases only after testing the canonical tree with users. CLI experiments can be mockups or specifications; they do not require selecting an implementation language.
+Card #0003 now proposes pairing/discovery, one explicit sync mapping, recovery commands, JSON/JSONL result placement and mixed-error exit precedence. Its [walkthroughs](cli-walkthroughs/walkthroughs.md) cover cancellation and partial outcomes. #0007 retains expression grammar, advanced mappings, plan/result schemas, persistent framing and legacy surface completeness; #0008 retains measured limits. Real tag-level write evidence, storage profiles and CLI usability/integration checks remain future work. RAW-focused compatibility guidance is separate from eventual full ExifTool parity. Decide aliases only after testing the canonical tree with users. CLI experiments can be mockups or specifications; they do not require selecting an implementation language.

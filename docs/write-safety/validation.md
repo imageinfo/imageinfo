@@ -103,9 +103,9 @@ strict publication guard and private new-output permission default are explicit
 product tradeoffs with rationale in the contract. Broader ExifTool parity and the
 locked MIT decision remain unchanged.
 
-Next requirements work is **#0003, CLI walkthroughs**: concrete pairing, plans,
-help/menu flows, recovery commands and mixed-error status precedence. No new command
-spelling for recovery is locked by this card.
+Card #0003 now supplies [CLI walkthroughs](../cli-walkthroughs/README.md): concrete
+pairing, plans, help/menu flows, proposed recovery commands and mixed-error status
+precedence. These refine this safety proposal without claiming runtime verification.
 
 **#0013** retains lawful full RAW corpus acquisition and reference experiments.
 **#0014, write-validation**, retains storage/writer proof and exact privacy-profile

@@ -21,6 +21,12 @@ evidence to `write-validation` (#0014). Schema/reference/dependency checks and a
 
 ## Results
 
+Revision `2026-10-10.5` was revalidated during card #0003. It links the native CLI
+walkthrough recommendation and assigns GAP-012's remaining specification work to
+`legacy-compatibility` (#0007), with measured limits and later runtime/usability
+checks still open. Counts and capability states are unchanged; schema/reference/
+dependency checks and all ten negative cases pass.
+
 | Check | Result |
 | --- | --- |
 | JSON parsing and draft 2020-12 schema self-validation | Passed |
@@ -98,5 +104,6 @@ match the inventory card's requested research/specification scope.
 The original downstream model and fixture specifications are now recorded in
 [metadata-model](../metadata-model/README.md) and [fixture-plan](../fixture-plan/README.md).
 The [write-safety proposal](../write-safety/README.md) supplies mutation requirements.
-The next requirements work is #0003, CLI walkthroughs; #0013/#0014 retain actual
+The [CLI walkthroughs](../cli-walkthroughs/README.md) now refine the native interface;
+next requirements work is #0007, legacy compatibility; #0013/#0014 retain actual
 corpus and writer/storage evidence. This validation does not close those cards.
