@@ -5,7 +5,8 @@ Full ExifTool feature parity is the long-term goal; the first delivery scope is
 deliberately focused on RAW photography workflows.
 
 **First target: Canon EOS R5 `.CR3` files**, associated XMP sidecars, and embedded
-previews. Other RAW families follow later. See the
+previews, prioritizing the camera's full RAW setting. C-RAW is tracked separately;
+other RAW families follow later. See the
 [Canon EOS R5 milestone](docs/canon-eos-r5-cr3.md).
 
 **Status: requirements and research.** There is no imageinfo executable yet.

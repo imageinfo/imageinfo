@@ -11,6 +11,9 @@ or package layout until Terry explicitly advances that decision.
   and embedded preview metadata/extraction. Consult `docs/raw-scope.md`.
 - The first camera/format target is Canon EOS R5 CR3. Prioritize that milestone
   before other RAW families; see `docs/canon-eos-r5-cr3.md`.
+- Terry shoots the camera's full RAW setting. Prioritize those losslessly compressed
+  CR3 files for fixtures and benchmarks; track C-RAW separately as secondary coverage.
+  Metadata operations preserve existing sensor bytes without recompression.
 - Standalone rendered images, video, audio, documents, and archives are deferred.
   Do not expand current implementation work into them without a scope decision.
   RAW pixel development, rendering, and conversion are outside this metadata tool.

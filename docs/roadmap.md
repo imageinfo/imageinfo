@@ -5,7 +5,8 @@ initial delivery scope.** This roadmap separates those horizons. A milestone's
 limited coverage must remain visible; it is not permission to call partial support
 complete. The project is currently in **Phase 0**. Language choices are deferred.
 
-**First target: Canon EOS R5 CR3.** The read foundation, associated-XMP workflow,
+**First target: Canon EOS R5 full RAW CR3.** C-RAW is separately tracked secondary
+coverage. The read foundation, associated-XMP workflow,
 and individually gated embedded edits start there. Other RAW families come after
 that first milestone; see the [CR3 requirements](canon-eos-r5-cr3.md).
 

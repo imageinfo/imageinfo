@@ -5,6 +5,12 @@ his current camera is a Canon EOS R5. This is the first camera/format target wit
 the RAW-first plan. Full ExifTool feature parity remains the eventual goal. Language
 and framework decisions remain deferred.
 
+Terry's capture preference is the camera's **full RAW setting**, accepting the
+larger files. Those EOS R5 CR3 files are the primary fixture, usability, and
+performance baseline. C-RAW is secondary coverage, tracked separately, and is not
+a prerequisite for the first full-RAW read milestone. Dual Pixel RAW use has not
+been specified; do not infer it from the full RAW preference.
+
 This is a requirements milestone, not an implemented compatibility claim. Support
 for another Canon camera, the EOS R5 Mark II, or another RAW family must be declared
 and tested separately. Video and CRM are outside this first milestone.
@@ -16,6 +22,10 @@ for RAW files. Its Dual Pixel RAW mode adds information that can be used by comp
 processing software. These variants must be distinguished in our evidence; a shared
 extension alone is insufficient. [Canon image-quality manual](https://cam.start.canon/en/C003/manual/html/UG-03_Shooting-1_0030.html),
 [Canon Dual Pixel RAW documentation](https://support.usa.canon.com/kb/index?id=ART178251&page=content).
+
+Use the camera-mode names precisely: Canon's standard RAW files use lossless
+compression; C-RAW means Compact RAW. The primary requirement is full RAW CR3,
+not a hypothetical uncompressed sensor encoding. [Canon RAW fundamentals](https://www.usa.canon.com/learning/training-articles/training-articles-list/raw-image-fundamentals).
 
 ExifTool handles CR3 through its QuickTime-family/ISO BMFF structures and Canon
 metadata definitions. The upstream support matrix lists CR3 as readable/writable,
@@ -60,13 +70,21 @@ sidecar command previews creation until `--apply` is supplied.
 
 ## Corpus and safe-write boundaries
 
-The first fixture plan should include original EOS R5 RAW and C-RAW captures,
-Dual Pixel RAW examples where available, relevant firmware/capture settings,
-different lenses, portrait/landscape orientation, time/subsecond/offset cases,
+The first fixture plan prioritizes original EOS R5 full RAW captures. Track C-RAW
+and Dual Pixel RAW in separate secondary rows; support must be evidenced or
+reported as unverified rather than inherited from full RAW. Cover relevant
+firmware/capture settings, different lenses, portrait/landscape orientation, time/subsecond/offset cases,
 embedded-preview layouts, existing/absent XMP, and unknown Canon metadata.
 Include truncated, damaged, mismatched-extension, and adversarial-size variants.
 No personal camera serial numbers, faces, locations, or photographer details should
 enter a public fixture corpus without an explicit provenance/privacy decision.
+
+Benchmark metadata reads, preview extraction, sidecar edits, and eventual embedded
+edits using these original full RAW files and their actual sizes. Do not convert or
+recompress them to improve a benchmark. Measure latency, bytes read/written, memory,
+and storage conditions separately; file size alone does not establish which capture
+mode produces faster metadata operations. Preserve the stored sensor payload byte
+for byte, without decoding/re-encoding it during metadata edits.
 
 We have not collected or run those fixtures in this documentation phase. Unknown
 variants remain unverified; a later release must state whether it recognizes,

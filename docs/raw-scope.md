@@ -6,6 +6,8 @@ Agreed direction on **2026-10-10**:
 - **Initial delivery scope:** metadata workflows for camera RAW images.
 - **First camera/format:** Canon EOS R5 CR3, selected by Terry; other RAW families
   follow after this first milestone. See [the CR3 milestone](canon-eos-r5-cr3.md).
+- **Primary capture mode:** full RAW, matching Terry's files. C-RAW remains
+  separately tracked secondary coverage.
 - **Current project phase:** requirements and features; language, frameworks, and
   implementation dependencies remain undecided.
 
