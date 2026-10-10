@@ -93,7 +93,9 @@ and storage conditions separately; file size alone does not establish which capt
 mode produces faster metadata operations. Preserve the stored sensor payload byte
 for byte, without decoding/re-encoding it during metadata edits.
 
-We have not collected or run those fixtures in this documentation phase. Unknown
+The [initial private baseline](corpus-baseline/README.md) now records eight full RAW
+files and read/preview/XMP reference observations. It does not cover the complete
+variation and negative-case list above. Unknown
 variants remain unverified; a later release must state whether it recognizes,
 reads, refuses, or safely writes each variant. RAW, C-RAW, and Dual Pixel RAW must
 not inherit write support from a single successful sample.

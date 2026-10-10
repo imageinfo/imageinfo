@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/imageinfo/imageinfo/raw/main/docs/fixture-plan/evidence.schema.json",
-  "title": "Fixture and experiment evidence contract v1",
-  "description": "Planning and evidence records. These data shapes do not choose the application language, harness framework, or internal architecture.",
+  "title": "Fixture/profile evidence v1 and experiment records v1/v2",
+  "description": "Planning and evidence records. Experiment v2 explicitly represents unconfigured external reference limits with reasons; v1 retains its original non-null limits. These data shapes choose no application language, framework or internal architecture.",
   "oneOf": [
     {
       "$ref": "#/$defs/plan"
@@ -1275,22 +1275,72 @@
               "minimum": 1
             },
             "memoryBytes": {
-              "type": "string",
-              "minLength": 1,
-              "pattern": "^(0|[1-9][0-9]*)$"
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(0|[1-9][0-9]*)$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
             },
             "maxDecodedBytes": {
-              "type": "string",
-              "minLength": 1,
-              "pattern": "^(0|[1-9][0-9]*)$"
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(0|[1-9][0-9]*)$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
             },
             "maxDepth": {
-              "type": "integer",
-              "minimum": 1
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
             },
             "maxRecords": {
-              "type": "integer",
-              "minimum": 1
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "unconfiguredReasons": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "memoryBytes": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "maxDecodedBytes": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "maxDepth": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "maxRecords": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
             }
           },
           "required": [
@@ -1299,6 +1349,148 @@
             "maxDecodedBytes",
             "maxDepth",
             "maxRecords"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "memoryBytes": {
+                    "type": "null"
+                  }
+                },
+                "required": [
+                  "memoryBytes"
+                ]
+              },
+              "then": {
+                "required": [
+                  "unconfiguredReasons"
+                ],
+                "properties": {
+                  "unconfiguredReasons": {
+                    "required": [
+                      "memoryBytes"
+                    ]
+                  }
+                }
+              },
+              "else": {
+                "properties": {
+                  "unconfiguredReasons": {
+                    "not": {
+                      "required": [
+                        "memoryBytes"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "maxDecodedBytes": {
+                    "type": "null"
+                  }
+                },
+                "required": [
+                  "maxDecodedBytes"
+                ]
+              },
+              "then": {
+                "required": [
+                  "unconfiguredReasons"
+                ],
+                "properties": {
+                  "unconfiguredReasons": {
+                    "required": [
+                      "maxDecodedBytes"
+                    ]
+                  }
+                }
+              },
+              "else": {
+                "properties": {
+                  "unconfiguredReasons": {
+                    "not": {
+                      "required": [
+                        "maxDecodedBytes"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "maxDepth": {
+                    "type": "null"
+                  }
+                },
+                "required": [
+                  "maxDepth"
+                ]
+              },
+              "then": {
+                "required": [
+                  "unconfiguredReasons"
+                ],
+                "properties": {
+                  "unconfiguredReasons": {
+                    "required": [
+                      "maxDepth"
+                    ]
+                  }
+                }
+              },
+              "else": {
+                "properties": {
+                  "unconfiguredReasons": {
+                    "not": {
+                      "required": [
+                        "maxDepth"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "maxRecords": {
+                    "type": "null"
+                  }
+                },
+                "required": [
+                  "maxRecords"
+                ]
+              },
+              "then": {
+                "required": [
+                  "unconfiguredReasons"
+                ],
+                "properties": {
+                  "unconfiguredReasons": {
+                    "required": [
+                      "maxRecords"
+                    ]
+                  }
+                }
+              },
+              "else": {
+                "properties": {
+                  "unconfiguredReasons": {
+                    "not": {
+                      "required": [
+                        "maxRecords"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           ]
         }
       },
@@ -1448,7 +1640,10 @@
       "additionalProperties": false,
       "properties": {
         "schemaVersion": {
-          "const": 1
+          "enum": [
+            1,
+            2
+          ]
         },
         "recordKind": {
           "const": "experiment-record"
@@ -1840,6 +2035,90 @@
               },
               "differences": {
                 "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "schemaVersion": {
+                "const": 1
+              }
+            },
+            "required": [
+              "schemaVersion"
+            ]
+          },
+          "then": {
+            "properties": {
+              "environment": {
+                "properties": {
+                  "limits": {
+                    "properties": {
+                      "memoryBytes": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "^(0|[1-9][0-9]*)$"
+                      },
+                      "maxDecodedBytes": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "^(0|[1-9][0-9]*)$"
+                      },
+                      "maxDepth": {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      "maxRecords": {
+                        "type": "integer",
+                        "minimum": 1
+                      }
+                    },
+                    "not": {
+                      "required": [
+                        "unconfiguredReasons"
+                      ]
+                    }
+                  }
+                }
+              },
+              "independentRuns": {
+                "items": {
+                  "properties": {
+                    "environment": {
+                      "properties": {
+                        "limits": {
+                          "properties": {
+                            "memoryBytes": {
+                              "type": "string",
+                              "minLength": 1,
+                              "pattern": "^(0|[1-9][0-9]*)$"
+                            },
+                            "maxDecodedBytes": {
+                              "type": "string",
+                              "minLength": 1,
+                              "pattern": "^(0|[1-9][0-9]*)$"
+                            },
+                            "maxDepth": {
+                              "type": "integer",
+                              "minimum": 1
+                            },
+                            "maxRecords": {
+                              "type": "integer",
+                              "minimum": 1
+                            }
+                          },
+                          "not": {
+                            "required": [
+                              "unconfiguredReasons"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }

@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "kind": "sanitized-reference-characterization-summary",
+  "observedOn": "2026-10-10",
+  "primaryReference": {
+    "version": "13.59",
+    "commit": "2200871d9cef988051d2a99d67df3bda6cbb30a8",
+    "releaseRole": "pinned research/development baseline"
+  },
+  "productionComparison": {
+    "version": "13.55",
+    "commit": "de11d240cf7e521e939a0575a128ffe01b63be05",
+    "releaseRole": "production release listed in upstream history retrieved 2026-10-10"
+  },
+  "runtime": {
+    "perl": "5.32.1 x64 existing installation",
+    "jsonPP": "4.04 from matching official Perl source"
+  },
+  "rawOriginals": 8,
+  "suppliedCandidates": 202,
+  "previewAssets": 24,
+  "controlledXmpDerivatives": 3,
+  "admittedPrivateFixtures": 35,
+  "referenceInvocations": 97,
+  "apiObservationRuns": 11,
+  "allInvocationsExitedZero": true,
+  "originalAndReceivedHashesUnchanged": true,
+  "sourceMtimesUnchanged": true,
+  "observedModel": "Canon EOS R5",
+  "storedQualityValues": [
+    "RAW"
+  ],
+  "storedDualPixelValues": [
+    "Off"
+  ],
+  "firmwareValues": [
+    "Firmware Version 2.2.1"
+  ],
+  "isoValues": [
+    400
+  ],
+  "lensModelCount": 1,
+  "cliFieldCounts": [
+    704
+  ],
+  "previewKinds": [
+    "ThumbnailImage",
+    "PreviewImage",
+    "JpgFromRaw"
+  ],
+  "previewExtractionsMatchingApiBytes": 24,
+  "previewsWithTrailingBytes": 15,
+  "versionComparisonCaptures": 16,
+  "capturesWithDifferencesAfterDeclaredExclusions": 0,
+  "excludedComparisonFields": [
+    "ExifToolVersion",
+    "FileAccessDate"
+  ],
+  "candidateImplementation": null,
+  "nativeCapabilitiesVerified": 0,
+  "privacy": "Images, identifying metadata, original filenames/paths, per-image hashes and detailed evidence remain private. This summary contains only reviewed aggregate technical observations.",
+  "limitations": [
+    "One firmware/lens/ISO stratum; C-RAW and DPRAW not represented.",
+    "Stored camera/mode tags corroborate the user declaration; not tamper-proof identity or independent sensor decoding.",
+    "No native parity, embedded RAW mutation, adversarial robustness or performance claim.",
+    "External reference memory/parser caps were not configured; per-call timeout was enforced.",
+    "Exact reproduction requires authorized access to the restricted evidence bundle."
+  ],
+  "auxiliaryXmlChecks": true,
+  "independentValidatorRuns": 0,
+  "scopedProvenanceReviews": 39,
+  "referenceEntryScriptSha256": "a6b8018093845ac93011307bac4ab630d6604b2365fc7f66bb88c88d7dedb5ed",
+  "referenceEntryScriptHashScope": "Interpreted ExifTool entry script only; full toolchain identities remain in restricted evidence."
+}

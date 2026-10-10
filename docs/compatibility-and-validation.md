@@ -13,7 +13,7 @@ The [safe mutation contract](write-safety/README.md) defines the per-file states
 refusals and preservation/recovery assertions for those experiments; its
 [acceptance scenarios](write-safety/acceptance-scenarios.md) remain unrun on media.
 
-Upstream source snapshot: [`2200871d9cef988051d2a99d67df3bda6cbb30a8`](https://github.com/exiftool/exiftool/commit/2200871d9cef988051d2a99d67df3bda6cbb30a8), observed through the official repository. Repository-file citations below pin that revision; linked issue reports are dated observations. No executable reference or fixture corpus has been installed or run in this requirements phase.
+Upstream source snapshot: [`2200871d9cef988051d2a99d67df3bda6cbb30a8`](https://github.com/exiftool/exiftool/commit/2200871d9cef988051d2a99d67df3bda6cbb30a8), observed through the official repository. Repository-file citations below pin that revision; linked issue reports are dated observations. Subsequent #0013 [private reference characterization](corpus-baseline/README.md) now records eight admitted RAWs and acquired upstream references. It supplies no imageinfo implementation or parity result.
 
 ## Active scope: camera RAW metadata
 

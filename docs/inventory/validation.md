@@ -126,3 +126,14 @@ await #0016. The [governance proposal](../../GOVERNANCE.md) is now recorded;
 the [artifact provenance policy](../provenance/README.md) is now specified, while
 #0013/#0014 retain actual
 corpus and writer/storage evidence. This validation does not close those cards.
+
+## Revision 2026-10-10.9: acquired reference evidence
+
+The historical checks above describe the earlier source-only inventory. Card #0013
+now records [97 private reference runs](../corpus-baseline/README.md), while all
+49 capability rows remain specified without native evidence or implementation
+revisions. The reference executable field identifies the pinned interpreted entry
+script; full runtime/source/driver identities remain in the restricted bundle.
+The revised inventory passes schema/reference checks and ten negative cases,
+including a verified row with deliberately removed executable evidence.
+Remaining corpus coverage is assigned to #0018; no parity percentage is inferred.

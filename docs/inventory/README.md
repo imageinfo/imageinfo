@@ -1,8 +1,9 @@
 # EOS R5 CR3 capability inventory v1
 
-Status: **draft for review**, inventory revision `2026-10-10.8`, 2026-10-10. This is the deliverable for board card
+Status: **draft for review**, inventory revision `2026-10-10.9`, 2026-10-10. This is the deliverable for board card
 **#0002, capability-inventory**. Implementation coverage remains zero. No imageinfo
-executable, upstream executable experiment, or media-fixture validation is claimed.
+executable or native media-fixture validation is claimed. Initial upstream-only
+observations are now recorded in the [corpus baseline](../corpus-baseline/README.md).
 
 ## Review entry points
 
@@ -21,7 +22,10 @@ supported tags or a denominator for a parity percentage.
 The source baseline is ExifTool **13.59**, commit
 [2200871d9cef988051d2a99d67df3bda6cbb30a8](https://github.com/exiftool/exiftool/commit/2200871d9cef988051d2a99d67df3bda6cbb30a8).
 It is a pinned research snapshot, not a claim about the newest release.
-Executable version and hash are deliberately null; runtimeExperiments is false.
+Runtime experiments are now recorded for the restricted #0013 baseline. The
+executable version is 13.59; its hash identifies the interpreted entry script, not
+the full interpreter/source/runtime/driver toolchain. Those full identities are
+retained in private evidence; see the [method](../corpus-baseline/method.md).
 
 ## What this card resolves
 
@@ -230,17 +234,17 @@ in the JSON. Do not close them merely because a source contains a similarly name
 
 | ID | Gap | Follow-up card | Closes when |
 | --- | --- | --- | --- |
-| GAP-001 | EOS R5 fixture observations | `corpus-baseline` | A provenance-approved full RAW corpus records camera/firmware/mode, discovered structures, optional-tag presence and source hashes. |
+| GAP-001 | EOS R5 fixture observations | `corpus-expansion` | Initial private observations from #0013 are documented in docs/corpus-baseline. Remaining coverage: A provenance-approved full RAW corpus records camera/firmware/mode, discovered structures, optional-tag presence and source hashes. |
 | GAP-002 | Camera mode and damaged-file discrimination | `capability-inventory` | Cross-check brand, Canon model, Quality and structural clues on full RAW/C-RAW/DPRAW and negative CRM/other-camera cases; record ambiguity rules. |
 | GAP-003 | Tag-level and mutation-depth expansion | `capability-inventory` | Expand representative families into occurrence/tag/location rows; audit insertion/deletion flags, defaults and all relevant maker-note subtables without copying upstream tables. |
 | GAP-004 | Saved plans and preservation oracle | `write-validation` | The proposed contract is in docs/write-safety. Demonstrate guarded publication, partial pairs, protected payload/reference/calibration/opaque preservation, properties and recovery on declared profiles. |
-| GAP-005 | Metadata interpretation and conversion evidence | `corpus-baseline` | The proposed model contract is recorded in docs/metadata-model. Exercise its identity, exact value, XMP, encoding, and time rules against real fixtures and per-tag oracle observations before claiming runtime equivalence. |
+| GAP-005 | Metadata interpretation and conversion evidence | `corpus-expansion` | Initial private observations from #0013 are documented in docs/corpus-baseline. Remaining coverage: The proposed model contract is recorded in docs/metadata-model. Exercise its identity, exact value, XMP, encoding, and time rules against real fixtures and per-tag oracle observations before claiming runtime equivalence. |
 | GAP-006 | Legacy argument and API completeness | `compatibility-evidence` | The surveyed ledger is delivered. Close LG-001/002/003/005/006 with exhaustive cases, accepted differences and actual reference/native evidence before full or drop-in claims. |
-| GAP-007 | Preview variants and nested metadata | `corpus-baseline` | Enumerate THMB, PRVW and JPEG-track assets per full RAW fixture; prove bytes and nested metadata coverage; audit any replacement path separately. |
-| GAP-008 | Repeatable runtime reference | `corpus-baseline` | Choose an executable distribution, hash it and its configuration/dependencies, then run recorded experiments in controlled locale/timezone environments. |
+| GAP-007 | Preview variants and nested metadata | `corpus-expansion` | Initial private observations from #0013 are documented in docs/corpus-baseline. Remaining coverage: Enumerate THMB, PRVW and JPEG-track assets per full RAW fixture; prove bytes and nested metadata coverage; audit any replacement path separately. |
+| GAP-008 | Repeatable runtime reference | `corpus-expansion` | The initial reference has been acquired, hashed and run in controlled configuration on #0013; see docs/corpus-baseline. Reproduce on another environment and extend actual records to each additional claimed operation. |
 | GAP-009 | Privacy and sidecar synchronization policy | `write-validation` | General rules are in docs/write-safety. Specify exact pairing/mappings and per-profile field catalogs, then verify removal, residual/uninspectable coverage and synchronization. Logical deletion never proves secure erasure. |
 | GAP-010 | Secondary and later format breadth | `capability-inventory` | Scope and collect independent evidence for C-RAW/DPRAW, other Canon cameras and later RAW families before adding their capabilities. |
-| GAP-011 | Asset licensing and provenance | `corpus-baseline` | Policy/schema are now recorded in docs/provenance. Apply exact rights/privacy/notice/lineage review to initial corpus/reference assets on #0013; future imports need their own review. No blanket reuse grant. |
+| GAP-011 | Asset licensing and provenance | `corpus-expansion` | The initial 35 private fixtures and four reference-tool components have scoped reviews on #0013; see docs/corpus-baseline. Apply the provenance policy to every new import and independently authorize any public distribution. No blanket reuse grant is implied. |
 | GAP-012 | CLI workflows and large-input boundaries | `compatibility-evidence` | Native walkthroughs, request/result schemas and filter/session proposals are delivered. Finish plan/session-output schemas and advanced cases (#0015), measured limits (#0016 under the #0008 protocol) and actual integration/usability evidence. |
 
 The [proposed metadata contract](../metadata-model/README.md) now supplies the data
@@ -251,14 +255,15 @@ now exercises them, and the [compatibility recommendation](../legacy-compatibili
 classifies the surveyed interfaces. The [performance protocol](../performance/README.md)
 now defines measurements, and [governance](../../GOVERNANCE.md) plus
 [artifact provenance](../provenance/README.md) define review responsibilities.
-Actual corpus/reference admission is the next evidence-work candidate. The inventory does not complete
+The initial private corpus/reference admission is recorded in #0013. Targeted
+expansion remains on #0018. The inventory does not complete
 those follow-up cards or authorize language selection.
 
 ## Sources and provenance
 
 All ExifTool file sources below use the same immutable commit. The data records
 independent requirements and selected factual identifiers; no upstream implementation,
-complete tag table, or media fixture is imported. Terry selected MIT for imageinfo on
+complete tag table, or media fixture is imported into the public repository. Terry selected MIT for imageinfo on
 card #0010; that choice does not change third-party material's terms. GAP-011 remains
 the artifact-specific provenance follow-up.
 
@@ -326,3 +331,8 @@ evidence are invented by this documentation revision.
 Revision `2026-10-10.8` links the [artifact provenance policy](../provenance/README.md)
 and assigns GAP-011 first actual corpus/reference admission evidence to #0013.
 All capabilities remain specified; the project MIT decision is unchanged.
+
+Revision `2026-10-10.9` records the [first private reference baseline](../corpus-baseline/README.md):
+eight RAWs, 24 stored previews, three XMP outputs and 97 upstream invocations.
+GAP-001/005/007/008/011 retain their bounded remaining work under `corpus-expansion`.
+All 49 capabilities remain specified, with no native implementation or parity evidence.

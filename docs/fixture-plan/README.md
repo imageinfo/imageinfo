@@ -4,6 +4,9 @@ Status: **proposed plan for review**, revision `2026-10-10.1`, card **#0005**.
 The plan is language-independent and starts with Terry's EOS R5 **full RAW** files.
 C-RAW and Dual Pixel RAW remain secondary. This card defines experiments; it does
 not collect a camera corpus, install an oracle, implement a harness, or claim parity.
+Subsequent #0013 [reference characterization](../corpus-baseline/README.md) has now
+acquired private fixtures and reference instances; the published examples below
+remain historical, synthetic and explicitly planned/not-run.
 
 ## Review map
 
@@ -101,9 +104,10 @@ personal archive. Record exactly what each file contains and add files when a
 specific assertion lacks coverage. A fixed photo count is not a substitute for
 coverage, and one passing R5 file cannot establish every firmware/layout variant.
 
-The case plan's `acquisitionStatus` is currently `not-collected` for every row:
-no case has been instantiated with its admitted corpus fixtures. The illustrative
-documentation records do not satisfy that requirement.
+The original case plan retains `acquisitionStatus: not-collected` as its planning
+baseline. Actual private manifests and case-linked runs now exist under #0013;
+consult the [corpus report](../corpus-baseline/README.md) for their narrow coverage.
+Neither those observations nor the illustrative records complete whole case families.
 A family may require several fixtures and several concrete experiments. The full
 JSON records fixture classes, needs, assertions, CAP references, and MDL rules.
 
@@ -284,3 +288,15 @@ under that follow-up.
 The schema and case plan can be implemented with ordinary test tools after a
 language is selected. Any deliberately unconventional harness choice should explain
 the constraint and tradeoff near the code, just like the application.
+
+## Experiment record version 2
+
+The #0013 acquired-reference records use `schemaVersion: 2`. External-tool runs
+may explicitly leave `memoryBytes`, `maxDecodedBytes`, `maxDepth` or `maxRecords`
+null, with a nonempty, matching `limits.unconfiguredReasons` entry for each.
+A configured field must not have an unconfigured reason. The positive wall-time
+limit remains mandatory. Version 1 still requires configured values and forbids
+these reasons, including in independent-run environments. This extension records
+missing enforcement honestly; it does not waive any case-specific resource gate.
+Fixture/oracle schemas and historical examples remain version 1. See the
+[validation](../corpus-baseline/validation.md).

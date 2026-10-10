@@ -1,7 +1,7 @@
 {
   "$schema": "./capability-inventory.schema.json",
   "schemaVersion": 1,
-  "inventoryVersion": "2026-10-10.8",
+  "inventoryVersion": "2026-10-10.9",
   "observedOn": "2026-10-10",
   "reviewState": "draft-for-review",
   "reference": {
@@ -9,11 +9,11 @@
     "sourceVersion": "13.59",
     "commit": "2200871d9cef988051d2a99d67df3bda6cbb30a8",
     "commitDate": "2026-05-27T16:44:48Z",
-    "executableVersion": null,
-    "executableSha256": null,
-    "runtimeExperiments": false
+    "executableVersion": "13.59",
+    "executableSha256": "a6b8018093845ac93011307bac4ab630d6604b2365fc7f66bb88c88d7dedb5ed",
+    "runtimeExperiments": true
   },
-  "scope": "EOS R5 full RAW CR3 metadata first, associated XMP and stored previews; C-RAW and Dual Pixel RAW secondary. Language agnostic. Source review only; no media fixtures or runtime parity results.",
+  "scope": "EOS R5 full RAW CR3 metadata first, associated XMP and stored previews; C-RAW and Dual Pixel RAW secondary. Language agnostic. Initial private reference-only observations in docs/corpus-baseline; no imageinfo implementation or parity results. Executable hash identifies the interpreted entry script, with complete toolchain identities retained privately.",
   "variants": [
     {
       "id": "r5-full",
@@ -21,7 +21,7 @@
       "camera": "Canon EOS R5",
       "captureMode": "full RAW",
       "priority": "primary",
-      "notes": "User-selected losslessly compressed full RAW; firmware and per-file layouts remain unobserved."
+      "notes": "User-selected losslessly compressed full RAW. Eight private files characterized at firmware 2.2.1; stored mode observations and coverage limits in docs/corpus-baseline. No native or general variant support claim."
     },
     {
       "id": "r5-xmp",
@@ -229,7 +229,7 @@
       ],
       "dependsOn": [],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -276,7 +276,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -323,7 +323,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -373,7 +373,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -421,7 +421,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -473,7 +473,7 @@
         "CAP-002"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -516,7 +516,7 @@
         "CAP-006"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -569,7 +569,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -617,7 +617,7 @@
         "CAP-010"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -661,7 +661,7 @@
       ],
       "dependsOn": [],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -710,7 +710,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -755,7 +755,7 @@
         "CAP-011"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -800,7 +800,7 @@
         "CAP-010"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -846,7 +846,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -889,7 +889,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -930,7 +930,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -973,7 +973,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1020,7 +1020,7 @@
         "CAP-017"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1067,7 +1067,7 @@
         "CAP-010"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1115,7 +1115,7 @@
         "CAP-023"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1164,7 +1164,7 @@
         "CAP-023"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1211,7 +1211,7 @@
         "CAP-023"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1255,7 +1255,7 @@
       ],
       "dependsOn": [],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1303,7 +1303,7 @@
         "CAP-013"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1350,7 +1350,7 @@
         "CAP-041"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1399,7 +1399,7 @@
         "CAP-038"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1446,7 +1446,7 @@
         "CAP-026"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1492,7 +1492,7 @@
         "CAP-026"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1539,7 +1539,7 @@
         "CAP-038"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1584,7 +1584,7 @@
         "CAP-029"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1631,7 +1631,7 @@
         "CAP-018"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1681,7 +1681,7 @@
         "CAP-038"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1730,7 +1730,7 @@
         "CAP-032"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1779,7 +1779,7 @@
         "CAP-032"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1826,7 +1826,7 @@
         "CAP-038"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1872,7 +1872,7 @@
         "CAP-008"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1922,7 +1922,7 @@
         "CAP-038"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -1971,7 +1971,7 @@
         "CAP-002"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -2021,7 +2021,7 @@
         "CAP-013"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -2066,7 +2066,7 @@
         "CAP-021"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -2109,7 +2109,7 @@
         "CAP-013"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -2157,7 +2157,7 @@
         "CAP-021"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -2203,7 +2203,7 @@
         "CAP-020"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -2250,7 +2250,7 @@
         "CAP-012"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -2299,7 +2299,7 @@
         "CAP-018"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -2344,7 +2344,7 @@
         "CAP-039"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -2389,7 +2389,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -2433,7 +2433,7 @@
         "CAP-038"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     },
     {
@@ -2475,7 +2475,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
       "implementationRevision": null
     }
   ],
@@ -3371,9 +3371,9 @@
     {
       "id": "GAP-001",
       "subject": "EOS R5 fixture observations",
-      "ownerCard": "corpus-baseline",
-      "closesWhen": "A provenance-approved full RAW corpus records camera/firmware/mode, discovered structures, optional-tag presence and source hashes.",
-      "blocks": "Any claim that source-level support was observed on Terry's files."
+      "ownerCard": "corpus-expansion",
+      "closesWhen": "Initial private observations from #0013 are documented in docs/corpus-baseline. Remaining coverage: A provenance-approved full RAW corpus records camera/firmware/mode, discovered structures, optional-tag presence and source hashes.",
+      "blocks": "Generalizing the eight observed files to other capture settings, firmware, layouts or optional-field coverage."
     },
     {
       "id": "GAP-002",
@@ -3399,8 +3399,8 @@
     {
       "id": "GAP-005",
       "subject": "Metadata interpretation and conversion evidence",
-      "ownerCard": "corpus-baseline",
-      "closesWhen": "The proposed model contract is recorded in docs/metadata-model. Exercise its identity, exact value, XMP, encoding, and time rules against real fixtures and per-tag oracle observations before claiming runtime equivalence.",
+      "ownerCard": "corpus-expansion",
+      "closesWhen": "Initial private observations from #0013 are documented in docs/corpus-baseline. Remaining coverage: The proposed model contract is recorded in docs/metadata-model. Exercise its identity, exact value, XMP, encoding, and time rules against real fixtures and per-tag oracle observations before claiming runtime equivalence.",
       "blocks": "Runtime lossless JSON/import/copy and per-tag interpretation claims; the language-independent model specification is delivered by card #0004."
     },
     {
@@ -3413,16 +3413,16 @@
     {
       "id": "GAP-007",
       "subject": "Preview variants and nested metadata",
-      "ownerCard": "corpus-baseline",
-      "closesWhen": "Enumerate THMB, PRVW and JPEG-track assets per full RAW fixture; prove bytes and nested metadata coverage; audit any replacement path separately.",
+      "ownerCard": "corpus-expansion",
+      "closesWhen": "Initial private observations from #0013 are documented in docs/corpus-baseline. Remaining coverage: Enumerate THMB, PRVW and JPEG-track assets per full RAW fixture; prove bytes and nested metadata coverage; audit any replacement path separately.",
       "blocks": "All-previews claims, nested privacy completeness, or preview replacement."
     },
     {
       "id": "GAP-008",
       "subject": "Repeatable runtime reference",
-      "ownerCard": "corpus-baseline",
-      "closesWhen": "Choose an executable distribution, hash it and its configuration/dependencies, then run recorded experiments in controlled locale/timezone environments.",
-      "blocks": "Runtime-verified reference behavior or parity percentages."
+      "ownerCard": "corpus-expansion",
+      "closesWhen": "The initial reference has been acquired, hashed and run in controlled configuration on #0013; see docs/corpus-baseline. Reproduce on another environment and extend actual records to each additional claimed operation.",
+      "blocks": "Claims of repeatability beyond the recorded environment and operations; any native parity percentage."
     },
     {
       "id": "GAP-009",
@@ -3441,8 +3441,8 @@
     {
       "id": "GAP-011",
       "subject": "Asset licensing and provenance",
-      "ownerCard": "corpus-baseline",
-      "closesWhen": "The locked MIT decision and artifact provenance policy/schema are recorded in docs/provenance. Apply scoped rights, privacy, notice and lineage reviews to the actual initial corpus and reference distribution on #0013 before admission/distribution. Future imports require equivalent review in their proposing task; no blanket reuse grant is implied.",
+      "ownerCard": "corpus-expansion",
+      "closesWhen": "The initial 35 private fixtures and four reference-tool components have scoped reviews on #0013; see docs/corpus-baseline. Apply the provenance policy to every new import and independently authorize any public distribution. No blanket reuse grant is implied.",
       "blocks": "Redistribution of upstream assets or personal sample media."
     },
     {

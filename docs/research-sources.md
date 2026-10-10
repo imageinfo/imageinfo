@@ -109,3 +109,11 @@ observed for contributor/security guidance; no permissions or settings were chan
    corrections without silently rewriting old expected results.
 4. Keep observed behavior, documented behavior, and imageinfo's proposed behavior
    separately labeled, especially when they disagree.
+
+## Acquired reference and corpus follow-up
+
+Card #0013 adds [actual private reference observations](corpus-baseline/README.md),
+observed 2026-10-10. The [method ledger](corpus-baseline/method.md) identifies both
+upstream commits, the retrieved production/development release distinction, Perl
+and JSON::PP source/runtime provenance, configuration probes and evidence limits.
+Selected reference sources are private operational copies, not imported product code.
