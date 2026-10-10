@@ -1,0 +1,688 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/imageinfo/imageinfo/raw/main/docs/inventory/capability-inventory.schema.json",
+  "title": "imageinfo capability inventory v1",
+  "description": "Documentation inventory, independent of the eventual application implementation language. Referential integrity and evidence sufficiency also require the rules in README.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "const": "./capability-inventory.schema.json"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "inventoryVersion": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}\\.[1-9][0-9]*$"
+    },
+    "observedOn": {
+      "type": "string",
+      "minLength": 1,
+      "format": "date"
+    },
+    "reviewState": {
+      "enum": [
+        "draft-for-review",
+        "accepted"
+      ]
+    },
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "project": {
+          "const": "ExifTool"
+        },
+        "sourceVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "commit": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "commitDate": {
+          "type": "string",
+          "minLength": 1,
+          "format": "date-time"
+        },
+        "executableVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "executableSha256": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          ]
+        },
+        "runtimeExperiments": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "project",
+        "sourceVersion",
+        "commit",
+        "commitDate",
+        "executableVersion",
+        "executableSha256",
+        "runtimeExperiments"
+      ]
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "variants": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/variant"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/capability"
+      }
+    },
+    "mappings": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/mapping"
+      }
+    },
+    "gaps": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/gap"
+      }
+    }
+  },
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "inventoryVersion",
+    "observedOn",
+    "reviewState",
+    "reference",
+    "scope",
+    "variants",
+    "sources",
+    "capabilities",
+    "mappings",
+    "gaps"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "capabilities"
+        ],
+        "properties": {
+          "capabilities": {
+            "contains": {
+              "type": "object",
+              "required": [
+                "status"
+              ],
+              "properties": {
+                "status": {
+                  "const": "verified"
+                }
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reference": {
+            "properties": {
+              "runtimeExperiments": {
+                "const": true
+              },
+              "executableVersion": {
+                "type": "string",
+                "minLength": 1
+              },
+              "executableSha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "strings": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^[a-z][a-z0-9-]*$"
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fixture": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact": {
+          "type": "string",
+          "minLength": 1
+        },
+        "result": {
+          "enum": [
+            "pass",
+            "fail",
+            "difference"
+          ]
+        },
+        "referenceHash": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "fixture",
+        "artifact",
+        "result",
+        "referenceHash"
+      ]
+    },
+    "variant": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "container": {
+          "type": "string",
+          "minLength": 1
+        },
+        "camera": {
+          "type": "string",
+          "minLength": 1
+        },
+        "captureMode": {
+          "type": "string",
+          "minLength": 1
+        },
+        "priority": {
+          "enum": [
+            "primary",
+            "secondary",
+            "deferred"
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "container",
+        "camera",
+        "captureMode",
+        "priority",
+        "notes"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "minLength": 1,
+          "format": "uri"
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "basis": {
+          "enum": [
+            "upstream-documentation",
+            "upstream-source",
+            "vendor-documentation"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "url",
+        "locator",
+        "basis"
+      ]
+    },
+    "upstream": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "support": {
+          "enum": [
+            "documented",
+            "conditional",
+            "not-supported",
+            "unresolved",
+            "not-applicable"
+          ]
+        },
+        "sourceRefs": {
+          "$ref": "#/$defs/sources"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "support",
+        "sourceRefs",
+        "note"
+      ]
+    },
+    "capability": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^CAP-[0-9]{3}$"
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1
+        },
+        "variantRefs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9-]*$"
+          }
+        },
+        "family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "location": {
+          "type": "string",
+          "minLength": 1
+        },
+        "selectors": {
+          "$ref": "#/$defs/strings"
+        },
+        "operation": {
+          "enum": [
+            "recognize",
+            "read",
+            "write",
+            "create",
+            "delete",
+            "preserve",
+            "extract",
+            "copy",
+            "sync",
+            "derive",
+            "export",
+            "import",
+            "diff",
+            "transform",
+            "organize",
+            "validate",
+            "process"
+          ]
+        },
+        "milestone": {
+          "enum": [
+            "read-foundation",
+            "sidecar-workflows",
+            "embedded-write",
+            "advanced-workflows",
+            "secondary-variants"
+          ]
+        },
+        "priority": {
+          "enum": [
+            "P0",
+            "P1",
+            "P2"
+          ]
+        },
+        "reference": {
+          "$ref": "#/$defs/upstream"
+        },
+        "status": {
+          "enum": [
+            "unresearched",
+            "specified",
+            "implemented",
+            "verified",
+            "limited",
+            "not-applicable"
+          ]
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1
+        },
+        "acceptance": {
+          "$ref": "#/$defs/strings"
+        },
+        "requirementRefs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(PR|CLI)-[0-9]{3}$"
+          }
+        },
+        "gapRefs": {
+          "type": "array",
+          "minItems": 0,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^GAP-[0-9]{3}$"
+          }
+        },
+        "dependsOn": {
+          "type": "array",
+          "minItems": 0,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^CAP-[0-9]{3}$"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "statusNote": {
+          "type": "string",
+          "minLength": 1
+        },
+        "implementationRevision": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{40}$"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "subject",
+        "variantRefs",
+        "family",
+        "location",
+        "selectors",
+        "operation",
+        "milestone",
+        "priority",
+        "reference",
+        "status",
+        "target",
+        "acceptance",
+        "requirementRefs",
+        "gapRefs",
+        "dependsOn",
+        "evidence",
+        "statusNote",
+        "implementationRevision"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "verified"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "evidence": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "unresearched",
+                  "specified"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "evidence": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "implemented",
+                  "verified",
+                  "limited"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "implementationRevision": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{40}$"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^MAP-[0-9]{3}$"
+        },
+        "surface": {
+          "enum": [
+            "CLI",
+            "API"
+          ]
+        },
+        "family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "upstreamForms": {
+          "$ref": "#/$defs/strings"
+        },
+        "disposition": {
+          "enum": [
+            "equivalent-proposed",
+            "difference-proposed",
+            "open-gap",
+            "deferred"
+          ]
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1
+        },
+        "acceptance": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceRefs": {
+          "$ref": "#/$defs/sources"
+        },
+        "capabilityRefs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^CAP-[0-9]{3}$"
+          }
+        },
+        "gapRefs": {
+          "type": "array",
+          "minItems": 0,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^GAP-[0-9]{3}$"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "surface",
+        "family",
+        "upstreamForms",
+        "disposition",
+        "target",
+        "acceptance",
+        "sourceRefs",
+        "capabilityRefs",
+        "gapRefs"
+      ]
+    },
+    "gap": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^GAP-[0-9]{3}$"
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ownerCard": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "closesWhen": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blocks": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "subject",
+        "ownerCard",
+        "closesWhen",
+        "blocks"
+      ]
+    }
+  }
+}

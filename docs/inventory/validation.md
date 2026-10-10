@@ -1,0 +1,87 @@
+# Inventory validation and handoff
+
+Validated on **2026-10-10** for inventory `2026-10-10.1`, schema version 1.
+This validates the documentation/data contract. It does not validate CR3 parsing,
+editing, ExifTool executable behavior, or imageinfo compatibility.
+
+## Results
+
+| Check | Result |
+| --- | --- |
+| JSON parsing and draft 2020-12 schema self-validation | Passed |
+| Inventory against schema, with URI/date/date-time format checking | Passed |
+| Unique identifiers across capabilities, mappings, gaps, sources, variants | Passed |
+| Source/variant/capability/gap references resolve | Passed |
+| Requirement references resolve to PR/CLI definitions | Passed |
+| Capability dependency graph has no cycles | Passed |
+| Upstream source URLs use the pinned commit and existing repository paths | Passed |
+| Human indexes contain all capability, mapping, and gap IDs | Passed |
+| All current rows are specified, with no implementation revision or runtime evidence | Passed |
+| Executable reference version/hash remain null and experiments remain false | Passed |
+| Counts | 49 capabilities, 32 mappings, 12 gaps, 20 sources, 4 variants |
+
+The structural checks used `jsonschema 4.26.0` in a temporary isolated tooling
+environment. A small local checker also validated references, acyclicity, source
+paths, and index coverage. This is verification tooling, not a language/framework
+decision for imageinfo; no application dependency or package manifest was added.
+
+## Negative cases rejected
+
+1. Unknown capability field.
+2. Invalid operation name.
+3. Duplicate capability ID.
+4. Dangling source ID.
+5. Dangling capability ID in a mapping.
+6. Dependency cycle.
+7. A verified row with no evidence.
+8. An implemented row without an implementation revision.
+9. A verified row with synthetic evidence but no executable reference baseline.
+10. An upstream source link changed from the pinned commit to a moving branch.
+
+These mutations were made only to in-memory test copies. They are not inventory
+records or fabricated conformance evidence.
+
+## Repeatable review procedure
+
+1. Use a JSON Schema draft 2020-12 validator, with format assertions enabled, to
+   validate the schema and [inventory](canon-eos-r5-cr3.v1.json).
+2. For each named collection, require uniqueness of its `id` values. Check every
+   `sourceRefs`, `variantRefs`, `capabilityRefs`, `gapRefs`, `requirementRefs`, and
+   `dependsOn` value against its declared collection or requirement document.
+3. Traverse `dependsOn` as a directed graph and reject cycles, including self-links.
+4. Confirm every upstream source path exists at `reference.commit`; confirm each
+   source locator supports the associated note rather than only naming a similar tag.
+5. Require all human-index IDs to match the JSON. Check local links, JSON examples,
+   Markdown fences, line endings, and staged whitespace.
+6. Review state transitions semantically. An executable hash and evidence record
+   are necessary, not sufficient, for verified status. Inspect the underlying
+   fixture, result, accepted differences, protected-byte checks, and independent
+   validation. Do not treat an arbitrary artifact string as proof.
+
+For future inventories, an implemented/verified/limited row must identify its
+implementation revision and explain its state in `statusNote`. The fixture-plan
+card will specify richer runtime artifact manifests; this schema does not replace
+that separate evidence contract.
+
+## Card #0002 acceptance trace
+
+| Requested outcome | Delivered artifact |
+| --- | --- |
+| Versioned inventory/schema | `canon-eos-r5-cr3.v1.json`, `capability-inventory.schema.json` |
+| Prioritized RAW/variant rows | Full RAW and paired XMP primary; C-RAW/DPRAW separate secondary records; operation/milestone/priority fields on every capability |
+| Recognition/read/write/create/delete/preservation distinctions | Separate operation rows, with extraction/workflow rows where needed |
+| Relevant CLI/API surface mapping | MAP-001 through MAP-032; equivalent proposals, deliberate differences, and unresolved families |
+| Constraints and primary sources | 20 source entries, pinned upstream revision, per-row reference notes and gaps |
+| Measurable statuses | Reference evidence and imageinfo status kept separate; structural and semantic gates documented |
+| Remaining audit scope | GAP-001 through GAP-012, each with owner card, closure evidence, and blocked claim |
+
+No media fixtures were imported or modified, and no upstream tag database or parser
+was copied into the project. Actual camera-specific field presence, exhaustive
+tag/option coverage, and safe mutation remain explicit follow-up work. These limits
+match the inventory card's requested research/specification scope.
+
+The recommended next dependent card is **#0004, metadata-contract**: settle occurrence
+identity and raw/normalized/display representations using CAP-003 through CAP-014
+and CAP-019. **#0005, fixture-plan** can then turn the acceptance cases and gaps into
+fixture manifests and experiment records. The CLI and write-safety cards consume
+those contracts. This handoff does not mark any follow-up card completed.

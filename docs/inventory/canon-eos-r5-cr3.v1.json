@@ -1,0 +1,3456 @@
+{
+  "$schema": "./capability-inventory.schema.json",
+  "schemaVersion": 1,
+  "inventoryVersion": "2026-10-10.1",
+  "observedOn": "2026-10-10",
+  "reviewState": "draft-for-review",
+  "reference": {
+    "project": "ExifTool",
+    "sourceVersion": "13.59",
+    "commit": "2200871d9cef988051d2a99d67df3bda6cbb30a8",
+    "commitDate": "2026-05-27T16:44:48Z",
+    "executableVersion": null,
+    "executableSha256": null,
+    "runtimeExperiments": false
+  },
+  "scope": "EOS R5 full RAW CR3 metadata first, associated XMP and stored previews; C-RAW and Dual Pixel RAW secondary. Language agnostic. Source review only; no media fixtures or runtime parity results.",
+  "variants": [
+    {
+      "id": "r5-full",
+      "container": "CR3",
+      "camera": "Canon EOS R5",
+      "captureMode": "full RAW",
+      "priority": "primary",
+      "notes": "User-selected losslessly compressed full RAW; firmware and per-file layouts remain unobserved."
+    },
+    {
+      "id": "r5-xmp",
+      "container": "XMP",
+      "camera": "Canon EOS R5 association",
+      "captureMode": "sidecar paired with r5-full",
+      "priority": "primary",
+      "notes": "Association and conflict policy required; never infer embedded CR3 write support from sidecar support."
+    },
+    {
+      "id": "r5-craw",
+      "container": "CR3",
+      "camera": "Canon EOS R5",
+      "captureMode": "C-RAW",
+      "priority": "secondary",
+      "notes": "Separate evidence; not a gate for the first full-RAW read milestone."
+    },
+    {
+      "id": "r5-dpraw",
+      "container": "CR3",
+      "camera": "Canon EOS R5",
+      "captureMode": "Dual Pixel RAW",
+      "priority": "secondary",
+      "notes": "User has not stated use; additional sensor data preservation remains a separate gate."
+    }
+  ],
+  "sources": [
+    {
+      "id": "support",
+      "title": "Upstream support and writer limitations",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/html/index.html",
+      "locator": "CR3 row; writer limitations",
+      "basis": "upstream-documentation"
+    },
+    {
+      "id": "canon",
+      "title": "Canon metadata tables",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/html/TagNames/Canon.html",
+      "locator": "uuid, CTMD, CameraSettings, CameraInfoR6, CanonModelID",
+      "basis": "upstream-documentation"
+    },
+    {
+      "id": "canon-source",
+      "title": "Canon reader/writer definitions",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/lib/Image/ExifTool/Canon.pm",
+      "locator": "Canon::uuid CMT1-4, CTBO, THMB; Canon::CTMD; ProcessCMT3",
+      "basis": "upstream-source"
+    },
+    {
+      "id": "quicktime",
+      "title": "QuickTime metadata tables",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/html/TagNames/QuickTime.html",
+      "locator": "CR3 padding; Stream CTMD and JpgFromRaw; uuid",
+      "basis": "upstream-documentation"
+    },
+    {
+      "id": "quicktime-source",
+      "title": "QuickTime container implementation",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/lib/Image/ExifTool/QuickTime.pm",
+      "locator": "ftypLookup crx; timeInfo CR3 conversion; Canon uuid preview; JPEGInfo",
+      "basis": "upstream-source"
+    },
+    {
+      "id": "exif",
+      "title": "EXIF definitions",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/html/TagNames/EXIF.html",
+      "locator": "IFD0/ExifIFD fields; writable/protected/mandatory flags",
+      "basis": "upstream-documentation"
+    },
+    {
+      "id": "gps",
+      "title": "GPS definitions",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/html/TagNames/GPS.html",
+      "locator": "coordinate/reference fields; GPSVersionID",
+      "basis": "upstream-documentation"
+    },
+    {
+      "id": "xmp",
+      "title": "XMP definitions",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/html/TagNames/XMP.html",
+      "locator": "dc, xmp, exif schemas and list/language/structure types",
+      "basis": "upstream-documentation"
+    },
+    {
+      "id": "structures",
+      "title": "Structured XMP",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/html/struct.html",
+      "locator": "read/copy/write structure and flattened-field behavior",
+      "basis": "upstream-documentation"
+    },
+    {
+      "id": "sidecars",
+      "title": "Metadata sidecars",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/html/metafiles.html",
+      "locator": "XMP creation, mapping, application",
+      "basis": "upstream-documentation"
+    },
+    {
+      "id": "cli",
+      "title": "Application manual",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/html/exiftool_pod.html",
+      "locator": "tag operations; input/output; processing; other options; special features; exit status",
+      "basis": "upstream-documentation"
+    },
+    {
+      "id": "api",
+      "title": "Library API",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/lib/Image/ExifTool.pod",
+      "locator": "ImageInfo, ExtractInfo, GetInfo, GetValue, SetNewValue, WriteInfo, options and static discovery",
+      "basis": "upstream-source"
+    },
+    {
+      "id": "values",
+      "title": "Information and conversion flow",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/html/under.html",
+      "locator": "Raw, ValueConv, PrintConv; read/write flow",
+      "basis": "upstream-documentation"
+    },
+    {
+      "id": "composite",
+      "title": "Composite definitions",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/html/TagNames/Composite.html",
+      "locator": "derived values; preview extraction/replacement distinctions",
+      "basis": "upstream-documentation"
+    },
+    {
+      "id": "files",
+      "title": "Filename workflows",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/html/filename.html",
+      "locator": "FileName, Directory, TestName, formatting and collisions",
+      "basis": "upstream-documentation"
+    },
+    {
+      "id": "geo",
+      "title": "Geotagging",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/html/geotag.html",
+      "locator": "track interpolation, Geotime, Geosync",
+      "basis": "upstream-documentation"
+    },
+    {
+      "id": "extra",
+      "title": "Filesystem and extra tags",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/html/TagNames/Extra.html",
+      "locator": "System, warnings, validation, ImageDataHash",
+      "basis": "upstream-documentation"
+    },
+    {
+      "id": "config",
+      "title": "Configuration examples",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/config_files/example.config",
+      "locator": "custom tags, composites, executable callbacks",
+      "basis": "upstream-source"
+    },
+    {
+      "id": "canon-modes",
+      "title": "Canon EOS R5 capture modes",
+      "url": "https://cam.start.canon/en/C003/manual/html/UG-03_Shooting-1_0030.html",
+      "locator": "RAW and Compact RAW; CR3 naming",
+      "basis": "vendor-documentation"
+    },
+    {
+      "id": "canon-dpraw",
+      "title": "Canon EOS R5 Dual Pixel RAW",
+      "url": "https://support.usa.canon.com/kb/index?id=ART178251&page=content",
+      "locator": "Additional dual pixel sensor information and recording mode",
+      "basis": "vendor-documentation"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "CAP-001",
+      "subject": "Recognize a CR3 still container",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "container",
+      "location": "ftyp and Canon container structures",
+      "selectors": [
+        "FileType",
+        "MajorBrand",
+        "CompressorVersion"
+      ],
+      "operation": "recognize",
+      "milestone": "read-foundation",
+      "priority": "P0",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "quicktime-source",
+          "support"
+        ],
+        "note": "The crx brand covers CR3/CRM; upstream uses additional Canon compressor context. Extension alone is insufficient."
+      },
+      "status": "specified",
+      "target": "Recognize still RAW separately from video and distinguish corrupt, unsupported and ambiguous input.",
+      "acceptance": [
+        "Correct, missing and misleading extensions plus CRM and truncated-box negatives yield explicit classification without guessing."
+      ],
+      "requirementRefs": [
+        "PR-002"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-008"
+      ],
+      "dependsOn": [],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-002",
+      "subject": "Identify EOS R5 and full RAW evidence",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "Canon identification",
+      "location": "EXIF model and Canon maker-note/capture fields",
+      "selectors": [
+        "Make",
+        "Model",
+        "CanonModelID",
+        "Quality",
+        "CompressorVersion"
+      ],
+      "operation": "recognize",
+      "milestone": "read-foundation",
+      "priority": "P0",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "canon",
+          "canon-modes"
+        ],
+        "note": "CanonModelID maps EOS R5; Quality enumerates RAW and CRAW. Presence and reliable cross-checking remain fixture questions."
+      },
+      "status": "specified",
+      "target": "Expose camera and capture clues with an unknown/ambiguous result when insufficient.",
+      "acceptance": [
+        "Compare primary and secondary mode fixtures; edited Model alone must not authorize R5 write support."
+      ],
+      "requirementRefs": [
+        "PR-001",
+        "PR-002"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-002",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-001"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-003",
+      "subject": "Read descriptive EXIF",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "EXIF",
+      "location": "Canon uuid / CMT1 / IFD0",
+      "selectors": [
+        "Make",
+        "Model",
+        "Artist",
+        "Copyright",
+        "Orientation"
+      ],
+      "operation": "read",
+      "milestone": "read-foundation",
+      "priority": "P0",
+      "reference": {
+        "support": "documented",
+        "sourceRefs": [
+          "canon",
+          "canon-source",
+          "exif"
+        ],
+        "note": "CMT1 routes to IFD0/EXIF definitions; individual values depend on the file."
+      },
+      "status": "specified",
+      "target": "Retain tag identity, location, stored type and original value.",
+      "acceptance": [
+        "Present/absent and repeated-tag fixtures retain every selected occurrence without invented defaults."
+      ],
+      "requirementRefs": [
+        "PR-003",
+        "PR-004"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-001"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-004",
+      "subject": "Read capture and lens EXIF",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "EXIF",
+      "location": "Canon uuid / CMT2 / ExifIFD",
+      "selectors": [
+        "DateTimeOriginal",
+        "SubSecTimeOriginal",
+        "OffsetTimeOriginal",
+        "ExposureTime",
+        "FNumber",
+        "ISO",
+        "LensModel"
+      ],
+      "operation": "read",
+      "milestone": "read-foundation",
+      "priority": "P0",
+      "reference": {
+        "support": "documented",
+        "sourceRefs": [
+          "canon-source",
+          "exif"
+        ],
+        "note": "CMT2 is an ExifIFD payload with its own TIFF metadata representation."
+      },
+      "status": "specified",
+      "target": "Keep precise exposure values and each time component independently.",
+      "acceptance": [
+        "Rational exposure values round-trip exactly in the data model; missing timezone stays absent."
+      ],
+      "requirementRefs": [
+        "PR-003",
+        "PR-004",
+        "PR-011"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-005",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-001"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-005",
+      "subject": "Read optional GPS metadata",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "GPS",
+      "location": "Canon uuid / CMT4 / GPS",
+      "selectors": [
+        "GPSLatitude",
+        "GPSLatitudeRef",
+        "GPSLongitude",
+        "GPSLongitudeRef",
+        "GPSAltitude",
+        "GPSTimeStamp"
+      ],
+      "operation": "read",
+      "milestone": "read-foundation",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "canon-source",
+          "gps"
+        ],
+        "note": "CMT4 maps GPS; source support is not evidence that a particular EOS R5 capture contains GPS."
+      },
+      "status": "specified",
+      "target": "Report optional coordinates, reference fields and source location.",
+      "acceptance": [
+        "Absent GPS produces absent values; signed normalized coordinates preserve raw reference/rational fields."
+      ],
+      "requirementRefs": [
+        "PR-003",
+        "PR-004",
+        "PR-012"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-001"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-006",
+      "subject": "Read Canon capture and lens subtables",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "Canon MakerNotes",
+      "location": "Canon uuid / CMT3 and any separately identified occurrences",
+      "selectors": [
+        "CameraSettings",
+        "ShotInfo",
+        "LensType",
+        "LensModel",
+        "FocusDistanceUpper",
+        "FocusDistanceLower",
+        "AFInfo"
+      ],
+      "operation": "read",
+      "milestone": "read-foundation",
+      "priority": "P0",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "canon",
+          "canon-source"
+        ],
+        "note": "Subtable selection depends on model/layout. Focus-distance extraction has conditions; enumeration is not occurrence proof."
+      },
+      "status": "specified",
+      "target": "Inventory Canon fields with subtable/instance provenance and conversion notes.",
+      "acceptance": [
+        "Selected lens/AF/exposure cases match the oracle at raw and display layers; missing or unknown fields remain explicit."
+      ],
+      "requirementRefs": [
+        "PR-003",
+        "PR-004",
+        "PR-019"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-003",
+        "GAP-005",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-001",
+        "CAP-002"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-007",
+      "subject": "Read R5-specific CameraInfo fields",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "Canon CameraInfo",
+      "location": "CameraInfoR6 definition selected for EOS R5/R6",
+      "selectors": [
+        "CameraTemperature",
+        "ShutterCount"
+      ],
+      "operation": "read",
+      "milestone": "read-foundation",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "canon"
+        ],
+        "note": "Upstream's CameraInfoR6 table includes R5; availability depends on layout. ShutterCount is documented as electronic plus mechanical."
+      },
+      "status": "specified",
+      "target": "Expose the field's precise documented meaning without labeling it mechanical-only actuations.",
+      "acceptance": [
+        "Test present/absent layouts and preserve source values; model table name must not exclude the R5."
+      ],
+      "requirementRefs": [
+        "PR-004",
+        "PR-019"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-003",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-006"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-008",
+      "subject": "Read Canon timed metadata",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "Canon CTMD",
+      "location": "CTMD samples and nested ExifInfo occurrences",
+      "selectors": [
+        "TimeStamp",
+        "FocalLength",
+        "FNumber",
+        "ExposureTime",
+        "ISO",
+        "ExifInfo7",
+        "ExifInfo8",
+        "ExifInfo9"
+      ],
+      "operation": "read",
+      "milestone": "read-foundation",
+      "priority": "P0",
+      "reference": {
+        "support": "documented",
+        "sourceRefs": [
+          "canon",
+          "canon-source",
+          "quicktime"
+        ],
+        "note": "ExtractEmbedded is automatically applied for CR3 reading; CTMD supplies its own exposure/time and nested metadata."
+      },
+      "status": "specified",
+      "target": "Include CTMD in the normal CR3 completeness contract and distinguish duplicates from CMT blocks.",
+      "acceptance": [
+        "A fixture with CMT/CTMD values returns both occurrences; a partial scan labels skipped samples."
+      ],
+      "requirementRefs": [
+        "PR-003",
+        "PR-004",
+        "PR-014",
+        "PR-020"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-005",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-001"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-009",
+      "subject": "Interpret CR3 container times",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "QuickTime/Canon time",
+      "location": "container time fields versus EXIF capture fields",
+      "selectors": [
+        "CreateDate",
+        "ModifyDate",
+        "DateTimeOriginal",
+        "OffsetTimeOriginal"
+      ],
+      "operation": "read",
+      "milestone": "read-foundation",
+      "priority": "P0",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "quicktime-source",
+          "quicktime",
+          "exif"
+        ],
+        "note": "Pinned timeInfo source applies UTC conversion to CR3 reads even without QuickTimeUTC; do not transplant the general video default."
+      },
+      "status": "specified",
+      "target": "Retain stored integers and conversion context separately from zone-less EXIF values.",
+      "acceptance": [
+        "Oracle runs in two controlled timezones expose display changes while normalized instants and original values remain traceable."
+      ],
+      "requirementRefs": [
+        "PR-003",
+        "PR-011"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-005",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-004",
+        "CAP-010"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-010",
+      "subject": "Expose all value layers",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "typed metadata",
+      "location": "all discovered occurrences",
+      "selectors": [
+        "Raw",
+        "Rational",
+        "ValueConv",
+        "PrintConv"
+      ],
+      "operation": "read",
+      "milestone": "read-foundation",
+      "priority": "P0",
+      "reference": {
+        "support": "documented",
+        "sourceRefs": [
+          "api",
+          "values",
+          "cli"
+        ],
+        "note": "-n disables display conversion; it does not expose every original stored byte."
+      },
+      "status": "specified",
+      "target": "Offer exact raw, normalized and display views with explicit type/precision.",
+      "acceptance": [
+        "Rational, binary, timestamp, list and unknown-value examples do not lose information in typed output."
+      ],
+      "requirementRefs": [
+        "PR-003",
+        "CLI-007"
+      ],
+      "gapRefs": [
+        "GAP-005",
+        "GAP-008"
+      ],
+      "dependsOn": [],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-011",
+      "subject": "Read embedded XMP",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "XMP",
+      "location": "CR3 XMP packet",
+      "selectors": [
+        "XMP-dc:Creator",
+        "XMP-dc:Rights",
+        "XMP-dc:Subject",
+        "XMP-xmp:Rating",
+        "XMP-xmp:Label"
+      ],
+      "operation": "read",
+      "milestone": "read-foundation",
+      "priority": "P0",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "support",
+          "quicktime-source",
+          "xmp",
+          "structures"
+        ],
+        "note": "CR3 supports XMP; actual packets and namespaces are file-dependent."
+      },
+      "status": "specified",
+      "target": "Retain namespace, arrays, language alternatives, structures and unknown properties.",
+      "acceptance": [
+        "Fixtures with absent/extended/unknown-namespace packets have explicit outcomes and loss-aware values."
+      ],
+      "requirementRefs": [
+        "PR-003",
+        "PR-004"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-005",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-001"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-012",
+      "subject": "Read associated sidecar XMP",
+      "variantRefs": [
+        "r5-full",
+        "r5-xmp"
+      ],
+      "family": "XMP",
+      "location": "explicit paired .xmp file",
+      "selectors": [
+        "XMP:*"
+      ],
+      "operation": "read",
+      "milestone": "read-foundation",
+      "priority": "P0",
+      "reference": {
+        "support": "documented",
+        "sourceRefs": [
+          "sidecars",
+          "xmp",
+          "structures"
+        ],
+        "note": "Sidecar is a separate source; default merge/precedence is an imageinfo policy."
+      },
+      "status": "specified",
+      "target": "Expose CR3 and sidecar values separately, with an optional explicit merged view.",
+      "acceptance": [
+        "Conflicting same-named fields retain both origins; unrelated basenames are not silently paired."
+      ],
+      "requirementRefs": [
+        "PR-004",
+        "PR-009",
+        "CLI-015"
+      ],
+      "gapRefs": [
+        "GAP-005",
+        "GAP-009"
+      ],
+      "dependsOn": [
+        "CAP-011"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-013",
+      "subject": "Retain duplicate and document identity",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "metadata identity",
+      "location": "CMT, CTMD, preview and sidecar occurrences",
+      "selectors": [
+        "-a",
+        "-G",
+        "-g",
+        "group families"
+      ],
+      "operation": "read",
+      "milestone": "read-foundation",
+      "priority": "P0",
+      "reference": {
+        "support": "documented",
+        "sourceRefs": [
+          "cli",
+          "api"
+        ],
+        "note": "Default extraction/output can suppress duplicates; group qualification and output keys matter."
+      },
+      "status": "specified",
+      "target": "Represent ordered occurrences, groups and document/instance paths rather than a flat label map.",
+      "acceptance": [
+        "Repeated ISO/exposure/lens/time names survive JSON and comparisons; selection is occurrence-aware."
+      ],
+      "requirementRefs": [
+        "PR-003",
+        "CLI-007"
+      ],
+      "gapRefs": [
+        "GAP-005",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-010"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-014",
+      "subject": "Inspect unknown metadata conservatively",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "unknown/vendor",
+      "location": "unknown fields and opaque regions",
+      "selectors": [
+        "-u",
+        "-U",
+        "Unknown"
+      ],
+      "operation": "read",
+      "milestone": "read-foundation",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "cli",
+          "api",
+          "canon"
+        ],
+        "note": "Unknown extraction options do not imply complete semantic understanding of every opaque block."
+      },
+      "status": "specified",
+      "target": "Expose bounded unknown values/spans and the limits of decoding.",
+      "acceptance": [
+        "Known-plus-unknown fixtures show omissions and bounds; undecodable bytes are not presented as trusted interpreted values."
+      ],
+      "requirementRefs": [
+        "PR-003",
+        "PR-026"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-003",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-001"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-015",
+      "subject": "Extract Canon thumbnail",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "embedded preview",
+      "location": "Canon uuid / THMB",
+      "selectors": [
+        "ThumbnailImage"
+      ],
+      "operation": "extract",
+      "milestone": "read-foundation",
+      "priority": "P0",
+      "reference": {
+        "support": "documented",
+        "sourceRefs": [
+          "canon",
+          "canon-source"
+        ],
+        "note": "THMB exposes stored thumbnail bytes; it is not generally writable in the documented table."
+      },
+      "status": "specified",
+      "target": "List the located thumbnail and copy its bytes without source changes.",
+      "acceptance": [
+        "Fixture extraction hash matches; out-of-range lengths and output collisions fail safely."
+      ],
+      "requirementRefs": [
+        "PR-014",
+        "CLI-008"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-007",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-001"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-016",
+      "subject": "Extract Canon preview",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "embedded preview",
+      "location": "Canon CR3 preview uuid / PRVW",
+      "selectors": [
+        "PreviewImage"
+      ],
+      "operation": "extract",
+      "milestone": "read-foundation",
+      "priority": "P0",
+      "reference": {
+        "support": "documented",
+        "sourceRefs": [
+          "quicktime-source"
+        ],
+        "note": "The CR3 preview UUID branch extracts an existing image; exact instances need fixtures."
+      },
+      "status": "specified",
+      "target": "Expose each preview's parent/location and extract existing bytes.",
+      "acceptance": [
+        "All discovered preview instances have stable identity and matching byte hashes; malformed lengths are bounded."
+      ],
+      "requirementRefs": [
+        "PR-014"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-007",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-001"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-017",
+      "subject": "Extract JPEG-track preview",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "embedded preview",
+      "location": "CR3 JPEG stream/sample",
+      "selectors": [
+        "JpgFromRaw",
+        "JPEGInfo"
+      ],
+      "operation": "extract",
+      "milestone": "read-foundation",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "quicktime",
+          "quicktime-source"
+        ],
+        "note": "QuickTime Stream JpgFromRaw is read-only; a similarly named Composite definition is not evidence of CR3 writability."
+      },
+      "status": "specified",
+      "target": "Enumerate separately from THMB/PRVW and extract when present.",
+      "acceptance": [
+        "Compare counts, provenance and hashes for fixtures with/without the stream; do not alias distinct images."
+      ],
+      "requirementRefs": [
+        "PR-014"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-007",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-001"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-018",
+      "subject": "Inspect metadata inside extracted preview assets",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "embedded metadata",
+      "location": "nested content within CR3-owned previews",
+      "selectors": [
+        "embedded EXIF",
+        "embedded XMP"
+      ],
+      "operation": "read",
+      "milestone": "advanced-workflows",
+      "priority": "P1",
+      "reference": {
+        "support": "unresolved",
+        "sourceRefs": [
+          "canon-source",
+          "quicktime-source",
+          "cli"
+        ],
+        "note": "Extraction of bytes does not establish which nested tags the default upstream CR3 read surfaces."
+      },
+      "status": "specified",
+      "target": "Specify bounded nested inspection as a RAW-parent workflow with separate completeness reporting.",
+      "acceptance": [
+        "Correlate parent extraction and direct inspection of the extracted asset; document every missed nested field."
+      ],
+      "requirementRefs": [
+        "PR-014",
+        "PR-015"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-007",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-015",
+        "CAP-016",
+        "CAP-017"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-019",
+      "subject": "Derive composite photo values",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "Composite",
+      "location": "calculated values with source dependencies",
+      "selectors": [
+        "SubSecDateTimeOriginal",
+        "GPSPosition",
+        "LensID"
+      ],
+      "operation": "derive",
+      "milestone": "read-foundation",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "composite",
+          "api"
+        ],
+        "note": "Composites depend on available input tags and are not necessarily stored or writable fields."
+      },
+      "status": "specified",
+      "target": "Expose the dependency set and distinguish inference from recorded values.",
+      "acceptance": [
+        "Missing/conflicting dependencies have documented results; changing a display value never silently creates a stored tag."
+      ],
+      "requirementRefs": [
+        "PR-003",
+        "PR-018"
+      ],
+      "gapRefs": [
+        "GAP-003",
+        "GAP-005",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-004",
+        "CAP-006",
+        "CAP-010"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-020",
+      "subject": "Create associated XMP sidecar",
+      "variantRefs": [
+        "r5-full",
+        "r5-xmp"
+      ],
+      "family": "XMP",
+      "location": "new paired file",
+      "selectors": [
+        "XMP-dc:Creator",
+        "XMP-dc:Rights",
+        "XMP-dc:Subject",
+        "XMP-xmp:Rating"
+      ],
+      "operation": "create",
+      "milestone": "sidecar-workflows",
+      "priority": "P0",
+      "reference": {
+        "support": "documented",
+        "sourceRefs": [
+          "sidecars",
+          "xmp"
+        ],
+        "note": "Metadata sidecar creation does not create a CR3 sensor container."
+      },
+      "status": "specified",
+      "target": "Preview destination and explicit mapping; leave CR3 bytes identical.",
+      "acceptance": [
+        "Existing destination refusal, empty/new namespaces and source hash preservation pass."
+      ],
+      "requirementRefs": [
+        "PR-006",
+        "PR-010"
+      ],
+      "gapRefs": [
+        "GAP-004",
+        "GAP-005",
+        "GAP-009"
+      ],
+      "dependsOn": [
+        "CAP-012",
+        "CAP-023"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-021",
+      "subject": "Edit associated XMP values",
+      "variantRefs": [
+        "r5-xmp"
+      ],
+      "family": "XMP",
+      "location": "existing paired file",
+      "selectors": [
+        "scalar",
+        "Bag",
+        "Seq",
+        "Alt",
+        "structure"
+      ],
+      "operation": "write",
+      "milestone": "sidecar-workflows",
+      "priority": "P0",
+      "reference": {
+        "support": "documented",
+        "sourceRefs": [
+          "xmp",
+          "structures",
+          "cli"
+        ],
+        "note": "List replacement/add/remove and flattened/structured writes have different semantics."
+      },
+      "status": "specified",
+      "target": "Use typed edits with explicit list and structure policies.",
+      "acceptance": [
+        "Append/remove/replace, language alternatives and empty versus absent preserve unrelated properties and RAW bytes."
+      ],
+      "requirementRefs": [
+        "PR-008",
+        "PR-024"
+      ],
+      "gapRefs": [
+        "GAP-004",
+        "GAP-005",
+        "GAP-009"
+      ],
+      "dependsOn": [
+        "CAP-012",
+        "CAP-023"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-022",
+      "subject": "Delete selected sidecar metadata",
+      "variantRefs": [
+        "r5-full",
+        "r5-xmp"
+      ],
+      "family": "XMP",
+      "location": "existing paired file",
+      "selectors": [
+        "selected property",
+        "selected list item",
+        "selected language"
+      ],
+      "operation": "delete",
+      "milestone": "sidecar-workflows",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "xmp",
+          "structures",
+          "cli"
+        ],
+        "note": "Deletion scope differs for a field, language alternative or structure."
+      },
+      "status": "specified",
+      "target": "Preview exact selection and report what remains in the sidecar and CR3.",
+      "acceptance": [
+        "Targeted removal leaves other values unchanged; a sidecar-only scrub never reports the CR3 sanitized."
+      ],
+      "requirementRefs": [
+        "PR-008",
+        "PR-015"
+      ],
+      "gapRefs": [
+        "GAP-004",
+        "GAP-009"
+      ],
+      "dependsOn": [
+        "CAP-012",
+        "CAP-023"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-023",
+      "subject": "Preserve sidecar information and CR3 pairing",
+      "variantRefs": [
+        "r5-full",
+        "r5-xmp"
+      ],
+      "family": "XMP preservation",
+      "location": "unknown namespaces, unselected properties and separate RAW file",
+      "selectors": [
+        "unknown XMP",
+        "unselected XMP",
+        "paired CR3"
+      ],
+      "operation": "preserve",
+      "milestone": "sidecar-workflows",
+      "priority": "P0",
+      "reference": {
+        "support": "unresolved",
+        "sourceRefs": [
+          "structures",
+          "sidecars"
+        ],
+        "note": "No empirical all-namespace preservation claim follows from documentation alone."
+      },
+      "status": "specified",
+      "target": "Define semantic retention and any lexical changes, with unchanged CR3 bytes.",
+      "acceptance": [
+        "Round-trip unknown namespaces, qualifiers and structures plus RAW byte hash; report any unsupported preservation."
+      ],
+      "requirementRefs": [
+        "PR-024",
+        "PR-025"
+      ],
+      "gapRefs": [
+        "GAP-004",
+        "GAP-005",
+        "GAP-009"
+      ],
+      "dependsOn": [],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-024",
+      "subject": "Copy RAW metadata into mapped XMP",
+      "variantRefs": [
+        "r5-full",
+        "r5-xmp"
+      ],
+      "family": "mapping",
+      "location": "CMT/CTMD/Canon source to paired XMP destination",
+      "selectors": [
+        "-tagsFromFile",
+        "EXIF-to-XMP mappings"
+      ],
+      "operation": "copy",
+      "milestone": "sidecar-workflows",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "cli",
+          "sidecars",
+          "structures"
+        ],
+        "note": "Preferred writable destinations differ from preserving groups; not all binary/vendor information maps to XMP."
+      },
+      "status": "specified",
+      "target": "Publish mappings and losses; preserve list/structure semantics where representable.",
+      "acceptance": [
+        "Compare source/destination identity and converted values; list every skipped or lossy field."
+      ],
+      "requirementRefs": [
+        "PR-009",
+        "PR-010"
+      ],
+      "gapRefs": [
+        "GAP-003",
+        "GAP-005",
+        "GAP-009"
+      ],
+      "dependsOn": [
+        "CAP-004",
+        "CAP-020",
+        "CAP-013"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-025",
+      "subject": "Reconcile RAW and sidecar values",
+      "variantRefs": [
+        "r5-full",
+        "r5-xmp"
+      ],
+      "family": "synchronization",
+      "location": "paired sources",
+      "selectors": [
+        "embedded XMP",
+        "sidecar XMP",
+        "EXIF mappings"
+      ],
+      "operation": "sync",
+      "milestone": "advanced-workflows",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "sidecars",
+          "cli"
+        ],
+        "note": "Copy mechanisms exist; conflict/precedence/atomic-pair behavior requires an imageinfo contract."
+      },
+      "status": "specified",
+      "target": "Require a direction and conflict policy; never silently overwrite the other source.",
+      "acceptance": [
+        "Stale sidecars, ambiguous pairing and conflicting dates/ratings produce reviewable plans and recoverable outcomes."
+      ],
+      "requirementRefs": [
+        "PR-009",
+        "PR-025"
+      ],
+      "gapRefs": [
+        "GAP-004",
+        "GAP-005",
+        "GAP-009"
+      ],
+      "dependsOn": [
+        "CAP-024",
+        "CAP-041"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-026",
+      "subject": "Update selected embedded EXIF fields",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "EXIF",
+      "location": "CMT1/CMT2 allowed fields",
+      "selectors": [
+        "Artist",
+        "Copyright",
+        "DateTimeOriginal"
+      ],
+      "operation": "write",
+      "milestone": "embedded-write",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "canon-source",
+          "exif"
+        ],
+        "note": "CMT writer routing and per-tag writable flags are source evidence, not EOS R5 preservation proof."
+      },
+      "status": "specified",
+      "target": "Allow only individually verified tag/location/variant edits.",
+      "acceptance": [
+        "Requested values read back, duplicates/conflicts are explicit and all protected bytes/references survive."
+      ],
+      "requirementRefs": [
+        "PR-007",
+        "PR-024",
+        "PR-025"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-003",
+        "GAP-004",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-003",
+        "CAP-004",
+        "CAP-038"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-027",
+      "subject": "Create absent embedded EXIF fields",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "EXIF",
+      "location": "CMT1/CMT2 supported directories",
+      "selectors": [
+        "absent Artist",
+        "absent Copyright",
+        "required defaults"
+      ],
+      "operation": "create",
+      "milestone": "embedded-write",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "canon-source",
+          "exif",
+          "cli"
+        ],
+        "note": "Adding absent tags/directories differs from updating; write mode and mandatory defaults matter."
+      },
+      "status": "specified",
+      "target": "Capability-check insertion and preview implicit structural changes.",
+      "acceptance": [
+        "Absent-tag/block fixtures prove layout validity and preserve unselected values; refuse unsupported creation."
+      ],
+      "requirementRefs": [
+        "PR-007",
+        "PR-008"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-003",
+        "GAP-004",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-026"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-028",
+      "subject": "Delete selected embedded EXIF fields",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "EXIF",
+      "location": "CMT1/CMT2 allowed locations",
+      "selectors": [
+        "selected writable field",
+        "protected/mandatory field"
+      ],
+      "operation": "delete",
+      "milestone": "embedded-write",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "exif",
+          "cli",
+          "support"
+        ],
+        "note": "Mandatory/permanent/protected fields and RAW rendering needs restrict blanket deletion."
+      },
+      "status": "specified",
+      "target": "Refuse unsafe selections and report logical versus physical retention.",
+      "acceptance": [
+        "Deleted values are absent at the intended location, references remain valid and required rendering information survives."
+      ],
+      "requirementRefs": [
+        "PR-008",
+        "PR-015",
+        "PR-024"
+      ],
+      "gapRefs": [
+        "GAP-003",
+        "GAP-004",
+        "GAP-009"
+      ],
+      "dependsOn": [
+        "CAP-026"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-029",
+      "subject": "Update existing GPS coordinates",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "GPS",
+      "location": "CMT4 GPS directory",
+      "selectors": [
+        "GPSLatitude/Ref",
+        "GPSLongitude/Ref",
+        "GPSAltitude/Ref"
+      ],
+      "operation": "write",
+      "milestone": "embedded-write",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "canon-source",
+          "gps"
+        ],
+        "note": "Coordinates and their reference/units fields are coupled; model-level writes remain unverified."
+      },
+      "status": "specified",
+      "target": "Preview signed normalized and stored component values together.",
+      "acceptance": [
+        "Round-trip known north/south/east/west and below-sea-level cases with exact references and retained sensor data."
+      ],
+      "requirementRefs": [
+        "PR-007",
+        "PR-012"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-003",
+        "GAP-004",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-005",
+        "CAP-038"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-030",
+      "subject": "Create absent GPS metadata",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "GPS",
+      "location": "CMT4 absent field/directory cases",
+      "selectors": [
+        "GPSVersionID",
+        "coordinate/reference pairs"
+      ],
+      "operation": "create",
+      "milestone": "embedded-write",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "canon-source",
+          "gps"
+        ],
+        "note": "GPSVersionID and related defaults matter; whole missing-CMT4 insertion must be tested separately."
+      },
+      "status": "specified",
+      "target": "Distinguish field insertion from creating an absent metadata block.",
+      "acceptance": [
+        "Existing GPS directory and absent-directory fixtures have separate results; unsupported insertion fails without writes."
+      ],
+      "requirementRefs": [
+        "PR-007",
+        "PR-012"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-003",
+        "GAP-004",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-029"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-031",
+      "subject": "Remove selected embedded location metadata",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "GPS/privacy",
+      "location": "CMT4 and all other inspected occurrences",
+      "selectors": [
+        "GPS fields",
+        "duplicate locations",
+        "preview location"
+      ],
+      "operation": "delete",
+      "milestone": "embedded-write",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "gps",
+          "support",
+          "cli"
+        ],
+        "note": "Clearing one GPS field or group cannot establish that all location data is gone."
+      },
+      "status": "specified",
+      "target": "Declare removal scope and residual/uninspectable information.",
+      "acceptance": [
+        "Selected values disappear; other occurrences and opaque regions are reported; rendering information is preserved."
+      ],
+      "requirementRefs": [
+        "PR-015",
+        "PR-024"
+      ],
+      "gapRefs": [
+        "GAP-004",
+        "GAP-007",
+        "GAP-009"
+      ],
+      "dependsOn": [
+        "CAP-029",
+        "CAP-018"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-032",
+      "subject": "Update embedded XMP",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "XMP",
+      "location": "CR3 XMP packet",
+      "selectors": [
+        "XMP-dc:*",
+        "XMP-xmp:*",
+        "XMP-exif:*"
+      ],
+      "operation": "write",
+      "milestone": "embedded-write",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "support",
+          "quicktime-source",
+          "xmp",
+          "structures"
+        ],
+        "note": "The CR3 matrix includes XMP; each insertion/update/removal path and namespace constraint needs separate evidence."
+      },
+      "status": "specified",
+      "target": "Use the shared typed edit contract with CR3 structural and preservation gates.",
+      "acceptance": [
+        "Validate the selected operation on present/absent packet and complex-property cases; sensor/preview bytes and references remain valid."
+      ],
+      "requirementRefs": [
+        "PR-007",
+        "PR-008",
+        "PR-024"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-003",
+        "GAP-004",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-011",
+        "CAP-038"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-033",
+      "subject": "Create absent embedded XMP",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "XMP",
+      "location": "CR3 XMP packet",
+      "selectors": [
+        "XMP-dc:*",
+        "XMP-xmp:*",
+        "XMP-exif:*"
+      ],
+      "operation": "create",
+      "milestone": "embedded-write",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "support",
+          "quicktime-source",
+          "xmp",
+          "structures"
+        ],
+        "note": "The CR3 matrix includes XMP; each insertion/update/removal path and namespace constraint needs separate evidence."
+      },
+      "status": "specified",
+      "target": "Use the shared typed edit contract with CR3 structural and preservation gates.",
+      "acceptance": [
+        "Validate the selected operation on present/absent packet and complex-property cases; sensor/preview bytes and references remain valid."
+      ],
+      "requirementRefs": [
+        "PR-007",
+        "PR-008",
+        "PR-024"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-003",
+        "GAP-004",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-032"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-034",
+      "subject": "Delete selected embedded XMP",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "XMP",
+      "location": "CR3 XMP packet",
+      "selectors": [
+        "XMP-dc:*",
+        "XMP-xmp:*",
+        "XMP-exif:*"
+      ],
+      "operation": "delete",
+      "milestone": "embedded-write",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "support",
+          "quicktime-source",
+          "xmp",
+          "structures"
+        ],
+        "note": "The CR3 matrix includes XMP; each insertion/update/removal path and namespace constraint needs separate evidence."
+      },
+      "status": "specified",
+      "target": "Use the shared typed edit contract with CR3 structural and preservation gates.",
+      "acceptance": [
+        "Validate the selected operation on present/absent packet and complex-property cases; sensor/preview bytes and references remain valid."
+      ],
+      "requirementRefs": [
+        "PR-007",
+        "PR-008",
+        "PR-024"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-003",
+        "GAP-004",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-032"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-035",
+      "subject": "Gate Canon maker-note edits",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "Canon MakerNotes",
+      "location": "CMT3 versus other maker-note occurrences",
+      "selectors": [
+        "writable Canon fields",
+        "MakerNoteCanon block"
+      ],
+      "operation": "write",
+      "milestone": "embedded-write",
+      "priority": "P2",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "canon-source",
+          "canon"
+        ],
+        "note": "CMT3 has a writer and block handling; historical versions could misplace block writes in CMT2. Per-field support varies."
+      },
+      "status": "specified",
+      "target": "Keep read discovery broad; permit writes only for evidenced fields and locations.",
+      "acceptance": [
+        "No duplicate/misplaced MakerNotes; offset-sensitive data and decoding-critical fields survive; unsupported fields fail."
+      ],
+      "requirementRefs": [
+        "PR-007",
+        "PR-019",
+        "PR-024"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-003",
+        "GAP-004",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-006",
+        "CAP-038"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-036",
+      "subject": "Refuse unsupported CTMD field edits",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "Canon CTMD",
+      "location": "CTMD direct time/focal/exposure records",
+      "selectors": [
+        "TimeStamp",
+        "FocalLength",
+        "FNumber",
+        "ExposureTime",
+        "ISO"
+      ],
+      "operation": "write",
+      "milestone": "embedded-write",
+      "priority": "P1",
+      "reference": {
+        "support": "not-supported",
+        "sourceRefs": [
+          "canon"
+        ],
+        "note": "The direct CTMD fields listed here are documented read-only; nested ExifInfo is a separate audit, not covered by this assertion."
+      },
+      "status": "specified",
+      "target": "Explain the read-only occurrence and any supported alternative destination without pretending to alter CTMD.",
+      "acceptance": [
+        "An explicit CTMD edit makes no writes and reports its precise location; editing another duplicate must not claim CTMD changed."
+      ],
+      "requirementRefs": [
+        "PR-007",
+        "CLI-011"
+      ],
+      "gapRefs": [
+        "GAP-003",
+        "GAP-005",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-008"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-037",
+      "subject": "Gate embedded preview replacement",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "embedded preview",
+      "location": "THMB, PRVW and JPEG-track assets",
+      "selectors": [
+        "ThumbnailImage",
+        "PreviewImage",
+        "JpgFromRaw"
+      ],
+      "operation": "write",
+      "milestone": "advanced-workflows",
+      "priority": "P2",
+      "reference": {
+        "support": "unresolved",
+        "sourceRefs": [
+          "canon",
+          "quicktime",
+          "composite"
+        ],
+        "note": "Direct CR3 assets have read-only definitions; generic writable Composite names do not prove replacement support here."
+      },
+      "status": "specified",
+      "target": "Keep replacement disabled until exact location and structural support is established.",
+      "acceptance": [
+        "Audit each direct/composite path, size change and reference dependency; absence of evidence is an explicit refusal."
+      ],
+      "requirementRefs": [
+        "PR-007",
+        "PR-014",
+        "PR-024"
+      ],
+      "gapRefs": [
+        "GAP-003",
+        "GAP-004",
+        "GAP-007"
+      ],
+      "dependsOn": [
+        "CAP-015",
+        "CAP-016",
+        "CAP-017",
+        "CAP-038"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-038",
+      "subject": "Preserve sensor samples and opaque structure",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "container/preservation",
+      "location": "all sensor samples, Canon private regions and offset tables",
+      "selectors": [
+        "sensor bytes",
+        "CTBO",
+        "sample offsets",
+        "unknown uuid/boxes",
+        "calibration data"
+      ],
+      "operation": "preserve",
+      "milestone": "embedded-write",
+      "priority": "P0",
+      "reference": {
+        "support": "unresolved",
+        "sourceRefs": [
+          "canon-source",
+          "quicktime-source",
+          "support"
+        ],
+        "note": "Upstream updates CTBO references; padding may change. Matching file size or a subset hash cannot prove full preservation."
+      },
+      "status": "specified",
+      "target": "Require byte identity for protected payloads and semantic validity for relocated references.",
+      "acceptance": [
+        "Independent sample/reference inventory, hashes, reader usability and injected failure cases pass before any embedded write is enabled."
+      ],
+      "requirementRefs": [
+        "PR-024",
+        "PR-025"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-004",
+        "GAP-008"
+      ],
+      "dependsOn": [
+        "CAP-001",
+        "CAP-002"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-039",
+      "subject": "Export occurrence-aware reports",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "output",
+      "location": "read results",
+      "selectors": [
+        "JSON",
+        "JSONL",
+        "CSV",
+        "XML",
+        "text"
+      ],
+      "operation": "export",
+      "milestone": "read-foundation",
+      "priority": "P0",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "cli",
+          "api"
+        ],
+        "note": "Upstream output shapes/duplicate behavior vary; JSONL and the new schema are imageinfo contracts."
+      },
+      "status": "specified",
+      "target": "Publish typed occurrence records and deliberate human versus interchange formats.",
+      "acceptance": [
+        "Duplicate/time/rational/list/binary cases retain their contract; stdout remains parseable across per-file errors."
+      ],
+      "requirementRefs": [
+        "PR-010",
+        "CLI-007",
+        "CLI-008",
+        "CLI-009"
+      ],
+      "gapRefs": [
+        "GAP-005",
+        "GAP-006",
+        "GAP-012"
+      ],
+      "dependsOn": [
+        "CAP-010",
+        "CAP-013"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-040",
+      "subject": "Import explicit metadata changes",
+      "variantRefs": [
+        "r5-full",
+        "r5-xmp"
+      ],
+      "family": "input",
+      "location": "typed request to supported RAW/XMP targets",
+      "selectors": [
+        "JSON/CSV import",
+        "SourceFile matching"
+      ],
+      "operation": "import",
+      "milestone": "advanced-workflows",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "cli"
+        ],
+        "note": "Upstream import associates rows with input filenames; display exports need not be lossless imports."
+      },
+      "status": "specified",
+      "target": "Require explicit matching, deletion intent and supported destination capability.",
+      "acceptance": [
+        "Matched/unmatched/duplicate paths and empty-versus-delete cases report complete outcomes with no unintended writes."
+      ],
+      "requirementRefs": [
+        "PR-010",
+        "PR-017"
+      ],
+      "gapRefs": [
+        "GAP-004",
+        "GAP-005",
+        "GAP-006"
+      ],
+      "dependsOn": [
+        "CAP-039",
+        "CAP-021"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-041",
+      "subject": "Compare metadata across RAW/XMP sources",
+      "variantRefs": [
+        "r5-full",
+        "r5-xmp"
+      ],
+      "family": "comparison",
+      "location": "occurrence collections",
+      "selectors": [
+        "-diff",
+        "group selection"
+      ],
+      "operation": "diff",
+      "milestone": "sidecar-workflows",
+      "priority": "P1",
+      "reference": {
+        "support": "documented",
+        "sourceRefs": [
+          "cli",
+          "api"
+        ],
+        "note": "Upstream diff has its own duplicate/group behavior; exact identity matching remains a design contract."
+      },
+      "status": "specified",
+      "target": "Compare occurrences and value layers without hiding absent or conflicting values.",
+      "acceptance": [
+        "Same-name/different-location and rational/date differences are shown deterministically."
+      ],
+      "requirementRefs": [
+        "PR-009"
+      ],
+      "gapRefs": [
+        "GAP-005",
+        "GAP-006"
+      ],
+      "dependsOn": [
+        "CAP-013"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-042",
+      "subject": "Shift and format capture timestamps",
+      "variantRefs": [
+        "r5-full",
+        "r5-xmp"
+      ],
+      "family": "date/time",
+      "location": "selected EXIF/XMP/Canon fields",
+      "selectors": [
+        "AllDates",
+        "DateTimeOriginal",
+        "SubSecTimeOriginal",
+        "OffsetTimeOriginal"
+      ],
+      "operation": "transform",
+      "milestone": "advanced-workflows",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "cli",
+          "api",
+          "exif"
+        ],
+        "note": "Writable fields and conversion rules differ; clock shifts are distinct from timezone assumptions."
+      },
+      "status": "specified",
+      "target": "Explicitly choose fields, destination and calendar versus duration behavior.",
+      "acceptance": [
+        "DST ambiguity, absent offsets, fractions and boundaries have declared results; container/CTMD duplicates remain visible."
+      ],
+      "requirementRefs": [
+        "PR-011"
+      ],
+      "gapRefs": [
+        "GAP-004",
+        "GAP-005",
+        "GAP-006"
+      ],
+      "dependsOn": [
+        "CAP-009",
+        "CAP-021"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-043",
+      "subject": "Geotag from auxiliary tracks",
+      "variantRefs": [
+        "r5-full",
+        "r5-xmp"
+      ],
+      "family": "GPS workflow",
+      "location": "CR3 capture time to permitted GPS/XMP destination",
+      "selectors": [
+        "Geotag",
+        "Geotime",
+        "Geosync"
+      ],
+      "operation": "transform",
+      "milestone": "advanced-workflows",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "geo"
+        ],
+        "note": "Matching time, interpolation and synchronization are distinct from writing a track format as media."
+      },
+      "status": "specified",
+      "target": "Make timezone/clock/drift assumptions and destination explicit.",
+      "acceptance": [
+        "Known tracks and gap/out-of-range cases compare within declared tolerances; sidecar alternatives never activate silently."
+      ],
+      "requirementRefs": [
+        "PR-012"
+      ],
+      "gapRefs": [
+        "GAP-004",
+        "GAP-005",
+        "GAP-009"
+      ],
+      "dependsOn": [
+        "CAP-005",
+        "CAP-009",
+        "CAP-020"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-044",
+      "subject": "Organize files and paired sidecars",
+      "variantRefs": [
+        "r5-full",
+        "r5-xmp"
+      ],
+      "family": "filesystem",
+      "location": "CR3 and associated XMP paths/times",
+      "selectors": [
+        "FileName",
+        "Directory",
+        "TestName",
+        "FileModifyDate"
+      ],
+      "operation": "organize",
+      "milestone": "advanced-workflows",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "files",
+          "extra"
+        ],
+        "note": "Filesystem pseudo-tags are separate from embedded metadata; paired-file recovery is an imageinfo requirement."
+      },
+      "status": "specified",
+      "target": "Preview both paths and all collisions with explicit recovery.",
+      "acceptance": [
+        "Case-only/cross-volume/duplicate-basename/symlink cases preserve associations and avoid unintended overwrites."
+      ],
+      "requirementRefs": [
+        "PR-013",
+        "PR-025"
+      ],
+      "gapRefs": [
+        "GAP-004",
+        "GAP-009",
+        "GAP-012"
+      ],
+      "dependsOn": [
+        "CAP-012"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-045",
+      "subject": "Validate and inspect privacy limits",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "diagnostics/privacy",
+      "location": "container and all in-scope metadata locations",
+      "selectors": [
+        "Validate",
+        "Warning",
+        "Error",
+        "named privacy profile"
+      ],
+      "operation": "validate",
+      "milestone": "advanced-workflows",
+      "priority": "P1",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "extra",
+          "support",
+          "cli"
+        ],
+        "note": "Available diagnostics do not constitute an exhaustive RAW validator or anonymization proof."
+      },
+      "status": "specified",
+      "target": "Use stable issue codes and explicit checked/unchecked regions.",
+      "acceptance": [
+        "Malformed structures and known privacy fixtures report precise scope, residuals and rendering-critical exclusions."
+      ],
+      "requirementRefs": [
+        "PR-015",
+        "PR-016",
+        "PR-026"
+      ],
+      "gapRefs": [
+        "GAP-004",
+        "GAP-007",
+        "GAP-009"
+      ],
+      "dependsOn": [
+        "CAP-014",
+        "CAP-018"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-046",
+      "subject": "Process ordered persistent requests",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "automation",
+      "location": "CLI/API request boundary",
+      "selectors": [
+        "-stay_open",
+        "-execute",
+        "request IDs"
+      ],
+      "operation": "process",
+      "milestone": "advanced-workflows",
+      "priority": "P2",
+      "reference": {
+        "support": "documented",
+        "sourceRefs": [
+          "cli",
+          "api"
+        ],
+        "note": "Ready markers denote command completion; results and error status must still be interpreted."
+      },
+      "status": "specified",
+      "target": "Frame requests/responses, isolate options and pending writes, and define cancellation.",
+      "acceptance": [
+        "Two requests with different options share no unintended state; errors/EOF/cancellation retain attributable outcomes."
+      ],
+      "requirementRefs": [
+        "PR-020",
+        "PR-029",
+        "CLI-013"
+      ],
+      "gapRefs": [
+        "GAP-006",
+        "GAP-012"
+      ],
+      "dependsOn": [
+        "CAP-039"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-047",
+      "subject": "Track C-RAW separately",
+      "variantRefs": [
+        "r5-craw"
+      ],
+      "family": "secondary variant",
+      "location": "EOS R5 Compact RAW container/layout",
+      "selectors": [
+        "Quality",
+        "CompressorVersion",
+        "C-RAW"
+      ],
+      "operation": "read",
+      "milestone": "secondary-variants",
+      "priority": "P2",
+      "reference": {
+        "support": "conditional",
+        "sourceRefs": [
+          "canon",
+          "canon-modes"
+        ],
+        "note": "Camera mode is documented; this investigation has not tested matching fixtures."
+      },
+      "status": "specified",
+      "target": "Keep a separate capability record; full RAW evidence does not satisfy it.",
+      "acceptance": [
+        "Provenance-approved C-RAW fixtures establish recognition, metadata and preview differences before any support claim."
+      ],
+      "requirementRefs": [
+        "PR-004",
+        "PR-019"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-002",
+        "GAP-010"
+      ],
+      "dependsOn": [
+        "CAP-001"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-048",
+      "subject": "Protect additional Dual Pixel RAW data",
+      "variantRefs": [
+        "r5-dpraw"
+      ],
+      "family": "secondary variant",
+      "location": "additional sensor data and references",
+      "selectors": [
+        "Dual Pixel RAW protected payloads"
+      ],
+      "operation": "preserve",
+      "milestone": "secondary-variants",
+      "priority": "P2",
+      "reference": {
+        "support": "unresolved",
+        "sourceRefs": [
+          "canon-dpraw",
+          "quicktime-source"
+        ],
+        "note": "User use and exact layout are not established by the current evidence."
+      },
+      "status": "specified",
+      "target": "Keep extra sensor data as a separate preservation gate; refuse unsafe mutation.",
+      "acceptance": [
+        "Independent inventory and hashes cover all extra data/reference spans; read support alone never grants write support."
+      ],
+      "requirementRefs": [
+        "PR-019",
+        "PR-024"
+      ],
+      "gapRefs": [
+        "GAP-001",
+        "GAP-002",
+        "GAP-004",
+        "GAP-010"
+      ],
+      "dependsOn": [
+        "CAP-038"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    },
+    {
+      "id": "CAP-049",
+      "subject": "Record absent general IPTC/ICC CR3 support",
+      "variantRefs": [
+        "r5-full"
+      ],
+      "family": "format limitation",
+      "location": "CR3 container-level metadata family support",
+      "selectors": [
+        "IPTC IIM",
+        "ICC whole profile"
+      ],
+      "operation": "create",
+      "milestone": "embedded-write",
+      "priority": "P2",
+      "reference": {
+        "support": "not-supported",
+        "sourceRefs": [
+          "support"
+        ],
+        "note": "The CR3 support row does not list general IPTC/ICC capabilities; this does not prove no related bytes can appear inside an embedded asset."
+      },
+      "status": "specified",
+      "target": "Do not offer arbitrary IPTC/ICC insertion; use explicit supported XMP mappings where appropriate.",
+      "acceptance": [
+        "Discovery reports the unsupported container operation and distinguishes any separately found nested asset."
+      ],
+      "requirementRefs": [
+        "PR-001",
+        "PR-007"
+      ],
+      "gapRefs": [
+        "GAP-003",
+        "GAP-007"
+      ],
+      "dependsOn": [
+        "CAP-001"
+      ],
+      "evidence": [],
+      "statusNote": "Specification and source review only; no imageinfo implementation or runtime evidence.",
+      "implementationRevision": null
+    }
+  ],
+  "mappings": [
+    {
+      "id": "MAP-001",
+      "surface": "CLI",
+      "family": "Capability discovery",
+      "upstreamForms": [
+        "-list",
+        "-listw",
+        "-listf",
+        "-listr",
+        "-listwf",
+        "-listg",
+        "-listd",
+        "-listx",
+        "-ver"
+      ],
+      "disposition": "difference-proposed",
+      "target": "tags/formats list/show and version expose camera/variant/operation limits as well as names.",
+      "acceptance": "Global writable lists never imply a given EOS R5 occurrence is writable.",
+      "sourceRefs": [
+        "cli"
+      ],
+      "capabilityRefs": [
+        "CAP-001",
+        "CAP-002",
+        "CAP-026",
+        "CAP-049"
+      ],
+      "gapRefs": [
+        "GAP-006"
+      ]
+    },
+    {
+      "id": "MAP-002",
+      "surface": "CLI",
+      "family": "Tag inclusion, exclusion and groups",
+      "upstreamForms": [
+        "-TAG",
+        "--TAG",
+        "-x",
+        "-GROUP:TAG",
+        "wildcards"
+      ],
+      "disposition": "equivalent-proposed",
+      "target": "metadata read with explicit tag/group filters and canonical qualified identifiers.",
+      "acceptance": "Conflicting names and missing selections are deterministic; unsupported selection syntax is reported.",
+      "sourceRefs": [
+        "cli"
+      ],
+      "capabilityRefs": [
+        "CAP-003",
+        "CAP-004",
+        "CAP-013"
+      ],
+      "gapRefs": [
+        "GAP-006"
+      ]
+    },
+    {
+      "id": "MAP-003",
+      "surface": "CLI",
+      "family": "Duplicates, families and ordering",
+      "upstreamForms": [
+        "-a",
+        "-G",
+        "-g",
+        "-sort",
+        "-D",
+        "-H"
+      ],
+      "disposition": "difference-proposed",
+      "target": "Occurrence arrays retain identity by default; group/path presentation and numeric native IDs are explicit views.",
+      "acceptance": "Repeated CMT/CTMD values survive; family selection and ordering are mapped separately from legacy output spelling.",
+      "sourceRefs": [
+        "cli"
+      ],
+      "capabilityRefs": [
+        "CAP-008",
+        "CAP-013",
+        "CAP-039"
+      ],
+      "gapRefs": [
+        "GAP-006"
+      ]
+    },
+    {
+      "id": "MAP-004",
+      "surface": "CLI",
+      "family": "Value layers and display conversion",
+      "upstreamForms": [
+        "-n",
+        "TAG#",
+        "-d",
+        "-c",
+        "-sep",
+        "-ec",
+        "-E",
+        "-lang"
+      ],
+      "disposition": "difference-proposed",
+      "target": "--values raw/normalized/display/all plus explicit presentation controls; exact rationals stay available.",
+      "acceptance": "Formatting never replaces stored values; escaping/locale/list delimiters do not corrupt machine schemas.",
+      "sourceRefs": [
+        "cli",
+        "values"
+      ],
+      "capabilityRefs": [
+        "CAP-009",
+        "CAP-010",
+        "CAP-039"
+      ],
+      "gapRefs": [
+        "GAP-005",
+        "GAP-006"
+      ]
+    },
+    {
+      "id": "MAP-005",
+      "surface": "CLI",
+      "family": "Structured XMP",
+      "upstreamForms": [
+        "-struct",
+        "--struct",
+        "-j",
+        "-X"
+      ],
+      "disposition": "equivalent-proposed",
+      "target": "Preserve tree/list/language structure; flattening is a named view or mapping policy.",
+      "acceptance": "Structure versus flattened copy/update behavior and one-element arrays have explicit tests.",
+      "sourceRefs": [
+        "structures",
+        "cli"
+      ],
+      "capabilityRefs": [
+        "CAP-011",
+        "CAP-012",
+        "CAP-021"
+      ],
+      "gapRefs": [
+        "GAP-005",
+        "GAP-006"
+      ]
+    },
+    {
+      "id": "MAP-006",
+      "surface": "CLI",
+      "family": "Binary extraction and routing",
+      "upstreamForms": [
+        "-b",
+        "-w",
+        "-W",
+        "-Wext",
+        "-o"
+      ],
+      "disposition": "difference-proposed",
+      "target": "binary list/extract with occurrence selection and explicit output files or binary stdout.",
+      "acceptance": "Ambiguous preview names, existing destinations, binary framing and size limits have defined outcomes.",
+      "sourceRefs": [
+        "cli"
+      ],
+      "capabilityRefs": [
+        "CAP-015",
+        "CAP-016",
+        "CAP-017"
+      ],
+      "gapRefs": [
+        "GAP-007",
+        "GAP-012"
+      ]
+    },
+    {
+      "id": "MAP-007",
+      "surface": "CLI",
+      "family": "Human and machine reports",
+      "upstreamForms": [
+        "-s",
+        "-S",
+        "-s3",
+        "-t",
+        "-T",
+        "-h",
+        "-j",
+        "-csv",
+        "-X"
+      ],
+      "disposition": "difference-proposed",
+      "target": "metadata read/export emits versioned native schemas, JSONL, tables and reports; legacy output equality is separate.",
+      "acceptance": "Document output availability per operation, duplicates, CSV buffering/schema, missing values and error envelopes.",
+      "sourceRefs": [
+        "cli"
+      ],
+      "capabilityRefs": [
+        "CAP-039"
+      ],
+      "gapRefs": [
+        "GAP-005",
+        "GAP-006",
+        "GAP-012"
+      ]
+    },
+    {
+      "id": "MAP-008",
+      "surface": "CLI",
+      "family": "Advanced report and serialization forms",
+      "upstreamForms": [
+        "-p",
+        "-args",
+        "-php",
+        "-plot"
+      ],
+      "disposition": "open-gap",
+      "target": "Retain as RAW-relevant parity entries; template, replay and chart representations are not yet specified.",
+      "acceptance": "Card #0007 assigns an equivalent, accepted difference or deferred milestone for each form, without dropping the eventual goal.",
+      "sourceRefs": [
+        "cli"
+      ],
+      "capabilityRefs": [
+        "CAP-039"
+      ],
+      "gapRefs": [
+        "GAP-006"
+      ]
+    },
+    {
+      "id": "MAP-009",
+      "surface": "CLI",
+      "family": "Assignment, lists and file-sourced values",
+      "upstreamForms": [
+        "-TAG=VALUE",
+        "-TAG+=",
+        "-TAG-=",
+        "-TAG<=FILE"
+      ],
+      "disposition": "difference-proposed",
+      "target": "metadata write uses explicit scalar/list/typed request operations and preview/apply.",
+      "acceptance": "Empty, absent, append, conditional remove, binary payload and date shift are never conflated.",
+      "sourceRefs": [
+        "cli"
+      ],
+      "capabilityRefs": [
+        "CAP-021",
+        "CAP-026",
+        "CAP-042"
+      ],
+      "gapRefs": [
+        "GAP-004",
+        "GAP-005",
+        "GAP-006"
+      ]
+    },
+    {
+      "id": "MAP-010",
+      "surface": "CLI",
+      "family": "Tag/group deletion",
+      "upstreamForms": [
+        "-TAG=",
+        "-GROUP:All=",
+        "-All=",
+        "--TAG"
+      ],
+      "disposition": "difference-proposed",
+      "target": "metadata delete/privacy scrub uses capability-gated selection; blanket RAW deletion is refused when preservation cannot be established.",
+      "acceptance": "Protected structures survive, exact removal scope is reported, and no claim of secure erasure follows from missing tags.",
+      "sourceRefs": [
+        "cli",
+        "support"
+      ],
+      "capabilityRefs": [
+        "CAP-022",
+        "CAP-028",
+        "CAP-031",
+        "CAP-034",
+        "CAP-045"
+      ],
+      "gapRefs": [
+        "GAP-004",
+        "GAP-009"
+      ]
+    },
+    {
+      "id": "MAP-011",
+      "surface": "CLI",
+      "family": "Creation and update modes",
+      "upstreamForms": [
+        "-wm",
+        "WriteMode"
+      ],
+      "disposition": "equivalent-proposed",
+      "target": "Plan distinguishes updating existing fields, adding absent fields and adding blocks.",
+      "acceptance": "Creation is checked independently from write, and does not mean synthesizing a RAW image.",
+      "sourceRefs": [
+        "cli"
+      ],
+      "capabilityRefs": [
+        "CAP-020",
+        "CAP-026",
+        "CAP-027",
+        "CAP-030",
+        "CAP-033"
+      ],
+      "gapRefs": [
+        "GAP-003",
+        "GAP-004"
+      ]
+    },
+    {
+      "id": "MAP-012",
+      "surface": "CLI",
+      "family": "Copy and redirection",
+      "upstreamForms": [
+        "-tagsFromFile",
+        "-addTagsFromFile",
+        "-DEST<SOURCE",
+        "-tagsFromFile @",
+        "-all:all",
+        "-unsafe"
+      ],
+      "disposition": "difference-proposed",
+      "target": "metadata copy exposes preserve-location versus explicit schema mapping and unsafe/protected exclusions.",
+      "acceptance": "Ordering, repeated destinations, structures, lists, missing sources and skipped fields are accounted for.",
+      "sourceRefs": [
+        "cli",
+        "structures"
+      ],
+      "capabilityRefs": [
+        "CAP-024",
+        "CAP-025",
+        "CAP-035"
+      ],
+      "gapRefs": [
+        "GAP-003",
+        "GAP-005",
+        "GAP-006"
+      ]
+    },
+    {
+      "id": "MAP-013",
+      "surface": "CLI",
+      "family": "JSON/CSV imports",
+      "upstreamForms": [
+        "-j=FILE",
+        "-csv=FILE",
+        "SourceFile",
+        "-f"
+      ],
+      "disposition": "difference-proposed",
+      "target": "metadata import accepts typed edit intent and deterministic input matching.",
+      "acceptance": "No silent overwrite from duplicate matches; null/empty/delete and unmatched records have separate results.",
+      "sourceRefs": [
+        "cli"
+      ],
+      "capabilityRefs": [
+        "CAP-040"
+      ],
+      "gapRefs": [
+        "GAP-005",
+        "GAP-006"
+      ]
+    },
+    {
+      "id": "MAP-014",
+      "surface": "CLI",
+      "family": "Sidecar association and metadata mapping",
+      "upstreamForms": [
+        "-o",
+        "-srcfile",
+        "-tagsFromFile",
+        "filename format codes"
+      ],
+      "disposition": "difference-proposed",
+      "target": "sidecar create/read/apply/diff and explicit --target sidecar operate on planned pairs.",
+      "acceptance": "Same basename in different directories, existing packets, stale sidecars and mapping losses cannot resolve silently.",
+      "sourceRefs": [
+        "sidecars",
+        "cli"
+      ],
+      "capabilityRefs": [
+        "CAP-020",
+        "CAP-024",
+        "CAP-025"
+      ],
+      "gapRefs": [
+        "GAP-009",
+        "GAP-012"
+      ]
+    },
+    {
+      "id": "MAP-015",
+      "surface": "CLI",
+      "family": "Input traversal and filtering",
+      "upstreamForms": [
+        "-r",
+        "-r.",
+        "-ext",
+        "--ext",
+        "-i",
+        "-if",
+        "-fileOrder",
+        "-fileOrderNUM"
+      ],
+      "disposition": "difference-proposed",
+      "target": "files/metadata selection uses bounded declarative predicates and explicit traversal rules.",
+      "acceptance": "Symlinks/hidden paths/order/duplicate inputs and unknown file types have deterministic inclusion; Perl expressions are a separate gap.",
+      "sourceRefs": [
+        "cli"
+      ],
+      "capabilityRefs": [
+        "CAP-001",
+        "CAP-039",
+        "CAP-044"
+      ],
+      "gapRefs": [
+        "GAP-006",
+        "GAP-012"
+      ]
+    },
+    {
+      "id": "MAP-016",
+      "surface": "CLI",
+      "family": "Fast, unknown and embedded extraction",
+      "upstreamForms": [
+        "-fast",
+        "-fast2",
+        "-fast3",
+        "-fast4",
+        "-fast5",
+        "-ee",
+        "-ee2",
+        "-ee3",
+        "-u",
+        "-U",
+        "-scanForXMP"
+      ],
+      "disposition": "difference-proposed",
+      "target": "Explicit coverage levels and omission reporting; normal CR3 inspection includes its CTMD contract.",
+      "acceptance": "Compare shallow/complete scans and declare skipped samples or unknown blocks; no speed mode silently claims complete privacy inspection.",
+      "sourceRefs": [
+        "cli",
+        "canon",
+        "api"
+      ],
+      "capabilityRefs": [
+        "CAP-008",
+        "CAP-014",
+        "CAP-018",
+        "CAP-045"
+      ],
+      "gapRefs": [
+        "GAP-007",
+        "GAP-008",
+        "GAP-012"
+      ]
+    },
+    {
+      "id": "MAP-017",
+      "surface": "CLI",
+      "family": "Filesystem and date organization",
+      "upstreamForms": [
+        "FileName",
+        "Directory",
+        "TestName",
+        "FileModifyDate",
+        "FileCreateDate",
+        "-d"
+      ],
+      "disposition": "difference-proposed",
+      "target": "files rename/move/copy/set-times previews RAW and XMP effects together.",
+      "acceptance": "Collision, ordering, platform timestamp limits and paired rollback/recovery have named outcomes.",
+      "sourceRefs": [
+        "files",
+        "extra",
+        "cli"
+      ],
+      "capabilityRefs": [
+        "CAP-044"
+      ],
+      "gapRefs": [
+        "GAP-004",
+        "GAP-009",
+        "GAP-012"
+      ]
+    },
+    {
+      "id": "MAP-018",
+      "surface": "CLI",
+      "family": "Date shifts",
+      "upstreamForms": [
+        "AllDates",
+        "-TAG+=SHIFT",
+        "-TAG-=SHIFT",
+        "-globalTimeShift"
+      ],
+      "disposition": "equivalent-proposed",
+      "target": "time inspect/set/shift distinguishes elapsed time, calendar changes and offsets.",
+      "acceptance": "No host timezone is invented for zone-less EXIF; RAW/sidecar targets and CTMD constraints are visible.",
+      "sourceRefs": [
+        "cli",
+        "api"
+      ],
+      "capabilityRefs": [
+        "CAP-009",
+        "CAP-042"
+      ],
+      "gapRefs": [
+        "GAP-004",
+        "GAP-005",
+        "GAP-006"
+      ]
+    },
+    {
+      "id": "MAP-019",
+      "surface": "CLI",
+      "family": "Geotagging and clock correction",
+      "upstreamForms": [
+        "-geotag",
+        "Geotime",
+        "Geosync",
+        "Geotag"
+      ],
+      "disposition": "equivalent-proposed",
+      "target": "geo tag previews track matching, interpolation, clock drift and destination.",
+      "acceptance": "Known samples, time gaps, UTC/offset differences and multiple synchronization points have expected results.",
+      "sourceRefs": [
+        "geo",
+        "cli"
+      ],
+      "capabilityRefs": [
+        "CAP-043"
+      ],
+      "gapRefs": [
+        "GAP-005",
+        "GAP-009"
+      ]
+    },
+    {
+      "id": "MAP-020",
+      "surface": "CLI",
+      "family": "Geolocation lookup and inverse export",
+      "upstreamForms": [
+        "Geolocation",
+        "-listgeo",
+        "-p track templates"
+      ],
+      "disposition": "open-gap",
+      "target": "Record geographic lookup separately from GPS track matching; auxiliary databases and exact outputs need a later specification.",
+      "acceptance": "Keep offline/default privacy and database provenance explicit; no bundled database or network service is selected here.",
+      "sourceRefs": [
+        "cli"
+      ],
+      "capabilityRefs": [
+        "CAP-043",
+        "CAP-039"
+      ],
+      "gapRefs": [
+        "GAP-006",
+        "GAP-011"
+      ]
+    },
+    {
+      "id": "MAP-021",
+      "surface": "CLI",
+      "family": "Backups, overwrite and output policy",
+      "upstreamForms": [
+        "-overwrite_original",
+        "-overwrite_original_in_place",
+        "-restore_original",
+        "-delete_original",
+        "-o",
+        "-P"
+      ],
+      "disposition": "difference-proposed",
+      "target": "Preview/apply, backup restore/prune and explicit output policy share a recovery contract.",
+      "acceptance": "Hardlinks, permissions, timestamps, stale inputs and failure between backup/replacement are tested; defaults need not mimic ExifTool.",
+      "sourceRefs": [
+        "cli"
+      ],
+      "capabilityRefs": [
+        "CAP-023",
+        "CAP-038",
+        "CAP-044"
+      ],
+      "gapRefs": [
+        "GAP-004",
+        "GAP-012"
+      ]
+    },
+    {
+      "id": "MAP-022",
+      "surface": "CLI",
+      "family": "Diagnostics and repair controls",
+      "upstreamForms": [
+        "-v",
+        "-htmlDump",
+        "-validate",
+        "-warning",
+        "-error",
+        "-F",
+        "-m"
+      ],
+      "disposition": "difference-proposed",
+      "target": "validate and diagnostic views provide stable issue codes; repairs and ignored-errors policies require explicit requests.",
+      "acceptance": "No broad ignore-errors flag bypasses preservation gates; malformed inputs remain bounded and explainable.",
+      "sourceRefs": [
+        "cli",
+        "extra"
+      ],
+      "capabilityRefs": [
+        "CAP-045",
+        "CAP-038"
+      ],
+      "gapRefs": [
+        "GAP-004",
+        "GAP-006",
+        "GAP-012"
+      ]
+    },
+    {
+      "id": "MAP-023",
+      "surface": "CLI",
+      "family": "Ordered and persistent execution",
+      "upstreamForms": [
+        "-stay_open",
+        "-execute",
+        "-common_args",
+        "-echo",
+        "-echo3",
+        "-echo4"
+      ],
+      "disposition": "difference-proposed",
+      "target": "batch and persistent requests use explicit IDs/framing and isolate queued mutations.",
+      "acceptance": "Completion and success are separate; stdout/stderr framing, EOF, cancellation and option lifetime have tests.",
+      "sourceRefs": [
+        "cli",
+        "api"
+      ],
+      "capabilityRefs": [
+        "CAP-046"
+      ],
+      "gapRefs": [
+        "GAP-006",
+        "GAP-012"
+      ]
+    },
+    {
+      "id": "MAP-024",
+      "surface": "CLI",
+      "family": "Argument/request files and filenames",
+      "upstreamForms": [
+        "-@",
+        "--",
+        "-charset filename",
+        "-srcfile"
+      ],
+      "disposition": "difference-proposed",
+      "target": "Typed request/JSON manifests and NUL path lists avoid shell quoting ambiguities.",
+      "acceptance": "Paths with Unicode, newlines, leading hyphens and reserved help words reach the intended file exactly.",
+      "sourceRefs": [
+        "cli"
+      ],
+      "capabilityRefs": [
+        "CAP-001",
+        "CAP-046"
+      ],
+      "gapRefs": [
+        "GAP-006",
+        "GAP-012"
+      ]
+    },
+    {
+      "id": "MAP-025",
+      "surface": "CLI",
+      "family": "Warnings, progress and status",
+      "upstreamForms": [
+        "-q",
+        "-progress",
+        "-efile",
+        "exit 0/1/2"
+      ],
+      "disposition": "difference-proposed",
+      "target": "Stable native issue and exit codes distinguish partial failure, invalid invocation, stale plan, verification and cancellation.",
+      "acceptance": "Machine stdout remains parseable; warnings and deliberate selection exclusions have documented status behavior.",
+      "sourceRefs": [
+        "cli"
+      ],
+      "capabilityRefs": [
+        "CAP-039",
+        "CAP-045",
+        "CAP-046"
+      ],
+      "gapRefs": [
+        "GAP-006",
+        "GAP-012"
+      ]
+    },
+    {
+      "id": "MAP-026",
+      "surface": "CLI",
+      "family": "Custom definitions and expressions",
+      "upstreamForms": [
+        "-config",
+        "-use",
+        "-userParam",
+        "Perl expressions in -if/-p/tag interpolation"
+      ],
+      "disposition": "open-gap",
+      "target": "Preserve RAW transformation/custom-tag use cases while choosing a deliberate execution/trust boundary later.",
+      "acceptance": "No implicit arbitrary-code execution; unsupported constructs get migration guidance and never silently change meaning.",
+      "sourceRefs": [
+        "config",
+        "cli"
+      ],
+      "capabilityRefs": [
+        "CAP-019",
+        "CAP-040",
+        "CAP-046"
+      ],
+      "gapRefs": [
+        "GAP-006",
+        "GAP-011"
+      ]
+    },
+    {
+      "id": "MAP-027",
+      "surface": "API",
+      "family": "Extraction lifecycle",
+      "upstreamForms": [
+        "ImageInfo",
+        "ExtractInfo",
+        "GetInfo"
+      ],
+      "disposition": "equivalent-proposed",
+      "target": "Independent read engine returns structured results reusable across selections without terminal dependency.",
+      "acceptance": "Repeated queries do not reparse unnecessarily or mutate source state; read limits and diagnostics remain attributable.",
+      "sourceRefs": [
+        "api"
+      ],
+      "capabilityRefs": [
+        "CAP-003",
+        "CAP-008",
+        "CAP-013"
+      ],
+      "gapRefs": [
+        "GAP-005",
+        "GAP-006"
+      ]
+    },
+    {
+      "id": "MAP-028",
+      "surface": "API",
+      "family": "Identity and values",
+      "upstreamForms": [
+        "GetTagList",
+        "GetValue",
+        "GetGroup",
+        "GetGroups",
+        "GetDescription",
+        "GetTagID"
+      ],
+      "disposition": "equivalent-proposed",
+      "target": "A language-independent occurrence model exposes identity, groups, raw/rational/normalized/display values and definitions.",
+      "acceptance": "Same-name occurrences and exact values survive across retrievals; public calling conventions remain undecided.",
+      "sourceRefs": [
+        "api"
+      ],
+      "capabilityRefs": [
+        "CAP-010",
+        "CAP-013"
+      ],
+      "gapRefs": [
+        "GAP-005",
+        "GAP-006"
+      ]
+    },
+    {
+      "id": "MAP-029",
+      "surface": "API",
+      "family": "Queued mutation lifetime",
+      "upstreamForms": [
+        "SetNewValue",
+        "GetNewValue",
+        "WriteInfo"
+      ],
+      "disposition": "difference-proposed",
+      "target": "Explicit edit plan/request state instead of accidentally retained writes across requests.",
+      "acceptance": "Define reset/copy/reuse and error outcomes; every apply rechecks content identity and preservation gates.",
+      "sourceRefs": [
+        "api"
+      ],
+      "capabilityRefs": [
+        "CAP-021",
+        "CAP-026",
+        "CAP-038",
+        "CAP-046"
+      ],
+      "gapRefs": [
+        "GAP-004",
+        "GAP-006"
+      ]
+    },
+    {
+      "id": "MAP-030",
+      "surface": "API",
+      "family": "Copy/mapping lifecycle",
+      "upstreamForms": [
+        "SetNewValuesFromFile",
+        "SetNewValue",
+        "WriteInfo"
+      ],
+      "disposition": "equivalent-proposed",
+      "target": "Build a typed transfer plan with occurrence/location mappings and source fingerprints.",
+      "acceptance": "Copied source changes invalidate a saved plan; missing and unsupported mappings are visible.",
+      "sourceRefs": [
+        "api"
+      ],
+      "capabilityRefs": [
+        "CAP-024",
+        "CAP-025"
+      ],
+      "gapRefs": [
+        "GAP-004",
+        "GAP-005",
+        "GAP-006"
+      ]
+    },
+    {
+      "id": "MAP-031",
+      "surface": "API",
+      "family": "Static discovery versus detection",
+      "upstreamForms": [
+        "GetAllTags",
+        "GetWritableTags",
+        "GetDeleteGroups",
+        "GetFileType"
+      ],
+      "disposition": "difference-proposed",
+      "target": "Registry discovery is distinct from content-based detection and per-file write eligibility.",
+      "acceptance": "A filename-derived type hint or global tag list cannot grant a write capability.",
+      "sourceRefs": [
+        "api"
+      ],
+      "capabilityRefs": [
+        "CAP-001",
+        "CAP-026",
+        "CAP-049"
+      ],
+      "gapRefs": [
+        "GAP-003",
+        "GAP-006"
+      ]
+    },
+    {
+      "id": "MAP-032",
+      "surface": "API",
+      "family": "Option families",
+      "upstreamForms": [
+        "Options",
+        "PrintConv",
+        "Duplicates",
+        "Struct",
+        "Unknown",
+        "ExtractEmbedded",
+        "FastScan",
+        "QuickTimeUTC",
+        "QuickTimePad",
+        "RequestTags"
+      ],
+      "disposition": "open-gap",
+      "target": "Classify relevant option families as read coverage, presentation, typing, performance or mutation policy; exhaustive option audit remains open.",
+      "acceptance": "Every adopted option has scope/lifetime/default tests; CR3 UTC and padding behavior receive dedicated cases.",
+      "sourceRefs": [
+        "api",
+        "quicktime",
+        "quicktime-source"
+      ],
+      "capabilityRefs": [
+        "CAP-008",
+        "CAP-009",
+        "CAP-014",
+        "CAP-038",
+        "CAP-046"
+      ],
+      "gapRefs": [
+        "GAP-005",
+        "GAP-006",
+        "GAP-008"
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "id": "GAP-001",
+      "subject": "EOS R5 fixture observations",
+      "ownerCard": "fixture-plan",
+      "closesWhen": "A provenance-approved full RAW corpus records camera/firmware/mode, discovered structures, optional-tag presence and source hashes.",
+      "blocks": "Any claim that source-level support was observed on Terry's files."
+    },
+    {
+      "id": "GAP-002",
+      "subject": "Camera mode and damaged-file discrimination",
+      "ownerCard": "capability-inventory",
+      "closesWhen": "Cross-check brand, Canon model, Quality and structural clues on full RAW/C-RAW/DPRAW and negative CRM/other-camera cases; record ambiguity rules.",
+      "blocks": "Automatic mode identification and variants inheriting one another's support."
+    },
+    {
+      "id": "GAP-003",
+      "subject": "Tag-level and mutation-depth expansion",
+      "ownerCard": "capability-inventory",
+      "closesWhen": "Expand representative families into occurrence/tag/location rows; audit insertion/deletion flags, defaults and all relevant maker-note subtables without copying upstream tables.",
+      "blocks": "Exhaustive tag-count claims or broad all-tags-writable claims."
+    },
+    {
+      "id": "GAP-004",
+      "subject": "Saved plans and preservation oracle",
+      "ownerCard": "write-safety-contract",
+      "closesWhen": "Specify per-file and paired-sidecar outcomes; validate all sensor samples, references, calibration/opaque blocks and interruption recovery.",
+      "blocks": "Every embedded-write enabled claim."
+    },
+    {
+      "id": "GAP-005",
+      "subject": "Metadata identity and conversions",
+      "ownerCard": "metadata-contract",
+      "closesWhen": "Specify groups/instances, rational and raw values, XMP shape, encodings, CR3 UTC/Exif time distinctions and conflict handling.",
+      "blocks": "Lossless JSON/import/copy equivalence."
+    },
+    {
+      "id": "GAP-006",
+      "subject": "Legacy argument and API completeness",
+      "ownerCard": "legacy-compatibility",
+      "closesWhen": "Expand family mapping to every in-scope flag/API option, ordering interaction and executable extension; assign equivalence or an accepted difference.",
+      "blocks": "Drop-in CLI/API compatibility claims."
+    },
+    {
+      "id": "GAP-007",
+      "subject": "Preview variants and nested metadata",
+      "ownerCard": "fixture-plan",
+      "closesWhen": "Enumerate THMB, PRVW and JPEG-track assets per full RAW fixture; prove bytes and nested metadata coverage; audit any replacement path separately.",
+      "blocks": "All-previews claims, nested privacy completeness, or preview replacement."
+    },
+    {
+      "id": "GAP-008",
+      "subject": "Repeatable runtime reference",
+      "ownerCard": "fixture-plan",
+      "closesWhen": "Choose an executable distribution, hash it and its configuration/dependencies, then run recorded experiments in controlled locale/timezone environments.",
+      "blocks": "Runtime-verified reference behavior or parity percentages."
+    },
+    {
+      "id": "GAP-009",
+      "subject": "Privacy and sidecar synchronization policy",
+      "ownerCard": "write-safety-contract",
+      "closesWhen": "Define explicit destinations, pairing, mappings, residual/uninspectable data, and rendering-critical retention for each named profile.",
+      "blocks": "Secure-erasure/anonymization claims or silent RAW/sidecar synchronization."
+    },
+    {
+      "id": "GAP-010",
+      "subject": "Secondary and later format breadth",
+      "ownerCard": "capability-inventory",
+      "closesWhen": "Scope and collect independent evidence for C-RAW/DPRAW, other Canon cameras and later RAW families before adding their capabilities.",
+      "blocks": "Using the initial EOS R5 full RAW results as universal RAW support."
+    },
+    {
+      "id": "GAP-011",
+      "subject": "Asset licensing and provenance",
+      "ownerCard": "license-provenance",
+      "closesWhen": "Apply the selected MIT project license while preserving and reviewing separate source/table/fixture terms before importing third-party assets.",
+      "blocks": "Redistribution of upstream assets or personal sample media."
+    },
+    {
+      "id": "GAP-012",
+      "subject": "CLI workflows and large-input boundaries",
+      "ownerCard": "cli-walkthroughs",
+      "closesWhen": "Walk through canonical command grammar, non-TTY/help behavior, selection, source/destination effects and failure output; define bounded processing.",
+      "blocks": "Claiming the proposed CLI surface is finalized or implemented."
+    }
+  ]
+}

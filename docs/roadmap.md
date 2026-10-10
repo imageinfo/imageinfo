@@ -36,11 +36,16 @@ local board's stable card IDs; board ticket numbers are machine-local.
 | `legacy-compatibility` | Map legacy CLI, API, and extension use cases. | A documented equivalent, proposed difference, or open gap for upstream argument grammar, expressions/configuration, structured output, and long-lived process behavior. |
 | `performance-baseline` | Specify measurable performance requirements. | Workload categories, environment fields, latency/throughput/memory metrics, cache effects, and comparison methodology; numerical targets supported by later measurement. |
 | `governance-proposal` | Make shared maintenance practical. | Format ownership, contributor onboarding, review/release procedures, vulnerability reporting, and succession/access recovery proposals. |
-| `license-provenance` | Resolve licensing before implementation imports. | Project license recommendation plus artifact-specific source/table/fixture provenance rules and unresolved legal questions identified. |
+| `license-provenance` | Define provenance under the selected MIT project license. | MIT decision is recorded; complete artifact-specific source/table/fixture provenance rules and resolve reuse questions before implementation imports. |
 | `implementation-selection` | Choose a modern implementation stack later. | Explicitly held in backlog until Terry advances language decisions; evaluate only against accepted requirements. |
 | `broader-format-parity` | Preserve the eventual full ExifTool parity goal. | Deferred umbrella only; choose and scope additional format families after RAW milestones, with independent compatibility evidence. |
 
 ## Progress reporting
+
+Card #0002 has produced the [versioned CR3 capability inventory](inventory/README.md)
+for review. It defines source-backed requirements and remaining audits; it does not
+claim implemented capabilities. Metadata-contract and fixture-plan work can consume
+its stable CAP/MAP/GAP identifiers next.
 
 Report capability cells and verified workflows, not percentages derived solely from
 tag or extension counts. A format readable in one fixture may contain variants with

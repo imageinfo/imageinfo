@@ -5,6 +5,9 @@ his current camera is a Canon EOS R5. This is the first camera/format target wit
 the RAW-first plan. Full ExifTool feature parity remains the eventual goal. Language
 and framework decisions remain deferred.
 
+The [versioned capability inventory](inventory/README.md) makes this milestone
+concrete by separating locations, operations, reference evidence, and open gaps.
+
 Terry's capture preference is the camera's **full RAW setting**, accepting the
 larger files. Those EOS R5 CR3 files are the primary fixture, usability, and
 performance baseline. C-RAW is secondary coverage, tracked separately, and is not

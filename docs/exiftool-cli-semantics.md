@@ -8,6 +8,11 @@ Research date: **2026-10-10**. This document records the observed upstream **13.
 
 ## Verified: the grammar encodes operations
 
+The [CR3 inventory](inventory/README.md) now maps relevant CLI/API families to
+proposed native behavior, deliberate differences, and explicit audit gaps. It also
+records CR3-specific exceptions such as automatic CTMD extraction and container
+time conversion; general QuickTime rules must not be applied to CR3 indiscriminately.
+
 ExifTool reads by default; assignments, copying, geotagging, and JSON/CSV imports switch it into writing. Its value pipeline separates stored binary, decoded raw, normalized machine values, and human display conversions. `-n` disables PrintConv; it does **not** universally expose the exact stored bytes. Per-tag `#` selects the machine-value layer. [Operation and conversion model](https://raw.githubusercontent.com/exiftool/exiftool/2200871d9cef988051d2a99d67df3bda6cbb30a8/html/under.html)
 
 The principal operation forms are:

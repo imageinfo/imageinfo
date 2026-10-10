@@ -42,8 +42,9 @@ Harvey and its contributors; imageinfo is not affiliated with or endorsed by it.
 
 Requirements and features come first. Language selection and implementation begin
 after the requirements baseline and compatibility approach are reviewed.
-Project licensing is also pending; a public repository alone does not grant an
-open-source license. No ExifTool code, tag tables, or test images are vendored here.
+The project uses the [MIT license](LICENSE), with copyright attribution to Terry Ott
+and imageinfo contributors. See the [license decision](docs/license-decision.md).
+No ExifTool code, tag tables, or test images are vendored here.
 
 ## Local planning
 

@@ -26,6 +26,10 @@ or package layout until Terry explicitly advances that decision.
 
 ## Documentation and research
 
+- Project license is MIT, explicitly accepted and locked by Terry on 2026-10-10.
+  Preserve copyright/license notices; no mandatory visible UI credit. Do not reopen
+  the project-license comparison unless Terry asks. Third-party asset provenance
+  remains a separate requirement; see `docs/license-decision.md`.
 - Cite primary sources and record the observation date and revision when available.
 - Keep `docs/README.md` current and use stable requirement identifiers.
 - Preserve the long-term parity goal while keeping current work RAW focused.

@@ -23,6 +23,10 @@ This is broader than an EXIF parser. Each RAW format, metadata family, operation
 
 ## Verified: camera RAW support is a matrix
 
+For the selected first camera/format, use the [EOS R5 CR3 inventory](inventory/README.md).
+It separates CMT1-4, CTMD, XMP, previews, preservation and operation-specific claims;
+the broader table below remains context for later RAW expansion.
+
 The upstream table records these support levels. R = read, W = write, C = create metadata; a dash means no listed support. The ICC column refers to whole-block operations. These are **ExifTool's** capabilities, not implemented imageinfo support. [Pinned support matrix](https://raw.githubusercontent.com/exiftool/exiftool/2200871d9cef988051d2a99d67df3bda6cbb30a8/html/index.html#supported)
 
 | RAW type | Container family | Overall | EXIF | IPTC | XMP | ICC |
