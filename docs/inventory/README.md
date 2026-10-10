@@ -1,6 +1,6 @@
 # EOS R5 CR3 capability inventory v1
 
-Status: **draft for review**, inventory revision `2026-10-10.7`, 2026-10-10. This is the deliverable for board card
+Status: **draft for review**, inventory revision `2026-10-10.8`, 2026-10-10. This is the deliverable for board card
 **#0002, capability-inventory**. Implementation coverage remains zero. No imageinfo
 executable, upstream executable experiment, or media-fixture validation is claimed.
 
@@ -240,7 +240,7 @@ in the JSON. Do not close them merely because a source contains a similarly name
 | GAP-008 | Repeatable runtime reference | `corpus-baseline` | Choose an executable distribution, hash it and its configuration/dependencies, then run recorded experiments in controlled locale/timezone environments. |
 | GAP-009 | Privacy and sidecar synchronization policy | `write-validation` | General rules are in docs/write-safety. Specify exact pairing/mappings and per-profile field catalogs, then verify removal, residual/uninspectable coverage and synchronization. Logical deletion never proves secure erasure. |
 | GAP-010 | Secondary and later format breadth | `capability-inventory` | Scope and collect independent evidence for C-RAW/DPRAW, other Canon cameras and later RAW families before adding their capabilities. |
-| GAP-011 | Asset licensing and provenance | `license-provenance` | Apply the selected MIT project license while preserving and reviewing separate source/table/fixture terms before importing third-party assets. |
+| GAP-011 | Asset licensing and provenance | `corpus-baseline` | Policy/schema are now recorded in docs/provenance. Apply exact rights/privacy/notice/lineage review to initial corpus/reference assets on #0013; future imports need their own review. No blanket reuse grant. |
 | GAP-012 | CLI workflows and large-input boundaries | `compatibility-evidence` | Native walkthroughs, request/result schemas and filter/session proposals are delivered. Finish plan/session-output schemas and advanced cases (#0015), measured limits (#0016 under the #0008 protocol) and actual integration/usability evidence. |
 
 The [proposed metadata contract](../metadata-model/README.md) now supplies the data
@@ -249,7 +249,9 @@ representation. The [fixture plan](../fixture-plan/README.md) and
 contracts. The [CLI walkthrough recommendation](../cli-walkthroughs/README.md)
 now exercises them, and the [compatibility recommendation](../legacy-compatibility/README.md)
 classifies the surveyed interfaces. The [performance protocol](../performance/README.md)
-now defines measurements; governance requirements are next in triage. The inventory does not complete
+now defines measurements, and [governance](../../GOVERNANCE.md) plus
+[artifact provenance](../provenance/README.md) define review responsibilities.
+Actual corpus/reference admission is the next evidence-work candidate. The inventory does not complete
 those follow-up cards or authorize language selection.
 
 ## Sources and provenance
@@ -320,3 +322,7 @@ and transfers the remaining GAP-006/GAP-012 specifications and runtime proofs to
 Revision `2026-10-10.7` links the [performance protocol](../performance/README.md)
 and assigns actual measured-limit decisions to #0016. No numeric targets or capability
 evidence are invented by this documentation revision.
+
+Revision `2026-10-10.8` links the [artifact provenance policy](../provenance/README.md)
+and assigns GAP-011 first actual corpus/reference admission evidence to #0013.
+All capabilities remain specified; the project MIT decision is unchanged.

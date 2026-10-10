@@ -84,6 +84,6 @@ not a claim that platform features are configured or that account recovery is gu
 requires separately authorized appointments/access/settings/publication actions and
 sanitized evidence. No credentials or private operational data belong in this repo.
 
-Next requirements ticket is **#0010, third-party artifact provenance**. MIT is
-accepted and locked; that task resolves artifact-specific reuse/admission, not the
-project-license choice. Language and implementation architecture remain undecided.
+Card #0010 now supplies the [artifact provenance policy](../provenance/README.md).
+MIT remains accepted and locked; actual artifact permissions/admission remain
+evidence work, beginning with #0013 for the first corpus/reference baseline. Language and implementation architecture remain undecided.

@@ -1,7 +1,7 @@
 {
   "$schema": "./capability-inventory.schema.json",
   "schemaVersion": 1,
-  "inventoryVersion": "2026-10-10.7",
+  "inventoryVersion": "2026-10-10.8",
   "observedOn": "2026-10-10",
   "reviewState": "draft-for-review",
   "reference": {
@@ -3441,8 +3441,8 @@
     {
       "id": "GAP-011",
       "subject": "Asset licensing and provenance",
-      "ownerCard": "license-provenance",
-      "closesWhen": "Apply the selected MIT project license while preserving and reviewing separate source/table/fixture terms before importing third-party assets.",
+      "ownerCard": "corpus-baseline",
+      "closesWhen": "The locked MIT decision and artifact provenance policy/schema are recorded in docs/provenance. Apply scoped rights, privacy, notice and lineage reviews to the actual initial corpus and reference distribution on #0013 before admission/distribution. Future imports require equivalent review in their proposing task; no blanket reuse grant is implied.",
       "blocks": "Redistribution of upstream assets or personal sample media."
     },
     {

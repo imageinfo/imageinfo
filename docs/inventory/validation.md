@@ -21,6 +21,11 @@ evidence to `write-validation` (#0014). Schema/reference/dependency checks and a
 
 ## Results
 
+Revision `2026-10-10.8` links #0010's artifact provenance policy/schema and assigns
+GAP-011's first actual corpus/reference admission evidence to #0013. Schema,
+references, dependency checks and all ten negative cases pass. MIT and all capability
+states remain unchanged; no third-party asset is approved or imported by this revision.
+
 Revision `2026-10-10.7` links #0008's performance protocol and points actual measured
 limits to #0016. Schema/reference/dependency checks and all ten negative cases pass;
 capability counts/states remain unchanged and no numeric performance claim is made.
@@ -118,5 +123,6 @@ The [CLI walkthroughs](../cli-walkthroughs/README.md) now refine the native inte
 the [compatibility recommendation](../legacy-compatibility/README.md) is recorded.
 The [performance protocol](../performance/README.md) is now recorded; numeric limits
 await #0016. The [governance proposal](../../GOVERNANCE.md) is now recorded;
-artifact provenance #0010 is next, while #0013/#0014 retain actual
+the [artifact provenance policy](../provenance/README.md) is now specified, while
+#0013/#0014 retain actual
 corpus and writer/storage evidence. This validation does not close those cards.

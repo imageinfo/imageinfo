@@ -113,4 +113,5 @@ The subsequent [write-safety proposal](../write-safety/README.md), card #0006,
 defines the transaction/refusal/preservation/recovery assertions that these cases
 will test. #0003 now records [CLI walkthroughs](../cli-walkthroughs/README.md);
 #0014 retains runtime write evidence. The locked MIT
-decision remains unchanged, with third-party provenance work on #0010.
+decision remains unchanged. The [artifact provenance policy](../provenance/README.md)
+now defines #0010's review rules; actual corpus/reference permission evidence remains #0013.

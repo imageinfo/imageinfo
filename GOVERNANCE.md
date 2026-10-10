@@ -160,5 +160,6 @@ verification dates and sanitized evidence before claiming shared maintenance.
 | GOV-OPEN-06 | Publish contributor verification commands for the eventual toolchain | Clean-machine setup/checks reproducible without private paths, plus reviewed CI permissions and a conduct/escalation contact |
 
 These are follow-up readiness work, not authorization to grant permissions, change
-settings or publish releases. The immediate next requirements card is #0010,
-third-party artifact provenance under the already locked MIT license.
+settings or publish releases. The [artifact provenance policy](docs/provenance/README.md)
+now supplies the #0010 review process under locked MIT. #0013 is the next evidence-work
+candidate after policy review and lawful input selection; implementation remains deferred.

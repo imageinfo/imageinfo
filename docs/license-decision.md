@@ -42,9 +42,12 @@ all patent questions are settled by choosing MIT. Visible credit remains welcome
 but it is not an added license condition. Do not append a custom attribution clause
 and still call the result the standard MIT license.
 
-## Remaining work on card #0010
+## Third-party artifact rules
 
-The project-license choice is resolved. The artifact-provenance work remains:
+The project-license choice is resolved. Card #0010 now provides the
+[artifact provenance policy](provenance/README.md), [workflow](provenance/review-workflow.md)
+and review-record schema. Actual asset permissions and admissions still require
+their own evidence:
 third-party code, tag definitions, documentation, sample media, optional databases,
 and generated outputs keep their applicable terms. Record provenance and review
 the intended reuse path before import. MIT licensing of imageinfo does not grant

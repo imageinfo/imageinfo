@@ -35,6 +35,7 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Research sources](research-sources.md) | Primary references, pinned upstream revision, and research limits. |
 | [Open decisions](open-decisions.md) | Unresolved product choices and explicitly deferred implementation decisions. |
 | [MIT license decision](license-decision.md) | Accepted and locked project-license policy and remaining third-party provenance work. |
+| [Artifact provenance](provenance/README.md) | Scoped rights/privacy/notice reviews, release/corpus admission and record schema under the locked MIT project license. |
 | [Local board](local-board.md) | Private planning workflow and service lifecycle. |
 
 Read the RAW scope and product requirements first, then the capabilities and CLI documents.

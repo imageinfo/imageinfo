@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "purpose": "illustrative-provenance-records",
+  "revision": "2026-10-10.1",
+  "records": [
+    {
+      "schemaVersion": 1,
+      "recordKind": "artifact-provenance",
+      "id": "PV-SYNTHETIC-001",
+      "revision": 1,
+      "purpose": "illustration",
+      "artifact": {
+        "category": "synthetic-data",
+        "originType": "project-authored",
+        "origin": "docs/metadata-model/examples/snapshot.synthetic.json",
+        "sourceRevision": "b1697d6a25fc3b144284ca269968aaf55bf065cb",
+        "acquired": true,
+        "acquiredOn": "2026-10-10",
+        "sha256": "bb90eb34712945ae6e95fc6612f7bc5fd0d6b8b8e290b4572679b69f7d8d1185",
+        "byteLength": "36214",
+        "creatorClaim": "imageinfo contributors",
+        "rightsHolderClaim": "Terry Ott and imageinfo contributors, as declared in the project LICENSE",
+        "distributor": "imageinfo project repository"
+      },
+      "intendedUses": [
+        "public-source"
+      ],
+      "evidence": [
+        {
+          "id": "EV-MIT",
+          "kind": "license",
+          "locator": "LICENSE",
+          "sha256": "c95178b925913af098b11cf5eb85125ea86853906f4476d915936162591308d7",
+          "disclosure": "public"
+        },
+        {
+          "id": "EV-SYNTHETIC",
+          "kind": "origin",
+          "locator": "docs/fixture-plan/validation.md#synthetic-artifact-review",
+          "sha256": null,
+          "disclosure": "public"
+        },
+        {
+          "id": "EV-PRIVACY",
+          "kind": "privacy",
+          "locator": "docs/fixture-plan/examples/fixture.synthetic.json",
+          "sha256": "11945611107dcd18eb52ac9c3819cc3eeac7812ecb0bd8b945bfc6f0b2130f4a",
+          "disclosure": "public"
+        },
+        {
+          "id": "EV-NOTICE",
+          "kind": "fulfillment",
+          "locator": "LICENSE",
+          "sha256": "c95178b925913af098b11cf5eb85125ea86853906f4476d915936162591308d7",
+          "disclosure": "public"
+        }
+      ],
+      "rights": {
+        "declaredLicense": "MIT",
+        "selectedBasis": "MIT for existing project-authored synthetic documentation only",
+        "evidenceRefs": [
+          "EV-MIT",
+          "EV-SYNTHETIC"
+        ],
+        "permissions": {
+          "store": "allowed",
+          "analyze": "allowed",
+          "modify": "allowed",
+          "execute": "not-applicable",
+          "redistribute": "allowed",
+          "includeInSource": "allowed",
+          "includeInRelease": "unreviewed",
+          "publishReports": "allowed"
+        }
+      },
+      "privacy": {
+        "status": "cleared",
+        "evidenceRefs": [
+          "EV-PRIVACY"
+        ],
+        "uninspected": [],
+        "controls": []
+      },
+      "obligations": [
+        {
+          "id": "OB-NOTICE",
+          "description": "Retain the existing project copyright and MIT permission notice for this source-tree example.",
+          "evidenceRefs": [
+            "EV-MIT"
+          ],
+          "fulfilled": true,
+          "fulfillmentRefs": [
+            "EV-NOTICE"
+          ]
+        }
+      ],
+      "lineage": [],
+      "review": {
+        "state": "example-only",
+        "reviewer": "Synthetic documentation example; not a corpus admission",
+        "reviewedOn": "2026-10-10",
+        "rationale": "Real hashes identify existing project-authored JSON and notices. No camera media or third-party permission is represented.",
+        "restrictions": [
+          "No runtime fixture phases are authorized by this illustrative record."
+        ]
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordKind": "artifact-provenance",
+      "id": "PV-UNRESOLVED-EXAMPLE",
+      "revision": 1,
+      "purpose": "illustration",
+      "artifact": {
+        "category": "source-code",
+        "originType": "third-party",
+        "origin": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/lib/Image/ExifTool/Canon.pm",
+        "sourceRevision": "2200871d9cef988051d2a99d67df3bda6cbb30a8",
+        "acquired": false,
+        "acquiredOn": null,
+        "sha256": null,
+        "byteLength": null,
+        "creatorClaim": null,
+        "rightsHolderClaim": null,
+        "distributor": "Official exiftool/exiftool repository; hypothetical file import not reviewed"
+      },
+      "intendedUses": [
+        "public-source"
+      ],
+      "evidence": [
+        {
+          "id": "EV-README",
+          "kind": "license",
+          "locator": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/README",
+          "sha256": null,
+          "disclosure": "public"
+        },
+        {
+          "id": "EV-LICENSE",
+          "kind": "license",
+          "locator": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/LICENSE",
+          "sha256": null,
+          "disclosure": "public"
+        }
+      ],
+      "rights": {
+        "declaredLicense": null,
+        "selectedBasis": null,
+        "evidenceRefs": [
+          "EV-README",
+          "EV-LICENSE"
+        ],
+        "permissions": {
+          "store": "unreviewed",
+          "analyze": "unreviewed",
+          "modify": "unreviewed",
+          "execute": "unreviewed",
+          "redistribute": "unreviewed",
+          "includeInSource": "unreviewed",
+          "includeInRelease": "unreviewed",
+          "publishReports": "unreviewed"
+        }
+      },
+      "privacy": {
+        "status": "unreviewed",
+        "evidenceRefs": [],
+        "uninspected": [
+          "Specific proposed artifact and intended distribution have not been reviewed."
+        ],
+        "controls": []
+      },
+      "obligations": [],
+      "lineage": [],
+      "review": {
+        "state": "example-only",
+        "reviewer": null,
+        "reviewedOn": null,
+        "rationale": "Illustrates an unresolved hypothetical import: README states Perl terms and LICENSE contains GPLv3. No chosen per-file reuse basis or asset import is asserted.",
+        "restrictions": [
+          "Not an approved import and not an actual acquisition record."
+        ]
+      }
+    }
+  ]
+}

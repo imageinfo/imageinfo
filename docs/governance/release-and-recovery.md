@@ -22,7 +22,7 @@ readiness gaps, not checkboxes an automation can waive.
 | Scope and decisions | Accepted native behavior, supported camera/mode/tag/operation/storage cells, known gaps, migrations and version/support policy |
 | Source identity | Exact commit/tag intent, clean checkout, reviewed dependencies and source/distribution identities |
 | Reproducible setup | Public commands and pinned environment/dependencies, documented locale/timezone/flags and no private author-machine prerequisite |
-| Provenance | Permitted source/data/dependency terms, required notices, admitted fixture use and release-content review under #0010 |
+| Provenance | Apply the [artifact review workflow](../provenance/review-workflow.md) to exact source/data/dependency terms, required notices, admitted uses and assembled release contents |
 | Correctness | Applicable metadata/model/CLI/schema cases, RAW structure/payload/interpretation evidence, independent validators and scoped platform results |
 | Safety | Refusal paths, stale/concurrent sources, originals, atomic visibility/durability profiles, cancellation, interrupted recovery and privacy limits |
 | Resource behavior | Measured workload/limit evidence from the performance program, including failures and uncertainty |

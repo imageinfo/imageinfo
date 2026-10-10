@@ -1,0 +1,784 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/imageinfo/imageinfo/raw/main/docs/provenance/review-record.schema.json",
+  "title": "Proposed scoped artifact provenance review v1",
+  "description": "Review data, not permission by itself. Evidence authenticity, scope, reference integrity, lineage, obligations and current authorization require semantic/human review.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "recordKind": {
+      "const": "artifact-provenance"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._:-]*$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "purpose": {
+      "enum": [
+        "operational",
+        "illustration"
+      ]
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "enum": [
+            "source-code",
+            "tag-data",
+            "documentation",
+            "camera-media",
+            "synthetic-data",
+            "reference-tool",
+            "dependency",
+            "dataset",
+            "generated-output"
+          ]
+        },
+        "originType": {
+          "enum": [
+            "project-authored",
+            "third-party",
+            "derived"
+          ]
+        },
+        "origin": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceRevision": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "acquired": {
+          "type": "boolean"
+        },
+        "acquiredOn": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "byteLength": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "creatorClaim": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rightsHolderClaim": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "distributor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "category",
+        "originType",
+        "origin",
+        "sourceRevision",
+        "acquired",
+        "acquiredOn",
+        "sha256",
+        "byteLength",
+        "creatorClaim",
+        "rightsHolderClaim",
+        "distributor"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "acquired": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "acquiredOn": {
+                "type": "string",
+                "format": "date"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "byteLength": {
+                "type": "string",
+                "pattern": "^(0|[1-9][0-9]*)$"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "acquiredOn": {
+                "type": "null"
+              },
+              "sha256": {
+                "type": "null"
+              },
+              "byteLength": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "intendedUses": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "enum": [
+          "private-reference",
+          "private-test",
+          "public-source",
+          "public-fixture",
+          "release-bundle",
+          "public-report"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9._:-]*$"
+          },
+          "kind": {
+            "enum": [
+              "origin",
+              "license",
+              "notice",
+              "permission",
+              "privacy",
+              "derivation",
+              "fulfillment"
+            ]
+          },
+          "locator": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "disclosure": {
+            "enum": [
+              "public",
+              "restricted"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "locator",
+          "sha256",
+          "disclosure"
+        ]
+      }
+    },
+    "rights": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "declaredLicense": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "selectedBasis": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9._:-]*$"
+          }
+        },
+        "permissions": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "store": {
+              "enum": [
+                "allowed",
+                "denied",
+                "unreviewed",
+                "not-applicable"
+              ]
+            },
+            "analyze": {
+              "enum": [
+                "allowed",
+                "denied",
+                "unreviewed",
+                "not-applicable"
+              ]
+            },
+            "modify": {
+              "enum": [
+                "allowed",
+                "denied",
+                "unreviewed",
+                "not-applicable"
+              ]
+            },
+            "execute": {
+              "enum": [
+                "allowed",
+                "denied",
+                "unreviewed",
+                "not-applicable"
+              ]
+            },
+            "redistribute": {
+              "enum": [
+                "allowed",
+                "denied",
+                "unreviewed",
+                "not-applicable"
+              ]
+            },
+            "includeInSource": {
+              "enum": [
+                "allowed",
+                "denied",
+                "unreviewed",
+                "not-applicable"
+              ]
+            },
+            "includeInRelease": {
+              "enum": [
+                "allowed",
+                "denied",
+                "unreviewed",
+                "not-applicable"
+              ]
+            },
+            "publishReports": {
+              "enum": [
+                "allowed",
+                "denied",
+                "unreviewed",
+                "not-applicable"
+              ]
+            }
+          },
+          "required": [
+            "store",
+            "analyze",
+            "modify",
+            "execute",
+            "redistribute",
+            "includeInSource",
+            "includeInRelease",
+            "publishReports"
+          ]
+        }
+      },
+      "required": [
+        "declaredLicense",
+        "selectedBasis",
+        "evidenceRefs",
+        "permissions"
+      ]
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "cleared",
+            "restricted",
+            "unreviewed"
+          ]
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9._:-]*$"
+          }
+        },
+        "uninspected": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "controls": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "status",
+        "evidenceRefs",
+        "uninspected",
+        "controls"
+      ]
+    },
+    "obligations": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9._:-]*$"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidenceRefs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._:-]*$"
+            }
+          },
+          "fulfilled": {
+            "type": "boolean"
+          },
+          "fulfillmentRefs": {
+            "type": "array",
+            "minItems": 0,
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._:-]*$"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "description",
+          "evidenceRefs",
+          "fulfilled",
+          "fulfillmentRefs"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "fulfilled": {
+                  "const": true
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "fulfillmentRefs": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9._:-]*$"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "lineage": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "parentId": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9._:-]*$"
+          },
+          "parentSha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "derivationEvidenceRef": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "parentId",
+          "parentSha256",
+          "derivationEvidenceRef"
+        ]
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "enum": [
+            "pending",
+            "approved",
+            "denied",
+            "superseded",
+            "example-only"
+          ]
+        },
+        "reviewer": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reviewedOn": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "restrictions": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "state",
+        "reviewer",
+        "reviewedOn",
+        "rationale",
+        "restrictions"
+      ]
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "recordKind",
+    "id",
+    "revision",
+    "purpose",
+    "artifact",
+    "intendedUses",
+    "evidence",
+    "rights",
+    "privacy",
+    "obligations",
+    "lineage",
+    "review"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "purpose": {
+            "const": "illustration"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "review": {
+            "properties": {
+              "state": {
+                "const": "example-only"
+              }
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "review": {
+            "properties": {
+              "state": {
+                "not": {
+                  "const": "example-only"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "review": {
+            "properties": {
+              "state": {
+                "enum": [
+                  "pending",
+                  "denied"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "rights": {
+            "properties": {
+              "permissions": {
+                "properties": {
+                  "store": {
+                    "not": {
+                      "const": "allowed"
+                    }
+                  },
+                  "analyze": {
+                    "not": {
+                      "const": "allowed"
+                    }
+                  },
+                  "modify": {
+                    "not": {
+                      "const": "allowed"
+                    }
+                  },
+                  "execute": {
+                    "not": {
+                      "const": "allowed"
+                    }
+                  },
+                  "redistribute": {
+                    "not": {
+                      "const": "allowed"
+                    }
+                  },
+                  "includeInSource": {
+                    "not": {
+                      "const": "allowed"
+                    }
+                  },
+                  "includeInRelease": {
+                    "not": {
+                      "const": "allowed"
+                    }
+                  },
+                  "publishReports": {
+                    "not": {
+                      "const": "allowed"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "review": {
+            "properties": {
+              "state": {
+                "const": "approved"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "artifact": {
+            "properties": {
+              "acquired": {
+                "const": true
+              },
+              "rightsHolderClaim": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "rights": {
+            "properties": {
+              "selectedBasis": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidenceRefs": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9._:-]*$"
+                }
+              },
+              "permissions": {
+                "properties": {
+                  "store": {
+                    "const": "allowed"
+                  }
+                }
+              }
+            }
+          },
+          "privacy": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "cleared",
+                  "restricted"
+                ]
+              },
+              "evidenceRefs": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9._:-]*$"
+                }
+              }
+            }
+          },
+          "review": {
+            "properties": {
+              "reviewer": {
+                "type": "string",
+                "minLength": 1
+              },
+              "reviewedOn": {
+                "type": "string",
+                "format": "date"
+              }
+            }
+          },
+          "obligations": {
+            "items": {
+              "properties": {
+                "fulfilled": {
+                  "const": true
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

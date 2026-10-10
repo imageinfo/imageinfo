@@ -74,6 +74,7 @@ It depends on lawful corpus/reference setup (#0010/#0013) and later authorized
 implementation plus relevant writer/integration evidence (#0014/#0015).
 
 The [governance proposal](../../GOVERNANCE.md) is now recorded; actual operational
-readiness remains #0017. The next requirements ticket is #0010, artifact provenance.
+readiness remains #0017. The [artifact provenance policy](../provenance/README.md)
+is now specified; real corpus/reference admission is next evidence work on #0013.
 This card's handoff does not select a language, claim a speed advantage, enable a
 storage profile or pretend that a benchmark can precede its required fixtures.

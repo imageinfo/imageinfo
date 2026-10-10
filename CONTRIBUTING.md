@@ -63,9 +63,10 @@ For documentation changes, before opening a PR:
 | CLI examples/status | [CLI validation](docs/cli-walkthroughs/validation.md) |
 | Request/result compatibility | [Compatibility validation](docs/legacy-compatibility/validation.md) |
 | Measurement methods | [Performance validation](docs/performance/validation.md) |
+| Asset rights/privacy/lineage | [Provenance validation](docs/provenance/validation.md) |
 
-The five current schema files live under `docs/inventory`, `docs/metadata-model`,
-`docs/fixture-plan` and `docs/legacy-compatibility`. Their validation recipes explain
+The six current schema files live under `docs/inventory`, `docs/metadata-model`,
+`docs/fixture-plan`, `docs/legacy-compatibility` and `docs/provenance`. Their validation recipes explain
 what JSON Schema alone cannot prove. Choose available validation tooling for this
 documentation work; that does not choose the product language. There is no software
 test/build gate yet. The first implementation contribution must add reproducible,
@@ -87,7 +88,8 @@ remain unavailable and visible in the capability matrix.
 Do not upload private originals, serial/location metadata, credentials or unlicensed
 samples into issues/PRs. Start with a description, redacted metadata or an owned
 minimal reproducer when possible. Real media admission follows the
-[fixture/provenance plan](docs/fixture-plan/README.md); data may need controlled
+[fixture plan](docs/fixture-plan/README.md) and
+[artifact review workflow](docs/provenance/review-workflow.md); data may need controlled
 access rather than public redistribution.
 
 ## Credit and decisions

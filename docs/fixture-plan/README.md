@@ -45,6 +45,12 @@ recipe and parent hash. No private or third-party media was imported.
 
 ## Admission and storage
 
+The [artifact provenance policy](../provenance/README.md) and
+[review workflow](../provenance/review-workflow.md) now specify the evidence behind
+rights/privacy decisions, derived lineage and release obligations. Link their
+scoped review IDs through the existing rights evidence field; this does not change
+fixture schema version 1 or admit the illustrative examples for experiments.
+
 Use this sequence before a real fixture becomes runnable:
 
 1. **Register and quarantine.** Compute a SHA-256 over the exact received bytes;
@@ -258,18 +264,22 @@ This card specifies the fixture/provenance/evidence contract. It leaves actual
 acquisition, executable/tool hashes, camera observations and runtime parity open.
 The examples demonstrate record integrity, not operational readiness.
 
-The [write-safety proposal](../write-safety/README.md) now defines mutation,
-preservation, refusal and recovery guarantees against these cases. The next
-requirements card is **#0009, governance-proposal**. The
-[performance protocol](../performance/README.md) now defines workload/measurement requirements;
-actual benchmarks and numeric targets remain #0016. The
-[compatibility recommendation](../legacy-compatibility/README.md) now maps the surveyed surfaces. The
-[CLI walkthroughs](../cli-walkthroughs/README.md) now use the fixture/model/safety contracts. Actual storage and writer proofs are backlog work on #0014. #0010 still owns per-artifact provenance
-rules under the locked MIT license; the project-license choice stays settled.
+The [write-safety contract](../write-safety/README.md),
+[CLI walkthroughs](../cli-walkthroughs/README.md),
+[compatibility recommendation](../legacy-compatibility/README.md),
+[performance protocol](../performance/README.md) and
+[artifact provenance policy](../provenance/README.md) now supply the related
+requirements and review procedures. The initial requirements-card deliverables
+are recorded through #0010; they do not establish runtime capability.
+
+The next evidence-work candidate is #0013 corpus-baseline, after policy review and
+lawful input selection. Actual writer/storage proofs remain #0014, compatibility
+gaps #0015, and benchmarks/numeric targets #0016. MIT remains locked.
 
 **#0013, corpus-baseline**, preserves the separate acquisition/reference-observation
-work in backlog until concrete fixture sources and the provenance workflow are
-ready. GAP-001, GAP-005, GAP-007 and GAP-008 remain open under that follow-up.
+work in backlog until concrete lawful sources and scoped review are ready.
+GAP-001, GAP-005, GAP-007, GAP-008 and initial asset-admission GAP-011 remain open
+under that follow-up.
 
 The schema and case plan can be implemented with ordinary test tools after a
 language is selected. Any deliberately unconventional harness choice should explain

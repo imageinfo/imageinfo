@@ -54,14 +54,17 @@ The [CR3 capability inventory](inventory/README.md),
 [CLI walkthroughs](cli-walkthroughs/README.md),
 [compatibility recommendation](legacy-compatibility/README.md),
 [performance protocol](performance/README.md), and
-[governance proposal](../GOVERNANCE.md) provide the current requirements
+[governance proposal](../GOVERNANCE.md) and
+[artifact provenance policy](provenance/README.md) provide the current requirements
 baseline. They include source-backed scope, synthetic examples, schemas, comparison
 rules and remaining evidence gaps. They do not claim implemented capabilities.
 
-The next requirements ticket is **#0010, license-provenance**, covering third-party
-artifact admission under the already locked MIT license. Shared-maintenance policy
-and contributor/release guidance are now proposed; actual appointments, controls,
-security intake and recovery drills remain #0017 governance-readiness work.
+The initial requirements queue is specified through **#0010, artifact provenance**.
+The next evidence-work candidate is **#0013, corpus-baseline**, after policy review
+and lawful input selection. It applies the provenance process to real full RAW
+assets and the actual reference-tool distribution/runtime. #0011 stays deferred
+until Terry explicitly advances implementation selection. Actual appointments,
+controls, security intake and recovery drills remain #0017 governance-readiness work.
 The performance workload/methodology contract is now specified; actual measurements
 and numeric default/target decisions remain backlog #0016, performance-measurements.
 #0015 retains explicit compatibility gaps, including complete saved-plan and

@@ -86,6 +86,13 @@ observed 2026-10-10, for interval timing and process memory/I/O metric distincti
 It defines collection requirements without choosing product APIs or claiming measured
 performance. Actual collector identities and OS equivalence need later validation.
 
+## Artifact provenance follow-up
+
+Card #0010 records the [artifact review policy](provenance/README.md), including
+the pinned upstream README and LICENSE declarations and primary SPDX/Creative
+Commons references observed 2026-10-10. No blanket per-artifact grant or MIT
+relicensing conclusion is inferred; actual import/admission remains separately reviewed.
+
 ## Maintaining the research
 
 Card #0009's [governance runbook](governance/release-and-recovery.md) records primary
