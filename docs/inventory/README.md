@@ -1,6 +1,6 @@
 # EOS R5 CR3 capability inventory v1
 
-Status: **draft for review**, inventory revision `2026-10-10.5`, 2026-10-10. This is the deliverable for board card
+Status: **draft for review**, inventory revision `2026-10-10.6`, 2026-10-10. This is the deliverable for board card
 **#0002, capability-inventory**. Implementation coverage remains zero. No imageinfo
 executable, upstream executable experiment, or media-fixture validation is claimed.
 
@@ -183,7 +183,8 @@ compatibility disposition, an acceptance condition, and remaining audit gaps.
 
 This is a **family-level** map. It does not claim every flag, API option, abbreviation,
 ordering interaction, configuration callback, or report template has been audited.
-That detailed work belongs to GAP-006/card #0007. A friendlier native CLI can change
+[Card #0007](../legacy-compatibility/surface-ledger.md) now classifies the surveyed
+surfaces; exhaustive token/overload/runtime work remains GAP-006/#0015. A friendlier native CLI can change
 spelling while the later full-parity ledger still accounts for every use case.
 
 | ID | Family | Disposition |
@@ -234,19 +235,20 @@ in the JSON. Do not close them merely because a source contains a similarly name
 | GAP-003 | Tag-level and mutation-depth expansion | `capability-inventory` | Expand representative families into occurrence/tag/location rows; audit insertion/deletion flags, defaults and all relevant maker-note subtables without copying upstream tables. |
 | GAP-004 | Saved plans and preservation oracle | `write-validation` | The proposed contract is in docs/write-safety. Demonstrate guarded publication, partial pairs, protected payload/reference/calibration/opaque preservation, properties and recovery on declared profiles. |
 | GAP-005 | Metadata interpretation and conversion evidence | `corpus-baseline` | The proposed model contract is recorded in docs/metadata-model. Exercise its identity, exact value, XMP, encoding, and time rules against real fixtures and per-tag oracle observations before claiming runtime equivalence. |
-| GAP-006 | Legacy argument and API completeness | `legacy-compatibility` | Expand family mapping to every in-scope flag/API option, ordering interaction and executable extension; assign equivalence or an accepted difference. |
+| GAP-006 | Legacy argument and API completeness | `compatibility-evidence` | The surveyed ledger is delivered. Close LG-001/002/003/005/006 with exhaustive cases, accepted differences and actual reference/native evidence before full or drop-in claims. |
 | GAP-007 | Preview variants and nested metadata | `corpus-baseline` | Enumerate THMB, PRVW and JPEG-track assets per full RAW fixture; prove bytes and nested metadata coverage; audit any replacement path separately. |
 | GAP-008 | Repeatable runtime reference | `corpus-baseline` | Choose an executable distribution, hash it and its configuration/dependencies, then run recorded experiments in controlled locale/timezone environments. |
 | GAP-009 | Privacy and sidecar synchronization policy | `write-validation` | General rules are in docs/write-safety. Specify exact pairing/mappings and per-profile field catalogs, then verify removal, residual/uninspectable coverage and synchronization. Logical deletion never proves secure erasure. |
 | GAP-010 | Secondary and later format breadth | `capability-inventory` | Scope and collect independent evidence for C-RAW/DPRAW, other Canon cameras and later RAW families before adding their capabilities. |
 | GAP-011 | Asset licensing and provenance | `license-provenance` | Apply the selected MIT project license while preserving and reviewing separate source/table/fixture terms before importing third-party assets. |
-| GAP-012 | CLI workflows and large-input boundaries | `legacy-compatibility` | Walkthroughs now specify the native recommendation. Complete advanced grammar/mappings, schemas and framing (#0007), measured limits (#0008) and later actual CLI/usability checks. |
+| GAP-012 | CLI workflows and large-input boundaries | `compatibility-evidence` | Native walkthroughs, request/result schemas and filter/session proposals are delivered. Finish plan/session-output schemas and advanced cases (#0015), measured limits (#0008) and actual integration/usability evidence. |
 
 The [proposed metadata contract](../metadata-model/README.md) now supplies the data
 representation. The [fixture plan](../fixture-plan/README.md) and
 [write-safety proposal](../write-safety/README.md) now supply evidence and mutation
 contracts. The [CLI walkthrough recommendation](../cli-walkthroughs/README.md)
-now exercises them; remaining compatibility work is next. The inventory does not complete
+now exercises them, and the [compatibility recommendation](../legacy-compatibility/README.md)
+classifies the surveyed interfaces. Performance requirements are next. The inventory does not complete
 those follow-up cards or authorize language selection.
 
 ## Sources and provenance
@@ -309,3 +311,7 @@ Revision `2026-10-10.5` links the [CLI walkthrough recommendation](../cli-walkth
 and assigns remaining GAP-012 specification work to `legacy-compatibility` (#0007).
 Measured limits and later implementation/usability evidence remain open; no capability
 is promoted beyond specified.
+
+Revision `2026-10-10.6` links the [compatibility recommendation](../legacy-compatibility/README.md)
+and transfers the remaining GAP-006/GAP-012 specifications and runtime proofs to
+`compatibility-evidence` (#0015). Every capability remains specified.

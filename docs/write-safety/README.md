@@ -313,4 +313,6 @@ write-validation, using #0003 for CLI pairing choices. #0013 supplies lawful fix
 implementation work must demonstrate storage and writer profiles before enabling
 replacement. The [CLI walkthroughs](../cli-walkthroughs/README.md) now make the
 user-facing plan, apply, cancellation and recovery flows concrete; all remain
-proposals. #0007 is next for compatibility and remaining protocol specifications.
+proposals. The [compatibility contract](../legacy-compatibility/README.md) adds
+request/result schemas and integration recommendations; full saved-plan serialization
+remains LG-004/#0015. #0008 is next for performance requirements.

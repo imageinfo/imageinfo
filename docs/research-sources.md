@@ -71,6 +71,14 @@ source and Apple archived synchronization guidance. These sources establish
 constraints, not verified imageinfo backends; their revision limits are recorded
 next to the observations.
 
+## Compatibility follow-up
+
+Card #0007 adds a [surface ledger](legacy-compatibility/surface-ledger.md) and
+[validation record](legacy-compatibility/validation.md), observed 2026-10-10 at the
+same pinned ExifTool revision. The review includes all 39 METHODS headings in the
+API reference and the executable configuration example; individual option overloads
+and runtime behavior remain explicit gaps. No upstream implementation was imported.
+
 ## Maintaining the research
 
 1. Record an immutable upstream source revision and the artifact version/hash used

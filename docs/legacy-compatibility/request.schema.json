@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/imageinfo/imageinfo/raw/main/docs/legacy-compatibility/request.schema.json",
+  "title": "Proposed imageinfo native/legacy request and control input v1",
+  "description": "Data only. Kind and entry point must agree. Absolute paths, command grammar, mode, budgets and caller authorization need semantic validation.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/native"
+    },
+    {
+      "$ref": "#/$defs/legacy"
+    },
+    {
+      "$ref": "#/$defs/cancel"
+    },
+    {
+      "$ref": "#/$defs/close"
+    }
+  ],
+  "$defs": {
+    "native": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9._:-]{0,127}$"
+        },
+        "kind": {
+          "const": "native-request"
+        },
+        "workingDirectory": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mode": {
+          "enum": [
+            "read",
+            "preview",
+            "apply"
+          ]
+        },
+        "arguments": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "kind",
+        "workingDirectory",
+        "mode",
+        "arguments"
+      ]
+    },
+    "legacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9._:-]{0,127}$"
+        },
+        "kind": {
+          "const": "legacy-invocation"
+        },
+        "workingDirectory": {
+          "type": "string",
+          "minLength": 1
+        },
+        "arguments": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "kind",
+        "workingDirectory",
+        "arguments"
+      ]
+    },
+    "cancel": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9._:-]{0,127}$"
+        },
+        "kind": {
+          "const": "cancel"
+        },
+        "requestId": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9._:-]{0,127}$"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "kind",
+        "requestId"
+      ]
+    },
+    "close": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9._:-]{0,127}$"
+        },
+        "kind": {
+          "const": "close"
+        },
+        "policy": {
+          "enum": [
+            "drain",
+            "cancel"
+          ]
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "kind",
+        "policy"
+      ]
+    }
+  }
+}

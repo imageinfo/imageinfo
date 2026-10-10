@@ -40,6 +40,7 @@ local board's stable card IDs; board ticket numbers are machine-local.
 | `implementation-selection` | Choose a modern implementation stack later. | Explicitly held in backlog until Terry advances language decisions; evaluate only against accepted requirements. |
 | `corpus-baseline` | Acquire and characterize the first lawful full RAW corpus later. | Backlog follow-up #0013: select concrete permitted sources, admit fixtures, hash the reference distribution/runtime/driver, and capture reference-only observations. |
 | `write-validation` | Prove RAW writer/storage safety later. | Backlog #0014: declared profiles, preservation, interrupted-operation recovery, exact privacy catalogs and independent runtime evidence; no writer enabled by a specification alone. |
+| `compatibility-evidence` | Close the surveyed compatibility gaps later. | Backlog #0015: exhaustive option/API cases, exact legacy serializers, advanced extensions/mappings, complete plan/session-output schemas and real integration evidence; see LG-001–006. |
 | `broader-format-parity` | Preserve the eventual full ExifTool parity goal. | Deferred umbrella only; choose and scope additional format families after RAW milestones, with independent compatibility evidence. |
 
 ## Progress reporting
@@ -48,16 +49,18 @@ The [CR3 capability inventory](inventory/README.md),
 [metadata contract](metadata-model/README.md),
 [fixture and parity plan](fixture-plan/README.md), and
 [safe mutation contract](write-safety/README.md), plus
-[CLI walkthroughs](cli-walkthroughs/README.md), provide the current requirements
+[CLI walkthroughs](cli-walkthroughs/README.md) and
+[compatibility recommendation](legacy-compatibility/README.md), provide the current requirements
 baseline. They include source-backed scope, synthetic examples, schemas, comparison
 rules and remaining evidence gaps. They do not claim implemented capabilities.
 
-The next requirements card is **#0007, legacy-compatibility**, using the native
-CLI recommendation to classify legacy grammar/API/extension behavior and remaining
-protocol details. #0008 supplies measured resource defaults; runtime CLI/usability
-checks follow a separately authorized implementation decision. Actual corpus
-acquisition and reference runs remain
-backlog work on #0013. Storage profiles, writer fault injection and per-profile
+The next requirements card is **#0008, performance-baseline**, to define measured
+workloads, resource defaults and limits against the read/write/session contracts.
+#0015 retains explicit compatibility gaps, including complete saved-plan and
+session-output schemas, exhaustive option interactions and runtime integration.
+Runtime CLI/usability checks follow a separately authorized implementation decision.
+Actual corpus acquisition and reference runs remain backlog work on #0013.
+Storage profiles, writer fault injection and per-profile
 privacy/preservation evidence remain backlog work on #0014, after requirements
 review, lawful fixtures and an explicitly authorized implementation decision.
 No runtime capability has been promoted by the planning artifacts.

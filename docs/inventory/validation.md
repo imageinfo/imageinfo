@@ -21,6 +21,12 @@ evidence to `write-validation` (#0014). Schema/reference/dependency checks and a
 
 ## Results
 
+Revision `2026-10-10.6` was revalidated during card #0007. It links the surveyed
+compatibility ledger and request/result proposals, with GAP-006/GAP-012 remaining
+specification/runtime work assigned to `compatibility-evidence` (#0015). Schema,
+references, dependency checks and all ten negative cases pass; no capabilities
+are promoted beyond specified.
+
 Revision `2026-10-10.5` was revalidated during card #0003. It links the native CLI
 walkthrough recommendation and assigns GAP-012's remaining specification work to
 `legacy-compatibility` (#0007), with measured limits and later runtime/usability
@@ -105,5 +111,6 @@ The original downstream model and fixture specifications are now recorded in
 [metadata-model](../metadata-model/README.md) and [fixture-plan](../fixture-plan/README.md).
 The [write-safety proposal](../write-safety/README.md) supplies mutation requirements.
 The [CLI walkthroughs](../cli-walkthroughs/README.md) now refine the native interface;
-next requirements work is #0007, legacy compatibility; #0013/#0014 retain actual
+the [compatibility recommendation](../legacy-compatibility/README.md) is recorded.
+Next requirements work is #0008, performance; #0013/#0014 retain actual
 corpus and writer/storage evidence. This validation does not close those cards.

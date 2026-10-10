@@ -1,0 +1,560 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/imageinfo/imageinfo/raw/main/docs/legacy-compatibility/result.schema.json",
+  "title": "Proposed imageinfo CLI result records and envelope v1",
+  "description": "CLI request/file/summary records or complete JSON envelope; session control output is separate. Cross-record identity, counters, mode/state, precedence and authority require semantic validation.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/request"
+    },
+    {
+      "$ref": "#/$defs/file"
+    },
+    {
+      "$ref": "#/$defs/summary"
+    },
+    {
+      "$ref": "#/$defs/envelope"
+    }
+  ],
+  "$defs": {
+    "issue": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]*$"
+        },
+        "severity": {
+          "enum": [
+            "warning",
+            "error"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inputId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "path": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "occurrenceRef": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "snapshotId": {
+                  "$ref": "https://github.com/imageinfo/imageinfo/raw/main/docs/metadata-model/metadata-contract.schema.json#/$defs/id"
+                },
+                "occurrenceId": {
+                  "$ref": "https://github.com/imageinfo/imageinfo/raw/main/docs/metadata-model/metadata-contract.schema.json#/$defs/id"
+                }
+              },
+              "required": [
+                "snapshotId",
+                "occurrenceId"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "severity",
+        "message",
+        "inputId",
+        "path",
+        "occurrenceRef"
+      ]
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "publicationMayHaveOccurred": {
+          "type": "boolean"
+        },
+        "changed": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cleanupPending": {
+          "type": "boolean"
+        },
+        "recoveryIds": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9._:-]{0,127}$"
+          }
+        },
+        "notes": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "publicationMayHaveOccurred",
+        "changed",
+        "cleanupPending",
+        "recoveryIds",
+        "notes"
+      ]
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "plan",
+            "report",
+            "extraction"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "retainedPath": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "state": {
+          "enum": [
+            "committed",
+            "failed-before-publish",
+            "recovery-required"
+          ]
+        },
+        "transactionId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recoveryIds": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9._:-]{0,127}$"
+          }
+        }
+      },
+      "required": [
+        "kind",
+        "path",
+        "retainedPath",
+        "state",
+        "transactionId",
+        "recoveryIds"
+      ]
+    },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "requestId": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9._:-]{0,127}$"
+        },
+        "kind": {
+          "const": "request"
+        },
+        "operation": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mode": {
+          "anyOf": [
+            {
+              "enum": [
+                "read",
+                "preview",
+                "apply"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "issues": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/issue"
+          }
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "kind",
+        "operation",
+        "mode",
+        "issues"
+      ]
+    },
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "requestId": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9._:-]{0,127}$"
+        },
+        "kind": {
+          "const": "file"
+        },
+        "inputId": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9._:-]{0,127}$"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state": {
+          "enum": [
+            "read",
+            "previewed",
+            "committed",
+            "unchanged",
+            "skipped-policy",
+            "refused",
+            "conflict",
+            "failed",
+            "failed-before-publish",
+            "cancelled-before-publish",
+            "unattempted",
+            "recovered-original",
+            "recovery-required"
+          ]
+        },
+        "snapshot": {
+          "anyOf": [
+            {
+              "$ref": "https://github.com/imageinfo/imageinfo/raw/main/docs/metadata-model/metadata-contract.schema.json#/$defs/snapshot"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transactionId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "effects": {
+          "$ref": "#/$defs/effects"
+        },
+        "issues": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/issue"
+          }
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "kind",
+        "inputId",
+        "path",
+        "state",
+        "snapshot",
+        "transactionId",
+        "effects",
+        "issues"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "not": {
+                  "const": "recovery-required"
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "effects": {
+                "properties": {
+                  "changed": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "requestId": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9._:-]{0,127}$"
+        },
+        "kind": {
+          "const": "summary"
+        },
+        "exitStatus": {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            130
+          ]
+        },
+        "selectionComplete": {
+          "type": "boolean"
+        },
+        "counts": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "discovered": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "excluded": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "deduplicated": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "byState": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "read": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "previewed": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "committed": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "unchanged": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "skipped-policy": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "refused": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "conflict": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "failed": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "failed-before-publish": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "cancelled-before-publish": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "unattempted": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "recovered-original": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "recovery-required": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": []
+            }
+          },
+          "required": [
+            "discovered",
+            "excluded",
+            "deduplicated",
+            "byState"
+          ]
+        },
+        "artifacts": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/artifact"
+          }
+        },
+        "issues": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/issue"
+          }
+        },
+        "interrupted": {
+          "type": "boolean"
+        },
+        "outputComplete": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "kind",
+        "exitStatus",
+        "selectionComplete",
+        "counts",
+        "artifacts",
+        "issues",
+        "interrupted",
+        "outputComplete"
+      ]
+    },
+    "envelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "requestId": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9._:-]{0,127}$"
+        },
+        "request": {
+          "$ref": "#/$defs/request"
+        },
+        "files": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/file"
+          }
+        },
+        "summary": {
+          "$ref": "#/$defs/summary"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "request",
+        "files",
+        "summary"
+      ]
+    }
+  }
+}

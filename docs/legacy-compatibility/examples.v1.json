@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "revision": "2026-10-10.1",
+  "purpose": "synthetic-compatibility-examples",
+  "requests": [
+    {
+      "schemaVersion": 1,
+      "kind": "native-request",
+      "id": "read-1",
+      "workingDirectory": "/examples/raw",
+      "mode": "read",
+      "arguments": [
+        "metadata",
+        "read",
+        "--values",
+        "all",
+        "photo.cr3"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "native-request",
+      "id": "preview-1",
+      "workingDirectory": "/examples/raw",
+      "mode": "preview",
+      "arguments": [
+        "metadata",
+        "write",
+        "--set",
+        "XMP-xmp:Label=Reviewed",
+        "photo.xmp"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "native-request",
+      "id": "apply-1",
+      "workingDirectory": "/examples/raw",
+      "mode": "apply",
+      "arguments": [
+        "plan",
+        "apply",
+        "edit.plan.json"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "legacy-invocation",
+      "id": "migration-delete-label",
+      "workingDirectory": "/examples/raw",
+      "arguments": [
+        "-XMP-xmp:Label=",
+        "photo.xmp"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "cancel",
+      "id": "cancel-1",
+      "requestId": "read-1"
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "close",
+      "id": "close-1",
+      "policy": "drain"
+    }
+  ],
+  "filterCases": [
+    {
+      "id": "FLT-001",
+      "operator": "not",
+      "operands": [
+        "unknown"
+      ],
+      "expected": "unknown"
+    },
+    {
+      "id": "FLT-002",
+      "operator": "and",
+      "operands": [
+        "false",
+        "unknown"
+      ],
+      "expected": "false"
+    },
+    {
+      "id": "FLT-003",
+      "operator": "and",
+      "operands": [
+        "true",
+        "unknown"
+      ],
+      "expected": "unknown"
+    },
+    {
+      "id": "FLT-004",
+      "operator": "or",
+      "operands": [
+        "true",
+        "unknown"
+      ],
+      "expected": "true"
+    },
+    {
+      "id": "FLT-005",
+      "operator": "or",
+      "operands": [
+        "false",
+        "unknown"
+      ],
+      "expected": "unknown"
+    },
+    {
+      "id": "FLT-006",
+      "operator": "exists",
+      "observedCount": 0,
+      "complete": false,
+      "expected": "unknown"
+    },
+    {
+      "id": "FLT-007",
+      "operator": "exists",
+      "observedCount": 0,
+      "complete": true,
+      "expected": "false"
+    },
+    {
+      "id": "FLT-008",
+      "operator": "exists",
+      "observedCount": 1,
+      "complete": false,
+      "expected": "true"
+    },
+    {
+      "id": "FLT-009",
+      "operator": "single-value",
+      "observedCount": 2,
+      "complete": true,
+      "available": true,
+      "expected": "unknown"
+    },
+    {
+      "id": "FLT-010",
+      "operator": "single-value",
+      "observedCount": 1,
+      "complete": false,
+      "available": true,
+      "expected": "unknown"
+    },
+    {
+      "id": "FLT-011",
+      "operator": "single-value",
+      "observedCount": 1,
+      "complete": true,
+      "available": false,
+      "expected": "unknown"
+    },
+    {
+      "id": "FLT-012",
+      "operator": "single-value",
+      "observedCount": 1,
+      "complete": true,
+      "available": true,
+      "expected": "available"
+    }
+  ],
+  "sessionCases": [
+    {
+      "id": "SES-001",
+      "condition": "valid-read",
+      "expected": "admit"
+    },
+    {
+      "id": "SES-002",
+      "condition": "apply-not-authorized",
+      "expected": "request-error-2"
+    },
+    {
+      "id": "SES-003",
+      "condition": "duplicate-id",
+      "expected": "reject-no-replay"
+    },
+    {
+      "id": "SES-004",
+      "condition": "queue-full",
+      "expected": "request-error-2"
+    },
+    {
+      "id": "SES-005",
+      "condition": "cancel-active",
+      "expected": "ack-then-safe-boundary"
+    },
+    {
+      "id": "SES-006",
+      "condition": "cancel-queued",
+      "expected": "request-summary-130"
+    },
+    {
+      "id": "SES-007",
+      "condition": "cancel-finished",
+      "expected": "already-finished-no-undo"
+    },
+    {
+      "id": "SES-008",
+      "condition": "close-drain",
+      "expected": "finish-admitted"
+    },
+    {
+      "id": "SES-009",
+      "condition": "clean-eof",
+      "expected": "finish-admitted"
+    },
+    {
+      "id": "SES-010",
+      "condition": "malformed-frame",
+      "expected": "stop-admission-safe-close"
+    },
+    {
+      "id": "SES-011",
+      "condition": "broken-stdout",
+      "expected": "stop-scheduling-preserve-outcomes"
+    },
+    {
+      "id": "SES-012",
+      "condition": "ordinary-request-failed",
+      "expected": "next-request-isolated"
+    }
+  ]
+}

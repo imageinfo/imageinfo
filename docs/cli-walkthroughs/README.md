@@ -64,9 +64,10 @@ The intent uses MDL-018's exact `(snapshotRef, occurrenceRef)` identity; trusted
 sources are reread and rebound before a plan can exist. The target operand bounds
 allowed destinations, and extra targets referenced by the intent are rejected.
 Snapshot IDs are not reusable selectors against an unrelated later read. Synthetic
-snapshots cannot authorize a real write. General expressions (`--where`), advanced
-typed assignment grammar and executable extensions remain #0007 work; an unsupported
-grammar must fail, not be passed to a shell.
+snapshots cannot authorize a real write. A
+[bounded pure grammar](../legacy-compatibility/migration.md) is now proposed for
+`--where`. Advanced typed assignment and executable extensions remain #0015 work;
+an unsupported grammar must fail, not be passed to a shell.
 
 `--set NAME=TEXT` splits at the first equals sign and supplies string text to a
 registered string-valued field; it does not infer numbers, dates or booleans. Empty
@@ -222,7 +223,8 @@ bounded private spill storage may be needed. Hitting its limit fails without med
 changes. Streaming reads can emit earlier results, but limit failures downgrade
 coverage and return failure. Bound ordered-output buffering; apply backpressure
 rather than silently reordering records or allocating unbounded memory. Numeric
-performance targets and persistent request framing remain #0008/#0007 work.
+performance targets remain #0008 work. [Persistent framing](../legacy-compatibility/integration.md)
+is now proposed; runtime validation remains #0015.
 
 **CW-012 — Application binds what was reviewed.** Saved plans name exact sources,
 destinations, policy/registry revisions, mapping losses and all effects under WS-002.

@@ -123,7 +123,7 @@ Help is available offline, without credentials, network requests, or reading med
 | Help/discovery | `help`, `--help`, `--version` | No operation side effects; `help` before inputs is reserved syntax; literal filenames named `help` use `--`. |
 | Interaction | `--interactive`, `--no-interactive`, `--menu-style line` | Explicit opt-in, terminal-only; no implicit prompt on an invalid automated command. |
 | Presentation | `--output text\|table\|json\|jsonl\|csv\|xml`, `--color auto\|always\|never`, `--no-pager`, `--quiet`, `--no-progress` | Unsupported output formats fail clearly for that operation; structured output overrides presentation decoration. |
-| Selection | repeated `--tag`, `--exclude-tag`, `--group`, `--recursive`, `--include-hidden`, `--follow-symlinks`, `--where`, `--with-sidecars`, `--pairing-file <path>` | RAW/XMP pairing is explicit; canonical identity is preserved; expressions have a documented safe grammar, never implicit shell execution. |
+| Selection | repeated `--tag`, `--exclude-tag`, `--group`, `--recursive`, `--include-hidden`, `--follow-symlinks`, `--where <expression>`, `--with-sidecars`, `--pairing-file <path>` | RAW/XMP pairing is explicit; canonical identity is preserved; expressions have a documented safe grammar, never implicit shell execution. |
 | Input | `--files-from <manifest>`, `--files-from0 <path-list>`, `--request-file <document>`, `--` | Define formats explicitly; never split newline-containing paths heuristically. |
 | Read representation | `--values raw\|normalized\|display\|all`, `--unknown`, `--embedded`, `--max-depth` | Original precision and provenance remain accessible; fast/partial modes state omissions. |
 | Mutation | `--dry-run`, `--apply`, `--save-plan <path>`, `--backup-dir <path>`, `--no-backup`, `--on-error stop\|continue`, `--target embedded\|sidecar`, `--sidecar-dir <path>` | Preview default; RAW embedded writes require per-variant capability; sidecar targeting is explicit; `--no-backup` cannot be inherited; continue is explicit. |
@@ -148,7 +148,7 @@ With redirected streams, requests fail or run in documented batch mode. Interact
 
 ## Workflow examples
 
-All examples below illustrate the proposed contract. Relative filenames are example inputs. Use `--values-file` and `--request-file` for complex values to avoid shell-specific escaping. The documentation will supply separate quoting examples for PowerShell and POSIX shells.
+All examples below illustrate the proposed contract. Relative filenames are example inputs. Use typed intent/snapshot files for complex values and [token-array requests](legacy-compatibility/integration.md) to avoid shell-specific command splitting. The documentation will supply separate quoting examples for PowerShell and POSIX shells.
 
 Inspect a RAW file and discover a tag without knowing its storage details:
 
@@ -239,8 +239,10 @@ It must not flatten the snapshot into a single object keyed by tag name. JSONL c
 emit per-file snapshot payloads with the same model revision; schema versions for
 the envelope and metadata model are independently named. Field placement, stream
 completeness, artifact outcomes and status precedence are
-now proposed in the [CLI result contract](cli-walkthroughs/results.md); an executable
-schema and persistent request framing remain follow-up work.
+now proposed in the [CLI result contract](cli-walkthroughs/results.md). A machine-readable
+CLI result schema and persistent request framing are proposed in
+[the compatibility contract](legacy-compatibility/integration.md). Complete saved-plan
+and session-control-output schemas remain explicit follow-up gaps.
 
 A requested output view may omit unavailable/unrequested data only with explicit
 coverage and value states. Large binary values remain bounded references unless
@@ -292,4 +294,4 @@ Unknown RAW metadata blocks, decoding-critical make/model and maker notes, embed
 
 ## Remaining specification decisions
 
-Card #0003 now proposes pairing/discovery, one explicit sync mapping, recovery commands, JSON/JSONL result placement and mixed-error exit precedence. Its [walkthroughs](cli-walkthroughs/walkthroughs.md) cover cancellation and partial outcomes. #0007 retains expression grammar, advanced mappings, plan/result schemas, persistent framing and legacy surface completeness; #0008 retains measured limits. Real tag-level write evidence, storage profiles and CLI usability/integration checks remain future work. RAW-focused compatibility guidance is separate from eventual full ExifTool parity. Decide aliases only after testing the canonical tree with users. CLI experiments can be mockups or specifications; they do not require selecting an implementation language.
+Card #0003 now proposes pairing/discovery, one explicit sync mapping, recovery commands, JSON/JSONL result placement and mixed-error exit precedence. Its [walkthroughs](cli-walkthroughs/walkthroughs.md) cover cancellation and partial outcomes. [Card #0007](legacy-compatibility/README.md) now supplies a pure-filter grammar, request/result schemas, persistent framing and a surveyed surface ledger. Advanced mappings, exhaustive option behavior, complete plan/session-output schemas and runtime evidence remain #0015; #0008 retains measured limits. Real tag-level write evidence, storage profiles and CLI usability/integration checks remain future work. RAW-focused compatibility guidance is separate from eventual full ExifTool parity. Decide aliases only after testing the canonical tree with users. CLI experiments can be mockups or specifications; they do not require selecting an implementation language.

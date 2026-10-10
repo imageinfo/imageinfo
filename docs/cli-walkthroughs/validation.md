@@ -82,10 +82,10 @@ Internal links and Git whitespace checks were included in handoff verification.
 
 ## Remaining work and ownership
 
-**#0007, legacy-compatibility, is next on the requirements path.** Use these native
-choices to classify legacy scripts/API/extension workflows and close the remaining
-GAP-012 specifications: expression grammar, richer mappings, plan/result schemas,
-request-file semantics and persistent framing. Advanced CSV/XML reports and alias
+**#0007 now supplies the [compatibility recommendation](../legacy-compatibility/README.md)**,
+including a pure filter grammar, request/result schemas, request-file semantics and
+persistent framing. #0015 retains the explicit remaining GAP-006/GAP-012 work,
+including full saved-plan/session-output schemas, advanced mappings and runtime proofs. Advanced CSV/XML reports and alias
 policy still need concrete compatibility cases; do not infer them from the tree.
 
 **#0008** owns measured default limits and performance budgets. **#0010/#0013** own

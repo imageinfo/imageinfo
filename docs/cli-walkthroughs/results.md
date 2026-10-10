@@ -2,8 +2,10 @@
 
 Proposal `2026-10-10.1`; no executable/protocol implementation. This specifies the
 observable CLI boundary used by the [walkthroughs](walkthroughs.md), not internal
-types. Full plan serialization and persistent multi-request framing remain #0007
-work. The [metadata schema](../metadata-model/metadata-contract.schema.json) remains
+types. [Card #0007](../legacy-compatibility/integration.md) now supplies request-file
+and persistent-session proposals plus a [result schema](../legacy-compatibility/result.schema.json).
+Complete saved-plan/session-output schemas and runtime integration remain #0015 work.
+The [metadata schema](../metadata-model/metadata-contract.schema.json) remains
 the authority for snapshot payloads.
 
 ## Streams and record fields

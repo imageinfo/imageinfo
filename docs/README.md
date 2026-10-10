@@ -23,6 +23,7 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [CLI requirements](cli-requirements.md) | Hierarchical help, optional menus, proposed commands, scripting, and mutation UX. |
 | [CLI walkthroughs](cli-walkthroughs/README.md) | Eight concrete user journeys, help/menu recommendations, pairing, scripting, recovery and exit precedence for card #0003. |
 | [Compatibility and validation](compatibility-and-validation.md) | Evidence needed to claim parity, fixture strategy, and write-safety tests. |
+| [RAW compatibility recommendation](legacy-compatibility/README.md) | CLI/API surface ledger, migration and expression/trust choices, request/result schemas and persistent-session proposal for card #0007. |
 | [Architecture principles](architecture-principles.md) | Language-independent boundaries and data requirements. |
 | [Roadmap](roadmap.md) | Staged delivery, review gates, and the next requirements work. |
 | [Research sources](research-sources.md) | Primary references, pinned upstream revision, and research limits. |

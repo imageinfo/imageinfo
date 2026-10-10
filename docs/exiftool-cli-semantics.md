@@ -6,6 +6,10 @@ Research date: **2026-10-10**. This document records the observed upstream **13.
 
 “Workalike” needs two decisions kept separate: equivalent metadata workflows, and acceptance of ExifTool's existing argument grammar. RAW workflow parity is the initial target, followed by eventual full functional parity. Byte-for-byte CLI compatibility, including abbreviations and legacy option interactions, remains a proposed compatibility surface to specify explicitly.
 
+The subsequent [compatibility recommendation](legacy-compatibility/README.md)
+classifies all surveyed MAP families and API method headings. It recommends native
+workflows and nonexecuting migration reports; it does not claim drop-in parity.
+
 ## Verified: the grammar encodes operations
 
 The [CR3 inventory](inventory/README.md) now maps relevant CLI/API families to
