@@ -1,0 +1,46 @@
+{
+  "$schema": "../metadata-contract.schema.json",
+  "schemaVersion": 1,
+  "kind": "metadata-edit-intent",
+  "id": "synthetic-copy-intent",
+  "snapshotRef": "synthetic-r5-snapshot-1",
+  "purpose": "intent-only",
+  "operations": [
+    {
+      "kind": "copy",
+      "sourceOccurrenceRef": "occ-artist",
+      "sourceView": "normalized",
+      "target": {
+        "kind": "create",
+        "documentRef": "doc-xmp",
+        "tag": {
+          "namespace": "http://purl.org/dc/elements/1.1/",
+          "nativeId": "creator",
+          "name": "Creator",
+          "definitionRef": "proposal:xmp-dc/creator@1"
+        },
+        "path": [
+          {
+            "kind": "field",
+            "name": "dc:creator",
+            "index": 0
+          }
+        ]
+      },
+      "mappingRef": "proposal:string-to-creator-sequence-v1",
+      "lossPolicy": "refuse"
+    },
+    {
+      "kind": "set",
+      "target": {
+        "kind": "existing",
+        "occurrenceRef": "occ-sidecar-label"
+      },
+      "inputView": "normalized",
+      "value": {
+        "kind": "string",
+        "text": "Reviewed"
+      }
+    }
+  ]
+}

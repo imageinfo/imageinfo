@@ -1,0 +1,1580 @@
+{
+  "$schema": "../metadata-contract.schema.json",
+  "schemaVersion": 1,
+  "kind": "metadata-snapshot",
+  "id": "synthetic-r5-snapshot-1",
+  "basis": "synthetic",
+  "producer": {
+    "modelRevision": "2026-10-10.1",
+    "readerRevision": "design-example-only",
+    "registryRevision": "proposed-definitions-v1"
+  },
+  "sources": [
+    {
+      "id": "src-raw",
+      "role": "raw",
+      "displayPath": "synthetic-r5.cr3",
+      "byteLength": "8192",
+      "identity": {
+        "kind": "synthetic",
+        "label": "No camera file exists; offsets and values are invented for contract tests."
+      }
+    },
+    {
+      "id": "src-sidecar",
+      "role": "sidecar",
+      "displayPath": "synthetic-r5.xmp",
+      "byteLength": "2048",
+      "identity": {
+        "kind": "synthetic",
+        "label": "No sidecar file exists; this is a model example."
+      }
+    }
+  ],
+  "documents": [
+    {
+      "id": "doc-raw",
+      "sourceRef": "src-raw",
+      "kind": "raw",
+      "format": "CR3",
+      "parentDocumentRef": null,
+      "resourceRef": null,
+      "path": []
+    },
+    {
+      "id": "doc-xmp",
+      "sourceRef": "src-sidecar",
+      "kind": "sidecar",
+      "format": "XMP",
+      "parentDocumentRef": null,
+      "resourceRef": null,
+      "path": []
+    },
+    {
+      "id": "doc-preview",
+      "sourceRef": "src-raw",
+      "kind": "preview",
+      "format": "JPEG",
+      "parentDocumentRef": "doc-raw",
+      "resourceRef": "res-preview",
+      "path": [
+        {
+          "kind": "box",
+          "name": "uuid",
+          "index": 0
+        },
+        {
+          "kind": "box",
+          "name": "PRVW",
+          "index": 0
+        }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "res-iso",
+      "byteLength": "2",
+      "mediaType": null,
+      "sha256": null,
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "space": "source",
+            "ref": "src-raw",
+            "offset": "100",
+            "length": "2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "res-ctmd-iso",
+      "byteLength": "4",
+      "mediaType": null,
+      "sha256": null,
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "space": "source",
+            "ref": "src-raw",
+            "offset": "512",
+            "length": "4"
+          }
+        ]
+      }
+    },
+    {
+      "id": "res-exposure",
+      "byteLength": "8",
+      "mediaType": null,
+      "sha256": null,
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "space": "source",
+            "ref": "src-raw",
+            "offset": "120",
+            "length": "8"
+          }
+        ]
+      }
+    },
+    {
+      "id": "res-date",
+      "byteLength": "20",
+      "mediaType": null,
+      "sha256": null,
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "space": "source",
+            "ref": "src-raw",
+            "offset": "200",
+            "length": "20"
+          }
+        ]
+      }
+    },
+    {
+      "id": "res-subsec",
+      "byteLength": "4",
+      "mediaType": null,
+      "sha256": null,
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "space": "source",
+            "ref": "src-raw",
+            "offset": "224",
+            "length": "4"
+          }
+        ]
+      }
+    },
+    {
+      "id": "res-container-date",
+      "byteLength": "4",
+      "mediaType": null,
+      "sha256": null,
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "space": "source",
+            "ref": "src-raw",
+            "offset": "64",
+            "length": "4"
+          }
+        ]
+      }
+    },
+    {
+      "id": "res-artist",
+      "byteLength": "21",
+      "mediaType": null,
+      "sha256": null,
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "space": "source",
+            "ref": "src-raw",
+            "offset": "256",
+            "length": "21"
+          }
+        ]
+      }
+    },
+    {
+      "id": "res-preview",
+      "byteLength": "128",
+      "mediaType": "image/jpeg",
+      "sha256": null,
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "space": "source",
+            "ref": "src-raw",
+            "offset": "2048",
+            "length": "128"
+          }
+        ]
+      }
+    },
+    {
+      "id": "res-preview-artist",
+      "byteLength": "17",
+      "mediaType": null,
+      "sha256": null,
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "space": "resource",
+            "ref": "res-preview",
+            "offset": "32",
+            "length": "17"
+          }
+        ]
+      }
+    },
+    {
+      "id": "res-unknown",
+      "byteLength": "32",
+      "mediaType": null,
+      "sha256": null,
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "space": "source",
+            "ref": "src-raw",
+            "offset": "4096",
+            "length": "32"
+          }
+        ]
+      }
+    },
+    {
+      "id": "res-sidecar",
+      "byteLength": "2048",
+      "mediaType": "application/rdf+xml",
+      "sha256": null,
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "space": "source",
+            "ref": "src-sidecar",
+            "offset": "0",
+            "length": "2048"
+          }
+        ]
+      }
+    },
+    {
+      "id": "res-empty",
+      "byteLength": "0",
+      "mediaType": "application/octet-stream",
+      "sha256": null,
+      "content": {
+        "kind": "inline-base64",
+        "data": ""
+      }
+    },
+    {
+      "id": "res-decoded",
+      "byteLength": "64",
+      "mediaType": null,
+      "sha256": null,
+      "content": {
+        "kind": "transformed",
+        "inputResourceRef": "res-unknown",
+        "transformRef": "proposal:synthetic-decoder-not-executable"
+      }
+    },
+    {
+      "id": "res-decoded-field",
+      "byteLength": "6",
+      "mediaType": null,
+      "sha256": null,
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "space": "resource",
+            "ref": "res-decoded",
+            "offset": "8",
+            "length": "6"
+          }
+        ]
+      }
+    },
+    {
+      "id": "res-fragments",
+      "byteLength": "8",
+      "mediaType": null,
+      "sha256": null,
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "space": "source",
+            "ref": "src-raw",
+            "offset": "3000",
+            "length": "4"
+          },
+          {
+            "space": "source",
+            "ref": "src-raw",
+            "offset": "4000",
+            "length": "4"
+          }
+        ]
+      }
+    }
+  ],
+  "occurrences": [
+    {
+      "id": "occ-exif-iso",
+      "documentRef": "doc-raw",
+      "tag": {
+        "namespace": "exif",
+        "nativeId": "34855",
+        "name": "ISO",
+        "definitionRef": "proposal:exif/ISO@1"
+      },
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "exif"
+        }
+      ],
+      "path": [
+        {
+          "kind": "box",
+          "name": "moov",
+          "index": 0
+        },
+        {
+          "kind": "box",
+          "name": "uuid",
+          "index": 0
+        },
+        {
+          "kind": "box",
+          "name": "CMT2",
+          "index": 0
+        },
+        {
+          "kind": "ifd",
+          "name": "ExifIFD",
+          "index": 0
+        },
+        {
+          "kind": "tag",
+          "name": "34855",
+          "index": 0
+        }
+      ],
+      "ordinal": 0,
+      "origin": {
+        "kind": "stored",
+        "resourceRef": "res-iso",
+        "encoding": "uint16",
+        "byteOrder": "little"
+      },
+      "values": {
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "integer",
+            "decimal": "400"
+          }
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "integer",
+            "decimal": "400"
+          }
+        },
+        "normalization": {
+          "ruleRef": "identity",
+          "reversibility": "exact",
+          "assumptions": [],
+          "dependencies": [],
+          "unit": null
+        },
+        "display": {
+          "state": "unavailable",
+          "reason": "Not requested in this synthetic example."
+        }
+      },
+      "capabilityRefs": [
+        "CAP-004",
+        "CAP-013"
+      ],
+      "issueRefs": []
+    },
+    {
+      "id": "occ-ctmd-iso",
+      "documentRef": "doc-raw",
+      "tag": {
+        "namespace": "canon:ctmd",
+        "nativeId": "ExposureInfo/2",
+        "name": "ISO",
+        "definitionRef": "proposal:canon:ctmd/ISO@1"
+      },
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "canon:ctmd"
+        }
+      ],
+      "path": [
+        {
+          "kind": "record",
+          "name": "CTMD",
+          "index": 0
+        },
+        {
+          "kind": "record",
+          "name": "ExposureInfo",
+          "index": 0
+        },
+        {
+          "kind": "field",
+          "name": "2",
+          "index": 0
+        }
+      ],
+      "ordinal": 1,
+      "origin": {
+        "kind": "stored",
+        "resourceRef": "res-ctmd-iso",
+        "encoding": "uint32",
+        "byteOrder": "little"
+      },
+      "values": {
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "integer",
+            "decimal": "800"
+          }
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "integer",
+            "decimal": "800"
+          }
+        },
+        "normalization": {
+          "ruleRef": "identity",
+          "reversibility": "exact",
+          "assumptions": [],
+          "dependencies": [],
+          "unit": null
+        },
+        "display": {
+          "state": "unavailable",
+          "reason": "Not requested in this synthetic example."
+        }
+      },
+      "capabilityRefs": [
+        "CAP-008",
+        "CAP-013"
+      ],
+      "issueRefs": []
+    },
+    {
+      "id": "occ-exposure",
+      "documentRef": "doc-raw",
+      "tag": {
+        "namespace": "exif",
+        "nativeId": "33434",
+        "name": "ExposureTime",
+        "definitionRef": "proposal:exif/ExposureTime@1"
+      },
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "exif"
+        }
+      ],
+      "path": [
+        {
+          "kind": "box",
+          "name": "moov",
+          "index": 0
+        },
+        {
+          "kind": "box",
+          "name": "uuid",
+          "index": 0
+        },
+        {
+          "kind": "box",
+          "name": "CMT2",
+          "index": 0
+        },
+        {
+          "kind": "ifd",
+          "name": "ExifIFD",
+          "index": 0
+        },
+        {
+          "kind": "tag",
+          "name": "33434",
+          "index": 0
+        }
+      ],
+      "ordinal": 2,
+      "origin": {
+        "kind": "stored",
+        "resourceRef": "res-exposure",
+        "encoding": "rational32u-pair",
+        "byteOrder": "little"
+      },
+      "values": {
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "rational",
+            "numerator": "2",
+            "denominator": "500"
+          }
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "250"
+          }
+        },
+        "normalization": {
+          "ruleRef": "proposal:reduce-rational-v1",
+          "reversibility": "lossy",
+          "assumptions": [
+            "Numeric value is exact; original numerator/denominator pair is only retained in raw/storage."
+          ],
+          "dependencies": [],
+          "unit": "s"
+        },
+        "display": {
+          "state": "present",
+          "text": "1/250 s",
+          "locale": "en-US",
+          "timeZone": null,
+          "formatterRef": "proposal:exposure-display-v1"
+        }
+      },
+      "capabilityRefs": [
+        "CAP-004",
+        "CAP-010"
+      ],
+      "issueRefs": []
+    },
+    {
+      "id": "occ-subsec",
+      "documentRef": "doc-raw",
+      "tag": {
+        "namespace": "exif",
+        "nativeId": "37521",
+        "name": "SubSecTimeOriginal",
+        "definitionRef": "proposal:exif/SubSecTimeOriginal@1"
+      },
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "exif"
+        }
+      ],
+      "path": [
+        {
+          "kind": "box",
+          "name": "moov",
+          "index": 0
+        },
+        {
+          "kind": "box",
+          "name": "uuid",
+          "index": 0
+        },
+        {
+          "kind": "box",
+          "name": "CMT2",
+          "index": 0
+        },
+        {
+          "kind": "ifd",
+          "name": "ExifIFD",
+          "index": 0
+        },
+        {
+          "kind": "tag",
+          "name": "37521",
+          "index": 0
+        }
+      ],
+      "ordinal": 3,
+      "origin": {
+        "kind": "stored",
+        "resourceRef": "res-subsec",
+        "encoding": "ASCII",
+        "byteOrder": "not-applicable"
+      },
+      "values": {
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "120"
+          }
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "120"
+          }
+        },
+        "normalization": {
+          "ruleRef": "identity",
+          "reversibility": "exact",
+          "assumptions": [],
+          "dependencies": [],
+          "unit": null
+        },
+        "display": {
+          "state": "unavailable",
+          "reason": "Not requested in this synthetic example."
+        }
+      },
+      "capabilityRefs": [],
+      "issueRefs": []
+    },
+    {
+      "id": "occ-capture-time",
+      "documentRef": "doc-raw",
+      "tag": {
+        "namespace": "exif",
+        "nativeId": "36867",
+        "name": "DateTimeOriginal",
+        "definitionRef": "proposal:exif/DateTimeOriginal@1"
+      },
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "exif"
+        }
+      ],
+      "path": [
+        {
+          "kind": "box",
+          "name": "moov",
+          "index": 0
+        },
+        {
+          "kind": "box",
+          "name": "uuid",
+          "index": 0
+        },
+        {
+          "kind": "box",
+          "name": "CMT2",
+          "index": 0
+        },
+        {
+          "kind": "ifd",
+          "name": "ExifIFD",
+          "index": 0
+        },
+        {
+          "kind": "tag",
+          "name": "36867",
+          "index": 0
+        }
+      ],
+      "ordinal": 4,
+      "origin": {
+        "kind": "stored",
+        "resourceRef": "res-date",
+        "encoding": "ASCII",
+        "byteOrder": "not-applicable"
+      },
+      "values": {
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "2026:10:10 10:15:16"
+          }
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "datetime",
+            "local": "2026-10-10T10:15:16",
+            "precision": "second",
+            "fraction": "120",
+            "zone": {
+              "kind": "absent"
+            },
+            "instant": null
+          }
+        },
+        "normalization": {
+          "ruleRef": "proposal:exif-capture-time-v1",
+          "reversibility": "lossy",
+          "assumptions": [
+            "Offset absent; no host timezone applied.",
+            "Fraction supplied by explicit SubSecTimeOriginal dependency."
+          ],
+          "dependencies": [
+            "occ-subsec"
+          ],
+          "unit": null
+        },
+        "display": {
+          "state": "unavailable",
+          "reason": "Not requested in this synthetic example."
+        }
+      },
+      "capabilityRefs": [
+        "CAP-004",
+        "CAP-009",
+        "CAP-010"
+      ],
+      "issueRefs": []
+    },
+    {
+      "id": "occ-container-time",
+      "documentRef": "doc-raw",
+      "tag": {
+        "namespace": "iso-bmff",
+        "nativeId": "mvhd:creation_time",
+        "name": "CreateDate",
+        "definitionRef": "proposal:iso-bmff/CreateDate@1"
+      },
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "iso-bmff"
+        }
+      ],
+      "path": [
+        {
+          "kind": "box",
+          "name": "moov",
+          "index": 0
+        },
+        {
+          "kind": "box",
+          "name": "mvhd",
+          "index": 0
+        },
+        {
+          "kind": "field",
+          "name": "creation_time",
+          "index": 0
+        }
+      ],
+      "ordinal": 5,
+      "origin": {
+        "kind": "stored",
+        "resourceRef": "res-container-date",
+        "encoding": "uint32-seconds-since-1904",
+        "byteOrder": "big"
+      },
+      "values": {
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "integer",
+            "decimal": "3874486516"
+          }
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "datetime",
+            "local": "2026-10-10T14:15:16",
+            "precision": "second",
+            "fraction": null,
+            "zone": {
+              "kind": "offset",
+              "minutes": 0
+            },
+            "instant": "2026-10-10T14:15:16Z"
+          }
+        },
+        "normalization": {
+          "ruleRef": "proposal:cr3-container-utc-v1",
+          "reversibility": "exact",
+          "assumptions": [
+            "CR3-specific interpretation; source integer is retained."
+          ],
+          "dependencies": [],
+          "unit": null
+        },
+        "display": {
+          "state": "present",
+          "text": "2026-10-10 10:15:16 -04:00",
+          "locale": "en-US",
+          "timeZone": "America/New_York",
+          "formatterRef": "proposal:local-date-display-v1"
+        }
+      },
+      "capabilityRefs": [
+        "CAP-009"
+      ],
+      "issueRefs": []
+    },
+    {
+      "id": "occ-artist",
+      "documentRef": "doc-raw",
+      "tag": {
+        "namespace": "exif",
+        "nativeId": "315",
+        "name": "Artist",
+        "definitionRef": "proposal:exif/Artist@1"
+      },
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "exif"
+        }
+      ],
+      "path": [
+        {
+          "kind": "box",
+          "name": "moov",
+          "index": 0
+        },
+        {
+          "kind": "box",
+          "name": "uuid",
+          "index": 0
+        },
+        {
+          "kind": "box",
+          "name": "CMT1",
+          "index": 0
+        },
+        {
+          "kind": "ifd",
+          "name": "IFD0",
+          "index": 0
+        },
+        {
+          "kind": "tag",
+          "name": "315",
+          "index": 0
+        }
+      ],
+      "ordinal": 6,
+      "origin": {
+        "kind": "stored",
+        "resourceRef": "res-artist",
+        "encoding": "UTF-8",
+        "byteOrder": "not-applicable"
+      },
+      "values": {
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "Example Photographer"
+          }
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "Example Photographer"
+          }
+        },
+        "normalization": {
+          "ruleRef": "identity",
+          "reversibility": "exact",
+          "assumptions": [],
+          "dependencies": [],
+          "unit": null
+        },
+        "display": {
+          "state": "unavailable",
+          "reason": "Not requested in this synthetic example."
+        }
+      },
+      "capabilityRefs": [],
+      "issueRefs": []
+    },
+    {
+      "id": "occ-preview",
+      "documentRef": "doc-raw",
+      "tag": {
+        "namespace": "iso-bmff:canon",
+        "nativeId": "PRVW",
+        "name": "PreviewImage",
+        "definitionRef": "proposal:iso-bmff:canon/PreviewImage@1"
+      },
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "iso-bmff:canon"
+        }
+      ],
+      "path": [
+        {
+          "kind": "box",
+          "name": "uuid",
+          "index": 0
+        },
+        {
+          "kind": "box",
+          "name": "PRVW",
+          "index": 0
+        }
+      ],
+      "ordinal": 7,
+      "origin": {
+        "kind": "stored",
+        "resourceRef": "res-preview",
+        "encoding": "JPEG",
+        "byteOrder": "not-applicable"
+      },
+      "values": {
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "binary",
+            "resourceRef": "res-preview"
+          }
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "binary",
+            "resourceRef": "res-preview"
+          }
+        },
+        "normalization": {
+          "ruleRef": "identity",
+          "reversibility": "exact",
+          "assumptions": [],
+          "dependencies": [],
+          "unit": null
+        },
+        "display": {
+          "state": "unavailable",
+          "reason": "Not requested in this synthetic example."
+        }
+      },
+      "capabilityRefs": [
+        "CAP-016"
+      ],
+      "issueRefs": []
+    },
+    {
+      "id": "occ-preview-artist",
+      "documentRef": "doc-preview",
+      "tag": {
+        "namespace": "exif",
+        "nativeId": "315",
+        "name": "Artist",
+        "definitionRef": "proposal:exif/Artist@1"
+      },
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "exif"
+        }
+      ],
+      "path": [
+        {
+          "kind": "ifd",
+          "name": "IFD0",
+          "index": 0
+        },
+        {
+          "kind": "tag",
+          "name": "315",
+          "index": 0
+        }
+      ],
+      "ordinal": 0,
+      "origin": {
+        "kind": "stored",
+        "resourceRef": "res-preview-artist",
+        "encoding": "UTF-8",
+        "byteOrder": "not-applicable"
+      },
+      "values": {
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "Embedded Example"
+          }
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "Embedded Example"
+          }
+        },
+        "normalization": {
+          "ruleRef": "identity",
+          "reversibility": "exact",
+          "assumptions": [],
+          "dependencies": [],
+          "unit": null
+        },
+        "display": {
+          "state": "unavailable",
+          "reason": "Not requested in this synthetic example."
+        }
+      },
+      "capabilityRefs": [
+        "CAP-018"
+      ],
+      "issueRefs": []
+    },
+    {
+      "id": "occ-embedded-label",
+      "documentRef": "doc-raw",
+      "tag": {
+        "namespace": "http://ns.adobe.com/xap/1.0/",
+        "nativeId": "Label",
+        "name": "Label",
+        "definitionRef": "proposal:http://ns.adobe.com/xap/1.0//Label@1"
+      },
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "http://ns.adobe.com/xap/1.0/"
+        }
+      ],
+      "path": [
+        {
+          "kind": "box",
+          "name": "uuid",
+          "index": 0
+        },
+        {
+          "kind": "field",
+          "name": "xmp:Label",
+          "index": 0
+        }
+      ],
+      "ordinal": 8,
+      "origin": {
+        "kind": "stored",
+        "resourceRef": null,
+        "encoding": "UTF-8 XML; byte location unavailable",
+        "byteOrder": "not-applicable"
+      },
+      "values": {
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "Reviewed"
+          }
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "Reviewed"
+          }
+        },
+        "normalization": {
+          "ruleRef": "identity",
+          "reversibility": "exact",
+          "assumptions": [],
+          "dependencies": [],
+          "unit": null
+        },
+        "display": {
+          "state": "unavailable",
+          "reason": "Not requested in this synthetic example."
+        }
+      },
+      "capabilityRefs": [
+        "CAP-011"
+      ],
+      "issueRefs": []
+    },
+    {
+      "id": "occ-sidecar-label",
+      "documentRef": "doc-xmp",
+      "tag": {
+        "namespace": "http://ns.adobe.com/xap/1.0/",
+        "nativeId": "Label",
+        "name": "Label",
+        "definitionRef": "proposal:http://ns.adobe.com/xap/1.0//Label@1"
+      },
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "http://ns.adobe.com/xap/1.0/"
+        }
+      ],
+      "path": [
+        {
+          "kind": "field",
+          "name": "xmp:Label",
+          "index": 0
+        }
+      ],
+      "ordinal": 0,
+      "origin": {
+        "kind": "stored",
+        "resourceRef": null,
+        "encoding": "UTF-8 XML; byte location unavailable",
+        "byteOrder": "not-applicable"
+      },
+      "values": {
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": ""
+          }
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": ""
+          }
+        },
+        "normalization": {
+          "ruleRef": "identity",
+          "reversibility": "exact",
+          "assumptions": [],
+          "dependencies": [],
+          "unit": null
+        },
+        "display": {
+          "state": "unavailable",
+          "reason": "Not requested in this synthetic example."
+        }
+      },
+      "capabilityRefs": [
+        "CAP-012",
+        "CAP-021"
+      ],
+      "issueRefs": []
+    },
+    {
+      "id": "occ-subject",
+      "documentRef": "doc-xmp",
+      "tag": {
+        "namespace": "http://purl.org/dc/elements/1.1/",
+        "nativeId": "subject",
+        "name": "Subject",
+        "definitionRef": "proposal:http://purl.org/dc/elements/1.1//Subject@1"
+      },
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "http://purl.org/dc/elements/1.1/"
+        }
+      ],
+      "path": [
+        {
+          "kind": "field",
+          "name": "dc:subject",
+          "index": 0
+        }
+      ],
+      "ordinal": 1,
+      "origin": {
+        "kind": "stored",
+        "resourceRef": null,
+        "encoding": "UTF-8 XML",
+        "byteOrder": "not-applicable"
+      },
+      "values": {
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "array",
+            "semantics": "bag",
+            "items": [
+              {
+                "kind": "string",
+                "text": "travel"
+              },
+              {
+                "kind": "string",
+                "text": "travel"
+              },
+              {
+                "kind": "string",
+                "text": "water"
+              }
+            ]
+          }
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "array",
+            "semantics": "bag",
+            "items": [
+              {
+                "kind": "string",
+                "text": "travel"
+              },
+              {
+                "kind": "string",
+                "text": "travel"
+              },
+              {
+                "kind": "string",
+                "text": "water"
+              }
+            ]
+          }
+        },
+        "normalization": {
+          "ruleRef": "identity",
+          "reversibility": "exact",
+          "assumptions": [],
+          "dependencies": [],
+          "unit": null
+        },
+        "display": {
+          "state": "unavailable",
+          "reason": "Not requested in this synthetic example."
+        }
+      },
+      "capabilityRefs": [
+        "CAP-012",
+        "CAP-021"
+      ],
+      "issueRefs": []
+    },
+    {
+      "id": "occ-rights",
+      "documentRef": "doc-xmp",
+      "tag": {
+        "namespace": "http://purl.org/dc/elements/1.1/",
+        "nativeId": "rights",
+        "name": "Rights",
+        "definitionRef": "proposal:http://purl.org/dc/elements/1.1//Rights@1"
+      },
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "http://purl.org/dc/elements/1.1/"
+        }
+      ],
+      "path": [
+        {
+          "kind": "field",
+          "name": "dc:rights",
+          "index": 0
+        }
+      ],
+      "ordinal": 2,
+      "origin": {
+        "kind": "stored",
+        "resourceRef": null,
+        "encoding": "UTF-8 XML",
+        "byteOrder": "not-applicable"
+      },
+      "values": {
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "lang-alt",
+            "entries": [
+              {
+                "language": "x-default",
+                "text": "Example rights notice"
+              },
+              {
+                "language": "fr",
+                "text": "Mention fictive"
+              }
+            ]
+          }
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "lang-alt",
+            "entries": [
+              {
+                "language": "x-default",
+                "text": "Example rights notice"
+              },
+              {
+                "language": "fr",
+                "text": "Mention fictive"
+              }
+            ]
+          }
+        },
+        "normalization": {
+          "ruleRef": "identity",
+          "reversibility": "exact",
+          "assumptions": [],
+          "dependencies": [],
+          "unit": null
+        },
+        "display": {
+          "state": "unavailable",
+          "reason": "Not requested in this synthetic example."
+        }
+      },
+      "capabilityRefs": [
+        "CAP-012",
+        "CAP-021"
+      ],
+      "issueRefs": []
+    },
+    {
+      "id": "occ-opaque",
+      "documentRef": "doc-raw",
+      "tag": {
+        "namespace": "canon:opaque",
+        "nativeId": "unidentified-record",
+        "name": "UnknownRecord",
+        "definitionRef": "proposal:canon:opaque/UnknownRecord@1"
+      },
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "canon:opaque"
+        }
+      ],
+      "path": [
+        {
+          "kind": "box",
+          "name": "uuid",
+          "index": 0
+        },
+        {
+          "kind": "record",
+          "name": "unidentified-record",
+          "index": 0
+        }
+      ],
+      "ordinal": 9,
+      "origin": {
+        "kind": "stored",
+        "resourceRef": "res-unknown",
+        "encoding": null,
+        "byteOrder": "unknown"
+      },
+      "values": {
+        "raw": {
+          "state": "unavailable",
+          "reason": "unknown-encoding",
+          "detail": "Stored bytes are retained; field interpretation is unknown."
+        },
+        "normalized": {
+          "state": "unavailable",
+          "reason": "unknown-encoding",
+          "detail": "No value conversion was attempted."
+        },
+        "normalization": {
+          "ruleRef": null,
+          "reversibility": "not-applicable",
+          "assumptions": [],
+          "dependencies": [],
+          "unit": null
+        },
+        "display": {
+          "state": "unavailable",
+          "reason": "Not requested in this synthetic example."
+        }
+      },
+      "capabilityRefs": [
+        "CAP-014"
+      ],
+      "issueRefs": [
+        "issue-unknown"
+      ]
+    },
+    {
+      "id": "occ-derived-shutter",
+      "documentRef": "doc-raw",
+      "tag": {
+        "namespace": "imageinfo:derived",
+        "nativeId": "exposure-display",
+        "name": "ShutterSpeed",
+        "definitionRef": "proposal:imageinfo:derived/ShutterSpeed@1"
+      },
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "imageinfo:derived"
+        }
+      ],
+      "path": [],
+      "ordinal": null,
+      "origin": {
+        "kind": "derived",
+        "ruleRef": "proposal:shutter-from-exposure-v1",
+        "dependencies": [
+          "occ-exposure"
+        ]
+      },
+      "values": {
+        "raw": {
+          "state": "unavailable",
+          "reason": "not-requested",
+          "detail": "Derived values have no stored raw occurrence."
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "250"
+          }
+        },
+        "normalization": {
+          "ruleRef": "proposal:shutter-from-exposure-v1",
+          "reversibility": "not-applicable",
+          "assumptions": [],
+          "dependencies": [],
+          "unit": "s"
+        },
+        "display": {
+          "state": "unavailable",
+          "reason": "Not requested in this synthetic example."
+        }
+      },
+      "capabilityRefs": [
+        "CAP-019"
+      ],
+      "issueRefs": []
+    }
+  ],
+  "associations": [
+    {
+      "kind": "sidecar",
+      "rawDocumentRef": "doc-raw",
+      "sidecarDocumentRef": "doc-xmp",
+      "policy": "explicit-selection"
+    }
+  ],
+  "coverage": [
+    {
+      "id": "coverage-exif",
+      "documentRef": "doc-raw",
+      "namespace": "exif",
+      "pathPrefix": [],
+      "state": "complete",
+      "reason": "Synthetic example contains all invented EXIF occurrences in this scope."
+    },
+    {
+      "id": "coverage-ctmd",
+      "documentRef": "doc-raw",
+      "namespace": "canon:ctmd",
+      "pathPrefix": [],
+      "state": "complete",
+      "reason": "Synthetic example contains all invented CTMD occurrences in this scope."
+    },
+    {
+      "id": "coverage-gps",
+      "documentRef": "doc-raw",
+      "namespace": "gps",
+      "pathPrefix": [],
+      "state": "complete",
+      "reason": "Synthetic example models a fully inspected GPS scope containing no occurrences."
+    },
+    {
+      "id": "coverage-opaque",
+      "documentRef": "doc-raw",
+      "namespace": "canon:opaque",
+      "pathPrefix": [],
+      "state": "partial",
+      "reason": "A fabricated vendor block is undecoded; its hidden contents are unknown."
+    },
+    {
+      "id": "coverage-xmp",
+      "documentRef": "doc-xmp",
+      "namespace": "http://ns.adobe.com/xap/1.0/",
+      "pathPrefix": [],
+      "state": "complete",
+      "reason": "The synthetic sidecar xmp namespace is fully enumerated."
+    }
+  ],
+  "selections": [
+    {
+      "id": "query-iso",
+      "documentRefs": [
+        "doc-raw"
+      ],
+      "selector": {
+        "kind": "name",
+        "name": "ISO"
+      },
+      "pathPrefix": [],
+      "expect": "one",
+      "matches": [
+        "occ-exif-iso",
+        "occ-ctmd-iso"
+      ],
+      "resolution": "ambiguous",
+      "completeness": "partial",
+      "coverageRefs": [
+        "coverage-exif",
+        "coverage-ctmd",
+        "coverage-opaque"
+      ]
+    },
+    {
+      "id": "query-no-gps",
+      "documentRefs": [
+        "doc-raw"
+      ],
+      "selector": {
+        "kind": "tag-key",
+        "namespace": "gps",
+        "nativeId": "2"
+      },
+      "pathPrefix": [],
+      "expect": "all",
+      "matches": [],
+      "resolution": "absent",
+      "completeness": "complete",
+      "coverageRefs": [
+        "coverage-gps"
+      ]
+    },
+    {
+      "id": "query-unknown-vendor",
+      "documentRefs": [
+        "doc-raw"
+      ],
+      "selector": {
+        "kind": "tag-key",
+        "namespace": "canon:opaque",
+        "nativeId": "hidden-location"
+      },
+      "pathPrefix": [],
+      "expect": "one",
+      "matches": [],
+      "resolution": "unresolved",
+      "completeness": "partial",
+      "coverageRefs": [
+        "coverage-opaque"
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "id": "issue-unknown",
+      "code": "metadata.unknown_encoding",
+      "severity": "warning",
+      "message": "Fabricated unknown block used to demonstrate retained bytes and incomplete interpretation.",
+      "occurrenceRefs": [
+        "occ-opaque"
+      ],
+      "documentRefs": [
+        "doc-raw"
+      ]
+    }
+  ]
+}

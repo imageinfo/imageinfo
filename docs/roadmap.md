@@ -47,6 +47,10 @@ for review. It defines source-backed requirements and remaining audits; it does 
 claim implemented capabilities. Metadata-contract and fixture-plan work can consume
 its stable CAP/MAP/GAP identifiers next.
 
+Card #0004 has produced the [metadata contract](metadata-model/README.md) for
+review, including synthetic examples and language-independent rejection vectors.
+The next dependent work is #0005's fixture plan; per-tag runtime evidence remains open.
+
 Report capability cells and verified workflows, not percentages derived solely from
 tag or extension counts. A format readable in one fixture may contain variants with
 different requirements. A write claim requires stronger evidence than a successful

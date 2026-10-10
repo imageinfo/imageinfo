@@ -1,0 +1,461 @@
+{
+  "formatVersion": 1,
+  "purpose": "Synthetic contract rejection cases. Apply patches in order to a fresh copy of the named example; never modify the positive example.",
+  "context": "examples/snapshot.synthetic.json",
+  "cases": [
+    {
+      "id": "MDLT-001",
+      "title": "Reject duplicate occurrence ID",
+      "rule": "MDL-001",
+      "layer": "semantic",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/occurrences/1/id",
+          "value": "occ-exif-iso"
+        }
+      ]
+    },
+    {
+      "id": "MDLT-002",
+      "title": "Reject dangling document reference",
+      "rule": "MDL-003",
+      "layer": "semantic",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/occurrences/0/documentRef",
+          "value": "missing-doc"
+        }
+      ]
+    },
+    {
+      "id": "MDLT-003",
+      "title": "Reject duplicate source order within document",
+      "rule": "MDL-004",
+      "layer": "semantic",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/occurrences/1/ordinal",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "MDLT-004",
+      "title": "Reject synthetic identity claimed as observed input",
+      "rule": "MDL-005",
+      "layer": "semantic",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/basis",
+          "value": "observed"
+        }
+      ]
+    },
+    {
+      "id": "MDLT-005",
+      "title": "Reject out-of-bounds source span",
+      "rule": "MDL-006",
+      "layer": "semantic",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/resources/0/content/ranges/0/offset",
+          "value": "8191"
+        }
+      ]
+    },
+    {
+      "id": "MDLT-006",
+      "title": "Reject resource reference cycle",
+      "rule": "MDL-006",
+      "layer": "semantic",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/resources/7/content/ranges/0",
+          "value": {
+            "space": "resource",
+            "ref": "res-preview",
+            "offset": "0",
+            "length": "128"
+          }
+        }
+      ]
+    },
+    {
+      "id": "MDLT-007",
+      "title": "Reject declared length different from concatenated spans",
+      "rule": "MDL-006",
+      "layer": "semantic",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/resources/0/byteLength",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "id": "MDLT-008",
+      "title": "Reject invalid inline base64",
+      "rule": "MDL-007",
+      "layer": "semantic",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/resources/11/content/data",
+          "value": "%%%"
+        }
+      ]
+    },
+    {
+      "id": "MDLT-009",
+      "title": "Reject bytes attributed to another document's source",
+      "rule": "MDL-007",
+      "layer": "semantic",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/occurrences/6/origin/resourceRef",
+          "value": "res-sidecar"
+        }
+      ]
+    },
+    {
+      "id": "MDLT-010",
+      "title": "Reject parent document cycle",
+      "rule": "MDL-008",
+      "layer": "semantic",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/documents/0/parentDocumentRef",
+          "value": "doc-preview"
+        }
+      ]
+    },
+    {
+      "id": "MDLT-011",
+      "title": "Reject derived self-dependency",
+      "rule": "MDL-009",
+      "layer": "semantic",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/occurrences/14/origin/dependencies",
+          "value": [
+            "occ-derived-shutter"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MDLT-012",
+      "title": "Reject normalization cycle",
+      "rule": "MDL-009",
+      "layer": "semantic",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/occurrences/3/values/normalization/dependencies",
+          "value": [
+            "occ-capture-time"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MDLT-013",
+      "title": "Reject identity conversion that changes a value",
+      "rule": "MDL-010",
+      "layer": "semantic",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/occurrences/0/values/normalized/value/decimal",
+          "value": "401"
+        }
+      ]
+    },
+    {
+      "id": "MDLT-014",
+      "title": "Reject absent as the state of an observed occurrence",
+      "rule": "MDL-011",
+      "layer": "schema",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/occurrences/0/values/raw",
+          "value": {
+            "state": "absent"
+          }
+        }
+      ]
+    },
+    {
+      "id": "MDLT-015",
+      "title": "Reject a JSON number in exact integer representation",
+      "rule": "MDL-010",
+      "layer": "schema",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/occurrences/0/values/raw/value/decimal",
+          "value": 400
+        }
+      ]
+    },
+    {
+      "id": "MDLT-016",
+      "title": "Reject zero denominator in a valid rational",
+      "rule": "MDL-011",
+      "layer": "schema",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/occurrences/2/values/raw/value/denominator",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "MDLT-017",
+      "title": "Reject duplicate language alternative keys",
+      "rule": "MDL-012",
+      "layer": "semantic",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/occurrences/12/values/raw/value/entries/-",
+          "value": {
+            "language": "FR",
+            "text": "Duplicate"
+          }
+        }
+      ]
+    },
+    {
+      "id": "MDLT-018",
+      "title": "Reject an invented UTC instant for an offset-free time",
+      "rule": "MDL-013",
+      "layer": "schema",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/occurrences/4/values/normalized/value/instant",
+          "value": "2026-10-10T10:15:16.120Z"
+        }
+      ]
+    },
+    {
+      "id": "MDLT-019",
+      "title": "Reject invalid calendar date",
+      "rule": "MDL-013",
+      "layer": "semantic",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/occurrences/4/values/normalized/value/local",
+          "value": "2026-02-30T10:15:16"
+        }
+      ]
+    },
+    {
+      "id": "MDLT-020",
+      "title": "Reject fractional seconds on a month-precision date",
+      "rule": "MDL-013",
+      "layer": "semantic",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/occurrences/4/values/normalized/value/local",
+          "value": "2026-10"
+        },
+        {
+          "op": "replace",
+          "path": "/occurrences/4/values/normalized/value/precision",
+          "value": "month"
+        }
+      ]
+    },
+    {
+      "id": "MDLT-021",
+      "title": "Reject inconsistent known instant",
+      "rule": "MDL-013",
+      "layer": "semantic",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/occurrences/5/values/normalized/value/instant",
+          "value": "2026-10-10T15:15:16Z"
+        }
+      ]
+    },
+    {
+      "id": "MDLT-022",
+      "title": "Reject an absence claim from incomplete coverage",
+      "rule": "MDL-014",
+      "layer": "semantic",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/selections/2/resolution",
+          "value": "absent"
+        },
+        {
+          "op": "replace",
+          "path": "/selections/2/completeness",
+          "value": "complete"
+        }
+      ]
+    },
+    {
+      "id": "MDLT-023",
+      "title": "Reject silent choice of the first duplicate",
+      "rule": "MDL-015",
+      "layer": "semantic",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/selections/0/matches",
+          "value": [
+            "occ-exif-iso"
+          ]
+        },
+        {
+          "op": "replace",
+          "path": "/selections/0/resolution",
+          "value": "matched"
+        }
+      ]
+    },
+    {
+      "id": "MDLT-024",
+      "title": "Reject display text as copy input",
+      "rule": "MDL-018",
+      "layer": "schema",
+      "file": "examples/copy-intent.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/operations/0/sourceView",
+          "value": "display"
+        }
+      ]
+    },
+    {
+      "id": "MDLT-025",
+      "title": "Reject a derived value as a stored edit target",
+      "rule": "MDL-019",
+      "layer": "semantic",
+      "file": "examples/copy-intent.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/operations/1/target/occurrenceRef",
+          "value": "occ-derived-shutter"
+        }
+      ]
+    },
+    {
+      "id": "MDLT-026",
+      "title": "Reject an unavailable copy source",
+      "rule": "MDL-019",
+      "layer": "semantic",
+      "file": "examples/copy-intent.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/operations/0/sourceOccurrenceRef",
+          "value": "occ-opaque"
+        }
+      ]
+    },
+    {
+      "id": "MDLT-027",
+      "title": "Reject cross-tag copy with no mapping",
+      "rule": "MDL-018",
+      "layer": "semantic",
+      "file": "examples/copy-intent.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/operations/0/mappingRef",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "MDLT-028",
+      "title": "Reject conflicting operations on one target",
+      "rule": "MDL-018",
+      "layer": "semantic",
+      "file": "examples/copy-intent.synthetic.json",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/operations/-",
+          "value": {
+            "kind": "delete",
+            "occurrenceRef": "occ-sidecar-label"
+          }
+        }
+      ]
+    },
+    {
+      "id": "MDLT-029",
+      "title": "Reject a null shorthand for an explicit set value",
+      "rule": "MDL-018",
+      "layer": "schema",
+      "file": "examples/copy-intent.synthetic.json",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/operations/1/value",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "MDLT-030",
+      "title": "Reject undeclared wire field",
+      "rule": "MDL-020",
+      "layer": "schema",
+      "file": "examples/snapshot.synthetic.json",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/occurrences/0/writable",
+          "value": true
+        }
+      ]
+    }
+  ]
+}

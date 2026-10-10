@@ -4,6 +4,11 @@ Validated on **2026-10-10** for inventory `2026-10-10.1`, schema version 1.
 This validates the documentation/data contract. It does not validate CR3 parsing,
 editing, ExifTool executable behavior, or imageinfo compatibility.
 
+Revision `2026-10-10.2` was revalidated during card #0004. It keeps all capability
+states unchanged and transfers GAP-005's remaining runtime evidence to fixture-plan
+after delivery of the proposed metadata contract. Schema/reference/dependency
+checks and the same 10 negative cases still pass.
+
 ## Results
 
 | Check | Result |

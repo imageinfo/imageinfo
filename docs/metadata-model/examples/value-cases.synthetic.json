@@ -1,0 +1,257 @@
+{
+  "synthetic": true,
+  "validateEachValueAgainst": "#/$defs/valueState",
+  "cases": [
+    {
+      "id": "large-integer",
+      "purpose": "Integer beyond interoperable binary64 range",
+      "value": {
+        "state": "present",
+        "value": {
+          "kind": "integer",
+          "decimal": "18446744073709551615"
+        }
+      }
+    },
+    {
+      "id": "decimal-precision",
+      "purpose": "Exact decimal lexical precision",
+      "value": {
+        "state": "present",
+        "value": {
+          "kind": "decimal",
+          "lexical": "1.2300"
+        }
+      }
+    },
+    {
+      "id": "unreduced-rational",
+      "purpose": "Original rational pair retained",
+      "value": {
+        "state": "present",
+        "value": {
+          "kind": "rational",
+          "numerator": "2",
+          "denominator": "500"
+        }
+      }
+    },
+    {
+      "id": "negative-denominator",
+      "purpose": "Original signed denominator retained",
+      "value": {
+        "state": "present",
+        "value": {
+          "kind": "rational",
+          "numerator": "2",
+          "denominator": "-500"
+        }
+      }
+    },
+    {
+      "id": "explicit-null",
+      "purpose": "Present null differs from an absent tag and from deletion intent",
+      "value": {
+        "state": "present",
+        "value": {
+          "kind": "null"
+        }
+      }
+    },
+    {
+      "id": "empty-string",
+      "purpose": "Present empty text",
+      "value": {
+        "state": "present",
+        "value": {
+          "kind": "string",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "empty-list",
+      "purpose": "Present empty sequence",
+      "value": {
+        "state": "present",
+        "value": {
+          "kind": "array",
+          "semantics": "sequence",
+          "items": []
+        }
+      }
+    },
+    {
+      "id": "negative-zero",
+      "purpose": "IEEE binary64 negative zero bits, most-significant byte first",
+      "value": {
+        "state": "present",
+        "value": {
+          "kind": "float",
+          "width": 64,
+          "bits": "8000000000000000"
+        }
+      }
+    },
+    {
+      "id": "nan-payload",
+      "purpose": "IEEE binary32 NaN payload retained as bits, never invalid JSON NaN",
+      "value": {
+        "state": "present",
+        "value": {
+          "kind": "float",
+          "width": 32,
+          "bits": "7fc00001"
+        }
+      }
+    },
+    {
+      "id": "invalid-rational",
+      "purpose": "Zero denominator is an invalid value, not infinity",
+      "value": {
+        "state": "invalid",
+        "code": "value.zero_denominator",
+        "detail": "Original bytes must be retained by the occurrence's storage resource."
+      }
+    },
+    {
+      "id": "not-requested",
+      "purpose": "A skipped value is not absence",
+      "value": {
+        "state": "unavailable",
+        "reason": "not-requested",
+        "detail": "The extraction request omitted this view."
+      }
+    },
+    {
+      "id": "resource-limit",
+      "purpose": "Incomplete extraction cannot prove absence",
+      "value": {
+        "state": "unavailable",
+        "reason": "resource-limit",
+        "detail": "A configured metadata budget was reached."
+      }
+    },
+    {
+      "id": "partial-date",
+      "purpose": "No invented day or midnight",
+      "value": {
+        "state": "present",
+        "value": {
+          "kind": "datetime",
+          "local": "2026-10",
+          "precision": "month",
+          "fraction": null,
+          "zone": {
+            "kind": "absent"
+          },
+          "instant": null
+        }
+      }
+    },
+    {
+      "id": "unknown-local-offset",
+      "purpose": "RFC3339 -00:00 retains a known UTC time with unknown local offset",
+      "value": {
+        "state": "present",
+        "value": {
+          "kind": "datetime",
+          "local": "2026-10-10T14:15:16",
+          "precision": "second",
+          "fraction": "120",
+          "zone": {
+            "kind": "utc-local-offset-unknown"
+          },
+          "instant": "2026-10-10T14:15:16.120Z"
+        }
+      }
+    },
+    {
+      "id": "nested-xmp",
+      "purpose": "Expanded names, qualifiers, sequences and unknown schema fields",
+      "value": {
+        "state": "present",
+        "value": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": {
+                "namespaceUri": "urn:example:imageinfo:review",
+                "localName": "accepted"
+              },
+              "value": {
+                "kind": "boolean",
+                "value": true
+              }
+            },
+            {
+              "name": {
+                "namespaceUri": "urn:example:imageinfo:review",
+                "localName": "reviewers"
+              },
+              "value": {
+                "kind": "array",
+                "semantics": "sequence",
+                "items": [
+                  {
+                    "kind": "qualified",
+                    "value": {
+                      "kind": "string",
+                      "text": "Example Reviewer"
+                    },
+                    "qualifiers": [
+                      {
+                        "name": {
+                          "namespaceUri": "urn:example:imageinfo:review",
+                          "localName": "role"
+                        },
+                        "value": {
+                          "kind": "string",
+                          "text": "editor"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "empty-binary",
+      "purpose": "Present zero-length bytes, distinct from missing/unavailable",
+      "value": {
+        "state": "present",
+        "value": {
+          "kind": "binary",
+          "resourceRef": "res-empty"
+        }
+      }
+    },
+    {
+      "id": "fragmented-binary",
+      "purpose": "Ordered concatenation of noncontiguous source spans",
+      "value": {
+        "state": "present",
+        "value": {
+          "kind": "binary",
+          "resourceRef": "res-fragments"
+        }
+      }
+    },
+    {
+      "id": "decoded-space",
+      "purpose": "Offset 8 belongs to a decoded output; no physical file offset is inferred",
+      "value": {
+        "state": "present",
+        "value": {
+          "kind": "binary",
+          "resourceRef": "res-decoded-field"
+        }
+      }
+    }
+  ],
+  "resourceContext": "snapshot.synthetic.json"
+}

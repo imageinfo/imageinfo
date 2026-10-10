@@ -6,6 +6,29 @@ or package layout until Terry explicitly advances that decision.
 
 ## Product intent
 
+- Design imageinfo from a clean whiteboard. Terry clarified on 2026-10-10 that
+  ExifTool is a functional reference, not an architecture, API, class, or module
+  template. Existing design notes are proposals, not accepted architecture.
+- Choose modern engineering practices for concrete correctness, usability,
+  maintainability, and performance needs. Do not add patterns, layers, frameworks,
+  or extensibility mechanisms for their own sake. Do not assert that ExifTool's
+  code is poor without evidence; imageinfo's design does not depend on that claim.
+- Honor the principle of least surprise. Favor the chosen language's established
+  idioms, standard types/libraries, familiar names, straightforward control flow,
+  and small abstractions with an obvious purpose. Expert maintainers should find
+  ordinary decisions obvious. Require a concrete benefit for unconventional choices;
+  do not mistake novelty or elaborate patterns for engineering quality.
+  Terry's explicit standard: "Boring is a compliment in this code base."
+- Deliberate departures from convention are allowed when they earn their cost.
+  Add a nearby comment explaining why the conventional approach was insufficient
+  and the constraint/tradeoff behind the choice; link a design note for substantial
+  rationale. Comments should explain decisions rather than narrate obvious code.
+- Make contribution inviting to experienced developers: clear names and boundaries,
+  reproducible setup/checks, discoverable decision records, and small reviewable
+  changes. Do not rely on private context held by the original authors.
+- Keep external data contracts distinct from internal types and code organization.
+  Requirements schemas do not prescribe a custom runtime framework or force native
+  values to use their JSON serialization representation internally.
 - Full ExifTool feature parity is the long-term goal. Current delivery scope is
   camera RAW metadata: DNG and proprietary RAW containers, associated XMP sidecars,
   and embedded preview metadata/extraction. Consult `docs/raw-scope.md`.

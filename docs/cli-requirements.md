@@ -220,39 +220,23 @@ Export-to-file operations report their output path; refusing to overwrite remain
 
 ## Structured result contract
 
-Proposed JSON schema shape, shown for design discussion only:
+The proposed request/file envelope must carry snapshots conforming to the
+[metadata boundary contract](metadata-model/README.md). Its
+[synthetic snapshot](metadata-model/examples/snapshot.synthetic.json) is the concrete
+payload example. It replaces the earlier flat illustrative tag record, which did
+not represent the required identity, provenance, and value states completely.
 
-```json
-{
-  "schemaVersion": "1",
-  "requestId": "example-read",
-  "operation": "metadata.read",
-  "capabilityRevision": "baseline-id",
-  "results": [
-    {
-      "path": "photo.cr3",
-      "status": "ok",
-      "format": "CR3",
-      "metadata": [
-        {
-          "canonicalTag": "EXIF:Artist",
-          "group": "IFD0",
-          "documentPath": [],
-          "instance": 0,
-          "type": "string",
-          "normalized": "Terry",
-          "display": "Terry",
-          "provenance": {"kind": "embedded"}
-        }
-      ],
-      "issues": []
-    }
-  ],
-  "summary": {"succeeded": 1, "failed": 0, "skipped": 0}
-}
-```
+The envelope adds request IDs, operation, per-file outcomes, and summary counts.
+It must not flatten the snapshot into a single object keyed by tag name. JSONL can
+emit per-file snapshot payloads with the same model revision; schema versions for
+the envelope and metadata model are independently named. Exact field placement in
+the envelope remains part of the CLI walkthrough work.
 
-Do not key all tags by friendly name in a single object: duplicate identities would disappear. Represent rational values without floating-point precision loss, distinguish stored timestamps from inferred instants, and preserve list/structure/language alternatives. Binary values carry type/length and an explicit encoding or artifact reference; large payloads are not automatically inlined. Raw encodings and exact number representations require a dedicated schema specification before implementation.
+A requested output view may omit unavailable/unrequested data only with explicit
+coverage and value states. Large binary values remain bounded references unless
+an explicit self-contained export is requested. Display text is never the default
+copy/import representation. See MDL-010 through MDL-019 for precision, absence,
+selection, export, and edit-intent rules.
 
 JSON Lines emits typed request/file/summary records with the same schema identity, including a final summary where output completes. Partial output after cancellation is documented. Errors are typed issues with stable `code`, `severity`, `path`, `tag` where applicable, and `message`; user-facing wording may improve without changing issue codes. In JSON mode, preflight failure still produces a valid result envelope on stdout; human diagnostics remain on stderr.
 

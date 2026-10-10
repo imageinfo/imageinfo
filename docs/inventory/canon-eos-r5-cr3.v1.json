@@ -1,7 +1,7 @@
 {
   "$schema": "./capability-inventory.schema.json",
   "schemaVersion": 1,
-  "inventoryVersion": "2026-10-10.1",
+  "inventoryVersion": "2026-10-10.2",
   "observedOn": "2026-10-10",
   "reviewState": "draft-for-review",
   "reference": {
@@ -3398,10 +3398,10 @@
     },
     {
       "id": "GAP-005",
-      "subject": "Metadata identity and conversions",
-      "ownerCard": "metadata-contract",
-      "closesWhen": "Specify groups/instances, rational and raw values, XMP shape, encodings, CR3 UTC/Exif time distinctions and conflict handling.",
-      "blocks": "Lossless JSON/import/copy equivalence."
+      "subject": "Metadata interpretation and conversion evidence",
+      "ownerCard": "fixture-plan",
+      "closesWhen": "The proposed model contract is recorded in docs/metadata-model. Exercise its identity, exact value, XMP, encoding, and time rules against real fixtures and per-tag oracle observations before claiming runtime equivalence.",
+      "blocks": "Runtime lossless JSON/import/copy and per-tag interpretation claims; the language-independent model specification is delivered by card #0004."
     },
     {
       "id": "GAP-006",

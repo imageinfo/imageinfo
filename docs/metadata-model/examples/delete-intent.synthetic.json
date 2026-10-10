@@ -1,0 +1,14 @@
+{
+  "$schema": "../metadata-contract.schema.json",
+  "schemaVersion": 1,
+  "kind": "metadata-edit-intent",
+  "id": "synthetic-delete-intent",
+  "snapshotRef": "synthetic-r5-snapshot-1",
+  "purpose": "intent-only",
+  "operations": [
+    {
+      "kind": "delete",
+      "occurrenceRef": "occ-sidecar-label"
+    }
+  ]
+}

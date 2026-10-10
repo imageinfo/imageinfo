@@ -8,6 +8,43 @@ and DNG principles below prepare later RAW work. See [the CR3 milestone](canon-e
 
 Primary source citations pin ExifTool revision `2200871d9cef988051d2a99d67df3bda6cbb30a8`; they establish research context, not that these proposed imageinfo requirements are implemented.
 
+## Greenfield design boundary
+
+Terry explicitly clarified on 2026-10-10 that imageinfo starts from a clean
+whiteboard. ExifTool provides observable functionality and compatibility cases.
+Its internal architecture, tables-as-code, module organization, mutable API state,
+and group numbering do not prescribe imageinfo's design.
+
+All boundaries below are proposals to evaluate against concrete requirements.
+They are not a mandated package layout or a demand for one abstraction per row.
+Use the smallest design that makes correctness, preservation, testing, and change
+comprehensible. Adopt patterns only when their benefits justify their cost.
+
+Honor the principle of least surprise: familiar names, conventional control flow,
+standard types and libraries, and idioms natural to the eventual language. Review
+an unconventional choice against a simpler conventional alternative and require a
+concrete reason for it. Experience should make the code easier to predict.
+
+Departures from convention are allowed when justified. Put a concise explanation
+near the choice, naming the constraint and tradeoff; link a design note when the
+rationale needs more space. Keep the repository inviting to outside contributors
+through reproducible setup, clear boundaries, and decisions discoverable from the
+code and documentation rather than private conversations.
+
+Wire contracts specify what information crosses a boundary; they do not dictate
+internal class hierarchies, packages, or value representations. For example, an
+exact integer serialized as a decimal string can still use the language's natural
+integer type internally. Keep documentation precision from turning into an
+unnecessary runtime framework.
+
+Keep native file-format concepts distinct from reference-tool conventions. A
+Canon CMT block or an XMP namespace is source data; an ExifTool API method or group
+family number is an interoperability concern. Preserve needed behavior through
+explicit mappings without building the core model around legacy calling conventions.
+
+No source-code quality audit of ExifTool has been performed. Assertions about its
+technical debt are not premises or acceptance criteria for imageinfo's design.
+
 ## Product and independence
 
 Imageinfo's active scope is **metadata operations on camera RAW still images**, including DNG and proprietary RAW families, with related XMP sidecars and embedded preview metadata/extraction. It will expose those operations through a consistent, discoverable CLI with help at every level. Its engine must also be usable independently of terminal interaction. RAW parity is measured using [compatibility and validation requirements](compatibility-and-validation.md), not a release label attached to an attractive interface.
@@ -44,6 +81,10 @@ The CLI must call the same operations available to automation clients. Interacti
 ExifTool itself separates reading/editing flows and application output formatting from core API operations. Its documentation also distinguishes stored binary data, raw decoded values, machine-oriented converted values, and display values. Preserve those distinctions while defining our own interfaces. [Upstream information flow and conversions](https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/html/under.html)
 
 ## Canonical typed, ordered metadata model
+
+The [metadata boundary contract](metadata-model/README.md) develops these
+requirements into explicit identities, values, provenance, examples, and invariants.
+Its wire schema does not dictate internal classes or replace idiomatic native types.
 
 A flat map of tag name to string loses necessary information. Require a model representing a RAW document or associated XMP sidecar as an ordered collection of **tag occurrences**, plus a container structure/preservation view. An occurrence has an identity independent of its human-readable name. RAW, embedded preview, and sidecar occurrences remain separately attributable even when shown together.
 

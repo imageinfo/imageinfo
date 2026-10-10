@@ -10,6 +10,16 @@ In scope are DNG and proprietary camera RAW families such as Canon CR2/CR3, Niko
 
 The user identified dependence on one primary maintainer as a concern. The response is shared ownership, documented behavior, reproducible releases, and a usable contribution process. A different implementation language alone would not establish better safety, durability, or maintenance.
 
+The design is greenfield. Functional equivalence supplies testable outcomes;
+ExifTool's architecture and API shape are not requirements. Use modern engineering
+practices where they address concrete risks or simplify change, without adding
+complexity merely to adopt a pattern. Existing architecture notes remain proposals.
+
+Honor the principle of least surprise and make contribution inviting to experienced
+developers. Favor conventional, idiomatic code; document the reason and tradeoff
+near a deliberate departure from convention. The [metadata contract](metadata-model/README.md)
+specifies observable data requirements without prescribing internal code structure.
+
 ExifTool's own documentation describes read/write functionality, camera maker-note support, and separate read/write/create capabilities for many formats. Its RAW-relevant tag selection, editing, copying, formatting, and batching behavior inform this project. Its wider format list is research context, not initial imageinfo scope, and a readable RAW format does not imply that each of its tags is writable. [Official README](https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/README), [application documentation](https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/html/exiftool_pod.html).
 
 Repository references below are anchored to the observed upstream source snapshot [2200871](https://github.com/exiftool/exiftool/commit/2200871d9cef988051d2a99d67df3bda6cbb30a8), labeled “Update to 13.59” and dated 2026-05-27. This is a reproducible research anchor, not a claim about the latest available release; a formal parity-release baseline still needs to be selected.

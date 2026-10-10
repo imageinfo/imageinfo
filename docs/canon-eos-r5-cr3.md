@@ -7,6 +7,8 @@ and framework decisions remain deferred.
 
 The [versioned capability inventory](inventory/README.md) makes this milestone
 concrete by separating locations, operations, reference evidence, and open gaps.
+The [metadata contract](metadata-model/README.md) supplies the representation and
+selection rules that the fixture and write-safety work will exercise.
 
 Terry's capture preference is the camera's **full RAW setting**, accepting the
 larger files. Those EOS R5 CR3 files are the primary fixture, usability, and

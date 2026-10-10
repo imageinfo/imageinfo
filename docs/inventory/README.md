@@ -1,6 +1,6 @@
 # EOS R5 CR3 capability inventory v1
 
-Status: **draft for review**, 2026-10-10. This is the deliverable for board card
+Status: **draft for review**, inventory revision `2026-10-10.2`, 2026-10-10. This is the deliverable for board card
 **#0002, capability-inventory**. Implementation coverage remains zero. No imageinfo
 executable, upstream executable experiment, or media-fixture validation is claimed.
 
@@ -233,7 +233,7 @@ in the JSON. Do not close them merely because a source contains a similarly name
 | GAP-002 | Camera mode and damaged-file discrimination | `capability-inventory` | Cross-check brand, Canon model, Quality and structural clues on full RAW/C-RAW/DPRAW and negative CRM/other-camera cases; record ambiguity rules. |
 | GAP-003 | Tag-level and mutation-depth expansion | `capability-inventory` | Expand representative families into occurrence/tag/location rows; audit insertion/deletion flags, defaults and all relevant maker-note subtables without copying upstream tables. |
 | GAP-004 | Saved plans and preservation oracle | `write-safety-contract` | Specify per-file and paired-sidecar outcomes; validate all sensor samples, references, calibration/opaque blocks and interruption recovery. |
-| GAP-005 | Metadata identity and conversions | `metadata-contract` | Specify groups/instances, rational and raw values, XMP shape, encodings, CR3 UTC/Exif time distinctions and conflict handling. |
+| GAP-005 | Metadata interpretation and conversion evidence | `fixture-plan` | The proposed model contract is recorded in docs/metadata-model. Exercise its identity, exact value, XMP, encoding, and time rules against real fixtures and per-tag oracle observations before claiming runtime equivalence. |
 | GAP-006 | Legacy argument and API completeness | `legacy-compatibility` | Expand family mapping to every in-scope flag/API option, ordering interaction and executable extension; assign equivalence or an accepted difference. |
 | GAP-007 | Preview variants and nested metadata | `fixture-plan` | Enumerate THMB, PRVW and JPEG-track assets per full RAW fixture; prove bytes and nested metadata coverage; audit any replacement path separately. |
 | GAP-008 | Repeatable runtime reference | `fixture-plan` | Choose an executable distribution, hash it and its configuration/dependencies, then run recorded experiments in controlled locale/timezone environments. |
@@ -242,9 +242,10 @@ in the JSON. Do not close them merely because a source contains a similarly name
 | GAP-011 | Asset licensing and provenance | `license-provenance` | Apply the selected MIT project license while preserving and reviewing separate source/table/fixture terms before importing third-party assets. |
 | GAP-012 | CLI workflows and large-input boundaries | `cli-walkthroughs` | Walk through canonical command grammar, non-TTY/help behavior, selection, source/destination effects and failure output; define bounded processing. |
 
-The next dependent work should turn these rows into the metadata contract and fixture
-plan, then refine the CLI and safe-write contracts against those concrete cases.
-This card does not complete those follow-up cards or authorize language selection.
+The [proposed metadata contract](../metadata-model/README.md) now supplies the data
+representation. Next, turn the rows into the fixture plan and refine the CLI and
+safe-write contracts against those concrete cases. The inventory does not complete
+those follow-up cards or authorize language selection.
 
 ## Sources and provenance
 
@@ -289,3 +290,7 @@ For this initial draft, keeping a single active JSON inventory and Git history i
 sufficient. Do not silently overwrite runtime evidence when a new oracle disagrees.
 Future fixture/tag-level expansion should refine these family rows, not claim that
 49 planning rows represent all EOS R5 metadata.
+
+Revision `2026-10-10.2` links the [proposed metadata contract](../metadata-model/README.md)
+from card #0004 and transfers GAP-005's remaining runtime evidence to fixture-plan.
+No capability is promoted beyond specified.
