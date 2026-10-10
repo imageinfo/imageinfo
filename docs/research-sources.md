@@ -88,6 +88,12 @@ performance. Actual collector identities and OS equivalence need later validatio
 
 ## Maintaining the research
 
+Card #0009's [governance runbook](governance/release-and-recovery.md) records primary
+GitHub and Reproducible Builds references, observed 2026-10-10, and the distinction
+between documented controls and verified operational readiness. Its
+[validation record](governance/validation.md) records the read-only repository settings
+observed for contributor/security guidance; no permissions or settings were changed.
+
 1. Record an immutable upstream source revision and the artifact version/hash used
    for each actual experiment.
 2. Record environment, configuration, optional dependencies, command arguments,

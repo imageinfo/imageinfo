@@ -48,6 +48,11 @@ No ExifTool code, tag tables, or test images are vendored here.
 
 ## Local planning
 
+Contributors can use [GitHub issues](https://github.com/imageinfo/imageinfo/issues)
+and pull requests without access to the local board. See [CONTRIBUTING.md](CONTRIBUTING.md)
+for onboarding and current checks, [GOVERNANCE.md](GOVERNANCE.md) for the proposed
+shared-maintenance model, and [SECURITY.md](SECURITY.md) for security concerns.
+
 Work is tracked on a local localswim board. Private board data, credentials, service
 descriptors, and logs are excluded from this repository. See
 [local board setup](docs/local-board.md) for the workflow.

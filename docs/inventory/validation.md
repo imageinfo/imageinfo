@@ -117,5 +117,6 @@ The [write-safety proposal](../write-safety/README.md) supplies mutation require
 The [CLI walkthroughs](../cli-walkthroughs/README.md) now refine the native interface;
 the [compatibility recommendation](../legacy-compatibility/README.md) is recorded.
 The [performance protocol](../performance/README.md) is now recorded; numeric limits
-await #0016 and governance #0009 is next in triage; #0013/#0014 retain actual
+await #0016. The [governance proposal](../../GOVERNANCE.md) is now recorded;
+artifact provenance #0010 is next, while #0013/#0014 retain actual
 corpus and writer/storage evidence. This validation does not close those cards.

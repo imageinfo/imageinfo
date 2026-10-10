@@ -26,6 +26,11 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [RAW compatibility recommendation](legacy-compatibility/README.md) | CLI/API surface ledger, migration and expression/trust choices, request/result schemas and persistent-session proposal for card #0007. |
 | [Performance protocol](performance/README.md) | Workloads, measurement/environment fields, correctness gates and criteria for later measured limits; no benchmark claims. |
 | [Architecture principles](architecture-principles.md) | Language-independent boundaries and data requirements. |
+| [Governance proposal](../GOVERNANCE.md) | Responsibility/backup coverage, decisions, review and open readiness actions for card #0009. |
+| [Contributing](../CONTRIBUTING.md) | Public onboarding, documentation verification, focused review and provenance expectations. |
+| [Security reporting](../SECURITY.md) | Current reporting route and private-intake readiness limitation. |
+| [Release and recovery runbook](governance/release-and-recovery.md) | Future reproducible-release gates, incident response and access/succession exercises. |
+| [Governance validation](governance/validation.md) | Scenario review, actual settings observations and outstanding operational readiness. |
 | [Roadmap](roadmap.md) | Staged delivery, review gates, and the next requirements work. |
 | [Research sources](research-sources.md) | Primary references, pinned upstream revision, and research limits. |
 | [Open decisions](open-decisions.md) | Unresolved product choices and explicitly deferred implementation decisions. |

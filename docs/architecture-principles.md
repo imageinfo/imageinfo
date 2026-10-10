@@ -180,7 +180,14 @@ Support bounded access to large RAW files and extraction that does not load all 
 
 ## Maintainability and shared ownership
 
-Reducing dependence on one maintainer is an organizational requirement, not something a syntax change can accomplish. Require:
+Reducing dependence on one maintainer is an organizational requirement, not something a syntax change can accomplish.
+
+The [governance proposal](../GOVERNANCE.md), [contributor guide](../CONTRIBUTING.md)
+and [release/recovery runbook](governance/release-and-recovery.md) now make these
+responsibilities concrete. Actual appointments, controls and drills remain #0017
+readiness work; publishing the documents does not establish a redundant team.
+
+The proposed requirements are:
 
 - At least two trained reviewers/maintainers for critical format families and release operations as the project grows.
 - Contributor documentation, fixture generators, format notes, and reproducible debugging procedures sufficient for a new contributor to fix a parser without private knowledge.

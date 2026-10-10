@@ -42,6 +42,7 @@ local board's stable card IDs; board ticket numbers are machine-local.
 | `write-validation` | Prove RAW writer/storage safety later. | Backlog #0014: declared profiles, preservation, interrupted-operation recovery, exact privacy catalogs and independent runtime evidence; no writer enabled by a specification alone. |
 | `compatibility-evidence` | Close the surveyed compatibility gaps later. | Backlog #0015: exhaustive option/API cases, exact legacy serializers, advanced extensions/mappings, complete plan/session-output schemas and real integration evidence; see LG-001–006. |
 | `performance-measurements` | Collect actual baselines and choose measured limits later. | Backlog #0016: admitted workloads, versioned collector/records, correctness-gated measurements, raw samples and reviewed numeric budgets. |
+| `governance-readiness` | Establish actual shared-maintenance operations later. | Backlog #0017: consented primary/backup appointments, private intake, authorized access continuity, review enforcement and independent release/recovery rehearsal; no controls are established by a proposal alone. |
 | `broader-format-parity` | Preserve the eventual full ExifTool parity goal. | Deferred umbrella only; choose and scope additional format families after RAW milestones, with independent compatibility evidence. |
 
 ## Progress reporting
@@ -51,12 +52,16 @@ The [CR3 capability inventory](inventory/README.md),
 [fixture and parity plan](fixture-plan/README.md),
 [safe mutation contract](write-safety/README.md),
 [CLI walkthroughs](cli-walkthroughs/README.md),
-[compatibility recommendation](legacy-compatibility/README.md), and
-[performance protocol](performance/README.md) provide the current requirements
+[compatibility recommendation](legacy-compatibility/README.md),
+[performance protocol](performance/README.md), and
+[governance proposal](../GOVERNANCE.md) provide the current requirements
 baseline. They include source-backed scope, synthetic examples, schemas, comparison
 rules and remaining evidence gaps. They do not claim implemented capabilities.
 
-The next ticket in ready-work triage order is **#0009, governance-proposal**.
+The next requirements ticket is **#0010, license-provenance**, covering third-party
+artifact admission under the already locked MIT license. Shared-maintenance policy
+and contributor/release guidance are now proposed; actual appointments, controls,
+security intake and recovery drills remain #0017 governance-readiness work.
 The performance workload/methodology contract is now specified; actual measurements
 and numeric default/target decisions remain backlog #0016, performance-measurements.
 #0015 retains explicit compatibility gaps, including complete saved-plan and

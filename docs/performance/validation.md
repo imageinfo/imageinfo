@@ -73,6 +73,7 @@ baseline runs, raw results and proposals for numeric defaults and release budget
 It depends on lawful corpus/reference setup (#0010/#0013) and later authorized
 implementation plus relevant writer/integration evidence (#0014/#0015).
 
-The next ticket in the ready-work triage order is **#0009, governance-proposal**.
+The [governance proposal](../../GOVERNANCE.md) is now recorded; actual operational
+readiness remains #0017. The next requirements ticket is #0010, artifact provenance.
 This card's handoff does not select a language, claim a speed advantage, enable a
 storage profile or pretend that a benchmark can precede its required fixtures.

@@ -108,5 +108,7 @@ evidence. The incomplete plan schema is a real gap, not closed by the request sc
 
 Card #0008 now supplies the [performance protocol](../performance/README.md) for
 RAW reads, safe edits, report buffering, filters, queues and sessions. Actual
-measurements and finite numeric default decisions remain #0016; #0009 is next in triage. No timing claims
+measurements and finite numeric default decisions remain #0016. The
+[governance proposal](../../GOVERNANCE.md) is now recorded; #0010 is next for artifact
+provenance. No timing claims
 or numerical defaults are supported by this card's synthetic checks.

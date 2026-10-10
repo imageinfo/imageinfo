@@ -1,0 +1,164 @@
+# Project governance
+
+Status: **proposal for review**, revision `2026-10-10.1`, card **#0009**.
+This document assigns proposed responsibilities; it does not grant GitHub access,
+appoint additional maintainers, enable repository rules or authorize a release.
+
+imageinfo is in requirements and research. Terry Ott is the current project
+coordinator and accepts this phase's work. Additional technical stewards, backup
+maintainers and release/security operators have **not been appointed by this
+proposal**. The project has not demonstrated operational independence from Terry.
+
+Start with [contributing](CONTRIBUTING.md), [security reporting](SECURITY.md), and
+the [release and recovery runbook](docs/governance/release-and-recovery.md).
+[Validation and open actions](docs/governance/validation.md) distinguish the
+documented process from readiness still to be established.
+
+## Decisions and responsibilities
+
+**GOV-001 — Keep project decisions public and specific.** Requirements, rationale,
+compatibility differences, source references and acceptance evidence belong in the
+repository or linked public issues/PRs. Private security details, access inventories
+and restricted media stay private. A local board may coordinate work, but an outside
+contributor must not need board access or a private chat to understand a change.
+
+The initial product scope is EOS R5 full RAW CR3 metadata, associated XMP and stored
+previews, with broader RAW and eventually full ExifTool functionality later. Terry
+explicitly advances language/implementation selection; no workflow document does
+that implicitly. MIT is locked. Architecture starts from the product requirements,
+with conventional code and a reason for deliberate departures from convention.
+
+**GOV-002 — Separate proposed, accepted, implemented and verified.** A merged document
+can describe a proposal. Record acceptance with decision, scope, approver, date and
+linked evidence; do not infer it from a commit, generated text or a bot moving a card.
+Implementation needs a source revision; verified capabilities need the applicable
+fixture/operation/platform evidence. No single status promotes all camera variants,
+tags, write operations or storage profiles together.
+
+Keep stable requirement and capability identifiers. For a substantial decision,
+record the concrete problem, ordinary alternatives, chosen behavior, tradeoff,
+affected contracts and remaining limitations near the affected specification.
+A small correction does not need a new committee or a separate architecture essay.
+
+**GOV-003 — Give each critical area a primary and a trained backup.** The following
+is the proposed ownership map. The coordinator routes work while positions are
+unfilled; that is not evidence of expertise or redundancy in every area.
+
+| Area | Responsibility | Technical primary / backup |
+| --- | --- | --- |
+| OWN-001 — RAW formats and preservation | Per-camera/layout recognition, fields, references, sensor/calibration/preview protection; never blanket write enablement | Unassigned / unassigned |
+| OWN-002 — Metadata and compatibility | Identity/value schemas, mappings, source baselines, API/CLI semantics and accepted differences | Unassigned / unassigned |
+| OWN-003 — CLI and integration | Help/menus, scripting, result schemas, request isolation and accessibility | Unassigned / unassigned |
+| OWN-004 — Evidence and performance | Lawful fixtures, independent validators, reproducible recipes, malformed inputs and measured limits | Unassigned / unassigned |
+| OWN-005 — Releases and infrastructure | Pinned builds, artifact verification, publication, access inventory and recovery drills | Unassigned / unassigned |
+| OWN-006 — Security response | Private intake, reproduction, mitigation, coordinated disclosure and incident follow-through | Unassigned / unassigned |
+
+One person may cover several areas; the primary and backup for a critical duty must
+be different people. A backup must perform the documented work independently, not
+merely appear in a table. Before enabling production RAW writes or claiming release
+redundancy, fill the relevant roles and demonstrate the handoff. Until then keep
+unverified capabilities unavailable and state the staffing limitation openly.
+
+**GOV-004 — Make maintainership earned and reversible.** A candidate demonstrates
+sound scoped changes, review judgment, provenance care and ability to reproduce
+the area's checks. Agree a limited responsibility with the coordinator, publish
+the role/scope after the person consents, and pair on a handoff before granting
+only the needed access. Existing owners perform any access changes through a
+separately authorized task. No account, team or access grant is invented here.
+
+On departure, transfer open work and ownership, test the replacement's access, then
+remove unnecessary permissions and rotate affected project credentials as warranted.
+Preserve contributor credit. Review the roster when responsibilities change and
+before each release; stale assignments must not count as active coverage.
+
+## Review and maintenance
+
+**GOV-005 — Keep review small and evidence-driven.** Ordinary changes should have
+one focused problem, clear before/after behavior, relevant checks and honest limits.
+Favor idiomatic names, standard types and straightforward control flow. Explain
+non-obvious tradeoffs near the code; do not make reviewers decipher cleverness.
+Review disagreement should identify the requirement, evidence or simpler alternative.
+
+Proposed implementation policy: an author does not supply their own independent
+approval. A human reviewer other than the author reviews format/contract changes;
+RAW mutations require relevant format and preservation evidence. Release verification
+uses a second qualified person. Several automated agents do not constitute multiple
+independent maintainers. When expertise is missing, retain the gap and keep the
+affected capability disabled rather than inventing an approval.
+
+The current documentation phase retains Terry's standing authorization for direct
+commits/pushes and his review through the local board. Bots hand off to Ready for
+review; Terry accepts into Completed. This proposal does not retroactively claim
+independent reviews or change that authorized workflow. Proposed future review
+rules are not configured GitHub enforcement until separately adopted and verified.
+
+**GOV-006 — Triage with an accountable next step.** Public contributors use
+[GitHub issues](https://github.com/imageinfo/imageinfo/issues) and PRs. Capture
+affected revision, command/workflow, camera/mode, expected/actual result, minimal
+lawful reproduction and relevant requirement/capability IDs. Do not demand personal
+photos or a local-board account. Follow SECURITY.md for suspected vulnerabilities.
+
+Prioritize data loss/corruption, unsafe writes, security and incorrect privacy claims
+before feature breadth. Then consider blocked dependencies, first-R5 milestone value,
+reproducibility and available expertise. Record owner or explicitly unassigned state,
+next action, dependencies and why work is deferred. Do not close a reproducible bug
+merely because a maintainer cannot obtain the contributor's camera.
+
+**GOV-007 — Treat knowledge as part of the change.** Every new supported RAW variant
+needs source/provenance notes, exact capability cells, admitted regression fixtures,
+bounded malformed-input behavior, applicable independent evidence and contributor
+instructions. Reads, writes, insertion/deletion, previews and preservation are
+separate claims. Require a second person to use the instructions for critical areas;
+write down anything they needed from the original author.
+
+**GOV-008 — Version public behavior deliberately.** Review incompatible schemas,
+CLI grammar, persistent protocols, value conversions, defaults and safety guarantees
+as public changes. Name affected versions and migration behavior, preserve regression
+cases, and record an accepted difference instead of quietly changing the oracle.
+Before a software release, adopt a version/deprecation policy and support window;
+there are no released versions or compatibility windows to promise today.
+
+**GOV-009 — Release only evidenced capabilities.** The runbook defines a candidate,
+independent verification, publication evidence and rollback response. A green build
+or a generated checksum is not proof of metadata correctness or reproducibility.
+Never use a release announcement to turn proposed capabilities into verified ones.
+Release authority, supported platforms and artifact signing choices remain explicit
+readiness decisions; this card publishes no software release.
+
+**GOV-010 — Security and recovery need real operators.** A documented process does
+not replace monitored intake, individual account recovery, multiple authorized owners
+and exercised restoration. Keep secrets and personal recovery codes out of Git and
+public issues. A second owner uses their own identity; do not share one maintainer's
+personal account credentials as a continuity strategy.
+
+**GOV-011 — Resolve disagreements without procedural overhead.** Start in the PR or
+issue with the requirement and alternatives. Ask the relevant steward and an
+independent reviewer to resolve technical disagreements. During bootstrap, Terry
+records the scoped product decision or explicitly defers it; silence is not approval.
+Safety/provenance claims still need evidence regardless of who decides. Contributors
+may propose a reconsideration with new evidence; retain the prior decision history.
+
+Discuss work respectfully, give concrete actionable feedback, and make ownership
+boundaries discoverable. Report conduct concerns through a minimal contact request
+if a private channel is needed; do not publish personal allegations or private data
+as routine issue content. A dedicated conduct/escalation contact remains an open
+readiness decision rather than a fictitious staffed team.
+
+**GOV-012 — Make the limitations visible.** The open actions below have to be done
+by actual people, not marked satisfied by merging this file. Track their owners,
+verification dates and sanitized evidence before claiming shared maintenance.
+
+## Open readiness decisions
+
+| ID | Decision/action | Completion evidence |
+| --- | --- | --- |
+| GOV-OPEN-01 | Recruit/confirm technical primaries and backups | Named consented roster, scoped access and independent handoff evidence |
+| GOV-OPEN-02 | Establish private security intake and notification coverage | Enabled/tested private route, primary and backup responders, agreed response expectations |
+| GOV-OPEN-03 | Establish owner/access continuity | Authorized additional owner as appropriate, private access inventory, separate account recovery and recovery drill |
+| GOV-OPEN-04 | Adopt review enforcement and ownership routing | Actual repository rules checked with test PRs; CODEOWNERS only after real people/teams and permissions exist |
+| GOV-OPEN-05 | Choose release authority, version/support policy and signing custody | Named operators, reproducible build/validation instructions and independent release rehearsal after implementation selection |
+| GOV-OPEN-06 | Publish contributor verification commands for the eventual toolchain | Clean-machine setup/checks reproducible without private paths, plus reviewed CI permissions and a conduct/escalation contact |
+
+These are follow-up readiness work, not authorization to grant permissions, change
+settings or publish releases. The immediate next requirements card is #0010,
+third-party artifact provenance under the already locked MIT license.
