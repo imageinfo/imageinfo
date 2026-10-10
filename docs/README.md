@@ -6,11 +6,13 @@ No parsing, editing, or compatibility implementation exists yet.
 
 **Delivery focus: camera RAW metadata first. Long-term goal: full ExifTool feature
 parity.** Broader research is retained as future reference; it does not expand the
-current milestone. Language and framework choices remain deferred.
+current milestone. Implementation selection is now open under #0011; the Rust
+recommendation awaits review and the requirements remain language independent.
 The first camera/format target is **Canon EOS R5 CR3**.
 
 | Document | Purpose |
 | --- | --- |
+| [Implementation selection](implementation-selection/README.md) | ADR-0011: Rust recommendation, Go/C# alternatives, disposable probes, component choices and the first read milestone. |
 | [RAW scope](raw-scope.md) | Current format/workflow boundaries and the distinction from eventual full parity. |
 | [Canon EOS R5 CR3](canon-eos-r5-cr3.md) | First camera/format milestone, priority workflows, and variant evidence. |
 | [CR3 capability inventory](inventory/README.md) | Versioned capability rows, schema, CLI/API mapping, evidence gates, and audit gaps for card #0002. |

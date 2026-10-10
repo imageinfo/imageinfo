@@ -9,9 +9,10 @@ previews, prioritizing the camera's full RAW setting. C-RAW is tracked separatel
 other RAW families follow later. See the
 [Canon EOS R5 milestone](docs/canon-eos-r5-cr3.md).
 
-**Status: requirements and research.** There is no imageinfo executable yet.
-Implementation language, frameworks, dependencies, and packaging are deliberately
-undecided. Command examples in the design documents describe proposed behavior.
+**Status: implementation selection.** There is no production imageinfo executable.
+[ADR-0011](docs/implementation-selection/README.md) recommends Rust following small
+disposable Rust/Go probes; the recommendation awaits review. Command examples in
+the design documents describe proposed behavior.
 
 The project starts with three goals:
 
@@ -40,8 +41,9 @@ Harvey and its contributors; imageinfo is not affiliated with or endorsed by it.
 
 ## Project decisions
 
-Requirements and features come first. Language selection and implementation begin
-after the requirements baseline and compatibility approach are reviewed.
+The initial requirements and private R5 reference baseline have been reviewed.
+Language selection is now open; the [first implementation milestone](docs/implementation-selection/first-milestone.md)
+defines a bounded read-only start. Architecture and evidence develop incrementally.
 The project uses the [MIT license](LICENSE), with copyright attribution to Terry Ott
 and imageinfo contributors. See the [license decision](docs/license-decision.md).
 No ExifTool code, tag tables, or test images are vendored here.

@@ -3,6 +3,7 @@
 /.local/
 /research-cache/
 /Source Data/
+/experiments/**/target/
 *.log
 .env
 .env.*

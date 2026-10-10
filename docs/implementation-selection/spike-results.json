@@ -1,0 +1,37 @@
+{
+  "observedOn": "2026-10-10",
+  "purpose": "disposable feasibility, not product capability evidence",
+  "host": "Windows x64",
+  "rust": "1.99.0 (b940084d7 2026-09-28)",
+  "cargo": "1.99.0 (5f94df478 2026-08-27)",
+  "go": "1.25.1 windows/amd64",
+  "csharp": "Documentation only; no installed .NET SDK",
+  "rustCliCases": 21,
+  "rustCliFailures": 0,
+  "helpLiteralOperandAndPlainTextChecks": true,
+  "rustExactWireRoundtrip": true,
+  "syntheticHeaderCasesPerLanguage": 6,
+  "privateRawInputsPerLanguage": 8,
+  "headerCountsAgree": true,
+  "privateInputHashesUnchanged": true,
+  "performanceComparison": null,
+  "productionCapabilities": 0,
+  "sourceArtifacts": [
+    {
+      "path": "experiments/0011-language-selection/rust/Cargo.toml",
+      "sha256": "07c2651c232fa0b15be113b04a72d69f5f107a4879a5c5340eae5769608f3f71"
+    },
+    {
+      "path": "experiments/0011-language-selection/rust/Cargo.lock",
+      "sha256": "ff4c9ef241d857f5f954555fc652b9191d57eb374205b164d36c1d546c786bb1"
+    },
+    {
+      "path": "experiments/0011-language-selection/rust/src/main.rs",
+      "sha256": "8158f6ecaa0fe8e2dd7d85eb174015679c7b6aac813faf0d6ddb4d3cf49da960"
+    },
+    {
+      "path": "experiments/0011-language-selection/go/main.go",
+      "sha256": "2d495e6a32d2fb7d3f44821a3f2d98ecfaad8779f3a7169180c5fbc1491c217e"
+    }
+  ]
+}

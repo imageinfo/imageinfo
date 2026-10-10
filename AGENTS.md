@@ -1,8 +1,11 @@
 # imageinfo project guidance
 
-This repository is in its requirements and research phase. Keep work language
-agnostic. Do not choose an implementation language, framework, dependency stack,
-or package layout until Terry explicitly advances that decision.
+Terry explicitly opened implementation selection on 2026-10-10 through card #0011
+and authorized disposable spikes. ADR-0011 in `docs/implementation-selection`
+recommends Rust; that recommendation remains pending Terry's review. Requirements
+contracts remain language independent. Research code under `experiments/` is not
+production imageinfo and must not be promoted without a separate implementation
+task, ordinary design review and the applicable evidence gates.
 
 ## Product intent
 

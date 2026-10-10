@@ -2,6 +2,10 @@
 
 Research date: **2026-10-10**. Status: language-agnostic design constraints for discussion. This document chooses no programming language, runtime, parsing library, serialization library, build system, or deployment technology.
 
+Subsequent [ADR-0011](implementation-selection/README.md) evaluates a concrete Rust
+implementation direction and records disposable probes. It remains a recommendation
+for review. These constraints do not become a mandated package or abstraction tree.
+
 **First implementation target: Canon EOS R5 CR3**, followed by broader RAW support.
 Prove the initial vertical slice on CR3's container and Canon structures; the TIFF
 and DNG principles below prepare later RAW work. See [the CR3 milestone](canon-eos-r5-cr3.md).

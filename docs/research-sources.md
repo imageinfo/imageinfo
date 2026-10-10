@@ -117,3 +117,11 @@ observed 2026-10-10. The [method ledger](corpus-baseline/method.md) identifies b
 upstream commits, the retrieved production/development release distinction, Perl
 and JSON::PP source/runtime provenance, configuration probes and evidence limits.
 Selected reference sources are private operational copies, not imported product code.
+
+## Implementation-selection follow-up
+
+Card #0011 adds the [language/component comparison and source ledger](implementation-selection/comparison.md),
+observed 2026-10-10, with Rust/Go disposable feasibility runs and a documentation-only
+C# comparison. The [decision](implementation-selection/README.md) is a recommendation
+pending review. Exact probe dependencies and aggregate findings are published; no
+production capability, performance ranking or completed architecture is implied.

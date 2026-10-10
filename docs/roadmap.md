@@ -1,82 +1,62 @@
 # Roadmap
 
-Full ExifTool feature parity is the long-term goal. **Camera RAW metadata is the
-initial delivery scope.** This roadmap separates those horizons. A milestone's
-limited coverage must remain visible; it is not permission to call partial support
-complete. The project is currently in **Phase 0**. Language choices are deferred.
+Full ExifTool functionality remains the long-term goal. Camera RAW metadata is the
+current scope, beginning with Canon EOS R5 full RAW CR3. C-RAW/DPRAW and other RAW
+families need separate evidence. RAW development and sensor recompression are out
+of scope.
 
-**First target: Canon EOS R5 full RAW CR3.** C-RAW is separately tracked secondary
-coverage. The read foundation, associated-XMP workflow,
-and individually gated embedded edits start there. Other RAW families come after
-that first milestone; see the [CR3 requirements](canon-eos-r5-cr3.md).
+**As of 2026-10-10:** initial requirements cards #0001–#0010 and private corpus
+baseline #0013 are accepted. Terry has opened **implementation selection, #0011**.
+[ADR-0011](implementation-selection/README.md) recommends Rust and records disposable
+Rust/Go probes. It awaits review; no production implementation or verified imageinfo
+capability exists.
 
-| Phase | Outcome | Exit evidence |
+An empty Ready for Work lane does not establish completed architecture. It can mean
+the prepared queue is exhausted or its next item awaits a decision. Backlog work
+must be scoped and triaged against the current milestone before execution.
+
+## Delivery sequence
+
+| Phase | Current position | Exit evidence |
 | --- | --- | --- |
-| 0. Requirements baseline | Document RAW workflows, native CLI experience, compatibility scope, safety, and open decisions; retain broader upstream research as reference. | Reviewed requirements with stable IDs, a source ledger, RAW command walkthroughs, and a prioritized local board. |
-| 1. RAW compatibility specification | Convert RAW feature areas into a versioned capability matrix and fixture/test contracts. | Each row names RAW format/variant/tag/operation, reference behavior, expected differences, and evidence needed; priority workflows have testable examples. |
-| 2. Implementation selection | Evaluate language and component choices against the accepted requirements. | An explicit decision recording alternatives, maintenance implications, portability, parser safety, extensibility, and delivery constraints. Begin only when Terry advances this deferred work. |
-| 3. RAW read foundation | Deliver the agreed first RAW format set with full tag identity, provenance, raw values, usable help, and scriptable output. | Differential read results, malformed-input/resource checks, cross-platform behavior, and a published list of supported RAW capabilities. |
-| 4. Safe RAW mutation | Add update/delete/copy and metadata-sidecar creation by RAW container and tag family. | Independent readback, preserved sensor payloads and rendering-critical data, round-trip/unknown-data evidence, fault-injection recovery, and explicit unsupported cases. |
-| 5. RAW workflow breadth | Add remaining RAW output modes, batch operations, geotagging, dates, naming, embedded extraction, metadata mapping, and API/process workflows. | End-to-end examples and parity results for every accepted RAW workflow, including failure and partial-success cases. |
-| 6. RAW long tail and stewardship | Expand vendor notes, camera variants, and advanced RAW options; sustain compatibility as upstream evolves. | Published gaps, regression corpus, reproducible releases, documented format ownership, and coverage review for each release. |
-| Later: broader ExifTool parity | Expand into rendered images and other ExifTool-supported media/file types through separately scoped milestones. | Explicit scope choices and equivalent per-format evidence; do not begin every format family at project inception. |
+| Requirements baseline | Initial scope/workflows/contracts accepted | Stable requirements, source ledger, reviewed CLI examples and explicit gaps |
+| RAW compatibility specification | Initial matrix and fixture contracts accepted; breadth remains open | Exact format/tag/location/operation assertions for each increment |
+| Implementation selection | #0011 recommendation ready for review | Accepted language/component direction, alternatives and first milestone |
+| Executable foundation | Next after selection acceptance | Pinned build, library/CLI boundary, synthetic wire/help tests and declared platform CI |
+| R5 read foundation | Next after executable foundation | Bounded recognition, selected exact metadata, preview extraction and malformed-input/private differential evidence |
+| Associated XMP and guided CLI | Subsequent read/UX increments | Reviewed XML component, faithful namespaces/values/time, shared commands and accessible menus |
+| Safe mutation | #0014 evidence work; no writer enabled | Sensor/calibration/unknown-data preservation, independent checks and per-profile concurrency/recovery |
+| RAW workflow breadth | Later increments, with #0015 | Batch, transformations, naming, geotagging, import/export and persistent integration evidence |
+| RAW long tail and stewardship | Ongoing | More variants/RAW families, published gaps, independent maintenance and repeatable releases |
+| Broader ExifTool parity | #0012 deferred umbrella | Separately accepted media scope and format-specific evidence |
 
-## Next requirements work
+The [first milestone](implementation-selection/first-milestone.md) defines the
+read subset and gates. Full legacy CLI compatibility and embedded writes need not
+be complete before a useful native reader exists.
 
-These tasks can be refined without choosing a language. Their short IDs match the
-local board's stable card IDs; board ticket numbers are machine-local.
+## Follow-up ownership
 
-| Card ID | Work | Acceptance criteria |
+| Card | Responsibility | Relationship to first implementation |
 | --- | --- | --- |
-| `capability-inventory` | Enumerate Canon EOS R5 CR3 capabilities first. | Inventory EOS R5 CR3 capture variants and metadata families separately; distinguish recognition/read/write/sidecar creation/delete/preserve; attach sources and exceptions; retain other RAW families as later expansion. |
-| `cli-walkthroughs` | Exercise the proposed command/help/menu model. | Text walkthroughs for novice inspection, expert batch export, safe edit, GPS removal, sidecar sync, and failures; root/group/leaf help and noninteractive paths reviewed. |
-| `metadata-contract` | Specify the loss-aware metadata model. | Examples cover duplicate instances, groups, binary values, rationals, missing versus empty, unknown time zones, XMP structures/languages, offsets, and source provenance. |
-| `fixture-plan` | Define reproducible parity evidence. | Fixture manifest/provenance schema, oracle version/hash fields, deterministic comparison rules, and a prioritized corpus plan; no unlicensed/private sample import. |
-| `write-safety-contract` | Specify RAW mutation and recovery behavior. | Per-file transaction, originals/backups, collisions, concurrent change detection, failure recovery, unknown/calibration data retention, sensor payload preservation, and signature consequences have acceptance scenarios. |
-| `legacy-compatibility` | Map legacy CLI, API, and extension use cases. | A documented equivalent, proposed difference, or open gap for upstream argument grammar, expressions/configuration, structured output, and long-lived process behavior. |
-| `performance-baseline` | Specify measurable performance requirements. | Workload categories, environment fields, latency/throughput/memory metrics, cache effects, and comparison methodology; numerical targets supported by later measurement. |
-| `governance-proposal` | Make shared maintenance practical. | Format ownership, contributor onboarding, review/release procedures, vulnerability reporting, and succession/access recovery proposals. |
-| `license-provenance` | Define provenance under the selected MIT project license. | MIT decision is recorded; complete artifact-specific source/table/fixture provenance rules and resolve reuse questions before implementation imports. |
-| `implementation-selection` | Choose a modern implementation stack later. | Explicitly held in backlog until Terry advances language decisions; evaluate only against accepted requirements. |
-| `corpus-baseline` | Acquire and characterize the first lawful full RAW corpus later. | Backlog follow-up #0013: select concrete permitted sources, admit fixtures, hash the reference distribution/runtime/driver, and capture reference-only observations. |
-| `write-validation` | Prove RAW writer/storage safety later. | Backlog #0014: declared profiles, preservation, interrupted-operation recovery, exact privacy catalogs and independent runtime evidence; no writer enabled by a specification alone. |
-| `compatibility-evidence` | Close the surveyed compatibility gaps later. | Backlog #0015: exhaustive option/API cases, exact legacy serializers, advanced extensions/mappings, complete plan/session-output schemas and real integration evidence; see LG-001–006. |
-| `performance-measurements` | Collect actual baselines and choose measured limits later. | Backlog #0016: admitted workloads, versioned collector/records, correctness-gated measurements, raw samples and reviewed numeric budgets. |
-| `governance-readiness` | Establish actual shared-maintenance operations later. | Backlog #0017: consented primary/backup appointments, private intake, authorized access continuity, review enforcement and independent release/recovery rehearsal; no controls are established by a proposal alone. |
-| `broader-format-parity` | Preserve the eventual full ExifTool parity goal. | Deferred umbrella only; choose and scope additional format families after RAW milestones, with independent compatibility evidence. |
+| #0011 `implementation-selection` | Language/components against requirements | Rust recommendation pending review; earlier language deferral lifted for this evaluation |
+| `executable-foundation` | Bootstrap accepted stack and shared command/help contracts | First implementation increment after selection acceptance |
+| `r5-read-slice` | Bounded recognition, selected metadata and preview extraction | Depends on foundation; grows by reviewed mappings |
+| #0014 `write-validation` | Writer/storage profiles, preservation, privacy and fault recovery | Gates mutations, not read-only progress |
+| #0015 `compatibility-evidence` | Remaining options, serializers, mappings, plan/session contracts | Pull in first-slice blockers; unrelated legacy breadth can follow |
+| #0016 `performance-measurements` | Correctness-gated baselines and numeric budgets | No performance target inferred from spike durations |
+| #0017 `governance-readiness` | Maintainers/backups, security and release/recovery controls | Language choice does not establish shared maintenance |
+| #0018 `corpus-expansion` | Targeted variation, negative cases and reference repeatability | Initial eight files cover a narrow stratum; request more for specific assertions |
+| #0012 `broader-format-parity` | Eventual full ExifTool scope | Deferred; does not expand the R5 milestone |
+
+The accepted [private baseline](corpus-baseline/README.md) includes eight RAWs,
+24 previews, three XMP outputs and 97 ExifTool reference invocations. New selection
+probes are separate feasibility evidence. Neither establishes native metadata
+parity. Personal media and exact private captures remain excluded from public Git.
 
 ## Progress reporting
 
-The [CR3 capability inventory](inventory/README.md),
-[metadata contract](metadata-model/README.md),
-[fixture and parity plan](fixture-plan/README.md),
-[safe mutation contract](write-safety/README.md),
-[CLI walkthroughs](cli-walkthroughs/README.md),
-[compatibility recommendation](legacy-compatibility/README.md),
-[performance protocol](performance/README.md), and
-[governance proposal](../GOVERNANCE.md) and
-[artifact provenance policy](provenance/README.md) provide the current requirements
-baseline. They include source-backed scope, synthetic examples, schemas, comparison
-rules and remaining evidence gaps. They do not claim implemented capabilities.
-
-The initial requirements queue is specified through **#0010, artifact provenance**.
-The next evidence-work candidate is **#0013, corpus-baseline**, after policy review
-and lawful input selection. It applies the provenance process to real full RAW
-assets and the actual reference-tool distribution/runtime. #0011 stays deferred
-until Terry explicitly advances implementation selection. Actual appointments,
-controls, security intake and recovery drills remain #0017 governance-readiness work.
-The performance workload/methodology contract is now specified; actual measurements
-and numeric default/target decisions remain backlog #0016, performance-measurements.
-#0015 retains explicit compatibility gaps, including complete saved-plan and
-session-output schemas, exhaustive option interactions and runtime integration.
-Runtime CLI/usability checks follow a separately authorized implementation decision.
-Actual corpus acquisition and reference runs remain backlog work on #0013.
-Storage profiles, writer fault injection and per-profile
-privacy/preservation evidence remain backlog work on #0014, after requirements
-review, lawful fixtures and an explicitly authorized implementation decision.
-No runtime capability has been promoted by the planning artifacts.
-
-Report capability cells and verified workflows, not percentages derived solely from
-tag or extension counts. A format readable in one fixture may contain variants with
-different requirements. A write claim requires stronger evidence than a successful
-read. Current implementation coverage is zero; the initial deliverable is research.
+Report capability cells and verified workflows, not percentages derived from tag
+counts, extensions, completed design cards or prototype assertions. Keep requirements,
+recommendations, accepted decisions, implementation and verified behavior distinct.
+Partial read support needs an explicit field/location list. A write claim requires
+stronger evidence than a successful read.

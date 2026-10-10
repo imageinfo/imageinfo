@@ -1,9 +1,10 @@
 # Contributing to imageinfo
 
-The project is currently documenting requirements for Canon EOS R5 full RAW CR3
-metadata, paired XMP and stored previews. There is **no executable or build system
-yet**. Language and internal architecture are deliberately open. Research corrections,
-clearer examples and carefully sourced edge cases are useful contributions now.
+The initial requirements and private reference baseline are reviewed. Implementation
+selection is now open: [ADR-0011](docs/implementation-selection/README.md) recommends
+Rust and awaits review. There is **no production imageinfo executable**. Disposable
+[research probes](experiments/0011-language-selection/README.md) have their own
+reproduction commands; they are not a production foundation.
 
 Start with the [project overview](README.md), [documentation map](docs/README.md),
 [RAW scope](docs/raw-scope.md) and [governance proposal](GOVERNANCE.md).
@@ -56,6 +57,7 @@ For documentation changes, before opening a PR:
 
 | Changed area | Public verification recipe |
 | --- | --- |
+| Implementation selection/probes | [Probe reproduction](experiments/0011-language-selection/README.md) and [decision validation](docs/implementation-selection/validation.md) |
 | Capability inventory | [Inventory validation](docs/inventory/validation.md) |
 | Metadata values/identity | [Metadata validation](docs/metadata-model/validation.md) |
 | Fixtures/reference records | [Fixture validation](docs/fixture-plan/validation.md) |
@@ -68,8 +70,9 @@ For documentation changes, before opening a PR:
 The six current schema files live under `docs/inventory`, `docs/metadata-model`,
 `docs/fixture-plan`, `docs/legacy-compatibility` and `docs/provenance`. Their validation recipes explain
 what JSON Schema alone cannot prove. Choose available validation tooling for this
-documentation work; that does not choose the product language. There is no software
-test/build gate yet. The first implementation contribution must add reproducible,
+documentation work; that does not choose the product language. There is no production
+test/build gate yet; changed research probes must still compile and pass their
+documented assertions. The first implementation contribution must add reproducible,
 public setup and check commands appropriate to the approved language/toolchain.
 
 ## Make review straightforward
