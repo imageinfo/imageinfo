@@ -26,10 +26,51 @@ localswim-cli boards/imageinfo.json card next 5 --lane ready_for_work
 localswim-cli boards/imageinfo.json board shutdown
 ```
 
-The initial service runs without board autopush. There is no automatic startup or
-scheduled monitor configured by this project setup. Restart the service after a
-machine restart when needed. When launching a background process on Windows, use
-a hidden window and keep output/error logs under ignored `boards/`.
+The service runs without board autopush. Restart it after a machine restart when
+needed. Whenever it runs, the JSON board-write monitor **MUST also be running**,
+targeted at the active Codex thread (Terry's instruction, 2026-10-10). Verify both
+on startup/resume and before board work. Keep the monitor alive between tasks for
+the service's lifetime. This is a filesystem watcher, not a scheduled poll.
+
+### Start or retarget the monitor
+
+On Terry's current machine, reuse the shared monitor and its locked tooling
+environment in `C:\Projects\FGA\architecture-design`. It watches writes without
+reading board content, coalesces them behind a 15-second quiet window, suppresses
+proven bot-only activity, and queues a bounded next-turn alert to the target chat.
+After an alert, inspect activity through `localswim-cli`; never edit the JSON directly.
+Queued alerts do not establish delivery to a currently active turn.
+
+Use imageinfo-specific paths. Reinvoking the helper safely retargets its existing
+monitor through the shared lock; never use the FGA defaults or another board's paths.
+Launch hidden, inherit UTF-8 output, and pass the board's actual current port:
+
+```powershell
+if (-not $env:CODEX_THREAD_ID) { throw 'An active Codex thread ID is required.' }
+$env:PYTHONIOENCODING = 'utf-8'
+$imageinfoPort = 8795 # Verify against this board's current configuration.
+$imageinfoMonitorArgs = @(
+    'run', '--frozen', 'python', 'scripts/watch_localswim.py',
+    '--board-path', 'C:\Projects\imageinfo\boards\imageinfo.json',
+    '--board-label', 'imageinfo',
+    '--thread-id', $env:CODEX_THREAD_ID,
+    '--port', $imageinfoPort,
+    '--status-path', 'C:\Temp\imageinfo-localswim-monitor-status.json',
+    '--target-path', 'C:\Temp\imageinfo-localswim-monitor-target.json',
+    '--lock-path', 'C:\Temp\imageinfo-localswim-monitor.lock'
+)
+Start-Process -FilePath (Get-Command uv).Source -ArgumentList $imageinfoMonitorArgs -WorkingDirectory 'C:\Projects\FGA\architecture-design' -WindowStyle Hidden -RedirectStandardOutput 'C:\Temp\imageinfo-localswim-monitor.out.log' -RedirectStandardError 'C:\Temp\imageinfo-localswim-monitor.err.log'
+```
+
+Verify `/api/v001/status` is healthy, the monitor status JSON says `running`, its
+recorded PID is alive, and the target JSON's `threadId` equals the active thread.
+If startup fails, inspect the local error log and restore monitoring before
+continuing board work. Stop/restart the service and monitor together; do not leave
+the service running unmonitored. A machine reboot requires restarting both.
+
+Monitor status/target/lock/log files are transient private machine state under
+`C:\Temp`; do not commit them. Service logs remain under ignored `boards/`.
+This shared operational Python tooling does not choose imageinfo's product language.
 
 Card mutations go through the supported CLI and the live service, preserving
 authorization, revision checks, and history. Never edit a running board's JSON.

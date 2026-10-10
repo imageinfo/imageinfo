@@ -70,6 +70,15 @@ Terry workflow. Bot moves completed work to `ready_for_review`; Terry alone acce
 it into `completed`. Do not launch a duplicate service or enable board autopush
 without an explicit request.
 
+Terry requires the JSON board-write monitor to be running whenever this board's
+localswim service is running. At every startup or resume, verify both the service
+and monitor, and target the monitor at the active Codex thread. Start or retarget
+the shared monitor using the procedure in `docs/local-board.md`; use imageinfo's
+own status, target and lock paths so another board's monitor is never displaced.
+Verify its running state, live process and current thread target before continuing
+board work. Keep it running for the service's lifetime, including between tasks.
+This monitor is local operational tooling, not an imageinfo implementation choice.
+
 Write card descriptions and comments for easy human scanning. Terry explicitly
 requested more line breaks on 2026-10-10: use short paragraphs separated by blank
 lines, and compact bullets for parallel items or acceptance criteria. Separate
