@@ -1,0 +1,376 @@
+{
+  "schemaVersion": 1,
+  "revision": "2026-10-10.1",
+  "purpose": "synthetic-acceptance-model",
+  "scope": "Observable states for one content replacement or new-file publication. Not a required runtime framework or a claim that any platform profile is verified.",
+  "states": [
+    {
+      "id": "planned",
+      "meaning": "Resolved immutable intent; target files unchanged."
+    },
+    {
+      "id": "prepared",
+      "meaning": "Input/path/capability checks passed; required sources are identified for freezing and staging."
+    },
+    {
+      "id": "staged",
+      "meaning": "Complete candidate exists in a private staging artifact."
+    },
+    {
+      "id": "validated",
+      "meaning": "Candidate has passed required value, structure, preservation and property checks."
+    },
+    {
+      "id": "ready",
+      "meaning": "Candidate/recovery material and recovery record have required flush acknowledgements."
+    },
+    {
+      "id": "publishing",
+      "meaning": "Publication intent was recorded; the namespace operation is in flight or its outcome may be unknown."
+    },
+    {
+      "id": "published",
+      "meaning": "The target is observed to be the candidate; final durability/receipt work remains."
+    },
+    {
+      "id": "committed",
+      "meaning": "Installed output, required properties, durability acknowledgements and receipt are verified."
+    },
+    {
+      "id": "unchanged",
+      "meaning": "No requested effective change; no target rewrite or new backup."
+    },
+    {
+      "id": "refused",
+      "meaning": "A request/profile/capability policy prevents application; no publication by imageinfo."
+    },
+    {
+      "id": "conflict",
+      "meaning": "An input/destination guard changed before publication; no publication by imageinfo."
+    },
+    {
+      "id": "failed-before-publish",
+      "meaning": "Staging/validation/prepublication work failed; no publication by imageinfo."
+    },
+    {
+      "id": "cancelled-before-publish",
+      "meaning": "Cancellation honored before publication; no publication by imageinfo."
+    },
+    {
+      "id": "recovery-required",
+      "meaning": "The outcome or required guarantee is uncertain; preserve evidence and do not report success."
+    },
+    {
+      "id": "recovered-original",
+      "meaning": "Recovery proves the original/expected-absent state; no automatic retry of the edit."
+    }
+  ],
+  "guards": {
+    "request-valid": "Whole-request syntax/intent is valid; any explicit continue policy has per-unit refusals recorded.",
+    "explicit-apply": "User requested application; a saved plan or imported metadata is not self-authorizing.",
+    "inputs-current": "Content, object/path identity and relevant properties match the plan or an explicitly proven earlier receipt.",
+    "paths-bound": "Resolved paths, parents, aliases and collision policy are bound to the supported profile.",
+    "capability-evidenced": "Exact format/variant/location/operation is enabled by evidence; untrusted records cannot grant this.",
+    "profile-evidenced": "Publication, concurrency, property and durability guarantees have a supported tested profile.",
+    "no-effective-change": "The requested representation/effect is already satisfied; no implicit canonicalization is needed.",
+    "inputs-frozen": "All copied values and referenced bytes needed by the unit are stable and verified.",
+    "stage-complete": "Staging finished without modifying the target or recompressing protected sensor data.",
+    "values-valid": "Typed intended changes and all implicit mandatory updates match the plan.",
+    "preservation-valid": "Protected sensor/preview/opaque content and required interpretation metadata are preserved.",
+    "references-valid": "Container lengths, offsets, references and checksums remain valid.",
+    "properties-valid": "The declared filesystem-property policy is satisfied.",
+    "candidate-flushed": "Required candidate-data flush acknowledgements succeeded.",
+    "recovery-verified": "Recoverable original bytes/properties or expected absence are established for this mode.",
+    "recovery-flushed": "Required recovery-artifact persistence acknowledgements succeeded.",
+    "record-flushed": "Required current-phase transaction/ownership record persistence acknowledgements succeeded; an earlier-phase acknowledgement cannot be reused.",
+    "publication-guard": "Required source/destination exclusion or conditional operation remains effective across publication.",
+    "candidate-current": "The stage's content/identity has not changed since validation.",
+    "installed-candidate": "The installed target matches the staged identity/content under the profile.",
+    "namespace-flushed": "Required namespace/metadata persistence acknowledgements succeeded.",
+    "receipt-flushed": "The final outcome/identities were recorded with required persistence.",
+    "recovery-retained": "Original recovery material still exists until successful-finalization retention policy is applied.",
+    "original-current": "Recovery proves the original identity/content/properties or expected absence.",
+    "owned-record": "Recovery artifacts/record belong to this transaction and pass integrity/path checks."
+  },
+  "transitions": [
+    {
+      "from": "planned",
+      "event": "confirm-no-change",
+      "to": "unchanged",
+      "guards": [
+        "request-valid",
+        "explicit-apply",
+        "capability-evidenced",
+        "inputs-current",
+        "no-effective-change"
+      ],
+      "publicationPossible": false
+    },
+    {
+      "from": "planned",
+      "event": "prepare",
+      "to": "prepared",
+      "guards": [
+        "request-valid",
+        "explicit-apply",
+        "inputs-current",
+        "paths-bound",
+        "capability-evidenced",
+        "profile-evidenced"
+      ],
+      "publicationPossible": false
+    },
+    {
+      "from": "prepared",
+      "event": "finish-stage",
+      "to": "staged",
+      "guards": [
+        "inputs-frozen",
+        "stage-complete"
+      ],
+      "publicationPossible": false
+    },
+    {
+      "from": "staged",
+      "event": "validate-stage",
+      "to": "validated",
+      "guards": [
+        "values-valid",
+        "preservation-valid",
+        "references-valid",
+        "properties-valid"
+      ],
+      "publicationPossible": false
+    },
+    {
+      "from": "validated",
+      "event": "prepare-publication",
+      "to": "ready",
+      "guards": [
+        "candidate-flushed",
+        "recovery-verified",
+        "recovery-flushed",
+        "record-flushed",
+        "publication-guard"
+      ],
+      "publicationPossible": false
+    },
+    {
+      "from": "ready",
+      "event": "begin-publication",
+      "to": "publishing",
+      "guards": [
+        "inputs-current",
+        "paths-bound",
+        "candidate-current",
+        "publication-guard",
+        "record-flushed"
+      ],
+      "publicationPossible": true
+    },
+    {
+      "from": "publishing",
+      "event": "observe-candidate",
+      "to": "published",
+      "guards": [
+        "installed-candidate"
+      ],
+      "publicationPossible": true
+    },
+    {
+      "from": "published",
+      "event": "finalize",
+      "to": "committed",
+      "guards": [
+        "installed-candidate",
+        "properties-valid",
+        "namespace-flushed",
+        "receipt-flushed",
+        "recovery-retained",
+        "publication-guard"
+      ],
+      "publicationPossible": true
+    },
+    {
+      "from": "planned",
+      "event": "refuse",
+      "to": "refused",
+      "guards": [],
+      "publicationPossible": false
+    },
+    {
+      "from": "planned",
+      "event": "detect-conflict",
+      "to": "conflict",
+      "guards": [],
+      "publicationPossible": false
+    },
+    {
+      "from": "planned",
+      "event": "fail-before-publication",
+      "to": "failed-before-publish",
+      "guards": [],
+      "publicationPossible": false
+    },
+    {
+      "from": "planned",
+      "event": "cancel",
+      "to": "cancelled-before-publish",
+      "guards": [],
+      "publicationPossible": false
+    },
+    {
+      "from": "prepared",
+      "event": "refuse",
+      "to": "refused",
+      "guards": [],
+      "publicationPossible": false
+    },
+    {
+      "from": "prepared",
+      "event": "detect-conflict",
+      "to": "conflict",
+      "guards": [],
+      "publicationPossible": false
+    },
+    {
+      "from": "prepared",
+      "event": "fail-before-publication",
+      "to": "failed-before-publish",
+      "guards": [],
+      "publicationPossible": false
+    },
+    {
+      "from": "prepared",
+      "event": "cancel",
+      "to": "cancelled-before-publish",
+      "guards": [],
+      "publicationPossible": false
+    },
+    {
+      "from": "staged",
+      "event": "refuse",
+      "to": "refused",
+      "guards": [],
+      "publicationPossible": false
+    },
+    {
+      "from": "staged",
+      "event": "detect-conflict",
+      "to": "conflict",
+      "guards": [],
+      "publicationPossible": false
+    },
+    {
+      "from": "staged",
+      "event": "fail-before-publication",
+      "to": "failed-before-publish",
+      "guards": [],
+      "publicationPossible": false
+    },
+    {
+      "from": "staged",
+      "event": "cancel",
+      "to": "cancelled-before-publish",
+      "guards": [],
+      "publicationPossible": false
+    },
+    {
+      "from": "validated",
+      "event": "refuse",
+      "to": "refused",
+      "guards": [],
+      "publicationPossible": false
+    },
+    {
+      "from": "validated",
+      "event": "detect-conflict",
+      "to": "conflict",
+      "guards": [],
+      "publicationPossible": false
+    },
+    {
+      "from": "validated",
+      "event": "fail-before-publication",
+      "to": "failed-before-publish",
+      "guards": [],
+      "publicationPossible": false
+    },
+    {
+      "from": "validated",
+      "event": "cancel",
+      "to": "cancelled-before-publish",
+      "guards": [],
+      "publicationPossible": false
+    },
+    {
+      "from": "ready",
+      "event": "refuse",
+      "to": "refused",
+      "guards": [],
+      "publicationPossible": false
+    },
+    {
+      "from": "ready",
+      "event": "detect-conflict",
+      "to": "conflict",
+      "guards": [],
+      "publicationPossible": false
+    },
+    {
+      "from": "ready",
+      "event": "fail-before-publication",
+      "to": "failed-before-publish",
+      "guards": [],
+      "publicationPossible": false
+    },
+    {
+      "from": "ready",
+      "event": "cancel",
+      "to": "cancelled-before-publish",
+      "guards": [],
+      "publicationPossible": false
+    },
+    {
+      "from": "publishing",
+      "event": "uncertain-outcome",
+      "to": "recovery-required",
+      "guards": [],
+      "publicationPossible": true
+    },
+    {
+      "from": "published",
+      "event": "uncertain-outcome",
+      "to": "recovery-required",
+      "guards": [],
+      "publicationPossible": true
+    },
+    {
+      "from": "recovery-required",
+      "event": "establish-original",
+      "to": "recovered-original",
+      "guards": [
+        "owned-record",
+        "original-current",
+        "recovery-verified",
+        "publication-guard"
+      ],
+      "publicationPossible": true
+    },
+    {
+      "from": "recovery-required",
+      "event": "establish-committed",
+      "to": "committed",
+      "guards": [
+        "owned-record",
+        "installed-candidate",
+        "properties-valid",
+        "namespace-flushed",
+        "receipt-flushed",
+        "recovery-retained",
+        "publication-guard"
+      ],
+      "publicationPossible": true
+    }
+  ]
+}

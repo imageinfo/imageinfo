@@ -97,8 +97,9 @@ synthetic examples still provide no camera-runtime evidence.
   and synthetic examples.
 - **#0003:** use occurrence-aware selection and explicit value states in command,
   menu, help, and error examples. ExifTool aliases are mappings into this model.
-- **#0006:** turn edit intents into validated plans, including mappings, capability
-  checks, stale-source detection, source-byte preservation, and recovery.
+- **#0006:** now specifies the proposed [write-safety contract](../write-safety/README.md),
+  including edit semantics, capability checks, stale-source detection, source-byte
+  preservation and recovery. #0014 retains the actual writer/storage proofs.
 
 The greenfield, conventional-code, least-surprise, and rationale-comment requirements
 are recorded in project guidance. Internal types, module boundaries, dependencies,

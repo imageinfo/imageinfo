@@ -63,6 +63,14 @@ run of a differential test suite. Format counts and tag counts are deliberately 
 used as completion metrics. A future inventory must distinguish file recognition,
 readability, writability, creatability, deletability, and preservation.
 
+## Storage and recovery follow-up
+
+Card #0006 adds a [platform source ledger](write-safety/platform-constraints.md),
+observed 2026-10-10, covering Microsoft file replacement/flushing, Linux manual
+source and Apple archived synchronization guidance. These sources establish
+constraints, not verified imageinfo backends; their revision limits are recorded
+next to the observations.
+
 ## Maintaining the research
 
 1. Record an immutable upstream source revision and the artifact version/hash used

@@ -1,7 +1,7 @@
 {
   "$schema": "./capability-inventory.schema.json",
   "schemaVersion": 1,
-  "inventoryVersion": "2026-10-10.3",
+  "inventoryVersion": "2026-10-10.4",
   "observedOn": "2026-10-10",
   "reviewState": "draft-for-review",
   "reference": {
@@ -3392,8 +3392,8 @@
     {
       "id": "GAP-004",
       "subject": "Saved plans and preservation oracle",
-      "ownerCard": "write-safety-contract",
-      "closesWhen": "Specify per-file and paired-sidecar outcomes; validate all sensor samples, references, calibration/opaque blocks and interruption recovery.",
+      "ownerCard": "write-validation",
+      "closesWhen": "The proposed contract is recorded in docs/write-safety. Demonstrate guarded per-file publication, partial-pair outcomes, sensor/reference/calibration/opaque preservation, properties and interruption recovery on declared storage/writer profiles before enabling writes.",
       "blocks": "Every embedded-write enabled claim."
     },
     {
@@ -3427,8 +3427,8 @@
     {
       "id": "GAP-009",
       "subject": "Privacy and sidecar synchronization policy",
-      "ownerCard": "write-safety-contract",
-      "closesWhen": "Define explicit destinations, pairing, mappings, residual/uninspectable data, and rendering-critical retention for each named profile.",
+      "ownerCard": "write-validation",
+      "closesWhen": "The proposed destination, residual-data, pairing-outcome and rendering-critical retention rules are recorded in docs/write-safety. Specify exact pairing/mappings and per-profile field catalogs, then verify removal, residual/uninspectable coverage and synchronization on lawful fixtures. Logical removal never proves secure erasure.",
       "blocks": "Secure-erasure/anonymization claims or silent RAW/sidecar synchronization."
     },
     {

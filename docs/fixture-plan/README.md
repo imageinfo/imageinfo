@@ -134,8 +134,8 @@ JSON records fixture classes, needs, assertions, CAP references, and MDL rules.
 | FXP-029 | P0 | admission | Admission, licensing and privacy controls |
 
 Read admission/identity comes first, followed by the read/preview/sidecar evidence
-needed for the first useful slice. Embedded-write rows are gated by #0006's
-transaction/preservation contract and independent validators. Secondary variants
+needed for the first useful slice. Embedded-write rows are gated by the
+[transaction/preservation contract](../write-safety/README.md) and independent validators. Secondary variants
 never inherit results from full RAW and do not gate its first read milestone.
 
 Synthetic model cases test serialization/interpretation boundaries. Generated
@@ -258,9 +258,10 @@ This card specifies the fixture/provenance/evidence contract. It leaves actual
 acquisition, executable/tool hashes, camera observations and runtime parity open.
 The examples demonstrate record integrity, not operational readiness.
 
-Next critical-path work is **#0006, write-safety-contract**: define exact mutation,
-preservation, refusal and recovery guarantees against these cases. #0003 can use
-the fixture/model cases in CLI walkthroughs. #0010 still owns per-artifact provenance
+The [write-safety proposal](../write-safety/README.md) now defines mutation,
+preservation, refusal and recovery guarantees against these cases. The next
+requirements card is **#0003, CLI walkthroughs**, using the fixture/model/safety
+contracts. Actual storage and writer proofs are backlog work on #0014. #0010 still owns per-artifact provenance
 rules under the locked MIT license; the project-license choice stays settled.
 
 **#0013, corpus-baseline**, preserves the separate acquisition/reference-observation

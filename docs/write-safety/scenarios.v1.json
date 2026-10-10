@@ -1,0 +1,1822 @@
+{
+  "schemaVersion": 1,
+  "revision": "2026-10-10.1",
+  "purpose": "synthetic-contract-cases",
+  "guardConvention": "Every required guard is hypothetically true for the current event unless withheld. These are logical scenarios, not evidence that any OS/storage/writer guard has been implemented.",
+  "traces": [
+    {
+      "id": "TX-001",
+      "title": "Existing RAW replacement completes all boundaries",
+      "ruleRefs": [
+        "WS-007",
+        "WS-012",
+        "WS-014"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-022"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "observe-candidate",
+          "withheldGuards": []
+        },
+        {
+          "event": "finalize",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "committed",
+        "publicationMayHaveOccurred": true
+      }
+    },
+    {
+      "id": "TX-002",
+      "title": "New XMP publication records prior absence",
+      "ruleRefs": [
+        "WS-012",
+        "WS-014"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-016"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "observe-candidate",
+          "withheldGuards": []
+        },
+        {
+          "event": "finalize",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "committed",
+        "publicationMayHaveOccurred": true
+      }
+    },
+    {
+      "id": "TX-003",
+      "title": "Known supported operation has no effective change",
+      "ruleRefs": [
+        "WS-005"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-016"
+      ],
+      "steps": [
+        {
+          "event": "confirm-no-change",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "unchanged",
+        "publicationMayHaveOccurred": false
+      }
+    },
+    {
+      "id": "TX-004",
+      "title": "Invalid or unsupported request is refused",
+      "ruleRefs": [
+        "WS-003",
+        "WS-006"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-021"
+      ],
+      "steps": [
+        {
+          "event": "refuse",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "refused",
+        "publicationMayHaveOccurred": false
+      }
+    },
+    {
+      "id": "TX-005",
+      "title": "Input changed before staging",
+      "ruleRefs": [
+        "WS-002",
+        "WS-009"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "detect-conflict",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "conflict",
+        "publicationMayHaveOccurred": false
+      }
+    },
+    {
+      "id": "TX-006",
+      "title": "Destination appears after planning but before publication",
+      "ruleRefs": [
+        "WS-009",
+        "WS-010"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "detect-conflict",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "conflict",
+        "publicationMayHaveOccurred": false
+      }
+    },
+    {
+      "id": "TX-007",
+      "title": "Disk fills while staging",
+      "ruleRefs": [
+        "WS-008",
+        "WS-023"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "fail-before-publication",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "failed-before-publish",
+        "publicationMayHaveOccurred": false
+      }
+    },
+    {
+      "id": "TX-008",
+      "title": "Staged intended-value verification fails",
+      "ruleRefs": [
+        "WS-004",
+        "WS-008"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "fail-before-publication",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "failed-before-publish",
+        "publicationMayHaveOccurred": false
+      }
+    },
+    {
+      "id": "TX-009",
+      "title": "Protected payload or reference verification fails",
+      "ruleRefs": [
+        "WS-007",
+        "WS-008"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-022"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "fail-before-publication",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "failed-before-publish",
+        "publicationMayHaveOccurred": false
+      }
+    },
+    {
+      "id": "TX-010",
+      "title": "Property preservation cannot be satisfied",
+      "ruleRefs": [
+        "WS-011"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "fail-before-publication",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "failed-before-publish",
+        "publicationMayHaveOccurred": false
+      }
+    },
+    {
+      "id": "TX-011",
+      "title": "Backup, flush, or recovery-record preparation fails",
+      "ruleRefs": [
+        "WS-012",
+        "WS-013"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "fail-before-publication",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "failed-before-publish",
+        "publicationMayHaveOccurred": false
+      }
+    },
+    {
+      "id": "TX-012",
+      "title": "Publication call returns an ambiguous error",
+      "ruleRefs": [
+        "WS-014",
+        "WS-015"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "uncertain-outcome",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "recovery-required",
+        "publicationMayHaveOccurred": true
+      }
+    },
+    {
+      "id": "TX-013",
+      "title": "Installed target verification fails after publication",
+      "ruleRefs": [
+        "WS-014"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "uncertain-outcome",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "recovery-required",
+        "publicationMayHaveOccurred": true
+      }
+    },
+    {
+      "id": "TX-014",
+      "title": "Namespace flush or final receipt fails",
+      "ruleRefs": [
+        "WS-013",
+        "WS-014"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "observe-candidate",
+          "withheldGuards": []
+        },
+        {
+          "event": "uncertain-outcome",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "recovery-required",
+        "publicationMayHaveOccurred": true
+      }
+    },
+    {
+      "id": "TX-015",
+      "title": "Cancellation before publication",
+      "ruleRefs": [
+        "WS-016"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "cancel",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "cancelled-before-publish",
+        "publicationMayHaveOccurred": false
+      }
+    },
+    {
+      "id": "TX-016",
+      "title": "Forced interruption during publication",
+      "ruleRefs": [
+        "WS-015",
+        "WS-016"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "uncertain-outcome",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "recovery-required",
+        "publicationMayHaveOccurred": true
+      }
+    },
+    {
+      "id": "TX-017",
+      "title": "Cooperative cancellation lets the current published unit finalize",
+      "ruleRefs": [
+        "WS-016",
+        "WS-017"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "observe-candidate",
+          "withheldGuards": []
+        },
+        {
+          "event": "finalize",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "committed",
+        "publicationMayHaveOccurred": true
+      }
+    },
+    {
+      "id": "TX-018",
+      "title": "Recovery proves original state after an uncertain boundary",
+      "ruleRefs": [
+        "WS-015"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "uncertain-outcome",
+          "withheldGuards": []
+        },
+        {
+          "event": "establish-original",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "recovered-original",
+        "publicationMayHaveOccurred": true
+      }
+    },
+    {
+      "id": "TX-019",
+      "title": "Recovery finalizes an already installed owned candidate",
+      "ruleRefs": [
+        "WS-015"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "uncertain-outcome",
+          "withheldGuards": []
+        },
+        {
+          "event": "establish-committed",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "committed",
+        "publicationMayHaveOccurred": true
+      }
+    },
+    {
+      "id": "TX-020",
+      "title": "Foreign target after interruption remains untouched",
+      "ruleRefs": [
+        "WS-009",
+        "WS-015"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "uncertain-outcome",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "recovery-required",
+        "publicationMayHaveOccurred": true
+      }
+    },
+    {
+      "id": "TX-021",
+      "title": "Cleanup failure leaves a committed output and reported pending cleanup",
+      "ruleRefs": [
+        "WS-015",
+        "WS-019"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "observe-candidate",
+          "withheldGuards": []
+        },
+        {
+          "event": "finalize",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": true,
+        "finalState": "committed",
+        "publicationMayHaveOccurred": true
+      }
+    },
+    {
+      "id": "TX-022",
+      "title": "Reject application without explicit apply",
+      "ruleRefs": [
+        "WS-001"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-016"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": [
+            "explicit-apply"
+          ]
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "observe-candidate",
+          "withheldGuards": []
+        },
+        {
+          "event": "finalize",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      }
+    },
+    {
+      "id": "TX-023",
+      "title": "Reject a no-op bypass of an unsupported capability",
+      "ruleRefs": [
+        "WS-005",
+        "WS-006"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-021"
+      ],
+      "steps": [
+        {
+          "event": "confirm-no-change",
+          "withheldGuards": [
+            "capability-evidenced"
+          ]
+        }
+      ],
+      "expected": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      }
+    },
+    {
+      "id": "TX-024",
+      "title": "Reject a backend without evidenced guarantees",
+      "ruleRefs": [
+        "WS-009",
+        "WS-024"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": [
+            "profile-evidenced"
+          ]
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "observe-candidate",
+          "withheldGuards": []
+        },
+        {
+          "event": "finalize",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      }
+    },
+    {
+      "id": "TX-025",
+      "title": "Reject publication without verified original recovery",
+      "ruleRefs": [
+        "WS-012"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": [
+            "recovery-verified"
+          ]
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "observe-candidate",
+          "withheldGuards": []
+        },
+        {
+          "event": "finalize",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      }
+    },
+    {
+      "id": "TX-026",
+      "title": "Reject publication with an ineffective concurrency guard",
+      "ruleRefs": [
+        "WS-009"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": [
+            "publication-guard"
+          ]
+        },
+        {
+          "event": "observe-candidate",
+          "withheldGuards": []
+        },
+        {
+          "event": "finalize",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      }
+    },
+    {
+      "id": "TX-027",
+      "title": "Reject a stale candidate after validation",
+      "ruleRefs": [
+        "WS-008",
+        "WS-014"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": [
+            "candidate-current"
+          ]
+        },
+        {
+          "event": "observe-candidate",
+          "withheldGuards": []
+        },
+        {
+          "event": "finalize",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      }
+    },
+    {
+      "id": "TX-028",
+      "title": "Reject success before namespace persistence acknowledgement",
+      "ruleRefs": [
+        "WS-014"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "observe-candidate",
+          "withheldGuards": []
+        },
+        {
+          "event": "finalize",
+          "withheldGuards": [
+            "namespace-flushed"
+          ]
+        }
+      ],
+      "expected": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      }
+    },
+    {
+      "id": "TX-029",
+      "title": "Reject skipping validation and staging",
+      "ruleRefs": [
+        "WS-008",
+        "WS-014"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      }
+    },
+    {
+      "id": "TX-030",
+      "title": "Reject blind rollback after uncertain publication",
+      "ruleRefs": [
+        "WS-015"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "uncertain-outcome",
+          "withheldGuards": []
+        },
+        {
+          "event": "restore-original",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      }
+    },
+    {
+      "id": "TX-031",
+      "title": "Reject replaying a committed unit as a fresh mutation",
+      "ruleRefs": [
+        "WS-017"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "observe-candidate",
+          "withheldGuards": []
+        },
+        {
+          "event": "finalize",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        }
+      ],
+      "expected": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      }
+    },
+    {
+      "id": "TX-032",
+      "title": "Reject recovery from an untrusted ownership record",
+      "ruleRefs": [
+        "WS-015"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "uncertain-outcome",
+          "withheldGuards": []
+        },
+        {
+          "event": "establish-committed",
+          "withheldGuards": [
+            "owned-record"
+          ]
+        }
+      ],
+      "expected": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      }
+    },
+    {
+      "id": "TX-033",
+      "title": "Reject finalization after the publication guard is lost",
+      "ruleRefs": [
+        "WS-009",
+        "WS-015"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "observe-candidate",
+          "withheldGuards": []
+        },
+        {
+          "event": "finalize",
+          "withheldGuards": [
+            "publication-guard"
+          ]
+        }
+      ],
+      "expected": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      }
+    },
+    {
+      "id": "TX-034",
+      "title": "Reject recovery classification without a current publication guard",
+      "ruleRefs": [
+        "WS-009",
+        "WS-015"
+      ],
+      "fixtureCaseRefs": [
+        "FXP-023"
+      ],
+      "steps": [
+        {
+          "event": "prepare",
+          "withheldGuards": []
+        },
+        {
+          "event": "finish-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "validate-stage",
+          "withheldGuards": []
+        },
+        {
+          "event": "prepare-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "begin-publication",
+          "withheldGuards": []
+        },
+        {
+          "event": "uncertain-outcome",
+          "withheldGuards": []
+        },
+        {
+          "event": "establish-original",
+          "withheldGuards": [
+            "publication-guard"
+          ]
+        }
+      ],
+      "expected": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      }
+    }
+  ],
+  "valueCases": [
+    {
+      "id": "VAL-001",
+      "operation": "append",
+      "title": "Appending preserves duplicate keywords",
+      "before": [
+        "travel"
+      ],
+      "input": [
+        "travel"
+      ],
+      "expected": [
+        "travel",
+        "travel"
+      ],
+      "ruleRefs": [
+        "WS-004",
+        "WS-005"
+      ]
+    },
+    {
+      "id": "VAL-002",
+      "operation": "remove-index",
+      "title": "Remove the selected duplicate only",
+      "before": [
+        "a",
+        "a",
+        "b"
+      ],
+      "input": 1,
+      "expected": [
+        "a",
+        "b"
+      ],
+      "ruleRefs": [
+        "WS-004",
+        "WS-005"
+      ]
+    },
+    {
+      "id": "VAL-003",
+      "operation": "remove-all",
+      "title": "Removing all matching values is explicit",
+      "before": [
+        "a",
+        "a",
+        "b"
+      ],
+      "input": "a",
+      "expected": [
+        "b"
+      ],
+      "ruleRefs": [
+        "WS-004",
+        "WS-005"
+      ]
+    },
+    {
+      "id": "VAL-004",
+      "operation": "replace-list",
+      "title": "Whole-list replacement is distinct",
+      "before": [
+        "a",
+        "b"
+      ],
+      "input": [],
+      "expected": [],
+      "ruleRefs": [
+        "WS-004",
+        "WS-005"
+      ]
+    },
+    {
+      "id": "VAL-005",
+      "operation": "set-language",
+      "title": "Changing x-default retains other languages",
+      "before": {
+        "x-default": "old",
+        "fr": "ancien"
+      },
+      "input": {
+        "language": "x-default",
+        "text": "new"
+      },
+      "expected": {
+        "x-default": "new",
+        "fr": "ancien"
+      },
+      "ruleRefs": [
+        "WS-004",
+        "WS-005"
+      ]
+    },
+    {
+      "id": "VAL-006",
+      "operation": "delete-language",
+      "title": "Delete only the named language",
+      "before": {
+        "x-default": "default",
+        "fr": "texte"
+      },
+      "input": "fr",
+      "expected": {
+        "x-default": "default"
+      },
+      "ruleRefs": [
+        "WS-004",
+        "WS-005"
+      ]
+    },
+    {
+      "id": "VAL-007",
+      "operation": "merge-fields",
+      "title": "Named field updates preserve unknown siblings",
+      "before": {
+        "known": "old",
+        "unknown": "retain"
+      },
+      "input": {
+        "known": "new"
+      },
+      "expected": {
+        "known": "new",
+        "unknown": "retain"
+      },
+      "ruleRefs": [
+        "WS-004",
+        "WS-005"
+      ]
+    },
+    {
+      "id": "VAL-008",
+      "operation": "replace-structure",
+      "title": "Whole structure replacement must be explicit",
+      "before": {
+        "known": "old",
+        "unknown": "retain"
+      },
+      "input": {
+        "known": "new"
+      },
+      "expected": {
+        "known": "new"
+      },
+      "ruleRefs": [
+        "WS-004",
+        "WS-005"
+      ]
+    },
+    {
+      "id": "VAL-009",
+      "operation": "snapshot-copy",
+      "title": "Two copies use original values, not earlier edits",
+      "before": {
+        "a": "A",
+        "b": "B"
+      },
+      "input": [
+        {
+          "target": "b",
+          "source": "a"
+        },
+        {
+          "target": "a",
+          "source": "b"
+        }
+      ],
+      "expected": {
+        "a": "B",
+        "b": "A"
+      },
+      "ruleRefs": [
+        "WS-004",
+        "WS-005"
+      ]
+    },
+    {
+      "id": "VAL-010",
+      "operation": "normalized-rational-noop",
+      "title": "Numeric equality does not canonicalize stored bytes",
+      "before": [
+        "2",
+        "500"
+      ],
+      "input": [
+        "1",
+        "250"
+      ],
+      "expected": {
+        "changed": false,
+        "raw": [
+          "2",
+          "500"
+        ]
+      },
+      "ruleRefs": [
+        "WS-004",
+        "WS-005"
+      ]
+    },
+    {
+      "id": "VAL-011",
+      "operation": "raw-rational-set",
+      "title": "A raw pair change is a change even when numerically equal",
+      "before": [
+        "1",
+        "250"
+      ],
+      "input": [
+        "2",
+        "500"
+      ],
+      "expected": {
+        "changed": true,
+        "raw": [
+          "2",
+          "500"
+        ]
+      },
+      "ruleRefs": [
+        "WS-004",
+        "WS-005"
+      ]
+    },
+    {
+      "id": "VAL-012",
+      "operation": "set-null",
+      "title": "Typed null remains a set value, not delete",
+      "before": "text",
+      "input": null,
+      "expected": {
+        "operation": "set",
+        "value": null
+      },
+      "ruleRefs": [
+        "WS-004",
+        "WS-005"
+      ]
+    }
+  ],
+  "recoveryCases": [
+    {
+      "id": "REC-001",
+      "title": "Original identity established",
+      "ownedRecord": true,
+      "observed": "original",
+      "recoveryAvailable": true,
+      "finalChecksPass": true,
+      "expected": "recovered-original",
+      "ruleRefs": [
+        "WS-015"
+      ]
+    },
+    {
+      "id": "REC-002",
+      "title": "Expected absent destination still absent",
+      "ownedRecord": true,
+      "observed": "expected-absence",
+      "recoveryAvailable": true,
+      "finalChecksPass": true,
+      "expected": "recovered-original",
+      "ruleRefs": [
+        "WS-015"
+      ]
+    },
+    {
+      "id": "REC-003",
+      "title": "Owned candidate and final checks established",
+      "ownedRecord": true,
+      "observed": "candidate",
+      "recoveryAvailable": true,
+      "finalChecksPass": true,
+      "expected": "committed",
+      "ruleRefs": [
+        "WS-015"
+      ]
+    },
+    {
+      "id": "REC-004",
+      "title": "Foreign target must not be overwritten",
+      "ownedRecord": true,
+      "observed": "foreign",
+      "recoveryAvailable": true,
+      "finalChecksPass": true,
+      "expected": "recovery-required",
+      "ruleRefs": [
+        "WS-015"
+      ]
+    },
+    {
+      "id": "REC-005",
+      "title": "Unexpected missing existing target",
+      "ownedRecord": true,
+      "observed": "missing-unexpected",
+      "recoveryAvailable": true,
+      "finalChecksPass": true,
+      "expected": "recovery-required",
+      "ruleRefs": [
+        "WS-015"
+      ]
+    },
+    {
+      "id": "REC-006",
+      "title": "Untrusted record never drives repair",
+      "ownedRecord": false,
+      "observed": "candidate",
+      "recoveryAvailable": true,
+      "finalChecksPass": true,
+      "expected": "recovery-required",
+      "ruleRefs": [
+        "WS-015"
+      ]
+    },
+    {
+      "id": "REC-007",
+      "title": "Candidate lacks original recovery",
+      "ownedRecord": true,
+      "observed": "candidate",
+      "recoveryAvailable": false,
+      "finalChecksPass": true,
+      "expected": "recovery-required",
+      "ruleRefs": [
+        "WS-015"
+      ]
+    },
+    {
+      "id": "REC-008",
+      "title": "Candidate finalization checks fail",
+      "ownedRecord": true,
+      "observed": "candidate",
+      "recoveryAvailable": true,
+      "finalChecksPass": false,
+      "expected": "recovery-required",
+      "ruleRefs": [
+        "WS-015"
+      ]
+    }
+  ],
+  "retentionCases": [
+    {
+      "id": "BKP-001",
+      "committed": false,
+      "noBackupRequested": true,
+      "cleanupSucceeded": false,
+      "expected": "retain-for-recovery",
+      "ruleRefs": [
+        "WS-012",
+        "WS-015",
+        "WS-019"
+      ]
+    },
+    {
+      "id": "BKP-002",
+      "committed": true,
+      "noBackupRequested": false,
+      "cleanupSucceeded": true,
+      "expected": "retain-user-backup",
+      "ruleRefs": [
+        "WS-012",
+        "WS-015",
+        "WS-019"
+      ]
+    },
+    {
+      "id": "BKP-003",
+      "committed": true,
+      "noBackupRequested": true,
+      "cleanupSucceeded": true,
+      "expected": "discard-after-success",
+      "ruleRefs": [
+        "WS-012",
+        "WS-015",
+        "WS-019"
+      ]
+    },
+    {
+      "id": "BKP-004",
+      "committed": true,
+      "noBackupRequested": true,
+      "cleanupSucceeded": false,
+      "expected": "retain-cleanup-pending",
+      "ruleRefs": [
+        "WS-012",
+        "WS-015",
+        "WS-019"
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "GRP-001",
+      "title": "Second member fails after first commits",
+      "members": [
+        "committed",
+        "failed-before-publish"
+      ],
+      "expected": "partial",
+      "ruleRefs": [
+        "WS-017"
+      ]
+    },
+    {
+      "id": "GRP-002",
+      "title": "A conflict does not make a pair synchronized",
+      "members": [
+        "committed",
+        "conflict"
+      ],
+      "expected": "partial",
+      "ruleRefs": [
+        "WS-017"
+      ]
+    },
+    {
+      "id": "GRP-003",
+      "title": "Cancellation can follow a committed member",
+      "members": [
+        "committed",
+        "cancelled-before-publish"
+      ],
+      "expected": "partial",
+      "ruleRefs": [
+        "WS-016",
+        "WS-017"
+      ]
+    },
+    {
+      "id": "GRP-004",
+      "title": "A committed and unchanged pair is complete",
+      "members": [
+        "committed",
+        "unchanged"
+      ],
+      "expected": "complete",
+      "ruleRefs": [
+        "WS-005",
+        "WS-017"
+      ]
+    },
+    {
+      "id": "GRP-005",
+      "title": "Uncertain member prevents group success",
+      "members": [
+        "committed",
+        "recovery-required"
+      ],
+      "expected": "recovery-required",
+      "ruleRefs": [
+        "WS-015",
+        "WS-017"
+      ]
+    },
+    {
+      "id": "GRP-006",
+      "title": "No member committed when preflight refuses",
+      "members": [
+        "refused",
+        "unattempted"
+      ],
+      "expected": "not-applied",
+      "ruleRefs": [
+        "WS-003",
+        "WS-017"
+      ]
+    }
+  ]
+}

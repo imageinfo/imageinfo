@@ -14,6 +14,11 @@ corpus/reference observation gaps to backlog follow-up `corpus-baseline` (#0013)
 Counts and capability states remain unchanged; schema/reference/dependency checks
 and the 10 negative cases pass.
 
+Revision `2026-10-10.4` was revalidated during card #0006. It links the proposed
+write-safety contract and moves GAP-004/GAP-009's remaining profile/catalog/runtime
+evidence to `write-validation` (#0014). Schema/reference/dependency checks and all
+10 negative cases pass; counts and capability states remain unchanged.
+
 ## Results
 
 | Check | Result |
@@ -90,8 +95,8 @@ was copied into the project. Actual camera-specific field presence, exhaustive
 tag/option coverage, and safe mutation remain explicit follow-up work. These limits
 match the inventory card's requested research/specification scope.
 
-The recommended next dependent card is **#0004, metadata-contract**: settle occurrence
-identity and raw/normalized/display representations using CAP-003 through CAP-014
-and CAP-019. **#0005, fixture-plan** can then turn the acceptance cases and gaps into
-fixture manifests and experiment records. The CLI and write-safety cards consume
-those contracts. This handoff does not mark any follow-up card completed.
+The original downstream model and fixture specifications are now recorded in
+[metadata-model](../metadata-model/README.md) and [fixture-plan](../fixture-plan/README.md).
+The [write-safety proposal](../write-safety/README.md) supplies mutation requirements.
+The next requirements work is #0003, CLI walkthroughs; #0013/#0014 retain actual
+corpus and writer/storage evidence. This validation does not close those cards.

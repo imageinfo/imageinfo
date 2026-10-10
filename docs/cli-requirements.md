@@ -103,7 +103,7 @@ Help is available offline, without credentials, network requests, or reading med
 | CLI-009 | P0 | Provide stable schemas, issue codes, and exit meanings. | Output validates against its named schema version; scripts can distinguish full success, invalid invocation, total failure, partial failure, stale plans, and cancellation without parsing prose. |
 | CLI-010 | P0 | Preview media, metadata-target, collection, and backup mutations and require explicit application. | Each such leaf defaults to a no-write preview; `--apply` or `plan apply` is needed for execution; `--dry-run` and `--apply` together fail before any writes. |
 | CLI-011 | P0 | Check RAW variant/tag capabilities and destructive consequences before changes. | Preview identifies unsupported fields, XMP mapping, maker-note/preview preservation, lossy conversions, and incomplete privacy coverage; invalid whole requests write nothing; unsupported embedded writes offer a sidecar workflow. |
-| CLI-012 | P0 | Preserve recoverability and reject stale/conflicting plans. | Default application creates a verified recoverable backup; inputs changed since preview fail as stale; concurrent requests cannot mutate the same physical file. |
+| CLI-012 | P0 | Preserve recoverability and reject stale/conflicting plans. | Existing-file changes establish a verified recoverable original; valid no-ops do not create backups. Inputs changed since preview fail as stale; publication must satisfy the supported concurrency profile (WS-009). |
 | CLI-013 | P1 | Support large input manifests, request files, and persistent request framing. | Inputs with newlines work through JSON manifests or NUL-delimited path lists; request responses carry IDs and cannot bleed state between requests. |
 | CLI-014 | P0 | Handle international text and difficult filenames explicitly. | A shared Windows/macOS/Linux fixture set covers non-ASCII and supplementary characters, spaces, leading hyphens, and embedded newlines; `--` ends option parsing. |
 | CLI-015 | P1 | Explain RAW/XMP pairing, filters, traversal, precedence, and ordering. | Selection is repeatable under documented pairing, recursion, hidden-file, symlink, duplicate-input, and ordering policies; collection plans show paired RAW/XMP paths; `config show` identifies effective value sources. |
@@ -134,7 +134,7 @@ Unknown/write-only/read-only tags, ambiguous aliases, and RAW-variant restrictio
 
 The menu starts with actions such as Inspect RAW metadata, Edit associated XMP, Edit supported RAW metadata, Organize RAW collection, Privacy, and Explore RAW support. Each step shows the breadcrumb, short purpose, help, required fields, and a way back. File selection previews the RAW/XMP pairing; tag selection shows units/type/writability for the actual variants. Large collections show a count and expandable examples.
 
-Final review shows the command/request, affected files, before/after values, backups, skipped/unsupported fields, and warnings. The default highlighted action is Preview. Apply is a distinct explicit action; Cancel makes no changes. Users can save the plan or export the exact command/request to repeat later. No privacy-sensitive metadata values enter persistent history unless the user explicitly enables it.
+Final review shows the command/request, affected files, before/after values, backups, skipped/unsupported fields, and warnings. The default highlighted action is Preview. Apply is a distinct explicit action; cancelling this review makes no target changes. Cancellation after application starts can leave committed units or require recovery, as WS-016 specifies. Users can save the plan or export the exact command/request to repeat later. No privacy-sensitive metadata values enter persistent history unless the user explicitly enables it.
 
 With redirected streams, requests fail or run in documented batch mode. Interactivity configured in a profile is suppressed whenever stdin or stdout is not a terminal. A broken stdout pipe terminates streaming cleanly; it cannot trigger a menu fallback.
 
@@ -164,7 +164,7 @@ imageinfo plan apply label.plan.json
 imageinfo backup list photo.xmp
 ```
 
-The first command changes no file. Applying a saved plan checks the original sidecar identity and required permissions again; `photo.cr3` stays untouched. A direct `metadata write ... --apply` is also explicit application; a saved plan is optional. Embedded RAW edits use the same process but remain disabled until that exact RAW-variant/tag operation has preservation evidence.
+The first command leaves media and metadata targets unchanged and writes the requested plan artifact. Applying a saved plan checks the original sidecar identity and required permissions again; `photo.cr3` stays untouched. A direct `metadata write ... --apply` is also explicit application; a saved plan is optional. Embedded RAW edits use the same process but remain disabled until that exact RAW-variant/tag operation has preservation evidence.
 
 Compare two RAW files and copy a tag to an existing associated XMP sidecar with an explicit mapping:
 
@@ -249,12 +249,23 @@ JSON Lines emits typed request/file/summary records with the same schema identit
 | 2 | Invalid syntax, missing required input, configuration error, or a request that fails whole-request preflight |
 | 3 | Partial failure: some items succeeded and others failed or were unsupported under explicit continue policy |
 | 4 | Plan could not be applied because an input changed or a write conflict was detected |
-| 5 | Verification failed after application; results describe changes and recovery artifacts |
+| 5 | Post-publication verification/durability failed or recovery remains uncertain; results describe observed changes and recovery artifacts |
 | 130 | User cancellation/interruption; prior completed file results are reported where possible |
 
 Warnings alone do not change exit status unless `--warnings-as-errors` is enabled. Unsupported RAW or explicitly supplied out-of-scope media input is a failure by default, never a silent success. No-files-selected is an explicit result and fails unless the user opted into `--allow-empty`. Exit values are imageinfo proposals; any later RAW-specific compatibility mode must document its limited contract separately.
 
 ## Mutation/application contract
+
+The [safe mutation and recovery contract](write-safety/README.md), WS-001 through
+WS-024, defines the detailed proposal. Its storage profiles remain unverified.
+`--no-backup` discards temporary recovery material only after successful
+finalization; it never disables recovery during a write. Valid no-ops do not
+rewrite files. Real content changes update filesystem mtime by default; preserving
+it is explicit. Capture dates do not change unless the plan calls for it.
+
+A final content check and rename alone do not exclude unrelated writers. Refuse
+replacement where its required guards cannot be established; never silently switch
+to another target or a weaker overwrite policy. See the linked platform constraints.
 
 Preflight parses the complete request, validates target paths/capabilities/values, resolves mappings, checks collisions and protected structures, then produces a plan. Saved plans include schema version, operation sequence, original content identity, proposed changes, destination paths, and backup policy. They contain no automatically executable shell commands. Any mutable source supplying copied metadata is also fingerprinted.
 
@@ -266,4 +277,4 @@ Unknown RAW metadata blocks, decoding-critical make/model and maker notes, embed
 
 ## Remaining specification decisions
 
-Finalize metadata identity/schema, RAW/XMP pairing and conflict rules, the initial RAW variant list, safe embedded-write gates, expression grammar, plan serialization, output-format support, and cancellation behavior. RAW-focused compatibility guidance is separate from eventual full ExifTool parity. Decide aliases only after testing the canonical tree with users. CLI experiments can be mockups or specifications; they do not require selecting an implementation language.
+Use the proposed metadata and write-safety contracts in #0003 walkthroughs. Specify exact RAW/XMP pairing/discovery and mapping choices, expression grammar, plan/result serialization, recovery commands, output-format support, and mixed-error exit precedence. Exercise cancellation and partial outcomes without changing their safety guarantees. Tag-level write evidence and storage profiles remain future work. RAW-focused compatibility guidance is separate from eventual full ExifTool parity. Decide aliases only after testing the canonical tree with users. CLI experiments can be mockups or specifications; they do not require selecting an implementation language.

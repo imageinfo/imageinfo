@@ -44,15 +44,18 @@ local board's stable card IDs; board ticket numbers are machine-local.
 ## Progress reporting
 
 The [CR3 capability inventory](inventory/README.md),
-[metadata contract](metadata-model/README.md), and
-[fixture and parity plan](fixture-plan/README.md) provide the current requirements
+[metadata contract](metadata-model/README.md),
+[fixture and parity plan](fixture-plan/README.md), and
+[safe mutation contract](write-safety/README.md) provide the current requirements
 baseline. They include source-backed scope, synthetic examples, schemas, comparison
 rules and remaining evidence gaps. They do not claim implemented capabilities.
 
-The next requirements card is #0006, write-safety-contract, followed by the CLI
-walkthroughs using the concrete data/safety contracts. Actual corpus acquisition
-and reference runs remain separate backlog work on #0013. No runtime capability
-has been promoted by the planning artifacts.
+The next requirements card is **#0003, cli-walkthroughs**, using the concrete
+data/safety contracts. Actual corpus acquisition and reference runs remain
+backlog work on #0013. Storage profiles, writer fault injection and per-profile
+privacy/preservation evidence remain backlog work on #0014, after requirements
+review, lawful fixtures and an explicitly authorized implementation decision.
+No runtime capability has been promoted by the planning artifacts.
 
 Report capability cells and verified workflows, not percentages derived solely from
 tag or extension counts. A format readable in one fixture may contain variants with

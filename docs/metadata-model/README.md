@@ -259,7 +259,8 @@ metadata source remains distinct from the sidecar destination. The
 [delete example](examples/delete-intent.synthetic.json) illustrates a separate
 explicit deletion request. Neither example can be applied to a real file.
 
-**MDL-019 — Planning gates.** Before producing an executable plan, #0006 must resolve
+**MDL-019 — Planning gates.** Before producing an executable plan, the
+[write-safety contract](../write-safety/README.md) requires the planner to resolve
 all IDs against trusted input, establish/recheck source identities, validate the
 destination type and exact variant/location capability, evaluate mapping losses,
 identify implicit structural changes, and prove preservation/recovery requirements.
@@ -268,9 +269,10 @@ ambiguous selectors, invalid/unavailable copy values, derived targets, or unsupp
 insertions must not become successful writes.
 
 Array append/remove/replace, structure merge/replace, language updates, and creation
-of an entirely new sidecar need explicit planner operations/policies. This card
-defines the values those operations act on; #0006 specifies their transaction and
-recovery behavior. Display strings are not a fallback when a typed conversion fails.
+of an entirely new sidecar have explicit proposed semantics under WS-004. This
+model defines the values those operations act on; the write-safety contract
+specifies their transaction and recovery behavior. Display strings are not a
+fallback when a typed conversion fails.
 
 **MDL-020 — Change and diagnostics.** Every input/reference issue has a stable code,
 severity, and attributable source/document/occurrence references. Do not discard
@@ -293,8 +295,9 @@ internal architecture, or finish the write-safety contract.
   fixtures and oracle experiments.
 - #0003 should use exact occurrence selection and the value/absence distinctions
   in help, menus, and workflow examples.
-- #0006 should consume edit intents and specify capability checks, mapping losses,
-  coordinated file effects, preservation, and recovery.
+- #0006 now provides the proposed [write-safety contract](../write-safety/README.md)
+  for edit intents, capability checks, mapping losses, coordinated file effects,
+  preservation, and recovery. Runtime proofs remain open.
 
 The schema and examples contain independently written design data. They do not
 copy an ExifTool parser, runtime class model, or tag database.

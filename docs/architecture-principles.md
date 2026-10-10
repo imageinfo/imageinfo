@@ -45,6 +45,10 @@ explicit mappings without building the core model around legacy calling conventi
 No source-code quality audit of ExifTool has been performed. Assertions about its
 technical debt are not premises or acceptance criteria for imageinfo's design.
 
+The [safe mutation contract](write-safety/README.md) adds observable requirements
+and acceptance scenarios. Its state model is a reasoning aid, not a required
+transaction framework or package layout. Storage/API selection remains open.
+
 ## Product and independence
 
 Imageinfo's active scope is **metadata operations on camera RAW still images**, including DNG and proprietary RAW families, with related XMP sidecars and embedded preview metadata/extraction. It will expose those operations through a consistent, discoverable CLI with help at every level. Its engine must also be usable independently of terminal interaction. RAW parity is measured using [compatibility and validation requirements](compatibility-and-validation.md), not a release label attached to an attractive interface.

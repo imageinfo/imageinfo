@@ -109,7 +109,7 @@ remain future work; GAP-001, GAP-005, GAP-007 and GAP-008 are not closed by this
 They are assigned to backlog follow-up **#0013, corpus-baseline**, so completing
 this specification card does not hide the unfinished acquisition and experiments.
 
-The next critical-path card is **#0006, write-safety-contract**. It should define
-the transaction/refusal/preservation/recovery assertions that the mutation cases
-will test. #0003 can consume these cases for CLI walkthroughs. The locked MIT
+The subsequent [write-safety proposal](../write-safety/README.md), card #0006,
+defines the transaction/refusal/preservation/recovery assertions that these cases
+will test. #0003 is next for CLI walkthroughs; #0014 retains runtime write evidence. The locked MIT
 decision remains unchanged, with third-party provenance work on #0010.
