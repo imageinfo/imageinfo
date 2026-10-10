@@ -1,0 +1,288 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Synthetic comparison-policy examples, not camera observations. Modes are test descriptions, not a selected application query language.",
+  "cases": [
+    {
+      "id": "CMPV-001",
+      "mode": "exact",
+      "left": "18446744073709551615",
+      "right": "18446744073709551614",
+      "expected": "different",
+      "note": "Large integers are compared without floating-point coercion."
+    },
+    {
+      "id": "CMPV-002",
+      "mode": "rational-raw",
+      "left": [
+        "2",
+        "500"
+      ],
+      "right": [
+        "1",
+        "250"
+      ],
+      "expected": "different",
+      "note": "Original rational pairs differ."
+    },
+    {
+      "id": "CMPV-003",
+      "mode": "rational-semantic",
+      "left": [
+        "2",
+        "500"
+      ],
+      "right": [
+        "1",
+        "250"
+      ],
+      "expected": "equal",
+      "note": "The numeric rational values are equal."
+    },
+    {
+      "id": "CMPV-004",
+      "mode": "exact",
+      "left": "1.2300",
+      "right": "1.23",
+      "expected": "different",
+      "note": "Raw decimal lexical precision is retained."
+    },
+    {
+      "id": "CMPV-005",
+      "mode": "decimal-semantic",
+      "left": "1.2300",
+      "right": "1.23",
+      "expected": "equal",
+      "note": "Numeric decimal comparison is explicitly requested."
+    },
+    {
+      "id": "CMPV-006",
+      "mode": "sequence",
+      "left": [
+        "a",
+        "b"
+      ],
+      "right": [
+        "b",
+        "a"
+      ],
+      "expected": "different",
+      "note": "Sequence order matters."
+    },
+    {
+      "id": "CMPV-007",
+      "mode": "bag",
+      "left": [
+        "a",
+        "b"
+      ],
+      "right": [
+        "b",
+        "a"
+      ],
+      "expected": "equal",
+      "note": "Bag semantic order is irrelevant."
+    },
+    {
+      "id": "CMPV-008",
+      "mode": "bag",
+      "left": [
+        "a",
+        "a",
+        "b"
+      ],
+      "right": [
+        "a",
+        "b"
+      ],
+      "expected": "different",
+      "note": "Bag multiplicity matters."
+    },
+    {
+      "id": "CMPV-009",
+      "mode": "state",
+      "left": {
+        "state": "unavailable",
+        "reason": "unsupported"
+      },
+      "right": {
+        "state": "unavailable",
+        "reason": "unsupported"
+      },
+      "expected": "indeterminate",
+      "note": "Two missing interpretations are not evidence of equal values."
+    },
+    {
+      "id": "CMPV-010",
+      "mode": "state",
+      "left": {
+        "state": "absent",
+        "coverage": "complete"
+      },
+      "right": {
+        "state": "present",
+        "value": null
+      },
+      "expected": "different",
+      "note": "Demonstrated absence differs from present null."
+    },
+    {
+      "id": "CMPV-011",
+      "mode": "state",
+      "left": {
+        "state": "unresolved",
+        "coverage": "partial"
+      },
+      "right": {
+        "state": "absent",
+        "coverage": "complete"
+      },
+      "expected": "indeterminate",
+      "note": "Incomplete coverage cannot establish equality or absence."
+    },
+    {
+      "id": "CMPV-012",
+      "mode": "instant",
+      "left": {
+        "local": "2026-10-10T10:15:16",
+        "offsetMinutes": -240,
+        "fraction": "120"
+      },
+      "right": {
+        "local": "2026-10-10T14:15:16",
+        "offsetMinutes": 0,
+        "fraction": "120"
+      },
+      "expected": "equal",
+      "note": "Known offsets permit comparison of the instant."
+    },
+    {
+      "id": "CMPV-013",
+      "mode": "instant",
+      "left": {
+        "local": "2026-10-10T10:15:16",
+        "offsetMinutes": null,
+        "fraction": null
+      },
+      "right": {
+        "local": "2026-10-10T10:15:16",
+        "offsetMinutes": 0,
+        "fraction": null
+      },
+      "expected": "indeterminate",
+      "note": "An absent offset does not silently become UTC."
+    },
+    {
+      "id": "CMPV-014",
+      "mode": "exact",
+      "left": {
+        "local": "2026-10-10T10:15:16",
+        "offsetMinutes": null
+      },
+      "right": {
+        "local": "2026-10-10T10:15:16",
+        "offsetMinutes": 0
+      },
+      "expected": "different",
+      "note": "Representation-level date comparison retains offset presence."
+    },
+    {
+      "id": "CMPV-015",
+      "mode": "exact",
+      "left": "é",
+      "right": "é",
+      "expected": "different",
+      "note": "Metadata Unicode is not normalized silently."
+    },
+    {
+      "id": "CMPV-016",
+      "mode": "exact",
+      "left": "100",
+      "right": 100,
+      "expected": "different",
+      "note": "A string is not an integer."
+    },
+    {
+      "id": "CMPV-017",
+      "mode": "language-map",
+      "left": [
+        {
+          "language": "EN-us",
+          "text": "sample"
+        },
+        {
+          "language": "x-default",
+          "text": "sample"
+        }
+      ],
+      "right": [
+        {
+          "language": "x-default",
+          "text": "sample"
+        },
+        {
+          "language": "en-US",
+          "text": "sample"
+        }
+      ],
+      "expected": "equal",
+      "note": "Semantic language keys are case-insensitive; raw spelling/order remains separately available."
+    },
+    {
+      "id": "CMPV-018",
+      "mode": "binary-base64",
+      "left": "AAEC",
+      "right": "AAED",
+      "expected": "different",
+      "note": "Byte-level comparisons must retain the changed byte."
+    },
+    {
+      "id": "CMPV-019",
+      "mode": "binary-base64",
+      "left": "",
+      "right": "",
+      "expected": "equal",
+      "note": "Zero-length data is valid data, not absence."
+    },
+    {
+      "id": "CMPV-020",
+      "mode": "occurrence-multiset",
+      "left": [
+        {
+          "location": "CMT2",
+          "tag": "ISO",
+          "value": "400"
+        },
+        {
+          "location": "CTMD",
+          "tag": "ISO",
+          "value": "800"
+        }
+      ],
+      "right": [
+        {
+          "location": "CMT2",
+          "tag": "ISO",
+          "value": "400"
+        }
+      ],
+      "expected": "different",
+      "note": "Duplicate/location loss is a failure."
+    },
+    {
+      "id": "CMPV-021",
+      "mode": "exact",
+      "left": "8000000000000000",
+      "right": "0000000000000000",
+      "expected": "different",
+      "note": "Raw floating-point sign bits distinguish negative and positive zero."
+    },
+    {
+      "id": "CMPV-022",
+      "mode": "exact",
+      "left": "7fc00001",
+      "right": "7fc00002",
+      "expected": "different",
+      "note": "NaN payload differences are retained at the raw-bit layer."
+    }
+  ]
+}

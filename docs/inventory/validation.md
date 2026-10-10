@@ -9,6 +9,11 @@ states unchanged and transfers GAP-005's remaining runtime evidence to fixture-p
 after delivery of the proposed metadata contract. Schema/reference/dependency
 checks and the same 10 negative cases still pass.
 
+Revision `2026-10-10.3` was revalidated during card #0005. It assigns the remaining
+corpus/reference observation gaps to backlog follow-up `corpus-baseline` (#0013).
+Counts and capability states remain unchanged; schema/reference/dependency checks
+and the 10 negative cases pass.
+
 ## Results
 
 | Check | Result |

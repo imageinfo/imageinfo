@@ -1,7 +1,7 @@
 {
   "$schema": "./capability-inventory.schema.json",
   "schemaVersion": 1,
-  "inventoryVersion": "2026-10-10.2",
+  "inventoryVersion": "2026-10-10.3",
   "observedOn": "2026-10-10",
   "reviewState": "draft-for-review",
   "reference": {
@@ -3371,7 +3371,7 @@
     {
       "id": "GAP-001",
       "subject": "EOS R5 fixture observations",
-      "ownerCard": "fixture-plan",
+      "ownerCard": "corpus-baseline",
       "closesWhen": "A provenance-approved full RAW corpus records camera/firmware/mode, discovered structures, optional-tag presence and source hashes.",
       "blocks": "Any claim that source-level support was observed on Terry's files."
     },
@@ -3399,7 +3399,7 @@
     {
       "id": "GAP-005",
       "subject": "Metadata interpretation and conversion evidence",
-      "ownerCard": "fixture-plan",
+      "ownerCard": "corpus-baseline",
       "closesWhen": "The proposed model contract is recorded in docs/metadata-model. Exercise its identity, exact value, XMP, encoding, and time rules against real fixtures and per-tag oracle observations before claiming runtime equivalence.",
       "blocks": "Runtime lossless JSON/import/copy and per-tag interpretation claims; the language-independent model specification is delivered by card #0004."
     },
@@ -3413,14 +3413,14 @@
     {
       "id": "GAP-007",
       "subject": "Preview variants and nested metadata",
-      "ownerCard": "fixture-plan",
+      "ownerCard": "corpus-baseline",
       "closesWhen": "Enumerate THMB, PRVW and JPEG-track assets per full RAW fixture; prove bytes and nested metadata coverage; audit any replacement path separately.",
       "blocks": "All-previews claims, nested privacy completeness, or preview replacement."
     },
     {
       "id": "GAP-008",
       "subject": "Repeatable runtime reference",
-      "ownerCard": "fixture-plan",
+      "ownerCard": "corpus-baseline",
       "closesWhen": "Choose an executable distribution, hash it and its configuration/dependencies, then run recorded experiments in controlled locale/timezone environments.",
       "blocks": "Runtime-verified reference behavior or parity percentages."
     },

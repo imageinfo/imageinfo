@@ -86,3 +86,9 @@ There is no software test/build gate until an implementation exists.
 Terry's standing instruction dated 2026-09-12 authorizes commits and pushes of
 in-scope work after appropriate verification, including direct pushes to main.
 Preserve unrelated changes and do not ask for a new per-commit approval.
+
+Push after every commit, as Terry explicitly required on 2026-10-10. Each commit
+must be followed by a push to the configured remote before making another commit
+or handing off. Verify the push result. If it fails, report the failure and resolve
+it without force-pushing or discarding unrelated work; do not leave the failure
+unmentioned or describe the handoff as fully published.

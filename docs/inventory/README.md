@@ -1,6 +1,6 @@
 # EOS R5 CR3 capability inventory v1
 
-Status: **draft for review**, inventory revision `2026-10-10.2`, 2026-10-10. This is the deliverable for board card
+Status: **draft for review**, inventory revision `2026-10-10.3`, 2026-10-10. This is the deliverable for board card
 **#0002, capability-inventory**. Implementation coverage remains zero. No imageinfo
 executable, upstream executable experiment, or media-fixture validation is claimed.
 
@@ -229,14 +229,14 @@ in the JSON. Do not close them merely because a source contains a similarly name
 
 | ID | Gap | Follow-up card | Closes when |
 | --- | --- | --- | --- |
-| GAP-001 | EOS R5 fixture observations | `fixture-plan` | A provenance-approved full RAW corpus records camera/firmware/mode, discovered structures, optional-tag presence and source hashes. |
+| GAP-001 | EOS R5 fixture observations | `corpus-baseline` | A provenance-approved full RAW corpus records camera/firmware/mode, discovered structures, optional-tag presence and source hashes. |
 | GAP-002 | Camera mode and damaged-file discrimination | `capability-inventory` | Cross-check brand, Canon model, Quality and structural clues on full RAW/C-RAW/DPRAW and negative CRM/other-camera cases; record ambiguity rules. |
 | GAP-003 | Tag-level and mutation-depth expansion | `capability-inventory` | Expand representative families into occurrence/tag/location rows; audit insertion/deletion flags, defaults and all relevant maker-note subtables without copying upstream tables. |
 | GAP-004 | Saved plans and preservation oracle | `write-safety-contract` | Specify per-file and paired-sidecar outcomes; validate all sensor samples, references, calibration/opaque blocks and interruption recovery. |
-| GAP-005 | Metadata interpretation and conversion evidence | `fixture-plan` | The proposed model contract is recorded in docs/metadata-model. Exercise its identity, exact value, XMP, encoding, and time rules against real fixtures and per-tag oracle observations before claiming runtime equivalence. |
+| GAP-005 | Metadata interpretation and conversion evidence | `corpus-baseline` | The proposed model contract is recorded in docs/metadata-model. Exercise its identity, exact value, XMP, encoding, and time rules against real fixtures and per-tag oracle observations before claiming runtime equivalence. |
 | GAP-006 | Legacy argument and API completeness | `legacy-compatibility` | Expand family mapping to every in-scope flag/API option, ordering interaction and executable extension; assign equivalence or an accepted difference. |
-| GAP-007 | Preview variants and nested metadata | `fixture-plan` | Enumerate THMB, PRVW and JPEG-track assets per full RAW fixture; prove bytes and nested metadata coverage; audit any replacement path separately. |
-| GAP-008 | Repeatable runtime reference | `fixture-plan` | Choose an executable distribution, hash it and its configuration/dependencies, then run recorded experiments in controlled locale/timezone environments. |
+| GAP-007 | Preview variants and nested metadata | `corpus-baseline` | Enumerate THMB, PRVW and JPEG-track assets per full RAW fixture; prove bytes and nested metadata coverage; audit any replacement path separately. |
+| GAP-008 | Repeatable runtime reference | `corpus-baseline` | Choose an executable distribution, hash it and its configuration/dependencies, then run recorded experiments in controlled locale/timezone environments. |
 | GAP-009 | Privacy and sidecar synchronization policy | `write-safety-contract` | Define explicit destinations, pairing, mappings, residual/uninspectable data, and rendering-critical retention for each named profile. |
 | GAP-010 | Secondary and later format breadth | `capability-inventory` | Scope and collect independent evidence for C-RAW/DPRAW, other Canon cameras and later RAW families before adding their capabilities. |
 | GAP-011 | Asset licensing and provenance | `license-provenance` | Apply the selected MIT project license while preserving and reviewing separate source/table/fixture terms before importing third-party assets. |
@@ -294,3 +294,7 @@ Future fixture/tag-level expansion should refine these family rows, not claim th
 Revision `2026-10-10.2` links the [proposed metadata contract](../metadata-model/README.md)
 from card #0004 and transfers GAP-005's remaining runtime evidence to fixture-plan.
 No capability is promoted beyond specified.
+
+Revision `2026-10-10.3` links the [fixture and parity plan](../fixture-plan/README.md)
+from card #0005 and transfers the remaining acquisition/observation gaps to
+`corpus-baseline` (#0013). All runtime evidence gaps remain open.

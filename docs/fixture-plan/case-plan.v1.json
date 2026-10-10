@@ -1,0 +1,732 @@
+{
+  "schemaVersion": 1,
+  "planRevision": "2026-10-10.1",
+  "recordKind": "fixture-plan",
+  "scope": "EOS R5 full RAW CR3 first; associated XMP and stored previews. C-RAW and Dual Pixel RAW are secondary.",
+  "state": "specified-not-executed",
+  "referenceSource": {
+    "project": "ExifTool",
+    "version": "13.59",
+    "commit": "2200871d9cef988051d2a99d67df3bda6cbb30a8"
+  },
+  "cases": [
+    {
+      "id": "FXP-001",
+      "title": "Full RAW baseline and recognition",
+      "priority": "P0",
+      "stage": "read",
+      "fixtureClasses": [
+        "camera-original"
+      ],
+      "capabilityRefs": [
+        "CAP-001",
+        "CAP-002",
+        "CAP-003",
+        "CAP-004"
+      ],
+      "modelRuleRefs": [
+        "MDL-001",
+        "MDL-002",
+        "MDL-003",
+        "MDL-005"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Lawfully supplied EOS R5 full RAW originals with declared and observed camera/mode/firmware; record unknowns.",
+      "assertions": "Read-only hash unchanged; content-based recognition; absent/misleading extensions handled; source facts and declarations remain distinct."
+    },
+    {
+      "id": "FXP-002",
+      "title": "Camera and capture variation",
+      "priority": "P1",
+      "stage": "read",
+      "fixtureClasses": [
+        "camera-original"
+      ],
+      "capabilityRefs": [
+        "CAP-002",
+        "CAP-006",
+        "CAP-007",
+        "CAP-019"
+      ],
+      "modelRuleRefs": [
+        "MDL-002",
+        "MDL-003",
+        "MDL-009",
+        "MDL-010"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Distinct firmware, lens and capture settings where available; optional Canon fields observed rather than assumed.",
+      "assertions": "Model/layout dispatch and optional fields retain identity; CameraInfo naming and shutter-count meaning are correct for the tested subset."
+    },
+    {
+      "id": "FXP-003",
+      "title": "CMT and CTMD duplicates",
+      "priority": "P0",
+      "stage": "read",
+      "fixtureClasses": [
+        "camera-original",
+        "derived-camera"
+      ],
+      "capabilityRefs": [
+        "CAP-008",
+        "CAP-010",
+        "CAP-013"
+      ],
+      "modelRuleRefs": [
+        "MDL-001",
+        "MDL-003",
+        "MDL-004",
+        "MDL-010",
+        "MDL-015"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Originals with observed CMT/CTMD overlaps; controlled derivative only if originals do not expose the required conflict.",
+      "assertions": "Every occurrence survives canonical comparison; no first-value selection; normal CR3 extraction includes observed CTMD."
+    },
+    {
+      "id": "FXP-004",
+      "title": "Exact values and unknown fields",
+      "priority": "P0",
+      "stage": "read",
+      "fixtureClasses": [
+        "camera-original",
+        "synthetic-model",
+        "derived-camera"
+      ],
+      "capabilityRefs": [
+        "CAP-004",
+        "CAP-006",
+        "CAP-010",
+        "CAP-014",
+        "CAP-019"
+      ],
+      "modelRuleRefs": [
+        "MDL-007",
+        "MDL-009",
+        "MDL-010",
+        "MDL-011",
+        "MDL-016"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Actual rational/numeric examples plus model-only edge vectors; retain undecoded blocks and provenance.",
+      "assertions": "Raw representation and normalized equality are separate; no float rounding, dropped unknown bytes or invented defaults."
+    },
+    {
+      "id": "FXP-005",
+      "title": "Timestamp and timezone behavior",
+      "priority": "P0",
+      "stage": "read",
+      "fixtureClasses": [
+        "camera-original",
+        "sidecar",
+        "derived-camera"
+      ],
+      "capabilityRefs": [
+        "CAP-004",
+        "CAP-009",
+        "CAP-042"
+      ],
+      "modelRuleRefs": [
+        "MDL-009",
+        "MDL-010",
+        "MDL-013"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Known and absent offsets, fractional precision, boundary dates; controlled UTC and America/New_York runs.",
+      "assertions": "CR3 integer-time interpretation is tested independently of EXIF local time; timezone changes affect only declared representations."
+    },
+    {
+      "id": "FXP-006",
+      "title": "GPS presence and absence",
+      "priority": "P1",
+      "stage": "read",
+      "fixtureClasses": [
+        "camera-original",
+        "sidecar",
+        "derived-camera"
+      ],
+      "capabilityRefs": [
+        "CAP-005",
+        "CAP-043"
+      ],
+      "modelRuleRefs": [
+        "MDL-010",
+        "MDL-011",
+        "MDL-013",
+        "MDL-014",
+        "MDL-015"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "GPS-present and GPS-absent cases with privacy-reviewed coordinates; declare how GPS was introduced.",
+      "assertions": "Reference/hemisphere/altitude/time components survive; a limited scan cannot establish absent location information."
+    },
+    {
+      "id": "FXP-007",
+      "title": "All observed preview resources",
+      "priority": "P0",
+      "stage": "read",
+      "fixtureClasses": [
+        "camera-original"
+      ],
+      "capabilityRefs": [
+        "CAP-015",
+        "CAP-016",
+        "CAP-017",
+        "CAP-018"
+      ],
+      "modelRuleRefs": [
+        "MDL-006",
+        "MDL-007",
+        "MDL-008",
+        "MDL-014",
+        "MDL-017"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Enumerate THMB, PRVW and JPEG-track assets actually present in each fixture; include missing optional forms.",
+      "assertions": "Extracted bytes and lengths match; resource/document identities stay distinct; nested metadata coverage is explicit."
+    },
+    {
+      "id": "FXP-008",
+      "title": "Embedded XMP and sidecar conflict",
+      "priority": "P0",
+      "stage": "read",
+      "fixtureClasses": [
+        "camera-original",
+        "sidecar",
+        "derived-camera"
+      ],
+      "capabilityRefs": [
+        "CAP-011",
+        "CAP-012",
+        "CAP-025",
+        "CAP-041"
+      ],
+      "modelRuleRefs": [
+        "MDL-002",
+        "MDL-008",
+        "MDL-012",
+        "MDL-015",
+        "MDL-016"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Absent/existing embedded packets, matching/conflicting sidecars, stale/orphan/ambiguous pairs.",
+      "assertions": "Never silently merge origins or choose the newest timestamp as authority; compare conflicts and pairing failures."
+    },
+    {
+      "id": "FXP-009",
+      "title": "XMP typed structures and encodings",
+      "priority": "P0",
+      "stage": "read",
+      "fixtureClasses": [
+        "sidecar",
+        "synthetic-model"
+      ],
+      "capabilityRefs": [
+        "CAP-011",
+        "CAP-012",
+        "CAP-021",
+        "CAP-023"
+      ],
+      "modelRuleRefs": [
+        "MDL-007",
+        "MDL-010",
+        "MDL-011",
+        "MDL-012",
+        "MDL-017"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Generated project-owned XMP: bags with duplicates, sequences, structures, language alternatives, qualifiers, unknown namespaces and text encodings.",
+      "assertions": "Shape, multiplicity, expanded names, empty/null/absent distinction and unknown properties survive; invalid text gets diagnostics."
+    },
+    {
+      "id": "FXP-010",
+      "title": "Corrupt container bounds and references",
+      "priority": "P0",
+      "stage": "adversarial",
+      "fixtureClasses": [
+        "generated-binary",
+        "derived-camera"
+      ],
+      "capabilityRefs": [
+        "CAP-001",
+        "CAP-014",
+        "CAP-045"
+      ],
+      "modelRuleRefs": [
+        "MDL-006",
+        "MDL-007",
+        "MDL-014",
+        "MDL-020"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Deterministic truncation, invalid/overflow lengths, out-of-range offsets, overlapping spans and cycles; every mutation has lineage.",
+      "assertions": "Bounded failure, no writes/network/execution; no false successful completeness; diagnostic codes remain attributable."
+    },
+    {
+      "id": "FXP-011",
+      "title": "Out-of-scope and ambiguous input",
+      "priority": "P0",
+      "stage": "adversarial",
+      "fixtureClasses": [
+        "generated-binary",
+        "other-media"
+      ],
+      "capabilityRefs": [
+        "CAP-001",
+        "CAP-002",
+        "CAP-049"
+      ],
+      "modelRuleRefs": [
+        "MDL-005",
+        "MDL-014",
+        "MDL-020"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Tiny owned signature cases and lawful CRM/other-camera inputs only when needed; negative tests do not add format support.",
+      "assertions": "Reject unsupported/ambiguous inputs explicitly; CRX brand alone does not grant CR3 or EOS R5 support."
+    },
+    {
+      "id": "FXP-012",
+      "title": "Resource limits and cancellation",
+      "priority": "P0",
+      "stage": "adversarial",
+      "fixtureClasses": [
+        "generated-binary",
+        "derived-camera",
+        "sidecar"
+      ],
+      "capabilityRefs": [
+        "CAP-014",
+        "CAP-018",
+        "CAP-045",
+        "CAP-046"
+      ],
+      "modelRuleRefs": [
+        "MDL-006",
+        "MDL-007",
+        "MDL-011",
+        "MDL-014",
+        "MDL-020"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Bounded generated nesting/size/count/encoded-output cases and deterministic cancellation triggers.",
+      "assertions": "Ceilings are enforced before allocation/effects; timeout/limit outcomes are incomplete, not missing metadata; record actual limit values."
+    },
+    {
+      "id": "FXP-013",
+      "title": "Paths, streams and platform boundaries",
+      "priority": "P0",
+      "stage": "platform",
+      "fixtureClasses": [
+        "camera-original",
+        "sidecar",
+        "generated-binary"
+      ],
+      "capabilityRefs": [
+        "CAP-001",
+        "CAP-039",
+        "CAP-044",
+        "CAP-046"
+      ],
+      "modelRuleRefs": [
+        "MDL-005",
+        "MDL-008",
+        "MDL-017",
+        "MDL-020"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Spaces, Unicode, leading hyphens, per-platform long/case/newline paths, seekable/nonseekable input and broken output pipes.",
+      "assertions": "Equivalent semantic outcomes across declared OS/architecture cells; native restrictions and unsupported scenarios are explicit."
+    },
+    {
+      "id": "FXP-014",
+      "title": "Reports and mixed batch failures",
+      "priority": "P0",
+      "stage": "read",
+      "fixtureClasses": [
+        "camera-original",
+        "sidecar",
+        "generated-binary"
+      ],
+      "capabilityRefs": [
+        "CAP-039",
+        "CAP-040",
+        "CAP-041"
+      ],
+      "modelRuleRefs": [
+        "MDL-001",
+        "MDL-004",
+        "MDL-011",
+        "MDL-014",
+        "MDL-015",
+        "MDL-016",
+        "MDL-017"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Good/bad/empty-selected batches and declared report/import formats; duplicate keys are prohibited in captured JSON parsing.",
+      "assertions": "Per-file outcomes, summary counts and exit behavior agree; machine stdout is valid; diagnostics stay separate."
+    },
+    {
+      "id": "FXP-015",
+      "title": "Request framing and state isolation",
+      "priority": "P2",
+      "stage": "automation",
+      "fixtureClasses": [
+        "camera-original",
+        "sidecar"
+      ],
+      "capabilityRefs": [
+        "CAP-046"
+      ],
+      "modelRuleRefs": [
+        "MDL-009",
+        "MDL-018",
+        "MDL-020"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Ordered requests with changed options, successful and failing commands, EOF and cancellation.",
+      "assertions": "Completion is not success; IDs/frame boundaries match; queued writes/options never leak unintentionally between requests."
+    },
+    {
+      "id": "FXP-016",
+      "title": "Sidecar creation and edits",
+      "priority": "P0",
+      "stage": "sidecar-write",
+      "fixtureClasses": [
+        "camera-original",
+        "sidecar"
+      ],
+      "capabilityRefs": [
+        "CAP-020",
+        "CAP-021",
+        "CAP-022",
+        "CAP-023"
+      ],
+      "modelRuleRefs": [
+        "MDL-008",
+        "MDL-010",
+        "MDL-011",
+        "MDL-012",
+        "MDL-018",
+        "MDL-019"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Fresh and existing sidecars with scalar/list/structure/language updates; originals are immutable fixtures.",
+      "assertions": "RAW whole-file hash unchanged; exact intended XMP changes; collisions/unsupported conversions refuse; unselected data retained."
+    },
+    {
+      "id": "FXP-017",
+      "title": "Copy, mapping and import",
+      "priority": "P1",
+      "stage": "sidecar-write",
+      "fixtureClasses": [
+        "camera-original",
+        "sidecar"
+      ],
+      "capabilityRefs": [
+        "CAP-024",
+        "CAP-025",
+        "CAP-040",
+        "CAP-041"
+      ],
+      "modelRuleRefs": [
+        "MDL-009",
+        "MDL-010",
+        "MDL-015",
+        "MDL-016",
+        "MDL-018",
+        "MDL-019"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "RAW-to-XMP and supported reverse mappings; stale source, missing values, ambiguous duplicates and explicit deletion intent.",
+      "assertions": "Destination and losses are explicit; raw/display/normalized layers are not confused; source changes invalidate saved assumptions."
+    },
+    {
+      "id": "FXP-018",
+      "title": "Embedded descriptive EXIF operations",
+      "priority": "P1",
+      "stage": "embedded-write",
+      "fixtureClasses": [
+        "camera-original",
+        "derived-camera"
+      ],
+      "capabilityRefs": [
+        "CAP-026",
+        "CAP-027",
+        "CAP-028"
+      ],
+      "modelRuleRefs": [
+        "MDL-005",
+        "MDL-006",
+        "MDL-007",
+        "MDL-018",
+        "MDL-019",
+        "MDL-020"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Separately test update, absent-field insertion and targeted removal for allowed CMT1/CMT2 fields.",
+      "assertions": "Independent readback and structure/payload checks pass per operation; no implied all-EXIF write support."
+    },
+    {
+      "id": "FXP-019",
+      "title": "Embedded GPS operations",
+      "priority": "P1",
+      "stage": "embedded-write",
+      "fixtureClasses": [
+        "camera-original",
+        "derived-camera"
+      ],
+      "capabilityRefs": [
+        "CAP-029",
+        "CAP-030",
+        "CAP-031"
+      ],
+      "modelRuleRefs": [
+        "MDL-006",
+        "MDL-010",
+        "MDL-013",
+        "MDL-018",
+        "MDL-019"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Existing GPS and absent-directory cases with coupled reference/version fields; known location residuals.",
+      "assertions": "Insertion differs from update; targeted removal and remaining copies are reported; preservation checks gate every edit."
+    },
+    {
+      "id": "FXP-020",
+      "title": "Embedded XMP operations",
+      "priority": "P1",
+      "stage": "embedded-write",
+      "fixtureClasses": [
+        "camera-original",
+        "derived-camera"
+      ],
+      "capabilityRefs": [
+        "CAP-032",
+        "CAP-033",
+        "CAP-034"
+      ],
+      "modelRuleRefs": [
+        "MDL-006",
+        "MDL-008",
+        "MDL-012",
+        "MDL-018",
+        "MDL-019"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Update/create/delete cases for packets and complex properties; control padding/layout changes.",
+      "assertions": "Requested changes only; unknown properties and sensor/preview bytes survive; all relocated references remain valid."
+    },
+    {
+      "id": "FXP-021",
+      "title": "Maker-note edits and known refusals",
+      "priority": "P1",
+      "stage": "embedded-write",
+      "fixtureClasses": [
+        "camera-original",
+        "derived-camera"
+      ],
+      "capabilityRefs": [
+        "CAP-035",
+        "CAP-036",
+        "CAP-037",
+        "CAP-049"
+      ],
+      "modelRuleRefs": [
+        "MDL-003",
+        "MDL-007",
+        "MDL-009",
+        "MDL-018",
+        "MDL-019"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Individually selected maker-note candidates, direct CTMD read-only fields and unsupported preview/IPTC/ICC insertions.",
+      "assertions": "A correct refusal can pass its refusal test; it does not count as implementing the refused mutation. No misplaced duplicate blocks."
+    },
+    {
+      "id": "FXP-022",
+      "title": "Preservation and independent usability",
+      "priority": "P0",
+      "stage": "embedded-write",
+      "fixtureClasses": [
+        "camera-original",
+        "derived-camera"
+      ],
+      "capabilityRefs": [
+        "CAP-023",
+        "CAP-038"
+      ],
+      "modelRuleRefs": [
+        "MDL-005",
+        "MDL-006",
+        "MDL-007",
+        "MDL-008",
+        "MDL-019"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "A full protected-region/reference map, before/after sample hashes, unselected metadata checks and an independent reader/decoder per variant.",
+      "assertions": "No sensor recompression; every protected payload and dependency checked; inability to prove preservation blocks write claims."
+    },
+    {
+      "id": "FXP-023",
+      "title": "Mutation faults and stale sources",
+      "priority": "P0",
+      "stage": "embedded-write",
+      "fixtureClasses": [
+        "camera-original",
+        "sidecar",
+        "derived-camera"
+      ],
+      "capabilityRefs": [
+        "CAP-023",
+        "CAP-026",
+        "CAP-038",
+        "CAP-044"
+      ],
+      "modelRuleRefs": [
+        "MDL-005",
+        "MDL-018",
+        "MDL-019",
+        "MDL-020"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Deterministic failure points for output staging, verification and replacement; disk/permission/conflict/cancellation scenarios.",
+      "assertions": "Originals remain recoverable; partial outcomes are explicit; no falsely successful write. Exact transaction policies come from #0006."
+    },
+    {
+      "id": "FXP-024",
+      "title": "Privacy inspection and selective removal",
+      "priority": "P1",
+      "stage": "workflow",
+      "fixtureClasses": [
+        "camera-original",
+        "sidecar",
+        "derived-camera"
+      ],
+      "capabilityRefs": [
+        "CAP-022",
+        "CAP-031",
+        "CAP-034",
+        "CAP-045"
+      ],
+      "modelRuleRefs": [
+        "MDL-008",
+        "MDL-011",
+        "MDL-014",
+        "MDL-015",
+        "MDL-019"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Privacy-reviewed fixtures with declared sensitive tags, alternate locations and opaque regions; sidecar-only and embedded targets.",
+      "assertions": "Residual and uninspectable data remains visible; no anonymization claim from a clean sidecar; required rendering data survives."
+    },
+    {
+      "id": "FXP-025",
+      "title": "Paired file organization",
+      "priority": "P1",
+      "stage": "workflow",
+      "fixtureClasses": [
+        "camera-original",
+        "sidecar"
+      ],
+      "capabilityRefs": [
+        "CAP-044"
+      ],
+      "modelRuleRefs": [
+        "MDL-005",
+        "MDL-008",
+        "MDL-018",
+        "MDL-019"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Same basenames in different directories, case-only/cross-volume moves, collisions, timestamps and interrupted pair changes.",
+      "assertions": "Explicit pair mapping, per-file outcomes and recovery; metadata and filesystem claims are compared separately."
+    },
+    {
+      "id": "FXP-026",
+      "title": "Date and GPS workflows",
+      "priority": "P1",
+      "stage": "workflow",
+      "fixtureClasses": [
+        "camera-original",
+        "sidecar",
+        "derived-camera"
+      ],
+      "capabilityRefs": [
+        "CAP-042",
+        "CAP-043"
+      ],
+      "modelRuleRefs": [
+        "MDL-009",
+        "MDL-010",
+        "MDL-013",
+        "MDL-018",
+        "MDL-019"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Owned auxiliary tracks, clock offsets/drift, gaps/out-of-range samples and supported time shifts.",
+      "assertions": "Declared tolerances are field/unit specific; missing zones and unmatched times fail visibly; destinations and source bytes remain controlled."
+    },
+    {
+      "id": "FXP-027",
+      "title": "C-RAW secondary coverage",
+      "priority": "P2",
+      "stage": "secondary",
+      "fixtureClasses": [
+        "camera-original"
+      ],
+      "capabilityRefs": [
+        "CAP-047"
+      ],
+      "modelRuleRefs": [
+        "MDL-002",
+        "MDL-003",
+        "MDL-005",
+        "MDL-014"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Separately identified EOS R5 C-RAW originals with provenance and capture-mode evidence.",
+      "assertions": "No inheritance of full RAW results; does not gate first full-RAW read milestone."
+    },
+    {
+      "id": "FXP-028",
+      "title": "Dual Pixel RAW secondary preservation",
+      "priority": "P2",
+      "stage": "secondary",
+      "fixtureClasses": [
+        "camera-original",
+        "derived-camera"
+      ],
+      "capabilityRefs": [
+        "CAP-048"
+      ],
+      "modelRuleRefs": [
+        "MDL-005",
+        "MDL-006",
+        "MDL-007",
+        "MDL-019"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Separately identified Dual Pixel RAW captures; user use is not assumed; inventory extra sensor data/references.",
+      "assertions": "All extra protected data receives independent preservation evidence before any write eligibility."
+    },
+    {
+      "id": "FXP-029",
+      "title": "Admission, licensing and privacy controls",
+      "priority": "P0",
+      "stage": "admission",
+      "fixtureClasses": [
+        "synthetic-model"
+      ],
+      "capabilityRefs": [],
+      "modelRuleRefs": [
+        "MDL-005",
+        "MDL-017",
+        "MDL-020"
+      ],
+      "acquisitionStatus": "not-collected",
+      "needs": "Manifest examples for cleared, quarantined, denied and restricted material, plus derivative lineage.",
+      "assertions": "Unreviewed/denied assets cannot enter runnable/public corpus; a project MIT license never relabels third-party media permissions."
+    }
+  ]
+}

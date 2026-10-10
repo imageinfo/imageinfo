@@ -1,0 +1,23 @@
+{
+  "id": "DERIVE-ZERO-DENOMINATOR",
+  "parentFixtureId": "FX-EXAMPLE-001",
+  "parentSha256": "bb90eb34712945ae6e95fc6612f7bc5fd0d6b8b8e290b4572679b69f7d8d1185",
+  "purpose": "Documentation-only synthetic derivative; no RAW media.",
+  "serialization": "Object keys sorted by Unicode code point; indent two spaces; UTF-8 without BOM; LF; one final newline.",
+  "steps": [
+    {
+      "action": "select-json-pointer",
+      "pointer": "/occurrences/2/values/raw"
+    },
+    {
+      "action": "replace-json-pointer",
+      "pointer": "/value/denominator",
+      "value": "0"
+    },
+    {
+      "action": "wrap",
+      "purpose": "Synthetic invalid rational; not a media file.",
+      "valueKey": "value"
+    }
+  ]
+}

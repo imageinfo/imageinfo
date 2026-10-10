@@ -1,0 +1,34 @@
+{
+  "candidate": null,
+  "caseRef": "FXP-004",
+  "checks": [],
+  "comparisonPolicy": {
+    "byteLength": "9651",
+    "id": "ART-COMPARISON-POLICY",
+    "path": "docs/fixture-plan/comparison-policy.md",
+    "root": "repository",
+    "sha256": "724bac041355294481d59fe328891de5101b7d815485964b6101da7abfa0b1c2"
+  },
+  "differences": [],
+  "environment": null,
+  "execution": "not-run",
+  "fixtures": [
+    {
+      "id": "FX-EXAMPLE-001",
+      "sha256": "bb90eb34712945ae6e95fc6612f7bc5fd0d6b8b8e290b4572679b69f7d8d1185"
+    }
+  ],
+  "id": "RUN-EXAMPLE-NOT-RUN",
+  "independentRuns": [],
+  "mappingRevision": null,
+  "operation": "read",
+  "oracleProfileId": "REF-EXIFTOOL-13.59",
+  "oracleProfileSha256": "b625b242af13ad10363d494154833eb7c0df90f33effb98a555db477cd2d2732",
+  "phase": "differential",
+  "purpose": "illustration",
+  "reason": "Synthetic record-shape example only. No reference executable, driver, camera corpus, or imageinfo implementation has been run.",
+  "recordKind": "experiment-record",
+  "reference": null,
+  "schemaVersion": 1,
+  "verdict": "not-run"
+}

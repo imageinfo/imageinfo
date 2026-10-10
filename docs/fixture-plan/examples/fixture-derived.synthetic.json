@@ -1,0 +1,77 @@
+{
+  "admission": "example-only",
+  "allowedPhases": [],
+  "artifact": {
+    "byteLength": "203",
+    "id": "ART-INVALID-VALUE",
+    "path": "docs/fixture-plan/examples/invalid-value.synthetic.json",
+    "root": "repository",
+    "sha256": "8eeb9233f47483fe28d5883430d3c4b27cd387276a8dd332e68c64ee3a75318d"
+  },
+  "capabilityRefs": [
+    "CAP-010",
+    "CAP-013"
+  ],
+  "caseRefs": [],
+  "fixtureClass": "synthetic-model",
+  "id": "FX-EXAMPLE-002",
+  "lineage": {
+    "parentFixtureId": "FX-EXAMPLE-001",
+    "parentSha256": "bb90eb34712945ae6e95fc6612f7bc5fd0d6b8b8e290b4572679b69f7d8d1185",
+    "reason": "Demonstrate lineage for a deliberately invalid typed rational without importing or mutating camera media.",
+    "recipeRef": "docs/fixture-plan/examples/derivation.synthetic.json",
+    "recipeSha256": "074a027ae702203ac5ea84df2eb1ea42d3d2712b4ef659f82f454072edf04bd4"
+  },
+  "media": {
+    "captureMode": "not-applicable",
+    "declaredCamera": null,
+    "firmware": null,
+    "format": "model-json",
+    "observationArtifactRefs": [],
+    "observedCamera": null
+  },
+  "modelRuleRefs": [
+    "MDL-010",
+    "MDL-011",
+    "MDL-017"
+  ],
+  "notes": "The artifact hash/length are real. This example is not an admitted camera fixture and cannot satisfy CR3 runtime coverage.",
+  "privacy": {
+    "inspected": [
+      "synthetic values",
+      "display paths",
+      "text metadata"
+    ],
+    "notApplicable": [
+      "camera sensor pixels",
+      "actual preview images",
+      "real device identities"
+    ],
+    "notes": "Invented model data reviewed for documentation; media labels/offsets are examples, not real captures.",
+    "reviewRef": "docs/fixture-plan/validation.md#synthetic-artifact-review",
+    "status": "cleared"
+  },
+  "provenance": {
+    "acquiredOn": "2026-10-10",
+    "creator": "imageinfo contributors",
+    "origin": "Deterministic projection/mutation of the project-authored example.",
+    "originType": "project-generated",
+    "sourceEvidenceRefs": [
+      "docs/metadata-model/validation.md",
+      "LICENSE"
+    ]
+  },
+  "purpose": "illustration",
+  "recordKind": "fixture-manifest",
+  "revision": 1,
+  "rights": {
+    "analyze": true,
+    "evidenceRef": "LICENSE; applies to these project-authored synthetic documentation artifacts only.",
+    "licenseId": "MIT",
+    "modify": true,
+    "redistribute": true,
+    "status": "approved"
+  },
+  "schemaVersion": 1,
+  "storageAccess": "public"
+}

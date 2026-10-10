@@ -38,18 +38,21 @@ local board's stable card IDs; board ticket numbers are machine-local.
 | `governance-proposal` | Make shared maintenance practical. | Format ownership, contributor onboarding, review/release procedures, vulnerability reporting, and succession/access recovery proposals. |
 | `license-provenance` | Define provenance under the selected MIT project license. | MIT decision is recorded; complete artifact-specific source/table/fixture provenance rules and resolve reuse questions before implementation imports. |
 | `implementation-selection` | Choose a modern implementation stack later. | Explicitly held in backlog until Terry advances language decisions; evaluate only against accepted requirements. |
+| `corpus-baseline` | Acquire and characterize the first lawful full RAW corpus later. | Backlog follow-up #0013: select concrete permitted sources, admit fixtures, hash the reference distribution/runtime/driver, and capture reference-only observations. |
 | `broader-format-parity` | Preserve the eventual full ExifTool parity goal. | Deferred umbrella only; choose and scope additional format families after RAW milestones, with independent compatibility evidence. |
 
 ## Progress reporting
 
-Card #0002 has produced the [versioned CR3 capability inventory](inventory/README.md)
-for review. It defines source-backed requirements and remaining audits; it does not
-claim implemented capabilities. Metadata-contract and fixture-plan work can consume
-its stable CAP/MAP/GAP identifiers next.
+The [CR3 capability inventory](inventory/README.md),
+[metadata contract](metadata-model/README.md), and
+[fixture and parity plan](fixture-plan/README.md) provide the current requirements
+baseline. They include source-backed scope, synthetic examples, schemas, comparison
+rules and remaining evidence gaps. They do not claim implemented capabilities.
 
-Card #0004 has produced the [metadata contract](metadata-model/README.md) for
-review, including synthetic examples and language-independent rejection vectors.
-The next dependent work is #0005's fixture plan; per-tag runtime evidence remains open.
+The next requirements card is #0006, write-safety-contract, followed by the CLI
+walkthroughs using the concrete data/safety contracts. Actual corpus acquisition
+and reference runs remain separate backlog work on #0013. No runtime capability
+has been promoted by the planning artifacts.
 
 Report capability cells and verified workflows, not percentages derived solely from
 tag or extension counts. A format readable in one fixture may contain variants with

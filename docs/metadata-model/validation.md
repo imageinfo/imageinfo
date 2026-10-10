@@ -88,6 +88,10 @@ per-tag conversions, encodings, source presence, and real-file round trips remai
 open and passes to **#0005, fixture-plan**. No capability row is promoted to
 implemented or verified.
 
+The fixture plan is now [specified](../fixture-plan/README.md). Its actual corpus
+acquisition and reference observations remain backlog work on #0013; the model's
+synthetic examples still provide no camera-runtime evidence.
+
 - **#0005:** build lawful fixture manifests and experiments around the MDL rules,
   starting with EOS R5 full RAW. Preserve the distinction between source observations
   and synthetic examples.

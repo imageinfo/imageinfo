@@ -1,0 +1,71 @@
+{
+  "admission": "example-only",
+  "allowedPhases": [],
+  "artifact": {
+    "byteLength": "36214",
+    "id": "ART-MODEL-SNAPSHOT",
+    "path": "docs/metadata-model/examples/snapshot.synthetic.json",
+    "root": "repository",
+    "sha256": "bb90eb34712945ae6e95fc6612f7bc5fd0d6b8b8e290b4572679b69f7d8d1185"
+  },
+  "capabilityRefs": [
+    "CAP-010",
+    "CAP-013"
+  ],
+  "caseRefs": [],
+  "fixtureClass": "synthetic-model",
+  "id": "FX-EXAMPLE-001",
+  "lineage": null,
+  "media": {
+    "captureMode": "not-applicable",
+    "declaredCamera": null,
+    "firmware": null,
+    "format": "model-json",
+    "observationArtifactRefs": [],
+    "observedCamera": null
+  },
+  "modelRuleRefs": [
+    "MDL-010",
+    "MDL-011",
+    "MDL-017"
+  ],
+  "notes": "The artifact hash/length are real. This example is not an admitted camera fixture and cannot satisfy CR3 runtime coverage.",
+  "privacy": {
+    "inspected": [
+      "synthetic values",
+      "display paths",
+      "text metadata"
+    ],
+    "notApplicable": [
+      "camera sensor pixels",
+      "actual preview images",
+      "real device identities"
+    ],
+    "notes": "Invented model data reviewed for documentation; media labels/offsets are examples, not real captures.",
+    "reviewRef": "docs/fixture-plan/validation.md#synthetic-artifact-review",
+    "status": "cleared"
+  },
+  "provenance": {
+    "acquiredOn": "2026-10-10",
+    "creator": "imageinfo contributors",
+    "origin": "Project-authored metadata example introduced by commit b1697d6a25fc3b144284ca269968aaf55bf065cb.",
+    "originType": "project-generated",
+    "sourceEvidenceRefs": [
+      "docs/metadata-model/validation.md",
+      "LICENSE"
+    ]
+  },
+  "purpose": "illustration",
+  "recordKind": "fixture-manifest",
+  "revision": 1,
+  "rights": {
+    "analyze": true,
+    "evidenceRef": "LICENSE; applies to these project-authored synthetic documentation artifacts only.",
+    "licenseId": "MIT",
+    "modify": true,
+    "redistribute": true,
+    "status": "approved"
+  },
+  "schemaVersion": 1,
+  "storageAccess": "public"
+}

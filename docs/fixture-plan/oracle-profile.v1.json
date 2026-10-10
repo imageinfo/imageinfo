@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "recordKind": "oracle-profile",
+  "id": "REF-EXIFTOOL-13.59",
+  "revision": 1,
+  "state": "planned",
+  "source": {
+    "project": "ExifTool",
+    "version": "13.59",
+    "commit": "2200871d9cef988051d2a99d67df3bda6cbb30a8"
+  },
+  "tool": null,
+  "userConfig": "disabled",
+  "customConfig": null,
+  "baselineLanguage": "en",
+  "recipes": [
+    {
+      "id": "RX-001",
+      "kind": "argv-template",
+      "arguments": [
+        "-config",
+        "",
+        "-ver"
+      ],
+      "purpose": "Verify actual reported reference version before any experiment.",
+      "limits": "Placeholder executable identity must be replaced by an acquired, hashed distribution and runtime manifest."
+    },
+    {
+      "id": "RX-002",
+      "kind": "argv-template",
+      "arguments": [
+        "-config",
+        "",
+        "-lang",
+        "en",
+        "-charset",
+        "filename=UTF8",
+        "-api",
+        "SavePath=1",
+        "-api",
+        "SaveFormat=1",
+        "-j",
+        "-a",
+        "-G0:1:3:4:5:6:7",
+        "-struct",
+        "-u",
+        "-n",
+        "--",
+        "${INPUT}"
+      ],
+      "purpose": "Capture machine-converted values with structured XMP, location/instance groups and native IDs/context.",
+      "limits": "-n is not exact raw bytes or Rational API data. Preserve raw stdout, reject duplicate JSON keys, and prove coverage on each fixture. Unknown binary blocks may require separate passes."
+    },
+    {
+      "id": "RX-003",
+      "kind": "argv-template",
+      "arguments": [
+        "-config",
+        "",
+        "-lang",
+        "en",
+        "-charset",
+        "filename=UTF8",
+        "-api",
+        "SavePath=1",
+        "-api",
+        "SaveFormat=1",
+        "-j",
+        "-a",
+        "-G0:1:3:4:5:6:7",
+        "-struct",
+        "-u",
+        "--",
+        "${INPUT}"
+      ],
+      "purpose": "Capture display conversion separately under recorded locale/timezone conditions.",
+      "limits": "Never use display text as the only oracle for numeric, rational or timestamp semantics."
+    },
+    {
+      "id": "RX-004",
+      "kind": "api-driver-required",
+      "arguments": [],
+      "purpose": "Collect Raw and Rational views, stable native identity and per-occurrence provenance through a pinned reference-specific driver.",
+      "limits": "The driver is not implemented or selected here. Hash/review it and demonstrate default configuration is disabled. Cases requiring these views remain not-run until it exists."
+    },
+    {
+      "id": "RX-005",
+      "kind": "argv-template",
+      "arguments": [
+        "-config",
+        "",
+        "-b",
+        "-${EXACT_RESOURCE_TAG}",
+        "--",
+        "${INPUT}"
+      ],
+      "purpose": "Capture one explicitly resolved preview/resource to a binary artifact and hash its bytes.",
+      "limits": "Resolve resource instance first; never concatenate ambiguous matches. Capture stdout bytes directly rather than relying on shell text redirection."
+    },
+    {
+      "id": "RX-006",
+      "kind": "api-driver-required",
+      "arguments": [],
+      "purpose": "Characterize individually scoped write/create/delete/refusal behavior on disposable clones.",
+      "limits": "Exact operations and fault points depend on #0006. No blanket delete, direct original-file mutation, or generic successful-write inference is authorized by this recipe."
+    }
+  ],
+  "readiness": [
+    "Acquire the official source/distribution for the pinned baseline and record origin, archive hash and a manifest of all executed code.",
+    "Verify actual -ver output is 13.59; otherwise fail preflight or explicitly revise the baseline.",
+    "Hash the launcher/script, module distribution, interpreter/runtime components, optional capabilities, custom configuration and observation driver.",
+    "Prove user configuration and unreviewed extensions are disabled; record complete argument arrays and controlled environment.",
+    "Record per-platform executable/runtime identities; one source version does not imply identical package capabilities.",
+    "Keep raw stdout/stderr, termination, input/output hashes, canonical observations and independent reports.",
+    "This planned profile does not claim an executable has been installed or any media experiment has run."
+  ]
+}

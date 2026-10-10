@@ -1,0 +1,11 @@
+{
+  "purpose": "Synthetic invalid rational; not a media file.",
+  "value": {
+    "state": "present",
+    "value": {
+      "denominator": "0",
+      "kind": "rational",
+      "numerator": "2"
+    }
+  }
+}
