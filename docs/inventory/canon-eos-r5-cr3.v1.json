@@ -1,7 +1,7 @@
 {
   "$schema": "./capability-inventory.schema.json",
   "schemaVersion": 1,
-  "inventoryVersion": "2026-10-10.6",
+  "inventoryVersion": "2026-10-10.7",
   "observedOn": "2026-10-10",
   "reviewState": "draft-for-review",
   "reference": {
@@ -3449,7 +3449,7 @@
       "id": "GAP-012",
       "subject": "CLI workflows and large-input boundaries",
       "ownerCard": "compatibility-evidence",
-      "closesWhen": "CLI walkthroughs, request/result schemas, pure filter and persistent-session proposals are recorded. Complete saved-plan and session-output schemas, advanced mappings and remaining LG-001–006 specifications on #0015; establish measured limits on #0008 and later prove actual CLI/help/menu/transport behavior.",
+      "closesWhen": "CLI walkthroughs, request/result schemas, pure filter and persistent-session proposals are recorded. Complete saved-plan and session-output schemas, advanced mappings and remaining LG-001–006 specifications on #0015; use the #0008 performance protocol to establish measured limits on #0016 and later prove actual CLI/help/menu/transport behavior.",
       "blocks": "Claiming the proposed CLI surface is finalized or implemented."
     }
   ]

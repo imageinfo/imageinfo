@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "revision": "2026-10-10.1",
+  "purpose": "synthetic-performance-contract-examples",
+  "notRun": {
+    "id": "baseline-not-run",
+    "workloadRef": "BW-002",
+    "status": "not-run",
+    "reason": "No admitted camera corpus, executed reference baseline or imageinfo implementation is available in this requirements work.",
+    "tool": null,
+    "environment": null,
+    "samples": null,
+    "aggregates": null,
+    "correctness": null,
+    "target": null
+  },
+  "arithmeticCases": [
+    {"id":"MEAS-001","kind":"median","values":[10,30,20],"expected":"20"},
+    {"id":"MEAS-002","kind":"median","values":[10,1,7,4],"expected":"11/2"},
+    {"id":"MEAS-003","kind":"p95-nearest-rank","values":[7,3,10,2,9,4,1,8,5,6],"expected":"10"},
+    {"id":"MEAS-004","kind":"throughput","units":[10,10],"elapsedSeconds":[2,8],"expected":"2"},
+    {"id":"MEAS-005","kind":"reference-over-candidate","referenceSeconds":4,"candidateSeconds":2,"expected":"2"},
+    {"id":"MEAS-006","kind":"tree-peak-bytes","simultaneousSamples":[[100,20],[20,100]],"expected":"120"},
+    {"id":"MEAS-007","kind":"throughput","units":[10],"elapsedSeconds":[0],"expected":"reject"},
+    {"id":"MEAS-008","kind":"median","values":[],"expected":"unavailable"},
+    {"id":"MEAS-009","kind":"success-eligibility","completed":false,"timedOut":true,"correctnessPassed":false,"sameStratum":true,"expected":"ineligible"},
+    {"id":"MEAS-010","kind":"success-eligibility","completed":true,"timedOut":false,"correctnessPassed":false,"sameStratum":true,"expected":"ineligible"},
+    {"id":"MEAS-011","kind":"success-eligibility","completed":true,"timedOut":false,"correctnessPassed":true,"sameStratum":false,"expected":"ineligible"},
+    {"id":"MEAS-012","kind":"success-eligibility","completed":true,"timedOut":false,"correctnessPassed":true,"sameStratum":true,"expected":"eligible"}
+  ]
+}

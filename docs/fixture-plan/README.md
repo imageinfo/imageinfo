@@ -233,7 +233,7 @@ contains no invented executable fingerprints or successful results.
 | Streams/output | Test nonseekable input, partial reads, broken pipes, binary stdout, mixed batch failures and request framing. |
 | Malformed inputs | Use owned deterministic fragments/derivatives with bounded seeds/recipes; test lengths, offsets, cycles, nesting, invalid text and resource limits. |
 | Fault injection | Bound each injection and assert original/output/backup states. Do not rely on timing races as the only way to reproduce an interruption. |
-| Performance | Record actual full RAW sizes and read/write volume; no recompression to make benchmarks look better. Numeric budgets are set after measurement under #0008. |
+| Performance | Record actual full RAW sizes and read/write volume; no recompression to make benchmarks look better. The performance protocol is specified under #0008; numeric budgets require actual measurement on #0016. |
 
 An unsupported platform operation stays visible; it is not a pass for the corresponding
 feature. A valid refusal test may pass when its expected behavior is refusal.
@@ -260,7 +260,9 @@ The examples demonstrate record integrity, not operational readiness.
 
 The [write-safety proposal](../write-safety/README.md) now defines mutation,
 preservation, refusal and recovery guarantees against these cases. The next
-requirements card is **#0008, performance-baseline**. The
+requirements card is **#0009, governance-proposal**. The
+[performance protocol](../performance/README.md) now defines workload/measurement requirements;
+actual benchmarks and numeric targets remain #0016. The
 [compatibility recommendation](../legacy-compatibility/README.md) now maps the surveyed surfaces. The
 [CLI walkthroughs](../cli-walkthroughs/README.md) now use the fixture/model/safety contracts. Actual storage and writer proofs are backlog work on #0014. #0010 still owns per-artifact provenance
 rules under the locked MIT license; the project-license choice stays settled.

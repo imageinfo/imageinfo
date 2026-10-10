@@ -315,4 +315,5 @@ replacement. The [CLI walkthroughs](../cli-walkthroughs/README.md) now make the
 user-facing plan, apply, cancellation and recovery flows concrete; all remain
 proposals. The [compatibility contract](../legacy-compatibility/README.md) adds
 request/result schemas and integration recommendations; full saved-plan serialization
-remains LG-004/#0015. #0008 is next for performance requirements.
+remains LG-004/#0015. The [performance protocol](../performance/README.md) now
+specifies measurement requirements; actual budgets remain #0016.

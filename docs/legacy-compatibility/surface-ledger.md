@@ -76,7 +76,7 @@ call signature, pointer/handle, error-return or executable compatibility.
 | LG-003 | Arbitrary executable expressions, modules and user-defined parsing/conversion | Choose an explicit trusted-code model later; document provenance, authority and failure isolation. No automatic execution or invented sandbox guarantee. |
 | LG-004 | Complete persisted plan grammar for all operations | The WS-002 field obligations remain binding. A complete per-operation wire schema needs actual planner effects, platform identities and recovery profiles; this card supplies request/result schemas, not a fake universal executable plan. |
 | LG-005 | Advanced lookup datasets, repair, unusual flags and mapping catalogs | Separate scoped requirements and lawful resources; preserve every unmet functional goal in the ledger. |
-| LG-006 | Actual CLI/API/process behavior, precision, performance and robustness | Real implementation, reference binaries, OS/stream tests and user review. Synthetic records do not close this gap; #0008/#0013/#0014 supply prerequisites. |
+| LG-006 | Actual CLI/API/process behavior, precision, performance and robustness | Real implementation, reference binaries, OS/stream tests and user review. Synthetic records do not close this gap; #0013/#0014/#0016 supply evidence under the #0008 measurement protocol. |
 
 Current gap ownership is recorded on the local compatibility follow-up and in
 inventory GAP-006/GAP-012. These open items prevent full/drop-in parity claims;

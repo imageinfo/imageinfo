@@ -73,7 +73,7 @@ requests in this initial protocol. Native `config` commands remain separate.
 
 Before reading requests, emit `session-ready` with protocol version, a session ID,
 and positive finite `maxFrameBytes`, `maxQueuedRequests`, `maxRequests`, plus
-`allowApply`. Numeric defaults await #0008; clients must not send before readiness.
+`allowApply`. Numeric defaults await #0016 measurements under the [performance protocol](../performance/README.md); clients must not send before readiness.
 The host also enforces bounded pre-handshake/line buffering. Version mismatch is
 fatal before any media work. Keep all IDs unique within the bounded session,
 including controls; do not retain an unbounded lifetime history.

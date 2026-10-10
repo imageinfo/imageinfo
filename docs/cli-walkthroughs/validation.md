@@ -57,7 +57,7 @@ the negative table supply future implementation criteria.
 | CLI-010 | CW-001/012/013, WALK-004/007: mutation preview, plan apply, recovery/restore/prune | Real no-effects and exact-effects assertions |
 | CLI-011 | CW-004/012, WALK-004/005: capability/refusal, loss and privacy scope | Format/profile/mapping evidence |
 | CLI-012 | WALK-004/007: stale plan, retained original, guarded recovery and resume | Writer/storage proofs on #0014 |
-| CLI-013 | CW-005/011, WALK-003: manifests, input order, backpressure and resource bounds | Persistent framing under #0007; measured defaults under #0008 |
+| CLI-013 | CW-005/011, WALK-003: manifests, input order, backpressure and resource bounds | Transport validation #0015; measured defaults #0016 under the #0008 protocol |
 | CLI-014 | CW-001/005, WALK-004/008: literal paths, separator, quoting, escaped control characters | Cross-platform Unicode/newline/long-path corpus |
 | CLI-015 | CW-003/005/006/007: configuration origins, selection, pairing and one-way sync | Real pairing/collision and policy tests |
 | CLI-016 | WALK-001/005, profile/format help and explicit unsupported alternatives | Exact privacy catalogs and compatibility translations |
@@ -88,7 +88,8 @@ persistent framing. #0015 retains the explicit remaining GAP-006/GAP-012 work,
 including full saved-plan/session-output schemas, advanced mappings and runtime proofs. Advanced CSV/XML reports and alias
 policy still need concrete compatibility cases; do not infer them from the tree.
 
-**#0008** owns measured default limits and performance budgets. **#0010/#0013** own
+**#0008** specifies the measurement protocol; **#0016** owns actual measurements
+and numerical default/budget proposals. **#0010/#0013** own
 lawful corpus admission and acquisition. **#0014** owns writer/storage and privacy
 evidence. Actual CLI implementation, shell integration, accessibility and usability
 validation follow a later explicitly authorized implementation decision. This card

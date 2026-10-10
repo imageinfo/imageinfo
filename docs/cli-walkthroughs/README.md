@@ -215,7 +215,8 @@ budgets. `--max-bytes` is the cumulative input-byte budget across the request,
 including sidecars/nested reads; `--timeout` is total elapsed work time after parsing.
 `--jobs` is positive, capped by the supported runtime policy and never parallelizes
 edits to one physical file. Values and units are displayed in help/config; actual
-numeric defaults require #0008 measurement before release.
+numeric defaults require the [performance protocol](../performance/README.md) and
+actual #0016 measurement before release.
 Read batches also default to stop on failure; `--on-error continue` is explicit.
 
 Large mutation requests finish whole-request preflight before any publication;
@@ -223,7 +224,7 @@ bounded private spill storage may be needed. Hitting its limit fails without med
 changes. Streaming reads can emit earlier results, but limit failures downgrade
 coverage and return failure. Bound ordered-output buffering; apply backpressure
 rather than silently reordering records or allocating unbounded memory. Numeric
-performance targets remain #0008 work. [Persistent framing](../legacy-compatibility/integration.md)
+performance targets remain #0016 measurement work under the #0008 protocol. [Persistent framing](../legacy-compatibility/integration.md)
 is now proposed; runtime validation remains #0015.
 
 **CW-012 — Application binds what was reviewed.** Saved plans name exact sources,

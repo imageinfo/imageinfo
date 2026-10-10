@@ -79,6 +79,13 @@ same pinned ExifTool revision. The review includes all 39 METHODS headings in th
 API reference and the executable configuration example; individual option overloads
 and runtime behavior remain explicit gaps. No upstream implementation was imported.
 
+## Performance follow-up
+
+Card #0008 adds a [measurement reference ledger](performance/measurement.md),
+observed 2026-10-10, for interval timing and process memory/I/O metric distinctions.
+It defines collection requirements without choosing product APIs or claiming measured
+performance. Actual collector identities and OS equivalence need later validation.
+
 ## Maintaining the research
 
 1. Record an immutable upstream source revision and the artifact version/hash used

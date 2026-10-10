@@ -106,7 +106,7 @@ inventory GAP-006/GAP-012 work. This includes complete plan/session-output schem
 exact serializers, advanced executable behavior decisions and actual integration
 evidence. The incomplete plan schema is a real gap, not closed by the request schema.
 
-Next critical-path requirements work is **#0008, performance-baseline**. It should
-define workload measurements and finite resource limits for RAW reads, safe edits,
-report buffering, filters, request queues and persistent sessions. No timing claims
+Card #0008 now supplies the [performance protocol](../performance/README.md) for
+RAW reads, safe edits, report buffering, filters, queues and sessions. Actual
+measurements and finite numeric default decisions remain #0016; #0009 is next in triage. No timing claims
 or numerical defaults are supported by this card's synthetic checks.

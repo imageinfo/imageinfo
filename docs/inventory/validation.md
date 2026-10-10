@@ -21,6 +21,10 @@ evidence to `write-validation` (#0014). Schema/reference/dependency checks and a
 
 ## Results
 
+Revision `2026-10-10.7` links #0008's performance protocol and points actual measured
+limits to #0016. Schema/reference/dependency checks and all ten negative cases pass;
+capability counts/states remain unchanged and no numeric performance claim is made.
+
 Revision `2026-10-10.6` was revalidated during card #0007. It links the surveyed
 compatibility ledger and request/result proposals, with GAP-006/GAP-012 remaining
 specification/runtime work assigned to `compatibility-evidence` (#0015). Schema,
@@ -112,5 +116,6 @@ The original downstream model and fixture specifications are now recorded in
 The [write-safety proposal](../write-safety/README.md) supplies mutation requirements.
 The [CLI walkthroughs](../cli-walkthroughs/README.md) now refine the native interface;
 the [compatibility recommendation](../legacy-compatibility/README.md) is recorded.
-Next requirements work is #0008, performance; #0013/#0014 retain actual
+The [performance protocol](../performance/README.md) is now recorded; numeric limits
+await #0016 and governance #0009 is next in triage; #0013/#0014 retain actual
 corpus and writer/storage evidence. This validation does not close those cards.
