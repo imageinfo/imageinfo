@@ -12,7 +12,7 @@ Date: **2026-10-10**. Scope: language/component selection and disposable probes.
 | Concrete implementation recommendation | ADR-0011 names language, build approach, CLI/JSON components, ordinary library/binary boundary and deferred component choices |
 | Reviewable delivery sequence | Executable foundation, bounded reader and declared R5 metadata/resource subset, with later XMP/menu/write gates |
 | Evidence/provenance | Locked research graph with 15 archive checksums and retained license/notice identities; synthetic probes public, personal media/private captures excluded |
-| Accepted decision | **Pending Terry's review**. Authorization to evaluate and prototype is not fabricated acceptance of the recommendation. |
+| Accepted decision | **Accepted by Terry on 2026-10-10** through “Rust sounds good” and authorization of #0019. Initial probe validation remains historical evidence. |
 
 ## Checks performed
 

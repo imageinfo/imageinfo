@@ -1,11 +1,10 @@
 # imageinfo project guidance
 
-Terry explicitly opened implementation selection on 2026-10-10 through card #0011
-and authorized disposable spikes. ADR-0011 in `docs/implementation-selection`
-recommends Rust; that recommendation remains pending Terry's review. Requirements
-contracts remain language independent. Research code under `experiments/` is not
-production imageinfo and must not be promoted without a separate implementation
-task, ordinary design review and the applicable evidence gates.
+Terry accepted Rust/ADR-0011 on 2026-10-10 and authorized the production foundation
+under #0019. The root Cargo package contains a small library and CLI; its implemented
+scope is documented in `docs/foundation`. Requirements contracts remain language
+independent. Research code under `experiments/` is not production imageinfo and
+must not be promoted without ordinary implementation review and evidence gates.
 
 ## Product intent
 
@@ -93,7 +92,11 @@ passing text through the CLI; prefer `--detail-file` for substantial description
 
 For documentation changes, check internal links, consistency of proposed command
 examples, requirement coverage, source attribution, and `git diff --check`.
-There is no software test/build gate until an implementation exists.
+For Rust changes, run `cargo fmt --all --check`,
+`cargo clippy --locked --all-targets -- -D warnings`, `cargo test --locked`, and
+`cargo build --locked --release`. Run `python scripts/check_docs.py` for changed
+documentation/JSON. Use the pinned toolchain and root Cargo.lock; review exact
+dependency changes and retain required notices. See `docs/foundation/README.md`.
 
 Terry's standing instruction dated 2026-09-12 authorizes commits and pushes of
 in-scope work after appropriate verification, including direct pushes to main.

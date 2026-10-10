@@ -1,0 +1,287 @@
+{
+  "schemaVersion": 1,
+  "kind": "foundation-dependency-admission-summary",
+  "reviewedOn": "2026-10-10",
+  "scope": "Exact locked packages admitted for #0019 local/CI builds and tests. Only selected notices and identity records are published; no dependency implementations, images or compiled release assets are shipped by this commit.",
+  "noticeReview": "Selected copyright/license notice text is cleared for inclusion under its grant; original package declarations are preserved separately from the chosen MIT basis. Unicode-3.0 additionally applies to unicode-ident. Full package/privacy/security and assembled-release review remain separate.",
+  "packages": [
+    {
+      "name": "anstyle",
+      "version": "1.0.14",
+      "packageSha256": "940b3a0ca603d1eade50a4846a2afffd5ef57a9feac2c0e2ec2e14f9ead76000",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/anstyle/1.0.14",
+      "reviewRecordId": "PV-0019-anstyle-1.0.14",
+      "publishedNotices": [
+        {
+          "path": "licenses/dependencies/anstyle-1.0.14-LICENSE-MIT.txt",
+          "sha256": "6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6",
+          "upstreamFileSha256": "6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6",
+          "reviewRecordId": "PV-0019-NOTICE-anstyle-LICENSE-MIT"
+        }
+      ]
+    },
+    {
+      "name": "clap",
+      "version": "4.6.7",
+      "packageSha256": "aa8876b300ab35ba921adea3dfd70157a46249b33f95c9084ae5709785478946",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/clap/4.6.7",
+      "reviewRecordId": "PV-0019-clap-4.6.7",
+      "publishedNotices": [
+        {
+          "path": "licenses/dependencies/clap-4.6.7-LICENSE-MIT.txt",
+          "sha256": "6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6",
+          "upstreamFileSha256": "6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6",
+          "reviewRecordId": "PV-0019-NOTICE-clap-LICENSE-MIT"
+        }
+      ]
+    },
+    {
+      "name": "clap_builder",
+      "version": "4.6.7",
+      "packageSha256": "ec0797fb7aeb1406c84efac526901f7ec3ead2124f946b494e72879d4b54704d",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/clap_builder/4.6.7",
+      "reviewRecordId": "PV-0019-clap_builder-4.6.7",
+      "publishedNotices": [
+        {
+          "path": "licenses/dependencies/clap_builder-4.6.7-LICENSE-MIT.txt",
+          "sha256": "6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6",
+          "upstreamFileSha256": "6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6",
+          "reviewRecordId": "PV-0019-NOTICE-clap_builder-LICENSE-MIT"
+        }
+      ]
+    },
+    {
+      "name": "clap_lex",
+      "version": "1.1.1",
+      "packageSha256": "1c133bc6a41be0d194c306b5506d15e6feeea7b1d6604bd3f8310dfb2ca96486",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/clap_lex/1.1.1",
+      "reviewRecordId": "PV-0019-clap_lex-1.1.1",
+      "publishedNotices": [
+        {
+          "path": "licenses/dependencies/clap_lex-1.1.1-LICENSE-MIT.txt",
+          "sha256": "6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6",
+          "upstreamFileSha256": "6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6",
+          "reviewRecordId": "PV-0019-NOTICE-clap_lex-LICENSE-MIT"
+        }
+      ]
+    },
+    {
+      "name": "itoa",
+      "version": "1.0.18",
+      "packageSha256": "8f42a60cbdf9a97f5d2305f08a87dc4e09308d1276d28c869c684d7777685682",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/itoa/1.0.18",
+      "reviewRecordId": "PV-0019-itoa-1.0.18",
+      "publishedNotices": [
+        {
+          "path": "licenses/dependencies/itoa-1.0.18-LICENSE-MIT.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "upstreamFileSha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "reviewRecordId": "PV-0019-NOTICE-itoa-LICENSE-MIT"
+        }
+      ]
+    },
+    {
+      "name": "memchr",
+      "version": "2.8.3",
+      "packageSha256": "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98",
+      "declaredLicense": "Unlicense OR MIT",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/memchr/2.8.3",
+      "reviewRecordId": "PV-0019-memchr-2.8.3",
+      "publishedNotices": [
+        {
+          "path": "licenses/dependencies/memchr-2.8.3-LICENSE-MIT.txt",
+          "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+          "upstreamFileSha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+          "reviewRecordId": "PV-0019-NOTICE-memchr-LICENSE-MIT"
+        }
+      ]
+    },
+    {
+      "name": "proc-macro2",
+      "version": "1.0.107",
+      "packageSha256": "985e7ec9bb745e6ce6535b544d84d6cd6f7ad8bd711c398938ae983b91a766d9",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/proc-macro2/1.0.107",
+      "reviewRecordId": "PV-0019-proc-macro2-1.0.107",
+      "publishedNotices": [
+        {
+          "path": "licenses/dependencies/proc-macro2-1.0.107-LICENSE-MIT.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "upstreamFileSha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "reviewRecordId": "PV-0019-NOTICE-proc-macro2-LICENSE-MIT"
+        }
+      ]
+    },
+    {
+      "name": "quote",
+      "version": "1.0.47",
+      "packageSha256": "1fbf4db142a473a8d80c26bbf18454ed458bf8d26c8219c331daecfdbd079001",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/quote/1.0.47",
+      "reviewRecordId": "PV-0019-quote-1.0.47",
+      "publishedNotices": [
+        {
+          "path": "licenses/dependencies/quote-1.0.47-LICENSE-MIT.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "upstreamFileSha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "reviewRecordId": "PV-0019-NOTICE-quote-LICENSE-MIT"
+        }
+      ]
+    },
+    {
+      "name": "serde",
+      "version": "1.0.229",
+      "packageSha256": "4148590afebada386688f18773da617792bf2ef03ffc1e4cbd2b1d45b023e0ba",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/serde/1.0.229",
+      "reviewRecordId": "PV-0019-serde-1.0.229",
+      "publishedNotices": [
+        {
+          "path": "licenses/dependencies/serde-1.0.229-LICENSE-MIT.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "upstreamFileSha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "reviewRecordId": "PV-0019-NOTICE-serde-LICENSE-MIT"
+        }
+      ]
+    },
+    {
+      "name": "serde_core",
+      "version": "1.0.229",
+      "packageSha256": "67dca2c9c51e58a4791a4b1ed58308b39c64224d349a935ab5039aa360942a48",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/serde_core/1.0.229",
+      "reviewRecordId": "PV-0019-serde_core-1.0.229",
+      "publishedNotices": [
+        {
+          "path": "licenses/dependencies/serde_core-1.0.229-LICENSE-MIT.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "upstreamFileSha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "reviewRecordId": "PV-0019-NOTICE-serde_core-LICENSE-MIT"
+        }
+      ]
+    },
+    {
+      "name": "serde_derive",
+      "version": "1.0.229",
+      "packageSha256": "e7a5d71263a5a7d47b41f6b3f06ba276f10cc18b0931f1799f710578e2309348",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/serde_derive/1.0.229",
+      "reviewRecordId": "PV-0019-serde_derive-1.0.229",
+      "publishedNotices": [
+        {
+          "path": "licenses/dependencies/serde_derive-1.0.229-LICENSE-MIT.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "upstreamFileSha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "reviewRecordId": "PV-0019-NOTICE-serde_derive-LICENSE-MIT"
+        }
+      ]
+    },
+    {
+      "name": "serde_json",
+      "version": "1.0.152",
+      "packageSha256": "1741ab7a6cc54a03a89b5d563ed60075c277d9e3cfa73ad0c1f23f23974703c6",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/serde_json/1.0.152",
+      "reviewRecordId": "PV-0019-serde_json-1.0.152",
+      "publishedNotices": [
+        {
+          "path": "licenses/dependencies/serde_json-1.0.152-LICENSE-MIT.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "upstreamFileSha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "reviewRecordId": "PV-0019-NOTICE-serde_json-LICENSE-MIT"
+        }
+      ]
+    },
+    {
+      "name": "strsim",
+      "version": "0.11.1",
+      "packageSha256": "7da8b5736845d9f2fcb837ea5d9e2628564b3b043a70948a3f0b778838c5fb4f",
+      "declaredLicense": "MIT",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/strsim/0.11.1",
+      "reviewRecordId": "PV-0019-strsim-0.11.1",
+      "publishedNotices": [
+        {
+          "path": "licenses/dependencies/strsim-0.11.1-LICENSE.txt",
+          "sha256": "1e697ce8d21401fbf1bddd9b5c3fd4c4c79ae1e3bdf51f81761c85e11d5a89cd",
+          "upstreamFileSha256": "1e697ce8d21401fbf1bddd9b5c3fd4c4c79ae1e3bdf51f81761c85e11d5a89cd",
+          "reviewRecordId": "PV-0019-NOTICE-strsim-LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "syn",
+      "version": "3.0.7",
+      "packageSha256": "d62a2e0561533f2ca2561d0cf27fd9fedb640a1bf2616ff5d5c80d99017faadc",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/syn/3.0.7",
+      "reviewRecordId": "PV-0019-syn-3.0.7",
+      "publishedNotices": [
+        {
+          "path": "licenses/dependencies/syn-3.0.7-LICENSE-MIT.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "upstreamFileSha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "reviewRecordId": "PV-0019-NOTICE-syn-LICENSE-MIT"
+        }
+      ]
+    },
+    {
+      "name": "unicode-ident",
+      "version": "1.0.26",
+      "packageSha256": "d245f478577f809a851594d02313b640fb437e0bb33866753cff937863096954",
+      "declaredLicense": "(MIT OR Apache-2.0) AND Unicode-3.0",
+      "selectedBasis": "MIT AND Unicode-3.0",
+      "origin": "https://crates.io/crates/unicode-ident/1.0.26",
+      "reviewRecordId": "PV-0019-unicode-ident-1.0.26",
+      "publishedNotices": [
+        {
+          "path": "licenses/dependencies/unicode-ident-1.0.26-LICENSE-MIT.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "upstreamFileSha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "reviewRecordId": "PV-0019-NOTICE-unicode-ident-LICENSE-MIT"
+        },
+        {
+          "path": "licenses/dependencies/unicode-ident-1.0.26-LICENSE-UNICODE.txt",
+          "sha256": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1",
+          "upstreamFileSha256": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1",
+          "reviewRecordId": "PV-0019-NOTICE-unicode-ident-LICENSE-UNICODE"
+        }
+      ]
+    },
+    {
+      "name": "zmij",
+      "version": "1.0.23",
+      "packageSha256": "29666d0abbfad1e3dc4dcf6144730dd3a3ab225bbbdac83319345b1b44ccfc1b",
+      "declaredLicense": "MIT",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/zmij/1.0.23",
+      "reviewRecordId": "PV-0019-zmij-1.0.23",
+      "publishedNotices": [
+        {
+          "path": "licenses/dependencies/zmij-1.0.23-LICENSE-MIT.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "upstreamFileSha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "reviewRecordId": "PV-0019-NOTICE-zmij-LICENSE-MIT"
+        }
+      ]
+    }
+  ]
+}

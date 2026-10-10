@@ -1,6 +1,11 @@
 # imageinfo CLI requirements and proposed command model
 
-Status: proposed user experience and interface contract; commands in this document are design examples and are not implemented. Research date and RAW-only scope revision: 2026-10-10. This specification intentionally makes no implementation language or framework choice. Product requirements use `PR-*`; interface requirements use `CLI-*`.
+
+Subsequent #0019 implements a [limited CLI foundation](foundation/README.md).
+The broader examples/requirements below retain their proposed status; media parsing
+and full result/CLI compatibility are not established by foundation help/version.
+
+Status: user experience and interface requirements; command examples are design data except for the explicitly implemented foundation subset linked above. Research date and RAW-only scope revision: 2026-10-10. This specification intentionally makes no implementation language or framework choice. Product requirements use `PR-*`; interface requirements use `CLI-*`.
 
 Current delivery scope is camera RAW metadata, associated XMP sidecars, and embedded-preview metadata/extraction. DNG and proprietary RAW families such as CR2/CR3, NEF/NRW, ARW, RAF, ORF, RW2, PEF, and SRW are the requirements horizon; each variant needs its own tested capability claim. The eventual ambition is full ExifTool feature parity, with other media families deferred to later scope decisions. No RAW pixel developing, rendering, demosaicing, or conversion is part of this CLI specification.
 

@@ -20,8 +20,8 @@ metadata is the current delivery scope agreed with Terry. See [RAW scope](raw-sc
 ## Implementation selection now open
 
 Terry authorized #0011 and disposable prototypes on 2026-10-10. [ADR-0011](implementation-selection/README.md)
-recommends Rust, Cargo, clap and Serde with a small synchronous library/CLI; it is
-ready for review, not yet an accepted language decision. The [first milestone](implementation-selection/first-milestone.md)
+records the accepted Rust, Cargo, clap and Serde direction with a small synchronous
+library/CLI. #0019 provides the [executable foundation](foundation/README.md). The [first milestone](implementation-selection/first-milestone.md)
 defines the proposed read-only increment. Product XML, richer terminal widgets,
 plugins, installers and exact release/OS baselines remain scoped later decisions.
 Requirements and wire contracts remain independent of internal Rust organization.

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/imageinfo/imageinfo/raw/main/docs/foundation/version.schema.json",
+  "title": "Implemented version report v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "kind": { "const": "version" },
+    "version": { "type": "string", "minLength": 1 },
+    "capabilityDataRevision": { "type": "string", "minLength": 1 },
+    "mediaReadingImplemented": { "type": "boolean" }
+  },
+  "required": ["schemaVersion", "kind", "version", "capabilityDataRevision", "mediaReadingImplemented"]
+}

@@ -4,6 +4,7 @@
 /research-cache/
 /Source Data/
 /experiments/**/target/
+/target/
 *.log
 .env
 .env.*

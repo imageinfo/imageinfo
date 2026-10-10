@@ -3,8 +3,9 @@
 Research date: **2026-10-10**. Status: language-agnostic design constraints for discussion. This document chooses no programming language, runtime, parsing library, serialization library, build system, or deployment technology.
 
 Subsequent [ADR-0011](implementation-selection/README.md) evaluates a concrete Rust
-implementation direction and records disposable probes. It remains a recommendation
-for review. These constraints do not become a mandated package or abstraction tree.
+implementation direction and records disposable probes. Terry has accepted that
+direction; [#0019](foundation/README.md) supplies the CLI foundation. These constraints
+do not become a mandated package or abstraction tree.
 
 **First implementation target: Canon EOS R5 CR3**, followed by broader RAW support.
 Prove the initial vertical slice on CR3's container and Canon structures; the TIFF

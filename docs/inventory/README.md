@@ -1,8 +1,9 @@
 # EOS R5 CR3 capability inventory v1
 
 Status: **draft for review**, inventory revision `2026-10-10.9`, 2026-10-10. This is the deliverable for board card
-**#0002, capability-inventory**. Implementation coverage remains zero. No imageinfo
-executable or native media-fixture validation is claimed. Initial upstream-only
+**#0002, capability-inventory**. RAW capability implementation coverage remains zero.
+The [CLI foundation](../foundation/README.md) now exists, but no native media-fixture
+validation is claimed. Initial upstream-only
 observations are now recorded in the [corpus baseline](../corpus-baseline/README.md).
 
 ## Review entry points

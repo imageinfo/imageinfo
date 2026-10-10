@@ -1,5 +1,10 @@
 # RAW compatibility recommendation
 
+
+Subsequent #0019 implements a [limited CLI foundation](../foundation/README.md).
+The broader examples/requirements below retain their proposed status; media parsing
+and full result/CLI compatibility are not established by foundation help/version.
+
 Status: **proposal for review**, `2026-10-10.1`, card **#0007**. Source observation
 date: **2026-10-10**. Baseline: ExifTool source 13.59 at commit
 `2200871d9cef988051d2a99d67df3bda6cbb30a8`, not a claim about the latest release.

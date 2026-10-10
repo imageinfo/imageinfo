@@ -1,9 +1,8 @@
 # Implementation decision: Rust for the first R5 reader
 
-**ADR-0011 — Recommendation ready for review, 2026-10-10.** Terry opened language
-selection by authorizing card #0011 and explicitly permitted disposable spikes.
-This supersedes the earlier deferral for this evaluation. It does not record Terry's
-acceptance of Rust or authorize calling the prototypes production imageinfo.
+**ADR-0011 — Accepted by Terry, 2026-10-10.** Terry's “Rust sounds good” acceptance
+and authorization of #0019 open the production foundation. The earlier disposable
+spikes remain research evidence and are not promoted into product code.
 
 **Recommend Rust, edition 2024, with Cargo, a small synchronous library and CLI,
 clap for command definitions, and Serde/serde_json at the JSON boundary.** Use the
@@ -101,8 +100,8 @@ are not established by repository stars, package counts or this comparison.
 
 ## Handoff
 
-Acceptance of this card records the Rust direction and the bounded first-milestone
-plan. Architecture remains iterative. **#0019** bootstraps the chosen toolchain
+Terry accepted the Rust direction and bounded first-milestone plan. Architecture
+remains iterative. **#0019** bootstraps the chosen toolchain
 and proves the shared command/help contract with synthetic inputs; **#0020** follows
 with bounded container reading and the first exact metadata mappings.
 No production implementation or full R5 read support is delivered by this card.

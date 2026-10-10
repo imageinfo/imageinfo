@@ -1,0 +1,14 @@
+{
+  "reviewedOn": "2026-10-10",
+  "action": "actions/checkout",
+  "version": "v6",
+  "sourceRevision": "d23441a48e516b6c34aea4fa41551a30e30af803",
+  "origin": "https://github.com/actions/checkout/tree/d23441a48e516b6c34aea4fa41551a30e30af803",
+  "archiveSha256": "f798b5f6acf9105f9180b9b3aec6d244f78b19832b5e55587cdee0f77a64306f",
+  "archiveByteLength": "500599",
+  "declaredLicense": "MIT",
+  "licenseSource": "https://github.com/actions/checkout/blob/d23441a48e516b6c34aea4fa41551a30e30af803/LICENSE",
+  "retainedLicenseSha256": "3e855ffa704114a51628ef8f0bf3aeb41728adf9d9070e263bf58aa5640b0eb5",
+  "reviewRecordId": "PV-0019-CHECKOUT-ACTION",
+  "scope": "Unmodified action execution on public source in the read-only foundation workflow. No vendoring/release approval; detailed retained evidence remains local."
+}

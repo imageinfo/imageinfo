@@ -1,9 +1,14 @@
 # CLI walkthrough recommendation
 
+
+Subsequent #0019 implements a [limited CLI foundation](../foundation/README.md).
+The broader examples/requirements below retain their proposed status; media parsing
+and full result/CLI compatibility are not established by foundation help/version.
+
 Status: **proposal for review**, revision `2026-10-10.1`, card **#0003**.
-Every command and response here is a design example. There is no imageinfo CLI,
-menu implementation, real-camera run or user usability study behind these examples.
-Language, framework, internal architecture and package layout remain undecided.
+These original command/response examples are design data, not a menu implementation
+or user usability study. The linked foundation above now implements a small subset;
+Rust is accepted separately. This contract does not prescribe internal organization.
 
 Read the [walkthroughs](walkthroughs.md) for the user experience, the
 [result contract](results.md) for scripts, and the [validation record](validation.md)

@@ -9,10 +9,19 @@ previews, prioritizing the camera's full RAW setting. C-RAW is tracked separatel
 other RAW families follow later. See the
 [Canon EOS R5 milestone](docs/canon-eos-r5-cr3.md).
 
-**Status: implementation selection.** There is no production imageinfo executable.
-[ADR-0011](docs/implementation-selection/README.md) recommends Rust following small
-disposable Rust/Go probes; the recommendation awaits review. Command examples in
-the design documents describe proposed behavior.
+**Status: Rust executable foundation.** Terry accepted
+[ADR-0011](docs/implementation-selection/README.md). The current build provides
+contextual help, version reporting and explicit unavailable-operation results.
+CR3 metadata reading follows under #0020; broader command examples remain proposals.
+
+```console
+cargo run --locked -- help
+cargo run --locked -- metadata read help
+cargo run --locked -- version --output json
+```
+
+See [setup and implemented behavior](docs/foundation/README.md) for the pinned
+toolchain, contributor checks and current limitations.
 
 The project starts with three goals:
 
@@ -42,7 +51,7 @@ Harvey and its contributors; imageinfo is not affiliated with or endorsed by it.
 ## Project decisions
 
 The initial requirements and private R5 reference baseline have been reviewed.
-Language selection is now open; the [first implementation milestone](docs/implementation-selection/first-milestone.md)
+Rust is accepted; the [first implementation milestone](docs/implementation-selection/first-milestone.md)
 defines a bounded read-only start. Architecture and evidence develop incrementally.
 The project uses the [MIT license](LICENSE), with copyright attribution to Terry Ott
 and imageinfo contributors. See the [license decision](docs/license-decision.md).

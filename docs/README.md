@@ -1,17 +1,19 @@
 # Documentation map
 
 This is the initial, language-agnostic requirements baseline, researched on
-2026-10-10. All imageinfo features and commands described here are proposed.
-No parsing, editing, or compatibility implementation exists yet.
+2026-10-10. The [executable foundation](foundation/README.md) implements help,
+version reporting and explicit unavailable-operation results. Metadata features,
+editing and broader compatibility remain proposed/unimplemented.
 
 **Delivery focus: camera RAW metadata first. Long-term goal: full ExifTool feature
 parity.** Broader research is retained as future reference; it does not expand the
-current milestone. Implementation selection is now open under #0011; the Rust
-recommendation awaits review and the requirements remain language independent.
+current milestone. Rust/ADR-0011 is accepted; requirements remain independent of
+internal code organization.
 The first camera/format target is **Canon EOS R5 CR3**.
 
 | Document | Purpose |
 | --- | --- |
+| [Executable foundation](foundation/README.md) | Implemented CLI subset, pinned build/checks, wire output, dependency notices and actual validation for #0019. |
 | [Implementation selection](implementation-selection/README.md) | ADR-0011: Rust recommendation, Go/C# alternatives, disposable probes, component choices and the first read milestone. |
 | [RAW scope](raw-scope.md) | Current format/workflow boundaries and the distinction from eventual full parity. |
 | [Canon EOS R5 CR3](canon-eos-r5-cr3.md) | First camera/format milestone, priority workflows, and variant evidence. |

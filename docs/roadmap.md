@@ -7,9 +7,9 @@ of scope.
 
 **As of 2026-10-10:** initial requirements cards #0001–#0010 and private corpus
 baseline #0013 are accepted. Terry has opened **implementation selection, #0011**.
-[ADR-0011](implementation-selection/README.md) recommends Rust and records disposable
-Rust/Go probes. It awaits review; no production implementation or verified imageinfo
-capability exists.
+[ADR-0011](implementation-selection/README.md) is accepted. The
+[foundation](foundation/README.md) now implements help/version/refusal boundaries.
+CR3 parsing and verified RAW capabilities remain future work on #0020.
 
 An empty Ready for Work lane does not establish completed architecture. It can mean
 the prepared queue is exhausted or its next item awaits a decision. Backlog work
@@ -21,8 +21,8 @@ must be scoped and triaged against the current milestone before execution.
 | --- | --- | --- |
 | Requirements baseline | Initial scope/workflows/contracts accepted | Stable requirements, source ledger, reviewed CLI examples and explicit gaps |
 | RAW compatibility specification | Initial matrix and fixture contracts accepted; breadth remains open | Exact format/tag/location/operation assertions for each increment |
-| Implementation selection | #0011 recommendation ready for review | Accepted language/component direction, alternatives and first milestone |
-| Executable foundation | Next after selection acceptance | Pinned build, library/CLI boundary, synthetic wire/help tests and declared platform CI |
+| Implementation selection | #0011 Rust direction accepted | Accepted language/component direction, alternatives and first milestone |
+| Executable foundation | Implemented foundation under #0019 | Pinned build, library/CLI boundary, synthetic wire/help tests and declared platform CI |
 | R5 read foundation | Next after executable foundation | Bounded recognition, selected exact metadata, preview extraction and malformed-input/private differential evidence |
 | Associated XMP and guided CLI | Subsequent read/UX increments | Reviewed XML component, faithful namespaces/values/time, shared commands and accessible menus |
 | Safe mutation | #0014 evidence work; no writer enabled | Sensor/calibration/unknown-data preservation, independent checks and per-profile concurrency/recovery |
@@ -38,7 +38,7 @@ be complete before a useful native reader exists.
 
 | Card | Responsibility | Relationship to first implementation |
 | --- | --- | --- |
-| #0011 `implementation-selection` | Language/components against requirements | Rust recommendation pending review; earlier language deferral lifted for this evaluation |
+| #0011 `implementation-selection` | Language/components against requirements | Rust direction accepted; earlier language deferral lifted |
 | `executable-foundation` | Bootstrap accepted stack and shared command/help contracts | First implementation increment after selection acceptance |
 | `r5-read-slice` | Bounded recognition, selected metadata and preview extraction | Depends on foundation; grows by reviewed mappings |
 | #0014 `write-validation` | Writer/storage profiles, preservation, privacy and fault recovery | Gates mutations, not read-only progress |

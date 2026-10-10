@@ -1,8 +1,9 @@
 # Contributing to imageinfo
 
 The initial requirements and private reference baseline are reviewed. Implementation
-selection is now open: [ADR-0011](docs/implementation-selection/README.md) recommends
-Rust and awaits review. There is **no production imageinfo executable**. Disposable
+selection is accepted: [ADR-0011](docs/implementation-selection/README.md) chooses
+Rust. The [executable foundation](docs/foundation/README.md) has public build and
+test commands; metadata parsing is the next increment. Disposable
 [research probes](experiments/0011-language-selection/README.md) have their own
 reproduction commands; they are not a production foundation.
 
@@ -57,6 +58,7 @@ For documentation changes, before opening a PR:
 
 | Changed area | Public verification recipe |
 | --- | --- |
+| Production Rust/CLI | [Foundation setup and gates](docs/foundation/README.md) |
 | Implementation selection/probes | [Probe reproduction](experiments/0011-language-selection/README.md) and [decision validation](docs/implementation-selection/validation.md) |
 | Capability inventory | [Inventory validation](docs/inventory/validation.md) |
 | Metadata values/identity | [Metadata validation](docs/metadata-model/validation.md) |
@@ -67,13 +69,14 @@ For documentation changes, before opening a PR:
 | Measurement methods | [Performance validation](docs/performance/validation.md) |
 | Asset rights/privacy/lineage | [Provenance validation](docs/provenance/validation.md) |
 
-The six current schema files live under `docs/inventory`, `docs/metadata-model`,
-`docs/fixture-plan`, `docs/legacy-compatibility` and `docs/provenance`. Their validation recipes explain
+The schema files live under `docs/inventory`, `docs/metadata-model`,
+`docs/fixture-plan`, `docs/legacy-compatibility`, `docs/provenance` and `docs/foundation`. Their validation recipes explain
 what JSON Schema alone cannot prove. Choose available validation tooling for this
-documentation work; that does not choose the product language. There is no production
-test/build gate yet; changed research probes must still compile and pass their
-documented assertions. The first implementation contribution must add reproducible,
-public setup and check commands appropriate to the approved language/toolchain.
+documentation work. For production changes, run the pinned-toolchain formatting,
+clippy, tests and release-build commands in the foundation guide. Changed research
+probes must still pass their own documented assertions; they are separate packages.
+Run `python scripts/check_docs.py` for public links/JSON. Keep required notices
+current in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) when dependencies change.
 
 ## Make review straightforward
 
