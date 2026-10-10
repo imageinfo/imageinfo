@@ -47,6 +47,13 @@ Terry workflow. Bot moves completed work to `ready_for_review`; Terry alone acce
 it into `completed`. Do not launch a duplicate service or enable board autopush
 without an explicit request.
 
+Write card descriptions and comments for easy human scanning. Terry explicitly
+requested more line breaks on 2026-10-10: use short paragraphs separated by blank
+lines, and compact bullets for parallel items or acceptance criteria. Separate
+context, findings, verification, and next steps when present. Avoid dense blocks
+that combine the entire update into one paragraph. Preserve actual newlines when
+passing text through the CLI; prefer `--detail-file` for substantial descriptions.
+
 ## Verification and publishing
 
 For documentation changes, check internal links, consistency of proposed command
