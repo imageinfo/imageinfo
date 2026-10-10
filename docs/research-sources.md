@@ -4,6 +4,7 @@ Observation date: **2026-10-10**. This ledger records primary sources for the in
 requirements investigation. It is not an assertion of completed compatibility.
 The research covers ExifTool broadly because full parity remains the eventual goal.
 Current imageinfo delivery requirements are limited to [camera RAW](raw-scope.md).
+The first selected camera/format is [Canon EOS R5 CR3](canon-eos-r5-cr3.md).
 
 ## Reproducible upstream snapshot
 
@@ -42,6 +43,9 @@ its reported version before recording results.
 | [Changes](https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/Changes) | Behavior changes and possible regression cases. |
 | [AWS CLI help](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-help.html) | Help at root, service, and operation scopes. |
 | [AWS CLI auto-prompt](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-prompting.html) | Interactive discovery as a distinct feature from nested help. |
+| [Canon EOS R5 image quality](https://cam.start.canon/en/C003/manual/html/UG-03_Shooting-1_0030.html) | RAW/C-RAW recording and CR3 file naming for the first camera target. |
+| [Canon EOS R5 specifications](https://cam.start.canon/en/C003/manual/html/UG-09_Reference_0100.html) | Camera capture variants, file types, and metadata-related settings to label in fixtures. |
+| [Canon EOS R5 Dual Pixel RAW](https://support.usa.canon.com/kb/index?id=ART178251&page=content) | Additional sensor information whose preservation needs separate evidence. |
 
 The topic documents contain more specific citations. ExifTool source material remains
 attributed to its authors; this repository records independent requirements and

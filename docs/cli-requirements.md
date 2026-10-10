@@ -6,6 +6,10 @@ Current delivery scope is camera RAW metadata, associated XMP sidecars, and embe
 
 ## What “like the AWS CLI” means
 
+The first delivered camera/format is **Canon EOS R5 CR3**. Examples below use CR3
+and paired XMP; other RAW names above describe later coverage. See the
+[first milestone](canon-eos-r5-cr3.md).
+
 AWS documents help at three levels: `aws help`, `aws ec2 help`, and `aws ec2 describe-instances help`. Operation help includes parameter explanations, examples, and output descriptions. Its v2 auto-prompt is a separate feature that suggests commands and arguments with descriptions and offers contextual documentation; shell completion is another separate feature. [AWS help](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-help.html), [AWS auto-prompt](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-prompting.html), [AWS completion](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-completion.html).
 
 For imageinfo, translate this into three coordinated experiences: a predictable command hierarchy; complete help at every node; and an optional keyboard-driven cascading menu that builds the same command. The menu is an imageinfo proposal, not a claim that AWS help itself is a cascading menu. Interactive guidance must never interrupt scripts or mutate files merely because a user explored a menu.
@@ -143,11 +147,11 @@ Inspect a RAW file and discover a tag without knowing its storage details:
 ```text
 imageinfo help
 imageinfo metadata read help
-imageinfo metadata read --values all --output json photo.dng
+imageinfo metadata read --values all --output json photo.cr3
 imageinfo tags search copyright
 imageinfo tags show EXIF:Copyright
-imageinfo formats show DNG
-imageinfo formats show NEF
+imageinfo formats show CR3
+imageinfo formats list
 ```
 
 Preview an edit to an existing associated XMP sidecar, save a plan, review it, then explicitly apply it:
@@ -160,14 +164,14 @@ imageinfo plan apply label.plan.json
 imageinfo backup list photo.xmp
 ```
 
-The first command changes no file. Applying a saved plan checks the original sidecar identity and required permissions again; `photo.dng` stays untouched. A direct `metadata write ... --apply` is also explicit application; a saved plan is optional. Embedded RAW edits use the same process but remain disabled until that exact RAW-variant/tag operation has preservation evidence.
+The first command changes no file. Applying a saved plan checks the original sidecar identity and required permissions again; `photo.cr3` stays untouched. A direct `metadata write ... --apply` is also explicit application; a saved plan is optional. Embedded RAW edits use the same process but remain disabled until that exact RAW-variant/tag operation has preservation evidence.
 
 Compare two RAW files and copy a tag to an existing associated XMP sidecar with an explicit mapping:
 
 ```text
-imageinfo metadata diff original.nef edited.nef --output json
-imageinfo metadata copy --from original.nef --tag EXIF:Copyright --mapping xmp edited.xmp
-imageinfo metadata copy --from original.nef --tag EXIF:Copyright --mapping xmp --apply edited.xmp
+imageinfo metadata diff original.cr3 edited.cr3 --output json
+imageinfo metadata copy --from original.cr3 --tag EXIF:Copyright --mapping xmp edited.xmp
+imageinfo metadata copy --from original.cr3 --tag EXIF:Copyright --mapping xmp --apply edited.xmp
 ```
 
 Inspect a RAW timestamp, preview a correction in its existing XMP sidecar, then plan geotagging a RAW collection into associated sidecars:
@@ -184,9 +188,9 @@ The timezone assumption and RAW/XMP destination mapping are visible in the plan.
 Create a sidecar, extract a preview, and plan an organized destination:
 
 ```text
-imageinfo sidecar create --format xmp --to photo.xmp raw-photo.dng
-imageinfo binary list raw-photo.dng
-imageinfo binary extract --tag PreviewImage --output-file extracted-preview.jpg raw-photo.dng
+imageinfo sidecar create --format xmp --to photo.xmp raw-photo.cr3
+imageinfo binary list raw-photo.cr3
+imageinfo binary extract --tag PreviewImage --output-file extracted-preview.jpg raw-photo.cr3
 imageinfo files rename --with-sidecars --template '{capture-date:yyyyMMdd-HHmmss}-{sequence}.{extension}' --save-plan rename.plan.json raw-photos
 ```
 
@@ -195,10 +199,10 @@ Sidecar creation is also a mutation: its default is preview, and `--apply` is ne
 Inspect and remove a declared privacy category, then verify what remains:
 
 ```text
-imageinfo privacy inspect --profile location --with-sidecars public-photo.dng
-imageinfo privacy scrub --profile location --target sidecar --save-plan privacy.plan.json public-photo.dng
+imageinfo privacy inspect --profile location --with-sidecars public-photo.cr3
+imageinfo privacy scrub --profile location --target sidecar --save-plan privacy.plan.json public-photo.cr3
 imageinfo plan apply privacy.plan.json
-imageinfo privacy verify --profile location --with-sidecars public-photo.dng --output json
+imageinfo privacy verify --profile location --with-sidecars public-photo.cr3 --output json
 ```
 
 This example only changes the associated XMP. Verification still checks the RAW file and reports any location information left in it or its embedded previews. “Verified” means the named profile's supported checks passed; it cannot certify anonymization if targeted information remains, any relevant region is uninspectable, or the RAW variant lacks safe deletion support.
@@ -226,9 +230,9 @@ Proposed JSON schema shape, shown for design discussion only:
   "capabilityRevision": "baseline-id",
   "results": [
     {
-      "path": "photo.dng",
+      "path": "photo.cr3",
       "status": "ok",
-      "format": "DNG",
+      "format": "CR3",
       "metadata": [
         {
           "canonicalTag": "EXIF:Artist",

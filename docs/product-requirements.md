@@ -16,6 +16,10 @@ Repository references below are anchored to the observed upstream source snapsho
 
 ## Who it serves
 
+**First camera/format target: Canon EOS R5 CR3**, selected by Terry on 2026-10-10.
+The [CR3 milestone](canon-eos-r5-cr3.md) takes precedence for initial delivery;
+other RAW families in this document are the subsequent RAW roadmap.
+
 | User | Primary job | Evidence of success |
 | --- | --- | --- |
 | Photographer or archivist | Inspect, correct, organize, and preserve a camera RAW collection | Find the right command through help; preview edits; recover RAW originals and paired sidecars |
@@ -47,7 +51,7 @@ The following requirements are imageinfo design proposals. ExifTool behavior inf
 | PR-001 | P0 | Maintain a versioned RAW capability inventory with source references and unresolved cases. | Every claimed RAW variant/operation and associated XMP capability has a status, baseline version, limitations, and linked conformance case; unimplemented cells remain visible. |
 | PR-002 | P0 | Identify RAW containers from contents, distinguish detection from successful parsing, and report extension mismatches or out-of-scope inputs. | RAW fixtures with correct, missing, and misleading extensions produce the same detected container; non-RAW inputs return an explicit out-of-scope result; truncated or ambiguous inputs report a bounded diagnostic. |
 | PR-003 | P0 | Preserve tag identity, group/namespace, document/instance path, duplicates, ordering where meaningful, raw/normalized/display values, and provenance. | A fixture with same-named tags in multiple groups and repeated instances loses no values in structured output; each record identifies its origin. |
-| PR-004 | P0 | Read metadata from a declared initial RAW subset and its associated XMP sidecars. | Published DNG and selected proprietary-RAW fixtures pass the read conformance suite; additional RAW variants remain tracked separately; no non-RAW support is advertised. |
+| PR-004 | P0 | Read metadata from Canon EOS R5 CR3 and its associated XMP sidecars first. | Published EOS R5 CR3 fixtures pass the read conformance suite; RAW/C-RAW, Dual Pixel RAW, and firmware/capture variants have separate coverage status; other cameras and RAW families remain later milestones. |
 | PR-005 | P0 | Provide consistent root, group, and operation help and machine-readable interfaces. | Every advertised operation has offline help, typed parameter documentation, a valid example, output schema, and exit-status documentation; see CLI-001 through CLI-017. |
 | PR-006 | P0 | Make mutations reviewable, reversible by default, and explicit in automation. | Every modification can produce a no-write plan; applying it preserves a recoverable original and reports actual before/after values; invalid requests produce zero writes. |
 | PR-007 | P0 | Enforce embedded RAW write capability by exact container/variant, namespace, tag, and operation; offer XMP sidecars when direct writing is unsupported. | An unsupported tag or read-only RAW target fails preflight with the reason and supported sidecar alternatives; it is never silently ignored or reported as written. |
@@ -100,7 +104,7 @@ A requirement is done only when behavior, documentation, fixtures, and capabilit
 
 ## Initial acceptance scenarios
 
-- A first-time user starts at `imageinfo help`, discovers `metadata read`, inspects a DNG or supported proprietary RAW file, and finds tag-specific help without a web search.
+- A first-time user starts at `imageinfo help`, discovers `metadata read`, inspects a supported Canon EOS R5 CR3 file, and finds tag-specific help without a web search.
 - An archivist previews a batch copyright edit and date correction in paired XMP sidecars, sees all affected files, applies a saved plan, and restores an original sidecar.
 - A script extracts duplicate grouped RAW tags to typed JSON, handles one malformed RAW file, and distinguishes partial failure from success.
 - A user exports a RAW file's metadata to XMP, reviews namespace conversions, and reapplies supported edits without implying that all original binary structures round-trip through XMP.

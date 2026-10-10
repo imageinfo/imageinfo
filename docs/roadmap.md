@@ -5,6 +5,10 @@ initial delivery scope.** This roadmap separates those horizons. A milestone's
 limited coverage must remain visible; it is not permission to call partial support
 complete. The project is currently in **Phase 0**. Language choices are deferred.
 
+**First target: Canon EOS R5 CR3.** The read foundation, associated-XMP workflow,
+and individually gated embedded edits start there. Other RAW families come after
+that first milestone; see the [CR3 requirements](canon-eos-r5-cr3.md).
+
 | Phase | Outcome | Exit evidence |
 | --- | --- | --- |
 | 0. Requirements baseline | Document RAW workflows, native CLI experience, compatibility scope, safety, and open decisions; retain broader upstream research as reference. | Reviewed requirements with stable IDs, a source ledger, RAW command walkthroughs, and a prioritized local board. |
@@ -23,7 +27,7 @@ local board's stable card IDs; board ticket numbers are machine-local.
 
 | Card ID | Work | Acceptance criteria |
 | --- | --- | --- |
-| `capability-inventory` | Enumerate the pinned upstream RAW capability surface. | Inventory RAW formats/variants and metadata families separately; distinguish recognition/read/write/sidecar creation/delete/preserve; attach sources and exceptions; relevant option families are mapped or explicitly unresolved. |
+| `capability-inventory` | Enumerate Canon EOS R5 CR3 capabilities first. | Inventory EOS R5 CR3 capture variants and metadata families separately; distinguish recognition/read/write/sidecar creation/delete/preserve; attach sources and exceptions; retain other RAW families as later expansion. |
 | `cli-walkthroughs` | Exercise the proposed command/help/menu model. | Text walkthroughs for novice inspection, expert batch export, safe edit, GPS removal, sidecar sync, and failures; root/group/leaf help and noninteractive paths reviewed. |
 | `metadata-contract` | Specify the loss-aware metadata model. | Examples cover duplicate instances, groups, binary values, rationals, missing versus empty, unknown time zones, XMP structures/languages, offsets, and source provenance. |
 | `fixture-plan` | Define reproducible parity evidence. | Fixture manifest/provenance schema, oracle version/hash fields, deterministic comparison rules, and a prioritized corpus plan; no unlicensed/private sample import. |

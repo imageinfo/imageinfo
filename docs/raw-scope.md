@@ -4,6 +4,8 @@ Agreed direction on **2026-10-10**:
 
 - **Long-term ambition:** full ExifTool feature parity through a modern, friendly tool.
 - **Initial delivery scope:** metadata workflows for camera RAW images.
+- **First camera/format:** Canon EOS R5 CR3, selected by Terry; other RAW families
+  follow after this first milestone. See [the CR3 milestone](canon-eos-r5-cr3.md).
 - **Current project phase:** requirements and features; language, frameworks, and
   implementation dependencies remain undecided.
 
@@ -12,6 +14,9 @@ is retained so later expansion can reuse what was learned without burdening the
 initial product with every supported media type.
 
 ## What RAW scope includes
+
+This table defines the RAW roadmap boundary. The first delivered slice is EOS R5
+CR3; it does not require implementing every listed RAW family at once.
 
 | Area | Initial scope boundary |
 | --- | --- |
@@ -48,7 +53,8 @@ require building a photo editor or RAW rendering engine.
 
 ## What remains to decide
 
-The exact first-release RAW families, camera-model variants, read/write depth,
-priority workflows, and performance targets need requirements evidence and review.
+The first camera/format is settled: Canon EOS R5 CR3. Supported capture variants,
+read/write depth, detailed workflow ordering, and performance targets still need
+requirements evidence and review.
 There is no promise that every RAW format ships simultaneously. Publish the coverage
 matrix and gaps for each milestone, then broaden deliberately.

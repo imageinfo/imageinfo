@@ -7,10 +7,12 @@ No parsing, editing, or compatibility implementation exists yet.
 **Delivery focus: camera RAW metadata first. Long-term goal: full ExifTool feature
 parity.** Broader research is retained as future reference; it does not expand the
 current milestone. Language and framework choices remain deferred.
+The first camera/format target is **Canon EOS R5 CR3**.
 
 | Document | Purpose |
 | --- | --- |
 | [RAW scope](raw-scope.md) | Current format/workflow boundaries and the distinction from eventual full parity. |
+| [Canon EOS R5 CR3](canon-eos-r5-cr3.md) | First camera/format milestone, priority workflows, and variant evidence. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |

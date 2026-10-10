@@ -2,6 +2,10 @@
 
 Research date: **2026-10-10**. Status: requirements proposal; no implementation or compatibility claims yet. Programming language, runtime, libraries, and packaging technology remain undecided.
 
+**First validation target: Canon EOS R5 CR3**, its associated XMP sidecars, and its
+embedded previews. Prioritize that corpus and acceptance path before other RAW
+families. See [the CR3 milestone](canon-eos-r5-cr3.md).
+
 Upstream source snapshot: [`2200871d9cef988051d2a99d67df3bda6cbb30a8`](https://github.com/exiftool/exiftool/commit/2200871d9cef988051d2a99d67df3bda6cbb30a8), observed through the official repository. Repository-file citations below pin that revision; linked issue reports are dated observations. No executable reference or fixture corpus has been installed or run in this requirements phase.
 
 ## Active scope: camera RAW metadata

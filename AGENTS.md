@@ -9,6 +9,8 @@ or package layout until Terry explicitly advances that decision.
 - Full ExifTool feature parity is the long-term goal. Current delivery scope is
   camera RAW metadata: DNG and proprietary RAW containers, associated XMP sidecars,
   and embedded preview metadata/extraction. Consult `docs/raw-scope.md`.
+- The first camera/format target is Canon EOS R5 CR3. Prioritize that milestone
+  before other RAW families; see `docs/canon-eos-r5-cr3.md`.
 - Standalone rendered images, video, audio, documents, and archives are deferred.
   Do not expand current implementation work into them without a scope decision.
   RAW pixel development, rendering, and conversion are outside this metadata tool.

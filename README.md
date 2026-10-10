@@ -4,6 +4,10 @@ A modern, approachable metadata tool, starting with **camera RAW images**.
 Full ExifTool feature parity is the long-term goal; the first delivery scope is
 deliberately focused on RAW photography workflows.
 
+**First target: Canon EOS R5 `.CR3` files**, associated XMP sidecars, and embedded
+previews. Other RAW families follow later. See the
+[Canon EOS R5 milestone](docs/canon-eos-r5-cr3.md).
+
 **Status: requirements and research.** There is no imageinfo executable yet.
 Implementation language, frameworks, dependencies, and packaging are deliberately
 undecided. Command examples in the design documents describe proposed behavior.
@@ -21,8 +25,9 @@ Start with the [documentation index](docs/README.md),
 [product requirements](docs/product-requirements.md), and
 [CLI requirements](docs/cli-requirements.md).
 
-Current scope includes DNG and proprietary camera RAW formats, associated XMP
-sidecars, and embedded preview metadata/extraction. Standalone rendered images,
+The RAW roadmap includes DNG and proprietary camera RAW formats, associated XMP
+sidecars, and embedded preview metadata/extraction, starting with EOS R5 CR3.
+Standalone rendered images,
 video, audio, documents, and archives are deferred. RAW development, rendering,
 and pixel conversion are outside this metadata tool's scope. See the
 [RAW scope](docs/raw-scope.md).
