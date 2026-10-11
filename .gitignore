@@ -16,3 +16,5 @@ Thumbs.db
 Desktop.ini
 *.swp
 *.tmp
+__pycache__/
+*.pyc

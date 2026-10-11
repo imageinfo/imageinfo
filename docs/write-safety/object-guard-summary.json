@@ -34,5 +34,7 @@
     "schemasPassed": true,
     "originalsChanged": 0,
     "enabledProfiles": 0
-  }
+  },
+  "codeRevision": "96a64b72f546ebacbd3b09b3e2b1dd34a474d35a",
+  "ciEvidence": "object-guard-ci.json"
 }

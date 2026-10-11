@@ -54,6 +54,12 @@ bytes; they are not independent replications of these OS guard tests or a new
 metadata parity claim. Host supervision is bounded at 120 seconds; no OS memory
 cap or interruptible native I/O deadline is asserted.
 
+[Actual CI evidence](object-guard-ci.json) binds code revision
+`96a64b72f546ebacbd3b09b3e2b1dd34a474d35a` to successful Windows x64, Ubuntu x64
+and macOS arm64 jobs, including production, prior research and guard gates.
+Windows ran 25 guard cases; Ubuntu 12; macOS explicitly refused the unsupported
+mechanism without artifacts. This enables no complete mutation profile.
+
 ## Interpretation and remaining gates
 
 Source/stage **content exclusion**, **object identity**, **path binding**, **property
