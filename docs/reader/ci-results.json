@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "kind": "native-r5-ci-evidence",
+  "observedOn": "2026-10-11",
+  "commit": "bdd10e5b898e370e6c489ad8c0e0294918670149",
+  "workflowUrl": "https://github.com/imageinfo/imageinfo/actions/runs/38155763391",
+  "conclusion": "success",
+  "scope": "Public authored structural/CLI/wire/fuzz-smoke tests, formatting, clippy and release builds; no private media or whole-format parity claim.",
+  "jobs": [
+    {
+      "runner": "macos-15",
+      "conclusion": "success",
+      "jobId": 114518296242,
+      "url": "https://github.com/imageinfo/imageinfo/actions/runs/38155763391/job/114518296242"
+    },
+    {
+      "runner": "ubuntu-24.04",
+      "conclusion": "success",
+      "jobId": 114518296381,
+      "url": "https://github.com/imageinfo/imageinfo/actions/runs/38155763391/job/114518296381"
+    },
+    {
+      "runner": "windows-2025",
+      "conclusion": "success",
+      "jobId": 114518296455,
+      "url": "https://github.com/imageinfo/imageinfo/actions/runs/38155763391/job/114518296455"
+    }
+  ]
+}

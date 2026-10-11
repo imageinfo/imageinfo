@@ -61,7 +61,10 @@ Further targeted variation and fuzz/validator evidence remain #0018.
 Required formatting, clippy with warnings denied, all tests and release builds
 are run with the pinned Rust 1.99.0 toolchain and root lockfile. The existing CI
 matrix exercises Windows x64, Linux x64 and macOS arm64 with public synthetic data
-only. Actual CI run evidence is added at handoff; a defined job is not a pass.
+only. [Run 38155763391](https://github.com/imageinfo/imageinfo/actions/runs/38155763391) passed all three jobs on
+code commit `bdd10e5b898e370e6c489ad8c0e0294918670149`. See [actual run/job evidence](ci-results.json).
+The Windows suite executes 25 tests; Unix suites add the non-Unicode path test
+for 26. No real-camera fixture or private capture is part of those public jobs.
 
 All emitted native snapshots/envelopes in the private corpus are schema checked.
 This validates wire shape and the explicitly checked reference/closure/span facts;
