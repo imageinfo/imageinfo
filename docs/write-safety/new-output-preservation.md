@@ -123,6 +123,13 @@ inputs and injected short-read/scratch-write failures. A fixed-seed 512-case
 patch/corruption smoke test covers varied lengths/positions. It is not a long-running
 or coverage-guided fuzz campaign. The production test gates remain independent.
 
+[Actual CI evidence](new-output-ci.json) binds code revision
+`d23cab6d330330910e258da52b6597eec7b1dd26` to successful Windows x64, Ubuntu x64 and
+macOS arm64 jobs. Each passed seven experimental tests, formatting/lints/release
+build and the disposable storage probe. Production gates also passed: 25 tests on
+Windows and 26 on Unix. CI uses authored structural/marker bytes, not private RAWs
+or LibRaw/ExifTool. Passing CI enables no metadata-write storage profile.
+
 ## Primary observations and provenance
 
 Viewed **2026-10-11**; living references unless a revision is noted. No upstream

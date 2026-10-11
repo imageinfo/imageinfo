@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-11",
+  "sourceRevision": "d23cab6d330330910e258da52b6597eec7b1dd26",
+  "runId": 38158528157,
+  "url": "https://github.com/imageinfo/imageinfo/actions/runs/38158528157",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "runner": "macos-15",
+      "conclusion": "success",
+      "productionTests": 26,
+      "experimentalTests": 7,
+      "gates": [
+        "Set up job",
+        "Check out public source",
+        "Install pinned Rust toolchain",
+        "Check formatting",
+        "Check lints",
+        "Test library and executable contracts",
+        "Build release executable",
+        "Check experimental candidate formatting",
+        "Check experimental candidate lints",
+        "Test private-candidate experiment on authored bytes",
+        "Build experimental candidate tools",
+        "Probe disposable Unix storage primitives",
+        "Check documentation and public JSON",
+        "Post Check out public source",
+        "Complete job"
+      ]
+    },
+    {
+      "runner": "ubuntu-24.04",
+      "conclusion": "success",
+      "productionTests": 26,
+      "experimentalTests": 7,
+      "gates": [
+        "Set up job",
+        "Check out public source",
+        "Install pinned Rust toolchain",
+        "Check formatting",
+        "Check lints",
+        "Test library and executable contracts",
+        "Build release executable",
+        "Check experimental candidate formatting",
+        "Check experimental candidate lints",
+        "Test private-candidate experiment on authored bytes",
+        "Build experimental candidate tools",
+        "Probe disposable Unix storage primitives",
+        "Check documentation and public JSON",
+        "Post Check out public source",
+        "Complete job"
+      ]
+    },
+    {
+      "runner": "windows-2025",
+      "conclusion": "success",
+      "productionTests": 25,
+      "experimentalTests": 7,
+      "gates": [
+        "Set up job",
+        "Check out public source",
+        "Install pinned Rust toolchain",
+        "Check formatting",
+        "Check lints",
+        "Test library and executable contracts",
+        "Build release executable",
+        "Check experimental candidate formatting",
+        "Check experimental candidate lints",
+        "Test private-candidate experiment on authored bytes",
+        "Build experimental candidate tools",
+        "Probe disposable Windows storage primitives",
+        "Check documentation and public JSON",
+        "Post Check out public source",
+        "Complete job"
+      ]
+    }
+  ],
+  "scope": "Public authored structural tests and disposable marker-data primitive observations only; no private RAWs/decoder tools in CI and no mutation storage profile enabled."
+}

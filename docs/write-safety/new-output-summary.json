@@ -36,5 +36,7 @@
     "Big-endian storage is synthetic coverage only",
     "No arbitrary date, insertion, deletion, relocation, XMP, privacy, signatures or recovery support"
   ],
-  "entryPoint": "new-output-preservation.md"
+  "entryPoint": "new-output-preservation.md",
+  "codeRevision": "d23cab6d330330910e258da52b6597eec7b1dd26",
+  "ciEvidence": "new-output-ci.json"
 }
