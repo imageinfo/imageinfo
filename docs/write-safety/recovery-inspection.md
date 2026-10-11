@@ -82,6 +82,13 @@ inherited; it is not a new reference storage mutation. Twenty-six research packa
 reviews and 29 notice-only reviews validate separately. Root production dependencies
 and full writer/profile requirements remain unchanged.
 
+[Actual CI evidence](recovery-ci.json) binds code revision
+`d6e201cdd8cb6dc1bf767125c53bc0605576eb8b` to successful Windows x64, Ubuntu x64
+and macOS arm64 jobs. All passed record tests/format/lints/release builds and the
+production/candidate gates. Ubuntu exercised 43 worker/inspection cases; Windows
+three qualification cases; macOS two explicit backend refusals. Expected failing
+qualification/refusal cells are not converted into supported mutation profiles.
+
 Records are capped at 64 KiB; regular input/artifact reads at 256 MiB. Private QA
 used a 120-second host supervisor timeout. No OS hard memory cap, native interruptible
 filesystem deadline or downstream-WSL termination guarantee is established.

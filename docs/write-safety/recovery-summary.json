@@ -46,5 +46,7 @@
     "0030",
     "0031"
   ],
-  "entryPoint": "recovery-inspection.md"
+  "entryPoint": "recovery-inspection.md",
+  "codeRevision": "d6e201cdd8cb6dc1bf767125c53bc0605576eb8b",
+  "ciEvidence": "recovery-ci.json"
 }
