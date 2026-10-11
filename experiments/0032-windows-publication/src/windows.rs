@@ -152,7 +152,11 @@ fn check_directory(path: &Path, file: &File, security: &PrivateSecurity) -> Resu
     security.check(file)?;
     check_binding(path, file)?;
     if !file.metadata()?.is_dir() || file.metadata()?.file_attributes() & !(16 | 32) != 0 {
-        return Err("DIRECTORY_ATTRIBUTES_CHANGED".into());
+        return Err(format!(
+            "DIRECTORY_ATTRIBUTES_CHANGED_{:08X}",
+            file.metadata()?.file_attributes()
+        )
+        .into());
     }
     Ok(())
 }
@@ -187,7 +191,7 @@ pub fn run() -> Result<()> {
     let root_info = information(&directory)?;
     check_binding(&root, &directory)?;
     emit(
-        json!({"barrier":"root-created","rootIdentity":root_info["identity"],"productionPublicationAllowed":false}),
+        json!({"barrier":"root-created","rootIdentity":root_info["identity"],"rootAttributes":root_info["attributes"],"productionPublicationAllowed":false}),
     )?;
     control()?;
     let mut file = security.create_file(&root.join("candidate.bin"))?;

@@ -144,6 +144,8 @@ def run(binary, parent):
             assert identity and final['rootIdentityStable']
             facts['liveHeldCandidateAndParentStable'] = True
         for event in events:
+            if event.get('barrier') == 'root-created':
+                facts['rootAttributesAtCreation'] = event['rootAttributes']
             if event.get('barrier') == 'directory-flush-attempted':
                 facts['directoryFlushCallSucceeded'] = event['callSucceeded']
                 facts['directoryFlushError'] = event['errorCode']

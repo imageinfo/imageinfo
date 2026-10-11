@@ -24,6 +24,7 @@
       "diagnostic": null,
       "completeMarkerVisible": true,
       "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -40,7 +41,8 @@
       "outputExists": false,
       "outcome": "publication-refused-or-uncertain",
       "errorCode": 87,
-      "diagnostic": null
+      "diagnostic": null,
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "strict-admission",
@@ -71,6 +73,7 @@
       "diagnostic": null,
       "completeMarkerVisible": true,
       "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -83,7 +86,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": "The file exists. (os error 80)"
+      "diagnostic": "The file exists. (os error 80)",
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "existing-root-junction-refusal",
@@ -123,6 +127,7 @@
       "diagnostic": null,
       "completeMarkerVisible": true,
       "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -146,6 +151,7 @@
       "diagnostic": null,
       "completeMarkerVisible": true,
       "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -169,6 +175,7 @@
       "diagnostic": null,
       "completeMarkerVisible": true,
       "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -192,6 +199,7 @@
       "diagnostic": null,
       "completeMarkerVisible": true,
       "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -211,6 +219,7 @@
       "errorCode": null,
       "diagnostic": "STAGE_PROPERTY_OR_CONTENT_CHANGED",
       "completeMarkerVisible": true,
+      "rootAttributesAtCreation": 16,
       "newAliasCreateDeleteAllowedContentWriteExcluded": true
     },
     {
@@ -233,6 +242,7 @@
       "diagnostic": null,
       "completeMarkerVisible": true,
       "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -256,6 +266,7 @@
       "diagnostic": null,
       "completeMarkerVisible": true,
       "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -279,6 +290,7 @@
       "diagnostic": null,
       "completeMarkerVisible": true,
       "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -302,6 +314,7 @@
       "diagnostic": null,
       "completeMarkerVisible": true,
       "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -325,6 +338,7 @@
       "diagnostic": null,
       "completeMarkerVisible": true,
       "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -348,6 +362,7 @@
       "diagnostic": null,
       "completeMarkerVisible": true,
       "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -367,6 +382,7 @@
       "errorCode": null,
       "diagnostic": "STAGE_PROPERTY_OR_CONTENT_CHANGED",
       "completeMarkerVisible": true,
+      "rootAttributesAtCreation": 16,
       "newAliasCreateDeleteAllowedContentWriteExcluded": true
     },
     {
@@ -389,6 +405,7 @@
       "diagnostic": null,
       "completeMarkerVisible": true,
       "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -412,6 +429,7 @@
       "diagnostic": null,
       "completeMarkerVisible": true,
       "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -435,6 +453,7 @@
       "diagnostic": null,
       "completeMarkerVisible": true,
       "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -458,6 +477,7 @@
       "diagnostic": null,
       "completeMarkerVisible": true,
       "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -473,7 +493,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": "STAGE_PROPERTY_OR_CONTENT_CHANGED"
+      "diagnostic": "STAGE_PROPERTY_OR_CONTENT_CHANGED",
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "readonly-intent-record-flushed",
@@ -487,7 +508,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": "STAGE_PROPERTY_OR_CONTENT_CHANGED"
+      "diagnostic": "STAGE_PROPERTY_OR_CONTENT_CHANGED",
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "acl-intent-record-flushed",
@@ -501,7 +523,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": "PRIVATE_OWNER_OR_DACL_CHANGED"
+      "diagnostic": "PRIVATE_OWNER_OR_DACL_CHANGED",
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "stream-intent-record-flushed",
@@ -515,7 +538,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": "NONDEFAULT_STREAM"
+      "diagnostic": "NONDEFAULT_STREAM",
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "timestamp-published",
@@ -532,7 +556,8 @@
       "outcome": "interrupted-or-refused",
       "errorCode": null,
       "diagnostic": "STAGE_PROPERTY_OR_CONTENT_CHANGED",
-      "completeMarkerVisible": true
+      "completeMarkerVisible": true,
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "readonly-published",
@@ -549,7 +574,8 @@
       "outcome": "interrupted-or-refused",
       "errorCode": null,
       "diagnostic": "STAGE_PROPERTY_OR_CONTENT_CHANGED",
-      "completeMarkerVisible": true
+      "completeMarkerVisible": true,
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "acl-published",
@@ -566,7 +592,8 @@
       "outcome": "interrupted-or-refused",
       "errorCode": null,
       "diagnostic": "PRIVATE_OWNER_OR_DACL_CHANGED",
-      "completeMarkerVisible": true
+      "completeMarkerVisible": true,
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "stream-published",
@@ -583,7 +610,8 @@
       "outcome": "interrupted-or-refused",
       "errorCode": null,
       "diagnostic": "NONDEFAULT_STREAM",
-      "completeMarkerVisible": true
+      "completeMarkerVisible": true,
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "late-substitution-excluded",
@@ -605,6 +633,7 @@
       "diagnostic": null,
       "completeMarkerVisible": true,
       "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -628,6 +657,7 @@
       "diagnostic": null,
       "completeMarkerVisible": true,
       "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -651,6 +681,7 @@
       "diagnostic": null,
       "completeMarkerVisible": true,
       "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -668,7 +699,8 @@
       "outcome": "publication-refused-or-uncertain",
       "errorCode": 183,
       "diagnostic": null,
-      "completeMarkerVisible": false
+      "completeMarkerVisible": false,
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "collision-case-alias",
@@ -684,7 +716,8 @@
       "outcome": "publication-refused-or-uncertain",
       "errorCode": 183,
       "diagnostic": null,
-      "completeMarkerVisible": false
+      "completeMarkerVisible": false,
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "directory-collision",
@@ -700,7 +733,8 @@
       "outcome": "publication-refused-or-uncertain",
       "errorCode": 183,
       "diagnostic": null,
-      "completeMarkerVisible": false
+      "completeMarkerVisible": false,
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "fail-root-created",
@@ -711,7 +745,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": "CONTROL_FAILURE"
+      "diagnostic": "CONTROL_FAILURE",
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "kill-root-created",
@@ -722,7 +757,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": null
+      "diagnostic": null,
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "cancel-root-created",
@@ -733,7 +769,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": "CONTROL_CANCEL"
+      "diagnostic": "CONTROL_CANCEL",
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "fail-candidate-flushed",
@@ -745,7 +782,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": "CONTROL_FAILURE"
+      "diagnostic": "CONTROL_FAILURE",
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "kill-candidate-flushed",
@@ -757,7 +795,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": null
+      "diagnostic": null,
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "cancel-candidate-flushed",
@@ -769,7 +808,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": "CONTROL_CANCEL"
+      "diagnostic": "CONTROL_CANCEL",
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "fail-prepared-record-flushed",
@@ -782,7 +822,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": "CONTROL_FAILURE"
+      "diagnostic": "CONTROL_FAILURE",
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "kill-prepared-record-flushed",
@@ -795,7 +836,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": null
+      "diagnostic": null,
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "cancel-prepared-record-flushed",
@@ -808,7 +850,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": "CONTROL_CANCEL"
+      "diagnostic": "CONTROL_CANCEL",
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "fail-intent-record-flushed",
@@ -822,7 +865,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": "CONTROL_FAILURE"
+      "diagnostic": "CONTROL_FAILURE",
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "kill-intent-record-flushed",
@@ -836,7 +880,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": null
+      "diagnostic": null,
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "cancel-intent-record-flushed",
@@ -850,7 +895,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": "CONTROL_CANCEL"
+      "diagnostic": "CONTROL_CANCEL",
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "fail-validated-before-publish",
@@ -865,7 +911,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": "CONTROL_FAILURE"
+      "diagnostic": "CONTROL_FAILURE",
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "kill-validated-before-publish",
@@ -880,7 +927,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": null
+      "diagnostic": null,
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "cancel-validated-before-publish",
@@ -895,7 +943,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": "CONTROL_CANCEL"
+      "diagnostic": "CONTROL_CANCEL",
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "fail-published",
@@ -912,7 +961,8 @@
       "outcome": "interrupted-or-refused",
       "errorCode": null,
       "diagnostic": "CONTROL_FAILURE",
-      "completeMarkerVisible": true
+      "completeMarkerVisible": true,
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "kill-published",
@@ -929,7 +979,8 @@
       "outcome": "interrupted-or-refused",
       "errorCode": null,
       "diagnostic": null,
-      "completeMarkerVisible": true
+      "completeMarkerVisible": true,
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "cancel-published",
@@ -946,7 +997,8 @@
       "outcome": "interrupted-or-refused",
       "errorCode": null,
       "diagnostic": "CONTROL_CANCEL",
-      "completeMarkerVisible": true
+      "completeMarkerVisible": true,
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "fail-output-file-flushed",
@@ -964,7 +1016,8 @@
       "outcome": "interrupted-or-refused",
       "errorCode": null,
       "diagnostic": "CONTROL_FAILURE",
-      "completeMarkerVisible": true
+      "completeMarkerVisible": true,
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "kill-output-file-flushed",
@@ -982,7 +1035,8 @@
       "outcome": "interrupted-or-refused",
       "errorCode": null,
       "diagnostic": null,
-      "completeMarkerVisible": true
+      "completeMarkerVisible": true,
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "cancel-output-file-flushed",
@@ -1000,7 +1054,8 @@
       "outcome": "interrupted-or-refused",
       "errorCode": null,
       "diagnostic": "CONTROL_CANCEL",
-      "completeMarkerVisible": true
+      "completeMarkerVisible": true,
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "fail-directory-flush-attempted",
@@ -1020,6 +1075,7 @@
       "errorCode": null,
       "diagnostic": "CONTROL_FAILURE",
       "completeMarkerVisible": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -1041,6 +1097,7 @@
       "errorCode": null,
       "diagnostic": null,
       "completeMarkerVisible": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -1062,6 +1119,7 @@
       "errorCode": null,
       "diagnostic": "CONTROL_CANCEL",
       "completeMarkerVisible": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -1084,6 +1142,7 @@
       "errorCode": null,
       "diagnostic": "CONTROL_FAILURE",
       "completeMarkerVisible": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -1106,6 +1165,7 @@
       "errorCode": null,
       "diagnostic": null,
       "completeMarkerVisible": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -1128,6 +1188,7 @@
       "errorCode": null,
       "diagnostic": "CONTROL_CANCEL",
       "completeMarkerVisible": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     },
@@ -1222,7 +1283,8 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": "CONTROL_INVALID"
+      "diagnostic": "CONTROL_INVALID",
+      "rootAttributesAtCreation": 16
     },
     {
       "id": "unicode-root",
@@ -1244,6 +1306,7 @@
       "diagnostic": null,
       "completeMarkerVisible": true,
       "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 16,
       "directoryFlushCallSucceeded": true,
       "directoryFlushError": null
     }
@@ -1270,13 +1333,13 @@
     },
     {
       "path": "experiments/0032-windows-publication/src/windows.rs",
-      "size": 10273,
-      "sha256": "d559722d4519f5b657fb0ced730f8ac200557f0c22bf2bf9ea31705f4e72b554"
+      "size": 10409,
+      "sha256": "80f66cceab320f84efbefaf5ac8cd58224941a6c7abf65db8b7df69a440cdba9"
     },
     {
       "path": "experiments/0032-windows-publication/qualify.py",
-      "size": 18739,
-      "sha256": "c2ca4d4e06de04350888157d661971d2eec7505e6f28bc702a888dfc0e9d0dd5"
+      "size": 18870,
+      "sha256": "ff5ae8e2a1030b7dc88fc4bba90b36fc2189e7d960d806cd871dfc74364937ef"
     },
     {
       "path": "experiments/0032-windows-publication/Cargo.toml",
