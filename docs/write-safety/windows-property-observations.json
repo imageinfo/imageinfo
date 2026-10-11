@@ -1,0 +1,741 @@
+{
+  "observedOn": "2026-10-11",
+  "card": "0030",
+  "schemaVersion": 1,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cases": [
+    {
+      "id": "strict-publication",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish"
+      ],
+      "outputExists": false,
+      "exitCode": 5,
+      "outcome": "recovery-required",
+      "diagnostic": "OS_OR_PROPERTY_FAILURE",
+      "hresultLowWord": 32
+    },
+    {
+      "id": "delete-share-publication",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "observation-record-flushed"
+      ],
+      "outputExists": true,
+      "exitCode": 5,
+      "outcome": "recovery-required",
+      "diagnostic": "NAMESPACE_ACK_UNVERIFIED",
+      "hresultLowWord": null,
+      "pathObservedIdentityMatchesStage": true,
+      "completeMarkerVisible": true,
+      "postCloseTimesMatchStageSnapshot": true
+    },
+    {
+      "id": "held-ancestors-publication",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish"
+      ],
+      "outputExists": false,
+      "exitCode": 5,
+      "outcome": "recovery-required",
+      "diagnostic": "OS_OR_PROPERTY_FAILURE",
+      "hresultLowWord": 32
+    },
+    {
+      "id": "racing-destination",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish"
+      ],
+      "outputExists": true,
+      "exitCode": 5,
+      "outcome": "recovery-required",
+      "diagnostic": "OS_OR_PROPERTY_FAILURE",
+      "hresultLowWord": 183,
+      "pathObservedIdentityMatchesStage": false,
+      "completeMarkerVisible": false,
+      "postCloseTimesMatchStageSnapshot": false
+    },
+    {
+      "id": "write-refused-before-publish",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "observation-record-flushed"
+      ],
+      "outputExists": true,
+      "exitCode": 5,
+      "outcome": "recovery-required",
+      "diagnostic": "NAMESPACE_ACK_UNVERIFIED",
+      "hresultLowWord": null,
+      "pathObservedIdentityMatchesStage": true,
+      "completeMarkerVisible": true,
+      "postCloseTimesMatchStageSnapshot": true
+    },
+    {
+      "id": "write-refused-published",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "observation-record-flushed"
+      ],
+      "outputExists": true,
+      "exitCode": 5,
+      "outcome": "recovery-required",
+      "diagnostic": "NAMESPACE_ACK_UNVERIFIED",
+      "hresultLowWord": null,
+      "pathObservedIdentityMatchesStage": true,
+      "completeMarkerVisible": true,
+      "postCloseTimesMatchStageSnapshot": true
+    },
+    {
+      "id": "timestamp-before-publish",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish"
+      ],
+      "outputExists": false,
+      "exitCode": 5,
+      "outcome": "failed-before-publish",
+      "diagnostic": "PROPERTY_OR_CONTENT_DRIFT",
+      "hresultLowWord": 5377
+    },
+    {
+      "id": "timestamp-published",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish",
+        "published"
+      ],
+      "outputExists": true,
+      "exitCode": 5,
+      "outcome": "recovery-required",
+      "diagnostic": "PROPERTY_OR_CONTENT_DRIFT",
+      "hresultLowWord": 5377,
+      "pathObservedIdentityMatchesStage": true,
+      "completeMarkerVisible": true,
+      "postCloseTimesMatchStageSnapshot": false
+    },
+    {
+      "id": "readonly-before-publish",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish"
+      ],
+      "outputExists": false,
+      "exitCode": 5,
+      "outcome": "failed-before-publish",
+      "diagnostic": "PROPERTY_ATTRIBUTES",
+      "hresultLowWord": 5377
+    },
+    {
+      "id": "readonly-published",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish",
+        "published"
+      ],
+      "outputExists": true,
+      "exitCode": 5,
+      "outcome": "recovery-required",
+      "diagnostic": "PROPERTY_ATTRIBUTES",
+      "hresultLowWord": 5377,
+      "pathObservedIdentityMatchesStage": true,
+      "completeMarkerVisible": true,
+      "postCloseTimesMatchStageSnapshot": true
+    },
+    {
+      "id": "acl-before-publish",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish"
+      ],
+      "outputExists": false,
+      "exitCode": 5,
+      "outcome": "failed-before-publish",
+      "diagnostic": "PROPERTY_ACL",
+      "hresultLowWord": 5377
+    },
+    {
+      "id": "acl-published",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish",
+        "published"
+      ],
+      "outputExists": true,
+      "exitCode": 5,
+      "outcome": "recovery-required",
+      "diagnostic": "PROPERTY_ACL",
+      "hresultLowWord": 5377,
+      "pathObservedIdentityMatchesStage": true,
+      "completeMarkerVisible": true,
+      "postCloseTimesMatchStageSnapshot": true
+    },
+    {
+      "id": "stream-before-publish",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish"
+      ],
+      "outputExists": false,
+      "exitCode": 5,
+      "outcome": "failed-before-publish",
+      "diagnostic": "PROPERTY_STREAMS",
+      "hresultLowWord": 5377
+    },
+    {
+      "id": "stream-published",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish",
+        "published"
+      ],
+      "outputExists": true,
+      "exitCode": 5,
+      "outcome": "recovery-required",
+      "diagnostic": "PROPERTY_STREAMS",
+      "hresultLowWord": 5377,
+      "pathObservedIdentityMatchesStage": true,
+      "completeMarkerVisible": true,
+      "postCloseTimesMatchStageSnapshot": false
+    },
+    {
+      "id": "delete-sharing-allows-rename",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish"
+      ],
+      "outputExists": false,
+      "exitCode": 5,
+      "outcome": "failed-before-publish",
+      "diagnostic": "OS_OR_PROPERTY_FAILURE",
+      "hresultLowWord": 2
+    },
+    {
+      "id": "unheld-parent-rename",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "observation-record-flushed"
+      ],
+      "outputExists": true,
+      "exitCode": 5,
+      "outcome": "recovery-required",
+      "diagnostic": "NAMESPACE_ACK_UNVERIFIED",
+      "hresultLowWord": null,
+      "pathObservedIdentityMatchesStage": true,
+      "completeMarkerVisible": true,
+      "postCloseTimesMatchStageSnapshot": true,
+      "ordinaryParentRenameRefused": true
+    },
+    {
+      "id": "late-named-stage-substitution",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish",
+        "published"
+      ],
+      "outputExists": true,
+      "exitCode": 5,
+      "outcome": "recovery-required",
+      "diagnostic": "PROPERTY_ACL",
+      "hresultLowWord": 5377,
+      "pathObservedIdentityMatchesStage": false,
+      "completeMarkerVisible": false,
+      "postCloseTimesMatchStageSnapshot": false
+    },
+    {
+      "id": "held-ancestors-late-substitution",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish"
+      ],
+      "outputExists": false,
+      "exitCode": 5,
+      "outcome": "recovery-required",
+      "diagnostic": "OS_OR_PROPERTY_FAILURE",
+      "hresultLowWord": 32
+    },
+    {
+      "id": "held-ancestors-parent-rename",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish"
+      ],
+      "outputExists": false,
+      "exitCode": 5,
+      "outcome": "recovery-required",
+      "diagnostic": "OS_OR_PROPERTY_FAILURE",
+      "hresultLowWord": 32
+    },
+    {
+      "id": "fail-private-root-created",
+      "barriers": [
+        "private-root-created"
+      ],
+      "outputExists": false,
+      "exitCode": 5,
+      "outcome": "failed-before-publish",
+      "diagnostic": "CONTROL_FAILURE",
+      "hresultLowWord": 5377
+    },
+    {
+      "id": "kill-private-root-created",
+      "barriers": [
+        "private-root-created"
+      ],
+      "outputExists": false,
+      "exitCode": 1,
+      "outcome": "killed-no-outcome",
+      "diagnostic": null,
+      "hresultLowWord": null
+    },
+    {
+      "id": "fail-candidate-flushed",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed"
+      ],
+      "outputExists": false,
+      "exitCode": 5,
+      "outcome": "failed-before-publish",
+      "diagnostic": "CONTROL_FAILURE",
+      "hresultLowWord": 5377
+    },
+    {
+      "id": "kill-candidate-flushed",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed"
+      ],
+      "outputExists": false,
+      "exitCode": 1,
+      "outcome": "killed-no-outcome",
+      "diagnostic": null,
+      "hresultLowWord": null
+    },
+    {
+      "id": "fail-prepared-record-flushed",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed"
+      ],
+      "outputExists": false,
+      "exitCode": 5,
+      "outcome": "failed-before-publish",
+      "diagnostic": "CONTROL_FAILURE",
+      "hresultLowWord": 5377
+    },
+    {
+      "id": "kill-prepared-record-flushed",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed"
+      ],
+      "outputExists": false,
+      "exitCode": 1,
+      "outcome": "killed-no-outcome",
+      "diagnostic": null,
+      "hresultLowWord": null
+    },
+    {
+      "id": "fail-intent-record-flushed",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed"
+      ],
+      "outputExists": false,
+      "exitCode": 5,
+      "outcome": "failed-before-publish",
+      "diagnostic": "CONTROL_FAILURE",
+      "hresultLowWord": 5377
+    },
+    {
+      "id": "kill-intent-record-flushed",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed"
+      ],
+      "outputExists": false,
+      "exitCode": 1,
+      "outcome": "killed-no-outcome",
+      "diagnostic": null,
+      "hresultLowWord": null
+    },
+    {
+      "id": "fail-before-publish",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish"
+      ],
+      "outputExists": false,
+      "exitCode": 5,
+      "outcome": "failed-before-publish",
+      "diagnostic": "CONTROL_FAILURE",
+      "hresultLowWord": 5377
+    },
+    {
+      "id": "kill-before-publish",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish"
+      ],
+      "outputExists": false,
+      "exitCode": 1,
+      "outcome": "killed-no-outcome",
+      "diagnostic": null,
+      "hresultLowWord": null
+    },
+    {
+      "id": "fail-validated-before-publish",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish"
+      ],
+      "outputExists": false,
+      "exitCode": 5,
+      "outcome": "failed-before-publish",
+      "diagnostic": "CONTROL_FAILURE",
+      "hresultLowWord": 5377
+    },
+    {
+      "id": "kill-validated-before-publish",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish"
+      ],
+      "outputExists": false,
+      "exitCode": 1,
+      "outcome": "killed-no-outcome",
+      "diagnostic": null,
+      "hresultLowWord": null
+    },
+    {
+      "id": "fail-published",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish",
+        "published"
+      ],
+      "outputExists": true,
+      "exitCode": 5,
+      "outcome": "recovery-required",
+      "diagnostic": "CONTROL_FAILURE",
+      "hresultLowWord": 5377,
+      "pathObservedIdentityMatchesStage": true,
+      "completeMarkerVisible": true,
+      "postCloseTimesMatchStageSnapshot": true
+    },
+    {
+      "id": "kill-published",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish",
+        "published"
+      ],
+      "outputExists": true,
+      "exitCode": 1,
+      "outcome": "killed-no-outcome",
+      "diagnostic": null,
+      "hresultLowWord": null,
+      "pathObservedIdentityMatchesStage": true,
+      "completeMarkerVisible": true,
+      "postCloseTimesMatchStageSnapshot": true
+    },
+    {
+      "id": "fail-output-file-flushed",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed"
+      ],
+      "outputExists": true,
+      "exitCode": 5,
+      "outcome": "recovery-required",
+      "diagnostic": "CONTROL_FAILURE",
+      "hresultLowWord": 5377,
+      "pathObservedIdentityMatchesStage": true,
+      "completeMarkerVisible": true,
+      "postCloseTimesMatchStageSnapshot": true
+    },
+    {
+      "id": "kill-output-file-flushed",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed"
+      ],
+      "outputExists": true,
+      "exitCode": 1,
+      "outcome": "killed-no-outcome",
+      "diagnostic": null,
+      "hresultLowWord": null,
+      "pathObservedIdentityMatchesStage": true,
+      "completeMarkerVisible": true,
+      "postCloseTimesMatchStageSnapshot": true
+    },
+    {
+      "id": "fail-observation-record-flushed",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "observation-record-flushed"
+      ],
+      "outputExists": true,
+      "exitCode": 5,
+      "outcome": "recovery-required",
+      "diagnostic": "CONTROL_FAILURE",
+      "hresultLowWord": 5377,
+      "pathObservedIdentityMatchesStage": true,
+      "completeMarkerVisible": true,
+      "postCloseTimesMatchStageSnapshot": true
+    },
+    {
+      "id": "kill-observation-record-flushed",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "observation-record-flushed"
+      ],
+      "outputExists": true,
+      "exitCode": 1,
+      "outcome": "killed-no-outcome",
+      "diagnostic": null,
+      "hresultLowWord": null,
+      "pathObservedIdentityMatchesStage": true,
+      "completeMarkerVisible": true,
+      "postCloseTimesMatchStageSnapshot": true
+    },
+    {
+      "id": "cancel-before-publish",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish"
+      ],
+      "outputExists": false,
+      "exitCode": 130,
+      "outcome": "failed-before-publish",
+      "diagnostic": "CONTROL_CANCEL",
+      "hresultLowWord": 5377
+    },
+    {
+      "id": "cancel-after-publish",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish",
+        "published"
+      ],
+      "outputExists": true,
+      "exitCode": 5,
+      "outcome": "recovery-required",
+      "diagnostic": "CONTROL_CANCEL",
+      "hresultLowWord": 5377,
+      "pathObservedIdentityMatchesStage": true,
+      "completeMarkerVisible": true,
+      "postCloseTimesMatchStageSnapshot": true
+    },
+    {
+      "id": "preexisting-root",
+      "barriers": [],
+      "outputExists": false,
+      "exitCode": 5,
+      "outcome": "failed-before-publish",
+      "diagnostic": "ROOT_EXISTS",
+      "hresultLowWord": 5377
+    },
+    {
+      "id": "relative-path",
+      "barriers": [],
+      "outputExists": false,
+      "exitCode": 5,
+      "outcome": "failed-before-publish",
+      "diagnostic": "PATH_UNVERIFIED",
+      "hresultLowWord": 5377
+    },
+    {
+      "id": "unc-path",
+      "barriers": [],
+      "outputExists": false,
+      "exitCode": 5,
+      "outcome": "failed-before-publish",
+      "diagnostic": "PATH_UNVERIFIED",
+      "hresultLowWord": 5377
+    },
+    {
+      "id": "stream-path",
+      "barriers": [],
+      "outputExists": false,
+      "exitCode": 5,
+      "outcome": "failed-before-publish",
+      "diagnostic": "PATH_UNVERIFIED",
+      "hresultLowWord": 5377
+    }
+  ],
+  "caseCount": 43,
+  "enabledProfiles": 0,
+  "productionPublicationAllowed": false,
+  "namespaceAcknowledged": false,
+  "OSCrashRuns": 0,
+  "powerLossRuns": 0,
+  "data": "authored 64 KiB marker; no private RAW files",
+  "storage": "fixed local NTFS",
+  "retention": "all owned scratch/captures retained; no cleanup or repair",
+  "runtime": {
+    "clr": "4.0.30319.42000",
+    "filesystem": "NTFS",
+    "powershell": "5.1.26100.9444",
+    "frameworkFileVersion": "4.8.9345.0 built by: NET481REL1LAST_25H2_C",
+    "edition": "Desktop",
+    "driveType": "Fixed",
+    "os": "10.0.26200.0"
+  },
+  "workerSha256": "08643bf074e60ee6197736f7348f943f88d785c21236e9513d6189c8b7f6ed0f",
+  "supervisorSha256": "0b33d77439dddcaa59d8d111326f61556ab16247b370c9c9b8dfd93fee8c55f9",
+  "privateCaptures": {
+    "caseCount": 43,
+    "registeredArtifacts": 340,
+    "hashesAndCapturesChecked": true,
+    "mediaInputs": 0,
+    "originalMediaAccesses": 0
+  }
+}

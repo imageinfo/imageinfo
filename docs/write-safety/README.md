@@ -38,6 +38,13 @@ remain distinct constraints; a primitive success enables no production profile.
 Private RAW clone tests retain originals unchanged. #0030/#0031 and the retained
 format/integration gates still precede a supported output workflow.
 
+[#0030 Windows properties](windows-properties.md) now measures security-at-creation,
+ordered file flushes, collisions and process interruptions. Strict/ancestor guards
+refuse the measured pathname move; delete sharing without ancestors admits a late
+stage substitution. No namespace acknowledgement or complete profile is qualified.
+#0032 retains the unfinished Windows implementation criteria before #0031; the parent
+and all safety requirements remain open.
+
 ## Plan before effects
 
 **WS-001 — Explicit application.** Preview does not change media, metadata targets,

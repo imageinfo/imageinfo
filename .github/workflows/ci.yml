@@ -82,3 +82,9 @@ jobs:
       - name: Verify unsupported object guard platform refuses
         if: runner.os == 'macOS'
         run: python experiments/0029-object-guards/qualify.py --binary experiments/0029-object-guards/target/release/imageinfo-object-guard-probe --parent experiments/0029-object-guards/target
+      - name: Qualify Windows private creation and publication boundaries
+        if: runner.os == 'Windows'
+        run: python experiments/0030-windows-properties/qualify.py --parent experiments/0030-windows-properties/target --guard experiments/0029-object-guards/target/release/imageinfo-object-guard-probe.exe
+      - name: Refuse unsupported Windows property qualification platform
+        if: runner.os != 'Windows'
+        run: python experiments/0030-windows-properties/qualify.py --parent experiments/0030-windows-properties/target

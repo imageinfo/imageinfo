@@ -10,13 +10,18 @@ Terry selected new CR3 outputs first and authorized splitting #0014 on 2026-10-1
 #0021–0027 retain the parent's full safety scope. The fixed-width candidate under
 `experiments/0021-cr3-candidate` is research; no production writer or mutation
 storage profile is enabled. See `docs/write-safety/new-output-preservation.md`.
-#0022 is split into #0028–0031. #0028's Rust worker/inspector is qualification
+#0022 was initially split into #0028–0031. #0028's Rust worker/inspector is qualification
 research; its late-stage counterexample fails the enablement gate. Read-only
 inspection grants no repair authority. See `docs/write-safety/recovery-inspection.md`.
 #0029 qualifies separate content/object/path mechanisms, not a complete backend.
 Windows sharing, Linux anonymous staging and breakable leases have different
 property/namespace limits. See `docs/write-safety/object-guards.md`; no profile
 or production publication permission is inferred from a passing primitive test.
+#0030 measures owner-only ACL creation and Windows publication/property boundaries.
+#0029's ancestor guard refuses the measured pathname move; without it a late stage
+substitution publishes foreign marker bytes before rejection. #0032 retains actual
+guarded Windows publication/property/persistence implementation before #0031.
+See `docs/write-safety/windows-properties.md`; no full profile is enabled.
 
 ## Product intent
 

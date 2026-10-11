@@ -81,7 +81,7 @@ On 2026-10-11 Terry selected new CR3 outputs first and authorized multiple cards
 new CR3 publication; #0024–0026 retain the parent acceptance scope. Scoped cards
 remain Ready for Work with explicit dependencies. #0012 remains intentionally held.
 
-#0022 has four independently reviewable children. #0028 delivers
+#0022 initially had four independently reviewable children. #0028 delivers
 [read-only recovery qualification](write-safety/recovery-inspection.md), including
 the late-stage counterexample that prevents enablement. #0029 owns live
 source/stage/namespace exclusion, #0030 Windows private properties/persistence,
@@ -92,3 +92,9 @@ research copy or matching checksum cannot authorize production writes or recover
 exclusion, anonymous Linux staging and lease-break/path/property limits separately.
 They do not close full source/path/property/persistence admission; #0030/#0031
 must combine evidenced cells without weakening the accepted contract.
+
+[#0030 Windows property/publication qualification](write-safety/windows-properties.md)
+demonstrates private ACL creation and failed guard/publication composition, including
+late named-stage substitution. #0032 retains actual guarded Windows publication,
+property windows and namespace/receipt acknowledgements before #0031. No profile is
+enabled; neither owner-only ACLs nor a successful file flush establish the full gate.
