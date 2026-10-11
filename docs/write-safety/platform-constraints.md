@@ -75,3 +75,11 @@ local Windows NTFS, WSL-native ext4 and WSL's mounted Windows `v9fs` separately.
 They show controlled stale-overwrite failures, conditional-name collision refusal,
 partial guard behavior and twelve exact process-kill boundaries. These are research
 observations; no complete profile, OS-crash or power-loss guarantee is verified.
+
+[#0028](recovery-inspection.md) tests the actual descriptor-bound Linux research
+worker/inspector, with 43 adversarial cases and eight private CR3 copies. It exposes
+an unprevented late stage edit and an uncertain parent path after validation.
+Ordinary Windows read-directory flushing fails in the measured sequence; the
+mounted Windows directory fails the measured private-mode policy. These scoped
+facts do not establish impossibility of all platform strategies. Qualification
+remains failed/unverified until #0029–0031 satisfy the retained gates.

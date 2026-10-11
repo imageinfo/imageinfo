@@ -48,3 +48,20 @@ jobs:
         run: python experiments/0021-cr3-candidate/storage_probe.py --parent experiments/0021-cr3-candidate/target
       - name: Check documentation and public JSON
         run: python scripts/check_docs.py
+      - name: Check recovery research formatting
+        run: cargo fmt --manifest-path experiments/0028-recovery-evidence/Cargo.toml --check
+      - name: Check recovery research lints
+        run: cargo clippy --locked --manifest-path experiments/0028-recovery-evidence/Cargo.toml --all-targets -- -D warnings
+      - name: Test bounded recovery evidence records
+        run: cargo test --locked --manifest-path experiments/0028-recovery-evidence/Cargo.toml
+      - name: Build recovery research tools
+        run: cargo build --locked --release --manifest-path experiments/0028-recovery-evidence/Cargo.toml
+      - name: Qualify owned recovery and filesystem cases on Linux
+        if: runner.os == 'Linux'
+        run: python experiments/0028-recovery-evidence/qualify.py --binary experiments/0028-recovery-evidence/target/release/imageinfo-recovery-probe --parent experiments/0028-recovery-evidence/target
+      - name: Qualify Windows backend refusals and directory handle
+        if: runner.os == 'Windows'
+        run: python experiments/0028-recovery-evidence/qualify.py --binary experiments/0028-recovery-evidence/target/release/imageinfo-recovery-probe.exe --parent experiments/0028-recovery-evidence/target
+      - name: Verify unsupported macOS backend refuses before artifacts
+        if: runner.os == 'macOS'
+        run: python experiments/0028-recovery-evidence/qualify.py --binary experiments/0028-recovery-evidence/target/release/imageinfo-recovery-probe --parent experiments/0028-recovery-evidence/target

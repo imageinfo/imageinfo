@@ -80,3 +80,10 @@ On 2026-10-11 Terry selected new CR3 outputs first and authorized multiple cards
 #0021 supplies experimental evidence, not an enabled writer. #0022/#0027/#0023 still gate
 new CR3 publication; #0024–0026 retain the parent acceptance scope. Scoped cards
 remain Ready for Work with explicit dependencies. #0012 remains intentionally held.
+
+#0022 has four independently reviewable children. #0028 delivers
+[read-only recovery qualification](write-safety/recovery-inspection.md), including
+the late-stage counterexample that prevents enablement. #0029 owns live
+source/stage/namespace exclusion, #0030 Windows private properties/persistence,
+and #0031 isolated crash/durability/guarded repair. The parent remains open; a
+research copy or matching checksum cannot authorize production writes or recovery.

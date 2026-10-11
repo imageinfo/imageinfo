@@ -21,6 +21,7 @@ def main():
     documents += sorted(ROOT.glob("*.md"))
     documents += sorted((ROOT / ".github").glob("*.md"))
     documents += sorted((ROOT / "experiments").glob("*/README.md"))
+    documents += sorted((ROOT / "experiments").glob("*/NOTICES.md"))
     errors = []
     links = 0
     for path in documents:

@@ -24,3 +24,9 @@ This collection identifies the exact Cargo.lock graph admitted for local/CI foun
 | zmij 1.0.23 | MIT | [zmij-1.0.23-LICENSE-MIT.txt](licenses/dependencies/zmij-1.0.23-LICENSE-MIT.txt) |
 
 See [the admission record](docs/foundation/dependencies.json). No license choice here relicenses upstream source.
+
+The separate #0028 research package has its own
+[exact dependency admission](docs/write-safety/recovery-dependencies.json) and
+[notice index](experiments/0028-recovery-evidence/NOTICES.md). Its SHA-256 and Linux
+descriptor wrappers are admitted for scoped local/CI experiments, not production
+adoption or an assembled executable release. Root Cargo.lock is unchanged.

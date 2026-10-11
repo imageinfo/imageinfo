@@ -10,6 +10,9 @@ Terry selected new CR3 outputs first and authorized splitting #0014 on 2026-10-1
 #0021–0027 retain the parent's full safety scope. The fixed-width candidate under
 `experiments/0021-cr3-candidate` is research; no production writer or mutation
 storage profile is enabled. See `docs/write-safety/new-output-preservation.md`.
+#0022 is split into #0028–0031. #0028's Rust worker/inspector is qualification
+research; its late-stage counterexample fails the enablement gate. Read-only
+inspection grants no repair authority. See `docs/write-safety/recovery-inspection.md`.
 
 ## Product intent
 

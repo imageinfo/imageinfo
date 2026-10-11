@@ -26,6 +26,12 @@ replacement remain #0022–0027.
 No production writer or mutation storage profile is enabled; this contract's
 requirements and GAP-004/GAP-009 remain in force.
 
+[#0028's storage qualification](recovery-inspection.md) now supplies an actual
+read-only evidence inspector and adversarial worker runs. A late named-stage edit
+published unwanted bytes before post-check rejection, so the enablement gate fails.
+#0029–0031 retain exclusion, Windows properties/persistence and isolated crash/repair
+proof. #0022 remains open; no profile is enabled and inspection authorizes no repair.
+
 ## Plan before effects
 
 **WS-001 — Explicit application.** Preview does not change media, metadata targets,

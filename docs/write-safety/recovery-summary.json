@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-11",
+  "card": "0028",
+  "parent": "0022",
+  "scope": "Actual unqualified research worker and read-only recovery observations; no production profile",
+  "nativeLinuxCases": 43,
+  "windowsCases": 3,
+  "mountedWindowsRefusals": 1,
+  "processKillBarriers": 8,
+  "cooperativeCancellations": 2,
+  "actualChildWriteLimitCases": 1,
+  "privateCR3Copies": 8,
+  "privateCR3BytesCopied": 415430832,
+  "privateInspectionChanges": 0,
+  "recordParsingUnitTests": 2,
+  "dependencyPackagesReviewed": 26,
+  "noticeFilesRetained": 29,
+  "privateRecordValidation": {
+    "scopedExperiments": 8,
+    "copyAdmissions": 8,
+    "copyProvenanceReviews": 8,
+    "dependencyReviews": 26,
+    "artifactsVerified": 77,
+    "schemasPassed": true,
+    "inspectionMutations": 0,
+    "enabledProfiles": 0
+  },
+  "sourceAndReceivedOriginalsUnchanged": true,
+  "lateStageRace": "unwanted bytes published, post-check failed; enablement gate fails",
+  "lateParentSwap": "bound original object used, pathname binding uncertain",
+  "windowsDirectoryFlush": {
+    "succeeded": false,
+    "osError": 5,
+    "scope": "Ordinary read handle only, not every NTFS strategy"
+  },
+  "mountedDirectoryMode": "0777; private policy refused",
+  "terminalCommitsClaimed": 0,
+  "enabledProfiles": 0,
+  "productionWriterEnabled": false,
+  "OSCrashRuns": 0,
+  "powerLossRuns": 0,
+  "automaticRepair": false,
+  "followupCards": [
+    "0029",
+    "0030",
+    "0031"
+  ],
+  "entryPoint": "recovery-inspection.md"
+}
