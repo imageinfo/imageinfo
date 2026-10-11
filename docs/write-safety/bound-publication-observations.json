@@ -1414,5 +1414,7 @@
     "artifactsHashed": 523,
     "nativePipeCapturesByteExact": false,
     "mediaInputs": 0
-  }
+  },
+  "codeRevision": "8be2d6f502c493668d67b7b8bdaf3b575c13ab6d",
+  "ciEvidence": "bound-publication-ci.json"
 }

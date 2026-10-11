@@ -92,6 +92,13 @@ the separate boundary review. No root Cargo/dependency/source changes and no pub
 compiled executable distribution occur. Linux/macOS explicitly refuse this Windows
 worker before worker artifacts; there is no platform fallback.
 
+[Verified platform CI](bound-publication-ci.json) binds source revision
+`8be2d6f502c493668d67b7b8bdaf3b575c13ab6d` to successful Windows x64, Ubuntu x64
+and macOS arm64 jobs. Windows ran 78 native cases; the other platforms explicitly
+refused this worker. Root and prior research gates also passed. Earlier failed runs
+remain named in the evidence, including the resolved no-index attribute mismatch.
+This verifies the assertions about primitives and missing cells; it enables no profile.
+
 ## Handoff and remaining gates
 
 #0032 implements the held-candidate/parent mechanism, atomic private creation, live

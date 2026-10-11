@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-11",
+  "card": "0032",
+  "codeRevision": "8be2d6f502c493668d67b7b8bdaf3b575c13ab6d",
+  "runId": 38177573885,
+  "url": "https://github.com/imageinfo/imageinfo/actions/runs/38177573885",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "runner": "ubuntu-24.04",
+      "conclusion": "success",
+      "qualificationStep": "Refuse bound Windows publication on unsupported platforms",
+      "qualificationConclusion": "success",
+      "markerCases": 0,
+      "unsupportedRefusalCases": 1
+    },
+    {
+      "runner": "windows-2025",
+      "conclusion": "success",
+      "qualificationStep": "Qualify held Windows publication and strict unsupported admission",
+      "qualificationConclusion": "success",
+      "markerCases": 78,
+      "unsupportedRefusalCases": 0
+    },
+    {
+      "runner": "macos-15",
+      "conclusion": "success",
+      "qualificationStep": "Refuse bound Windows publication on unsupported platforms",
+      "qualificationConclusion": "success",
+      "markerCases": 0,
+      "unsupportedRefusalCases": 1
+    }
+  ],
+  "productionPublicationAllowed": false,
+  "enabledProfiles": 0,
+  "earlierFailedRuns": [
+    38176444914,
+    38176862756,
+    38177255561
+  ],
+  "resolvedFailure": "Inherited NOT_CONTENT_INDEXED bit; reproduced, preserved and later mutations refused. No ACL/content/path guard weakened.",
+  "meaning": "Primitive/unsupported-cell assertions and strict before-effects admission refusal; no full mutation profile"
+}
