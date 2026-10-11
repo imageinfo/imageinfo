@@ -1,9 +1,10 @@
 # Documentation map
 
 This is the initial, language-agnostic requirements baseline, researched on
-2026-10-10. The [executable foundation](foundation/README.md) implements help,
-version reporting and explicit unavailable-operation results. Metadata features,
-editing and broader compatibility remain proposed/unimplemented.
+2026-10-10, advanced on 2026-10-11. The [native R5 reader](reader/README.md) implements
+a declared metadata/preview subset with partial coverage. The [foundation](foundation/README.md)
+supplies help/version/wire boundaries. Editing and broader compatibility remain
+proposed/unimplemented.
 
 **Delivery focus: camera RAW metadata first. Long-term goal: full ExifTool feature
 parity.** Broader research is retained as future reference; it does not expand the
@@ -13,6 +14,7 @@ The first camera/format target is **Canon EOS R5 CR3**.
 
 | Document | Purpose |
 | --- | --- |
+| [Native R5 read slice](reader/README.md) | Actual supported fields/resources, limits, source mapping and scoped differential/fuzz/CI evidence for #0020. |
 | [Executable foundation](foundation/README.md) | Implemented CLI subset, pinned build/checks, wire output, dependency notices and actual validation for #0019. |
 | [Implementation selection](implementation-selection/README.md) | ADR-0011: Rust recommendation, Go/C# alternatives, disposable probes, component choices and the first read milestone. |
 | [RAW scope](raw-scope.md) | Current format/workflow boundaries and the distinction from eventual full parity. |

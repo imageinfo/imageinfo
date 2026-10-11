@@ -125,3 +125,11 @@ observed 2026-10-10, with Rust/Go disposable feasibility runs and a documentatio
 C# comparison. The [decision](implementation-selection/README.md) is a recommendation
 pending review. Exact probe dependencies and aggregate findings are published; no
 production capability, performance ranking or completed architecture is implied.
+
+## Native R5 slice follow-up
+
+Observed 2026-10-11: [independently authored format mapping](reader/format-evidence.md),
+CIPA/Apple primary format references, pinned CR3 research-note context and direct
+private byte observations. [Native validation](reader/validation.md) remains bounded
+to the declared fields and stored-preview extents; no upstream implementation or
+media collection was imported.

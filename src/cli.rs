@@ -26,6 +26,17 @@ pub struct ReadRequest {
     pub tags: Vec<String>,
     pub values: ValueView,
     pub output: OutputFormat,
+    pub limits: crate::reader::Limits,
+}
+
+#[derive(Debug, PartialEq, Eq)]
+pub struct ExtractRequest {
+    pub input: PathBuf,
+    pub destination: PathBuf,
+    pub tag: String,
+    pub output: OutputFormat,
+    pub dry_run: bool,
+    pub limits: crate::reader::Limits,
 }
 
 #[derive(Debug, PartialEq, Eq)]
@@ -33,6 +44,8 @@ pub enum Invocation {
     Help(String),
     Version(OutputFormat),
     Read(ReadRequest),
+    BinaryList(ReadRequest),
+    Extract(ExtractRequest),
 }
 
 #[derive(Debug, PartialEq, Eq)]
@@ -54,21 +67,50 @@ impl std::error::Error for UsageError {}
 /// Build the command tree used for parsing, help and future menu introspection.
 pub fn command() -> Command {
     common(Command::new("imageinfo").about("Camera RAW metadata tooling"))
-        .after_help("This foundation provides help and version reporting. Media reading is not implemented yet.")
+        .after_help("Reads a declared Canon EOS R5 full RAW metadata/preview subset. Other cameras, variants, XMP and metadata writes are not supported yet.")
         .subcommand(help_command())
         .subcommand(common(Command::new("version").about("Show version and current implementation scope")))
         .subcommand(
             common(Command::new("metadata").about("Inspect camera RAW metadata"))
                 .subcommand(help_command())
                 .subcommand(
-                    common(Command::new("read").about("Read metadata (not implemented yet)"))
+                    input_options(common(Command::new("read").about("Read the declared R5 metadata subset")))
                         .subcommand(help_command())
                         .subcommand_precedence_over_arg(true)
                         .arg(Arg::new("tag").long("tag").action(ArgAction::Append).help("Select a tag; repeat to select several"))
                         .arg(Arg::new("values").long("values").value_parser(["raw", "normalized", "display", "all"]).help("Select the metadata value view"))
                         .arg(Arg::new("inputs").value_name("INPUT").num_args(0..).value_parser(OsStringValueParser::new()).help("Literal input paths; use -- before paths named help or starting with -"))
-                        .after_help("Unavailable in this build. Inputs are not opened. Use imageinfo metadata read help for this contract."),
+                        .after_help("Coverage is partial and explicit. Source bytes are never modified; --tag selects every matching implemented occurrence."),
                 ),
+        )
+        .subcommand(common(Command::new("binary").about("List or extract stored R5 previews"))
+            .subcommand(help_command())
+            .subcommand(input_options(common(Command::new("list").about("List stored preview resources"))).subcommand(help_command()).subcommand_precedence_over_arg(true).arg(input_argument()))
+            .subcommand(input_options(common(Command::new("extract").about("Copy one stored preview to a new destination"))).subcommand(help_command()).subcommand_precedence_over_arg(true).arg(input_argument())
+                .arg(Arg::new("tag").long("tag").value_parser(["ThumbnailImage","PreviewImage","JpgFromRaw"]).help("Exactly one named preview"))
+                .arg(Arg::new("output-file").long("output-file").value_parser(OsStringValueParser::new()).help("New output path; existing destinations are refused"))
+                .arg(Arg::new("dry-run").long("dry-run").action(ArgAction::SetTrue).help("Validate and report extraction without creating an output"))))
+}
+
+fn input_argument() -> Arg {
+    Arg::new("inputs")
+        .value_name("INPUT")
+        .num_args(0..)
+        .value_parser(OsStringValueParser::new())
+}
+fn input_options(command: Command) -> Command {
+    command
+        .arg(
+            Arg::new("max-bytes")
+                .long("max-bytes")
+                .value_parser(clap::value_parser!(u64).range(1..=268435456))
+                .help("Metadata read byte budget (default 8388608)"),
+        )
+        .arg(
+            Arg::new("max-preview-bytes")
+                .long("max-preview-bytes")
+                .value_parser(clap::value_parser!(u64).range(1..=1073741824))
+                .help("Maximum one-preview size (default 67108864)"),
         )
 }
 
@@ -217,7 +259,7 @@ where
     if scopes.iter().any(|scope| scope.get_flag("version-flag")) || path == ["version"] {
         return Ok(Invocation::Version(output));
     }
-    if path.is_empty() || path == ["metadata"] {
+    if path.is_empty() || path == ["metadata"] || path == ["binary"] {
         return render_help(&tree, &path, output);
     }
 
@@ -235,22 +277,79 @@ where
             output,
         ));
     }
-    let tags = current
-        .get_many::<String>("tag")
+    if inputs.iter().any(|path| path.as_os_str().is_empty()) {
+        return Err(usage(
+            "INVALID_INPUT",
+            "Empty input paths are not allowed.".into(),
+            output,
+        ));
+    }
+    let tags: Vec<String> = current
+        .try_get_many::<String>("tag")
+        .ok()
+        .flatten()
         .map(|items| items.cloned().collect())
         .unwrap_or_default();
-    let values = match current.get_one::<String>("values").map(String::as_str) {
+    let values = match current
+        .try_get_one::<String>("values")
+        .ok()
+        .flatten()
+        .map(String::as_str)
+    {
         Some("raw") => ValueView::Raw,
         Some("display") => ValueView::Display,
         Some("all") => ValueView::All,
         _ => ValueView::Normalized,
     };
-    Ok(Invocation::Read(ReadRequest {
+    let mut limits = crate::reader::Limits::default();
+    if let Some(value) = current.get_one::<u64>("max-bytes") {
+        limits.metadata_bytes = *value;
+    }
+    if let Some(value) = current.get_one::<u64>("max-preview-bytes") {
+        limits.preview_bytes = *value;
+    }
+    if path == ["binary", "extract"] {
+        if inputs.len() != 1
+            || tags.len() != 1
+            || current.get_one::<OsString>("output-file").is_none()
+        {
+            return Err(usage("MISSING_ARGUMENT","Extraction needs one INPUT, --tag and --output-file. See imageinfo binary extract help.".into(),output));
+        }
+        if current
+            .get_one::<OsString>("output-file")
+            .is_some_and(|value| value.is_empty())
+        {
+            return Err(usage(
+                "INVALID_INPUT",
+                "Empty output paths are not allowed.".into(),
+                output,
+            ));
+        }
+        return Ok(Invocation::Extract(ExtractRequest {
+            input: inputs[0].clone(),
+            destination: PathBuf::from(
+                current
+                    .get_one::<OsString>("output-file")
+                    .expect("Checked required output"),
+            ),
+            tag: tags[0].clone(),
+            output,
+            dry_run: current.get_flag("dry-run"),
+            limits,
+        }));
+    }
+    let request = ReadRequest {
         inputs,
         tags,
         values,
         output,
-    }))
+        limits,
+    };
+    if path == ["binary", "list"] {
+        Ok(Invocation::BinaryList(request))
+    } else {
+        Ok(Invocation::Read(request))
+    }
 }
 
 fn scalar_values<'a>(scopes: &[&'a ArgMatches], name: &str) -> Vec<&'a str> {

@@ -1,9 +1,9 @@
 # EOS R5 CR3 capability inventory v1
 
-Status: **draft for review**, inventory revision `2026-10-10.9`, 2026-10-10. This is the deliverable for board card
-**#0002, capability-inventory**. RAW capability implementation coverage remains zero.
-The [CLI foundation](../foundation/README.md) now exists, but no native media-fixture
-validation is claimed. Initial upstream-only
+Status: **draft for review**, inventory revision `2026-10-11.1`, 2026-10-10. This is the deliverable for board card
+**#0002, capability-inventory**. Whole-row capability coverage remains unverified;
+a [declared native R5 slice](../reader/README.md) now has scoped read/preview evidence.
+The 49 rows are broader than its support denominator. Initial upstream-only
 observations are now recorded in the [corpus baseline](../corpus-baseline/README.md).
 
 ## Review entry points
@@ -337,3 +337,7 @@ Revision `2026-10-10.9` records the [first private reference baseline](../corpus
 eight RAWs, 24 stored previews, three XMP outputs and 97 upstream invocations.
 GAP-001/005/007/008/011 retain their bounded remaining work under `corpus-expansion`.
 All 49 capabilities remain specified, with no native implementation or parity evidence.
+
+Revision `2026-10-11.1` links #0020 native subset evidence: 160 scalar/rational
+checks, 24 resource checks and exact preview copies on eight admitted files.
+No whole capability row or broad format/write support is promoted.

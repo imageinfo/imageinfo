@@ -1,4 +1,4 @@
-use imageinfo::output::{ErrorEnvelope, VersionInfo};
+use imageinfo::output::{ResultEnvelope, VersionInfo};
 
 #[test]
 fn synthetic_metadata_wire_example_preserves_exact_values_and_duplicates() {
@@ -42,7 +42,7 @@ fn typed_version_rejects_unknown_wire_fields() {
 
 #[test]
 fn refusal_has_zero_selection_and_no_effects_or_payloads() {
-    let value = serde_json::to_value(ErrorEnvelope::new(
+    let value = serde_json::to_value(ResultEnvelope::new(
         "test-request".into(),
         Some("metadata read"),
         "CAPABILITY_UNSUPPORTED",

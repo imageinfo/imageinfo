@@ -3,7 +3,8 @@
 The initial requirements and private reference baseline are reviewed. Implementation
 selection is accepted: [ADR-0011](docs/implementation-selection/README.md) chooses
 Rust. The [executable foundation](docs/foundation/README.md) has public build and
-test commands; metadata parsing is the next increment. Disposable
+test commands; the [native R5 slice](docs/reader/README.md) now has public synthetic
+reader/extraction/fuzz-smoke tests and scoped private differential evidence. Disposable
 [research probes](experiments/0011-language-selection/README.md) have their own
 reproduction commands; they are not a production foundation.
 

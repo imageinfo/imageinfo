@@ -2,7 +2,8 @@
 
 Terry accepted Rust/ADR-0011 on 2026-10-10 and authorized the production foundation
 under #0019. The root Cargo package contains a small library and CLI; its implemented
-scope is documented in `docs/foundation`. Requirements contracts remain language
+foundation is documented in `docs/foundation`; the bounded native R5 read/preview
+slice and its verified limits are in `docs/reader`. Requirements contracts remain language
 independent. Research code under `experiments/` is not production imageinfo and
 must not be promoted without ordinary implementation review and evidence gates.
 

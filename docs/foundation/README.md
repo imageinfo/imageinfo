@@ -1,5 +1,9 @@
 # Executable and CLI foundation
 
+Subsequent #0020 implements the [native R5 slice](../reader/README.md).
+The foundation record below describes its original increment; current read/list/
+extract behavior and tests are authoritative in the linked reader guide.
+
 Implemented under **#0019**, 2026-10-10, after Terry accepted Rust/ADR-0011.
 This package provides a production library/binary boundary, command definitions,
 help, version output and explicit refusals. It contains no CR3 parser or writer.

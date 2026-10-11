@@ -1,8 +1,9 @@
 # First private EOS R5 full RAW baseline
 
 Observed **2026-10-10**, card **#0013**. This is actual ExifTool reference
-characterization. Imageinfo has no implementation, verified capability, or measured
-performance result. The application language remains undecided.
+characterization at that historical checkpoint. Subsequent [#0020](../reader/README.md)
+implements a Rust read/preview slice with scoped native comparisons. That does not
+turn the original reference-only baseline into full native parity or a benchmark.
 
 Eight user-owned CR3 files were selected from 202 supplied candidates using file
 size and modification-time quantiles. This deliberately small selection covers
@@ -92,4 +93,5 @@ Targeted corpus expansion **#0018** owns the remaining acquisition/read evidence
 mutation and preservation remain on **#0014**, compatibility coverage on **#0015**,
 and actual performance measurements on **#0016**. No C-RAW, DPRAW, malformed input,
 other camera, independent sensor decoding or cross-platform behavior is established.
-Implementation selection on **#0011** still requires Terry's explicit decision.
+Rust/ADR-0011 was subsequently accepted; native first-slice evidence is separate
+from this reference-only report.

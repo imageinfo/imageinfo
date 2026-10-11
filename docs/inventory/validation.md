@@ -137,3 +137,9 @@ script; full runtime/source/driver identities remain in the restricted bundle.
 The revised inventory passes schema/reference checks and ten negative cases,
 including a verified row with deliberately removed executable evidence.
 Remaining corpus coverage is assigned to #0018; no parity percentage is inferred.
+
+## Revision 2026-10-11.1
+
+The [native R5 validation](../reader/validation.md) now supplies a scoped subset
+report. All 49 broad capability rows retain specified status and no whole-row
+implementation/parity evidence. Inventory IDs/source baselines remain unchanged.

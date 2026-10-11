@@ -1,0 +1,23 @@
+{
+  "observedOn": "2026-10-11",
+  "camera": "Canon EOS R5",
+  "rawFiles": 8,
+  "nativeReadRuns": 8,
+  "nativeExtractionRuns": 24,
+  "collisionRefusals": 24,
+  "declaredScalarRationalChecks": 160,
+  "binaryRangeChecks": 24,
+  "primitiveSourceSpanChecks": 184,
+  "matchingPreviewOutputs": 24,
+  "valueDifferences": 0,
+  "displayDifferences": 0,
+  "receivedOriginalHashesAndMtimesUnchanged": true,
+  "privacy": "Exact argv, captures, identifying values, original paths/names and per-image hashes remain private. Public report is aggregate evidence only.",
+  "scope": "Declared R5 read slice only; partial coverage, no XMP, embedded writes, sensor decoding, privacy clearance or broad parity claim.",
+  "nativeInvocations": 56,
+  "differentialRecords": 32,
+  "nativeDerivativeAdmissions": 24,
+  "scopedProvenanceReviews": 32,
+  "artifactIdentitiesVerified": 466,
+  "publicFuzzSmokeInputs": 10000
+}

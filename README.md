@@ -9,10 +9,11 @@ previews, prioritizing the camera's full RAW setting. C-RAW is tracked separatel
 other RAW families follow later. See the
 [Canon EOS R5 milestone](docs/canon-eos-r5-cr3.md).
 
-**Status: Rust executable foundation.** Terry accepted
+**Status: first native R5 reader.** Terry accepted
 [ADR-0011](docs/implementation-selection/README.md). The current build provides
-contextual help, version reporting and explicit unavailable-operation results.
-CR3 metadata reading follows under #0020; broader command examples remain proposals.
+a [declared R5 full RAW metadata/preview slice](docs/reader/README.md), contextual
+help, version reporting and explicit partial coverage. Broader command examples
+remain proposals; XMP, other variants and metadata writes are not implemented.
 
 ```console
 cargo run --locked -- help
@@ -20,8 +21,8 @@ cargo run --locked -- metadata read help
 cargo run --locked -- version --output json
 ```
 
-See [setup and implemented behavior](docs/foundation/README.md) for the pinned
-toolchain, contributor checks and current limitations.
+See [reader behavior and limits](docs/reader/README.md),
+[setup/checks](docs/foundation/README.md) and [validation](docs/reader/validation.md).
 
 The project starts with three goals:
 

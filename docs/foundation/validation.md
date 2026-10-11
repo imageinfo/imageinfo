@@ -1,5 +1,9 @@
 # Foundation verification
 
+Subsequent #0020 implements the [native R5 slice](../reader/README.md).
+The foundation record below describes its original increment; current read/list/
+extract behavior and tests are authoritative in the linked reader guide.
+
 Card **#0019**, observed 2026-10-10. This records the executable foundation's
 limited implemented behavior, separately from future RAW capability evidence.
 

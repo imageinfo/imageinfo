@@ -1,13 +1,14 @@
 use imageinfo::{
     VERSION,
     cli::{self, Invocation, OutputFormat},
-    output::{ErrorEnvelope, VersionInfo},
+    output::{ResultEnvelope, VersionInfo},
 };
 use std::{
     io::{self, Write},
     process::ExitCode,
     time::{SystemTime, UNIX_EPOCH},
 };
+mod app;
 
 fn main() -> ExitCode {
     let mut stdout = io::stdout().lock();
@@ -17,19 +18,13 @@ fn main() -> ExitCode {
         Ok(Invocation::Version(format)) => match format {
             OutputFormat::Text => write_result(
                 &mut stdout,
-                format!("imageinfo {VERSION}\nMedia reading is not implemented yet.\n").as_bytes(),
+                format!("imageinfo {VERSION}\nCanon EOS R5 full RAW metadata/preview slice; coverage is partial.\n").as_bytes(),
             ),
             OutputFormat::Json => write_json(&mut stdout, &VersionInfo::default()),
         },
-        Ok(Invocation::Read(request)) => report_error(
-            &mut stdout,
-            &mut stderr,
-            request.output,
-            Some("metadata read"),
-            "CAPABILITY_UNSUPPORTED",
-            "Media reading is not implemented in this foundation. No input was opened.".into(),
-            1,
-        ),
+        Ok(Invocation::Read(request)) => write_report(&mut stdout,&mut stderr,app::read(request,request_id(),false)),
+        Ok(Invocation::BinaryList(request)) => write_report(&mut stdout,&mut stderr,app::read(request,request_id(),true)),
+        Ok(Invocation::Extract(request)) => write_report(&mut stdout,&mut stderr,app::extract(request,request_id())),
         Err(error) => report_error(
             &mut stdout,
             &mut stderr,
@@ -51,6 +46,44 @@ fn main() -> ExitCode {
             ExitCode::from(1)
         }
     }
+}
+
+fn request_id() -> String {
+    let timestamp = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .unwrap_or_default()
+        .as_nanos();
+    format!("req-{}-{timestamp}", std::process::id())
+}
+fn write_report(
+    stdout: &mut impl Write,
+    stderr: &mut impl Write,
+    report: app::Report,
+) -> io::Result<u8> {
+    match report.format {
+        OutputFormat::Json => {
+            write_json(stdout, &report.record)?;
+        }
+        OutputFormat::Text => {
+            write_result(stdout, escape_report_text(&report.text).as_bytes())?;
+        }
+    }
+    for diagnostic in report.diagnostics {
+        writeln!(stderr, "{}", escape_controls(&diagnostic))?;
+    }
+    Ok(report.status)
+}
+
+fn escape_report_text(text: &str) -> String {
+    text.chars()
+        .flat_map(|ch| {
+            if ch.is_control() && ch != '\n' && ch != '\t' {
+                ch.escape_default().collect::<Vec<_>>()
+            } else {
+                vec![ch]
+            }
+        })
+        .collect()
 }
 
 fn write_result(writer: &mut impl Write, bytes: &[u8]) -> io::Result<u8> {
@@ -89,7 +122,7 @@ fn report_error(
         let request_id = format!("req-{}-{timestamp}", std::process::id());
         write_json(
             stdout,
-            &ErrorEnvelope::new(request_id, operation, code, safe_message.clone(), status),
+            &ResultEnvelope::new(request_id, operation, code, safe_message.clone(), status),
         )?;
     }
     writeln!(stderr, "{code}: {safe_message}")?;

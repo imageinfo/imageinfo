@@ -9,7 +9,8 @@ of scope.
 baseline #0013 are accepted. Terry has opened **implementation selection, #0011**.
 [ADR-0011](implementation-selection/README.md) is accepted. The
 [foundation](foundation/README.md) now implements help/version/refusal boundaries.
-CR3 parsing and verified RAW capabilities remain future work on #0020.
+[#0020](reader/README.md) now implements a declared R5 metadata/preview slice.
+Whole-format/tag-family support and further RAW capabilities remain open.
 
 An empty Ready for Work lane does not establish completed architecture. It can mean
 the prepared queue is exhausted or its next item awaits a decision. Backlog work
@@ -23,7 +24,7 @@ must be scoped and triaged against the current milestone before execution.
 | RAW compatibility specification | Initial matrix and fixture contracts accepted; breadth remains open | Exact format/tag/location/operation assertions for each increment |
 | Implementation selection | #0011 Rust direction accepted | Accepted language/component direction, alternatives and first milestone |
 | Executable foundation | Implemented foundation under #0019 | Pinned build, library/CLI boundary, synthetic wire/help tests and declared platform CI |
-| R5 read foundation | Next after executable foundation | Bounded recognition, selected exact metadata, preview extraction and malformed-input/private differential evidence |
+| R5 read foundation | Declared first slice implemented under #0020 | Bounded recognition, selected exact metadata, preview extraction and malformed-input/private differential evidence |
 | Associated XMP and guided CLI | Subsequent read/UX increments | Reviewed XML component, faithful namespaces/values/time, shared commands and accessible menus |
 | Safe mutation | #0014 evidence work; no writer enabled | Sensor/calibration/unknown-data preservation, independent checks and per-profile concurrency/recovery |
 | RAW workflow breadth | Later increments, with #0015 | Batch, transformations, naming, geotagging, import/export and persistent integration evidence |

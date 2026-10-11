@@ -1,7 +1,7 @@
 {
   "$schema": "./capability-inventory.schema.json",
   "schemaVersion": 1,
-  "inventoryVersion": "2026-10-10.9",
+  "inventoryVersion": "2026-10-11.1",
   "observedOn": "2026-10-10",
   "reviewState": "draft-for-review",
   "reference": {
@@ -13,7 +13,7 @@
     "executableSha256": "a6b8018093845ac93011307bac4ab630d6604b2365fc7f66bb88c88d7dedb5ed",
     "runtimeExperiments": true
   },
-  "scope": "EOS R5 full RAW CR3 metadata first, associated XMP and stored previews; C-RAW and Dual Pixel RAW secondary. Language agnostic. Initial private reference-only observations in docs/corpus-baseline; no imageinfo implementation or parity results. Executable hash identifies the interpreted entry script, with complete toolchain identities retained privately.",
+  "scope": "EOS R5 full RAW CR3 metadata first, associated XMP and stored previews; secondary variants separate. Native declared read/preview slice and scoped private evidence in docs/reader. Whole capability rows remain specified; no full-format/tag-family parity or writes claimed.",
   "variants": [
     {
       "id": "r5-full",
@@ -229,7 +229,7 @@
       ],
       "dependsOn": [],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -276,7 +276,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -323,7 +323,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -373,7 +373,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -421,7 +421,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -473,7 +473,7 @@
         "CAP-002"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -516,7 +516,7 @@
         "CAP-006"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -569,7 +569,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -617,7 +617,7 @@
         "CAP-010"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -661,7 +661,7 @@
       ],
       "dependsOn": [],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -710,7 +710,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -755,7 +755,7 @@
         "CAP-011"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -800,7 +800,7 @@
         "CAP-010"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -846,7 +846,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -889,7 +889,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -930,7 +930,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -973,7 +973,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1020,7 +1020,7 @@
         "CAP-017"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1067,7 +1067,7 @@
         "CAP-010"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1115,7 +1115,7 @@
         "CAP-023"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1164,7 +1164,7 @@
         "CAP-023"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1211,7 +1211,7 @@
         "CAP-023"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1255,7 +1255,7 @@
       ],
       "dependsOn": [],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1303,7 +1303,7 @@
         "CAP-013"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1350,7 +1350,7 @@
         "CAP-041"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1399,7 +1399,7 @@
         "CAP-038"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1446,7 +1446,7 @@
         "CAP-026"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1492,7 +1492,7 @@
         "CAP-026"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1539,7 +1539,7 @@
         "CAP-038"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1584,7 +1584,7 @@
         "CAP-029"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1631,7 +1631,7 @@
         "CAP-018"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1681,7 +1681,7 @@
         "CAP-038"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1730,7 +1730,7 @@
         "CAP-032"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1779,7 +1779,7 @@
         "CAP-032"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1826,7 +1826,7 @@
         "CAP-038"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1872,7 +1872,7 @@
         "CAP-008"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1922,7 +1922,7 @@
         "CAP-038"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -1971,7 +1971,7 @@
         "CAP-002"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -2021,7 +2021,7 @@
         "CAP-013"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -2066,7 +2066,7 @@
         "CAP-021"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -2109,7 +2109,7 @@
         "CAP-013"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -2157,7 +2157,7 @@
         "CAP-021"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -2203,7 +2203,7 @@
         "CAP-020"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -2250,7 +2250,7 @@
         "CAP-012"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -2299,7 +2299,7 @@
         "CAP-018"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -2344,7 +2344,7 @@
         "CAP-039"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -2389,7 +2389,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -2433,7 +2433,7 @@
         "CAP-038"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     },
     {
@@ -2475,7 +2475,7 @@
         "CAP-001"
       ],
       "evidence": [],
-      "statusNote": "Specified; no imageinfo implementation or native runtime evidence. Initial bounded upstream-only observations are documented in docs/corpus-baseline; they do not verify this entire capability row.",
+      "statusNote": "Whole-row support remains specified/unverified. The declared native R5 field/preview subset and its exact evidence/limitations are in docs/reader; no broad row promotion is inferred.",
       "implementationRevision": null
     }
   ],
@@ -3449,7 +3449,7 @@
       "id": "GAP-012",
       "subject": "CLI workflows and large-input boundaries",
       "ownerCard": "compatibility-evidence",
-      "closesWhen": "CLI walkthroughs, request/result schemas, pure filter and persistent-session proposals are recorded. Complete saved-plan and session-output schemas, advanced mappings and remaining LG-001–006 specifications on #0015; use the #0008 performance protocol to establish measured limits on #0016 and later prove actual CLI/help/menu/transport behavior.",
+      "closesWhen": "CLI walkthroughs, request/result schemas, pure filter and persistent-session proposals are recorded. Complete saved-plan and session-output schemas, advanced mappings and remaining LG-001\u2013006 specifications on #0015; use the #0008 performance protocol to establish measured limits on #0016 and later prove actual CLI/help/menu/transport behavior.",
       "blocks": "Claiming the proposed CLI surface is finalized or implemented."
     }
   ]

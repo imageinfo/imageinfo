@@ -1,10 +1,10 @@
 [package]
 name = "imageinfo"
-version = "0.1.0-dev"
+version = "0.2.0-dev"
 edition = "2024"
 rust-version = "1.99"
 license = "MIT"
-description = "Camera RAW metadata tooling — executable foundation"
+description = "Bounded Canon EOS R5 RAW metadata and preview tooling"
 repository = "https://github.com/imageinfo/imageinfo"
 publish = false
 

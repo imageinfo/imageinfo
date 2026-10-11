@@ -5,9 +5,10 @@
 
 pub mod cli;
 pub mod output;
+pub mod reader;
 
 /// The current capability inventory revision. It is not a runtime support claim.
-pub const CAPABILITY_DATA_REVISION: &str = "2026-10-10.9";
+pub const CAPABILITY_DATA_REVISION: &str = "2026-10-11.1";
 
 /// Version reported by both the library boundary and the executable.
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");

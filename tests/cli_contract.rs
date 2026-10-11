@@ -162,7 +162,7 @@ fn redirected_help_remains_plain_and_does_not_enter_guided_mode() {
     assert!(
         String::from_utf8(actual.stdout)
             .unwrap()
-            .contains("not implemented")
+            .contains("Coverage is partial")
     );
 }
 
@@ -199,7 +199,7 @@ fn missing_inputs_are_usage_errors_and_valid_read_is_an_explicit_refusal() {
     assert!(
         String::from_utf8(refusal.stderr)
             .unwrap()
-            .contains("CAPABILITY_UNSUPPORTED")
+            .contains("INPUT_IO")
     );
 }
 
@@ -209,7 +209,7 @@ fn json_refusal_and_post_parse_validation_errors_have_complete_envelopes() {
         (
             vec!["metadata", "read", "--output", "json", "photo.cr3"],
             1,
-            "CAPABILITY_UNSUPPORTED",
+            "INPUT_IO",
         ),
         (
             vec!["metadata", "read", "--output", "json"],
@@ -221,11 +221,19 @@ fn json_refusal_and_post_parse_validation_errors_have_complete_envelopes() {
         assert_eq!(output.status.code(), Some(status));
         let record: serde_json::Value =
             serde_json::from_slice(&output.stdout).expect("JSON stdout");
-        assert_eq!(record["request"]["issues"][0]["code"], code);
+        if status == 1 {
+            assert_eq!(record["files"][0]["issues"][0]["code"], code);
+        } else {
+            assert_eq!(record["request"]["issues"][0]["code"], code);
+        }
         assert_eq!(record["summary"]["exitStatus"], status);
         assert_eq!(record["summary"]["outputComplete"], true);
-        assert_eq!(record["summary"]["selectionComplete"], false);
-        assert_eq!(record["files"], serde_json::json!([]));
+        assert_eq!(record["summary"]["selectionComplete"], status == 1);
+        if status == 1 {
+            assert_eq!(record["files"][0]["state"], "failed");
+        } else {
+            assert_eq!(record["files"], serde_json::json!([]));
+        }
         assert_eq!(record["requestId"], record["request"]["requestId"]);
         assert_eq!(record["requestId"], record["summary"]["requestId"]);
         assert!(!output.stderr.is_empty());
@@ -246,7 +254,7 @@ fn version_forms_agree_and_json_is_deterministic() {
         assert!(actual.stderr.is_empty());
     }
     let version: imageinfo::output::VersionInfo = serde_json::from_slice(&expected.stdout).unwrap();
-    assert!(!version.media_reading_implemented);
+    assert!(version.media_reading_implemented);
     assert_eq!(version.version, imageinfo::VERSION);
 }
 
@@ -276,10 +284,5 @@ fn command_tree_is_introspectable_and_internally_valid() {
         read.get_arguments()
             .any(|arg| arg.get_long() == Some("values"))
     );
-    assert!(
-        read.get_about()
-            .unwrap()
-            .to_string()
-            .contains("not implemented")
-    );
+    assert!(read.get_about().unwrap().to_string().contains("R5"));
 }
