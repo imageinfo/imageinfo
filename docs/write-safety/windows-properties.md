@@ -15,7 +15,7 @@ storage profile, committed receipt or automated repair is enabled.
 | Delete-share candidate, no ancestor guard | A complete marker appears at the absent output name; pathname-observed device/inode matches the earlier candidate. A racing destination is retained. | Conditional new-name visibility observation, not held-stage identity authority or complete atomicity/durability proof. |
 | Delete-share candidate plus #0029 held ancestors | Ordinary competing stage/parent moves and our publication are refused. The anchor's held identity/content remain stable. | Integrated exclusion works for the measured actor; the selected move does not compose into a usable backend. No fallback by releasing guards. |
 | Timestamp, readonly bit, DACL and alternate stream actors | Mutations succeed before/after visibility despite exclusion of default-stream content writers; checks detect and refuse/retain uncertainty. | Property observation is not mandatory property protection. Streams are separate from default-stream contents. |
-| Late named candidate substitution | After the last check, an actor moves the held stage and creates foreign bytes at its old name. The unguarded pathname move publishes those foreign bytes; post-check rejects. | **Failed enablement gate.** A held content stream plus a pathname check is not a bound publication operation. |
+| Late named candidate substitution | After the last check, an actor moves the held stage and creates foreign bytes at its old name. The unguarded pathname move publishes those bytes; post-check rejects. A second actor matches ACLs, length and times; reading the actual installed bytes catches that substitution. | **Failed enablement gate.** A held content stream plus a pathname check is not a bound publication operation. |
 | Candidate/record/output flushes | Ordered `Flush(true)` calls return; observation record explicitly says recovery-required and not committed. | File acknowledgements only. No directory/namespace acknowledgement or durable receipt. |
 
 No successful publication in this experiment has **all** required guards. The two
@@ -26,9 +26,9 @@ or cleaned up by filename.
 
 ## Scope and verification
 
-The local suite has **43 cases**: creation/publication comparisons, racing destination,
+The local suite has **44 cases**: creation/publication comparisons, racing destination,
 content writers, before/after timestamp/readonly/ACL/stream changes, candidate/parent
-renames, guarded comparisons, late substitution, failure and process kill at each of
+renames, guarded comparisons, ordinary/property-matched late substitution, failure and process kill at each of
 nine barriers, cancellation before/after publication, existing root and unsupported
 operand refusal. Failed method hypotheses are retained privately; final passing
 qualification means the assertions about both successes and **counterexamples** hold.
@@ -43,8 +43,10 @@ established. No admin/volume flush, host reboot, existing WSL disruption, OS cra
 power-loss experiment occurs. Public CI uses marker data only; private RAW inputs and
 network originals are never accessed by this experiment.
 
-The supervisor retains exact argv, stdin, stdout/stderr, files and observations in
-ignored scratch storage. Some property tests deliberately broaden a marker ACL;
+The supervisor retains argument vectors, control lines, parsed stdout events,
+decoded stderr, files and observations in ignored scratch storage. These text/event
+captures are not advertised as byte-exact native pipe transcripts. Some property
+tests deliberately broaden a marker ACL;
 those retained files are **not** advertised as private media. Reports contain no
 account SID, filesystem object ID, personal-media path or per-image hash. No third-
 party source/assembly is copied and no Cargo dependency changes.

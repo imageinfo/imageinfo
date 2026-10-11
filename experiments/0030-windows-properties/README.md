@@ -36,6 +36,9 @@ FullControl ACE with no inheritance/propagation, allowed attributes and the sing
 default stream. It observes creation/write times and hashes bytes through the held
 stage stream. The current owner can still change these properties; syntactic ACL
 verification is not a test using another user's token or a privileged adversary.
+After visibility it separately reads at most 65,537 bytes from the installed path;
+foreign output with matching ACLs/length/times is detected by its differing contents.
+This post-check cannot prevent that publication or establish live installed identity.
 
 `qualify.py` controls nine barriers with a 30-second wait/child bound, injects failures,
 cancels or kills only its own worker, and tests actual unrelated file/property actors.

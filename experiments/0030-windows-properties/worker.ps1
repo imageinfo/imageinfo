@@ -89,12 +89,32 @@ function Held-Hash {
     try { return ([BitConverter]::ToString($algorithm.ComputeHash($stage))).Replace('-', '').ToLowerInvariant() }
     finally { $algorithm.Dispose() }
 }
-function Check-Candidate([string]$path) {
+function Installed-Hash([string]$path) {
+    # Read the installed object too: hashing only the still-held original stage
+    # cannot verify a pathname publication. This is a bounded post-check, not an
+    # exclusion mechanism or proof that the checked pathname stays bound.
+    $reader = [System.IO.FileStream]::new($path, [System.IO.FileMode]::Open,
+        [System.IO.FileAccess]::Read, ([System.IO.FileShare]::ReadWrite -bor [System.IO.FileShare]::Delete))
+    $algorithm = [System.Security.Cryptography.SHA256]::Create()
+    try {
+        $bytes = [byte[]]::new(65537)
+        $count = 0
+        while ($count -lt $bytes.Length) {
+            $read = $reader.Read($bytes, $count, $bytes.Length-$count)
+            if ($read -eq 0) { break }
+            $count += $read
+        }
+        if ($count -ne 65536) { throw 'INSTALLED_CONTENT_DRIFT' }
+        return ([BitConverter]::ToString($algorithm.ComputeHash($bytes, 0, $count))).Replace('-', '').ToLowerInvariant()
+    } finally { $algorithm.Dispose(); $reader.Dispose() }
+}
+function Check-Candidate([string]$path, [bool]$installed = $false) {
     Check-Private $Root $true
     Check-Private $path $false
     if ([System.IO.File]::GetLastWriteTimeUtc($path) -ne $script:lastWriteTime -or
         [System.IO.File]::GetCreationTimeUtc($path) -ne $script:creationTime -or
         $stage.Length -ne 65536 -or (Held-Hash) -ne $script:expectedHash) { throw 'PROPERTY_OR_CONTENT_DRIFT' }
+    if ($installed -and (Installed-Hash $path) -ne $script:expectedHash) { throw 'INSTALLED_CONTENT_DRIFT' }
 }
 
 try {
@@ -153,14 +173,14 @@ try {
     [System.IO.File]::Move($candidate, $output)
     $published = $true
     Barrier 'published'
-    Check-Candidate $output
+    Check-Candidate $output $true
     $stage.Flush($true)
     Barrier 'output-file-flushed'
     # There is no demonstrated directory/namespace persistence acknowledgement
     # in this managed sequence. Do not fabricate one from Flush(true) on a file.
     Write-Record 'observation.record' 'recovery-required'
     Barrier 'observation-record-flushed'
-    Check-Candidate $output
+    Check-Candidate $output $true
     Emit @{outcome='recovery-required'; namespaceAcknowledged=$false; committed=$false;
         publicationAttempted=$attempted; publicationObserved=$published; profileVerified=$false;
         productionPublicationAllowed=$false; events=@($events); diagnostic='NAMESPACE_ACK_UNVERIFIED'}

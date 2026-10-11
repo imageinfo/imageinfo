@@ -320,6 +320,26 @@
       "postCloseTimesMatchStageSnapshot": false
     },
     {
+      "id": "late-property-matched-substitution",
+      "barriers": [
+        "private-root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "before-publish",
+        "validated-before-publish",
+        "published"
+      ],
+      "outputExists": true,
+      "exitCode": 5,
+      "outcome": "recovery-required",
+      "diagnostic": "INSTALLED_CONTENT_DRIFT",
+      "hresultLowWord": 5377,
+      "pathObservedIdentityMatchesStage": false,
+      "completeMarkerVisible": false,
+      "postCloseTimesMatchStageSnapshot": true
+    },
+    {
       "id": "held-ancestors-late-substitution",
       "barriers": [
         "private-root-created",
@@ -711,7 +731,7 @@
       "hresultLowWord": 5377
     }
   ],
-  "caseCount": 43,
+  "caseCount": 44,
   "enabledProfiles": 0,
   "productionPublicationAllowed": false,
   "namespaceAcknowledged": false,
@@ -729,11 +749,11 @@
     "driveType": "Fixed",
     "os": "10.0.26200.0"
   },
-  "workerSha256": "08643bf074e60ee6197736f7348f943f88d785c21236e9513d6189c8b7f6ed0f",
-  "supervisorSha256": "0b33d77439dddcaa59d8d111326f61556ab16247b370c9c9b8dfd93fee8c55f9",
+  "workerSha256": "1f732847de6d02b3cca30ea08def37ca5a8a096e3b1c2a811acc943e9973e721",
+  "supervisorSha256": "db18f92bea2b620d4daebfe0bad4fc4515c23b618b574a3c68dd66120ed49ef7",
   "privateCaptures": {
-    "caseCount": 43,
-    "registeredArtifacts": 340,
+    "caseCount": 44,
+    "registeredArtifacts": 349,
     "hashesAndCapturesChecked": true,
     "mediaInputs": 0,
     "originalMediaAccesses": 0

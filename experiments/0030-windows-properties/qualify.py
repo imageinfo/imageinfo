@@ -223,6 +223,20 @@ def run(parent, guard=None):
     assert (root / "held-candidate.bin").read_bytes() == MARKER
     assert (root / "output.bin").read_bytes() == b"foreign-late-candidate"
     assert facts["outcome"] == "recovery-required" and facts["diagnostic"] != "NAMESPACE_ACK_UNVERIFIED"
+    def matched_substitute(barrier, root):
+        if barrier == "validated-before-publish":
+            (root / "candidate.bin").rename(root / "held-candidate.bin")
+            script = "$p=$env:IMAGEINFO_PROPERTY_ACTOR_PATH; $old=[IO.Path]::Combine([IO.Path]::GetDirectoryName($p),'held-candidate.bin'); " \
+                     "$s=[IO.File]::GetAccessControl($old); $created=[IO.File]::GetCreationTimeUtc($old); $written=[IO.File]::GetLastWriteTimeUtc($old); " \
+                     "$f=[IO.FileStream]::new($p,[IO.FileMode]::CreateNew,[Security.AccessControl.FileSystemRights]::Write,[IO.FileShare]::None,4096,[IO.FileOptions]::None,$s); " \
+                     "try {$b=[byte[]]::new(65536); for($i=0;$i -lt $b.Length;$i++){$b[$i]=49}; $f.Write($b,0,$b.Length); $f.Flush($true)} finally {$f.Dispose()}; " \
+                     "[IO.File]::SetCreationTimeUtc($p,$created); [IO.File]::SetLastWriteTimeUtc($p,$written)"
+            actor(script, root / "candidate.bin")
+    root, facts = execute("late-property-matched-substitution", intervention=matched_substitute)
+    assert facts["outputExists"] and not facts["completeMarkerVisible"]
+    assert not facts["pathObservedIdentityMatchesStage"]
+    assert facts["diagnostic"] == "INSTALLED_CONTENT_DRIFT"
+    assert (root / "held-candidate.bin").read_bytes() == MARKER
     def guarded_late_substitute(barrier, root):
         if barrier == "validated-before-publish":
             try:
