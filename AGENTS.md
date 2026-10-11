@@ -72,6 +72,29 @@ Terry workflow. Bot moves completed work to `ready_for_review`; Terry alone acce
 it into `completed`. Do not launch a duplicate service or enable board autopush
 without an explicit request.
 
+Terry clarified lane meanings on 2026-10-11:
+
+- `backlog`: insufficiently scoped to work, or intentionally held back by Terry.
+  Record the missing scope or Terry's hold explicitly. #0012 broader ExifTool parity
+  is intentionally held and stays here until Terry releases it.
+- `ready_for_work`: sufficiently scoped to work. Dependencies on other Ready for
+  Work tickets do not make a card Backlog; record them as relationships/prerequisites.
+  Readiness is not permission to skip dependencies or restricted-action approvals.
+- `in_progress`: actively being worked, or explicitly designated by Terry as the
+  next resumption point. Record an overnight/resume note when work is parked here.
+- `blocked`: started work cannot progress because of an actual blocking condition.
+  Describe the condition and the action/state change needed to unblock it. Do not
+  use this merely for an unstarted scoped card with known ticket dependencies.
+- `needs_terry`: a specific decision, missing input or approval from Terry is needed.
+  State the concrete question and complete independent authorized work first.
+- `ready_for_review`: the requested scope is implemented/verified and handed off,
+  with committed/pushed work and explicit evidence/limitations where applicable.
+- `completed`: Terry has accepted the handoff; bot does not move its own work here.
+
+When triaging, move sufficiently scoped cards out of Backlog unless Terry has
+explicitly held them. Distinguish insufficient scope from unmet prerequisites;
+keep descriptions, dependencies and lane state consistent with the current phase.
+
 Terry requires the JSON board-write monitor to be running whenever this board's
 localswim service is running. At every startup or resume, verify both the service
 and monitor, and target the monitor at the active Codex thread. Start or retarget

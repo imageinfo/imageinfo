@@ -6,6 +6,16 @@ Backlog → Ready For Work → In progress → Ready for review → Completed,
 with separate Blocked and Needs Terry lanes. The embedded policy defines the exact
 allowed transitions. Bot does not approve its own work into Completed.
 
+Terry's lane definitions, clarified 2026-10-11: Backlog means insufficient scope
+or an intentional hold by Terry. Ready For Work means sufficiently scoped, even
+when completion depends on other Ready For Work tickets. Record those dependencies
+explicitly rather than using Backlog as a dependency queue. In progress also covers
+a resumption point explicitly designated by Terry. Blocked records an actual blocker
+for started work; Needs Terry records a concrete decision/input/approval request.
+Ready for review is the verified/published handoff; Terry alone accepts Completed.
+See [AGENTS.md](../AGENTS.md) for the standing triage guidance. #0012 is intentionally
+held by Terry and remains Backlog.
+
 The board is stored at `boards/imageinfo.json` in the local checkout and is ignored
 by Git. Its initial port is **8795**, giving the local URL
 `http://127.0.0.1:8795/`. This address works only on the machine running the service;
