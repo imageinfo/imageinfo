@@ -65,3 +65,20 @@ jobs:
       - name: Verify unsupported macOS backend refuses before artifacts
         if: runner.os == 'macOS'
         run: python experiments/0028-recovery-evidence/qualify.py --binary experiments/0028-recovery-evidence/target/release/imageinfo-recovery-probe --parent experiments/0028-recovery-evidence/target
+      - name: Check object guard formatting
+        run: cargo fmt --manifest-path experiments/0029-object-guards/Cargo.toml --check
+      - name: Check object guard lints
+        run: cargo clippy --locked --manifest-path experiments/0029-object-guards/Cargo.toml --all-targets -- -D warnings
+      - name: Test and build object guard probes
+        run: |
+          cargo test --locked --manifest-path experiments/0029-object-guards/Cargo.toml
+          cargo build --locked --release --manifest-path experiments/0029-object-guards/Cargo.toml
+      - name: Qualify Windows object sharing and mappings
+        if: runner.os == 'Windows'
+        run: python experiments/0029-object-guards/qualify.py --binary experiments/0029-object-guards/target/release/imageinfo-object-guard-probe.exe --parent experiments/0029-object-guards/target
+      - name: Qualify Linux anonymous stages and leases
+        if: runner.os == 'Linux'
+        run: python experiments/0029-object-guards/qualify.py --binary experiments/0029-object-guards/target/release/imageinfo-object-guard-probe --parent experiments/0029-object-guards/target
+      - name: Verify unsupported object guard platform refuses
+        if: runner.os == 'macOS'
+        run: python experiments/0029-object-guards/qualify.py --binary experiments/0029-object-guards/target/release/imageinfo-object-guard-probe --parent experiments/0029-object-guards/target

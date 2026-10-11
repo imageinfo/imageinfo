@@ -30,3 +30,9 @@ The separate #0028 research package has its own
 [notice index](experiments/0028-recovery-evidence/NOTICES.md). Its SHA-256 and Linux
 descriptor wrappers are admitted for scoped local/CI experiments, not production
 adoption or an assembled executable release. Root Cargo.lock is unchanged.
+
+The #0029 guard experiment has a separate
+[27-package admission](docs/write-safety/guard-dependencies.json) and
+[notice index](experiments/0029-object-guards/NOTICES.md), selecting MIT for the
+additional `winapi-util` safe handle-information wrapper. This remains research
+scope; no production dependency graph or license decision changes.

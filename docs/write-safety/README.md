@@ -32,6 +32,12 @@ published unwanted bytes before post-check rejection, so the enablement gate fai
 #0029–0031 retain exclusion, Windows properties/persistence and isolated crash/repair
 proof. #0022 remains open; no profile is enabled and inspection authorizes no repair.
 
+[#0029](object-guards.md) now qualifies Windows held-object content exclusion and
+Linux anonymous staging/lease behavior. Timestamp/path changes and lease expiry
+remain distinct constraints; a primitive success enables no production profile.
+Private RAW clone tests retain originals unchanged. #0030/#0031 and the retained
+format/integration gates still precede a supported output workflow.
+
 ## Plan before effects
 
 **WS-001 — Explicit application.** Preview does not change media, metadata targets,

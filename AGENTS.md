@@ -13,6 +13,10 @@ storage profile is enabled. See `docs/write-safety/new-output-preservation.md`.
 #0022 is split into #0028–0031. #0028's Rust worker/inspector is qualification
 research; its late-stage counterexample fails the enablement gate. Read-only
 inspection grants no repair authority. See `docs/write-safety/recovery-inspection.md`.
+#0029 qualifies separate content/object/path mechanisms, not a complete backend.
+Windows sharing, Linux anonymous staging and breakable leases have different
+property/namespace limits. See `docs/write-safety/object-guards.md`; no profile
+or production publication permission is inferred from a passing primitive test.
 
 ## Product intent
 

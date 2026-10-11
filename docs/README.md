@@ -26,6 +26,7 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Safe mutation and recovery](write-safety/README.md) | Per-file publication, preserved originals, concurrency, recovery, platform constraints and synthetic acceptance cases for card #0006. |
 | [New-output preservation evidence](write-safety/new-output-preservation.md) | #0021 experimental fixed-width candidate, independent RAW decode and NTFS/WSL primitive observations; #0014 stays open and no writer profile is enabled. |
 | [Recovery qualification](write-safety/recovery-inspection.md) | #0028 actual Rust worker/read-only inspector, adversarial Linux/Windows/mount evidence and failed enablement gate; #0022 stays open. |
+| [Object guard qualification](write-safety/object-guards.md) | #0029 Windows mandatory sharing/identities, Linux anonymous stages/lease limits and explicit full-profile refusals. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |

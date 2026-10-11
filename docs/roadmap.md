@@ -87,3 +87,8 @@ the late-stage counterexample that prevents enablement. #0029 owns live
 source/stage/namespace exclusion, #0030 Windows private properties/persistence,
 and #0031 isolated crash/durability/guarded repair. The parent remains open; a
 research copy or matching checksum cannot authorize production writes or recovery.
+
+[#0029 object guards](write-safety/object-guards.md) now measure Windows content
+exclusion, anonymous Linux staging and lease-break/path/property limits separately.
+They do not close full source/path/property/persistence admission; #0030/#0031
+must combine evidenced cells without weakening the accepted contract.
