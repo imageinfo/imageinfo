@@ -757,5 +757,7 @@
     "hashesAndCapturesChecked": true,
     "mediaInputs": 0,
     "originalMediaAccesses": 0
-  }
+  },
+  "codeRevision": "7f5262c59bfae583a1d36a04c7e3fcbf8afa5ecf",
+  "ciEvidence": "windows-property-ci.json"
 }

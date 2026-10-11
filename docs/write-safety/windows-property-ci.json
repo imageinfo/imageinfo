@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-11",
+  "card": "0030",
+  "codeRevision": "7f5262c59bfae583a1d36a04c7e3fcbf8afa5ecf",
+  "runId": 38172774706,
+  "url": "https://github.com/imageinfo/imageinfo/actions/runs/38172774706",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "runner": "ubuntu-24.04",
+      "conclusion": "success",
+      "qualificationStep": "Refuse unsupported Windows property qualification platform",
+      "qualificationConclusion": "success",
+      "markerCases": 0,
+      "unsupportedRefusalCases": 1
+    },
+    {
+      "runner": "windows-2025",
+      "conclusion": "success",
+      "qualificationStep": "Qualify Windows private creation and publication boundaries",
+      "qualificationConclusion": "success",
+      "markerCases": 44,
+      "unsupportedRefusalCases": 0
+    },
+    {
+      "runner": "macos-15",
+      "conclusion": "success",
+      "qualificationStep": "Refuse unsupported Windows property qualification platform",
+      "qualificationConclusion": "success",
+      "markerCases": 0,
+      "unsupportedRefusalCases": 1
+    }
+  ],
+  "productionPublicationAllowed": false,
+  "enabledProfiles": 0,
+  "meaning": "Assertions about primitive observations and failed backend gate, not a verified mutation profile"
+}

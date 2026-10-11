@@ -24,6 +24,13 @@ downgrade. The late counterexample uses authored foreign marker bytes, not a pri
 photo. It is retained alongside the still-correct held stage; nothing is rolled back
 or cleaned up by filename.
 
+[Verified platform CI](windows-property-ci.json) binds the final experiment source
+revision `7f5262c59bfae583a1d36a04c7e3fcbf8afa5ecf` to successful Windows x64,
+Ubuntu x64 and macOS arm64 jobs. Windows ran the 44 marker cases; the other runners
+explicitly declined the Windows worker with no worker artifacts. Production and
+prior research gates also passed. This is repeatable qualification of both primitive
+observations and the failed enablement gate, not a supported mutation profile.
+
 ## Scope and verification
 
 The local suite has **44 cases**: creation/publication comparisons, racing destination,
