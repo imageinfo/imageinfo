@@ -166,6 +166,19 @@ def run(binary, parent):
     root, admission = execute('strict-admission', mode='admit')
     assert admission['outcome'] == 'refused-before-effects' and not root.exists()
 
+    not_indexed_parent = scratch/'not-indexed-parent'
+    not_indexed_parent.mkdir()
+    actor("$p=$env:IMAGEINFO_BOUND_ACTOR; [IO.File]::SetAttributes($p,([IO.File]::GetAttributes($p) -bor [IO.FileAttributes]::NotContentIndexed))", not_indexed_parent)
+    _, facts = execute('inherited-not-indexed-policy', operand=not_indexed_parent/'root')
+    assert facts['rootAttributesAtCreation'] & 8192 and facts['completeMarkerVisible']
+    for phase in ['intent-record-flushed', 'published']:
+        def index_change(barrier, root, phase=phase):
+            if barrier == phase:
+                actor("$p=$env:IMAGEINFO_BOUND_ACTOR; [IO.File]::SetAttributes($p,([IO.File]::GetAttributes($p) -bxor [IO.FileAttributes]::NotContentIndexed))", root)
+        _, facts = execute('root-index-change-'+phase, action=index_change)
+        assert facts['outputExists'] == (phase == 'published')
+        assert 'DIRECTORY_ATTRIBUTES_CHANGED' in facts['diagnostic']
+
     def root_binding(barrier, root):
         if barrier == 'root-created':
             assert rejected(lambda: root.rename(root.with_name(root.name+'-moved')))

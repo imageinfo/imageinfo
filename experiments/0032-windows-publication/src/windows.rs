@@ -10,6 +10,10 @@ use std::{
     },
     path::{Component, Path, PathBuf},
 };
+use windows_sys::Win32::Storage::FileSystem::{
+    FILE_ATTRIBUTE_ARCHIVE, FILE_ATTRIBUTE_DIRECTORY, FILE_ATTRIBUTE_NORMAL,
+    FILE_ATTRIBUTE_NOT_CONTENT_INDEXED,
+};
 type Result<T> = std::result::Result<T, Box<dyn Error>>;
 fn emit(value: Value) -> Result<()> {
     println!("{value}");
@@ -125,6 +129,12 @@ fn check_stage(
 ) -> Result<()> {
     security.check(file)?;
     crate::native::check_streams(file)?;
+    if file.metadata()?.file_attributes()
+        & !(FILE_ATTRIBUTE_ARCHIVE | FILE_ATTRIBUTE_NORMAL | FILE_ATTRIBUTE_NOT_CONTENT_INDEXED)
+        != 0
+    {
+        return Err("STAGE_ATTRIBUTES_UNSUPPORTED".into());
+    }
     if information(file)? != *before || imageinfo_recovery_probe::digest(&contents(file)?) != hash {
         return Err("STAGE_PROPERTY_OR_CONTENT_CHANGED".into());
     }
@@ -148,10 +158,27 @@ fn record(
     security.check(&file)?;
     Ok(file)
 }
-fn check_directory(path: &Path, file: &File, security: &PrivateSecurity) -> Result<()> {
+fn check_directory(
+    path: &Path,
+    file: &File,
+    security: &PrivateSecurity,
+    initial_attributes: u32,
+) -> Result<()> {
     security.check(file)?;
     check_binding(path, file)?;
-    if !file.metadata()?.is_dir() || file.metadata()?.file_attributes() & !(16 | 32) != 0 {
+    let attributes = file.metadata()?.file_attributes();
+    // NOT_CONTENT_INDEXED is an inherited indexing preference, not weaker ACLs
+    // or a storage/provider transformation. Preserve it; reject every unsupported
+    // attribute and a concurrent change of that explicitly captured preference.
+    if !file.metadata()?.is_dir()
+        || attributes
+            & !(FILE_ATTRIBUTE_DIRECTORY
+                | FILE_ATTRIBUTE_ARCHIVE
+                | FILE_ATTRIBUTE_NOT_CONTENT_INDEXED)
+            != 0
+        || attributes & FILE_ATTRIBUTE_NOT_CONTENT_INDEXED
+            != initial_attributes & FILE_ATTRIBUTE_NOT_CONTENT_INDEXED
+    {
         return Err(format!(
             "DIRECTORY_ATTRIBUTES_CHANGED_{:08X}",
             file.metadata()?.file_attributes()
@@ -189,6 +216,7 @@ pub fn run() -> Result<()> {
         Path::new(root.file_name().ok_or("ROOT_LEAF_REQUIRED")?),
     )?;
     let root_info = information(&directory)?;
+    let root_attributes = directory.metadata()?.file_attributes();
     check_binding(&root, &directory)?;
     emit(
         json!({"barrier":"root-created","rootIdentity":root_info["identity"],"rootAttributes":root_info["attributes"],"productionPublicationAllowed":false}),
@@ -227,7 +255,7 @@ pub fn run() -> Result<()> {
     )?;
     directory.sync_all()?;
     barrier("intent-record-flushed")?;
-    check_directory(&root, &directory, &security)?;
+    check_directory(&root, &directory, &security, root_attributes)?;
     check_stage(&mut file, &security, &before, &hash)?;
     security.check(&prepared)?;
     security.check(&intent)?;
@@ -246,7 +274,7 @@ pub fn run() -> Result<()> {
     barrier("published")?;
     check_binding(&root.join("output.bin"), &file)?;
     check_binding(&root, &directory)?;
-    check_directory(&root, &directory, &security)?;
+    check_directory(&root, &directory, &security, root_attributes)?;
     check_stage(&mut file, &security, &before, &hash)?;
     file.sync_all()?;
     barrier("output-file-flushed")?;
@@ -265,7 +293,7 @@ pub fn run() -> Result<()> {
         &hash,
     )?;
     barrier("observation-record-flushed")?;
-    check_directory(&root, &directory, &security)?;
+    check_directory(&root, &directory, &security, root_attributes)?;
     check_stage(&mut file, &security, &before, &hash)?;
     check_binding(&root.join("output.bin"), &file)?;
     security.check(&prepared)?;

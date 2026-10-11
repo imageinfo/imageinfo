@@ -54,6 +54,63 @@
       "diagnostic": null
     },
     {
+      "id": "inherited-not-indexed-policy",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "rootAttributesAtCreation": 8208,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "root-index-change-intent-record-flushed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed"
+      ],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "DIRECTORY_ATTRIBUTES_CHANGED_00002010",
+      "rootAttributesAtCreation": 16
+    },
+    {
+      "id": "root-index-change-published",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published"
+      ],
+      "exitCode": 5,
+      "outputExists": true,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "DIRECTORY_ATTRIBUTES_CHANGED_00002010",
+      "completeMarkerVisible": true,
+      "rootAttributesAtCreation": 16
+    },
+    {
       "id": "atomic-root-held-before-payload",
       "barriers": [
         "root-created",
@@ -508,7 +565,7 @@
       "outputExists": false,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": "STAGE_PROPERTY_OR_CONTENT_CHANGED",
+      "diagnostic": "STAGE_ATTRIBUTES_UNSUPPORTED",
       "rootAttributesAtCreation": 16
     },
     {
@@ -573,7 +630,7 @@
       "outputExists": true,
       "outcome": "interrupted-or-refused",
       "errorCode": null,
-      "diagnostic": "STAGE_PROPERTY_OR_CONTENT_CHANGED",
+      "diagnostic": "STAGE_ATTRIBUTES_UNSUPPORTED",
       "completeMarkerVisible": true,
       "rootAttributesAtCreation": 16
     },
@@ -1311,7 +1368,7 @@
       "directoryFlushError": null
     }
   ],
-  "caseCount": 75,
+  "caseCount": 78,
   "productionPublicationAllowed": false,
   "enabledProfiles": 0,
   "namespaceAcknowledged": false,
@@ -1333,13 +1390,13 @@
     },
     {
       "path": "experiments/0032-windows-publication/src/windows.rs",
-      "size": 10409,
-      "sha256": "80f66cceab320f84efbefaf5ac8cd58224941a6c7abf65db8b7df69a440cdba9"
+      "size": 11515,
+      "sha256": "dd4891d98bc9188c8e8fa3c93a4d9277e5a40f09fc09303838036531f14fe29f"
     },
     {
       "path": "experiments/0032-windows-publication/qualify.py",
-      "size": 18870,
-      "sha256": "ff5ae8e2a1030b7dc88fc4bba90b36fc2189e7d960d806cd871dfc74364937ef"
+      "size": 19820,
+      "sha256": "a7a7ea1091204af0ed2fd2d77646ec0867b89d2c495b3a6ebd3db21e7fea25b6"
     },
     {
       "path": "experiments/0032-windows-publication/Cargo.toml",
@@ -1353,8 +1410,8 @@
     }
   ],
   "retainedEvidence": {
-    "capturesChecked": 75,
-    "artifactsHashed": 501,
+    "capturesChecked": 78,
+    "artifactsHashed": 523,
     "nativePipeCapturesByteExact": false,
     "mediaInputs": 0
   }

@@ -49,9 +49,18 @@ user may edit the files. Ordinary readers with incompatible sharing can be refus
 while the candidate holder has DELETE access; the compatible reader explicitly
 shares read/write/delete. No long-term output immutability is claimed.
 
+Directory/file policy permits and preserves `NOT_CONTENT_INDEXED` in addition to
+ordinary directory/archive/normal attributes. Windows CI inherited that bit from
+its workspace, which exposed an initially too-narrow attribute mask before publication.
+Local cases now reproduce inheritance and reject a later change of the directory's
+captured indexing preference. Other unsupported attributes still refuse; ACL/name/
+content guards and complete-profile refusal were not loosened. The bit's meaning is
+defined in [Microsoft's attribute reference](https://learn.microsoft.com/en-us/windows/win32/fileio/file-attribute-constants)
+(viewed 2026-10-11); it is not permission to skip privacy or storage qualification.
+
 ## Verification and retained evidence
 
-**75 actual Windows cases** cover the cells above, root/candidate creation races,
+**78 actual Windows cases** cover the cells above, root/candidate creation races,
 existing-root/parent junctions, before/after property changes, strict admission,
 ordinary-path/namespace grammar exclusions, Unicode paths, bounded controls, and
 failure/process kill/cooperative cancellation at each of nine barriers. All case
@@ -60,7 +69,7 @@ the evidence, not that the complete profile passed.
 
 [Sanitized observations](bound-publication-observations.json) contain no account SID,
 filesystem object ID, personal-media path or per-image hash. Exact source/binary hashes,
-argument/control/parsed-event captures and **501 marker artifacts** are retained in
+argument/control/parsed-event captures and **523 marker artifacts** are retained in
 ignored local storage and checked. Native pipe byte-exactness is not claimed. Older
 failed hypotheses/captures remain retained rather than relabeled as successful runs.
 

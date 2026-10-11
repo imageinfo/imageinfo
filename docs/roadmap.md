@@ -101,7 +101,7 @@ enabled; neither owner-only ACLs nor a successful file flush establish the full 
 
 [#0032 held-candidate publication](write-safety/bound-windows-publication.md) now
 implements the actual private atomic root/candidate and guarded Windows rename
-sequence. Its 75-case marker qualification closes the late default-stream substitution
+sequence. Its 78-case marker qualification closes the late default-stream substitution
 route. Property/link protection, namespace durability and guarded recovery remain
 explicitly unsupported; complete-profile admission refuses before filesystem effects.
 #0031 owns isolated durability/repair against the sequence; #0022/#0014 stay open.

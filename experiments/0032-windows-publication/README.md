@@ -52,7 +52,7 @@ are not consumed to authorize retry/repair, and no cleanup or rollback is perfor
 
 ## Scope and provenance
 
-The 75-case Windows suite uses ordinary fixed local NTFS and an unchanged DOS mapping.
+The 78-case Windows suite uses ordinary fixed local NTFS and an unchanged DOS mapping.
 It tests external content/namespace/property actors and failure/kill/cancel at each
 barrier. All marker/capture files remain in ignored scratch storage, including files
 whose marker-only ACLs/streams/attributes were deliberately changed. Junction targets
