@@ -36,3 +36,10 @@ The #0029 guard experiment has a separate
 [notice index](experiments/0029-object-guards/NOTICES.md), selecting MIT for the
 additional `winapi-util` safe handle-information wrapper. This remains research
 scope; no production dependency graph or license decision changes.
+
+The #0032 Windows publication experiment reuses those same archive versions and
+notices under its [scoped admission](docs/write-safety/bound-publication-dependencies.json)
+and [notice index](experiments/0032-windows-publication/NOTICES.md). Direct SDK feature
+use and the isolated native operations have a [boundary review](experiments/0032-windows-publication/ffi-review.md).
+No Windows DLL, upstream implementation or public assembled executable is imported
+or distributed. Root dependencies and the locked MIT project decision are unchanged.

@@ -98,3 +98,10 @@ demonstrates private ACL creation and failed guard/publication composition, incl
 late named-stage substitution. #0032 retains actual guarded Windows publication,
 property windows and namespace/receipt acknowledgements before #0031. No profile is
 enabled; neither owner-only ACLs nor a successful file flush establish the full gate.
+
+[#0032 held-candidate publication](write-safety/bound-windows-publication.md) now
+implements the actual private atomic root/candidate and guarded Windows rename
+sequence. Its 75-case marker qualification closes the late default-stream substitution
+route. Property/link protection, namespace durability and guarded recovery remain
+explicitly unsupported; complete-profile admission refuses before filesystem effects.
+#0031 owns isolated durability/repair against the sequence; #0022/#0014 stay open.

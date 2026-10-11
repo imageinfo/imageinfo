@@ -45,6 +45,14 @@ stage substitution. No namespace acknowledgement or complete profile is qualifie
 #0032 retains the unfinished Windows implementation criteria before #0031; the parent
 and all safety requirements remain open.
 
+[#0032](bound-windows-publication.md) now implements held-candidate Windows
+publication with atomic private-root creation and live identity/property checks.
+Directory sharing permits entries while excluding parent DELETE; the late default-
+stream substitution is refused. Writable-directory flush calls succeed in the local
+sequence, but property/link mutation and persistence/recovery remain missing complete-
+profile cells. Strict admission refuses before effects; #0031 and the parent gates
+remain open. The small native SDK boundary has a scoped source/API/ownership review.
+
 ## Plan before effects
 
 **WS-001 — Explicit application.** Preview does not change media, metadata targets,

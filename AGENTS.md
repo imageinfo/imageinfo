@@ -22,6 +22,11 @@ or production publication permission is inferred from a passing primitive test.
 substitution publishes foreign marker bytes before rejection. #0032 retains actual
 guarded Windows publication/property/persistence implementation before #0031.
 See `docs/write-safety/windows-properties.md`; no full profile is enabled.
+#0032 implements researched held-candidate Windows publication, atomic private-root
+creation and live identity/property checks. Its isolated SDK boundary is reviewed;
+root production unsafe policy remains unchanged. Property/link mutation and actual
+namespace/recovery qualification are separate missing cells, so strict admission
+refuses before effects. See `docs/write-safety/bound-windows-publication.md`.
 
 ## Product intent
 

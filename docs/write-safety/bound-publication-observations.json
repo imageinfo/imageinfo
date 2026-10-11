@@ -1,0 +1,1303 @@
+{
+  "observedOn": "2026-10-11",
+  "card": "0032",
+  "schemaVersion": 1,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cases": [
+    {
+      "id": "bound-publication",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "win32-directory-relative",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish"
+      ],
+      "exitCode": 0,
+      "outputExists": false,
+      "outcome": "publication-refused-or-uncertain",
+      "errorCode": 87,
+      "diagnostic": null
+    },
+    {
+      "id": "strict-admission",
+      "barriers": [],
+      "exitCode": 0,
+      "outputExists": false,
+      "outcome": "refused-before-effects",
+      "errorCode": null,
+      "diagnostic": null
+    },
+    {
+      "id": "atomic-root-held-before-payload",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "candidate-creation-race",
+      "barriers": [
+        "root-created"
+      ],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "The file exists. (os error 80)"
+    },
+    {
+      "id": "existing-root-junction-refusal",
+      "barriers": [],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "Cannot create a file when that file already exists. (os error 183)"
+    },
+    {
+      "id": "parent-junction-refusal",
+      "barriers": [],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "REPARSE_OR_TYPE"
+    },
+    {
+      "id": "write-validated-before-publish",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "truncate-validated-before-publish",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "delete-validated-before-publish",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "rename-validated-before-publish",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "alias-validated-before-publish",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published"
+      ],
+      "exitCode": 5,
+      "outputExists": true,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "STAGE_PROPERTY_OR_CONTENT_CHANGED",
+      "completeMarkerVisible": true,
+      "newAliasCreateDeleteAllowedContentWriteExcluded": true
+    },
+    {
+      "id": "case-write-validated-before-publish",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "parent-rename-validated-before-publish",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "write-published",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "truncate-published",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "delete-published",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "rename-published",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "alias-published",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published"
+      ],
+      "exitCode": 5,
+      "outputExists": true,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "STAGE_PROPERTY_OR_CONTENT_CHANGED",
+      "completeMarkerVisible": true,
+      "newAliasCreateDeleteAllowedContentWriteExcluded": true
+    },
+    {
+      "id": "case-write-published",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "parent-rename-published",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "compatible-reader",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "directory-entry-writes-allowed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "timestamp-intent-record-flushed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed"
+      ],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "STAGE_PROPERTY_OR_CONTENT_CHANGED"
+    },
+    {
+      "id": "readonly-intent-record-flushed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed"
+      ],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "STAGE_PROPERTY_OR_CONTENT_CHANGED"
+    },
+    {
+      "id": "acl-intent-record-flushed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed"
+      ],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "PRIVATE_OWNER_OR_DACL_CHANGED"
+    },
+    {
+      "id": "stream-intent-record-flushed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed"
+      ],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "NONDEFAULT_STREAM"
+    },
+    {
+      "id": "timestamp-published",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published"
+      ],
+      "exitCode": 5,
+      "outputExists": true,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "STAGE_PROPERTY_OR_CONTENT_CHANGED",
+      "completeMarkerVisible": true
+    },
+    {
+      "id": "readonly-published",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published"
+      ],
+      "exitCode": 5,
+      "outputExists": true,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "STAGE_PROPERTY_OR_CONTENT_CHANGED",
+      "completeMarkerVisible": true
+    },
+    {
+      "id": "acl-published",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published"
+      ],
+      "exitCode": 5,
+      "outputExists": true,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "PRIVATE_OWNER_OR_DACL_CHANGED",
+      "completeMarkerVisible": true
+    },
+    {
+      "id": "stream-published",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published"
+      ],
+      "exitCode": 5,
+      "outputExists": true,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "NONDEFAULT_STREAM",
+      "completeMarkerVisible": true
+    },
+    {
+      "id": "late-substitution-excluded",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "record-write",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "record-delete",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "collision-existing",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "publication-refused-or-uncertain",
+      "errorCode": 183,
+      "diagnostic": null,
+      "completeMarkerVisible": false
+    },
+    {
+      "id": "collision-case-alias",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "publication-refused-or-uncertain",
+      "errorCode": 183,
+      "diagnostic": null,
+      "completeMarkerVisible": false
+    },
+    {
+      "id": "directory-collision",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "publication-refused-or-uncertain",
+      "errorCode": 183,
+      "diagnostic": null,
+      "completeMarkerVisible": false
+    },
+    {
+      "id": "fail-root-created",
+      "barriers": [
+        "root-created"
+      ],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "CONTROL_FAILURE"
+    },
+    {
+      "id": "kill-root-created",
+      "barriers": [
+        "root-created"
+      ],
+      "exitCode": 1,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": null
+    },
+    {
+      "id": "cancel-root-created",
+      "barriers": [
+        "root-created"
+      ],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "CONTROL_CANCEL"
+    },
+    {
+      "id": "fail-candidate-flushed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed"
+      ],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "CONTROL_FAILURE"
+    },
+    {
+      "id": "kill-candidate-flushed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed"
+      ],
+      "exitCode": 1,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": null
+    },
+    {
+      "id": "cancel-candidate-flushed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed"
+      ],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "CONTROL_CANCEL"
+    },
+    {
+      "id": "fail-prepared-record-flushed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed"
+      ],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "CONTROL_FAILURE"
+    },
+    {
+      "id": "kill-prepared-record-flushed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed"
+      ],
+      "exitCode": 1,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": null
+    },
+    {
+      "id": "cancel-prepared-record-flushed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed"
+      ],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "CONTROL_CANCEL"
+    },
+    {
+      "id": "fail-intent-record-flushed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed"
+      ],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "CONTROL_FAILURE"
+    },
+    {
+      "id": "kill-intent-record-flushed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed"
+      ],
+      "exitCode": 1,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": null
+    },
+    {
+      "id": "cancel-intent-record-flushed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed"
+      ],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "CONTROL_CANCEL"
+    },
+    {
+      "id": "fail-validated-before-publish",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish"
+      ],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "CONTROL_FAILURE"
+    },
+    {
+      "id": "kill-validated-before-publish",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish"
+      ],
+      "exitCode": 1,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": null
+    },
+    {
+      "id": "cancel-validated-before-publish",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish"
+      ],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "CONTROL_CANCEL"
+    },
+    {
+      "id": "fail-published",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published"
+      ],
+      "exitCode": 5,
+      "outputExists": true,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "CONTROL_FAILURE",
+      "completeMarkerVisible": true
+    },
+    {
+      "id": "kill-published",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published"
+      ],
+      "exitCode": 1,
+      "outputExists": true,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true
+    },
+    {
+      "id": "cancel-published",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published"
+      ],
+      "exitCode": 5,
+      "outputExists": true,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "CONTROL_CANCEL",
+      "completeMarkerVisible": true
+    },
+    {
+      "id": "fail-output-file-flushed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed"
+      ],
+      "exitCode": 5,
+      "outputExists": true,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "CONTROL_FAILURE",
+      "completeMarkerVisible": true
+    },
+    {
+      "id": "kill-output-file-flushed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed"
+      ],
+      "exitCode": 1,
+      "outputExists": true,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true
+    },
+    {
+      "id": "cancel-output-file-flushed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed"
+      ],
+      "exitCode": 5,
+      "outputExists": true,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "CONTROL_CANCEL",
+      "completeMarkerVisible": true
+    },
+    {
+      "id": "fail-directory-flush-attempted",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted"
+      ],
+      "exitCode": 5,
+      "outputExists": true,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "CONTROL_FAILURE",
+      "completeMarkerVisible": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "kill-directory-flush-attempted",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted"
+      ],
+      "exitCode": 1,
+      "outputExists": true,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "cancel-directory-flush-attempted",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted"
+      ],
+      "exitCode": 5,
+      "outputExists": true,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "CONTROL_CANCEL",
+      "completeMarkerVisible": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "fail-observation-record-flushed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 5,
+      "outputExists": true,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "CONTROL_FAILURE",
+      "completeMarkerVisible": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "kill-observation-record-flushed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 1,
+      "outputExists": true,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "cancel-observation-record-flushed",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 5,
+      "outputExists": true,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "CONTROL_CANCEL",
+      "completeMarkerVisible": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    },
+    {
+      "id": "existing-root-refusal",
+      "barriers": [],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "Cannot create a file when that file already exists. (os error 183)"
+    },
+    {
+      "id": "relative-path",
+      "barriers": [],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "PATH_UNVERIFIED"
+    },
+    {
+      "id": "unc-path",
+      "barriers": [],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "PATH_UNVERIFIED"
+    },
+    {
+      "id": "device-path",
+      "barriers": [],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "PATH_UNVERIFIED"
+    },
+    {
+      "id": "stream-root",
+      "barriers": [],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "PATH_UNVERIFIED"
+    },
+    {
+      "id": "traversal-path",
+      "barriers": [],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "PATH_UNVERIFIED"
+    },
+    {
+      "id": "control-character-root",
+      "barriers": [],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "PATH_UNVERIFIED"
+    },
+    {
+      "id": "reserved-device-root",
+      "barriers": [],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "PATH_UNVERIFIED"
+    },
+    {
+      "id": "unknown-mode",
+      "barriers": [],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "MODE_UNVERIFIED"
+    },
+    {
+      "id": "overlong-control",
+      "barriers": [
+        "root-created",
+        "candidate-flushed"
+      ],
+      "exitCode": 5,
+      "outputExists": false,
+      "outcome": "interrupted-or-refused",
+      "errorCode": null,
+      "diagnostic": "CONTROL_INVALID"
+    },
+    {
+      "id": "unicode-root",
+      "barriers": [
+        "root-created",
+        "candidate-flushed",
+        "prepared-record-flushed",
+        "intent-record-flushed",
+        "validated-before-publish",
+        "published",
+        "output-file-flushed",
+        "directory-flush-attempted",
+        "observation-record-flushed"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outcome": "recovery-required",
+      "errorCode": null,
+      "diagnostic": null,
+      "completeMarkerVisible": true,
+      "liveHeldCandidateAndParentStable": true,
+      "directoryFlushCallSucceeded": true,
+      "directoryFlushError": null
+    }
+  ],
+  "caseCount": 75,
+  "productionPublicationAllowed": false,
+  "enabledProfiles": 0,
+  "namespaceAcknowledged": false,
+  "OSCrashRuns": 0,
+  "powerLossRuns": 0,
+  "mediaInputs": 0,
+  "data": "authored 64 KiB marker; no source media or metadata edits",
+  "storage": "ordinary local NTFS, unchanged DOS mapping; privileges/providers excluded",
+  "sourceFiles": [
+    {
+      "path": "experiments\\0032-windows-publication\\src\\main.rs",
+      "size": 652,
+      "sha256": "7726ef705754c6bbfc3963dbcdafb02bd190fe50457e6b52d36f8417326708c7"
+    },
+    {
+      "path": "experiments\\0032-windows-publication\\src\\native.rs",
+      "size": 14354,
+      "sha256": "6e9ff1fc9fc833fdf4330ac7c7a2b07833744953f61e2cc694de63443592f7ab"
+    },
+    {
+      "path": "experiments\\0032-windows-publication\\src\\windows.rs",
+      "size": 10273,
+      "sha256": "d559722d4519f5b657fb0ced730f8ac200557f0c22bf2bf9ea31705f4e72b554"
+    },
+    {
+      "path": "experiments\\0032-windows-publication\\qualify.py",
+      "size": 18717,
+      "sha256": "f6e111c5c46a9d443ddf469f2310b91a9063578cf2d7155fd2c18258b2d8b0e9"
+    },
+    {
+      "path": "experiments\\0032-windows-publication\\Cargo.toml",
+      "size": 617,
+      "sha256": "c0bdaad72b93863ffec264749d21fcc4b0cad14d1174e9738422005f0fa29496"
+    },
+    {
+      "path": "experiments\\0032-windows-publication\\Cargo.lock",
+      "size": 6411,
+      "sha256": "740d1c6bfead60b3f0fd7bbedba711e363a3e0eb57d10fb35f0aaa33c89f0cf2"
+    },
+    {
+      "path": "experiments\\0032-windows-publication\\target\\release\\imageinfo-windows-publication-probe.exe",
+      "size": 317440,
+      "sha256": "b9cf6e6b5ec334cbb94663e02bd7a69304946e0b47daadc0aecc8c0c2ed97462"
+    }
+  ],
+  "retainedEvidence": {
+    "capturesChecked": 75,
+    "artifactsHashed": 501,
+    "nativePipeCapturesByteExact": false,
+    "mediaInputs": 0
+  }
+}
