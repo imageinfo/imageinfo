@@ -152,7 +152,7 @@ def run(binary, parent):
         return root, facts
 
     root, baseline = execute('bound-publication')
-    assert baseline['barriers'] == BARRIERS and baseline['completeMarkerVisible']
+    assert baseline['barriers'] == BARRIERS and baseline['completeMarkerVisible'], json.dumps(baseline)
     assert baseline['liveHeldCandidateAndParentStable']
     for name in ['prepared.record', 'intent.record', 'observation.record']:
         envelope = json.loads((root/name).read_text())

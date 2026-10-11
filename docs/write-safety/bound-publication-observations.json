@@ -1259,39 +1259,34 @@
   "storage": "ordinary local NTFS, unchanged DOS mapping; privileges/providers excluded",
   "sourceFiles": [
     {
-      "path": "experiments\\0032-windows-publication\\src\\main.rs",
+      "path": "experiments/0032-windows-publication/src/main.rs",
       "size": 652,
       "sha256": "7726ef705754c6bbfc3963dbcdafb02bd190fe50457e6b52d36f8417326708c7"
     },
     {
-      "path": "experiments\\0032-windows-publication\\src\\native.rs",
+      "path": "experiments/0032-windows-publication/src/native.rs",
       "size": 14354,
       "sha256": "6e9ff1fc9fc833fdf4330ac7c7a2b07833744953f61e2cc694de63443592f7ab"
     },
     {
-      "path": "experiments\\0032-windows-publication\\src\\windows.rs",
+      "path": "experiments/0032-windows-publication/src/windows.rs",
       "size": 10273,
       "sha256": "d559722d4519f5b657fb0ced730f8ac200557f0c22bf2bf9ea31705f4e72b554"
     },
     {
-      "path": "experiments\\0032-windows-publication\\qualify.py",
-      "size": 18717,
-      "sha256": "f6e111c5c46a9d443ddf469f2310b91a9063578cf2d7155fd2c18258b2d8b0e9"
+      "path": "experiments/0032-windows-publication/qualify.py",
+      "size": 18739,
+      "sha256": "c2ca4d4e06de04350888157d661971d2eec7505e6f28bc702a888dfc0e9d0dd5"
     },
     {
-      "path": "experiments\\0032-windows-publication\\Cargo.toml",
+      "path": "experiments/0032-windows-publication/Cargo.toml",
       "size": 617,
       "sha256": "c0bdaad72b93863ffec264749d21fcc4b0cad14d1174e9738422005f0fa29496"
     },
     {
-      "path": "experiments\\0032-windows-publication\\Cargo.lock",
+      "path": "experiments/0032-windows-publication/Cargo.lock",
       "size": 6411,
       "sha256": "740d1c6bfead60b3f0fd7bbedba711e363a3e0eb57d10fb35f0aaa33c89f0cf2"
-    },
-    {
-      "path": "experiments\\0032-windows-publication\\target\\release\\imageinfo-windows-publication-probe.exe",
-      "size": 317440,
-      "sha256": "b9cf6e6b5ec334cbb94663e02bd7a69304946e0b47daadc0aecc8c0c2ed97462"
     }
   ],
   "retainedEvidence": {
