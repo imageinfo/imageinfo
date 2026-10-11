@@ -1,0 +1,14 @@
+[package]
+name = "imageinfo-cr3-candidate-probe"
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.99"
+license = "MIT"
+publish = false
+
+[dependencies]
+imageinfo = { path = "../.." }
+serde_json = "1.0.152"
+
+[lints.rust]
+unsafe_code = "forbid"

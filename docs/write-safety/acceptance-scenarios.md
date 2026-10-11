@@ -5,6 +5,13 @@ future writer, lawful media and tested storage profiles. **None has run on RAW
 media or a filesystem backend.** The separate [JSON cases](scenarios.v1.json)
 exercise the abstract state/value rules only.
 
+The [#0021 candidate experiment](new-output-preservation.md), observed 2026-10-11,
+adds real private fixed-width preservation/RAW-unpack evidence and disposable
+storage boundary probes. It completes none of the full SAF scenarios below;
+publication, recovery, properties, signatures and broader operations remain separate
+gates. The statement above describes the original #0006 baseline, not absence of
+all subsequent experimentation.
+
 Every successful mutation below must satisfy WS-001 through WS-024 as applicable.
 Retain before/after identities, planned effects, preservation maps, diagnostics,
 recovery artifacts and independent evidence using the [fixture plan](../fixture-plan/README.md).

@@ -32,5 +32,19 @@ jobs:
         run: cargo test --locked
       - name: Build release executable
         run: cargo build --locked --release
+      - name: Check experimental candidate formatting
+        run: cargo fmt --manifest-path experiments/0021-cr3-candidate/Cargo.toml --check
+      - name: Check experimental candidate lints
+        run: cargo clippy --locked --manifest-path experiments/0021-cr3-candidate/Cargo.toml --all-targets -- -D warnings
+      - name: Test private-candidate experiment on authored bytes
+        run: cargo test --locked --manifest-path experiments/0021-cr3-candidate/Cargo.toml
+      - name: Build experimental candidate tools
+        run: cargo build --locked --release --manifest-path experiments/0021-cr3-candidate/Cargo.toml
+      - name: Probe disposable Windows storage primitives
+        if: runner.os == 'Windows'
+        run: python experiments/0021-cr3-candidate/storage_probe.py --parent experiments/0021-cr3-candidate/target --guard experiments/0021-cr3-candidate/target/release/source_guard.exe
+      - name: Probe disposable Unix storage primitives
+        if: runner.os != 'Windows'
+        run: python experiments/0021-cr3-candidate/storage_probe.py --parent experiments/0021-cr3-candidate/target
       - name: Check documentation and public JSON
         run: python scripts/check_docs.py

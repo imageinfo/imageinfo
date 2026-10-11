@@ -61,3 +61,22 @@ counts, extensions, completed design cards or prototype assertions. Keep require
 recommendations, accepted decisions, implementation and verified behavior distinct.
 Partial read support needs an explicit field/location list. A write claim requires
 stronger evidence than a successful read.
+
+## New-output-first increments
+
+On 2026-10-11 Terry selected new CR3 outputs first and authorized multiple cards.
+#0014 is now the open parent of seven sufficiently scoped children:
+
+- #0021: [private fixed-width candidate preservation](write-safety/new-output-preservation.md),
+  independent RAW unpack and bounded primitive/failure observations.
+- #0022: guarded new-name storage, private properties, persistence and recovery.
+- #0027: exact CR3 write admission, coupled/checksum constraints and known-authenticity
+  refusals before the first production new-output workflow.
+- #0023: production preview/apply integration after the exact operation/profile gates.
+- #0024: explicit RAW/XMP pairing, mappings and sidecar synchronization.
+- #0025: privacy catalogs, residual/uninspectable data and authenticity coverage.
+- #0026: existing-target replacement, grouped operations, originals and restore/prune.
+
+#0021 supplies experimental evidence, not an enabled writer. #0022/#0027/#0023 still gate
+new CR3 publication; #0024–0026 retain the parent acceptance scope. Scoped cards
+remain Ready for Work with explicit dependencies. #0012 remains intentionally held.

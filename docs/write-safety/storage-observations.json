@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-11",
+  "method": "Authored marker bytes with deterministic process barriers, not a metadata transaction backend",
+  "source": "../../experiments/0021-cr3-candidate/storage_probe.py",
+  "environments": [
+    {
+      "environment": "Windows 11 build 26200 x64 / local fixed NTFS",
+      "profileVerified": false,
+      "staleReplaceLostExternalEdit": true,
+      "conditionalCollisionRefused": true,
+      "racingDestinationRetained": true,
+      "freshLinkComplete": true,
+      "directoryFlush": "not-attempted: Windows Python does not supply directory flush protocol",
+      "processKillCases": [
+        {
+          "boundary": "staged",
+          "termination": 1,
+          "stagePresent": true,
+          "outputPresent": false,
+          "outputComplete": false,
+          "receiptPresent": false,
+          "automaticRepair": false,
+          "OSCrashTest": false,
+          "powerLossTest": false
+        },
+        {
+          "boundary": "before-link",
+          "termination": 1,
+          "stagePresent": true,
+          "outputPresent": false,
+          "outputComplete": false,
+          "receiptPresent": false,
+          "automaticRepair": false,
+          "OSCrashTest": false,
+          "powerLossTest": false
+        },
+        {
+          "boundary": "after-link",
+          "termination": 1,
+          "stagePresent": true,
+          "outputPresent": true,
+          "outputComplete": true,
+          "receiptPresent": false,
+          "automaticRepair": false,
+          "OSCrashTest": false,
+          "powerLossTest": false
+        },
+        {
+          "boundary": "receipt",
+          "termination": 1,
+          "stagePresent": true,
+          "outputPresent": true,
+          "outputComplete": true,
+          "receiptPresent": true,
+          "automaticRepair": false,
+          "OSCrashTest": false,
+          "powerLossTest": false
+        }
+      ],
+      "sourceGuard": {
+        "unrelatedSourceWriteRefused": true,
+        "unrelatedAliasWriteRefused": true,
+        "sourceRenameRefused": true,
+        "timestampChangeAllowed": true,
+        "contentUnchanged": true
+      }
+    },
+    {
+      "environment": "Ubuntu 26.04 WSL2 kernel 6.18.33.2 / native ext4 data=ordered",
+      "profileVerified": false,
+      "staleReplaceLostExternalEdit": true,
+      "conditionalCollisionRefused": true,
+      "racingDestinationRetained": true,
+      "freshLinkComplete": true,
+      "directoryFlush": "call-succeeded; no OS-crash/power-loss experiment",
+      "processKillCases": [
+        {
+          "boundary": "staged",
+          "termination": -9,
+          "stagePresent": true,
+          "outputPresent": false,
+          "outputComplete": false,
+          "receiptPresent": false,
+          "automaticRepair": false,
+          "OSCrashTest": false,
+          "powerLossTest": false
+        },
+        {
+          "boundary": "before-link",
+          "termination": -9,
+          "stagePresent": true,
+          "outputPresent": false,
+          "outputComplete": false,
+          "receiptPresent": false,
+          "automaticRepair": false,
+          "OSCrashTest": false,
+          "powerLossTest": false
+        },
+        {
+          "boundary": "after-link",
+          "termination": -9,
+          "stagePresent": true,
+          "outputPresent": true,
+          "outputComplete": true,
+          "receiptPresent": false,
+          "automaticRepair": false,
+          "OSCrashTest": false,
+          "powerLossTest": false
+        },
+        {
+          "boundary": "receipt",
+          "termination": -9,
+          "stagePresent": true,
+          "outputPresent": true,
+          "outputComplete": true,
+          "receiptPresent": true,
+          "automaticRepair": false,
+          "OSCrashTest": false,
+          "powerLossTest": false
+        }
+      ],
+      "advisoryLockExcludedUnrelatedWriter": false
+    },
+    {
+      "environment": "Same WSL2 / Windows v9fs mount",
+      "profileVerified": false,
+      "staleReplaceLostExternalEdit": true,
+      "conditionalCollisionRefused": true,
+      "racingDestinationRetained": true,
+      "freshLinkComplete": true,
+      "directoryFlush": "call-succeeded; no OS-crash/power-loss experiment",
+      "processKillCases": [
+        {
+          "boundary": "staged",
+          "termination": -9,
+          "stagePresent": true,
+          "outputPresent": false,
+          "outputComplete": false,
+          "receiptPresent": false,
+          "automaticRepair": false,
+          "OSCrashTest": false,
+          "powerLossTest": false
+        },
+        {
+          "boundary": "before-link",
+          "termination": -9,
+          "stagePresent": true,
+          "outputPresent": false,
+          "outputComplete": false,
+          "receiptPresent": false,
+          "automaticRepair": false,
+          "OSCrashTest": false,
+          "powerLossTest": false
+        },
+        {
+          "boundary": "after-link",
+          "termination": -9,
+          "stagePresent": true,
+          "outputPresent": true,
+          "outputComplete": true,
+          "receiptPresent": false,
+          "automaticRepair": false,
+          "OSCrashTest": false,
+          "powerLossTest": false
+        },
+        {
+          "boundary": "receipt",
+          "termination": -9,
+          "stagePresent": true,
+          "outputPresent": true,
+          "outputComplete": true,
+          "receiptPresent": true,
+          "automaticRepair": false,
+          "OSCrashTest": false,
+          "powerLossTest": false
+        }
+      ],
+      "advisoryLockExcludedUnrelatedWriter": false
+    }
+  ],
+  "enabledProfiles": 0,
+  "OSCrashTested": false,
+  "powerLossTested": false,
+  "automaticRepair": false
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-11",
+  "card": "0021",
+  "scope": "Experimental existing 20-byte CMT2 DateTimeOriginal candidate only, no final publication",
+  "candidateFiles": 8,
+  "nativeInvocations": 24,
+  "referenceReads": 16,
+  "independentCalls": 32,
+  "complementBytesCompared": 415430672,
+  "independentDecodedPairsEqual": 8,
+  "existingCandidatesRefused": 8,
+  "satisfiedEditsCreatedNothing": 8,
+  "sourceHashesAndMtimesUnchanged": true,
+  "evidence": {
+    "candidateExperiments": 8,
+    "independentRuns": 32,
+    "sourceAdmissions": 8,
+    "candidateAdmissions": 8,
+    "decodedAdmissions": 16,
+    "provenanceReviews": 33,
+    "artifactsVerified": 190,
+    "schemaPassed": true,
+    "writerEnabled": false
+  },
+  "publicTests": 7,
+  "seededPatchCorruptionCases": 512,
+  "storageEnvironments": 3,
+  "processKillBoundaries": 12,
+  "OSCrashRuns": 0,
+  "powerLossRuns": 0,
+  "enabledMutationProfiles": 0,
+  "productionWriterEnabled": false,
+  "coverage": [
+    "Initial eight-file R5 full RAW stratum only",
+    "Big-endian storage is synthetic coverage only",
+    "No arbitrary date, insertion, deletion, relocation, XMP, privacy, signatures or recovery support"
+  ],
+  "entryPoint": "new-output-preservation.md"
+}

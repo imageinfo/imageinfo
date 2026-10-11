@@ -6,6 +6,10 @@ foundation is documented in `docs/foundation`; the bounded native R5 read/previe
 slice and its verified limits are in `docs/reader`. Requirements contracts remain language
 independent. Research code under `experiments/` is not production imageinfo and
 must not be promoted without ordinary implementation review and evidence gates.
+Terry selected new CR3 outputs first and authorized splitting #0014 on 2026-10-11.
+#0021–0027 retain the parent's full safety scope. The fixed-width candidate under
+`experiments/0021-cr3-candidate` is research; no production writer or mutation
+storage profile is enabled. See `docs/write-safety/new-output-preservation.md`.
 
 ## Product intent
 

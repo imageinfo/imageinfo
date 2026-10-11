@@ -69,3 +69,9 @@ Windows/local volume, macOS/local volume, Linux/local filesystem, removable stor
 network filesystems and cloud-synchronized directories are all **unverified** for
 imageinfo mutation. Existing OS documentation helps define experiments; it cannot
 replace the experiments. Read-only discovery can advance independently.
+
+The [2026-10-11 primitive observations](new-output-preservation.md) now exercise
+local Windows NTFS, WSL-native ext4 and WSL's mounted Windows `v9fs` separately.
+They show controlled stale-overwrite failures, conditional-name collision refusal,
+partial guard behavior and twelve exact process-kill boundaries. These are research
+observations; no complete profile, OS-crash or power-loss guarantee is verified.

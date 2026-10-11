@@ -18,6 +18,14 @@ class hierarchy, event-sourcing system, database, or filesystem wrapper framewor
 Use ordinary, idiomatic primitives in the eventual language and explain deliberate
 departures near the code.
 
+**2026-10-11 evidence update:** Terry selected new CR3 outputs first and authorized
+splitting #0014. [#0021's private candidate proof](new-output-preservation.md) covers
+one fixed-width field, full complement comparison and independent RAW unpack.
+Publication/recovery, admission/authenticity, CLI integration, XMP, privacy and
+replacement remain #0022–0027.
+No production writer or mutation storage profile is enabled; this contract's
+requirements and GAP-004/GAP-009 remain in force.
+
 ## Plan before effects
 
 **WS-001 — Explicit application.** Preview does not change media, metadata targets,
