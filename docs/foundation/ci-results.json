@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "kind": "foundation-ci-evidence",
+  "observedOn": "2026-10-10",
+  "commit": "c94163819bda24dee23f7e518a3dba3f4e9b6ae5",
+  "workflowUrl": "https://github.com/imageinfo/imageinfo/actions/runs/38096862606",
+  "status": "completed",
+  "conclusion": "success",
+  "scope": "Foundation CLI/wire behavior, lints, builds and public documentation only; no RAW capability or packaged release claim.",
+  "jobs": [
+    {
+      "runner": "windows-2025",
+      "jobId": 114344440438,
+      "url": "https://github.com/imageinfo/imageinfo/actions/runs/38096862606/job/114344440438",
+      "conclusion": "success",
+      "successfulChecks": [
+        "Check formatting",
+        "Check lints",
+        "Test library and executable contracts",
+        "Build release executable",
+        "Check documentation and public JSON"
+      ]
+    },
+    {
+      "runner": "ubuntu-24.04",
+      "jobId": 114344440600,
+      "url": "https://github.com/imageinfo/imageinfo/actions/runs/38096862606/job/114344440600",
+      "conclusion": "success",
+      "successfulChecks": [
+        "Check formatting",
+        "Check lints",
+        "Test library and executable contracts",
+        "Build release executable",
+        "Check documentation and public JSON"
+      ]
+    },
+    {
+      "runner": "macos-15",
+      "jobId": 114344440619,
+      "url": "https://github.com/imageinfo/imageinfo/actions/runs/38096862606/job/114344440619",
+      "conclusion": "success",
+      "successfulChecks": [
+        "Check formatting",
+        "Check lints",
+        "Test library and executable contracts",
+        "Build release executable",
+        "Check documentation and public JSON"
+      ]
+    }
+  ]
+}

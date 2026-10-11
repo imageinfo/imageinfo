@@ -41,9 +41,14 @@ locally and never fetches schemas or opens a personal fixture.
 
 ## CI evidence
 
-Windows x64, Linux x64 and macOS arm64 jobs are defined in the pinned workflow.
-Actual run results are recorded at handoff; defining a job alone is not a pass.
-The final board handoff links the published commit and its CI run.
+[Workflow run 38096862606](https://github.com/imageinfo/imageinfo/actions/runs/38096862606) passed all three jobs on code commit
+`c94163819bda24dee23f7e518a3dba3f4e9b6ae5`. Formatting, clippy, tests, release builds and
+public docs/JSON checks succeeded on Windows x64, Ubuntu x64 and macOS arm64.
+Windows executes 16 tests; Unix jobs execute 17, including native non-Unicode path
+bytes. The macOS toolchain log confirms `aarch64-apple-darwin`.
+See [recorded run/job evidence](ci-results.json). These are foundation environments,
+not a future RAW-reader compatibility or OS-baseline certification. The final board
+handoff links the final published commit and its corresponding CI run.
 
 ## Remaining boundaries
 
