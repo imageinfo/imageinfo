@@ -27,6 +27,12 @@ creation and live identity/property checks. Its isolated SDK boundary is reviewe
 root production unsafe policy remains unchanged. Property/link mutation and actual
 namespace/recovery qualification are separate missing cells, so strict admission
 refuses before effects. See `docs/write-safety/bound-windows-publication.md`.
+#0031 qualifies a separate disposable Linux marker guest's interruption/restart and
+adversarial/error observations. Finalize/prune/admit refuse before mutation without
+complete property/path exclusion, authenticated custody and qualified receipts.
+Linux results do not qualify #0032's Windows sequence; Windows OS crash and physical
+power loss remain unverified. See `docs/write-safety/guest-durability.md`; no profile,
+production mutation, rollback/replay or cleanup authority is enabled.
 
 ## Product intent
 

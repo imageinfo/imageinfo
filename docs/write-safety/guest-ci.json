@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "status": "pending",
+  "scope": "Portable source/build/refusal qualification only; QEMU guest crashes are verified local evidence, not CI runs.",
+  "enabledProfiles": 0
+}

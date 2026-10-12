@@ -53,6 +53,15 @@ sequence, but property/link mutation and persistence/recovery remain missing com
 profile cells. Strict admission refuses before effects; #0031 and the parent gates
 remain open. The small native SDK boundary has a scoped source/API/ownership review.
 
+[#0031 disposable guest evidence](guest-durability.md) now measures the separate
+Linux anonymous-candidate sequence under process kill, cooperative cancellation,
+independent guest OS panic and abrupt emulator exit, with restart inspection and
+adversarial/disk/flush-failure cases. Complete-profile admission, finalization and
+prune refuse without authenticated custody and whole-property/path exclusion.
+Windows crash/namespace persistence and physical power loss remain unverified;
+Linux observations do not qualify #0032's actual Windows sequence. #0022/#0014 and
+all RAW admission/integration gates stay open; no writer/profile is enabled.
+
 ## Plan before effects
 
 **WS-001 — Explicit application.** Preview does not change media, metadata targets,

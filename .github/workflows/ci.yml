@@ -26,6 +26,20 @@ jobs:
         run: rustup toolchain install 1.99.0 --profile minimal --component clippy,rustfmt
       - name: Check bound Windows publication formatting
         run: cargo fmt --manifest-path experiments/0032-windows-publication/Cargo.toml --check
+      - name: Check guest research formatting and lints
+        run: |
+          cargo fmt --manifest-path experiments/0031-guest-durability/Cargo.toml --check
+          cargo clippy --locked --manifest-path experiments/0031-guest-durability/Cargo.toml --all-targets -- -D warnings
+      - name: Test and build guest research
+        run: |
+          cargo test --locked --manifest-path experiments/0031-guest-durability/Cargo.toml
+          cargo build --locked --release --manifest-path experiments/0031-guest-durability/Cargo.toml
+      - name: Verify guest profile and repair refusals on Windows
+        if: runner.os == 'Windows'
+        run: python experiments/0031-guest-durability/qualify.py --binary experiments/0031-guest-durability/target/release/imageinfo-guest-storage-probe.exe --parent experiments/0031-guest-durability/target
+      - name: Verify guest research admission refuses on Unix
+        if: runner.os != 'Windows'
+        run: python experiments/0031-guest-durability/qualify.py --binary experiments/0031-guest-durability/target/release/imageinfo-guest-storage-probe --parent experiments/0031-guest-durability/target
       - name: Check bound Windows publication lints
         run: cargo clippy --locked --manifest-path experiments/0032-windows-publication/Cargo.toml --all-targets -- -D warnings
       - name: Test and build bound publication experiment

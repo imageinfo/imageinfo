@@ -1,0 +1,668 @@
+{
+  "cases": [
+    {
+      "id": "normal-observation-namespace-flushed",
+      "interruption": "normal",
+      "phase": "observation-namespace-flushed",
+      "classification": "candidate-object-observed",
+      "observationPresent": true,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "worker-kill-staged",
+      "interruption": "worker-kill",
+      "phase": "staged",
+      "classification": "invalid-or-uninspectable-evidence",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "worker-kill-prepared",
+      "interruption": "worker-kill",
+      "phase": "prepared",
+      "classification": "expected-absence-observed",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "worker-kill-intent",
+      "interruption": "worker-kill",
+      "phase": "intent",
+      "classification": "expected-absence-observed",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "worker-kill-validated-before-link",
+      "interruption": "worker-kill",
+      "phase": "validated-before-link",
+      "classification": "expected-absence-observed",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "worker-kill-linked",
+      "interruption": "worker-kill",
+      "phase": "linked",
+      "classification": "expected-absence-observed",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "worker-kill-output-flushed",
+      "interruption": "worker-kill",
+      "phase": "output-flushed",
+      "classification": "candidate-object-observed",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "worker-kill-namespace-flushed",
+      "interruption": "worker-kill",
+      "phase": "namespace-flushed",
+      "classification": "candidate-object-observed",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "worker-kill-observation-file-flushed",
+      "interruption": "worker-kill",
+      "phase": "observation-file-flushed",
+      "classification": "candidate-object-observed",
+      "observationPresent": true,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "worker-kill-observation-namespace-flushed",
+      "interruption": "worker-kill",
+      "phase": "observation-namespace-flushed",
+      "classification": "candidate-object-observed",
+      "observationPresent": true,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "guest-kernel-panic-staged",
+      "interruption": "guest-kernel-panic",
+      "phase": "staged",
+      "classification": "invalid-or-uninspectable-evidence",
+      "observationPresent": false,
+      "guestPanicObserved": true,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "guest-kernel-panic-prepared",
+      "interruption": "guest-kernel-panic",
+      "phase": "prepared",
+      "classification": "expected-absence-observed",
+      "observationPresent": false,
+      "guestPanicObserved": true,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "guest-kernel-panic-intent",
+      "interruption": "guest-kernel-panic",
+      "phase": "intent",
+      "classification": "expected-absence-observed",
+      "observationPresent": false,
+      "guestPanicObserved": true,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "guest-kernel-panic-validated-before-link",
+      "interruption": "guest-kernel-panic",
+      "phase": "validated-before-link",
+      "classification": "expected-absence-observed",
+      "observationPresent": false,
+      "guestPanicObserved": true,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "guest-kernel-panic-linked",
+      "interruption": "guest-kernel-panic",
+      "phase": "linked",
+      "classification": "expected-absence-observed",
+      "observationPresent": false,
+      "guestPanicObserved": true,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "guest-kernel-panic-output-flushed",
+      "interruption": "guest-kernel-panic",
+      "phase": "output-flushed",
+      "classification": "candidate-object-observed",
+      "observationPresent": false,
+      "guestPanicObserved": true,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "guest-kernel-panic-namespace-flushed",
+      "interruption": "guest-kernel-panic",
+      "phase": "namespace-flushed",
+      "classification": "candidate-object-observed",
+      "observationPresent": false,
+      "guestPanicObserved": true,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "guest-kernel-panic-observation-file-flushed",
+      "interruption": "guest-kernel-panic",
+      "phase": "observation-file-flushed",
+      "classification": "candidate-object-observed",
+      "observationPresent": true,
+      "guestPanicObserved": true,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "guest-kernel-panic-observation-namespace-flushed",
+      "interruption": "guest-kernel-panic",
+      "phase": "observation-namespace-flushed",
+      "classification": "candidate-object-observed",
+      "observationPresent": true,
+      "guestPanicObserved": true,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "guest-abrupt-power-cut-staged",
+      "interruption": "guest-abrupt-power-cut",
+      "phase": "staged",
+      "classification": "invalid-or-uninspectable-evidence",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "guest-abrupt-power-cut-prepared",
+      "interruption": "guest-abrupt-power-cut",
+      "phase": "prepared",
+      "classification": "expected-absence-observed",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "guest-abrupt-power-cut-intent",
+      "interruption": "guest-abrupt-power-cut",
+      "phase": "intent",
+      "classification": "expected-absence-observed",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "guest-abrupt-power-cut-validated-before-link",
+      "interruption": "guest-abrupt-power-cut",
+      "phase": "validated-before-link",
+      "classification": "expected-absence-observed",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "guest-abrupt-power-cut-linked",
+      "interruption": "guest-abrupt-power-cut",
+      "phase": "linked",
+      "classification": "expected-absence-observed",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "guest-abrupt-power-cut-output-flushed",
+      "interruption": "guest-abrupt-power-cut",
+      "phase": "output-flushed",
+      "classification": "candidate-object-observed",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "guest-abrupt-power-cut-namespace-flushed",
+      "interruption": "guest-abrupt-power-cut",
+      "phase": "namespace-flushed",
+      "classification": "candidate-object-observed",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "guest-abrupt-power-cut-observation-file-flushed",
+      "interruption": "guest-abrupt-power-cut",
+      "phase": "observation-file-flushed",
+      "classification": "candidate-object-observed",
+      "observationPresent": true,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "guest-abrupt-power-cut-observation-namespace-flushed",
+      "interruption": "guest-abrupt-power-cut",
+      "phase": "observation-namespace-flushed",
+      "classification": "candidate-object-observed",
+      "observationPresent": true,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "cooperative-cancel-staged",
+      "interruption": "cooperative-cancel",
+      "phase": "staged",
+      "classification": "invalid-or-uninspectable-evidence",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "cooperative-cancel-prepared",
+      "interruption": "cooperative-cancel",
+      "phase": "prepared",
+      "classification": "expected-absence-observed",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "cooperative-cancel-intent",
+      "interruption": "cooperative-cancel",
+      "phase": "intent",
+      "classification": "expected-absence-observed",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "cooperative-cancel-validated-before-link",
+      "interruption": "cooperative-cancel",
+      "phase": "validated-before-link",
+      "classification": "expected-absence-observed",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "cooperative-cancel-linked",
+      "interruption": "cooperative-cancel",
+      "phase": "linked",
+      "classification": "expected-absence-observed",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "cooperative-cancel-output-flushed",
+      "interruption": "cooperative-cancel",
+      "phase": "output-flushed",
+      "classification": "candidate-object-observed",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "cooperative-cancel-namespace-flushed",
+      "interruption": "cooperative-cancel",
+      "phase": "namespace-flushed",
+      "classification": "candidate-object-observed",
+      "observationPresent": false,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "cooperative-cancel-observation-file-flushed",
+      "interruption": "cooperative-cancel",
+      "phase": "observation-file-flushed",
+      "classification": "candidate-object-observed",
+      "observationPresent": true,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "cooperative-cancel-observation-namespace-flushed",
+      "interruption": "cooperative-cancel",
+      "phase": "observation-namespace-flushed",
+      "classification": "candidate-object-observed",
+      "observationPresent": true,
+      "guestPanicObserved": false,
+      "committed": false,
+      "authorizedActions": [],
+      "physicalPowerLossTested": false
+    },
+    {
+      "id": "missing-intent",
+      "classification": "candidate-object-observed",
+      "repairAndPruneRefused": true,
+      "artifactInventoryUnchanged": true,
+      "committed": false
+    },
+    {
+      "id": "missing-records",
+      "classification": "invalid-or-uninspectable-evidence",
+      "repairAndPruneRefused": true,
+      "artifactInventoryUnchanged": true,
+      "committed": false
+    },
+    {
+      "id": "corrupt-intent",
+      "classification": "invalid-or-uninspectable-evidence",
+      "repairAndPruneRefused": true,
+      "artifactInventoryUnchanged": true,
+      "committed": false
+    },
+    {
+      "id": "oversized-intent",
+      "classification": "invalid-or-uninspectable-evidence",
+      "repairAndPruneRefused": true,
+      "artifactInventoryUnchanged": true,
+      "committed": false
+    },
+    {
+      "id": "inaccessible-intent",
+      "classification": "invalid-or-uninspectable-evidence",
+      "repairAndPruneRefused": true,
+      "artifactInventoryUnchanged": true,
+      "committed": false
+    },
+    {
+      "id": "symlink-intent",
+      "classification": "invalid-or-uninspectable-evidence",
+      "repairAndPruneRefused": true,
+      "artifactInventoryUnchanged": true,
+      "committed": false
+    },
+    {
+      "id": "fifo-intent",
+      "classification": "invalid-or-uninspectable-evidence",
+      "repairAndPruneRefused": true,
+      "artifactInventoryUnchanged": true,
+      "committed": false
+    },
+    {
+      "id": "corrupt-observation",
+      "classification": "invalid-or-uninspectable-evidence",
+      "repairAndPruneRefused": true,
+      "artifactInventoryUnchanged": true,
+      "committed": false
+    },
+    {
+      "id": "missing-recovery",
+      "classification": "invalid-or-uninspectable-evidence",
+      "repairAndPruneRefused": true,
+      "artifactInventoryUnchanged": true,
+      "committed": false
+    },
+    {
+      "id": "corrupt-recovery",
+      "classification": "invalid-or-uninspectable-evidence",
+      "repairAndPruneRefused": true,
+      "artifactInventoryUnchanged": true,
+      "committed": false
+    },
+    {
+      "id": "inaccessible-root",
+      "classification": "invalid-or-uninspectable-evidence",
+      "repairAndPruneRefused": true,
+      "artifactInventoryUnchanged": true,
+      "committed": false
+    },
+    {
+      "id": "missing-output",
+      "classification": "expected-absence-observed",
+      "repairAndPruneRefused": true,
+      "artifactInventoryUnchanged": true,
+      "committed": false
+    },
+    {
+      "id": "foreign-output",
+      "classification": "foreign-or-uninspectable-target",
+      "repairAndPruneRefused": true,
+      "artifactInventoryUnchanged": true,
+      "committed": false
+    },
+    {
+      "id": "corrupt-output",
+      "classification": "foreign-or-uninspectable-target",
+      "repairAndPruneRefused": true,
+      "artifactInventoryUnchanged": true,
+      "committed": false
+    },
+    {
+      "id": "inaccessible-output",
+      "classification": "foreign-or-uninspectable-target",
+      "repairAndPruneRefused": true,
+      "artifactInventoryUnchanged": true,
+      "committed": false
+    },
+    {
+      "id": "symlink-output",
+      "classification": "foreign-or-uninspectable-target",
+      "repairAndPruneRefused": true,
+      "artifactInventoryUnchanged": true,
+      "committed": false
+    },
+    {
+      "id": "fifo-output",
+      "classification": "foreign-or-uninspectable-target",
+      "repairAndPruneRefused": true,
+      "artifactInventoryUnchanged": true,
+      "committed": false
+    },
+    {
+      "id": "directory-output",
+      "classification": "foreign-or-uninspectable-target",
+      "repairAndPruneRefused": true,
+      "artifactInventoryUnchanged": true,
+      "committed": false
+    },
+    {
+      "id": "extra-alias",
+      "classification": "invalid-or-uninspectable-evidence",
+      "repairAndPruneRefused": true,
+      "artifactInventoryUnchanged": true,
+      "committed": false
+    },
+    {
+      "id": "fault-recovery.bin",
+      "faultKind": "protocol-injected-flush-refusal",
+      "issue": "INJECTED_FLUSH_FAILURE:recovery.bin",
+      "classification": "invalid-or-uninspectable-evidence",
+      "committed": false,
+      "authorizedActions": []
+    },
+    {
+      "id": "fault-candidate",
+      "faultKind": "protocol-injected-flush-refusal",
+      "issue": "INJECTED_FLUSH_FAILURE:candidate",
+      "classification": "invalid-or-uninspectable-evidence",
+      "committed": false,
+      "authorizedActions": []
+    },
+    {
+      "id": "fault-staged-namespace",
+      "faultKind": "protocol-injected-flush-refusal",
+      "issue": "INJECTED_FLUSH_FAILURE:staged-namespace",
+      "classification": "invalid-or-uninspectable-evidence",
+      "committed": false,
+      "authorizedActions": []
+    },
+    {
+      "id": "fault-prepared.record",
+      "faultKind": "protocol-injected-flush-refusal",
+      "issue": "INJECTED_FLUSH_FAILURE:prepared.record",
+      "classification": "invalid-or-uninspectable-evidence",
+      "committed": false,
+      "authorizedActions": []
+    },
+    {
+      "id": "fault-prepared-namespace",
+      "faultKind": "protocol-injected-flush-refusal",
+      "issue": "INJECTED_FLUSH_FAILURE:prepared-namespace",
+      "classification": "expected-absence-observed",
+      "committed": false,
+      "authorizedActions": []
+    },
+    {
+      "id": "fault-intent.record",
+      "faultKind": "protocol-injected-flush-refusal",
+      "issue": "INJECTED_FLUSH_FAILURE:intent.record",
+      "classification": "expected-absence-observed",
+      "committed": false,
+      "authorizedActions": []
+    },
+    {
+      "id": "fault-intent-namespace",
+      "faultKind": "protocol-injected-flush-refusal",
+      "issue": "INJECTED_FLUSH_FAILURE:intent-namespace",
+      "classification": "expected-absence-observed",
+      "committed": false,
+      "authorizedActions": []
+    },
+    {
+      "id": "fault-output",
+      "faultKind": "protocol-injected-flush-refusal",
+      "issue": "INJECTED_FLUSH_FAILURE:output",
+      "classification": "expected-absence-observed",
+      "committed": false,
+      "authorizedActions": []
+    },
+    {
+      "id": "fault-output-namespace",
+      "faultKind": "protocol-injected-flush-refusal",
+      "issue": "INJECTED_FLUSH_FAILURE:output-namespace",
+      "classification": "candidate-object-observed",
+      "committed": false,
+      "authorizedActions": []
+    },
+    {
+      "id": "fault-observation.record",
+      "faultKind": "protocol-injected-flush-refusal",
+      "issue": "INJECTED_FLUSH_FAILURE:observation.record",
+      "classification": "candidate-object-observed",
+      "committed": false,
+      "authorizedActions": []
+    },
+    {
+      "id": "fault-observation-namespace",
+      "faultKind": "protocol-injected-flush-refusal",
+      "issue": "INJECTED_FLUSH_FAILURE:observation-namespace",
+      "classification": "candidate-object-observed",
+      "committed": false,
+      "authorizedActions": []
+    },
+    {
+      "id": "fault-full-disk",
+      "faultKind": "actual-ENOSPC",
+      "issue": "No space left on device (os error 28)",
+      "classification": "invalid-or-uninspectable-evidence",
+      "committed": false,
+      "authorizedActions": []
+    },
+    {
+      "id": "fault-device-flush-eio",
+      "faultKind": "emulated-device-flush-error",
+      "issue": "I/O error (os error 5)",
+      "classification": "invalid-or-uninspectable-evidence",
+      "committed": false,
+      "authorizedActions": []
+    }
+  ],
+  "caseCount": 69,
+  "kernel": "6.18.52-0-virt",
+  "qemu": "10.2.1",
+  "machine": "q35/TCG",
+  "memoryMiB": 256,
+  "dataDiskMiB": 64,
+  "filesystem": "ext4",
+  "mount": "data=ordered,errors=remount-ro",
+  "qemuCache": "writeback",
+  "hostCacheSurvivesAbruptEmulatorExit": true,
+  "physicalPowerLossRuns": 0,
+  "productionPublicationAllowed": false,
+  "enabledProfiles": 0,
+  "schemaVersion": 1,
+  "observedOn": "2026-10-12",
+  "captureCount": 119,
+  "captureAuditPassed": true,
+  "repairOrPruneExecuted": false,
+  "windowsGuestCrashRuns": 0,
+  "originalMediaInputs": 0
+}
