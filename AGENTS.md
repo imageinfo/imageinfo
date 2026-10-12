@@ -88,7 +88,10 @@ refuses before effects. See `docs/write-safety/bound-windows-publication.md`.
 
 ## Local board
 
-The machine-local board is `boards/imageinfo.json` (ignored). Read and mutate it
+The active board is `C:\Projects\localswim-state-store\imageinfo\imageinfo.json`,
+in Terry's private state store (migration approved 2026-10-12). The ignored
+`boards/imageinfo.json` is a retired migration backup; do not launch or mutate it.
+Read and mutate the active board
 through `localswim-cli`; use the live service for card mutations. Follow the embedded
 Terry workflow. Bot moves completed work to `ready_for_review`; Terry alone accepts
 it into `completed`. Do not launch a duplicate service. Terry explicitly authorized

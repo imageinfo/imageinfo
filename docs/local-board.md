@@ -16,8 +16,11 @@ Ready for review is the verified/published handoff; Terry alone accepts Complete
 See [AGENTS.md](../AGENTS.md) for the standing triage guidance. #0012 is intentionally
 held by Terry and remains Backlog.
 
-The board is stored at `boards/imageinfo.json` in the local checkout and is ignored
-by Git. Its initial port is **8795**, giving the local URL
+The active board is stored at
+`C:\Projects\localswim-state-store\imageinfo\imageinfo.json` in Terry's private
+state-store repository, approved on 2026-10-12. The old ignored
+`boards/imageinfo.json` is a migration backup; do not launch or mutate it.
+Its initial port is **8795**, giving the local URL
 `http://127.0.0.1:8795/`. This address works only on the machine running the service;
 it is not a hosted public board. Board data and service credentials must stay out of
 the public repository.
@@ -29,19 +32,18 @@ service. Reuse a healthy service for that board. With localswim installed, the
 commands are:
 
 ```console
-localswim --autopush boards/imageinfo.json
-localswim-cli boards/imageinfo.json board show
-localswim-cli boards/imageinfo.json board verify
-localswim-cli boards/imageinfo.json card next 5 --lane ready_for_work
-localswim-cli boards/imageinfo.json board shutdown
+localswim --autopush C:\Projects\localswim-state-store\imageinfo\imageinfo.json
+localswim-cli C:\Projects\localswim-state-store\imageinfo\imageinfo.json board show
+localswim-cli C:\Projects\localswim-state-store\imageinfo\imageinfo.json board verify
+localswim-cli C:\Projects\localswim-state-store\imageinfo\imageinfo.json card next 5 --lane ready_for_work
+localswim-cli C:\Projects\localswim-state-store\imageinfo\imageinfo.json board shutdown
 ```
 
 Terry authorized board autopush on 2026-10-12. Every imageinfo service launch,
 including restarts, must include `--autopush`. Verify the status endpoint's `push`
-state and detail rather than assuming synchronization. The current ignored board
-cannot synchronize: localswim reports `off` with `the board is ignored by git`.
-Enabling synchronization requires an approved private board-storage destination;
-do not remove the ignore rule or publish the board to this public repository.
+state and detail rather than assuming synchronization. Confirm the initial snapshot
+is committed and pushed to the private state store, and investigate `failed` or `off`
+states. Keep board snapshots out of this public repository.
 Restart the service after a machine restart when needed. Whenever it runs, the
 JSON board-write monitor **MUST also be running**,
 targeted at the active Codex thread (Terry's instruction, 2026-10-10). Verify both
@@ -67,7 +69,7 @@ $env:PYTHONIOENCODING = 'utf-8'
 $imageinfoPort = 8795 # Verify against this board's current configuration.
 $imageinfoMonitorArgs = @(
     'run', '--frozen', 'python', 'scripts/watch_localswim.py',
-    '--board-path', 'C:\Projects\imageinfo\boards\imageinfo.json',
+    '--board-path', 'C:\Projects\localswim-state-store\imageinfo\imageinfo.json',
     '--board-label', 'imageinfo',
     '--thread-id', $env:CODEX_THREAD_ID,
     '--port', $imageinfoPort,
@@ -91,7 +93,7 @@ This shared operational Python tooling does not choose imageinfo's product langu
 Card mutations go through the supported CLI and the live service, preserving
 authorization, revision checks, and history. Never edit a running board's JSON.
 Public requirements and roadmap documents provide the portable project plan;
-private board comments and local state are not published.
+private board comments and snapshots are synchronized only to the private state store.
 
 ## Creating another local board
 
