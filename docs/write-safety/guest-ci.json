@@ -1,6 +1,76 @@
 {
   "schemaVersion": 1,
-  "status": "pending",
-  "scope": "Portable source/build/refusal qualification only; QEMU guest crashes are verified local evidence, not CI runs.",
-  "enabledProfiles": 0
+  "observedOn": "2026-10-12",
+  "sourceRevision": "6314f809c72e50f376a3853c537c091adfa34882",
+  "runId": 38253985678,
+  "runUrl": "https://github.com/imageinfo/imageinfo/actions/runs/38253985678",
+  "status": "passed",
+  "scope": "Pinned source/build/lint, root and prior research gates, plus seven guest-probe refusal/retention cases per platform. All 69 QEMU guest cases and the capture audit are separate local evidence; CI never crashes its runner.",
+  "vmCrashRunsInCi": 0,
+  "enabledProfiles": 0,
+  "jobs": [
+    {
+      "id": 114827171213,
+      "runner": "macos-15",
+      "status": "completed",
+      "conclusion": "success",
+      "guestRefusalCases": 7,
+      "guestSteps": [
+        {
+          "name": "Check guest research formatting and lints",
+          "conclusion": "success"
+        },
+        {
+          "name": "Test and build guest research",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify guest research admission refuses on Unix",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 114827171506,
+      "runner": "windows-2025",
+      "status": "completed",
+      "conclusion": "success",
+      "guestRefusalCases": 7,
+      "guestSteps": [
+        {
+          "name": "Check guest research formatting and lints",
+          "conclusion": "success"
+        },
+        {
+          "name": "Test and build guest research",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify guest profile and repair refusals on Windows",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 114827171624,
+      "runner": "ubuntu-24.04",
+      "status": "completed",
+      "conclusion": "success",
+      "guestRefusalCases": 7,
+      "guestSteps": [
+        {
+          "name": "Check guest research formatting and lints",
+          "conclusion": "success"
+        },
+        {
+          "name": "Test and build guest research",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify guest research admission refuses on Unix",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ]
 }
