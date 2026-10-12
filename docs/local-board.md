@@ -29,15 +29,21 @@ service. Reuse a healthy service for that board. With localswim installed, the
 commands are:
 
 ```console
-localswim boards/imageinfo.json
+localswim --autopush boards/imageinfo.json
 localswim-cli boards/imageinfo.json board show
 localswim-cli boards/imageinfo.json board verify
 localswim-cli boards/imageinfo.json card next 5 --lane ready_for_work
 localswim-cli boards/imageinfo.json board shutdown
 ```
 
-The service runs without board autopush. Restart it after a machine restart when
-needed. Whenever it runs, the JSON board-write monitor **MUST also be running**,
+Terry authorized board autopush on 2026-10-12. Every imageinfo service launch,
+including restarts, must include `--autopush`. Verify the status endpoint's `push`
+state and detail rather than assuming synchronization. The current ignored board
+cannot synchronize: localswim reports `off` with `the board is ignored by git`.
+Enabling synchronization requires an approved private board-storage destination;
+do not remove the ignore rule or publish the board to this public repository.
+Restart the service after a machine restart when needed. Whenever it runs, the
+JSON board-write monitor **MUST also be running**,
 targeted at the active Codex thread (Terry's instruction, 2026-10-10). Verify both
 on startup/resume and before board work. Keep the monitor alive between tasks for
 the service's lifetime. This is a filesystem watcher, not a scheduled poll.

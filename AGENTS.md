@@ -91,8 +91,9 @@ refuses before effects. See `docs/write-safety/bound-windows-publication.md`.
 The machine-local board is `boards/imageinfo.json` (ignored). Read and mutate it
 through `localswim-cli`; use the live service for card mutations. Follow the embedded
 Terry workflow. Bot moves completed work to `ready_for_review`; Terry alone accepts
-it into `completed`. Do not launch a duplicate service or enable board autopush
-without an explicit request.
+it into `completed`. Do not launch a duplicate service. Terry explicitly authorized
+board autopush on 2026-10-12 and requires every future imageinfo service launch to
+include `--autopush`; this standing instruction supersedes the earlier opt-in rule.
 
 Terry clarified lane meanings on 2026-10-11:
 
