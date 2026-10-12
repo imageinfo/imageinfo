@@ -62,6 +62,14 @@ Windows crash/namespace persistence and physical power loss remain unverified;
 Linux observations do not qualify #0032's actual Windows sequence. #0022/#0014 and
 all RAW admission/integration gates stay open; no writer/profile is enabled.
 
+[#0027 native date admission](write-admission.md) now checks the exact existing
+CMT2 ASCII20 field, complete calendars, occurrence conflicts and all TIFF value/
+structure allocations. Undecoded DateTimeDigitized aliases demonstrate coupled
+changes despite unchanged complement/sensor bytes; the gate refuses them. Its
+bounded known-provenance catalog distinguishes indicators from uninspectable
+coverage. Opaque/checksum dependencies still refuse the initial eight-file stratum;
+no production write admission, storage profile or #0023 enablement follows.
+
 ## Plan before effects
 
 **WS-001 — Explicit application.** Preview does not change media, metadata targets,

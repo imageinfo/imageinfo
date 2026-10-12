@@ -1,4 +1,5 @@
 //! Bounded, read-only Canon EOS R5 full RAW metadata slice.
+pub mod admission;
 mod bmff;
 mod bounded;
 mod extract;

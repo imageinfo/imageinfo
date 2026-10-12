@@ -1,0 +1,416 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-12",
+  "sourceCount": 8,
+  "nativeCases": 56,
+  "independentReferenceReads": 56,
+  "privateCandidateRuns": 8,
+  "independentUnpacks": 8,
+  "decodedPairsEqual": 8,
+  "runCount": 128,
+  "authoredNegativeDerivatives": 40,
+  "candidateAliasDerivatives": 8,
+  "originalSourcesUnchanged": true,
+  "sourceClonesUnchanged": true,
+  "allMutationAdmissionsRefused": true,
+  "cryptographicallySignedFixtures": 0,
+  "generalAuthenticityAbsenceEstablished": false,
+  "productionMutationAllowed": false,
+  "cases": [
+    {
+      "id": "FX-R5-001-baseline",
+      "expectedRefusal": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-001-c2pa",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "C2PA_BMFF_UUID",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-001-unknown-uuid",
+      "expectedRefusal": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-001-alias",
+      "expectedRefusal": "FIELD_ALLOCATION_ALIAS",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-001-tiff-c2pa",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "C2PA_TIFF_TAG",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-001-canon-indicator",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "CANON_ORIGINAL_DECISION_INDICATOR",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-001-alias-candidate",
+      "expectedRefusal": "FIELD_ALLOCATION_ALIAS",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-002-baseline",
+      "expectedRefusal": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-002-c2pa",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "C2PA_BMFF_UUID",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-002-unknown-uuid",
+      "expectedRefusal": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-002-alias",
+      "expectedRefusal": "FIELD_ALLOCATION_ALIAS",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-002-tiff-c2pa",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "C2PA_TIFF_TAG",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-002-canon-indicator",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "CANON_ORIGINAL_DECISION_INDICATOR",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-002-alias-candidate",
+      "expectedRefusal": "FIELD_ALLOCATION_ALIAS",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-003-baseline",
+      "expectedRefusal": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-003-c2pa",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "C2PA_BMFF_UUID",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-003-unknown-uuid",
+      "expectedRefusal": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-003-alias",
+      "expectedRefusal": "FIELD_ALLOCATION_ALIAS",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-003-tiff-c2pa",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "C2PA_TIFF_TAG",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-003-canon-indicator",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "CANON_ORIGINAL_DECISION_INDICATOR",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-003-alias-candidate",
+      "expectedRefusal": "FIELD_ALLOCATION_ALIAS",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-004-baseline",
+      "expectedRefusal": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-004-c2pa",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "C2PA_BMFF_UUID",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-004-unknown-uuid",
+      "expectedRefusal": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-004-alias",
+      "expectedRefusal": "FIELD_ALLOCATION_ALIAS",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-004-tiff-c2pa",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "C2PA_TIFF_TAG",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-004-canon-indicator",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "CANON_ORIGINAL_DECISION_INDICATOR",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-004-alias-candidate",
+      "expectedRefusal": "FIELD_ALLOCATION_ALIAS",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-005-baseline",
+      "expectedRefusal": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-005-c2pa",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "C2PA_BMFF_UUID",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-005-unknown-uuid",
+      "expectedRefusal": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-005-alias",
+      "expectedRefusal": "FIELD_ALLOCATION_ALIAS",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-005-tiff-c2pa",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "C2PA_TIFF_TAG",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-005-canon-indicator",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "CANON_ORIGINAL_DECISION_INDICATOR",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-005-alias-candidate",
+      "expectedRefusal": "FIELD_ALLOCATION_ALIAS",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-006-baseline",
+      "expectedRefusal": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-006-c2pa",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "C2PA_BMFF_UUID",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-006-unknown-uuid",
+      "expectedRefusal": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-006-alias",
+      "expectedRefusal": "FIELD_ALLOCATION_ALIAS",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-006-tiff-c2pa",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "C2PA_TIFF_TAG",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-006-canon-indicator",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "CANON_ORIGINAL_DECISION_INDICATOR",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-006-alias-candidate",
+      "expectedRefusal": "FIELD_ALLOCATION_ALIAS",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-007-baseline",
+      "expectedRefusal": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-007-c2pa",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "C2PA_BMFF_UUID",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-007-unknown-uuid",
+      "expectedRefusal": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-007-alias",
+      "expectedRefusal": "FIELD_ALLOCATION_ALIAS",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-007-tiff-c2pa",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "C2PA_TIFF_TAG",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-007-canon-indicator",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "CANON_ORIGINAL_DECISION_INDICATOR",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-007-alias-candidate",
+      "expectedRefusal": "FIELD_ALLOCATION_ALIAS",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-008-baseline",
+      "expectedRefusal": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-008-c2pa",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "C2PA_BMFF_UUID",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-008-unknown-uuid",
+      "expectedRefusal": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-008-alias",
+      "expectedRefusal": "FIELD_ALLOCATION_ALIAS",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-008-tiff-c2pa",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "C2PA_TIFF_TAG",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-008-canon-indicator",
+      "expectedRefusal": "KNOWN_AUTHENTICITY_STRUCTURE",
+      "knownIndicator": "CANON_ORIGINAL_DECISION_INDICATOR",
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    },
+    {
+      "id": "FX-R5-008-alias-candidate",
+      "expectedRefusal": "FIELD_ALLOCATION_ALIAS",
+      "knownIndicator": null,
+      "fieldShapeVerified": true,
+      "productionMutationAllowed": false
+    }
+  ],
+  "retainedFilesVerified": 323,
+  "receivedOriginalHashesReverified": 8,
+  "originalSourceMtimesReverified": 8
+}

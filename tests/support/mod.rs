@@ -61,9 +61,22 @@ pub struct Fixture {
 }
 
 pub fn fixture() -> Fixture {
+    fixture_with_firmware("Firmware Version test")
+}
+
+pub fn fixture_with_firmware(firmware: &str) -> Fixture {
     let thumb = vec![0xff, 0xd8, 0x41, 0xff, 0xd9, 0];
     let preview = vec![0xff, 0xd8, 0x42, 0xff, 0xd9, 0, 0, 0, 0, 0];
     let jpeg = vec![0xff, 0xd8, 0x43, 0xff, 0xd9, 0, 0];
+    fixture_with_previews(firmware, thumb, preview, jpeg)
+}
+
+pub fn fixture_with_previews(
+    firmware: &str,
+    thumb: Vec<u8>,
+    preview: Vec<u8>,
+    jpeg: Vec<u8>,
+) -> Fixture {
     let mut settings = vec![0u8; 110];
     settings[..2].copy_from_slice(&110u16.to_le_bytes());
     settings[6..8].copy_from_slice(&4u16.to_le_bytes());
@@ -88,14 +101,16 @@ pub fn fixture() -> Fixture {
     ]);
     let cmt3 = tiff(vec![
         (1, 3, settings),
-        (7, 2, b"Firmware Version test\0".to_vec()),
+        (7, 2, [firmware.as_bytes(), &[0]].concat()),
         (16, 4, long(0x80000421)),
         (0x4018, 4, lighting),
     ]);
     let mut thumb_header = vec![0u8; 16];
-    thumb_header[8..12].copy_from_slice(&5u32.to_be_bytes());
+    let jpeg_length =
+        |bytes: &[u8]| (bytes.windows(2).rposition(|v| v == [0xff, 0xd9]).unwrap() + 2) as u32;
+    thumb_header[8..12].copy_from_slice(&jpeg_length(&thumb).to_be_bytes());
     let mut preview_header = vec![0u8; 16];
-    preview_header[12..16].copy_from_slice(&5u32.to_be_bytes());
+    preview_header[12..16].copy_from_slice(&jpeg_length(&preview).to_be_bytes());
     let mut cctp = vec![0; 12];
     cctp[4..8].copy_from_slice(&1u32.to_be_bytes());
     cctp[8..12].copy_from_slice(&3u32.to_be_bytes());

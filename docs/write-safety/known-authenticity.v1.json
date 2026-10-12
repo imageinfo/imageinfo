@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "revision": "raw-known-provenance-2026-10-12.1",
+  "observedOn": "2026-10-12",
+  "scope": "Bounded indicators in CR3 BMFF headers, Canon CMT TIFF directories and embedded JPEG marker envelopes. Presence causes refusal; absent matches do not certify authenticity or exclude unknown/remote provenance. Identifier detection is not cryptographic validation or official CR3 support by C2PA.",
+  "entries": [
+    {
+      "id": "AUTH-001",
+      "indicator": "C2PA_BMFF_UUID",
+      "identifier": "d8fec3d6-1b0e-483c-9297-5828877ec481",
+      "location": "uuid boxes reached through declared BMFF containers",
+      "source": "https://spec.c2pa.org/specifications/specifications/2.2/specs/C2PA_Specification.html#_embedding_manifests_into_bmff_based_assets"
+    },
+    {
+      "id": "AUTH-002",
+      "indicator": "C2PA_JPEG_JUMBF",
+      "identifier": "63327061-0011-0010-8000-00aa00389b71",
+      "location": "jumb/jumd description in bounded JPEG APP11 JP assembly; repeated continuation headers checked",
+      "source": "https://spec.c2pa.org/specifications/specifications/2.2/specs/C2PA_Specification.html#_manifest_store"
+    },
+    {
+      "id": "AUTH-003",
+      "indicator": "C2PA_TIFF_TAG / C2PA_PREVIEW_TIFF_TAG",
+      "identifier": "0xcd41",
+      "location": "CMT1/CMT2 EXIF TIFF directories and embedded JPEG EXIF APP1 TIFF directories",
+      "source": "https://spec.c2pa.org/specifications/specifications/2.2/specs/C2PA_Specification.html#_embedding_manifests_into_tiff_based_assets"
+    },
+    {
+      "id": "AUTH-004",
+      "indicator": "CANON_ORIGINAL_DECISION_INDICATOR",
+      "identifier": "0x0083",
+      "location": "CMT3 Canon directory; conservative indicator refusal even for a zero/malformed data reference; no pointer followed",
+      "source": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/lib/Image/ExifTool/Canon.pm"
+    }
+  ],
+  "uninspectableOrUnproved": [
+    "opaque metadata/checksum/pointer semantics",
+    "unknown UUID/container/leaf payloads and compressed sensor data",
+    "generic JUMBF, unsupported APP11 sequence/box grammar, extended JUMBF lengths",
+    "embedded preview maker notes and unknown signature namespaces",
+    "XMP/remote/sidecar/external credentials and arbitrary unknown-signature schemes"
+  ],
+  "cryptographicValidationPerformed": false,
+  "generalAuthenticityAbsenceEstablished": false,
+  "productionMutationAllowed": false
+}

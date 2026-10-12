@@ -33,6 +33,11 @@ complete property/path exclusion, authenticated custody and qualified receipts.
 Linux results do not qualify #0032's Windows sequence; Windows OS crash and physical
 power loss remain unverified. See `docs/write-safety/guest-durability.md`; no profile,
 production mutation, rollback/replay or cleanup authority is enabled.
+#0027 adds root read-only CR3 date/occurrence/all-allocation checks and a bounded
+known-provenance refusal catalog. Private DateTimeDigitized aliases expose coupled
+date effects despite exact complement and RAW-unpack equality. Opaque/checksum
+dependencies refuse every current real-camera mutation admission. See
+`docs/write-safety/write-admission.md`; no writer/profile or #0023 permission is enabled.
 
 ## Product intent
 

@@ -54,6 +54,12 @@ jobs:
         run: python experiments/0032-windows-publication/qualify.py --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe --parent experiments/0032-windows-publication/target
       - name: Check formatting
         run: cargo fmt --all --check
+      - name: Check read-only CR3 admission research
+        run: |
+          cargo fmt --manifest-path experiments/0027-cr3-admission/Cargo.toml --check
+          cargo clippy --locked --manifest-path experiments/0027-cr3-admission/Cargo.toml --all-targets -- -D warnings
+          cargo test --locked --manifest-path experiments/0027-cr3-admission/Cargo.toml
+          cargo build --locked --release --manifest-path experiments/0027-cr3-admission/Cargo.toml
       - name: Check lints
         run: cargo clippy --locked --all-targets -- -D warnings
       - name: Test library and executable contracts

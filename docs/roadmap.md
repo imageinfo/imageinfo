@@ -113,3 +113,13 @@ repair/prune because complete property/path exclusion, custody authentication an
 durable-receipt admission are missing. Windows OS-crash persistence against #0032
 and physical power loss remain unverified. The #0022/#0014 parent retains those
 enablement cells; this research handoff does not close or weaken them.
+
+[#0027 read-only admission](write-safety/write-admission.md) adds native calendar,
+occurrence/all-allocation checks and bounded known-provenance refusals. Eight private
+alias candidates change two interpreted date names while retaining all sensor bytes;
+this is a counterexample to treating byte complement/RAW decode alone as field-scope
+proof. The new gate refuses those aliases and unproved opaque/checksum dependencies.
+All current real-camera mutation admissions remain refused. #0022/#0014 and #0023
+still require an actually supported operation/storage profile; #0025/#0018 retain
+broader authenticity/privacy/corpus coverage. Acceptance of this scoped refusal
+handoff does not authorize skipping the remaining gates.

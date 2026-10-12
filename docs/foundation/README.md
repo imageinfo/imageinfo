@@ -3,6 +3,9 @@
 Subsequent #0020 implements the [native R5 slice](../reader/README.md).
 The foundation record below describes its original increment; current read/list/
 extract behavior and tests are authoritative in the linked reader guide.
+Subsequent #0027 supplies [read-only field/admission observations](../write-safety/write-admission.md)
+through the library and a separate research executable. Product CLI writes remain
+unsupported; neither a field match nor a read-only query authorizes mutation.
 
 Implemented under **#0019**, 2026-10-10, after Terry accepted Rust/ADR-0011.
 This package provides a production library/binary boundary, command definitions,

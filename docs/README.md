@@ -30,6 +30,7 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Windows property/publication qualification](write-safety/windows-properties.md) | #0030 private ACL creation, actual guard/move incompatibility, late substitution and missing namespace acknowledgement; #0032 retains implementation gates. |
 | [Held-candidate Windows publication](write-safety/bound-windows-publication.md) | #0032 private atomic creation, retained guards/live identity, actual directory flush ordering and explicit unsupported complete-profile admission. |
 | [Disposable guest durability/recovery](write-safety/guest-durability.md) | #0031 isolated Linux guest interruptions, restart/adversarial/flush-failure observations, retained safe repair/prune refusals and unverified Windows/physical power-loss cells. |
+| [CR3 date admission/provenance refusals](write-safety/write-admission.md) | #0027 native calendar/occurrence/allocation checks, known indicator catalog, private alias counterexamples and unproved dependency refusals; no writer enabled. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |
