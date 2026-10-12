@@ -1,6 +1,38 @@
 {
   "schemaVersion": 1,
-  "status": "pending",
-  "scope": "Root native admission contracts and separate read-only research executable. Private media/reference/RAW-unpack evidence stays local.",
-  "productionMutationAllowed": false
+  "observedOn": "2026-10-12",
+  "sourceRevision": "1f6139a575bce75d9f1dbf3cb34b2181ec2b159a",
+  "runId": 38262109364,
+  "runUrl": "https://github.com/imageinfo/imageinfo/actions/runs/38262109364",
+  "status": "passed",
+  "scope": "Root native admission contracts, all root/prior research gates and separate read-only research executable passed on three platforms. Private 56-case corpus/reference/RAW-unpack evidence remains local and is not a CI camera/signature corpus.",
+  "rootAdmissionContractTests": 11,
+  "researchExecutableTests": 2,
+  "productionMutationAllowed": false,
+  "jobs": [
+    {
+      "id": 114854968425,
+      "runner": "windows-2025",
+      "status": "completed",
+      "conclusion": "success",
+      "admissionStep": "success",
+      "rootContracts": "success"
+    },
+    {
+      "id": 114854968917,
+      "runner": "ubuntu-24.04",
+      "status": "completed",
+      "conclusion": "success",
+      "admissionStep": "success",
+      "rootContracts": "success"
+    },
+    {
+      "id": 114854969042,
+      "runner": "macos-15",
+      "status": "completed",
+      "conclusion": "success",
+      "admissionStep": "success",
+      "rootContracts": "success"
+    }
+  ]
 }
