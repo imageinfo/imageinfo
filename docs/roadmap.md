@@ -142,3 +142,8 @@ parent safety requirement or supported mutation policy is changed.
 for #0032. Five portable tests and 35 interruption/conflict/refusal cases distinguish
 matching observations from committed outcomes. It reuses the OS boundary/checksums,
 adds no keys/encryption or OS APIs, and preserves production storage/admission gates.
+
+[#0037](legacy-compatibility/native-json-errors.md) starts #0015's concrete native
+integration work: one valid explicit JSON selector survives CLI syntax failure.
+Portable ordering, literal/native argv, bounded diagnostics and no-extraction tests
+verify the production behavior. Broader compatibility/session/plan gaps remain open.

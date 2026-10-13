@@ -78,12 +78,14 @@ codes, status, a shared request ID, zero discovered inputs, empty file/artifact
 arrays, `selectionComplete: false`, and `outputComplete: true` only for a finished
 report. The binary writes diagnostics to stderr and result data to stdout.
 
-If clap cannot parse the full argument grammar, no validated output selection is
-available. The foundation returns bounded plain stderr and status 2; it does not
-rescan argv to guess a format. This is an explicit partial implementation of the
-larger proposed syntax-error/result contract. Full structured syntax-error routing
-remains #0015/LG-006; do not claim complete CLI/result compatibility from this card.
-An invalid output value likewise cannot authorize JSON serialization.
+**#0037 update, 2026-10-13:** Syntax failures now emit the existing status-2 JSON
+envelope when exactly one valid explicit output selector is present before `--`.
+Absent, invalid or duplicate output selection keeps bounded plain stderr. Literal
+operands and attached option data do not select a format; valid help stays text.
+See [native JSON errors](../legacy-compatibility/native-json-errors.md) for the
+implemented routing boundary. Broader #0015/LG-006 CLI/API/session compatibility
+remains open. The original #0019 foundation initially used plain stderr for grammar
+failures; that limit is superseded only for this scoped routing cell.
 
 Output transport failures return status 1 when the process can report it, with
 `OUTPUT_INCOMPLETE` on stderr if possible. A truncated stream is not a complete

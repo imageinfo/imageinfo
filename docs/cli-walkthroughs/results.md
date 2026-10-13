@@ -8,6 +8,11 @@ Complete saved-plan/session-output schemas and runtime integration remain #0015 
 The [metadata schema](../metadata-model/metadata-contract.schema.json) remains
 the authority for snapshot payloads.
 
+**Implemented boundary, 2026-10-13:** [#0037 native JSON syntax errors](../legacy-compatibility/native-json-errors.md)
+now implements the whole-request error-envelope routing described below for one
+valid unambiguous explicit JSON selector. Other result/JSONL/session/mutation
+contracts retain their stated proposal or partial implementation status.
+
 ## Streams and record fields
 
 Text/table mode puts requested results and the final summary on stdout. Diagnostics

@@ -58,6 +58,8 @@ handoff links the final published commit and its corresponding CI run.
 
 No sensor/container/tag parsing, extraction, XMP handling, menu, configuration,
 transport session, mutation or full result/metadata-schema capability is delivered.
-Syntax failures before a validated output selection use plain stderr; broader
-structured syntax-error behavior remains on #0015/LG-006. Foundation tests do not
-promote any RAW capability row to implemented/verified.
+The original increment used plain stderr for grammar failures. Subsequent
+[#0037](../legacy-compatibility/native-json-errors.md) implements JSON syntax-error
+routing for one unambiguous valid explicit selector, with portable executable tests.
+Invalid/duplicate/absent format selection remains plain stderr. Broader #0015/LG-006
+integration and RAW capability verification remain separate.

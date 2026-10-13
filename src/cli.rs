@@ -52,7 +52,7 @@ pub enum Invocation {
 pub struct UsageError {
     pub code: &'static str,
     pub message: String,
-    /// Available only after the complete argument grammar parsed successfully.
+    /// An unambiguous result selector, including for whole-request syntax errors.
     pub output: OutputFormat,
 }
 
@@ -173,10 +173,11 @@ where
     I: IntoIterator<Item = T>,
     T: Into<OsString> + Clone,
 {
+    let args: Vec<OsString> = args.into_iter().map(Into::into).collect();
     let tree = command();
     let matches = tree
         .clone()
-        .try_get_matches_from(args)
+        .try_get_matches_from(&args)
         .map_err(|error| UsageError {
             code: match error.kind() {
                 ErrorKind::InvalidSubcommand => "INVALID_COMMAND",
@@ -187,9 +188,7 @@ where
                 "{}\nUse the command path shown in Usage followed by help.",
                 error
             ),
-            // A failed parser has not established a validated output selection. Do
-            // not guess it by rescanning argv with another tokenizer.
-            output: OutputFormat::Text,
+            output: syntax_output(&args),
         })?;
 
     let mut scopes = vec![&matches];
@@ -224,7 +223,7 @@ where
                     "--{name} may be specified only once. See {}.",
                     help_spelling(&path)
                 ),
-                OutputFormat::Text,
+                output,
             ));
         }
     }
@@ -357,6 +356,37 @@ fn scalar_values<'a>(scopes: &[&'a ArgMatches], name: &str) -> Vec<&'a str> {
         .iter()
         .filter_map(|scope| scope.get_one::<String>(name).map(String::as_str))
         .collect()
+}
+
+fn syntax_output(args: &[OsString]) -> OutputFormat {
+    // Negotiate only the result channel; clap still validates the whole request.
+    // The grammar rejects separate hyphen-leading option values, so --output is
+    // an option outside `--`, never another option's data. Attached values remain
+    // one argv token. Keep that invariant tested when extending the command tree.
+    let mut selected = None;
+    let mut args = args.iter().skip(1);
+    while let Some(arg) = args.next() {
+        if arg == "--" {
+            break;
+        }
+        let value = if arg == "--output" {
+            args.next().and_then(|value| value.to_str())
+        } else if arg.as_encoded_bytes().starts_with(b"--output=") {
+            arg.to_str()
+                .and_then(|value| value.strip_prefix("--output="))
+        } else {
+            continue;
+        };
+        let format = match value {
+            Some("json") => OutputFormat::Json,
+            Some("text") => OutputFormat::Text,
+            _ => return OutputFormat::Text,
+        };
+        if selected.replace(format).is_some() {
+            return OutputFormat::Text;
+        }
+    }
+    selected.unwrap_or_default()
 }
 
 fn render_help(

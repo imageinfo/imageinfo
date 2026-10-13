@@ -1,4 +1,4 @@
-"""Validate emitted foundation records; optional jsonschema QA dependency only."""
+"""Validate emitted native CLI records; optional jsonschema QA dependency only."""
 from pathlib import Path
 import json
 import os
@@ -23,13 +23,17 @@ def main():
         (["version", "--output", "json"], 0, version),
         (["metadata", "read", "--output", "json", "invented-not-a-fixture.cr3"], 1, result),
         (["metadata", "read", "--output", "json"], 2, result),
+        (["--output=json", "--bogus"], 2, result),
+        (["metadata", "wrong", "--output=json"], 2, result),
+        (["metadata", "read", "--values=bad", "--output=json"], 2, result),
+        (["metadata", "--output=json", "--color=never", "read", "--color=always"], 2, result),
     ]
     for args, status, validator in cases:
         process = subprocess.run([str(EXE), *args], cwd=ROOT, capture_output=True, timeout=10)
         assert process.returncode == status, (args, process.returncode)
         value = json.loads(process.stdout)
         validator.validate(value)
-    print(f"{len(cases)} actual foundation records match their published schemas")
+    print(f"{len(cases)} actual native records match their published schemas")
 
 
 if __name__ == "__main__":

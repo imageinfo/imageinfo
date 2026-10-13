@@ -56,6 +56,11 @@ are introduced. See `docs/write-safety/windows-inspection.md`; repair and writer
 profiles remain gated. Keep storage/recovery straightforward and cross-platform;
 do not infer secrecy/key-management requirements from integrity/ownership checks
 (Terry's clarification, 2026-10-13).
+#0037 fixes root production CLI syntax-error routing: one valid explicit JSON
+selector before `--` emits the existing status-2 envelope even when grammar fails.
+Invalid/duplicate output selection remains plain stderr; literals/attached data do
+not select a channel. See `docs/legacy-compatibility/native-json-errors.md`.
+Broader #0015 integration/session/plan gaps and all mutation gates remain open.
 
 ## Product intent
 

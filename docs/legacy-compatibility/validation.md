@@ -101,10 +101,15 @@ were read at the same pinned revision on 2026-10-10. The latter two support the
 existing structure/value-layer constraints; no new wholesale source material is
 redistributed. Actual API overload/option behavior still needs experiments.
 
-Backlog **#0015, compatibility-evidence**, owns LG-001–006 and the remaining
+In progress **#0015, compatibility-evidence**, owns LG-001–006 and the remaining
 inventory GAP-006/GAP-012 work. This includes complete plan/session-output schemas,
 exact serializers, advanced executable behavior decisions and actual integration
 evidence. The incomplete plan schema is a real gap, not closed by the request schema.
+
+**2026-10-13:** [#0037 native JSON errors](native-json-errors.md) implements one
+LG-006 production cell: unambiguous explicit JSON output survives syntax failure,
+with portable ordering/literal/native-argv/no-effect tests. Broader CLI/API/session,
+reference parity and the listed LG/GAP requirements remain open.
 
 Card #0008 now supplies the [performance protocol](../performance/README.md) for
 RAW reads, safe edits, report buffering, filters, queues and sessions. Actual
