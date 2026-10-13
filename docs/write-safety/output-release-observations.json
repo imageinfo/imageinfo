@@ -1,0 +1,957 @@
+{
+  "schemaVersion": 1,
+  "caseCount": 30,
+  "cases": [
+    {
+      "id": "release",
+      "mode": "release",
+      "heldActor": null,
+      "heldActorPhase": null,
+      "heldActorResult": null,
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 0,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "Access is denied. (os error 5)",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": 5,
+        "restartRepairAllowed": false
+      },
+      "terminal": {
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "outcome": "owned-output-policy-release-unverified",
+        "productionPublicationAllowed": false,
+        "restartRepairAllowed": false,
+        "rootRetained": true
+      },
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {
+        "read": {
+          "allowed": true,
+          "winError": null
+        },
+        "write": {
+          "allowed": false,
+          "winError": 5
+        },
+        "ads": {
+          "allowed": false,
+          "winError": 5
+        },
+        "mtime": {
+          "allowed": false,
+          "winError": 5
+        },
+        "dacl": {
+          "allowed": false,
+          "winError": 5
+        },
+        "owner-access": {
+          "allowed": false,
+          "winError": 5
+        },
+        "link": {
+          "allowed": false,
+          "winError": 5
+        },
+        "readonly": {
+          "allowed": false,
+          "winError": 5
+        }
+      },
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "full-control",
+      "mode": "full-control",
+      "heldActor": null,
+      "heldActorPhase": null,
+      "heldActorResult": null,
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 0,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "Access is denied. (os error 5)",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": 5,
+        "restartRepairAllowed": false
+      },
+      "terminal": {
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "outcome": "owned-output-policy-release-unverified",
+        "productionPublicationAllowed": false,
+        "restartRepairAllowed": false,
+        "rootRetained": true
+      },
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {
+        "read": {
+          "allowed": true,
+          "winError": null
+        },
+        "write": {
+          "allowed": false,
+          "winError": 5
+        },
+        "ads": {
+          "allowed": false,
+          "winError": 5
+        },
+        "mtime": {
+          "allowed": false,
+          "winError": 5
+        },
+        "dacl": {
+          "allowed": false,
+          "winError": 5
+        },
+        "owner-access": {
+          "allowed": false,
+          "winError": 5
+        },
+        "link": {
+          "allowed": false,
+          "winError": 5
+        },
+        "readonly": {
+          "allowed": false,
+          "winError": 5
+        }
+      },
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "no-write-dac",
+      "mode": "no-write-dac",
+      "heldActor": null,
+      "heldActorPhase": null,
+      "heldActorResult": null,
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 0,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "Access is denied. (os error 5)",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": 5,
+        "restartRepairAllowed": false
+      },
+      "terminal": {
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "outcome": "owned-output-policy-release-unverified",
+        "productionPublicationAllowed": false,
+        "restartRepairAllowed": false,
+        "rootRetained": true
+      },
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {
+        "read": {
+          "allowed": true,
+          "winError": null
+        },
+        "write": {
+          "allowed": false,
+          "winError": 5
+        },
+        "ads": {
+          "allowed": false,
+          "winError": 5
+        },
+        "mtime": {
+          "allowed": false,
+          "winError": 5
+        },
+        "dacl": {
+          "allowed": false,
+          "winError": 5
+        },
+        "owner-access": {
+          "allowed": false,
+          "winError": 5
+        },
+        "link": {
+          "allowed": false,
+          "winError": 5
+        },
+        "readonly": {
+          "allowed": false,
+          "winError": 5
+        }
+      },
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "ordinary-control",
+      "mode": "ordinary-control",
+      "heldActor": null,
+      "heldActorPhase": null,
+      "heldActorResult": null,
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 0,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "PRIVATE_OWNER_OR_DACL_CHANGED",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": null,
+        "restartRepairAllowed": false
+      },
+      "terminal": {
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "outcome": "owned-output-policy-release-unverified",
+        "productionPublicationAllowed": false,
+        "restartRepairAllowed": false,
+        "rootRetained": true
+      },
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {
+        "read": {
+          "allowed": true,
+          "winError": null
+        },
+        "write": {
+          "allowed": true,
+          "winError": null
+        }
+      },
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "guarded-read",
+      "mode": "release",
+      "heldActor": "read",
+      "heldActorPhase": "guarded",
+      "heldActorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 0,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "Access is denied. (os error 5)",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": 5,
+        "restartRepairAllowed": false
+      },
+      "terminal": {
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "outcome": "owned-output-policy-release-unverified",
+        "productionPublicationAllowed": false,
+        "restartRepairAllowed": false,
+        "rootRetained": true
+      },
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "guarded-mtime",
+      "mode": "release",
+      "heldActor": "mtime",
+      "heldActorPhase": "guarded",
+      "heldActorResult": {
+        "allowed": false,
+        "winError": 5
+      },
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 0,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "Access is denied. (os error 5)",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": 5,
+        "restartRepairAllowed": false
+      },
+      "terminal": {
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "outcome": "owned-output-policy-release-unverified",
+        "productionPublicationAllowed": false,
+        "restartRepairAllowed": false,
+        "rootRetained": true
+      },
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "guarded-readonly",
+      "mode": "release",
+      "heldActor": "readonly",
+      "heldActorPhase": "guarded",
+      "heldActorResult": {
+        "allowed": false,
+        "winError": 5
+      },
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 0,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "Access is denied. (os error 5)",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": 5,
+        "restartRepairAllowed": false
+      },
+      "terminal": {
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "outcome": "owned-output-policy-release-unverified",
+        "productionPublicationAllowed": false,
+        "restartRepairAllowed": false,
+        "rootRetained": true
+      },
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "guarded-dacl",
+      "mode": "release",
+      "heldActor": "dacl",
+      "heldActorPhase": "guarded",
+      "heldActorResult": {
+        "allowed": false,
+        "winError": 5
+      },
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 0,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "Access is denied. (os error 5)",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": 5,
+        "restartRepairAllowed": false
+      },
+      "terminal": {
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "outcome": "owned-output-policy-release-unverified",
+        "productionPublicationAllowed": false,
+        "restartRepairAllowed": false,
+        "rootRetained": true
+      },
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "guarded-owner-access",
+      "mode": "release",
+      "heldActor": "owner-access",
+      "heldActorPhase": "guarded",
+      "heldActorResult": {
+        "allowed": false,
+        "winError": 5
+      },
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 0,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "Access is denied. (os error 5)",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": 5,
+        "restartRepairAllowed": false
+      },
+      "terminal": {
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "outcome": "owned-output-policy-release-unverified",
+        "productionPublicationAllowed": false,
+        "restartRepairAllowed": false,
+        "rootRetained": true
+      },
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "guarded-ads",
+      "mode": "release",
+      "heldActor": "ads",
+      "heldActorPhase": "guarded",
+      "heldActorResult": {
+        "allowed": false,
+        "winError": 5
+      },
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 0,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "Access is denied. (os error 5)",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": 5,
+        "restartRepairAllowed": false
+      },
+      "terminal": {
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "outcome": "owned-output-policy-release-unverified",
+        "productionPublicationAllowed": false,
+        "restartRepairAllowed": false,
+        "rootRetained": true
+      },
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "guarded-write",
+      "mode": "release",
+      "heldActor": "write",
+      "heldActorPhase": "guarded",
+      "heldActorResult": {
+        "allowed": false,
+        "winError": 5
+      },
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 0,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "Access is denied. (os error 5)",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": 5,
+        "restartRepairAllowed": false
+      },
+      "terminal": {
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "outcome": "owned-output-policy-release-unverified",
+        "productionPublicationAllowed": false,
+        "restartRepairAllowed": false,
+        "rootRetained": true
+      },
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "guarded-link",
+      "mode": "release",
+      "heldActor": "link",
+      "heldActorPhase": "guarded",
+      "heldActorResult": {
+        "allowed": false,
+        "winError": 5
+      },
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 0,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "Access is denied. (os error 5)",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": 5,
+        "restartRepairAllowed": false
+      },
+      "terminal": {
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "outcome": "owned-output-policy-release-unverified",
+        "productionPublicationAllowed": false,
+        "restartRepairAllowed": false,
+        "rootRetained": true
+      },
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "post-attempt-mtime",
+      "mode": "release",
+      "heldActor": "mtime",
+      "heldActorPhase": "policy-release-attempted",
+      "heldActorResult": {
+        "allowed": false,
+        "winError": 5
+      },
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 0,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "Access is denied. (os error 5)",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": 5,
+        "restartRepairAllowed": false
+      },
+      "terminal": {
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "outcome": "owned-output-policy-release-unverified",
+        "productionPublicationAllowed": false,
+        "restartRepairAllowed": false,
+        "rootRetained": true
+      },
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "post-attempt-dacl",
+      "mode": "release",
+      "heldActor": "dacl",
+      "heldActorPhase": "policy-release-attempted",
+      "heldActorResult": {
+        "allowed": false,
+        "winError": 5
+      },
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 0,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "Access is denied. (os error 5)",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": 5,
+        "restartRepairAllowed": false
+      },
+      "terminal": {
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "outcome": "owned-output-policy-release-unverified",
+        "productionPublicationAllowed": false,
+        "restartRepairAllowed": false,
+        "rootRetained": true
+      },
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "post-attempt-ads",
+      "mode": "release",
+      "heldActor": "ads",
+      "heldActorPhase": "policy-release-attempted",
+      "heldActorResult": {
+        "allowed": false,
+        "winError": 5
+      },
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 0,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "Access is denied. (os error 5)",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": 5,
+        "restartRepairAllowed": false
+      },
+      "terminal": {
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "outcome": "owned-output-policy-release-unverified",
+        "productionPublicationAllowed": false,
+        "restartRepairAllowed": false,
+        "rootRetained": true
+      },
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "post-attempt-write",
+      "mode": "release",
+      "heldActor": "write",
+      "heldActorPhase": "policy-release-attempted",
+      "heldActorResult": {
+        "allowed": false,
+        "winError": 5
+      },
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 0,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "Access is denied. (os error 5)",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": 5,
+        "restartRepairAllowed": false
+      },
+      "terminal": {
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "outcome": "owned-output-policy-release-unverified",
+        "productionPublicationAllowed": false,
+        "restartRepairAllowed": false,
+        "rootRetained": true
+      },
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "kill-guarded",
+      "mode": "release",
+      "heldActor": null,
+      "heldActorPhase": null,
+      "heldActorResult": null,
+      "stop": "kill",
+      "stopPhase": "guarded",
+      "exitCode": null,
+      "release": null,
+      "terminal": null,
+      "retainedBeforePostExitActors": [
+        "stage.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "cancel-guarded",
+      "mode": "release",
+      "heldActor": null,
+      "heldActorPhase": null,
+      "heldActorResult": null,
+      "stop": "cancel",
+      "stopPhase": "guarded",
+      "exitCode": 5,
+      "release": null,
+      "terminal": null,
+      "retainedBeforePostExitActors": [
+        "stage.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "kill-published-sealed",
+      "mode": "release",
+      "heldActor": null,
+      "heldActorPhase": null,
+      "heldActorResult": null,
+      "stop": "kill",
+      "stopPhase": "published-sealed",
+      "exitCode": null,
+      "release": null,
+      "terminal": null,
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "cancel-published-sealed",
+      "mode": "release",
+      "heldActor": null,
+      "heldActorPhase": null,
+      "heldActorResult": null,
+      "stop": "cancel",
+      "stopPhase": "published-sealed",
+      "exitCode": 5,
+      "release": null,
+      "terminal": null,
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "kill-policy-release-attempted",
+      "mode": "release",
+      "heldActor": null,
+      "heldActorPhase": null,
+      "heldActorResult": null,
+      "stop": "kill",
+      "stopPhase": "policy-release-attempted",
+      "exitCode": null,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "Access is denied. (os error 5)",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": 5,
+        "restartRepairAllowed": false
+      },
+      "terminal": null,
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "cancel-policy-release-attempted",
+      "mode": "release",
+      "heldActor": null,
+      "heldActorPhase": null,
+      "heldActorResult": null,
+      "stop": "cancel",
+      "stopPhase": "policy-release-attempted",
+      "exitCode": 5,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "Access is denied. (os error 5)",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": 5,
+        "restartRepairAllowed": false
+      },
+      "terminal": null,
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "inject-before-release",
+      "mode": "inject-before-release",
+      "heldActor": null,
+      "heldActorPhase": null,
+      "heldActorResult": null,
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 5,
+      "release": null,
+      "terminal": null,
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "inject-after-release",
+      "mode": "inject-after-release",
+      "heldActor": null,
+      "heldActorPhase": null,
+      "heldActorResult": null,
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 5,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "Access is denied. (os error 5)",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": 5,
+        "restartRepairAllowed": false
+      },
+      "terminal": null,
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "collision",
+      "mode": "release",
+      "heldActor": null,
+      "heldActorPhase": null,
+      "heldActorResult": null,
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 5,
+      "release": null,
+      "terminal": null,
+      "retainedBeforePostExitActors": [
+        "output.marker",
+        "stage.marker"
+      ],
+      "postExitActors": {},
+      "foreignWinnerRetained": true
+    },
+    {
+      "id": "post-exit-delete",
+      "mode": "release",
+      "heldActor": null,
+      "heldActorPhase": null,
+      "heldActorResult": null,
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 0,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "Access is denied. (os error 5)",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": 5,
+        "restartRepairAllowed": false
+      },
+      "terminal": {
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "outcome": "owned-output-policy-release-unverified",
+        "productionPublicationAllowed": false,
+        "restartRepairAllowed": false,
+        "rootRetained": true
+      },
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {
+        "delete": {
+          "allowed": true,
+          "winError": null
+        }
+      },
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "post-exit-rename",
+      "mode": "release",
+      "heldActor": null,
+      "heldActorPhase": null,
+      "heldActorResult": null,
+      "stop": null,
+      "stopPhase": null,
+      "exitCode": 0,
+      "release": {
+        "committed": false,
+        "contentAndIdentityUnchanged": true,
+        "namespaceAcknowledged": false,
+        "productionPublicationAllowed": false,
+        "releaseDiagnostic": "Access is denied. (os error 5)",
+        "releaseExactCreationPolicyMatches": false,
+        "releaseOsError": 5,
+        "restartRepairAllowed": false
+      },
+      "terminal": {
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "outcome": "owned-output-policy-release-unverified",
+        "productionPublicationAllowed": false,
+        "restartRepairAllowed": false,
+        "rootRetained": true
+      },
+      "retainedBeforePostExitActors": [
+        "output.marker"
+      ],
+      "postExitActors": {
+        "rename": {
+          "allowed": true,
+          "winError": null
+        }
+      },
+      "foreignWinnerRetained": false
+    },
+    {
+      "id": "admit",
+      "refusedBeforeEffects": true
+    },
+    {
+      "id": "finalize",
+      "refusedBeforeEffects": true
+    },
+    {
+      "id": "prune",
+      "refusedBeforeEffects": true
+    }
+  ],
+  "productionPublicationAllowed": false,
+  "enabledProfiles": 0,
+  "observedOn": "2026-10-13",
+  "workerCapturesAudited": 30,
+  "actorCapturesAudited": 40,
+  "readableArtifactsHashed": 381,
+  "osCrashRuns": 0,
+  "physicalPowerLossRuns": 0,
+  "productionUnsafePolicyChanged": false,
+  "outputReleaseQualified": false
+}

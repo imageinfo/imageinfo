@@ -66,6 +66,11 @@ using their retained handles. Foreign reinserted names/extra entries and roots s
 retained; readers can defer removal and partial/error work is reported. Cleanup
 refuses after any publication attempt. See `docs/write-safety/staging-cleanup.md`;
 this does not enable restart prune, directory cleanup, a writer or a full profile.
+#0039 tests creator-held release from fresh sealed output to ordinary private-owner
+editing. WRITE_DAC/full-control requests still return access denied; unsealed control
+setter success is distinct from exact descriptor refusal. See
+`docs/write-safety/output-release.md`; sealed research files are not an adopted
+ordinary output policy. No source ACL, privilege, shared SDK or production gate changes.
 
 ## Product intent
 

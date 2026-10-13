@@ -152,3 +152,10 @@ verify the production behavior. Broader compatibility/session/plan gaps remain o
 live guarded prepublication file cleanup. Actual owned-handle deletion preserves
 foreign names/entries and records partial/deferred/error states; roots remain.
 Publication attempts, restart prune and complete profiles still refuse.
+
+[#0039](write-safety/output-release.md) tests creator-held release of fresh sealed
+outputs to ordinary private-owner editing. Both WRITE_DAC and full-control requests
+still return access denied; the unsealed control's setter succeeds but fails exact
+descriptor verification. Thirty marker cases preserve real interruption/collision
+outcomes and distinguish post-exit restricted editing from allowed rename/delete.
+No ordinary output policy, production profile or parent criterion is enabled.
