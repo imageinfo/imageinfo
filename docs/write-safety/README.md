@@ -77,6 +77,13 @@ Preopened time/security handles still act after later sealing, and strong artifa
 remain read-only after exit. Existing-source exclusion, operational output/recovery
 policy and Windows persistence/custody remain missing; no profile is enabled.
 
+[#0034 existing-source oplocks](source-oplocks.md) now measures RH/RW/RWH requests
+without changing source ACLs. Timestamp/readonly/ADS/new-link actors bypass each
+measured request without a break. Some data/security operations wait until holder
+release; that is a separate cell from complete exclusion. Existing-source guards,
+authenticated custody/output policy and Windows persistence remain open. The
+accepted #0027/#0033 evidence does not enable a profile or writer.
+
 ## Plan before effects
 
 **WS-001 — Explicit application.** Preview does not change media, metadata targets,

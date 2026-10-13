@@ -1,0 +1,1869 @@
+{
+  "schemaVersion": 1,
+  "caseCount": 75,
+  "cases": [
+    {
+      "id": "sharing-new-name-read-release",
+      "mode": "sharing",
+      "actor": "read",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "sharing-new-name-mtime-release",
+      "mode": "sharing",
+      "actor": "mtime",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": false,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "sharing-new-name-readonly-release",
+      "mode": "sharing",
+      "actor": "readonly",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": false,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "sharing-new-name-dacl-release",
+      "mode": "sharing",
+      "actor": "dacl",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": false
+      }
+    },
+    {
+      "id": "sharing-new-name-owner-access-release",
+      "mode": "sharing",
+      "actor": "owner-access",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "sharing-new-name-ads-release",
+      "mode": "sharing",
+      "actor": "ads",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": false,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": false,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "sharing-new-name-write-release",
+      "mode": "sharing",
+      "actor": "write",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": false,
+        "winError": 32
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "sharing-new-name-link-release",
+      "mode": "sharing",
+      "actor": "link",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 2,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "sharing-new-name-delete-release",
+      "mode": "sharing",
+      "actor": "delete",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": false,
+        "winError": 32
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "sharing-new-name-rename-release",
+      "mode": "sharing",
+      "actor": "rename",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": false,
+        "winError": 32
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rh-new-name-read-release",
+      "mode": "rh",
+      "actor": "read",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rh-new-name-mtime-release",
+      "mode": "rh",
+      "actor": "mtime",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": false,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rh-new-name-readonly-release",
+      "mode": "rh",
+      "actor": "readonly",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": false,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rh-new-name-dacl-release",
+      "mode": "rh",
+      "actor": "dacl",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 1,
+          "newLevel": 1,
+          "originalLevel": 3
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rh-new-name-owner-access-release",
+      "mode": "rh",
+      "actor": "owner-access",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rh-new-name-ads-release",
+      "mode": "rh",
+      "actor": "ads",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": false,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": false,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rh-new-name-write-release",
+      "mode": "rh",
+      "actor": "write",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 3,
+          "newLevel": 1,
+          "originalLevel": 3
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rh-new-name-link-release",
+      "mode": "rh",
+      "actor": "link",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 2,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rh-new-name-delete-release",
+      "mode": "rh",
+      "actor": "delete",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 3,
+          "newLevel": 1,
+          "originalLevel": 3
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rh-new-name-rename-release",
+      "mode": "rh",
+      "actor": "rename",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 3,
+          "newLevel": 1,
+          "originalLevel": 3
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rw-new-name-read-release",
+      "mode": "rw",
+      "actor": "read",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 1,
+          "newLevel": 1,
+          "originalLevel": 5
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rw-new-name-mtime-release",
+      "mode": "rw",
+      "actor": "mtime",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": false,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rw-new-name-readonly-release",
+      "mode": "rw",
+      "actor": "readonly",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": false,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rw-new-name-dacl-release",
+      "mode": "rw",
+      "actor": "dacl",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 1,
+          "newLevel": 1,
+          "originalLevel": 5
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rw-new-name-owner-access-release",
+      "mode": "rw",
+      "actor": "owner-access",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 1,
+          "newLevel": 1,
+          "originalLevel": 5
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rw-new-name-ads-release",
+      "mode": "rw",
+      "actor": "ads",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": false,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": false,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rw-new-name-write-release",
+      "mode": "rw",
+      "actor": "write",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": false,
+        "winError": 32
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rw-new-name-link-release",
+      "mode": "rw",
+      "actor": "link",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 2,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rw-new-name-delete-release",
+      "mode": "rw",
+      "actor": "delete",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": false,
+        "winError": 32
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rw-new-name-rename-release",
+      "mode": "rw",
+      "actor": "rename",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": false,
+        "winError": 32
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rwh-new-name-read-release",
+      "mode": "rwh",
+      "actor": "read",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 1,
+          "newLevel": 3,
+          "originalLevel": 7
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rwh-new-name-mtime-release",
+      "mode": "rwh",
+      "actor": "mtime",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": false,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rwh-new-name-readonly-release",
+      "mode": "rwh",
+      "actor": "readonly",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": false,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rwh-new-name-dacl-release",
+      "mode": "rwh",
+      "actor": "dacl",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 1,
+          "newLevel": 3,
+          "originalLevel": 7
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rwh-new-name-owner-access-release",
+      "mode": "rwh",
+      "actor": "owner-access",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 1,
+          "newLevel": 3,
+          "originalLevel": 7
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rwh-new-name-ads-release",
+      "mode": "rwh",
+      "actor": "ads",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": false,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": false,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rwh-new-name-write-release",
+      "mode": "rwh",
+      "actor": "write",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 3,
+          "newLevel": 5,
+          "originalLevel": 7
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rwh-new-name-link-release",
+      "mode": "rwh",
+      "actor": "link",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 2,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rwh-new-name-delete-release",
+      "mode": "rwh",
+      "actor": "delete",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 3,
+          "newLevel": 5,
+          "originalLevel": 7
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rwh-new-name-rename-release",
+      "mode": "rwh",
+      "actor": "rename",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 3,
+          "newLevel": 5,
+          "originalLevel": 7
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "sharing-new-name-link-mtime-release",
+      "mode": "sharing",
+      "actor": "link-mtime",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 2,
+        "mtimeUnchanged": false,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "sharing-new-name-link-dacl-release",
+      "mode": "sharing",
+      "actor": "link-dacl",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 2,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": false
+      }
+    },
+    {
+      "id": "sharing-new-name-link-ads-release",
+      "mode": "sharing",
+      "actor": "link-ads",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": false,
+        "identityUnchanged": true,
+        "linkCount": 2,
+        "mtimeUnchanged": false,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "sharing-new-name-link-write-release",
+      "mode": "sharing",
+      "actor": "link-write",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": false,
+        "winError": 32
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 2,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rh-new-name-link-mtime-release",
+      "mode": "rh",
+      "actor": "link-mtime",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 2,
+        "mtimeUnchanged": false,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rh-new-name-link-dacl-release",
+      "mode": "rh",
+      "actor": "link-dacl",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 2,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 1,
+          "newLevel": 1,
+          "originalLevel": 3
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rh-new-name-link-ads-release",
+      "mode": "rh",
+      "actor": "link-ads",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": false,
+        "identityUnchanged": true,
+        "linkCount": 2,
+        "mtimeUnchanged": false,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rh-new-name-link-write-release",
+      "mode": "rh",
+      "actor": "link-write",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 2,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 3,
+          "newLevel": 1,
+          "originalLevel": 3
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rw-new-name-link-mtime-release",
+      "mode": "rw",
+      "actor": "link-mtime",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 2,
+        "mtimeUnchanged": false,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rw-new-name-link-dacl-release",
+      "mode": "rw",
+      "actor": "link-dacl",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 2,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 1,
+          "newLevel": 1,
+          "originalLevel": 5
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rw-new-name-link-ads-release",
+      "mode": "rw",
+      "actor": "link-ads",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": false,
+        "identityUnchanged": true,
+        "linkCount": 2,
+        "mtimeUnchanged": false,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rw-new-name-link-write-release",
+      "mode": "rw",
+      "actor": "link-write",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": false,
+        "winError": 32
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 2,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rwh-new-name-link-mtime-release",
+      "mode": "rwh",
+      "actor": "link-mtime",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 2,
+        "mtimeUnchanged": false,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rwh-new-name-link-dacl-release",
+      "mode": "rwh",
+      "actor": "link-dacl",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 2,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 1,
+          "newLevel": 3,
+          "originalLevel": 7
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rwh-new-name-link-ads-release",
+      "mode": "rwh",
+      "actor": "link-ads",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": false,
+        "identityUnchanged": true,
+        "linkCount": 2,
+        "mtimeUnchanged": false,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rwh-new-name-link-write-release",
+      "mode": "rwh",
+      "actor": "link-write",
+      "preopened": false,
+      "workerKilled": false,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 2,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 3,
+          "newLevel": 5,
+          "originalLevel": 7
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rh-preopen-name-mtime-release",
+      "mode": "rh",
+      "actor": "mtime",
+      "preopened": true,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": false,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rh-preopen-name-dacl-release",
+      "mode": "rh",
+      "actor": "dacl",
+      "preopened": true,
+      "workerKilled": false,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 1,
+          "newLevel": 1,
+          "originalLevel": 3
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rh-new-name-write-kill",
+      "mode": "rh",
+      "actor": "write",
+      "preopened": false,
+      "workerKilled": true,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 3,
+          "newLevel": 1,
+          "originalLevel": 3
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rw-preopen-name-mtime-release",
+      "mode": "rw",
+      "actor": "mtime",
+      "preopened": true,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": false,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rw-preopen-name-dacl-release",
+      "mode": "rw",
+      "actor": "dacl",
+      "preopened": true,
+      "guardRefused": true,
+      "winError": 300,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      }
+    },
+    {
+      "id": "rw-new-name-write-kill",
+      "mode": "rw",
+      "actor": "write",
+      "preopened": false,
+      "workerKilled": true,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": false,
+        "winError": 32
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rwh-preopen-name-mtime-release",
+      "mode": "rwh",
+      "actor": "mtime",
+      "preopened": true,
+      "workerKilled": false,
+      "completedWhileHeld": true,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": false,
+        "oplock": {
+          "broken": false
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "rwh-preopen-name-dacl-release",
+      "mode": "rwh",
+      "actor": "dacl",
+      "preopened": true,
+      "guardRefused": true,
+      "winError": 300,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      }
+    },
+    {
+      "id": "rwh-new-name-write-kill",
+      "mode": "rwh",
+      "actor": "write",
+      "preopened": false,
+      "workerKilled": true,
+      "completedWhileHeld": false,
+      "actorResult": {
+        "allowed": true,
+        "winError": null
+      },
+      "observed": {
+        "attributesUnchanged": true,
+        "committed": false,
+        "contentUnchanged": true,
+        "defaultStreamOnly": true,
+        "identityUnchanged": true,
+        "linkCount": 1,
+        "mtimeUnchanged": true,
+        "oplock": {
+          "ackRequired": true,
+          "broken": true,
+          "flags": 3,
+          "newLevel": 5,
+          "originalLevel": 7
+        },
+        "outcome": "held-source-observed",
+        "productionPublicationAllowed": false,
+        "securityUnchanged": true
+      }
+    },
+    {
+      "id": "admit",
+      "refusedBeforeEffects": true
+    },
+    {
+      "id": "sharing-preexisting-alias",
+      "refusedBeforeGuard": true
+    },
+    {
+      "id": "rh-preexisting-alias",
+      "refusedBeforeGuard": true
+    },
+    {
+      "id": "rw-preexisting-alias",
+      "refusedBeforeGuard": true
+    },
+    {
+      "id": "rwh-preexisting-alias",
+      "refusedBeforeGuard": true
+    },
+    {
+      "id": "path-70",
+      "refusedBeforeOpen": true
+    },
+    {
+      "id": "path-71",
+      "refusedBeforeOpen": true
+    },
+    {
+      "id": "path-72",
+      "refusedBeforeOpen": true
+    },
+    {
+      "id": "path-73",
+      "refusedBeforeOpen": true
+    },
+    {
+      "id": "path-74",
+      "refusedBeforeOpen": true
+    }
+  ],
+  "productionPublicationAllowed": false,
+  "existingSourcePropertiesSetByHolder": false,
+  "observedOn": "2026-10-13",
+  "workerCapturesAudited": 75,
+  "heldObservationsAudited": 63,
+  "readableArtifactsHashed": 1137,
+  "inaccessibleMarkerPathsRetained": 15,
+  "alternateStreamPathsHashed": 12,
+  "completeSourcePropertyGuardQualified": false,
+  "restartCustodyQualified": false,
+  "osCrashRuns": 0,
+  "physicalPowerLossRuns": 0,
+  "rootProductionUnsafePolicyChanged": false,
+  "enabledProfiles": 0
+}

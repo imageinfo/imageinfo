@@ -130,3 +130,10 @@ stronger creation policy separately from after-open sealing and records preexist
 handle bypasses plus constrained post-exit owner access. Complete source exclusion,
 authenticated custody/guarded recovery and Windows crash/receipt persistence remain
 open; no ordinary editable-output or weaker concurrency promise is assumed.
+
+[#0034](write-safety/source-oplocks.md) follows Terry's acceptance of #0027/#0033
+with existing-source RH/RW/RWH oplock qualification. Time/readonly/ADS/new links
+and late alias time/ADS bypass every measured request without a break. Other
+actors' ACK-required waits and preexisting-handle refusals are separate cells;
+source property exclusion remains unqualified. No source ACL, production profile,
+parent safety requirement or supported mutation policy is changed.

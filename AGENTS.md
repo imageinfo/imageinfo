@@ -44,6 +44,11 @@ works. Preopened time/security handles bypass later sealing; strongly sealed mar
 remain read-only after exit. Existing-source, custody/recovery, operational output
 policy and Windows persistence remain missing. See `docs/write-safety/owner-rights.md`;
 no production profile or source ACL mutation is enabled.
+#0034 measures read-only existing-source RH/RW/RWH oplocks. Time/readonly/ADS/new
+link actors bypass every measured request without a break; some data/security
+actors wait for a break until holder release. Strict admission still refuses.
+See `docs/write-safety/source-oplocks.md`; source ACLs and production policy remain
+unchanged, and no complete source-property guard or backend is qualified.
 
 ## Product intent
 
