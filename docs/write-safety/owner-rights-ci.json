@@ -1,6 +1,36 @@
 {
   "schemaVersion": 1,
-  "status": "pending",
-  "scope": "Windows owner-rights marker and prior publication regression; other platforms refuse. No production profile enabled.",
-  "enabledProfiles": 0
+  "observedOn": "2026-10-13",
+  "sourceRevision": "78b1a9872785430d46922a55c219b981667230db",
+  "runId": 38409957837,
+  "runUrl": "https://github.com/imageinfo/imageinfo/actions/runs/38409957837",
+  "status": "passed",
+  "scope": "66 Windows marker cases, source gates and original 78-case held publication regression passed; Ubuntu/macOS explicitly refuse this Windows probe. All root/prior gates passed; no profile or metadata writer enabled.",
+  "enabledProfiles": 0,
+  "jobs": [
+    {
+      "id": 115339336575,
+      "runner": "windows-2025",
+      "status": "completed",
+      "conclusion": "success",
+      "ownerRights": "success",
+      "rootContracts": "success"
+    },
+    {
+      "id": 115339337075,
+      "runner": "ubuntu-24.04",
+      "status": "completed",
+      "conclusion": "success",
+      "ownerRights": "success",
+      "rootContracts": "success"
+    },
+    {
+      "id": 115339337136,
+      "runner": "macos-15",
+      "status": "completed",
+      "conclusion": "success",
+      "ownerRights": "success",
+      "rootContracts": "success"
+    }
+  ]
 }
