@@ -1,6 +1,35 @@
 {
   "schemaVersion": 1,
   "observedOn": "2026-10-13",
-  "status": "pending-source-push",
-  "scope": "27 live Windows owned-staging cleanup cases; unsupported platforms refuse, root and prior research gates remain required. No complete writer/storage/recovery profile."
+  "sourceRevision": "596cc195354d9d99334f0b6f27d956a77a0732ae",
+  "runId": 38459422871,
+  "runUrl": "https://github.com/imageinfo/imageinfo/actions/runs/38459422871",
+  "status": "passed",
+  "scope": "27 live Windows owned-staging cleanup cases passed; Ubuntu/macOS explicitly refuse the Windows adapter. Research source, root 44 Windows/45 Unix tests, release, docs and prior regression gates passed. No complete writer/storage/recovery profile.",
+  "jobs": [
+    {
+      "id": 115510413381,
+      "runner": "macos-15",
+      "status": "completed",
+      "conclusion": "success",
+      "cleanup": "success",
+      "rootContracts": "success"
+    },
+    {
+      "id": 115510413641,
+      "runner": "ubuntu-24.04",
+      "status": "completed",
+      "conclusion": "success",
+      "cleanup": "success",
+      "rootContracts": "success"
+    },
+    {
+      "id": 115510413938,
+      "runner": "windows-2025",
+      "status": "completed",
+      "conclusion": "success",
+      "cleanup": "success",
+      "rootContracts": "success"
+    }
+  ]
 }
