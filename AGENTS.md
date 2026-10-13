@@ -49,6 +49,13 @@ link actors bypass every measured request without a break; some data/security
 actors wait for a break until holder release. Strict admission still refuses.
 See `docs/write-safety/source-oplocks.md`; source ACLs and production policy remain
 unchanged, and no complete source-property guard or backend is qualified.
+#0036 adds bounded read-only Windows restart inspection to #0032, with portable
+record parsing/state tests and the existing OS boundary. It validates record
+integrity and actual artifact bindings; no encryption, receipt keys or new OS APIs
+are introduced. See `docs/write-safety/windows-inspection.md`; repair and writer
+profiles remain gated. Keep storage/recovery straightforward and cross-platform;
+do not infer secrecy/key-management requirements from integrity/ownership checks
+(Terry's clarification, 2026-10-13).
 
 ## Product intent
 

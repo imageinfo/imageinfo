@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-13",
+  "status": "pending-source-push",
+  "scope": "Five portable parser/classification tests on all platforms, 35 Windows restart/refusal cases and existing root/publication gates. Other filesystem adapters refuse.",
+  "enabledProfiles": 0
+}

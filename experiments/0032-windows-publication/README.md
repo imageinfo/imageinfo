@@ -6,6 +6,11 @@ production writer/profile or automated repair is enabled. Read the
 [findings and unsupported cells](../../docs/write-safety/bound-windows-publication.md)
 and [native boundary review](ffi-review.md) before considering reuse.
 
+**#0036 update, 2026-10-13:** `<root> inspect` now reads these existing records and
+artifacts without effects; `<root> finalize` and `<root> prune` refuse. See the
+[restart inspector](../0036-windows-inspection/README.md). Its record parser and
+state classifier are portable; no new SDK calls or secret keys are introduced.
+
 ```powershell
 cargo fmt --manifest-path experiments/0032-windows-publication/Cargo.toml --check
 cargo clippy --locked --manifest-path experiments/0032-windows-publication/Cargo.toml --all-targets -- -D warnings

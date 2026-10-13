@@ -1,0 +1,596 @@
+{
+  "schemaVersion": 1,
+  "caseCount": 35,
+  "cases": [
+    {
+      "id": "kill-root-created",
+      "report": {
+        "candidatePresent": false,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": false,
+        "matchingOutput": false,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "unattributed-artifacts",
+        "outputPresent": false,
+        "productionPublicationAllowed": false,
+        "recordCount": 0,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "kill-candidate-flushed",
+      "report": {
+        "candidatePresent": true,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": false,
+        "matchingOutput": false,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "unattributed-artifacts",
+        "outputPresent": false,
+        "productionPublicationAllowed": false,
+        "recordCount": 0,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "kill-prepared-record-flushed",
+      "report": {
+        "candidatePresent": true,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": true,
+        "matchingOutput": false,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "candidate-retained-output-absent",
+        "outputPresent": false,
+        "productionPublicationAllowed": false,
+        "recordCount": 1,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "kill-intent-record-flushed",
+      "report": {
+        "candidatePresent": true,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": true,
+        "matchingOutput": false,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "candidate-retained-output-absent",
+        "outputPresent": false,
+        "productionPublicationAllowed": false,
+        "recordCount": 2,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "kill-validated-before-publish",
+      "report": {
+        "candidatePresent": true,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": true,
+        "matchingOutput": false,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "candidate-retained-output-absent",
+        "outputPresent": false,
+        "productionPublicationAllowed": false,
+        "recordCount": 2,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "kill-published",
+      "report": {
+        "candidatePresent": false,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": false,
+        "matchingOutput": true,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "matching-output-recovery-required",
+        "outputPresent": true,
+        "productionPublicationAllowed": false,
+        "recordCount": 2,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "kill-output-file-flushed",
+      "report": {
+        "candidatePresent": false,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": false,
+        "matchingOutput": true,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "matching-output-recovery-required",
+        "outputPresent": true,
+        "productionPublicationAllowed": false,
+        "recordCount": 2,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "kill-directory-flush-attempted",
+      "report": {
+        "candidatePresent": false,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": false,
+        "matchingOutput": true,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "matching-output-recovery-required",
+        "outputPresent": true,
+        "productionPublicationAllowed": false,
+        "recordCount": 2,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "kill-observation-record-flushed",
+      "report": {
+        "candidatePresent": false,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": false,
+        "matchingOutput": true,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "matching-output-recovery-required",
+        "outputPresent": true,
+        "productionPublicationAllowed": false,
+        "recordCount": 3,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "cancel-root-created",
+      "report": {
+        "candidatePresent": false,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": false,
+        "matchingOutput": false,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "unattributed-artifacts",
+        "outputPresent": false,
+        "productionPublicationAllowed": false,
+        "recordCount": 0,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "cancel-candidate-flushed",
+      "report": {
+        "candidatePresent": true,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": false,
+        "matchingOutput": false,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "unattributed-artifacts",
+        "outputPresent": false,
+        "productionPublicationAllowed": false,
+        "recordCount": 0,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "cancel-prepared-record-flushed",
+      "report": {
+        "candidatePresent": true,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": true,
+        "matchingOutput": false,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "candidate-retained-output-absent",
+        "outputPresent": false,
+        "productionPublicationAllowed": false,
+        "recordCount": 1,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "cancel-intent-record-flushed",
+      "report": {
+        "candidatePresent": true,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": true,
+        "matchingOutput": false,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "candidate-retained-output-absent",
+        "outputPresent": false,
+        "productionPublicationAllowed": false,
+        "recordCount": 2,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "cancel-validated-before-publish",
+      "report": {
+        "candidatePresent": true,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": true,
+        "matchingOutput": false,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "candidate-retained-output-absent",
+        "outputPresent": false,
+        "productionPublicationAllowed": false,
+        "recordCount": 2,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "cancel-published",
+      "report": {
+        "candidatePresent": false,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": false,
+        "matchingOutput": true,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "matching-output-recovery-required",
+        "outputPresent": true,
+        "productionPublicationAllowed": false,
+        "recordCount": 2,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "cancel-output-file-flushed",
+      "report": {
+        "candidatePresent": false,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": false,
+        "matchingOutput": true,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "matching-output-recovery-required",
+        "outputPresent": true,
+        "productionPublicationAllowed": false,
+        "recordCount": 2,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "cancel-directory-flush-attempted",
+      "report": {
+        "candidatePresent": false,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": false,
+        "matchingOutput": true,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "matching-output-recovery-required",
+        "outputPresent": true,
+        "productionPublicationAllowed": false,
+        "recordCount": 2,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "cancel-observation-record-flushed",
+      "report": {
+        "candidatePresent": false,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": false,
+        "matchingOutput": true,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "matching-output-recovery-required",
+        "outputPresent": true,
+        "productionPublicationAllowed": false,
+        "recordCount": 3,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "normal",
+      "report": {
+        "candidatePresent": false,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": false,
+        "matchingOutput": true,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "matching-output-recovery-required",
+        "outputPresent": true,
+        "productionPublicationAllowed": false,
+        "recordCount": 3,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "checksum",
+      "report": {
+        "cleanupAllowed": false,
+        "committed": false,
+        "diagnostic": "RECORD_CHECKSUM_INVALID",
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "uninspectable",
+        "productionPublicationAllowed": false,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "unknown-field",
+      "report": {
+        "cleanupAllowed": false,
+        "committed": false,
+        "diagnostic": "RECORD_BODY_INVALID",
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "uninspectable",
+        "productionPublicationAllowed": false,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "untrusted-path",
+      "report": {
+        "cleanupAllowed": false,
+        "committed": false,
+        "diagnostic": "RECORD_SCOPE_INVALID",
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "uninspectable",
+        "productionPublicationAllowed": false,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "commit-flag",
+      "report": {
+        "cleanupAllowed": false,
+        "committed": false,
+        "diagnostic": "RECORD_SCOPE_INVALID",
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "uninspectable",
+        "productionPublicationAllowed": false,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "root-id",
+      "report": {
+        "cleanupAllowed": false,
+        "committed": false,
+        "diagnostic": "RECORD_ROOT_BINDING_CONFLICT",
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "uninspectable",
+        "productionPublicationAllowed": false,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "records-disagree",
+      "report": {
+        "cleanupAllowed": false,
+        "committed": false,
+        "diagnostic": "RECORDS_DISAGREE",
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "uninspectable",
+        "productionPublicationAllowed": false,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "missing-prepared",
+      "report": {
+        "cleanupAllowed": false,
+        "committed": false,
+        "diagnostic": "RECORD_SEQUENCE_INVALID",
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "uninspectable",
+        "productionPublicationAllowed": false,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "unexpected-entry",
+      "report": {
+        "cleanupAllowed": false,
+        "committed": false,
+        "diagnostic": "UNEXPECTED_ROOT_ENTRY",
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "uninspectable",
+        "productionPublicationAllowed": false,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "oversized-record",
+      "report": {
+        "cleanupAllowed": false,
+        "committed": false,
+        "diagnostic": "ARTIFACT_SIZE_BOUND",
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "uninspectable",
+        "productionPublicationAllowed": false,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "multilink-output",
+      "report": {
+        "cleanupAllowed": false,
+        "committed": false,
+        "diagnostic": "MULTILINK_ARTIFACT_REFUSED",
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "uninspectable",
+        "productionPublicationAllowed": false,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "missing-output",
+      "report": {
+        "candidatePresent": false,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": false,
+        "matchingOutput": false,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "candidate-missing-output-absent",
+        "outputPresent": false,
+        "productionPublicationAllowed": false,
+        "recordCount": 3,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "changed-output",
+      "report": {
+        "candidatePresent": false,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": false,
+        "matchingOutput": false,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "output-conflict",
+        "outputPresent": true,
+        "productionPublicationAllowed": false,
+        "recordCount": 3,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "self-consistent-record",
+      "report": {
+        "candidatePresent": false,
+        "cleanupAllowed": false,
+        "committed": false,
+        "matchingCandidate": false,
+        "matchingOutput": true,
+        "namespaceAcknowledged": false,
+        "observationOnly": true,
+        "outcome": "matching-output-recovery-required",
+        "outputPresent": true,
+        "productionPublicationAllowed": false,
+        "recordCount": 3,
+        "repairAllowed": false
+      },
+      "inventoryUnchanged": true
+    },
+    {
+      "id": "admit",
+      "report": {
+        "committed": false,
+        "missingCells": [
+          "mandatory-property-protection",
+          "namespace-persistence-qualification",
+          "durable-receipt-and-recovery"
+        ],
+        "outcome": "refused-before-effects",
+        "productionPublicationAllowed": false,
+        "workerArtifacts": 0
+      },
+      "workerArtifacts": 0
+    },
+    {
+      "id": "finalize",
+      "report": {
+        "committed": false,
+        "missingCells": [
+          "qualified-windows-recovery-profile",
+          "implemented-guarded-finalization-cleanup"
+        ],
+        "outcome": "refused-before-effects",
+        "productionPublicationAllowed": false,
+        "workerArtifacts": 0
+      },
+      "workerArtifacts": 0
+    },
+    {
+      "id": "prune",
+      "report": {
+        "committed": false,
+        "missingCells": [
+          "qualified-windows-recovery-profile",
+          "implemented-guarded-finalization-cleanup"
+        ],
+        "outcome": "refused-before-effects",
+        "productionPublicationAllowed": false,
+        "workerArtifacts": 0
+      },
+      "workerArtifacts": 0
+    }
+  ],
+  "productionPublicationAllowed": false,
+  "enabledProfiles": 0,
+  "observedOn": "2026-10-13",
+  "inspectionCapturesAudited": 35,
+  "unchangedInventories": 32,
+  "readableArtifactsHashed": 502,
+  "rootUnsafePolicyChanged": false,
+  "newOsApis": 0,
+  "encryptionOrReceiptKeys": false,
+  "osCrashRuns": 0,
+  "physicalPowerLossRuns": 0
+}

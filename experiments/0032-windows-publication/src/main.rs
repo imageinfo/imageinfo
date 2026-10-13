@@ -1,4 +1,8 @@
 #[cfg(windows)]
+mod inspection;
+#[cfg(any(windows, test))]
+mod inspection_record;
+#[cfg(windows)]
 #[allow(unsafe_code)] // Reviewed native ABI boundary; see the experiment's FFI review.
 mod native;
 #[cfg(windows)]

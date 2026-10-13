@@ -137,3 +137,8 @@ and late alias time/ADS bypass every measured request without a break. Other
 actors' ACK-required waits and preexisting-handle refusals are separate cells;
 source property exclusion remains unqualified. No source ACL, production profile,
 parent safety requirement or supported mutation policy is changed.
+
+[#0036](write-safety/windows-inspection.md) adds read-only Windows restart inspection
+for #0032. Five portable tests and 35 interruption/conflict/refusal cases distinguish
+matching observations from committed outcomes. It reuses the OS boundary/checksums,
+adds no keys/encryption or OS APIs, and preserves production storage/admission gates.

@@ -84,6 +84,13 @@ release; that is a separate cell from complete exclusion. Existing-source guards
 authenticated custody/output policy and Windows persistence remain open. The
 accepted #0027/#0033 evidence does not enable a profile or writer.
 
+[#0036 restart inspection](windows-inspection.md) reads #0032's Windows records/files
+and reports interrupted states without effects. Typed parsing and state tests are
+portable; file collection reuses the existing boundary. Checksums/identity checks
+are observations, not automatic repair authority. Integrity/ownership requirements
+do not imply encryption or receipt keys. Production storage/finalization and RAW
+admission remain gated.
+
 ## Plan before effects
 
 **WS-001 — Explicit application.** Preview does not change media, metadata targets,

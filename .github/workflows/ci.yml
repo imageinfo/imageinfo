@@ -73,6 +73,12 @@ jobs:
       - name: Qualify held Windows publication and strict unsupported admission
         if: runner.os == 'Windows'
         run: python experiments/0032-windows-publication/qualify.py --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe.exe --parent experiments/0032-windows-publication/target
+      - name: Inspect interrupted Windows transactions without effects
+        if: runner.os == 'Windows'
+        run: python experiments/0036-windows-inspection/qualify.py --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe.exe --parent experiments/0032-windows-publication/target
+      - name: Refuse unsupported Windows inspection adapter
+        if: runner.os != 'Windows'
+        run: python experiments/0036-windows-inspection/qualify.py --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe --parent experiments/0032-windows-publication/target
       - name: Refuse bound Windows publication on unsupported platforms
         if: runner.os != 'Windows'
         run: python experiments/0032-windows-publication/qualify.py --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe --parent experiments/0032-windows-publication/target

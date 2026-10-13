@@ -85,6 +85,7 @@ name = "imageinfo-windows-publication-probe"
 version = "0.0.0"
 dependencies = [
  "imageinfo-recovery-probe",
+ "serde",
  "serde_json",
  "winapi-util",
  "windows-sys",

@@ -43,7 +43,7 @@ fn information(file: &File) -> Result<Value> {
         json!({"identity":format!("{:x}:{:x}",i.volume_serial_number(),i.file_index()),"size":i.file_size(),"links":i.number_of_links(),"attributes":i.file_attributes(),"creationTime":file.metadata()?.creation_time(),"lastWriteTime":i.last_write_time()}),
     )
 }
-fn path_valid(root: &Path) -> Result<()> {
+pub(crate) fn path_valid(root: &Path) -> Result<()> {
     if !root.is_absolute() || root.as_os_str().len() > 200 {
         return Err("PATH_UNVERIFIED".into());
     }
@@ -76,7 +76,7 @@ fn path_valid(root: &Path) -> Result<()> {
     }
     Ok(())
 }
-fn ancestors(path: &Path) -> Result<Vec<File>> {
+pub(crate) fn ancestors(path: &Path) -> Result<Vec<File>> {
     let mut current = PathBuf::new();
     let mut held = Vec::new();
     for part in path.components() {
@@ -195,6 +195,13 @@ pub fn run() -> Result<()> {
     let root = PathBuf::from(&args[0]);
     path_valid(&root)?;
     let rooted = match args[1].to_str() {
+        Some("inspect") => return crate::inspection::run(&root),
+        Some("finalize" | "prune") => {
+            emit(
+                json!({"outcome":"refused-before-effects","missingCells":["qualified-windows-recovery-profile","implemented-guarded-finalization-cleanup"],"productionPublicationAllowed":false,"committed":false,"workerArtifacts":0}),
+            )?;
+            return Ok(());
+        }
         Some("rooted") => true,
         Some("absolute") => false,
         Some("admit") => {
