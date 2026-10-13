@@ -1,0 +1,915 @@
+{
+  "caseCount": 66,
+  "cases": [
+    {
+      "id": "ordinary-read",
+      "policy": "ordinary",
+      "actor": "read",
+      "allowed": true,
+      "winError": null,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "ordinary-mtime",
+      "policy": "ordinary",
+      "actor": "mtime",
+      "allowed": true,
+      "winError": null,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": false,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "ordinary-readonly",
+      "policy": "ordinary",
+      "actor": "readonly",
+      "allowed": true,
+      "winError": null,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": false,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "ordinary-dacl",
+      "policy": "ordinary",
+      "actor": "dacl",
+      "allowed": true,
+      "winError": null,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": false,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "ordinary-owner-access",
+      "policy": "ordinary",
+      "actor": "owner-access",
+      "allowed": true,
+      "winError": null,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "ordinary-ads",
+      "policy": "ordinary",
+      "actor": "ads",
+      "allowed": true,
+      "winError": null,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": false,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": false,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "ordinary-write",
+      "policy": "ordinary",
+      "actor": "write",
+      "allowed": false,
+      "winError": 32,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "ordinary-link",
+      "policy": "ordinary",
+      "actor": "link",
+      "allowed": true,
+      "winError": null,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 2,
+      "committed": false
+    },
+    {
+      "id": "ordinary-delete",
+      "policy": "ordinary",
+      "actor": "delete",
+      "allowed": false,
+      "winError": 32,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "ordinary-rename",
+      "policy": "ordinary",
+      "actor": "rename",
+      "allowed": false,
+      "winError": 32,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "fresh-restricted-read",
+      "policy": "fresh-restricted",
+      "actor": "read",
+      "allowed": true,
+      "winError": null,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "fresh-restricted-mtime",
+      "policy": "fresh-restricted",
+      "actor": "mtime",
+      "allowed": false,
+      "winError": 5,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "fresh-restricted-readonly",
+      "policy": "fresh-restricted",
+      "actor": "readonly",
+      "allowed": false,
+      "winError": 5,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "fresh-restricted-dacl",
+      "policy": "fresh-restricted",
+      "actor": "dacl",
+      "allowed": false,
+      "winError": 5,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "fresh-restricted-owner-access",
+      "policy": "fresh-restricted",
+      "actor": "owner-access",
+      "allowed": false,
+      "winError": 5,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "fresh-restricted-ads",
+      "policy": "fresh-restricted",
+      "actor": "ads",
+      "allowed": true,
+      "winError": null,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": false,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": false,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "fresh-restricted-write",
+      "policy": "fresh-restricted",
+      "actor": "write",
+      "allowed": false,
+      "winError": 32,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "fresh-restricted-link",
+      "policy": "fresh-restricted",
+      "actor": "link",
+      "allowed": false,
+      "winError": 5,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "fresh-restricted-delete",
+      "policy": "fresh-restricted",
+      "actor": "delete",
+      "allowed": false,
+      "winError": 32,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "fresh-restricted-rename",
+      "policy": "fresh-restricted",
+      "actor": "rename",
+      "allowed": false,
+      "winError": 32,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "minimal-restricted-read",
+      "policy": "minimal-restricted",
+      "actor": "read",
+      "allowed": true,
+      "winError": null,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "minimal-restricted-mtime",
+      "policy": "minimal-restricted",
+      "actor": "mtime",
+      "allowed": false,
+      "winError": 5,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "minimal-restricted-readonly",
+      "policy": "minimal-restricted",
+      "actor": "readonly",
+      "allowed": false,
+      "winError": 5,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "minimal-restricted-dacl",
+      "policy": "minimal-restricted",
+      "actor": "dacl",
+      "allowed": false,
+      "winError": 5,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "minimal-restricted-owner-access",
+      "policy": "minimal-restricted",
+      "actor": "owner-access",
+      "allowed": false,
+      "winError": 5,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "minimal-restricted-ads",
+      "policy": "minimal-restricted",
+      "actor": "ads",
+      "allowed": true,
+      "winError": null,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": false,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": false,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "minimal-restricted-write",
+      "policy": "minimal-restricted",
+      "actor": "write",
+      "allowed": false,
+      "winError": 32,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "minimal-restricted-link",
+      "policy": "minimal-restricted",
+      "actor": "link",
+      "allowed": false,
+      "winError": 5,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "minimal-restricted-delete",
+      "policy": "minimal-restricted",
+      "actor": "delete",
+      "allowed": false,
+      "winError": 32,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "minimal-restricted-rename",
+      "policy": "minimal-restricted",
+      "actor": "rename",
+      "allowed": false,
+      "winError": 32,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "fresh-sealed-read",
+      "policy": "fresh-sealed",
+      "actor": "read",
+      "allowed": true,
+      "winError": null,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "fresh-sealed-mtime",
+      "policy": "fresh-sealed",
+      "actor": "mtime",
+      "allowed": false,
+      "winError": 5,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "fresh-sealed-readonly",
+      "policy": "fresh-sealed",
+      "actor": "readonly",
+      "allowed": false,
+      "winError": 5,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "fresh-sealed-dacl",
+      "policy": "fresh-sealed",
+      "actor": "dacl",
+      "allowed": false,
+      "winError": 5,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "fresh-sealed-owner-access",
+      "policy": "fresh-sealed",
+      "actor": "owner-access",
+      "allowed": false,
+      "winError": 5,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "fresh-sealed-ads",
+      "policy": "fresh-sealed",
+      "actor": "ads",
+      "allowed": false,
+      "winError": 5,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "fresh-sealed-write",
+      "policy": "fresh-sealed",
+      "actor": "write",
+      "allowed": false,
+      "winError": 5,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "fresh-sealed-link",
+      "policy": "fresh-sealed",
+      "actor": "link",
+      "allowed": false,
+      "winError": 5,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "fresh-sealed-delete",
+      "policy": "fresh-sealed",
+      "actor": "delete",
+      "allowed": false,
+      "winError": 32,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "fresh-sealed-rename",
+      "policy": "fresh-sealed",
+      "actor": "rename",
+      "allowed": false,
+      "winError": 32,
+      "contentUnchanged": true,
+      "identityUnchanged": true,
+      "policyMatches": true,
+      "mtimeUnchanged": true,
+      "attributesUnchanged": true,
+      "defaultStreamOnly": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "preopened-mtime",
+      "preexistingHandleActor": {
+        "allowed": true,
+        "winError": null
+      },
+      "freshHandleActor": {
+        "allowed": false,
+        "winError": 5
+      },
+      "committed": false
+    },
+    {
+      "id": "preopened-dacl",
+      "preexistingHandleActor": {
+        "allowed": true,
+        "winError": null
+      },
+      "freshHandleActor": {
+        "allowed": false,
+        "winError": 5
+      },
+      "committed": false
+    },
+    {
+      "id": "after-exit-fresh-restricted",
+      "postExitActors": {
+        "read": {
+          "allowed": true,
+          "winError": null
+        },
+        "write": {
+          "allowed": true,
+          "winError": null
+        },
+        "ads": {
+          "allowed": true,
+          "winError": null
+        },
+        "mtime": {
+          "allowed": false,
+          "winError": 5
+        },
+        "owner-access": {
+          "allowed": false,
+          "winError": 5
+        },
+        "link": {
+          "allowed": false,
+          "winError": 5
+        }
+      },
+      "holderRestoration": null,
+      "committed": false
+    },
+    {
+      "id": "after-exit-retained-security",
+      "postExitActors": {
+        "read": {
+          "allowed": true,
+          "winError": null
+        },
+        "write": {
+          "allowed": true,
+          "winError": null
+        },
+        "ads": {
+          "allowed": true,
+          "winError": null
+        },
+        "mtime": {
+          "allowed": false,
+          "winError": 5
+        },
+        "owner-access": {
+          "allowed": false,
+          "winError": 5
+        },
+        "link": {
+          "allowed": false,
+          "winError": 5
+        }
+      },
+      "holderRestoration": false,
+      "committed": false
+    },
+    {
+      "id": "after-exit-sealed-exit",
+      "postExitActors": {
+        "read": {
+          "allowed": true,
+          "winError": null
+        },
+        "write": {
+          "allowed": true,
+          "winError": null
+        },
+        "ads": {
+          "allowed": true,
+          "winError": null
+        },
+        "mtime": {
+          "allowed": false,
+          "winError": 5
+        },
+        "owner-access": {
+          "allowed": false,
+          "winError": 5
+        },
+        "link": {
+          "allowed": false,
+          "winError": 5
+        }
+      },
+      "holderRestoration": null,
+      "committed": false
+    },
+    {
+      "id": "after-exit-fresh-sealed",
+      "postExitActors": {
+        "read": {
+          "allowed": true,
+          "winError": null
+        },
+        "write": {
+          "allowed": false,
+          "winError": 5
+        },
+        "ads": {
+          "allowed": false,
+          "winError": 5
+        },
+        "mtime": {
+          "allowed": false,
+          "winError": 5
+        },
+        "owner-access": {
+          "allowed": false,
+          "winError": 5
+        },
+        "link": {
+          "allowed": false,
+          "winError": 5
+        }
+      },
+      "holderRestoration": null,
+      "committed": false
+    },
+    {
+      "id": "publish-restricted-published-read",
+      "allowed": true,
+      "winError": null,
+      "heldPublicationAndFlushObserved": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "publish-restricted-published-mtime",
+      "allowed": false,
+      "winError": 5,
+      "heldPublicationAndFlushObserved": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "publish-restricted-published-link",
+      "allowed": false,
+      "winError": 5,
+      "heldPublicationAndFlushObserved": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "publish-restricted-guarded-mtime",
+      "allowed": false,
+      "winError": 5,
+      "heldPublicationAndFlushObserved": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "publish-sealed-published-ads",
+      "allowed": false,
+      "winError": 5,
+      "heldPublicationAndFlushObserved": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "publish-sealed-published-link",
+      "allowed": false,
+      "winError": 5,
+      "heldPublicationAndFlushObserved": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "publish-sealed-published-read",
+      "allowed": true,
+      "winError": null,
+      "heldPublicationAndFlushObserved": true,
+      "linkCount": 1,
+      "committed": false
+    },
+    {
+      "id": "strict-admission",
+      "artifactsCreated": false,
+      "committed": false
+    },
+    {
+      "id": "kill-created",
+      "interruption": "kill",
+      "phase": "created",
+      "candidateOutputObserved": false,
+      "foreignWinnerRetained": false,
+      "committed": false
+    },
+    {
+      "id": "cancel-created",
+      "interruption": "cancel",
+      "phase": "created",
+      "candidateOutputObserved": false,
+      "foreignWinnerRetained": false,
+      "committed": false
+    },
+    {
+      "id": "kill-guarded",
+      "interruption": "kill",
+      "phase": "guarded",
+      "candidateOutputObserved": false,
+      "foreignWinnerRetained": false,
+      "committed": false
+    },
+    {
+      "id": "cancel-guarded",
+      "interruption": "cancel",
+      "phase": "guarded",
+      "candidateOutputObserved": false,
+      "foreignWinnerRetained": false,
+      "committed": false
+    },
+    {
+      "id": "collision-guarded",
+      "interruption": "collision",
+      "phase": "guarded",
+      "candidateOutputObserved": false,
+      "foreignWinnerRetained": true,
+      "committed": false
+    },
+    {
+      "id": "kill-published",
+      "interruption": "kill",
+      "phase": "published",
+      "candidateOutputObserved": true,
+      "foreignWinnerRetained": false,
+      "committed": false
+    },
+    {
+      "id": "cancel-published",
+      "interruption": "cancel",
+      "phase": "published",
+      "candidateOutputObserved": true,
+      "foreignWinnerRetained": false,
+      "committed": false
+    },
+    {
+      "id": "path-61",
+      "diagnostic": "MARKER_PATH_UNVERIFIED",
+      "workerArtifacts": 0,
+      "committed": false
+    },
+    {
+      "id": "path-62",
+      "diagnostic": "MARKER_PATH_UNVERIFIED",
+      "workerArtifacts": 0,
+      "committed": false
+    },
+    {
+      "id": "path-63",
+      "diagnostic": "MARKER_PATH_UNVERIFIED",
+      "workerArtifacts": 0,
+      "committed": false
+    },
+    {
+      "id": "path-64",
+      "diagnostic": "MARKER_PATH_UNVERIFIED",
+      "workerArtifacts": 0,
+      "committed": false
+    },
+    {
+      "id": "path-65",
+      "diagnostic": "MARKER_PATH_UNVERIFIED",
+      "workerArtifacts": 0,
+      "committed": false
+    }
+  ],
+  "platform": "Windows ordinary local NTFS",
+  "productionPublicationAllowed": false,
+  "enabledProfiles": 0,
+  "schemaVersion": 1,
+  "observedOn": "2026-10-13",
+  "capturesAudited": 60,
+  "readableArtifactsHashed": 442,
+  "inaccessibleArtifactsRetained": 2,
+  "alternateStreamsHashed": 6,
+  "sourceBindingRetained": true,
+  "existingSourcePropertyGuardQualified": false,
+  "restartCustodyQualified": false,
+  "physicalPowerLossRuns": 0,
+  "osCrashRuns": 0,
+  "rootProductionUnsafePolicyChanged": false
+}

@@ -150,8 +150,26 @@ pub struct PrivateSecurity {
 }
 impl PrivateSecurity {
     pub fn current() -> io::Result<Self> {
+        Self::with_owner_restrictions(0)
+    }
+    #[allow(dead_code)] // Used by the separate #0033 qualification crate.
+    pub fn restricted_owner() -> io::Result<Self> {
+        Self::with_owner_restrictions(0x000c0110)
+    }
+    #[allow(dead_code)] // Used by the separate #0033 qualification crate.
+    pub fn sealed_owner() -> io::Result<Self> {
+        Self::with_owner_restrictions(0x000c0116)
+    }
+    fn with_owner_restrictions(mask: u32) -> io::Result<Self> {
         let sid = current_sid()?;
-        let text: Vec<u16> = format!("O:{sid}D:P(A;;FA;;;{sid})")
+        // OWNER RIGHTS suppresses implicit owner WRITE_DAC. Ordinary creation
+        // remains unchanged; #0033 separately qualifies this restrictive policy.
+        let deny = if mask != 0 {
+            format!("(D;;0x{mask:08x};;;OW)")
+        } else {
+            String::new()
+        };
+        let text: Vec<u16> = format!("O:{sid}D:P{deny}(A;;FA;;;{sid})")
             .encode_utf16()
             .chain(Some(0))
             .collect();
@@ -259,6 +277,9 @@ impl PrivateSecurity {
         Ok(file)
     }
     pub fn create_file(&self, path: &Path) -> io::Result<File> {
+        self.create_file_access(path, GENERIC_READ | GENERIC_WRITE | DELETE | READ_CONTROL)
+    }
+    pub fn create_file_access(&self, path: &Path, access: u32) -> io::Result<File> {
         let name = wide(path)?;
         let attributes = SECURITY_ATTRIBUTES {
             nLength: size_of::<SECURITY_ATTRIBUTES>() as u32,
@@ -271,7 +292,7 @@ impl PrivateSecurity {
         let handle = unsafe {
             CreateFileW(
                 name.as_ptr(),
-                GENERIC_READ | GENERIC_WRITE | DELETE | READ_CONTROL,
+                access,
                 FILE_SHARE_READ,
                 &attributes,
                 CREATE_NEW,
@@ -286,6 +307,40 @@ impl PrivateSecurity {
         let file = unsafe { File::from_raw_handle(handle) };
         self.check(&file)?;
         Ok(file)
+    }
+    #[allow(dead_code)] // Used by the separate #0033 qualification crate.
+    pub fn apply_to_owned_marker(&self, file: &File) -> io::Result<()> {
+        let mut present = 0;
+        let mut defaulted = 0;
+        let mut acl = ptr::null_mut();
+        // SAFETY: retained OS-created descriptor; outputs are live and ACL remains
+        // borrowed from it. This helper is used only on newly owned #0033 markers.
+        if unsafe {
+            GetSecurityDescriptorDacl(self.allocation.0, &mut present, &mut acl, &mut defaulted)
+        } == 0
+        {
+            return Err(io::Error::last_os_error());
+        }
+        if present == 0 || acl.is_null() {
+            return Err(io::Error::other("MARKER_DACL_REQUIRED"));
+        }
+        // SAFETY: live caller-owned marker handle with retained WRITE_DAC; only
+        // its DACL is set. No owner/token/privilege/system changes or path reopen.
+        let code = unsafe {
+            SetSecurityInfo(
+                file.as_raw_handle(),
+                SE_FILE_OBJECT,
+                DACL_SECURITY_INFORMATION | PROTECTED_DACL_SECURITY_INFORMATION,
+                ptr::null_mut(),
+                ptr::null_mut(),
+                acl,
+                ptr::null_mut(),
+            )
+        };
+        if code != 0 {
+            return Err(io::Error::from_raw_os_error(code as i32));
+        }
+        self.check(file)
     }
 }
 pub fn check_streams(file: &File) -> io::Result<()> {

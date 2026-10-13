@@ -123,3 +123,10 @@ All current real-camera mutation admissions remain refused. #0022/#0014 and #002
 still require an actually supported operation/storage profile; #0025/#0018 retain
 broader authenticity/privacy/corpus coverage. Acceptance of this scoped refusal
 handoff does not authorize skipping the remaining gates.
+
+[#0033](write-safety/owner-rights.md) continues #0022 with actual fresh-artifact
+OWNER RIGHTS property/link/ADS exclusion and held publication. It qualifies the
+stronger creation policy separately from after-open sealing and records preexisting
+handle bypasses plus constrained post-exit owner access. Complete source exclusion,
+authenticated custody/guarded recovery and Windows crash/receipt persistence remain
+open; no ordinary editable-output or weaker concurrency promise is assumed.

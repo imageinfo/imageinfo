@@ -70,6 +70,13 @@ bounded known-provenance catalog distinguishes indicators from uninspectable
 coverage. Opaque/checksum dependencies still refuse the initial eight-file stratum;
 no production write admission, storage profile or #0023 enablement follows.
 
+[#0033 OWNER RIGHTS qualification](owner-rights.md) now supplies a measured fresh-
+artifact property/link/ADS restriction that composes with held Windows publication.
+The property-only variant leaves ADS mutable; the stronger deny closes that route.
+Preopened time/security handles still act after later sealing, and strong artifacts
+remain read-only after exit. Existing-source exclusion, operational output/recovery
+policy and Windows persistence/custody remain missing; no profile is enabled.
+
 ## Plan before effects
 
 **WS-001 — Explicit application.** Preview does not change media, metadata targets,

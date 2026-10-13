@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "status": "pending",
+  "scope": "Windows owner-rights marker and prior publication regression; other platforms refuse. No production profile enabled.",
+  "enabledProfiles": 0
+}

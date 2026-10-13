@@ -38,6 +38,12 @@ known-provenance refusal catalog. Private DateTimeDigitized aliases expose coupl
 date effects despite exact complement and RAW-unpack equality. Opaque/checksum
 dependencies refuse every current real-camera mutation admission. See
 `docs/write-safety/write-admission.md`; no writer/profile or #0023 permission is enabled.
+#0033 qualifies fresh Windows OWNER RIGHTS property/link restrictions, including a
+stronger data/append deny that closes the measured ADS route while held publication
+works. Preopened time/security handles bypass later sealing; strongly sealed markers
+remain read-only after exit. Existing-source, custody/recovery, operational output
+policy and Windows persistence remain missing. See `docs/write-safety/owner-rights.md`;
+no production profile or source ACL mutation is enabled.
 
 ## Product intent
 
