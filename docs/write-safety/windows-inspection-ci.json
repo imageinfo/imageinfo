@@ -1,7 +1,39 @@
 {
   "schemaVersion": 1,
   "observedOn": "2026-10-13",
-  "status": "pending-source-push",
-  "scope": "Five portable parser/classification tests on all platforms, 35 Windows restart/refusal cases and existing root/publication gates. Other filesystem adapters refuse.",
-  "enabledProfiles": 0
+  "sourceRevision": "ca025c8563ebdc5e61d8a0a46e37e1c428c254d9",
+  "runId": 38420747791,
+  "runUrl": "https://github.com/imageinfo/imageinfo/actions/runs/38420747791",
+  "status": "passed",
+  "scope": "Five portable record/classification tests passed on Windows, Ubuntu and macOS. Windows passed 35 actual restart/refusal cases and the original 78-case publication regression. Other filesystem adapters explicitly refused. Root/prior gates passed; no writer/profile or repair enabled.",
+  "enabledProfiles": 0,
+  "jobs": [
+    {
+      "id": 115377088140,
+      "runner": "ubuntu-24.04",
+      "status": "completed",
+      "conclusion": "success",
+      "recordTests": "success",
+      "inspection": "success",
+      "rootContracts": "success"
+    },
+    {
+      "id": 115377088463,
+      "runner": "windows-2025",
+      "status": "completed",
+      "conclusion": "success",
+      "recordTests": "success",
+      "inspection": "success",
+      "rootContracts": "success"
+    },
+    {
+      "id": 115377088584,
+      "runner": "macos-15",
+      "status": "completed",
+      "conclusion": "success",
+      "recordTests": "success",
+      "inspection": "success",
+      "rootContracts": "success"
+    }
+  ]
 }
