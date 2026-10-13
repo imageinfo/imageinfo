@@ -1,6 +1,38 @@
 {
   "schemaVersion": 1,
   "observedOn": "2026-10-13",
-  "status": "pending-source-push",
-  "scope": "Native JSON syntax-error routing; eight new contract tests and existing root/research gates on Windows, Ubuntu and macOS. No full CLI/API/session parity claim."
+  "sourceRevision": "5a24512823cb7afc1719a919ec816c35ad3da580",
+  "runId": 38447034343,
+  "runUrl": "https://github.com/imageinfo/imageinfo/actions/runs/38447034343",
+  "status": "passed",
+  "scope": "Native JSON syntax-error routing: eight new tests per platform, including 35 executable invocations and native argv boundaries. Root totals are 44 Windows/45 Unix tests. Formatting, Clippy, release, docs and prior research gates passed; broader CLI/API/session compatibility remains open.",
+  "jobs": [
+    {
+      "id": 115468001097,
+      "runner": "ubuntu-24.04",
+      "status": "completed",
+      "conclusion": "success",
+      "rootContracts": "success",
+      "rootLint": "success",
+      "release": "success"
+    },
+    {
+      "id": 115468001391,
+      "runner": "macos-15",
+      "status": "completed",
+      "conclusion": "success",
+      "rootContracts": "success",
+      "rootLint": "success",
+      "release": "success"
+    },
+    {
+      "id": 115468001571,
+      "runner": "windows-2025",
+      "status": "completed",
+      "conclusion": "success",
+      "rootContracts": "success",
+      "rootLint": "success",
+      "release": "success"
+    }
+  ]
 }
