@@ -32,6 +32,18 @@ jobs:
           cargo clippy --locked --manifest-path experiments/0034-source-oplocks/Cargo.toml --all-targets -- -D warnings
           cargo test --locked --manifest-path experiments/0034-source-oplocks/Cargo.toml
           cargo build --locked --release --manifest-path experiments/0034-source-oplocks/Cargo.toml
+      - name: Check owned staging cleanup research
+        run: |
+          cargo fmt --manifest-path experiments/0038-staging-cleanup/Cargo.toml --check
+          cargo clippy --locked --manifest-path experiments/0038-staging-cleanup/Cargo.toml --all-targets -- -D warnings
+          cargo test --locked --manifest-path experiments/0038-staging-cleanup/Cargo.toml
+          cargo build --locked --release --manifest-path experiments/0038-staging-cleanup/Cargo.toml
+      - name: Qualify live owned staging cleanup on Windows
+        if: runner.os == 'Windows'
+        run: python experiments/0038-staging-cleanup/qualify.py --binary experiments/0038-staging-cleanup/target/release/imageinfo-staging-cleanup-probe.exe --parent experiments/0038-staging-cleanup/target
+      - name: Refuse unsupported staging cleanup adapter
+        if: runner.os != 'Windows'
+        run: python experiments/0038-staging-cleanup/qualify.py --binary experiments/0038-staging-cleanup/target/release/imageinfo-staging-cleanup-probe --parent experiments/0038-staging-cleanup/target
       - name: Qualify existing-source oplock exclusion on Windows
         if: runner.os == 'Windows'
         run: python experiments/0034-source-oplocks/qualify.py --binary experiments/0034-source-oplocks/target/release/imageinfo-source-oplock-probe.exe --parent experiments/0034-source-oplocks/target

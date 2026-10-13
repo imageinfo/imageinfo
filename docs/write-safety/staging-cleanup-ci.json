@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-13",
+  "status": "pending-source-push",
+  "scope": "27 live Windows owned-staging cleanup cases; unsupported platforms refuse, root and prior research gates remain required. No complete writer/storage/recovery profile."
+}

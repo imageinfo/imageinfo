@@ -35,6 +35,7 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Existing-source Windows oplocks](write-safety/source-oplocks.md) | #0034 actual RH/RW/RWH property and late-alias bypasses, ACK-required waits, preopened-handle/refusal and process lifetime evidence; complete source guard remains unqualified. |
 | [Windows restart inspection](write-safety/windows-inspection.md) | #0036 read-only classification of interrupted #0032 transactions, portable record tests and no-effect repair refusals; no keys or new OS APIs. |
 | [Native JSON syntax errors](legacy-compatibility/native-json-errors.md) | #0037 production error-envelope routing for one explicit JSON selector, literal/native argv boundaries and portable no-effect tests; broader integration remains open. |
+| [Owned staging cleanup](write-safety/staging-cleanup.md) | #0038 actual live prepublication file-handle cleanup, foreign-entry preservation, reader deferral and partial/refused outcomes; roots/restart/postpublication actions remain retained. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |

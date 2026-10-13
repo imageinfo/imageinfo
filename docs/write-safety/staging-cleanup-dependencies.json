@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-13",
+  "scope": "Separate #0038 owned staging cleanup research. Exact previously admitted SDK/serde archives and notices reused; no new package version, SDK feature, root dependency or production unsafe change. One synchronous held-file disposition boundary reviewed separately.",
+  "packages": [
+    {
+      "name": "itoa",
+      "version": "1.0.18",
+      "packageSha256": "8f42a60cbdf9a97f5d2305f08a87dc4e09308d1276d28c869c684d7777685682",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/itoa/1.0.18",
+      "reviewRecordId": "PV-0038-itoa-1.0.18",
+      "notices": [
+        {
+          "path": "licenses/dependencies/itoa-1.0.18-LICENSE-MIT.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "upstreamFileSha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "buildScript": null
+    },
+    {
+      "name": "memchr",
+      "version": "2.8.3",
+      "packageSha256": "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98",
+      "declaredLicense": "Unlicense OR MIT",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/memchr/2.8.3",
+      "reviewRecordId": "PV-0038-memchr-2.8.3",
+      "notices": [
+        {
+          "path": "licenses/dependencies/memchr-2.8.3-LICENSE-MIT.txt",
+          "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+          "upstreamFileSha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f"
+        }
+      ],
+      "buildScript": null
+    },
+    {
+      "name": "proc-macro2",
+      "version": "1.0.107",
+      "packageSha256": "985e7ec9bb745e6ce6535b544d84d6cd6f7ad8bd711c398938ae983b91a766d9",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/proc-macro2/1.0.107",
+      "reviewRecordId": "PV-0038-proc-macro2-1.0.107",
+      "notices": [
+        {
+          "path": "licenses/dependencies/proc-macro2-1.0.107-LICENSE-MIT.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "upstreamFileSha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "buildScript": {
+        "sha256": "baeb20b52f6b536be8657a566591a507bb2e34a45cf8baa42b135510a0c3c729",
+        "scope": "Standard Cargo/compiler feature/version probing; package build code remains upstream, not imported."
+      }
+    },
+    {
+      "name": "quote",
+      "version": "1.0.47",
+      "packageSha256": "1fbf4db142a473a8d80c26bbf18454ed458bf8d26c8219c331daecfdbd079001",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/quote/1.0.47",
+      "reviewRecordId": "PV-0038-quote-1.0.47",
+      "notices": [
+        {
+          "path": "licenses/dependencies/quote-1.0.47-LICENSE-MIT.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "upstreamFileSha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "buildScript": {
+        "sha256": "cd6808c02e476b09a520105e2c6f6d325cccb1ecd542cbbcc836a0ae6f6fb0f1",
+        "scope": "Standard Cargo/compiler feature/version probing; package build code remains upstream, not imported."
+      }
+    },
+    {
+      "name": "serde",
+      "version": "1.0.229",
+      "packageSha256": "4148590afebada386688f18773da617792bf2ef03ffc1e4cbd2b1d45b023e0ba",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/serde/1.0.229",
+      "reviewRecordId": "PV-0038-serde-1.0.229",
+      "notices": [
+        {
+          "path": "licenses/dependencies/serde-1.0.229-LICENSE-MIT.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "upstreamFileSha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "buildScript": {
+        "sha256": "e2ea6a7a82f5404c3e28cb055883c737ee7903367a10206fbb47b75c009f0eb3",
+        "scope": "Standard Cargo/compiler feature/version probing; package build code remains upstream, not imported."
+      }
+    },
+    {
+      "name": "serde_core",
+      "version": "1.0.229",
+      "packageSha256": "67dca2c9c51e58a4791a4b1ed58308b39c64224d349a935ab5039aa360942a48",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/serde_core/1.0.229",
+      "reviewRecordId": "PV-0038-serde_core-1.0.229",
+      "notices": [
+        {
+          "path": "licenses/dependencies/serde_core-1.0.229-LICENSE-MIT.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "upstreamFileSha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "buildScript": {
+        "sha256": "7bc6b1eec8913ff4cd8e4b9b92cd04a82a4f38beb30a0b73a64c1e6e49f07b5f",
+        "scope": "Standard Cargo/compiler feature/version probing; package build code remains upstream, not imported."
+      }
+    },
+    {
+      "name": "serde_derive",
+      "version": "1.0.229",
+      "packageSha256": "e7a5d71263a5a7d47b41f6b3f06ba276f10cc18b0931f1799f710578e2309348",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/serde_derive/1.0.229",
+      "reviewRecordId": "PV-0038-serde_derive-1.0.229",
+      "notices": [
+        {
+          "path": "licenses/dependencies/serde_derive-1.0.229-LICENSE-MIT.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "upstreamFileSha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "buildScript": null
+    },
+    {
+      "name": "serde_json",
+      "version": "1.0.152",
+      "packageSha256": "1741ab7a6cc54a03a89b5d563ed60075c277d9e3cfa73ad0c1f23f23974703c6",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/serde_json/1.0.152",
+      "reviewRecordId": "PV-0038-serde_json-1.0.152",
+      "notices": [
+        {
+          "path": "licenses/dependencies/serde_json-1.0.152-LICENSE-MIT.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "upstreamFileSha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "buildScript": {
+        "sha256": "a681e754be844c7dbef957f5d2d00b01f37c5dca160ef1055a8d8f975697a881",
+        "scope": "Standard Cargo/compiler feature/version probing; package build code remains upstream, not imported."
+      }
+    },
+    {
+      "name": "syn",
+      "version": "3.0.7",
+      "packageSha256": "d62a2e0561533f2ca2561d0cf27fd9fedb640a1bf2616ff5d5c80d99017faadc",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/syn/3.0.7",
+      "reviewRecordId": "PV-0038-syn-3.0.7",
+      "notices": [
+        {
+          "path": "licenses/dependencies/syn-3.0.7-LICENSE-MIT.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "upstreamFileSha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "buildScript": null
+    },
+    {
+      "name": "unicode-ident",
+      "version": "1.0.26",
+      "packageSha256": "d245f478577f809a851594d02313b640fb437e0bb33866753cff937863096954",
+      "declaredLicense": "(MIT OR Apache-2.0) AND Unicode-3.0",
+      "selectedBasis": "MIT AND Unicode-3.0",
+      "origin": "https://crates.io/crates/unicode-ident/1.0.26",
+      "reviewRecordId": "PV-0038-unicode-ident-1.0.26",
+      "notices": [
+        {
+          "path": "licenses/dependencies/unicode-ident-1.0.26-LICENSE-MIT.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "upstreamFileSha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        },
+        {
+          "path": "licenses/dependencies/unicode-ident-1.0.26-LICENSE-UNICODE.txt",
+          "sha256": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1",
+          "upstreamFileSha256": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1"
+        }
+      ],
+      "buildScript": null
+    },
+    {
+      "name": "winapi-util",
+      "version": "0.1.11",
+      "packageSha256": "c2a7b1c03c876122aa43f3020e6c3c3ee5c05081c9a00739faf7503aeba10d22",
+      "declaredLicense": "Unlicense OR MIT",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/winapi-util/0.1.11",
+      "reviewRecordId": "PV-0038-winapi-util-0.1.11",
+      "notices": [
+        {
+          "path": "licenses/dependencies/winapi-util-0.1.11-LICENSE-MIT.txt",
+          "sha256": "cb3c929a05e6cbc9de9ab06a4c57eeb60ca8c724bef6c138c87d3a577e27aa14",
+          "upstreamFileSha256": "cb3c929a05e6cbc9de9ab06a4c57eeb60ca8c724bef6c138c87d3a577e27aa14"
+        }
+      ],
+      "buildScript": null
+    },
+    {
+      "name": "windows-link",
+      "version": "0.2.1",
+      "packageSha256": "f0805222e57f7521d6a62e36fa9163bc891acd422f971defe97d64e70d0a4fe5",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/windows-link/0.2.1",
+      "reviewRecordId": "PV-0038-windows-link-0.2.1",
+      "notices": [
+        {
+          "path": "licenses/dependencies/windows-link-0.2.1-license-mit.txt",
+          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+          "upstreamFileSha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+        }
+      ],
+      "buildScript": null
+    },
+    {
+      "name": "windows-sys",
+      "version": "0.61.2",
+      "packageSha256": "ae137229bcbd6cdf0f7b80a31df61766145077ddf49416a728b02cb3921ff3fc",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/windows-sys/0.61.2",
+      "reviewRecordId": "PV-0038-windows-sys-0.61.2",
+      "notices": [
+        {
+          "path": "licenses/dependencies/windows-sys-0.61.2-license-mit.txt",
+          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+          "upstreamFileSha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+        }
+      ],
+      "buildScript": null
+    },
+    {
+      "name": "zmij",
+      "version": "1.0.23",
+      "packageSha256": "29666d0abbfad1e3dc4dcf6144730dd3a3ab225bbbdac83319345b1b44ccfc1b",
+      "declaredLicense": "MIT",
+      "selectedBasis": "MIT",
+      "origin": "https://crates.io/crates/zmij/1.0.23",
+      "reviewRecordId": "PV-0038-zmij-1.0.23",
+      "notices": [
+        {
+          "path": "licenses/dependencies/zmij-1.0.23-LICENSE-MIT.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "upstreamFileSha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "buildScript": {
+        "sha256": "ad320bc635887879bdbbf1b9322da4a157ec2c5a4243bd7c2cf9b6884a3b2a41",
+        "scope": "Standard Cargo/compiler feature/version probing; package build code remains upstream, not imported."
+      }
+    }
+  ]
+}

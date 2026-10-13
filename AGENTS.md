@@ -61,6 +61,11 @@ selector before `--` emits the existing status-2 envelope even when grammar fail
 Invalid/duplicate output selection remains plain stderr; literals/attached data do
 not select a channel. See `docs/legacy-compatibility/native-json-errors.md`.
 Broader #0015 integration/session/plan gaps and all mutation gates remain open.
+#0038 implements live prepublication cleanup of verified fresh owned staging files
+using their retained handles. Foreign reinserted names/extra entries and roots stay
+retained; readers can defer removal and partial/error work is reported. Cleanup
+refuses after any publication attempt. See `docs/write-safety/staging-cleanup.md`;
+this does not enable restart prune, directory cleanup, a writer or a full profile.
 
 ## Product intent
 

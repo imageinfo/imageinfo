@@ -91,6 +91,12 @@ are observations, not automatic repair authority. Integrity/ownership requiremen
 do not imply encryption or receipt keys. Production storage/finalization and RAW
 admission remain gated.
 
+[#0038 staging cleanup](staging-cleanup.md) now marks and closes only freshly owned,
+live-guarded staging file handles before publication. Foreign name reinsertion,
+unrelated entries and roots are retained; reader deferral and partial failure are
+reported. Any publication attempt disqualifies this abort path. Restart/directory/
+postpublication cleanup and full storage/admission remain separate gates.
+
 ## Plan before effects
 
 **WS-001 — Explicit application.** Preview does not change media, metadata targets,

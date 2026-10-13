@@ -1,0 +1,568 @@
+{
+  "schemaVersion": 1,
+  "caseCount": 27,
+  "cases": [
+    {
+      "id": "normal",
+      "mode": "abort",
+      "terminal": {
+        "cleanupPending": false,
+        "committed": false,
+        "outcome": "cancelled-before-publication",
+        "ownedHandlesMarkedAndClosed": 2,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": false,
+        "rootRetained": true
+      },
+      "markedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "closedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "retainedAfterHolderExit": [],
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "publish-cancel-before-call",
+      "mode": "publish",
+      "terminal": {
+        "cleanupPending": false,
+        "committed": false,
+        "outcome": "cancelled-before-publication",
+        "ownedHandlesMarkedAndClosed": 2,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": false,
+        "rootRetained": true
+      },
+      "markedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "closedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "retainedAfterHolderExit": [],
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "reinsert-stage",
+      "mode": "abort",
+      "terminal": {
+        "cleanupPending": true,
+        "committed": false,
+        "outcome": "cancelled-before-publication",
+        "ownedHandlesMarkedAndClosed": 2,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": false,
+        "rootRetained": true
+      },
+      "markedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "closedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "retainedAfterHolderExit": [
+        "stage.marker"
+      ],
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "reinsert-record",
+      "mode": "abort",
+      "terminal": {
+        "cleanupPending": true,
+        "committed": false,
+        "outcome": "cancelled-before-publication",
+        "ownedHandlesMarkedAndClosed": 2,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": false,
+        "rootRetained": true
+      },
+      "markedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "closedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "retainedAfterHolderExit": [
+        "record.marker"
+      ],
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "extra-entry",
+      "mode": "abort",
+      "terminal": {
+        "cleanupPending": true,
+        "committed": false,
+        "outcome": "cancelled-before-publication",
+        "ownedHandlesMarkedAndClosed": 2,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": false,
+        "rootRetained": true
+      },
+      "markedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "closedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "retainedAfterHolderExit": [
+        "unrelated.marker"
+      ],
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "compatible-reader",
+      "mode": "abort",
+      "terminal": {
+        "cleanupPending": true,
+        "committed": false,
+        "outcome": "cancelled-before-publication",
+        "ownedHandlesMarkedAndClosed": 2,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": false,
+        "rootRetained": true
+      },
+      "markedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "closedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "retainedAfterHolderExit": [
+        "stage.marker"
+      ],
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "incompatible-reader",
+      "mode": "abort",
+      "terminal": {
+        "cleanupPending": false,
+        "committed": false,
+        "outcome": "cancelled-before-publication",
+        "ownedHandlesMarkedAndClosed": 2,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": false,
+        "rootRetained": true
+      },
+      "markedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "closedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "retainedAfterHolderExit": [],
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "actor-mtime",
+      "mode": "abort",
+      "terminal": {
+        "cleanupPending": false,
+        "committed": false,
+        "outcome": "cancelled-before-publication",
+        "ownedHandlesMarkedAndClosed": 2,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": false,
+        "rootRetained": true
+      },
+      "markedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "closedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "retainedAfterHolderExit": [],
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "actor-readonly",
+      "mode": "abort",
+      "terminal": {
+        "cleanupPending": false,
+        "committed": false,
+        "outcome": "cancelled-before-publication",
+        "ownedHandlesMarkedAndClosed": 2,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": false,
+        "rootRetained": true
+      },
+      "markedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "closedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "retainedAfterHolderExit": [],
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "actor-dacl",
+      "mode": "abort",
+      "terminal": {
+        "cleanupPending": false,
+        "committed": false,
+        "outcome": "cancelled-before-publication",
+        "ownedHandlesMarkedAndClosed": 2,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": false,
+        "rootRetained": true
+      },
+      "markedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "closedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "retainedAfterHolderExit": [],
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "actor-owner-access",
+      "mode": "abort",
+      "terminal": {
+        "cleanupPending": false,
+        "committed": false,
+        "outcome": "cancelled-before-publication",
+        "ownedHandlesMarkedAndClosed": 2,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": false,
+        "rootRetained": true
+      },
+      "markedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "closedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "retainedAfterHolderExit": [],
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "actor-ads",
+      "mode": "abort",
+      "terminal": {
+        "cleanupPending": false,
+        "committed": false,
+        "outcome": "cancelled-before-publication",
+        "ownedHandlesMarkedAndClosed": 2,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": false,
+        "rootRetained": true
+      },
+      "markedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "closedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "retainedAfterHolderExit": [],
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "actor-write",
+      "mode": "abort",
+      "terminal": {
+        "cleanupPending": false,
+        "committed": false,
+        "outcome": "cancelled-before-publication",
+        "ownedHandlesMarkedAndClosed": 2,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": false,
+        "rootRetained": true
+      },
+      "markedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "closedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "retainedAfterHolderExit": [],
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "actor-link",
+      "mode": "abort",
+      "terminal": {
+        "cleanupPending": false,
+        "committed": false,
+        "outcome": "cancelled-before-publication",
+        "ownedHandlesMarkedAndClosed": 2,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": false,
+        "rootRetained": true
+      },
+      "markedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "closedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "retainedAfterHolderExit": [],
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "actor-delete",
+      "mode": "abort",
+      "terminal": {
+        "cleanupPending": false,
+        "committed": false,
+        "outcome": "cancelled-before-publication",
+        "ownedHandlesMarkedAndClosed": 2,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": false,
+        "rootRetained": true
+      },
+      "markedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "closedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "retainedAfterHolderExit": [],
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "actor-rename",
+      "mode": "abort",
+      "terminal": {
+        "cleanupPending": false,
+        "committed": false,
+        "outcome": "cancelled-before-publication",
+        "ownedHandlesMarkedAndClosed": 2,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": false,
+        "rootRetained": true
+      },
+      "markedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "closedRoles": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "retainedAfterHolderExit": [],
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "root-dacl",
+      "mode": "abort",
+      "terminal": {
+        "cleanupPending": true,
+        "committed": false,
+        "outcome": "cleanup-refused-live-guard",
+        "ownedHandlesMarkedAndClosed": 0,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": false,
+        "rootRetained": true
+      },
+      "markedRoles": [],
+      "closedRoles": [],
+      "retainedAfterHolderExit": null,
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "native-no-delete",
+      "mode": "no-delete",
+      "terminal": {
+        "cleanupPending": true,
+        "committed": false,
+        "outcome": "cleanup-partial-native-error",
+        "ownedHandlesMarkedAndClosed": 0,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": false,
+        "rootRetained": true
+      },
+      "markedRoles": [],
+      "closedRoles": [],
+      "retainedAfterHolderExit": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "injected-after-first-close",
+      "mode": "inject-error",
+      "terminal": {
+        "cleanupPending": true,
+        "committed": false,
+        "outcome": "cleanup-partial-injected-error",
+        "ownedHandlesMarkedAndClosed": 1,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": false,
+        "rootRetained": true
+      },
+      "markedRoles": [
+        "record.marker"
+      ],
+      "closedRoles": [
+        "record.marker"
+      ],
+      "retainedAfterHolderExit": [
+        "stage.marker"
+      ],
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "published",
+      "mode": "publish",
+      "terminal": {
+        "cleanupPending": true,
+        "committed": false,
+        "outcome": "cleanup-refused-after-publication-attempt",
+        "ownedHandlesMarkedAndClosed": 0,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": true,
+        "rootRetained": true
+      },
+      "markedRoles": [],
+      "closedRoles": [],
+      "retainedAfterHolderExit": [
+        "output.marker",
+        "record.marker"
+      ],
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "collision",
+      "mode": "publish",
+      "terminal": {
+        "cleanupPending": true,
+        "committed": false,
+        "outcome": "cleanup-refused-after-publication-attempt",
+        "ownedHandlesMarkedAndClosed": 0,
+        "productionPublicationAllowed": false,
+        "publicationAttempted": true,
+        "rootRetained": true
+      },
+      "markedRoles": [],
+      "closedRoles": [],
+      "retainedAfterHolderExit": [
+        "output.marker",
+        "record.marker",
+        "stage.marker"
+      ],
+      "workerKilled": false,
+      "rootRetained": true
+    },
+    {
+      "id": "kill-prepared",
+      "mode": "abort",
+      "terminal": null,
+      "markedRoles": [],
+      "closedRoles": [],
+      "retainedAfterHolderExit": [
+        "record.marker",
+        "stage.marker"
+      ],
+      "workerKilled": true,
+      "rootRetained": true
+    },
+    {
+      "id": "kill-delete-marked",
+      "mode": "abort",
+      "terminal": null,
+      "markedRoles": [
+        "record.marker"
+      ],
+      "closedRoles": [],
+      "retainedAfterHolderExit": [
+        "stage.marker"
+      ],
+      "workerKilled": true,
+      "rootRetained": true
+    },
+    {
+      "id": "kill-owned-handle-closed",
+      "mode": "abort",
+      "terminal": null,
+      "markedRoles": [
+        "record.marker"
+      ],
+      "closedRoles": [
+        "record.marker"
+      ],
+      "retainedAfterHolderExit": [
+        "stage.marker"
+      ],
+      "workerKilled": true,
+      "rootRetained": true
+    },
+    {
+      "id": "admit",
+      "refusedBeforeEffects": true
+    },
+    {
+      "id": "finalize",
+      "refusedBeforeEffects": true
+    },
+    {
+      "id": "prune",
+      "refusedBeforeEffects": true
+    }
+  ],
+  "productionPublicationAllowed": false,
+  "enabledProfiles": 0,
+  "observedOn": "2026-10-13",
+  "workerCapturesAudited": 27,
+  "readableArtifactsHashed": 213,
+  "inaccessiblePathsRetained": 1,
+  "osCrashRuns": 0,
+  "physicalPowerLossRuns": 0,
+  "productionUnsafePolicyChanged": false
+}

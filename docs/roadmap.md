@@ -147,3 +147,8 @@ adds no keys/encryption or OS APIs, and preserves production storage/admission g
 integration work: one valid explicit JSON selector survives CLI syntax failure.
 Portable ordering, literal/native argv, bounded diagnostics and no-extraction tests
 verify the production behavior. Broader compatibility/session/plan gaps remain open.
+
+[#0038](write-safety/staging-cleanup.md) advances first-ranked blocker #0022 with
+live guarded prepublication file cleanup. Actual owned-handle deletion preserves
+foreign names/entries and records partial/deferred/error states; roots remain.
+Publication attempts, restart prune and complete profiles still refuse.
