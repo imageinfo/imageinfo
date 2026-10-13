@@ -32,7 +32,7 @@ service. Reuse a healthy service for that board. With localswim installed, the
 commands are:
 
 ```console
-localswim --autopush C:\Projects\localswim-state-store\imageinfo\imageinfo.json
+uv --directory C:\Projects\localswim run --frozen localswim --autopush C:\Projects\localswim-state-store\imageinfo\imageinfo.json
 localswim-cli C:\Projects\localswim-state-store\imageinfo\imageinfo.json board show
 localswim-cli C:\Projects\localswim-state-store\imageinfo\imageinfo.json board verify
 localswim-cli C:\Projects\localswim-state-store\imageinfo\imageinfo.json card next 5 --lane ready_for_work
@@ -44,6 +44,20 @@ including restarts, must include `--autopush`. Verify the status endpoint's `pus
 state and detail rather than assuming synchronization. Confirm the initial snapshot
 is committed and pushed to the private state store, and investigate `failed` or `off`
 states. Keep board snapshots out of this public repository.
+Always launch from the official local source checkout, `C:\Projects\localswim`,
+as Terry required on 2026-10-13. Use its frozen uv environment and that working
+directory, rather than the installed `localswim.exe` copy. The service derives its
+build ID from its loaded module's Git checkout; an installed copy outside Git can
+report `unknown`. Verify the status endpoint reports the checkout's actual revision
+and `codeStale: false`. Do not hard-code a build label. The clean checkout reported
+`d3219c6` when this instruction was recorded; later verified revisions can differ.
+
+For a hidden Windows launch from Codex, set `UV_CACHE_DIR=C:\Temp\localswim-uv-cache`
+and `PYTHONIOENCODING=utf-8`, then use `Start-Process` with the uv executable,
+arguments `run --frozen localswim --autopush <active-board-path>`,
+`-WorkingDirectory 'C:\Projects\localswim'`, `-WindowStyle Hidden` and private
+stdout/stderr log paths. First gracefully shut down an existing service and verify
+the port is no longer listening; never launch a duplicate.
 Restart the service after a machine restart when needed. Whenever it runs, the
 JSON board-write monitor **MUST also be running**,
 targeted at the active Codex thread (Terry's instruction, 2026-10-10). Verify both

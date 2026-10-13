@@ -119,6 +119,11 @@ Terry workflow. Bot moves completed work to `ready_for_review`; Terry alone acce
 it into `completed`. Do not launch a duplicate service. Terry explicitly authorized
 board autopush on 2026-10-12 and requires every future imageinfo service launch to
 include `--autopush`; this standing instruction supersedes the earlier opt-in rule.
+Always launch from the official local localswim repository at
+`C:\Projects\localswim` using `uv run --frozen localswim --autopush` with that
+working directory. Do not launch the installed `localswim.exe` copy. Verify the
+service reports the checkout's actual build ID, rather than `unknown` (Terry's
+instruction, 2026-10-13); never hard-code or spoof the displayed build.
 
 Terry clarified lane meanings on 2026-10-11:
 

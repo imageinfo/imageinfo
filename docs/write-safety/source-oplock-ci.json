@@ -1,7 +1,36 @@
 {
   "schemaVersion": 1,
   "observedOn": "2026-10-13",
-  "status": "pending-source-push",
-  "scope": "75 Windows marker cases and research/root gates; Ubuntu/macOS must refuse the Windows worker before effects. Not a complete source guard or enabled profile.",
-  "enabledProfiles": 0
+  "sourceRevision": "94e164c7f0a5ae138cff7d0be6feace7df0e7404",
+  "runId": 38414695289,
+  "runUrl": "https://github.com/imageinfo/imageinfo/actions/runs/38414695289",
+  "status": "passed",
+  "scope": "75 Windows source-oplock actor/refusal cases plus research, root and prior regression gates passed. Ubuntu/macOS refuse this Windows worker before effects. This reproduces property bypasses, not a complete source guard or enabled profile.",
+  "enabledProfiles": 0,
+  "jobs": [
+    {
+      "id": 115355888128,
+      "runner": "windows-2025",
+      "status": "completed",
+      "conclusion": "success",
+      "sourceOplock": "success",
+      "rootContracts": "success"
+    },
+    {
+      "id": 115355888395,
+      "runner": "ubuntu-24.04",
+      "status": "completed",
+      "conclusion": "success",
+      "sourceOplock": "success",
+      "rootContracts": "success"
+    },
+    {
+      "id": 115355888644,
+      "runner": "macos-15",
+      "status": "completed",
+      "conclusion": "success",
+      "sourceOplock": "success",
+      "rootContracts": "success"
+    }
+  ]
 }

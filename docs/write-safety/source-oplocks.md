@@ -73,6 +73,10 @@ bounded reads. [Dependency admission](source-oplock-dependencies.json) reuses 14
 exact registry packages and 15 notices; the only SDK feature addition is Ioctl.
 Root dependency/lockfile and production unsafe policy are unchanged. No upstream
 implementation, personal media or compiled distribution is imported.
+Local root and research formatting/Clippy/release gates passed; all **36 root
+Windows tests** passed. Python syntax, internal documentation links/JSON and
+exact registry archive/notice checks passed. The research executable's meaningful
+behavioral verification is the actor matrix, not its zero-unit-test harness.
 [Platform CI](source-oplock-ci.json) records source gates and unsupported-platform
 refusals separately from native Windows actor evidence.
 
