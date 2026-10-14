@@ -127,6 +127,14 @@ jobs:
       - name: Refuse caller-history custody on unsupported platforms
         if: runner.os != 'Windows'
         run: python experiments/0022-ordinary-output/custody_qualify.py --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe --parent experiments/0032-windows-publication/target
+      - name: Check marker receipt qualification tooling syntax
+        run: python -m py_compile experiments/0046-namespace-receipt/qualify.py experiments/0046-namespace-receipt/audit.py
+      - name: Qualify guarded marker receipts on Windows
+        if: runner.os == 'Windows'
+        run: python experiments/0046-namespace-receipt/qualify.py --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe.exe --parent experiments/0032-windows-publication/target
+      - name: Refuse marker receipts on unsupported platforms
+        if: runner.os != 'Windows'
+        run: python experiments/0046-namespace-receipt/qualify.py --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe --parent experiments/0032-windows-publication/target
       - name: Refuse unsupported ordinary persistence adapter
         if: runner.os != 'Windows'
         run: python experiments/0022-ordinary-output/persistence_qualify.py native --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe --parent experiments/0032-windows-publication/target

@@ -3,6 +3,7 @@ use crate::{
     inspection_record::{Info, MAX_RECORD},
     native::{self, PrivateSecurity},
     ordinary_record::{self, PersistenceMode, Record},
+    receipt_record::{self, Receipt, ReceiptContext},
     restart_context::{self, Context, OwnedRecord, RecordName, Stage},
 };
 use imageinfo_recovery_probe::digest;
@@ -18,6 +19,7 @@ type Result<T> = std::result::Result<T, Box<dyn Error>>;
 const SOURCE: &str = "source.marker";
 const CANDIDATE: &str = "candidate.marker";
 const OUTPUT: &str = "output.marker";
+const RECEIPT: &str = "receipt.record";
 const RECORDS: [(&str, &str); 3] = [
     ("prepared.record", "prepared"),
     ("intent.record", "publication-intent"),
@@ -211,12 +213,24 @@ fn export_held_context(
     candidate: &Artifact,
     records: &[Artifact],
 ) -> Result<()> {
+    let context = held_context(stage, dir, source, candidate, records);
+    // The supervisor retains this outside the editable transaction. A later
+    // record or checksum cannot recreate the caller's authorization/history.
+    emit(json!({"callerContext":context,"observationOnly":true}))
+}
+fn held_context(
+    stage: Stage,
+    dir: &Info,
+    source: &Artifact,
+    candidate: &Artifact,
+    records: &[Artifact],
+) -> Context {
     let names = [
         RecordName::Prepared,
         RecordName::Intent,
         RecordName::Observation,
     ];
-    let context = Context {
+    Context {
         purpose: "imageinfo-od11-caller-context-v1".into(),
         stage,
         stopped_before_publication: false,
@@ -234,10 +248,7 @@ fn export_held_context(
                 sha256: a.hash.clone(),
             })
             .collect(),
-    };
-    // The supervisor retains this outside the editable transaction. A later
-    // record or checksum cannot recreate the caller's authorization/history.
-    emit(json!({"callerContext":context,"observationOnly":true}))
+    }
 }
 fn prepare(root: &Path) -> Result<()> {
     let ancestors = crate::windows::ancestors(root.parent().ok_or("PARENT_REQUIRED")?)?;
@@ -267,13 +278,43 @@ fn retained_work(root: &Path) -> bool {
         })
         .unwrap_or(true)
 }
+fn check_live(
+    root: &Path,
+    dir: &File,
+    before: &Info,
+    security: &PrivateSecurity,
+    source: &mut Artifact,
+    owned: &mut [Artifact],
+) -> Result<()> {
+    directory(root, dir, before, security)?;
+    source.check(root, security)?;
+    for artifact in owned.iter_mut() {
+        artifact.check(root, security)?;
+    }
+    let candidate = owned.first().ok_or("CANDIDATE_REQUIRED")?;
+    check_restart_layout(root, candidate.name, &owned[1..])
+}
+fn export_receipt_context(prior: &Context, receipt: &Artifact) -> Result<()> {
+    let context = ReceiptContext::new(prior.clone(), receipt.before.clone(), receipt.hash.clone())?;
+    let wire = receipt_record::encode_context(&context)?;
+    receipt_record::decode_context(&wire)?;
+    emit(json!({"receiptContext":context,"observationOnly":true}))
+}
 fn live(
     root: &Path,
     source_fault: &str,
     persistence: PersistenceMode,
     checkpoints: bool,
+    receipt: bool,
 ) -> Result<()> {
-    crate::staging::check_budget(&[65536, MAX_RECORD, MAX_RECORD, MAX_RECORD], 262144)?;
+    if receipt {
+        crate::staging::check_budget(
+            &[65536, MAX_RECORD, MAX_RECORD, MAX_RECORD, MAX_RECORD],
+            327680,
+        )?;
+    } else {
+        crate::staging::check_budget(&[65536, MAX_RECORD, MAX_RECORD, MAX_RECORD], 262144)?;
+    }
     let _ancestors = crate::windows::ancestors(root.parent().ok_or("PARENT_REQUIRED")?)?;
     let security = PrivateSecurity::current()?;
     let dir = OpenOptions::new()
@@ -302,6 +343,10 @@ fn live(
     let mut parent_flushed = false;
     let mut observation_file_flushed = false;
     let mut observation_parent_flushed = false;
+    let mut receipt_written = false;
+    let mut receipt_file_flushed = false;
+    let mut receipt_parent_flushed = false;
+    let mut final_check_passed = false;
     let result = (|| -> Result<()> {
         if checkpoints {
             emit(json!({"persistenceMode":persistence,"observationOnly":true}))?;
@@ -372,6 +417,9 @@ fn live(
             export_context(Stage::BeforePublication, &dir_before, &source, &owned)?;
         }
         barrier("before-namespace-call")?;
+        if receipt {
+            check_live(root, &dir, &dir_before, &security, &mut source, &mut owned)?;
+        }
         attempted = true;
         native::rename(&owned[0].file, &dir, &root.join(OUTPUT), false)?;
         published = true;
@@ -391,6 +439,9 @@ fn live(
         for artifact in &mut owned {
             artifact.check(root, &security)?;
         }
+        if receipt {
+            check_restart_layout(root, OUTPUT, &owned[1..])?;
+        }
         emit(json!({"boundary":"installed-output","propertiesMatch":true}))?;
         installed_check_passed = true;
         if !installed_file_flushed {
@@ -405,6 +456,9 @@ fn live(
         if checkpoints {
             export_context(Stage::AfterPublication, &dir_before, &source, &owned)?;
             barrier("parent-flushed")?;
+        }
+        if receipt {
+            check_live(root, &dir, &dir_before, &security, &mut source, &mut owned)?;
         }
         let observation = save(
             root,
@@ -432,6 +486,60 @@ fn live(
         for artifact in &mut owned {
             artifact.check(root, &security)?;
         }
+        if receipt {
+            check_restart_layout(root, OUTPUT, &owned[1..])?;
+            let prior = held_context(
+                Stage::AfterPublication,
+                &dir_before,
+                &source,
+                &owned[0],
+                &owned[1..],
+            );
+            let record = Receipt::new(prior.clone())?;
+            let wire = receipt_record::encode(&record)?;
+            if wire.len() > MAX_RECORD as usize {
+                return Err("RECEIPT_SIZE_BOUND".into());
+            }
+            receipt_record::decode(&wire)?;
+            // CREATE_NEW and a complete bounded write precede these flush
+            // observations. Reusing Artifact::create would flush too early.
+            let mut file = security.create_write_through_file(&root.join(RECEIPT))?;
+            if source_fault == "receipt-short" {
+                // An explicit producer fault, not a simulated disk/OS error.
+                // Publication has been attempted, so even this untracked partial
+                // CREATE_NEW artifact remains available for read-only diagnosis.
+                file.write_all(&wire[..wire.len() / 2])?;
+                return Err("INJECTED_RECEIPT_PRODUCER_FAILURE".into());
+            }
+            crate::staging::copy_exact(&mut io::Cursor::new(&wire), &mut file, wire.len() as u64)?;
+            owned.push(Artifact {
+                before: info(&file)?,
+                file,
+                hash: digest(&wire),
+                name: RECEIPT,
+                persistence,
+            });
+            receipt_written = true;
+            check_live(root, &dir, &dir_before, &security, &mut source, &mut owned)?;
+            export_receipt_context(&prior, owned.last().ok_or("RECEIPT_REQUIRED")?)?;
+            barrier("receipt-written")?;
+            check_live(root, &dir, &dir_before, &security, &mut source, &mut owned)?;
+            owned.last().ok_or("RECEIPT_REQUIRED")?.file.sync_all()?;
+            receipt_file_flushed = true;
+            export_receipt_context(&prior, owned.last().ok_or("RECEIPT_REQUIRED")?)?;
+            barrier("receipt-file-flushed")?;
+            check_live(root, &dir, &dir_before, &security, &mut source, &mut owned)?;
+            dir.sync_all()?;
+            receipt_parent_flushed = true;
+            export_receipt_context(&prior, owned.last().ok_or("RECEIPT_REQUIRED")?)?;
+            barrier("receipt-parent-flushed")?;
+            check_live(root, &dir, &dir_before, &security, &mut source, &mut owned)?;
+            barrier("final-checked")?;
+            // The control barrier admits an actor schedule too; recheck before
+            // reporting the final observation, while every guard is still held.
+            check_live(root, &dir, &dir_before, &security, &mut source, &mut owned)?;
+            final_check_passed = true;
+        }
         Ok(())
     })();
     let error = result.err().map(|e| e.to_string());
@@ -441,6 +549,11 @@ fn live(
     if cancel
         && !attempted
         && directory(root, &dir, &dir_before, &security).is_ok()
+        && (!receipt
+            || (source.check(root, &security).is_ok()
+                && owned.first().is_none_or(|candidate| {
+                    check_restart_layout(root, candidate.name, &owned[1..]).is_ok()
+                })))
         && owned.iter_mut().all(|v| v.check(root, &security).is_ok())
     {
         while let Some(artifact) = owned.pop() {
@@ -452,7 +565,9 @@ fn live(
         }
         cleanup_pending = retained_work(root);
     }
-    let outcome = if attempted {
+    let outcome = if receipt && final_check_passed && error.is_none() {
+        "observed-receipt-recovery-required"
+    } else if attempted {
         "recovery-required"
     } else if cancel {
         "cancelled-before-publication"
@@ -461,9 +576,14 @@ fn live(
     } else {
         "recovery-required"
     };
-    emit(
-        json!({"outcome":outcome,"diagnostic":error.map(|v|v.chars().filter(|c|!c.is_control()).take(128).collect::<String>()),"publicationAttempted":attempted,"publicationCallSucceeded":published,"installedCheckPassed":installed_check_passed,"installedFileFlushSucceeded":installed_file_flushed,"parentFlushSucceeded":parent_flushed,"observationFileFlushSucceeded":observation_file_flushed,"observationParentFlushSucceeded":observation_parent_flushed,"persistenceMode":persistence,"ownedHandlesRemoved":removed,"cleanupPending":cleanup_pending,"sourceRetained":true,"rootRetained":true}),
-    )
+    let mut terminal = json!({"outcome":outcome,"diagnostic":error.map(|v|v.chars().filter(|c|!c.is_control()).take(128).collect::<String>()),"publicationAttempted":attempted,"publicationCallSucceeded":published,"installedCheckPassed":installed_check_passed,"installedFileFlushSucceeded":installed_file_flushed,"parentFlushSucceeded":parent_flushed,"observationFileFlushSucceeded":observation_file_flushed,"observationParentFlushSucceeded":observation_parent_flushed,"persistenceMode":persistence,"ownedHandlesRemoved":removed,"cleanupPending":cleanup_pending,"sourceRetained":true,"rootRetained":true});
+    if receipt {
+        terminal["receiptWritten"] = json!(receipt_written);
+        terminal["receiptFileFlushSucceeded"] = json!(receipt_file_flushed);
+        terminal["receiptParentFlushSucceeded"] = json!(receipt_parent_flushed);
+        terminal["finalCheckPassed"] = json!(final_check_passed);
+    }
+    emit(terminal)
 }
 fn inspect(root: &Path) -> Result<()> {
     let report = (|| -> Result<Value> {
@@ -642,6 +762,106 @@ fn open_expected(
     };
     artifact.check(root, security)?;
     Ok(artifact)
+}
+fn receipt_inspect(root: &Path) -> Result<()> {
+    let result = (|| -> Result<()> {
+        let mut line = Vec::new();
+        io::stdin()
+            .lock()
+            .take(MAX_RECORD + 1)
+            .read_until(b'\n', &mut line)?;
+        let context = receipt_record::decode_context(&line)?;
+        let prior = &context.prior;
+        let _ancestors = crate::windows::ancestors(root.parent().ok_or("PARENT_REQUIRED")?)?;
+        let security = PrivateSecurity::current()?;
+        let dir = OpenOptions::new()
+            .access_mode(0x80020000)
+            .share_mode(3)
+            .custom_flags(0x02200000)
+            .open(root)?;
+        if native::filesystem(&dir)? != "NTFS" {
+            return Err("FILESYSTEM_UNVERIFIED".into());
+        }
+        directory(root, &dir, &prior.root, &security)?;
+        let mut source = open_expected(
+            root,
+            SOURCE,
+            &prior.source,
+            &prior.sha256,
+            PersistenceMode::Buffered,
+            0x80020000,
+            &security,
+        )?;
+        if read(&mut source.file)? != vec![b'3'; 65536] {
+            return Err("OWNED_MARKER_SOURCE_UNVERIFIED".into());
+        }
+        let output = open_expected(
+            root,
+            OUTPUT,
+            &prior.candidate,
+            &prior.sha256,
+            prior.persistence_mode,
+            0x80020000,
+            &security,
+        )?;
+        let mut owned = vec![output];
+        for expected in &prior.records {
+            let mut artifact = open_expected(
+                root,
+                expected.name.leaf(),
+                &expected.info,
+                &expected.sha256,
+                prior.persistence_mode,
+                0x80020000,
+                &security,
+            )?;
+            let record =
+                ordinary_record::decode(&read(&mut artifact.file)?, expected.name.phase())?;
+            if record.root != prior.root
+                || record.source != prior.source
+                || record.candidate != prior.candidate
+                || record.sha256 != prior.sha256
+                || record.persistence_mode != prior.persistence_mode
+            {
+                return Err("RECEIPT_RECORD_CONTEXT_DISAGREES".into());
+            }
+            owned.push(artifact);
+        }
+        let mut receipt = open_expected(
+            root,
+            RECEIPT,
+            &context.receipt.info,
+            &context.receipt.sha256,
+            prior.persistence_mode,
+            0x80020000,
+            &security,
+        )?;
+        let wire = read(&mut receipt.file)?;
+        let actual = receipt_record::decode(&wire)?;
+        if serde_json::to_vec(&actual.prior)? != serde_json::to_vec(prior)?
+            || wire != receipt_record::encode(&Receipt::new(prior.clone())?)?
+        {
+            return Err("RECEIPT_CONTEXT_DISAGREES".into());
+        }
+        owned.push(receipt);
+        check_live(root, &dir, &prior.root, &security, &mut source, &mut owned)?;
+        barrier("receipt-inspect-guarded")?;
+        check_live(root, &dir, &prior.root, &security, &mut source, &mut owned)?;
+        Ok(())
+    })();
+    let diagnostic = result.err().map(|e| {
+        e.to_string()
+            .chars()
+            .filter(|c| !c.is_control())
+            .take(128)
+            .collect::<String>()
+    });
+    emit(
+        json!({"outcome":if diagnostic.is_none() {"observed-receipt-recovery-required"}
+        else {"receipt-inspection-refused"},"diagnostic":diagnostic,
+        "effectsAttempted":false,"ownedHandlesRemoved":0,"observationOnly":true,
+        "sourceRetained":true,"rootRetained":true,"retainedWork":retained_work(root)}),
+    )
 }
 fn restart(root: &Path, prune: bool) -> Result<()> {
     let mut line = Vec::new();
@@ -1046,12 +1266,21 @@ fn custody_store(root: &Path, save: bool) -> Result<()> {
 pub fn run(root: &Path, mode: &str) -> Result<()> {
     match mode {
         "-prepare" => prepare(root),
-        "" => live(root, "", PersistenceMode::Buffered, false),
-        "-short-source" => live(root, "short", PersistenceMode::Buffered, false),
-        "-long-source" => live(root, "long", PersistenceMode::Buffered, false),
-        "-persistence-buffered" => live(root, "", PersistenceMode::Buffered, true),
-        "-flush-after-rename" => live(root, "", PersistenceMode::FlushAfterRename, true),
-        "-write-through" => live(root, "", PersistenceMode::WriteThrough, true),
+        "" => live(root, "", PersistenceMode::Buffered, false, false),
+        "-short-source" => live(root, "short", PersistenceMode::Buffered, false, false),
+        "-long-source" => live(root, "long", PersistenceMode::Buffered, false, false),
+        "-persistence-buffered" => live(root, "", PersistenceMode::Buffered, true, false),
+        "-flush-after-rename" => live(root, "", PersistenceMode::FlushAfterRename, true, false),
+        "-write-through" => live(root, "", PersistenceMode::WriteThrough, true, false),
+        "-receipt" => live(root, "", PersistenceMode::WriteThrough, true, true),
+        "-receipt-short-record" => live(
+            root,
+            "receipt-short",
+            PersistenceMode::WriteThrough,
+            true,
+            true,
+        ),
+        "-receipt-inspect" => receipt_inspect(root),
         "-inspect" => inspect(root),
         "-restart-observe" => restart(root, false),
         "-restart-prune" => restart(root, true),

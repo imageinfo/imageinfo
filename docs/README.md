@@ -46,6 +46,7 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Caller-bound restart actions](write-safety/windows-restart-actions.md) | Direct #0022 explicit-context marker prune and output observation: 61 native cases, five guest faults, fresh guards, partial/foreign retention and unchanged production recovery gates. |
 | [Caller-history custody snapshots](write-safety/windows-custody.md) | #0043 external whole-history snapshots, release-fence ordering and 41 native cases; explicit caller trust, accepted same-byte replacement and separate #0044 guest qualification. |
 | [Bounded namespace and receipt protocol](write-safety/namespace-receipt-protocol.md) | #0045 proposed single-output state/receipt ordering, portable logical model and finite fault plan; profile, backend and actual durability qualification remain separate. |
+| [Windows marker receipt sequence](write-safety/namespace-receipt-marker.md) | #0046 bounded exclusive receipt construction and caller-bound read-only inspection; raw flush observations retain all commitment/profile refusals. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |

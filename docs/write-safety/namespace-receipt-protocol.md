@@ -7,6 +7,12 @@ namespace persistence, diagnostic observations and a final outcome receipt.
 **No storage profile is qualified and no worker can report committed from this
 proposal.** #0046 separately owns backend implementation and qualification.
 
+The later [#0046 marker implementation](namespace-receipt-marker.md) constructs
+a separate unqualified observational receipt and inspects explicit caller-bound
+artifacts. Its implemented schema and successful flush calls do not satisfy the
+qualified receipt/profile premises below; this proposal and model remain the
+contract for those separate obligations.
+
 The existing [ordinary worker](ordinary-output.md),
 [flush comparison](windows-persistence.md), [restart actions](windows-restart-actions.md)
 and [caller-history snapshots](windows-custody.md) remain research. Their successful

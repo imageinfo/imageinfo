@@ -133,6 +133,14 @@ not current flush-return claims; a receipt cannot attest its own future flush.
 Final guarded checks and noncontradictory trusted current history remain required.
 See `docs/write-safety/namespace-receipt-protocol.md`; #0046 owns backend work.
 The current worker and all production/RAW admission flags remain unchanged.
+#0046 adds the guarded marker receipt sequence and read-only receipt inspection.
+The separate receipt binds the installed candidate and three prior records;
+an external caller context binds the actual held receipt identity and bytes.
+The fixed unqualified profile label and all false commitment/admission flags
+remain explicit. This minimal observational receipt is not #0045's qualified
+outcome receipt. See `docs/write-safety/namespace-receipt-marker.md`; guest,
+native storage-error, cumulative resource and full profile cells remain on
+#0047/#0048/#0049/#0051. No source-media mutation or new SDK API is enabled.
 
 ## Subagent authorization
 
