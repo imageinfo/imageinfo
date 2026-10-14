@@ -7,6 +7,7 @@ spec=spec_from_file_location('capture_process',HERE.parent/'0034-source-oplocks'
 Process=capture.Process
 ACTOR=HERE.parent/'0033-owner-rights'/'actor.py'
 PHASES=['source-guarded','candidate-flushed','prepared-record-flushed','intent-record-flushed','before-property-check','before-namespace-call','published','observed-record-flushed']
+POST_PHASES={'published','installed-file-flushed','parent-flushed','observation-file-flushed','observation-parent-flushed','observed-record-flushed'}
 
 def inventory(root):
     result={}
@@ -33,10 +34,10 @@ def actor(name,path,folder):
     assert p.finish()==0
     return json.loads(''.join(p.lines))
 
-def trial(binary,parent,name,action=None,role='source',phase='before-property-check',stop=None,post=None,inspect_change=None):
+def trial(binary,parent,name,action=None,role='source',phase='before-property-check',stop=None,post=None,inspect_change=None,mode='ordinary'):
     case=parent/name;case.mkdir();root=case/'transaction.marker'
     code,events=invoke(binary,root,'ordinary-prepare',case/'prepare');assert code==0 and events[0]['outcome']=='owned-source-prepared'
-    p=Process([binary,root,'ordinary'],case/'worker');observed=[];action_result=None
+    p=Process([binary,root,mode],case/'worker');observed=[];action_result=None
     try:
         while True:
             event=p.next();observed.append(event)
@@ -61,12 +62,12 @@ def trial(binary,parent,name,action=None,role='source',phase='before-property-ch
         if name=='collision':assert (root/'output.marker').read_bytes()==b'foreign-winner' and terminal['publicationAttempted'] and not terminal['publicationCallSucceeded'] and not terminal['installedCheckPassed']
         elif action in ['mtime','readonly','ads','link','dacl','link-write']:
             assert terminal['diagnostic'] is not None
-            assert output==(phase in ['before-namespace-call','published','observed-record-flushed'])
-        elif stop=='cancel' and phase not in ['published','observed-record-flushed']:
+            assert output==(phase=='before-namespace-call' or phase in POST_PHASES)
+        elif stop=='cancel' and phase not in POST_PHASES:
             assert not output and terminal['outcome']=='cancelled-before-publication' and not terminal['cleanupPending']
             assert sorted(v.name for v in root.iterdir())==['source.marker']
         elif stop in ['kill','fail']:
-            assert output==(phase in ['published','observed-record-flushed'])
+            assert output==(phase in POST_PHASES)
         else:assert output and (root/'output.marker').read_bytes()==b'3'*65536 and terminal['outcome']=='recovery-required'
         if post:
             result=actor(post,root/'output.marker',case/'post-actor');assert result['allowed']

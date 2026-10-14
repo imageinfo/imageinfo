@@ -2,7 +2,7 @@
 use crate::{
     inspection_record::{Info, MAX_RECORD},
     native::{self, PrivateSecurity},
-    ordinary_record::{self, Record},
+    ordinary_record::{self, PersistenceMode, Record},
 };
 use imageinfo_recovery_probe::digest;
 use serde_json::{Value, json};
@@ -98,6 +98,7 @@ struct Artifact {
     before: Info,
     hash: String,
     name: &'static str,
+    persistence: PersistenceMode,
 }
 impl Artifact {
     fn create(
@@ -106,7 +107,20 @@ impl Artifact {
         security: &PrivateSecurity,
         bytes: &[u8],
     ) -> Result<Self> {
-        let mut file = security.create_file(&root.join(name))?;
+        Self::create_with_mode(root, name, security, bytes, PersistenceMode::Buffered)
+    }
+    fn create_with_mode(
+        root: &Path,
+        name: &'static str,
+        security: &PrivateSecurity,
+        bytes: &[u8],
+        persistence: PersistenceMode,
+    ) -> Result<Self> {
+        let mut file = if persistence == PersistenceMode::WriteThrough {
+            security.create_write_through_file(&root.join(name))?
+        } else {
+            security.create_file(&root.join(name))?
+        };
         crate::staging::copy_exact(
             &mut std::io::Cursor::new(bytes),
             &mut file,
@@ -119,6 +133,7 @@ impl Artifact {
             before,
             hash: digest(bytes),
             name,
+            persistence,
         })
     }
     fn check(&mut self, root: &Path, security: &PrivateSecurity) -> Result<()> {
@@ -153,6 +168,7 @@ fn open_source(root: &Path, security: &PrivateSecurity) -> Result<Artifact> {
         before,
         hash: digest(&bytes),
         name: SOURCE,
+        persistence: PersistenceMode::Buffered,
     })
 }
 fn save(
@@ -176,12 +192,13 @@ fn save(
         source: source.before.clone(),
         candidate: candidate.before.clone(),
         sha256: source.hash.clone(),
+        persistence_mode: candidate.persistence,
     };
     let wire = ordinary_record::encode(&record)?;
     if wire.len() > MAX_RECORD as usize {
         return Err("RECORD_SIZE_BOUND".into());
     }
-    Artifact::create(root, name, security, &wire)
+    Artifact::create_with_mode(root, name, security, &wire, candidate.persistence)
 }
 fn prepare(root: &Path) -> Result<()> {
     let ancestors = crate::windows::ancestors(root.parent().ok_or("PARENT_REQUIRED")?)?;
@@ -211,7 +228,12 @@ fn retained_work(root: &Path) -> bool {
         })
         .unwrap_or(true)
 }
-fn live(root: &Path, source_fault: &str) -> Result<()> {
+fn live(
+    root: &Path,
+    source_fault: &str,
+    persistence: PersistenceMode,
+    checkpoints: bool,
+) -> Result<()> {
     crate::staging::check_budget(&[65536, MAX_RECORD, MAX_RECORD, MAX_RECORD], 262144)?;
     let _ancestors = crate::windows::ancestors(root.parent().ok_or("PARENT_REQUIRED")?)?;
     let security = PrivateSecurity::current()?;
@@ -237,11 +259,22 @@ fn live(root: &Path, source_fault: &str) -> Result<()> {
     let mut attempted = false;
     let mut published = false;
     let mut installed_check_passed = false;
+    let mut installed_file_flushed = false;
+    let mut parent_flushed = false;
+    let mut observation_file_flushed = false;
+    let mut observation_parent_flushed = false;
     let result = (|| -> Result<()> {
+        if checkpoints {
+            emit(json!({"persistenceMode":persistence,"observationOnly":true}))?;
+        }
         source.check(root, &security)?;
         barrier("source-guarded")?;
         source.file.seek(SeekFrom::Start(0))?;
-        let mut candidate = security.create_file(&root.join(CANDIDATE))?;
+        let mut candidate = if persistence == PersistenceMode::WriteThrough {
+            security.create_write_through_file(&root.join(CANDIDATE))?
+        } else {
+            security.create_file(&root.join(CANDIDATE))?
+        };
         // Labeled producer-stream injections exercise a failure after exclusive
         // file creation but before an Artifact can be returned/tracked.
         match source_fault {
@@ -263,6 +296,7 @@ fn live(root: &Path, source_fault: &str) -> Result<()> {
             file: candidate,
             hash: source.hash.clone(),
             name: CANDIDATE,
+            persistence,
         });
         owned[0].check(root, &security)?;
         source.check(root, &security)?;
@@ -301,6 +335,15 @@ fn live(root: &Path, source_fault: &str) -> Result<()> {
         published = true;
         owned[0].name = OUTPUT;
         barrier("published")?;
+        if persistence == PersistenceMode::FlushAfterRename {
+            // Flush the held installed object before taking its property
+            // observation. API success alone remains a distinct earlier cell.
+            owned[0].file.sync_all()?;
+            installed_file_flushed = true;
+            if checkpoints {
+                barrier("installed-file-flushed")?;
+            }
+        }
         directory(root, &dir, &dir_before, &security)?;
         source.check(root, &security)?;
         for artifact in &mut owned {
@@ -308,8 +351,18 @@ fn live(root: &Path, source_fault: &str) -> Result<()> {
         }
         emit(json!({"boundary":"installed-output","propertiesMatch":true}))?;
         installed_check_passed = true;
-        owned[0].file.sync_all()?;
+        if !installed_file_flushed {
+            owned[0].file.sync_all()?;
+            installed_file_flushed = true;
+            if checkpoints {
+                barrier("installed-file-flushed")?;
+            }
+        }
         dir.sync_all()?;
+        parent_flushed = true;
+        if checkpoints {
+            barrier("parent-flushed")?;
+        }
         let observation = save(
             root,
             &security,
@@ -320,7 +373,15 @@ fn live(root: &Path, source_fault: &str) -> Result<()> {
             &owned[0],
         )?;
         owned.push(observation);
+        observation_file_flushed = true;
+        if checkpoints {
+            barrier("observation-file-flushed")?;
+        }
         dir.sync_all()?;
+        observation_parent_flushed = true;
+        if checkpoints {
+            barrier("observation-parent-flushed")?;
+        }
         barrier("observed-record-flushed")?;
         directory(root, &dir, &dir_before, &security)?;
         source.check(root, &security)?;
@@ -357,7 +418,7 @@ fn live(root: &Path, source_fault: &str) -> Result<()> {
         "recovery-required"
     };
     emit(
-        json!({"outcome":outcome,"diagnostic":error.map(|v|v.chars().filter(|c|!c.is_control()).take(128).collect::<String>()),"publicationAttempted":attempted,"publicationCallSucceeded":published,"installedCheckPassed":installed_check_passed,"ownedHandlesRemoved":removed,"cleanupPending":cleanup_pending,"sourceRetained":true,"rootRetained":true}),
+        json!({"outcome":outcome,"diagnostic":error.map(|v|v.chars().filter(|c|!c.is_control()).take(128).collect::<String>()),"publicationAttempted":attempted,"publicationCallSucceeded":published,"installedCheckPassed":installed_check_passed,"installedFileFlushSucceeded":installed_file_flushed,"parentFlushSucceeded":parent_flushed,"observationFileFlushSucceeded":observation_file_flushed,"observationParentFlushSucceeded":observation_parent_flushed,"persistenceMode":persistence,"ownedHandlesRemoved":removed,"cleanupPending":cleanup_pending,"sourceRetained":true,"rootRetained":true}),
     )
 }
 fn inspect(root: &Path) -> Result<()> {
@@ -421,6 +482,7 @@ fn inspect(root: &Path) -> Result<()> {
                     if previous.source != record.source
                         || previous.candidate != record.candidate
                         || previous.sha256 != record.sha256
+                        || previous.persistence_mode != record.persistence_mode
                     {
                         return Err("RECORDS_DISAGREE".into());
                     }
@@ -487,7 +549,7 @@ fn inspect(root: &Path) -> Result<()> {
             native::check_streams(file)?;
         }
         Ok(
-            json!({"outcome":outcome,"recordCount":records.len(),"outputPresent":has(OUTPUT),"observationOnly":true}),
+            json!({"outcome":outcome,"recordCount":records.len(),"outputPresent":has(OUTPUT),"observationOnly":true,"persistenceMode":records.first().map(|r|r.persistence_mode)}),
         )
     })();
     emit(report.unwrap_or_else(|e|json!({"outcome":"uninspectable","diagnostic":e.to_string().chars().filter(|c|!c.is_control()).take(128).collect::<String>(),"observationOnly":true})))
@@ -495,9 +557,12 @@ fn inspect(root: &Path) -> Result<()> {
 pub fn run(root: &Path, mode: &str) -> Result<()> {
     match mode {
         "-prepare" => prepare(root),
-        "" => live(root, ""),
-        "-short-source" => live(root, "short"),
-        "-long-source" => live(root, "long"),
+        "" => live(root, "", PersistenceMode::Buffered, false),
+        "-short-source" => live(root, "short", PersistenceMode::Buffered, false),
+        "-long-source" => live(root, "long", PersistenceMode::Buffered, false),
+        "-persistence-buffered" => live(root, "", PersistenceMode::Buffered, true),
+        "-flush-after-rename" => live(root, "", PersistenceMode::FlushAfterRename, true),
+        "-write-through" => live(root, "", PersistenceMode::WriteThrough, true),
         "-inspect" => inspect(root),
         "-admit" | "-finalize" | "-prune" => emit(
             json!({"outcome":"refused-before-effects","workerArtifacts":0,"missingCells":["qualified-windows-namespace-receipt-crash-persistence","safe-restart-finalization-prune"]}),

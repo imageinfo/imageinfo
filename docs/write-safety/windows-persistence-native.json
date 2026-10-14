@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-14",
+  "nativeCaseCount": 69,
+  "mixedModeRecordRefusals": 3,
+  "unchangedInspectionInventories": 72,
+  "readableArtifactPathsHashed": 1498,
+  "inaccessibleRetained": 0,
+  "workerSha256": "89b1d19c83f75fc3049d1a7875b745f7a37aeaf2a32f98627cfd8b1d51f61678",
+  "modes": [
+    "buffered",
+    "flush-after-rename",
+    "write-through"
+  ],
+  "postpublicationBoundaries": [
+    "published",
+    "installed-file-flushed",
+    "parent-flushed",
+    "observation-file-flushed",
+    "observation-parent-flushed"
+  ],
+  "namespaceAcknowledged": false,
+  "committed": false,
+  "repairAllowed": false,
+  "productionPublicationAllowed": false,
+  "limits": "Injected protocol failures and process kills, not native failed flush/device errors or physical power loss. Request labels and call returns do not admit a profile."
+}

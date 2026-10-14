@@ -85,3 +85,21 @@ establish continuous property exclusion; the native 64-case property actors use
 minimal native access and can change timestamps. Admission/finalization/prune remain refused with unchanged
 artifact byte inventories. These supplement the broader 64 native cases; they do
 not expand the supported storage or RAW scope.
+
+The next direct #0022 increment compares buffered publication, an immediate
+post-rename held-file flush, and a write-through candidate/record handle. See
+[ordering, SDK review and limits](../../docs/write-safety/windows-persistence.md).
+All variants remain observation-only. Run the reproducible comparison/audit:
+
+```console
+python experiments/0022-ordinary-output/persistence_qualify.py native --binary <native-worker> --parent <private-native-parent>
+python experiments/0022-ordinary-output/persistence_audit.py native --root <native-run> --binary <exact-native-worker> --public docs/write-safety/windows-persistence-native.json
+python3 experiments/0022-ordinary-output/persistence_qualify.py guest --root <installed-guest>
+python3 experiments/0022-ordinary-output/persistence_audit.py guest --root <guest-run> --binary <exact-static-worker> --public docs/write-safety/windows-persistence-guest.json
+```
+
+Guest subsets use `--modes`, `--kinds` and `--phases` with comma-separated known
+labels. Multiple audited runs use repeated `--root`. A source binding and retained
+loaded driver accompany each guest run; host boot continuity is independently
+recorded after the run. Do not reuse a historical source/binary label for a changed
+worker, or infer a qualified receipt from a passing finite observation matrix.

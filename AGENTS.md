@@ -96,6 +96,12 @@ output name in the measured NMI case. Warm reset stalled in a preliminary run;
 host caches remain alive and physical power loss is unverified. No complete profile
 or restart repair is enabled. Use the exact fixture/restart limits in
 `docs/write-safety/windows-guest.md`; never crash Terry's host or rearm the evaluation.
+#0022's next marker increment separates held-file, parent and observation-record
+flush calls and compares buffered/post-rename-flush/write-through handles. The
+existing CreateFileW boundary gains one reviewed fixed FILE_FLAG_WRITE_THROUGH
+flag; no dependency/API/privileged production helper is added. See
+`docs/write-safety/windows-persistence.md`. Request labels and successful flush
+returns remain observations, not namespace/receipt admission or repair authority.
 
 ## Product intent
 

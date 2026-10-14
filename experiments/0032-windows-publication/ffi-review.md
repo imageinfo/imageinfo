@@ -22,6 +22,16 @@ less usual API; no native call is introduced merely to make the design novel.
 
 ## Safety and policy review
 
+Extension reviewed **2026-10-14** for direct #0022 ordinary-output persistence:
+the existing `CreateFileW` call optionally adds only `FILE_FLAG_WRITE_THROUGH` for
+fresh candidates/records. The private helper accepts a boolean, not caller-supplied
+flags. All old callers select false; exclusive creation, access/sharing, noninheritance,
+SD/path lifetimes, error capture and one-time handle ownership transfer are unchanged.
+No `FILE_FLAG_NO_BUFFERING`, alignment requirement, volume access or new API/feature
+is added. Microsoft documents NTFS metadata flushing for write-through requests;
+actual profile/restart/power evidence is separate. See
+[the comparison and limits](../../docs/write-safety/windows-persistence.md).
+
 | Boundary | Reviewed conditions |
 | --- | --- |
 | Process-token query and SID text | Query-only owned token; aligned initialized buffer after bounded size query; exact returned size and in-buffer SID checked. Only OS-produced valid terminated SID text is read, then freed. SID text is never emitted. No impersonation/token privilege changes. |

@@ -3,6 +3,20 @@ use crate::inspection_record::{Info, MAX_RECORD};
 use imageinfo_recovery_probe::{Envelope, digest};
 use serde::{Deserialize, Serialize};
 
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "kebab-case")]
+pub enum PersistenceMode {
+    #[default]
+    Buffered,
+    FlushAfterRename,
+    WriteThrough,
+}
+impl PersistenceMode {
+    fn is_buffered(&self) -> bool {
+        *self == Self::Buffered
+    }
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
 pub struct Record {
@@ -17,6 +31,10 @@ pub struct Record {
     pub source: Info,
     pub candidate: Info,
     pub sha256: String,
+    // Old observation records omit this field. A request label is never proof
+    // of persistence or permission for recovery mutation.
+    #[serde(default, skip_serializing_if = "PersistenceMode::is_buffered")]
+    pub persistence_mode: PersistenceMode,
 }
 pub fn encode(record: &Record) -> Result<Vec<u8>, serde_json::Error> {
     let body = serde_json::to_string(record)?;
@@ -103,7 +121,31 @@ mod tests {
             source: file.clone(),
             candidate: file,
             sha256: digest(&[3; 65536]),
+            persistence_mode: PersistenceMode::Buffered,
         }
+    }
+    #[test]
+    fn persistence_requests_are_bounded_and_keep_observation_scope() {
+        for mode in [
+            PersistenceMode::Buffered,
+            PersistenceMode::FlushAfterRename,
+            PersistenceMode::WriteThrough,
+        ] {
+            let mut sample = sample();
+            sample.persistence_mode = mode;
+            let decoded = decode(&encode(&sample).unwrap(), "prepared").unwrap();
+            assert_eq!(decoded.persistence_mode, mode);
+            assert!(!decoded.committed && !decoded.namespace_acknowledged);
+        }
+        let mut body = serde_json::to_value(sample()).unwrap();
+        body["persistenceMode"] = serde_json::json!("qualified-volume-flush");
+        let body = body.to_string();
+        let wire = serde_json::to_vec(&Envelope {
+            sha256: digest(body.as_bytes()),
+            body,
+        })
+        .unwrap();
+        assert!(decode(&wire, "prepared").is_err());
     }
     #[test]
     fn records_are_fixed_scope_observations() {

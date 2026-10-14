@@ -280,6 +280,16 @@ impl PrivateSecurity {
         self.create_file_access(path, GENERIC_READ | GENERIC_WRITE | DELETE | READ_CONTROL)
     }
     pub fn create_file_access(&self, path: &Path, access: u32) -> io::Result<File> {
+        self.create_file_flags(path, access, false)
+    }
+    pub fn create_write_through_file(&self, path: &Path) -> io::Result<File> {
+        self.create_file_flags(
+            path,
+            GENERIC_READ | GENERIC_WRITE | DELETE | READ_CONTROL,
+            true,
+        )
+    }
+    fn create_file_flags(&self, path: &Path, access: u32, write_through: bool) -> io::Result<File> {
         let name = wide(path)?;
         let attributes = SECURITY_ATTRIBUTES {
             nLength: size_of::<SECURITY_ATTRIBUTES>() as u32,
@@ -296,7 +306,15 @@ impl PrivateSecurity {
                 FILE_SHARE_READ,
                 &attributes,
                 CREATE_NEW,
-                FILE_FLAG_OPEN_REPARSE_POINT,
+                // Keep buffered I/O alignment/ownership unchanged. The fixed
+                // write-through flag tests NTFS metadata ordering on this same
+                // held candidate; see docs/write-safety/windows-persistence.md.
+                FILE_FLAG_OPEN_REPARSE_POINT
+                    | if write_through {
+                        FILE_FLAG_WRITE_THROUGH
+                    } else {
+                        0
+                    },
                 ptr::null_mut(),
             )
         };

@@ -57,7 +57,7 @@ while($true) {
                 $events=@(Get-WinEvent -FilterHashtable @{LogName='System';Id=41,1001,6008} -MaxEvents 12 -ErrorAction SilentlyContinue | Select-Object Id,RecordId,ProviderName,TimeCreated,Message)
                 Send '/result' @{id=$work.id;events=$events};continue
             }
-            if($work.action -ne 'run' -or $work.case -notmatch '^[a-z0-9-]{1,60}$' -or $work.mode -notin @('ordinary-prepare','ordinary','ordinary-inspect','ordinary-admit','ordinary-finalize','ordinary-prune')) {throw 'Invalid guest job'}
+            if($work.action -ne 'run' -or $work.case -notmatch '^[a-z0-9-]{1,60}$' -or $work.mode -notin @('ordinary-prepare','ordinary','ordinary-inspect','ordinary-admit','ordinary-finalize','ordinary-prune','ordinary-persistence-buffered','ordinary-flush-after-rename','ordinary-write-through')) {throw 'Invalid guest job'}
             $root='C:\ImageInfoGuest\cases\'+$work.case+'.marker'
             if($work.postActor){Send '/event' @{id=$work.id;event=(Act $work.postActor $root)}}
             $p=New-Object Diagnostics.Process
