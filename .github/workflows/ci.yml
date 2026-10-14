@@ -119,6 +119,14 @@ jobs:
       - name: Refuse caller-bound restart adapter on unsupported platforms
         if: runner.os != 'Windows'
         run: python experiments/0022-ordinary-output/restart_qualify.py --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe --parent experiments/0032-windows-publication/target
+      - name: Check caller-history custody tooling syntax
+        run: python -m py_compile experiments/0022-ordinary-output/custody_qualify.py experiments/0022-ordinary-output/custody_audit.py
+      - name: Qualify guarded caller-history custody on Windows
+        if: runner.os == 'Windows'
+        run: python experiments/0022-ordinary-output/custody_qualify.py --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe.exe --parent experiments/0032-windows-publication/target
+      - name: Refuse caller-history custody on unsupported platforms
+        if: runner.os != 'Windows'
+        run: python experiments/0022-ordinary-output/custody_qualify.py --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe --parent experiments/0032-windows-publication/target
       - name: Refuse unsupported ordinary persistence adapter
         if: runner.os != 'Windows'
         run: python experiments/0022-ordinary-output/persistence_qualify.py native --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe --parent experiments/0032-windows-publication/target

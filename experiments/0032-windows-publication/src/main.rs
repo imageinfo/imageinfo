@@ -1,3 +1,5 @@
+#[cfg(any(windows, test))]
+mod custody;
 #[cfg(windows)]
 #[allow(unsafe_code)] // Reused owned-handle disposition; no new SDK call.
 #[path = "../../0038-staging-cleanup/src/disposition.rs"]

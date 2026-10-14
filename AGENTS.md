@@ -118,6 +118,15 @@ Its 61-case native audit and five-fault guest audit cover caller-attested unpubl
 prune, renewed-context observation validation and partial-prune retry refusal.
 The guest retains host caches and the same verified host boot; namespace/storage/
 physical-power qualification and durable caller-context custody remain separate.
+#0043 adds bounded external caller-history snapshots in the same research worker.
+A complete release-fence save precedes the original worker's publication continuation;
+only actual caller-confirmed process exit before release permits stop attestation.
+Captured-only or fenced histories yield no restart context. Typed whole-history
+prefixes and fresh guards reject malformed/conflicting snapshots; source/root remain.
+See `docs/write-safety/windows-custody.md` and its 41-case native audit. Same-byte
+snapshot replacement is accepted: root identity does not authenticate historical
+file identity, caller authority or freshness. No automatic durable custody/profile
+is enabled; #0044 retains separate guest qualification and #0022 remains open.
 
 ## Product intent
 
@@ -183,7 +192,15 @@ The active board is `C:\Projects\localswim-state-store\imageinfo\imageinfo.json`
 in Terry's private state store (migration approved 2026-10-12). The ignored
 `boards/imageinfo.json` is a retired migration backup; do not launch or mutate it.
 Read and mutate the active board
-through `localswim-cli`; use the live service for card mutations. Follow the embedded
+through `localswim-cli`; use the live service for card mutations.
+Terry uses the multi-project workspace UI at
+`http://localhost:8810/board/imageinfo/imageinfo` (clarified 2026-10-14).
+The CLI still targets the imageinfo JSON path and its individual service descriptor;
+the workspace URL does not change the active board or its sole writer. Monitor
+the individual imageinfo service's actual port, rather than assuming the workspace
+gateway port replaces it. Reuse healthy workspace/board services; do not duplicate
+them. A workspace launch must also use the official checkout and `--autopush`.
+Follow the embedded
 Terry workflow. Bot moves completed work to `ready_for_review`; Terry alone accepts
 it into `completed`. Do not launch a duplicate service. Terry explicitly authorized
 board autopush on 2026-10-12 and requires every future imageinfo service launch to
@@ -216,6 +233,16 @@ Terry clarified lane meanings on 2026-10-11:
 When triaging, move sufficiently scoped cards out of Backlog unless Terry has
 explicitly held them. Distinguish insufficient scope from unmet prerequisites;
 keep descriptions, dependencies and lane state consistent with the current phase.
+
+Terry required finer delivery increments on 2026-10-14 after repeated partial
+#0022 handoffs. Every implementation handoff should finish at least one bounded
+ticket into Ready for review, with its scoped acceptance verified and work pushed.
+Use umbrella cards only to track the complete requirements and child dependencies;
+park those umbrellas in Backlog with an explicit organizational note. Work a
+specific child rather than repeatedly handing off partial progress on an umbrella.
+Preserve full safety gates when splitting; a completed research child never enables
+its parent's production capability by implication. Review oversized open cards
+for independent outcomes and clear one-handoff finish lines before starting them.
 
 Terry's triage precedence, clarified 2026-10-14: **every In progress card ranks
 ahead of every Ready for Work card**, regardless of blocking depth, priority or

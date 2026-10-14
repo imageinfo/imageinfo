@@ -26,9 +26,17 @@ The active board is stored at
 `C:\Projects\localswim-state-store\imageinfo\imageinfo.json` in Terry's private
 state-store repository, approved on 2026-10-12. The old ignored
 `boards/imageinfo.json` is a migration backup; do not launch or mutate it.
-Its initial port is **8795**, giving the local URL
-`http://127.0.0.1:8795/`. This address works only on the machine running the service;
-it is not a hosted public board. Board data and service credentials must stay out of
+Terry's current multi-project UI is
+**[http://localhost:8810/board/imageinfo/imageinfo](http://localhost:8810/board/imageinfo/imageinfo)**,
+confirmed on **2026-10-14**. The workspace gateway proxies requests to each board's
+individual service. The CLI still targets the imageinfo JSON path and resolves
+that service's descriptor; the active snapshot and sole writer do not change.
+
+Imageinfo's individual service currently uses **8795**. Verify its actual port on
+each resume; **8810** is the workspace gateway port. Keep the imageinfo monitor on
+its individual service port. Proxy status is available at
+`http://localhost:8810/api/v001/workspace/boards/imageinfo%2Fimageinfo/status`.
+These addresses work only on this machine. Keep board data and credentials out of
 the public repository.
 
 ## Reuse and lifecycle
@@ -36,6 +44,14 @@ the public repository.
 Read the board's configured port and check `/api/v001/status` before starting a
 service. Reuse a healthy service for that board. With localswim installed, the
 commands are:
+
+Reuse the existing multi-project gateway. When it needs a fresh launch, run
+`uv run --frozen localswim --autopush C:\Projects\localswim-state-store --port 8810`
+from `C:\Projects\localswim`. The workspace reuses healthy board services and starts
+missing ones; `--autopush` applies to newly started services. Verify imageinfo's own
+push status even when the workspace is healthy. Per-board CLI commands below remain
+valid; an individual-board launch is only needed when no healthy service already
+owns that board.
 
 ```console
 uv --directory C:\Projects\localswim run --frozen localswim --autopush C:\Projects\localswim-state-store\imageinfo\imageinfo.json

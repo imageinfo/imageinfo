@@ -155,3 +155,60 @@ No caller-context persistence service, replay, rollback, source ACL rewrite,
 privileged production helper or cryptographic authentication is introduced.
 Durable context custody, complete namespace/receipt and storage-error qualification,
 physical power loss and independent RAW admission remain open.
+
+## Caller-history snapshots (#0043)
+
+Read the [scope, native evidence and trust limits](../../docs/write-safety/windows-custody.md).
+`ordinary-custody-save` creates one new whole-history snapshot in a separate fresh
+private root; `ordinary-custody-inspect` reads that fixed sequence. Both receive
+one bounded JSON request line before their usual interactive controls.
+
+The first save request has this shape, with `context` replaced by the actual live
+before-publication `callerContext` captured while the worker is blocked:
+
+```json
+{"journal":{"purpose":"imageinfo-od11-custody-history-v1","events":[{"event":"captured","context":"<actual-context-object>"}]}}
+```
+
+This shape illustration is not a valid runnable marker context. Later saves
+supply the complete extended journal and `expectedCustodyRoot` with the actual
+`custodyRoot` object from the first successful result. Inspection supplies only
+that root binding:
+
+```json
+{"expectedCustodyRoot":"<actual-custodyRoot-object>"}
+```
+
+Allowed history events after capture are `publication-release-fenced` or
+`stop-confirmed-before-publication`. The fenced branch can advance through
+`publication-observed` and `observation-renewed`, each with its actual matching
+`context` object. Stop is terminal. Captured-only and fenced histories never
+produce a restart context candidate. Missing history is not proof of nonrelease.
+
+Save barriers are `custody-before-write`, `custody-before-file-flush`,
+`custody-file-flushed` and `custody-parent-flushed`. The supervisor must receive
+`custody-snapshot-recorded` after final checks before continuing the original
+worker at `before-namespace-call`. Stop attestation requires the supervisor to
+kill/wait for its held original process without releasing that barrier.
+
+For a caller-prepared file containing the appropriate JSON object followed by
+the required control lines, these research CLI invocations select the operation:
+
+```powershell
+$probe = 'experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe.exe'
+$custodyRoot = '<absolute-private-custody-root>'
+Get-Content -LiteralPath '<authorized-save-request.private.txt>' | & $probe $custodyRoot ordinary-custody-save
+Get-Content -LiteralPath '<inspect-request.private.txt>' | & $probe $custodyRoot ordinary-custody-inspect
+```
+
+```console
+python experiments/0022-ordinary-output/custody_qualify.py --binary <native-worker> --parent <private-native-parent>
+python experiments/0022-ordinary-output/custody_audit.py --root <native-run> --binary <exact-native-worker> --public docs/write-safety/windows-custody-native.json
+```
+
+The 41-case native audit retains exact source/worker bindings from qualification
+start, actual controls, captures and unchanged inspection inventories. Same-byte
+snapshot replacement is accepted. A directory identity and valid history do not
+authenticate historical snapshot-file identity, caller authority or freshness;
+`callerContextCandidate` still needs an explicit trusted caller decision. Guest
+qualification is separate #0044 work. No repair, writer/profile or RAW gate is enabled.

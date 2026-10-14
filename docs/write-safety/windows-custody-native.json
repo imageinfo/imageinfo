@@ -1,0 +1,2861 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-14",
+  "data": "authored marker bytes only",
+  "caseCount": 41,
+  "cases": [
+    {
+      "id": "captured",
+      "branch": "captured",
+      "change": null,
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "stopped",
+      "branch": "stopped",
+      "change": null,
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": "before-publication",
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete",
+        "original-process-exit-confirmed-without-publication-release",
+        "stop-attestation-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "stop-attested-before-publication",
+          "diagnostic": null,
+          "contextCandidatePresent": true,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "stop-attested-before-publication",
+          "diagnostic": null,
+          "contextCandidatePresent": true,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": "owned-unpublished-handles-pruned",
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "fenced",
+      "branch": "fenced",
+      "change": null,
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete",
+        "release-fence-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "observed",
+      "branch": "observed",
+      "change": null,
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": true,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": "after-publication",
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record",
+        "custody-3.record"
+      ],
+      "transactionLeaves": [
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete",
+        "release-fence-snapshot-save-complete",
+        "original-publication-continuation-sent"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "publication-observed",
+          "diagnostic": null,
+          "contextCandidatePresent": true,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-3",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "publication-observed",
+          "diagnostic": null,
+          "contextCandidatePresent": true,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "renewed",
+      "branch": "renewed",
+      "change": null,
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": true,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": "after-publication",
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record",
+        "custody-3.record",
+        "custody-4.record"
+      ],
+      "transactionLeaves": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete",
+        "release-fence-snapshot-save-complete",
+        "original-publication-continuation-sent"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "observation-renewed",
+          "diagnostic": null,
+          "contextCandidatePresent": true,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-3",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "publication-observed",
+          "diagnostic": null,
+          "contextCandidatePresent": true,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-4",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "observation-renewed",
+          "diagnostic": null,
+          "contextCandidatePresent": true,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": "output-observation-already-present",
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "change-truncated",
+      "branch": "captured",
+      "change": "truncated",
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-refused-before-effects",
+          "custodyState": null,
+          "diagnostic": "CUSTODY_HISTORY_INVALID",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "change-corrupt",
+      "branch": "captured",
+      "change": "corrupt",
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-refused-before-effects",
+          "custodyState": null,
+          "diagnostic": "CUSTODY_HISTORY_INVALID",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "change-replaced",
+      "branch": "captured",
+      "change": "replaced",
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "replacement-save",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "change-extra",
+      "branch": "captured",
+      "change": "extra",
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "foreign.marker"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-refused-before-effects",
+          "custodyState": null,
+          "diagnostic": "CUSTODY_NAMESPACE_CONFLICT",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "change-missing-first",
+      "branch": "captured",
+      "change": "missing-first",
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-refused-before-effects",
+          "custodyState": null,
+          "diagnostic": "CUSTODY_HISTORY_SIZE",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "change-ads",
+      "branch": "captured",
+      "change": "ads",
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-1.record:probe"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-refused-before-effects",
+          "custodyState": null,
+          "diagnostic": "NONDEFAULT_STREAM",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "change-link",
+      "branch": "captured",
+      "change": "link",
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "alias.marker",
+        "custody-1.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-refused-before-effects",
+          "custodyState": null,
+          "diagnostic": "CUSTODY_NAMESPACE_CONFLICT",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "change-readonly",
+      "branch": "captured",
+      "change": "readonly",
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-refused-before-effects",
+          "custodyState": null,
+          "diagnostic": "CUSTODY_READONLY_UNEXPECTED",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "change-dacl",
+      "branch": "captured",
+      "change": "dacl",
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-refused-before-effects",
+          "custodyState": null,
+          "diagnostic": "Access is denied. (os error 5)",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "change-wrong-root",
+      "branch": "captured",
+      "change": "wrong-root",
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-refused-before-effects",
+          "custodyState": null,
+          "diagnostic": "ROOT_PROPERTIES_CHANGED",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "change-stale-prefix",
+      "branch": "captured",
+      "change": "stale-prefix",
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-stale",
+          "exitCode": 0,
+          "outcome": "custody-refused-before-effects",
+          "custodyState": null,
+          "diagnostic": "CUSTODY_ROOT_BINDING_REQUIRED",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "stopped-missing-latest",
+      "branch": "stopped",
+      "change": "missing-latest",
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete",
+        "original-process-exit-confirmed-without-publication-release",
+        "stop-attestation-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "stop-attested-before-publication",
+          "diagnostic": null,
+          "contextCandidatePresent": true,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "observed-missing-latest",
+      "branch": "observed",
+      "change": "missing-latest",
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": true,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "transactionLeaves": [
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete",
+        "release-fence-snapshot-save-complete",
+        "original-publication-continuation-sent"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-3",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "publication-observed",
+          "diagnostic": null,
+          "contextCandidatePresent": true,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "history-stop-after-fence",
+      "branch": "captured",
+      "change": null,
+      "malformed": "stop-after-fence",
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-invalid",
+          "exitCode": 0,
+          "outcome": "custody-refused-before-effects",
+          "custodyState": null,
+          "diagnostic": "CUSTODY_HISTORY_ORDER_INVALID at line 1 column 1370",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "history-release-after-stop",
+      "branch": "captured",
+      "change": null,
+      "malformed": "release-after-stop",
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-invalid",
+          "exitCode": 0,
+          "outcome": "custody-refused-before-effects",
+          "custodyState": null,
+          "diagnostic": "CUSTODY_HISTORY_ORDER_INVALID at line 1 column 1370",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "history-duplicate-capture",
+      "branch": "captured",
+      "change": null,
+      "malformed": "duplicate-capture",
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-invalid",
+          "exitCode": 0,
+          "outcome": "custody-refused-before-effects",
+          "custodyState": null,
+          "diagnostic": "CUSTODY_HISTORY_ORDER_INVALID at line 1 column 2501",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "history-unknown-field",
+      "branch": "captured",
+      "change": null,
+      "malformed": "unknown-field",
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-invalid",
+          "exitCode": 0,
+          "outcome": "custody-refused-before-effects",
+          "custodyState": null,
+          "diagnostic": "unknown field `permission`, expected `purpose` or `events` at line 1 column 1297",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "history-mismatched-context",
+      "branch": "captured",
+      "change": null,
+      "malformed": "mismatched-context",
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-invalid",
+          "exitCode": 0,
+          "outcome": "custody-refused-before-effects",
+          "custodyState": null,
+          "diagnostic": "CUSTODY_OBSERVATION_BINDING_INVALID at line 1 column 2551",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "cancel-custody-before-write",
+      "branch": "fenced",
+      "change": null,
+      "malformed": null,
+      "stop": "cancel",
+      "stopAt": "custody-before-write",
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 0,
+          "outcome": "custody-refused-before-effects",
+          "custodyState": null,
+          "diagnostic": "CONTROL_CANCEL",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "fail-custody-before-write",
+      "branch": "fenced",
+      "change": null,
+      "malformed": null,
+      "stop": "fail",
+      "stopAt": "custody-before-write",
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 0,
+          "outcome": "custody-refused-before-effects",
+          "custodyState": null,
+          "diagnostic": "INJECTED_PROTOCOL_FAILURE",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "kill-custody-before-write",
+      "branch": "fenced",
+      "change": null,
+      "malformed": null,
+      "stop": "kill",
+      "stopAt": "custody-before-write",
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 1,
+          "outcome": null,
+          "custodyState": null,
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "cancel-custody-before-file-flush",
+      "branch": "fenced",
+      "change": null,
+      "malformed": null,
+      "stop": "cancel",
+      "stopAt": "custody-before-file-flush",
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 0,
+          "outcome": "custody-partial-or-uncertain",
+          "custodyState": null,
+          "diagnostic": "CONTROL_CANCEL",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "fail-custody-before-file-flush",
+      "branch": "fenced",
+      "change": null,
+      "malformed": null,
+      "stop": "fail",
+      "stopAt": "custody-before-file-flush",
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 0,
+          "outcome": "custody-partial-or-uncertain",
+          "custodyState": null,
+          "diagnostic": "INJECTED_PROTOCOL_FAILURE",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "kill-custody-before-file-flush",
+      "branch": "fenced",
+      "change": null,
+      "malformed": null,
+      "stop": "kill",
+      "stopAt": "custody-before-file-flush",
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 1,
+          "outcome": null,
+          "custodyState": null,
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "cancel-custody-file-flushed",
+      "branch": "fenced",
+      "change": null,
+      "malformed": null,
+      "stop": "cancel",
+      "stopAt": "custody-file-flushed",
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 0,
+          "outcome": "custody-partial-or-uncertain",
+          "custodyState": null,
+          "diagnostic": "CONTROL_CANCEL",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "fail-custody-file-flushed",
+      "branch": "fenced",
+      "change": null,
+      "malformed": null,
+      "stop": "fail",
+      "stopAt": "custody-file-flushed",
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 0,
+          "outcome": "custody-partial-or-uncertain",
+          "custodyState": null,
+          "diagnostic": "INJECTED_PROTOCOL_FAILURE",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "kill-custody-file-flushed",
+      "branch": "fenced",
+      "change": null,
+      "malformed": null,
+      "stop": "kill",
+      "stopAt": "custody-file-flushed",
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 1,
+          "outcome": null,
+          "custodyState": null,
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "cancel-custody-parent-flushed",
+      "branch": "fenced",
+      "change": null,
+      "malformed": null,
+      "stop": "cancel",
+      "stopAt": "custody-parent-flushed",
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 0,
+          "outcome": "custody-partial-or-uncertain",
+          "custodyState": null,
+          "diagnostic": "CONTROL_CANCEL",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "fail-custody-parent-flushed",
+      "branch": "fenced",
+      "change": null,
+      "malformed": null,
+      "stop": "fail",
+      "stopAt": "custody-parent-flushed",
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 0,
+          "outcome": "custody-partial-or-uncertain",
+          "custodyState": null,
+          "diagnostic": "INJECTED_PROTOCOL_FAILURE",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "kill-custody-parent-flushed",
+      "branch": "fenced",
+      "change": null,
+      "malformed": null,
+      "stop": "kill",
+      "stopAt": "custody-parent-flushed",
+      "lateExtraAt": null,
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 1,
+          "outcome": null,
+          "custodyState": null,
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "foreign-custody-file-flushed",
+      "branch": "fenced",
+      "change": null,
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": "custody-file-flushed",
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record",
+        "foreign.marker"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-refused-before-effects",
+          "custodyState": null,
+          "diagnostic": "CUSTODY_NAMESPACE_CONFLICT",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 0,
+          "outcome": "custody-partial-or-uncertain",
+          "custodyState": null,
+          "diagnostic": "CUSTODY_NAMESPACE_CONFLICT",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "foreign-custody-parent-flushed",
+      "branch": "fenced",
+      "change": null,
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": "custody-parent-flushed",
+      "heldActor": null,
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record",
+        "foreign.marker"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-refused-before-effects",
+          "custodyState": null,
+          "diagnostic": "CUSTODY_NAMESPACE_CONFLICT",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 0,
+          "outcome": "custody-partial-or-uncertain",
+          "custodyState": null,
+          "diagnostic": "CUSTODY_NAMESPACE_CONFLICT",
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "held-write",
+      "branch": "fenced",
+      "change": null,
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": "write",
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete",
+        "release-fence-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [
+            {
+              "action": "write",
+              "allowed": false,
+              "winError": 32
+            }
+          ],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "held-delete",
+      "branch": "fenced",
+      "change": null,
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": "delete",
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete",
+        "release-fence-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [
+            {
+              "action": "delete",
+              "allowed": false,
+              "winError": 32
+            }
+          ],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "held-rename",
+      "branch": "fenced",
+      "change": null,
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": "rename",
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete",
+        "release-fence-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [
+            {
+              "action": "rename",
+              "allowed": false,
+              "winError": 32
+            }
+          ],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    },
+    {
+      "id": "held-root-rename",
+      "branch": "fenced",
+      "change": null,
+      "malformed": null,
+      "stop": null,
+      "stopAt": null,
+      "lateExtraAt": null,
+      "heldActor": "root-rename",
+      "publicationReleased": false,
+      "sourceRetained": true,
+      "custodyInspectUnchanged": true,
+      "candidateStage": null,
+      "remainingCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "transactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "supervisorHistory": [
+        "original-blocked-before-publication",
+        "captured-snapshot-save-complete",
+        "release-fence-snapshot-save-complete"
+      ],
+      "calls": [
+        {
+          "operation": "inspect",
+          "exitCode": 0,
+          "outcome": "custody-history-observed",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": []
+        },
+        {
+          "operation": "save-1",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "captured-unconfirmed",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        },
+        {
+          "operation": "save-2",
+          "exitCode": 0,
+          "outcome": "custody-snapshot-recorded",
+          "custodyState": "publication-release-uncertain",
+          "diagnostic": null,
+          "contextCandidatePresent": false,
+          "actors": [
+            {
+              "action": "root-rename",
+              "allowed": false,
+              "winError": 32
+            }
+          ],
+          "barriers": [
+            "custody-before-write",
+            "custody-before-file-flush",
+            "custody-file-flushed",
+            "custody-parent-flushed"
+          ]
+        }
+      ],
+      "ownedActionOutcome": null,
+      "transactionUnchangedBeforeCallerAction": true
+    }
+  ],
+  "custodyCapturesAudited": 117,
+  "unchangedTransactionInventoriesBeforeCallerAction": 41,
+  "unchangedCustodyInspectionInventories": 41,
+  "readableArtifactPathsHashed": 1398,
+  "inaccessiblePathsRetained": 1,
+  "enabledProfiles": 0,
+  "physicalPowerLossRuns": 0,
+  "callerAuthorityAuthenticated": false,
+  "custodyFreshnessProven": false,
+  "committed": false,
+  "namespaceAcknowledged": false,
+  "repairAllowed": false,
+  "productionPublicationAllowed": false,
+  "limits": "Trusted supervisor history representation and finite native ordering tests. Same-byte snapshot replacement is accepted; missing terminal snapshots never establish nonrelease. No authentication, antirollback, durable commit, automatic repair or storage-profile admission."
+}

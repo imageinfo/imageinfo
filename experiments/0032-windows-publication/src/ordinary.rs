@@ -855,6 +855,194 @@ fn restart(root: &Path, prune: bool) -> Result<()> {
         json!({"outcome":outcome,"diagnostic":diagnostic,"effectsAttempted":effects,"ownedHandlesRemoved":removed,"observationRecordCreated":recorded,"cleanupPending":if prune { retained_work(root) } else { effects && !recorded },"retainedWork":retained_work(root),"sourceRetained":true,"rootRetained":true,"markerResearchOnly":true}),
     )
 }
+#[derive(serde::Deserialize)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
+struct CustodyRequest {
+    journal: Option<crate::custody::Journal>,
+    expected_custody_root: Option<Info>,
+}
+const CUSTODY_NAMES: [&str; 4] = [
+    "custody-1.record",
+    "custody-2.record",
+    "custody-3.record",
+    "custody-4.record",
+];
+fn custody_layout(root: &Path, count: usize) -> Result<()> {
+    let mut names = fs::read_dir(root)?
+        .take(5)
+        .map(|entry| entry.map(|v| v.file_name()))
+        .collect::<io::Result<Vec<_>>>()?;
+    names.sort();
+    let expected: Vec<_> = CUSTODY_NAMES[..count]
+        .iter()
+        .map(std::ffi::OsString::from)
+        .collect();
+    if names != expected {
+        return Err("CUSTODY_NAMESPACE_CONFLICT".into());
+    }
+    Ok(())
+}
+fn custody_store(root: &Path, save: bool) -> Result<()> {
+    let mut effects = false;
+    let mut root_info = None;
+    let mut state = None;
+    let mut observed = None;
+    let mut candidate = None;
+    let result = (|| -> Result<()> {
+        let mut bytes = Vec::new();
+        io::stdin()
+            .lock()
+            .take(MAX_RECORD + 1)
+            .read_until(b'\n', &mut bytes)?;
+        if bytes.len() as u64 > MAX_RECORD || !bytes.ends_with(b"\n") {
+            return Err("CUSTODY_REQUEST_BOUND".into());
+        }
+        let request: CustodyRequest = serde_json::from_slice(&bytes)?;
+        let supplied = if save {
+            let journal = request.journal.ok_or("CUSTODY_HISTORY_REQUIRED")?;
+            journal.encode()?;
+            Some(journal)
+        } else {
+            if request.journal.is_some() {
+                return Err("CUSTODY_INSPECT_HISTORY_FORBIDDEN".into());
+            }
+            None
+        };
+        let count = supplied.as_ref().map(|j| j.event_count());
+        let fresh = count == Some(1);
+        if fresh == request.expected_custody_root.is_some() {
+            return Err("CUSTODY_ROOT_BINDING_REQUIRED".into());
+        }
+        let _ancestors = crate::windows::ancestors(root.parent().ok_or("PARENT_REQUIRED")?)?;
+        let parent = _ancestors.last().ok_or("PARENT_REQUIRED")?;
+        if native::filesystem(parent)? != "NTFS" {
+            return Err("FILESYSTEM_UNVERIFIED".into());
+        }
+        let security = PrivateSecurity::current()?;
+        let dir = if fresh {
+            effects = true;
+            security.create_directory(
+                parent,
+                Path::new(root.file_name().ok_or("ROOT_LEAF_REQUIRED")?),
+            )?
+        } else {
+            OpenOptions::new()
+                .access_mode(0xc0020000)
+                .share_mode(3)
+                .custom_flags(0x02200000)
+                .open(root)?
+        };
+        let before = info(&dir)?;
+        directory(root, &dir, &before, &security)?;
+        if let Some(expected) = request.expected_custody_root {
+            directory(root, &dir, &expected, &security)?;
+        }
+        root_info = Some(before.clone());
+        emit(json!({"custodyRoot":before,"observationOnly":true}))?;
+        let prior_count = if let Some(n) = count {
+            n - 1
+        } else {
+            fs::read_dir(root)?
+                .take(5)
+                .collect::<io::Result<Vec<_>>>()?
+                .len()
+        };
+        if prior_count > 4 || (!save && prior_count == 0) {
+            return Err("CUSTODY_HISTORY_SIZE".into());
+        }
+        custody_layout(root, prior_count)?;
+        let mut held = Vec::new();
+        let mut latest: Option<crate::custody::Journal> = None;
+        for (index, name) in CUSTODY_NAMES.iter().enumerate().take(prior_count) {
+            let mut file = OpenOptions::new()
+                .access_mode(0x80020000)
+                .share_mode(1)
+                .custom_flags(0x02200000)
+                .open(root.join(name))?;
+            let initial = info(&file)?;
+            if initial.attributes & 1 != 0 {
+                return Err("CUSTODY_READONLY_UNEXPECTED".into());
+            }
+            let contents = read(&mut file)?;
+            let mut artifact = Artifact {
+                file,
+                before: initial,
+                hash: digest(&contents),
+                name,
+                persistence: PersistenceMode::Buffered,
+            };
+            artifact.check(root, &security)?;
+            let journal = crate::custody::decode(&contents)?;
+            if journal.event_count() != index + 1 {
+                return Err("CUSTODY_SNAPSHOT_ORDER".into());
+            }
+            if let Some(previous) = latest.as_ref()
+                && journal.prefix(index)?.encode()? != previous.encode()?
+            {
+                return Err("CUSTODY_PREFIX_CHANGED".into());
+            }
+            latest = Some(journal);
+            held.push(artifact);
+        }
+        if let Some(journal) = supplied {
+            let n = journal.event_count();
+            if let Some(previous) = latest.as_ref()
+                && journal.prefix(n - 1)?.encode()? != previous.encode()?
+            {
+                return Err("CUSTODY_PREFIX_CHANGED".into());
+            }
+            directory(root, &dir, &before, &security)?;
+            barrier("custody-before-write")?;
+            custody_layout(root, prior_count)?;
+            for artifact in &mut held {
+                artifact.check(root, &security)?;
+            }
+            directory(root, &dir, &before, &security)?;
+            let contents = journal.encode()?;
+            effects = true;
+            let mut file = security.create_write_through_file(&root.join(CUSTODY_NAMES[n - 1]))?;
+            crate::staging::copy_exact(
+                &mut io::Cursor::new(&contents),
+                &mut file,
+                contents.len() as u64,
+            )?;
+            barrier("custody-before-file-flush")?;
+            file.sync_all()?;
+            held.push(Artifact {
+                before: info(&file)?,
+                hash: digest(&contents),
+                file,
+                name: CUSTODY_NAMES[n - 1],
+                persistence: PersistenceMode::WriteThrough,
+            });
+            barrier("custody-file-flushed")?;
+            dir.sync_all()?;
+            barrier("custody-parent-flushed")?;
+            latest = Some(journal);
+        }
+        directory(root, &dir, &before, &security)?;
+        custody_layout(root, held.len())?;
+        for artifact in &mut held {
+            artifact.check(root, &security)?;
+        }
+        let journal = latest.ok_or("CUSTODY_HISTORY_REQUIRED")?;
+        state = Some(journal.state());
+        candidate = journal.restart_context();
+        observed = Some(journal);
+        Ok(())
+    })();
+    let diagnostic = result.err().map(|error| error.to_string());
+    emit(json!({
+        "outcome":if diagnostic.is_some() {
+            if effects { "custody-partial-or-uncertain" } else { "custody-refused-before-effects" }
+        } else if save { "custody-snapshot-recorded" } else { "custody-history-observed" },
+        "diagnostic":diagnostic,"effectsAttempted":effects,"custodyRoot":root_info,
+        "custodyState":state,"journal":observed,"callerContextCandidate":candidate,
+        "callerAuthorityAuthenticated":false,"custodyFreshnessProven":false,
+        "rootRetained":true,"transactionMutations":0,"markerResearchOnly":true,
+        "retainedWork":retained_work(root)
+    }))
+}
 pub fn run(root: &Path, mode: &str) -> Result<()> {
     match mode {
         "-prepare" => prepare(root),
@@ -867,6 +1055,8 @@ pub fn run(root: &Path, mode: &str) -> Result<()> {
         "-inspect" => inspect(root),
         "-restart-observe" => restart(root, false),
         "-restart-prune" => restart(root, true),
+        "-custody-save" => custody_store(root, true),
+        "-custody-inspect" => custody_store(root, false),
         "-admit" | "-finalize" | "-prune" => emit(
             json!({"outcome":"refused-before-effects","workerArtifacts":0,"missingCells":["qualified-windows-namespace-receipt-crash-persistence","safe-restart-finalization-prune"]}),
         ),

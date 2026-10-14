@@ -43,6 +43,7 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Disposable Windows guest](write-safety/windows-guest.md) | Installed evaluation guest; eight NMI/restart and eight emulator-kill/restart observations, owner actors and preserved namespace/receipt limits. |
 | [Windows persistence ordering](write-safety/windows-persistence.md) | Direct #0022 three-mode comparison: 69 native cases, 33 guest faults, variable pre-flush name survival and unchanged admission/repair gates. |
 | [Caller-bound restart actions](write-safety/windows-restart-actions.md) | Direct #0022 explicit-context marker prune and output observation: 61 native cases, five guest faults, fresh guards, partial/foreign retention and unchanged production recovery gates. |
+| [Caller-history custody snapshots](write-safety/windows-custody.md) | #0043 external whole-history snapshots, release-fence ordering and 41 native cases; explicit caller trust, accepted same-byte replacement and separate #0044 guest qualification. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |
