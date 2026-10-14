@@ -97,6 +97,13 @@ also closes Serde's tagged-unit-variant extra-field acceptance by using empty
 struct variants, and validates nested history during deserialization rather than
 normalizing through an untyped JSON value that would lose duplicate fields.
 
+The [published CI ledger](windows-custody-ci.json) records successful Windows,
+Ubuntu and macOS jobs for `b381576`, including the native custody matrix and Unix
+adapter refusal. Existing 61 restart, 64 ordinary, 69 persistence, 78 publication
+and 35 inspection regressions pass on Windows alongside the root Rust, release
+and documentation gates. Scope and lane corrections after that source revision
+change documentation only and have separately passed the documentation checks.
+
 This increment reuses the existing [SDK review](../../experiments/0032-windows-publication/ffi-review.md)
 and [dependency admission](windows-inspection-dependencies.json). No SDK call,
 feature, dependency, key service, encryption or privileged helper is added; root

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-14",
+  "ticket": 43,
+  "sourceRevision": "b3815765d5230bec979e8a38b1cf9c6f384d1682",
+  "runId": 38643860104,
+  "runUrl": "https://github.com/imageinfo/imageinfo/actions/runs/38643860104",
+  "status": "passed",
+  "scope": "30 portable research tests; 41 native Windows custody cases and existing 61 restart/64 ordinary/69 persistence/78 publication/35 inspection regressions; Unix unsupported custody refusal and root Rust/release/docs gates. Guest qualification is separate #0044, not performed by this increment. No automatic freshness, commitment, production writer or storage profile enabled.",
+  "jobs": [
+    {
+      "id": 116125779962,
+      "runner": "windows-2025",
+      "status": "completed",
+      "conclusion": "success",
+      "tooling": "success",
+      "custody": "success",
+      "rootContracts": "success",
+      "docs": "success"
+    },
+    {
+      "id": 116125780527,
+      "runner": "macos-15",
+      "status": "completed",
+      "conclusion": "success",
+      "tooling": "success",
+      "custody": "success",
+      "rootContracts": "success",
+      "docs": "success"
+    },
+    {
+      "id": 116125780906,
+      "runner": "ubuntu-24.04",
+      "status": "completed",
+      "conclusion": "success",
+      "tooling": "success",
+      "custody": "success",
+      "rootContracts": "success",
+      "docs": "success"
+    }
+  ]
+}
