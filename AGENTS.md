@@ -76,6 +76,11 @@ ordinary output policy. No source ACL, privilege, shared SDK or production gate 
 below-budget requests refuse before transaction creation. See
 `docs/write-safety/staging-limits.md`; this is a logical-byte bound, not free-space
 reservation, allocation accounting, an OS quota or production writer/profile support.
+#0041/OD-11 proposes a practical new-output property/concurrency boundary after
+the measured guard/output obstructions. See `docs/write-safety/practical-output-policy.md`.
+Terry's explicit policy choice is pending: publication or acceptance of this research
+does not relax WS/SAF, enable a profile, or authorize an ordinary-output implementation
+under narrower guarantees. Keep format, byte/name, persistence and recovery gates intact.
 
 ## Product intent
 

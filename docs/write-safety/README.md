@@ -99,6 +99,12 @@ postpublication cleanup and full storage/admission remain separate gates.
 
 ## Plan before effects
 
+**2026-10-14 decision pending:** [OD-11/#0041](practical-output-policy.md) proposes
+a narrower same-owner property-concurrency boundary while retaining guarded bytes,
+no-clobber names and all format/persistence/recovery gates. It maps the exact required
+WS/SAF follow-up. No policy choice, normative rule below or profile is changed until
+Terry explicitly decides; publishing/accepting research is not a concurrency waiver.
+
 **WS-001 — Explicit application.** Preview does not change media, metadata targets,
 backup retention, collection paths, or file timestamps. A requested saved-plan/report
 artifact may be written after successful planning. `--apply` or the equivalent

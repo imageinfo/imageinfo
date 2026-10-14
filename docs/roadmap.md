@@ -166,3 +166,10 @@ staging worker. Ten portable tests, 17 actual limit/source/cancellation cases an
 the retained 27-case cleanup regression pass. This bounds logical artifact bytes,
 not disk allocation/available space or cumulative recovery storage. Usable output,
 complete guards, persistence/recovery and actual RAW admission remain open.
+
+[#0041 / OD-11](write-safety/practical-output-policy.md) hands off the product
+decision exposed by #0033/#0034/#0039: ordinary private-owner editable new output
+with guarded bytes/names and boundary property checks, or retained continuous
+property exclusion. The recommendation, exact WS/SAF impact and next evidence
+cells are reviewable. Terry's explicit choice is pending; existing requirements,
+format admission and complete storage/persistence/recovery gates remain unchanged.

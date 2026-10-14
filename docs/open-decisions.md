@@ -1,6 +1,7 @@
 # Open product decisions
 
-Updated 2026-10-10 after acceptance of the initial requirements and corpus work.
+Updated 2026-10-14; OD-11 adds a concrete storage-policy decision after the accepted
+guard/output experiments. The initial requirements and corpus work remain accepted.
 These remaining questions refine implementation and evidence. Full ExifTool parity remains the eventual goal; camera RAW
 metadata is the current delivery scope agreed with Terry. See [RAW scope](raw-scope.md).
 
@@ -16,6 +17,7 @@ metadata is the current delivery scope agreed with Terry. See [RAW scope](raw-sc
 | OD-08 | Sustainability | [Card #0009](../GOVERNANCE.md) proposes contributor/review duties, primary/backup ownership, security intake and release/access recovery. The proposal was accepted with #0009; operational readiness is not established. | Consent-based appointments, private reporting, actual review controls and independent release/recovery drills remain GOV-OPEN-01–06 on #0017. |
 | OD-09 | Project and imported-artifact licenses | MIT accepted and locked on 2026-10-10; preserve copyright/license notices without mandatory visible UI credit. See [decision](license-decision.md). | The [provenance policy](provenance/README.md) now specifies scoped reviews and admission records; initial private corpus/reference permissions were reviewed on accepted #0013; every new source/table/fixture use remains asset-specific. The project-license choice is settled. |
 | OD-10 | Interactive menu behavior | Contextual help is mandatory. Cascading interaction is optional and must never block scripts. | The [walkthrough recommendation](cli-walkthroughs/README.md) specifies keyboard/line navigation, cancellation, previews and non-TTY behavior. The initial walkthrough was accepted with #0003; real accessibility/usability testing remains open. |
+| OD-11 | New-output property concurrency and ordinary editing | [#0041's proposal](write-safety/practical-output-policy.md) recommends guarded default-stream bytes/no-clobber names plus boundary property checks and ordinary private-owner editable output. Terry's explicit A/B policy choice is pending; current strict requirements and all writer gates remain in force. | Decide A (recommended property boundary) or B (retain continuous property exclusion); then update applicability and qualify the complete actual protocol before any profile admission. |
 
 ## Implementation selection now open
 
