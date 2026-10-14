@@ -6,6 +6,12 @@ Backlog → Ready For Work → In progress → Ready for review → Completed,
 with separate Blocked and Needs Terry lanes. The embedded policy defines the exact
 allowed transitions. Bot does not approve its own work into Completed.
 
+Terry reiterated on **2026-10-14**: only an explicit Terry hold or insufficient
+detail justifies Backlog. Fully scoped cards, including organizational umbrellas,
+stay Ready for Work when their remaining constraint is another ticket. Record the
+prerequisites as relationships. Execute bounded children and hand those off into
+Ready for review; do not repeatedly hand off partial progress on an umbrella.
+
 Terry's lane definitions, clarified 2026-10-11: Backlog means insufficient scope
 or an intentional hold by Terry. Ready For Work means sufficiently scoped, even
 when completion depends on other Ready For Work tickets. Record those dependencies

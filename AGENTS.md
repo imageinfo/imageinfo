@@ -237,12 +237,20 @@ keep descriptions, dependencies and lane state consistent with the current phase
 Terry required finer delivery increments on 2026-10-14 after repeated partial
 #0022 handoffs. Every implementation handoff should finish at least one bounded
 ticket into Ready for review, with its scoped acceptance verified and work pushed.
-Use umbrella cards only to track the complete requirements and child dependencies;
-park those umbrellas in Backlog with an explicit organizational note. Work a
-specific child rather than repeatedly handing off partial progress on an umbrella.
+Use umbrella cards only to track complete requirements and child dependencies.
+Fully scoped umbrellas remain Ready for Work; an umbrella or an unmet ticket
+dependency is never, by itself, a Backlog reason. Work a specific executable child
+rather than repeatedly handing off partial progress on an umbrella.
 Preserve full safety gates when splitting; a completed research child never enables
 its parent's production capability by implication. Review oversized open cards
 for independent outcomes and clear one-handoff finish lines before starting them.
+
+Terry reiterated the lane rule on 2026-10-14: **Backlog is only for Terry's explicit
+hold or insufficient detail to perform the work.** Move sufficiently scoped cards
+to Ready for Work even when they depend on other Ready for Work tickets. Record
+those prerequisites as relationships; do not use Backlog as a dependency queue or
+as storage for organizational umbrellas. Keep the missing scope or Terry's hold
+explicit on every remaining Backlog card.
 
 Terry's triage precedence, clarified 2026-10-14: **every In progress card ranks
 ahead of every Ready for Work card**, regardless of blocking depth, priority or
