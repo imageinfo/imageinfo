@@ -77,12 +77,56 @@ The research crate has **19 portable tests**. The original **64 ordinary-output,
 format/Clippy/44 Windows tests/release checks. Native and guest evidence audits
 bind exact worker/helper bytes; private identifiers, media and raw logs stay local.
 
-Disposable guest comparison is in progress. It uses the existing standard-user
-Windows EnterpriseEval 10.0.26300/local NTFS fixture and the exact restart limits
+The [audited guest comparison](windows-persistence-guest.json) completed **33
+faults and six normal runs**: the full three-mode/five-checkpoint/NMI/SIGKILL matrix,
+then one extra NMI at rename-success per mode. It binds **18 fresh NMI bugchecks,
+166 private capture files and 144 post-fault artifact paths**. Source bytes remain
+unchanged and every retained candidate/output is the full expected marker.
+It uses the existing standard-user Windows EnterpriseEval 10.0.26300/local NTFS fixture and the exact restart limits
 in [the guest notes](windows-guest.md): NMI plus controlled emulator quit/relaunch,
 and separate SIGKILL/relaunch. Host caches stay alive. A matching output or a later
 record cannot retroactively qualify an earlier boundary or physical power loss.
 
+| Mode | NMI at rename-success, two observations | All four later flush checkpoints, NMI and SIGKILL |
+| --- | --- | --- |
+| Buffered | One matching output; one output name lost with matching candidate retained. | All eight retain matching output. |
+| Immediate flush after rename | One output name lost before the flush; one matching output before the flush. | All eight retain matching output. |
+| Write-through candidate/records | Both retain matching output. | All eight retain matching output. |
+
+All three SIGKILL cases at rename-success also retain matching output. These
+finite observations reproduce **variation before the explicit flush** in both
+buffered-handle modes. All **24 post-flush cells** retain output, but that does not
+establish the necessity/sufficiency of any individual later call or a universal
+write-through guarantee. The guest uses its Windows system NTFS volume; OS
+background I/O and crash-dump activity share that storage. Restart includes the
+named emulator actions, and controlled exit can drain submitted work.
+
+The request mode is consistently recovered from matching records; two records are
+present at the earlier checkpoints and three after the observation-file flush.
+No missing receipt is promoted into a committed result. The laptop stayed on the
+same verified boot, and the guest was normally shut down with all captures retained.
+All three [source CI jobs](windows-persistence-ci.json) pass for `dc0e6e1`; CI
+checks the native/portable protocols and tooling syntax, not these private guest runs.
+
 Complete namespace/receipt persistence, safely authorized restart finalization/
 prune, native storage-error/resource cells and physical-power evidence remain
 open. RAW admission under #0027 remains independent; #0023/#0024 are not enabled.
+
+## Retained OD-11 evidence cells
+
+| Cell | Position at this increment |
+| --- | --- |
+| OD-11-T01 byte/name/no-clobber | Existing 64 cases plus the three-mode data/foreign-winner cases; no wider adapter claim. |
+| OD-11-T02 ordinary editing | Native owner-edit cases and prior guest actor controls succeed after exit. |
+| OD-11-T03 property checkpoints | Native pre-check and late installed-output changes keep their conflict/recovery outcomes. No continuous same-owner property exclusion. |
+| OD-11-T04 staging/storage errors | Existing bounded short/overlong producers and labeled injected failures; native disk-full/device/failed-flush evidence is still missing. |
+| OD-11-T05 interruption/receipt ordering | Explicit new barriers and guest comparison; API/flush success and matching records remain observation-only. |
+| OD-11-T06 safe restart actions | Bounded inspection and mixed-record refusals; actual safely authorized finalize/prune still unimplemented. |
+| OD-11-T07 exact profiles | Windows host NTFS and the named NTFS virtual guest only. Other adapters refuse; physical caches/power boundaries remain explicit. |
+| OD-11-T08 RAW gate | #0027's independent opaque/checksum refusal remains; this marker copy cannot enable #0023. |
+
+The next restart-action implementation must reacquire byte/name guards, validate
+actual source/output/record identities and ownership against the caller's trusted
+operation context, and preserve foreign/missing/changed/inaccessible artifacts.
+Successful classification, an editable record or its checksum alone grants no
+repair or deletion authority. No secret key or privileged service is inferred.

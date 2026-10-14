@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-14",
+  "sourceRevision": "dc0e6e1d083ca88c3380fa2e606f0527e2ebd5b0",
+  "runId": 38630860730,
+  "runUrl": "https://github.com/imageinfo/imageinfo/actions/runs/38630860730",
+  "status": "passed",
+  "scope": "19 portable research tests; Windows 69-case ordering comparison plus 64 ordinary/78 publication/35 inspection regressions; root Rust/release/doc gates and guest-tooling syntax. The private Windows guest matrix is separately audited, not run by CI. No complete profile or production writer enabled.",
+  "jobs": [
+    {
+      "id": 116081809331,
+      "runner": "ubuntu-24.04",
+      "status": "completed",
+      "conclusion": "success",
+      "tooling": "success",
+      "persistence": "success",
+      "rootContracts": "success",
+      "docs": "success"
+    },
+    {
+      "id": 116081809618,
+      "runner": "windows-2025",
+      "status": "completed",
+      "conclusion": "success",
+      "tooling": "success",
+      "persistence": "success",
+      "rootContracts": "success",
+      "docs": "success"
+    },
+    {
+      "id": 116081809669,
+      "runner": "macos-15",
+      "status": "completed",
+      "conclusion": "success",
+      "tooling": "success",
+      "persistence": "success",
+      "rootContracts": "success",
+      "docs": "success"
+    }
+  ]
+}

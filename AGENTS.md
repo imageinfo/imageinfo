@@ -102,6 +102,11 @@ existing CreateFileW boundary gains one reviewed fixed FILE_FLAG_WRITE_THROUGH
 flag; no dependency/API/privileged production helper is added. See
 `docs/write-safety/windows-persistence.md`. Request labels and successful flush
 returns remain observations, not namespace/receipt admission or repair authority.
+Its audited 33-fault guest comparison finds variable name survival before the
+explicit flush in both buffered-handle modes, two matching write-through API-success
+observations and matching outputs in all 24 later flush cells. Host caches remain
+alive, OS I/O shares the test volume and physical power loss is unverified. Treat
+these as bounded observations; full namespace/receipt and restart-action gates remain.
 
 ## Product intent
 
