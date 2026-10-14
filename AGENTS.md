@@ -141,6 +141,16 @@ remain explicit. This minimal observational receipt is not #0045's qualified
 outcome receipt. See `docs/write-safety/namespace-receipt-marker.md`; guest,
 native storage-error, cumulative resource and full profile cells remain on
 #0047/#0048/#0049/#0051. No source-media mutation or new SDK API is enabled.
+#0044 qualifies four caller-history interruption cells in the retained standard-user
+Windows guest against frozen #0043 source and an exact static worker that also
+passes the native 41-case custody audit. Two NMI bugchecks and two emulator kills
+produce four fresh boots: captured/fenced histories refuse context and prune,
+confirmed-stop history permits three owned-handle removals, and renewed history
+validates its exact existing observation while stale/postpublication prune refuses.
+See `docs/write-safety/windows-custody-guest.md`. The host boot is unchanged, host
+caches remain alive and the guest is normally shut down with private disk/captures
+retained. No automatic freshness/custody, physical-power, namespace/receipt,
+production profile or RAW admission is qualified.
 
 ## Subagent authorization
 

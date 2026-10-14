@@ -32,6 +32,62 @@ function Act($kind,$root) {
         return @{actor=$kind;allowed=$true;errorCode=$null}
     } catch {return @{actor=$kind;allowed=$false;errorCode=($_.Exception.HResult -band 65535)}}
 }
+function Start-Probe($root,$mode) {
+    $child=New-Object Diagnostics.Process
+    $child.StartInfo=New-Object Diagnostics.ProcessStartInfo
+    $child.StartInfo.FileName='C:\ImageInfoGuest\probe.exe'
+    $child.StartInfo.Arguments='"'+$root+'" '+$mode
+    $child.StartInfo.UseShellExecute=$false;$child.StartInfo.CreateNoWindow=$true
+    $child.StartInfo.RedirectStandardInput=$true;$child.StartInfo.RedirectStandardOutput=$true;$child.StartInfo.RedirectStandardError=$true
+    $null=$child.Start()
+    return $child
+}
+function Record-Control($state,$kind,$barrier,$control) {
+    $state.controls+=,@{kind=$kind;barrier=$barrier;control=$control;guestUtc=[DateTime]::UtcNow.ToString('o')}
+}
+function Save-Custody($state,$work) {
+    $request=@{journal=$state.journal;expectedCustodyRoot=$state.identity}
+    $child=Start-Probe $state.root 'ordinary-custody-save'
+    $capture=@{request=$request;stdin=@();stdout=@();stderr='';exitCode=$null;terminal=$null}
+    try {
+        $wire=$request | ConvertTo-Json -Depth 16 -Compress
+        $child.StandardInput.WriteLine($wire);$child.StandardInput.Flush();$capture.stdin+=,$wire
+        while($null -ne ($line=$child.StandardOutput.ReadLine())) {
+            $capture.stdout+=,$line;$event=$line | ConvertFrom-Json
+            Send '/event' @{id=$work.id;event=@{custodySave=$state.journal.events.Count;workerEvent=$event;supervisorObservation=$true}}
+            if($event.barrier) {$child.StandardInput.WriteLine('continue');$child.StandardInput.Flush();$capture.stdin+=,'continue'}
+            if($event.outcome){$capture.terminal=$event}
+        }
+        $child.WaitForExit();$capture.exitCode=$child.ExitCode;$capture.stderr=$child.StandardError.ReadToEnd()
+    } finally {
+        if(-not $child.HasExited){$child.Kill();$child.WaitForExit()}
+        $child.Dispose()
+    }
+    $state.saves+=,$capture
+    if($capture.exitCode -ne 0 -or $capture.terminal.outcome -ne 'custody-snapshot-recorded' -or -not $capture.terminal.custodyRoot) {
+        Send '/event' @{id=$work.id;event=@{custodySupervisorFailed=$true;save=$capture;publicationContinuationSent=$state.released}}
+        throw 'Custody snapshot was not completely saved; publication stays unreleased'
+    }
+    $state.identity=$capture.terminal.custodyRoot
+    $state.candidate=$capture.terminal.callerContextCandidate
+    Record-Control $state 'custody-save-succeeded' '' ([string]$state.journal.events.Count)
+}
+function Append-Custody($state,$event,$context) {
+    $item=@{event=$event}
+    if($null -ne $context){$item.context=$context}
+    # Replace the complete history, so a prior request capture stays immutable.
+    $state.journal=@{purpose='imageinfo-od11-custody-history-v1';events=(@($state.journal.events)+@($item))}
+}
+function Custody-Checkpoint($state,$work,$name,$context) {
+    Record-Control $state 'checkpoint' $name 'hold'
+    Send '/event' @{id=$work.id;event=@{
+        custodyCheckpoint=$name;supervisorObservation=$true;custodyCase=$state.case;custodyRoot=$state.identity
+        journal=$state.journal;callerContext=$context;callerContextCandidate=$state.candidate;saves=$state.saves;controls=$state.controls
+        originalExitedBeforeRelease=$state.exited;originalExitCode=$state.exitCode;publicationContinuationSent=$state.released
+        committed=$false;namespaceAcknowledged=$false;productionPublicationAllowed=$false;repairAllowed=$false
+        callerAuthorityAuthenticated=$false;custodyFreshnessProven=$false
+    }}
+}
 New-Item -ItemType Directory C:\ImageInfoGuest\cases -Force | Out-Null
 while($true) {
     try {
@@ -45,7 +101,7 @@ while($true) {
         $groups=whoami /groups /fo csv
         Send '/event' @{id='startup';event=@{stage='token-read'}}
         $policy=if([IO.File]::Exists('C:\ImageInfoGuest\boot-policy.log')){[IO.File]::ReadAllText('C:\ImageInfoGuest\boot-policy.log')}else{'not recorded'}
-        Send '/hello' @{build=$build;version=('10.0.'+$build);boot=([DateTime]::UtcNow.AddMilliseconds(-$uptime).ToString('o'));uptimeMilliseconds=$uptime;guestUtc=[DateTime]::UtcNow.ToString('o');user=(whoami);groups=$groups;bootPolicy=$policy}
+        Send '/hello' @{build=$build;version=('10.0.'+$build);boot=([DateTime]::UtcNow.AddMilliseconds(-$uptime).ToString('o'));uptimeMilliseconds=$uptime;guestUtc=[DateTime]::UtcNow.ToString('o');user=(whoami);groups=$groups;bootPolicy=$policy;scriptSha256=(Get-FileHash -LiteralPath $PSCommandPath -Algorithm SHA256).Hash.ToLowerInvariant()}
         $meta=Invoke-RestMethod ($base+'/meta') -TimeoutSec 15
         Invoke-WebRequest ($base+'/probe.exe') -OutFile C:\ImageInfoGuest\probe.new.exe -UseBasicParsing
         if((Get-FileHash C:\ImageInfoGuest\probe.new.exe -Algorithm SHA256).Hash.ToLowerInvariant() -ne $meta.sha256) {throw 'Payload mismatch'}
@@ -57,24 +113,72 @@ while($true) {
                 $events=@(Get-WinEvent -FilterHashtable @{LogName='System';Id=41,1001,6008} -MaxEvents 12 -ErrorAction SilentlyContinue | Select-Object Id,RecordId,ProviderName,TimeCreated,Message)
                 Send '/result' @{id=$work.id;events=$events};continue
             }
-            if($work.action -ne 'run' -or $work.case -notmatch '^[a-z0-9-]{1,60}$' -or $work.mode -notin @('ordinary-prepare','ordinary','ordinary-inspect','ordinary-admit','ordinary-finalize','ordinary-prune','ordinary-persistence-buffered','ordinary-flush-after-rename','ordinary-write-through','ordinary-restart-observe','ordinary-restart-prune')) {throw 'Invalid guest job'}
+            if($work.action -ne 'run' -or $work.case -notmatch '^[a-z0-9-]{1,60}$' -or $work.mode -notin @('ordinary-prepare','ordinary','ordinary-inspect','ordinary-admit','ordinary-finalize','ordinary-prune','ordinary-persistence-buffered','ordinary-flush-after-rename','ordinary-write-through','ordinary-restart-observe','ordinary-restart-prune','ordinary-custody-save','ordinary-custody-inspect')) {throw 'Invalid guest job'}
             $root='C:\ImageInfoGuest\cases\'+$work.case+'.marker'
+            if($work.custodyCase) {
+                if($work.mode -notin @('ordinary-custody-save','ordinary-custody-inspect') -or $work.custodyCase -notmatch '^[a-z0-9-]{1,60}$') {throw 'Invalid custody root selector'}
+                $root='C:\ImageInfoGuest\cases\'+$work.custodyCase+'.marker'
+            }
+            $custody=$null
+            if($work.custodyPlan) {
+                if($work.mode -ne 'ordinary-write-through' -or $work.case.Length -gt 52 -or $work.custodyPlan -notin @('captured-only','stopped','fenced','renewed')) {throw 'Invalid custody supervision plan'}
+                $custody=@{case=($work.case+'-custody');root=('C:\ImageInfoGuest\cases\'+$work.case+'-custody.marker');identity=$null;journal=$null;candidate=$null;saves=@();controls=@();released=$false;exited=$false;exitCode=$null}
+            }
             if($work.postActor){Send '/event' @{id=$work.id;event=(Act $work.postActor $root)}}
-            $p=New-Object Diagnostics.Process
-            $p.StartInfo=New-Object Diagnostics.ProcessStartInfo
-            $p.StartInfo.FileName='C:\ImageInfoGuest\probe.exe'
-            $p.StartInfo.Arguments='"'+$root+'" '+$work.mode
-            $p.StartInfo.UseShellExecute=$false;$p.StartInfo.CreateNoWindow=$true
-            $p.StartInfo.RedirectStandardInput=$true;$p.StartInfo.RedirectStandardOutput=$true;$p.StartInfo.RedirectStandardError=$true
-            $null=$p.Start();$lines=@()
+            $p=Start-Probe $root $work.mode
+            $lines=@();$context=$null
+            try {
             if($work.mode -in @('ordinary-restart-observe','ordinary-restart-prune')) {
                 $wire=if($work.callerContext){$work.callerContext | ConvertTo-Json -Depth 16 -Compress}else{''}
+                $p.StandardInput.WriteLine($wire);$p.StandardInput.Flush()
+            }
+            if($work.mode -in @('ordinary-custody-save','ordinary-custody-inspect')) {
+                $wire=if($work.custodyRequest){$work.custodyRequest | ConvertTo-Json -Depth 16 -Compress}else{''}
                 $p.StandardInput.WriteLine($wire);$p.StandardInput.Flush()
             }
             while($null -ne ($line=$p.StandardOutput.ReadLine())) {
                 $lines+=,$line;$event=$line | ConvertFrom-Json
                 Send '/event' @{id=$work.id;event=$event}
+                if($event.callerContext){$context=$event.callerContext}
                 if($event.barrier) {
+                    if($custody) {
+                        Record-Control $custody 'original-barrier' $event.barrier 'held'
+                        if($event.barrier -eq 'before-namespace-call') {
+                            if(-not $context -or $context.stage -ne 'before-publication' -or $context.stoppedBeforePublication -or @($context.records).Count -ne 2) {throw 'Unexpected initial caller context'}
+                            $custody.journal=@{purpose='imageinfo-od11-custody-history-v1';events=@(@{event='captured';context=$context})}
+                            Save-Custody $custody $work
+                            if($work.custodyPlan -eq 'captured-only') {Custody-Checkpoint $custody $work 'custody-captured' $context;continue}
+                            if($work.custodyPlan -eq 'stopped') {
+                                # The held Process object is the child we started. Wait for its
+                                # actual exit before adding any stop attestation to history.
+                                $p.Kill();$p.WaitForExit();$custody.exited=$true;$custody.exitCode=$p.ExitCode
+                                Record-Control $custody 'original-killed-and-waited' $event.barrier ([string]$p.ExitCode)
+                                Append-Custody $custody 'stop-confirmed-before-publication' $null
+                                Save-Custody $custody $work
+                                Custody-Checkpoint $custody $work 'custody-stopped' $context
+                                continue
+                            }
+                            Append-Custody $custody 'publication-release-fenced' $null
+                            Save-Custody $custody $work
+                            if($work.custodyPlan -eq 'fenced') {Custody-Checkpoint $custody $work 'custody-fenced' $context;continue}
+                            Record-Control $custody 'original-publication-continuation' $event.barrier 'continue'
+                            $custody.released=$true
+                            $p.StandardInput.WriteLine('continue');$p.StandardInput.Flush();continue
+                        }
+                        if($work.custodyPlan -eq 'renewed' -and $event.barrier -eq 'parent-flushed') {
+                            if(-not $custody.released -or $context.stage -ne 'after-publication' -or @($context.records).Count -ne 2) {throw 'Unexpected publication context'}
+                            Append-Custody $custody 'publication-observed' $context
+                            Save-Custody $custody $work
+                        }
+                        if($work.custodyPlan -eq 'renewed' -and $event.barrier -eq 'observation-parent-flushed') {
+                            if($context.stage -ne 'after-publication' -or @($context.records).Count -ne 3) {throw 'Unexpected renewed context'}
+                            Append-Custody $custody 'observation-renewed' $context
+                            Save-Custody $custody $work
+                            Custody-Checkpoint $custody $work 'custody-renewed' $context;continue
+                        }
+                        Record-Control $custody 'original-continuation' $event.barrier 'continue'
+                        $p.StandardInput.WriteLine('continue');$p.StandardInput.Flush();continue
+                    }
                     if($event.barrier -eq $work.actorAt -and $work.actor){Send '/event' @{id=$work.id;event=(Act $work.actor $root)}}
                     if($event.barrier -eq $work.stopAt) {
                         if($work.control) {$p.StandardInput.WriteLine($work.control);$p.StandardInput.Flush()}
@@ -87,6 +191,10 @@ while($true) {
                 $files=@(Get-ChildItem -LiteralPath $root -File | ForEach-Object {try {@{name=$_.Name;size=$_.Length;sha256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant()}}catch {@{name=$_.Name;inaccessible=$true}}})
             }
             Send '/result' @{id=$work.id;exitCode=$p.ExitCode;stdout=$lines;stderr=$stderr;files=$files}
+            } finally {
+                if($custody -and -not $p.HasExited){$p.Kill();$p.WaitForExit()}
+                $p.Dispose()
+            }
         }
     } catch {try {Send '/agent-error' @{error=$_.Exception.Message}}catch {};Start-Sleep -Seconds 3}
 }

@@ -110,8 +110,10 @@ feature, dependency, key service, encryption or privileged helper is added; root
 production unsafe policy is unchanged. The fixed write-through flag retains its
 [documented persistence limits](windows-persistence.md).
 
-**#0044** separately owns guest interruption/restart qualification for this
-custody sequence. Prior guest results do not qualify it. Durable context freshness,
-full namespace/receipt qualification, storage errors, resource accounting,
-physical power loss and complete profile admission remain separate work.
-Independent RAW admission remains refused under #0027; #0023/#0024 stay gated.
+**#0044** completes the separate [four-cell guest qualification](windows-custody-guest.md)
+for this custody sequence: two NMI/restarts and two emulator-termination/restarts
+cover captured-only, confirmed-stop, fenced and renewed histories. These bounded
+observations retain explicit caller trust and host-cache limits. Durable context
+freshness, full namespace/receipt qualification, storage errors, resource
+accounting, physical power loss and complete profile admission remain separate
+work. Independent RAW admission remains refused under #0027; #0023/#0024 stay gated.
