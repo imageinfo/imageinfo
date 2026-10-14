@@ -15,6 +15,8 @@ mod native;
 mod ordinary;
 #[cfg(any(windows, test))]
 mod ordinary_record;
+#[cfg(test)]
+mod receipt_model;
 #[cfg(any(windows, test))]
 mod restart_context;
 #[cfg(any(windows, test))]

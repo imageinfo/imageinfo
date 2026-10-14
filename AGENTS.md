@@ -127,6 +127,23 @@ See `docs/write-safety/windows-custody.md` and its 41-case native audit. Same-by
 snapshot replacement is accepted: root identity does not authenticate historical
 file identity, caller authority or freshness. No automatic durable custody/profile
 is enabled; #0044 retains separate guest qualification and #0022 remains open.
+#0045 adds a bounded namespace/receipt protocol proposal and test-only portable
+model. Qualified acknowledgements are explicit hypothetical profile premises,
+not current flush-return claims; a receipt cannot attest its own future flush.
+Final guarded checks and noncontradictory trusted current history remain required.
+See `docs/write-safety/namespace-receipt-protocol.md`; #0046 owns backend work.
+The current worker and all production/RAW admission flags remain unchanged.
+
+## Subagent authorization
+
+Terry authorized parallel subagent work on all tickets authorized to work,
+2026-10-14. The primary agent may use up to **five direct subagents** (width 5),
+at **one level below the primary** (depth 1). Subagents must not spawn subagents.
+Use fewer when the ticket does not benefit from more parallel work; no separate
+per-ticket delegation approval is needed. This does not authorize pulling or
+starting another ticket outside the requested work. The primary owns integration,
+verification, commits/pushes and the bounded ticket handoff. Respect any lower
+limit imposed by the current session; persisted configuration applies when loaded.
 
 ## Product intent
 
