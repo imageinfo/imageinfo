@@ -87,9 +87,11 @@ matching. After creating and flushing a fresh observation file, restart-observe
 exports a renewed three-record `callerContext` before
 `restart-record-file-flushed`. The active caller can retain that new context for
 later validation of this exact record; the export still carries no commitment or
-durability claim. Partial prune does not authorize an automatic retry: the retained
-namespace no longer matches its original exact context, so a repeated request
-refuses rather than selecting residual files by name alone.
+durability claim. Partial prune does not authorize an automatic retry. If the
+retained namespace no longer matches its original exact context, a repeated
+request refuses rather than selecting residual files by name alone. A restart that
+restores the entire exact original namespace must still pass every fresh guard
+and context check before the caller-directed action can proceed.
 
 ## Boundary review and verification
 
@@ -102,7 +104,7 @@ caller context and revalidated. No new SDK API, feature, crate, handwritten ABI
 layout or root production unsafe permission is introduced.
 
 The [audited native ledger](windows-restart-native.json) covers **61 worker
-cases**, **40 unchanged inspection inventories** and **1,385 readable artifact
+cases**, **40 unchanged inventories** and **1,385 readable artifact
 paths**, including alternate-stream aliases. One deliberately inaccessible DACL
 record is retained without ACL repair. The cases exercise successful unpublished
 prune and observation creation/validation, explicit stop attestation, malformed or
@@ -114,9 +116,36 @@ uncertain rather than allowing an apparently successful observation result.
 Four new portable context tests bring the research crate to **23 tests**. Research
 format, Clippy, tests and release checks pass, as do the root checks with **44
 Windows tests**. Existing inspection and persistence results do not themselves
-qualify these new actions. Guest faults followed by caller-directed restart
-actions are still being collected for this increment; final audited guest results
-must be recorded before handoff.
+qualify these new actions.
+
+The [published CI ledger](windows-restart-ci.json) records successful Ubuntu,
+Windows and macOS jobs for `0c8d78e`, including the native Windows restart matrix,
+Unix unsupported-adapter refusal and root contracts. The initial `15d1dff` run
+found unused Windows-only helpers in Unix test builds; the follow-up gates that
+implementation to Windows while retaining portable parsing and tests.
+
+The [audited guest ledger](windows-restart-guest.json) covers **three scenario
+sets and five faults**, with **three fresh NMI bugchecks**, **two emulator
+terminations**, **five distinct post-fault boots** and **25 bound capture files**.
+The worker uses the existing standard-user Windows build **26300** NTFS/QCOW2
+fixture and the [documented restart limits](windows-guest.md). The host stayed on
+the same independently verified boot; host caches remained alive.
+
+- NMI before publication: caller-attested unpublished prune removes three owned
+  handles and retains the unchanged source and root.
+- NMI after the publication parent flush, followed by emulator termination after
+  restart observation-file flush: the original two-record context refuses the
+  extra record; the renewed three-record context validates that exact existing
+  observation. Postpublication prune refuses without effects.
+- Emulator termination before publication, followed by NMI during prune after one
+  file-removal checkpoint: retry with the original context refuses before effects
+  and retains the partial namespace. This measured partial removal is not a
+  completed prune or permission to delete remaining names automatically.
+
+These are finite caller-directed action observations under the named guest fault
+methods. No namespace commitment, durable receipt or automatic context custody
+follows from a matching artifact or successful flush return. Physical power loss
+and storage-provider error/resource qualification remain open.
 
 This is caller-directed marker research, not unattended recovery from editable
 transaction records. Full namespace/receipt qualification, native storage-error

@@ -103,3 +103,55 @@ labels. Multiple audited runs use repeated `--root`. A source binding and retain
 loaded driver accompany each guest run; host boot continuity is independently
 recorded after the run. Do not reuse a historical source/binary label for a changed
 worker, or infer a qualified receipt from a passing finite observation matrix.
+
+## Caller-directed restart actions
+
+The direct #0022 restart increment adds `ordinary-restart-prune` and
+`ordinary-restart-observe`. Read the [authority, evidence and remaining gates](../../docs/write-safety/windows-restart-actions.md)
+before using them. These remain bounded authored-marker research; legacy
+`ordinary-prune`, `ordinary-finalize` and `ordinary-admit` still refuse.
+
+The live supervisor retains the emitted `callerContext` outside the editable
+transaction. Prune requires its before-publication context and an explicit
+`stoppedBeforePublication: true` attestation made only after proving that the
+original worker stopped without permitting its namespace call. A saved context
+whose worker later attempted publication cannot authorize prune. JSON parsing
+does not authenticate the caller or establish that history.
+
+Each restart request begins with one compact context JSON line on standard input,
+bounded to 65,536 bytes. Subsequent control lines answer the emitted barriers with
+`continue`, `cancel` or `fail`; each control line is bounded to 32 bytes. For a
+supervisor-prepared request file containing that context and the appropriate
+controls, PowerShell invocation is:
+
+```powershell
+$probe = 'experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe.exe'
+$root = '<absolute-owned-marker-root>'
+Get-Content -LiteralPath '<authorized-prune-request.private.txt>' | & $probe $root ordinary-restart-prune
+Get-Content -LiteralPath '<authorized-observe-request.private.txt>' | & $probe $root ordinary-restart-observe
+```
+
+These are separate requests for their respective operation states, not a prune
+followed by observation on the same root. The qualifier supplies contexts and
+controls interactively and captures exact stop/action history:
+
+```console
+python experiments/0022-ordinary-output/restart_qualify.py --binary <native-worker> --parent <private-native-parent>
+python experiments/0022-ordinary-output/restart_audit.py --root <native-run> --binary <exact-native-worker> --public docs/write-safety/windows-restart-native.json
+python3 experiments/0022-ordinary-output/restart_guest.py --root <installed-guest>
+python3 experiments/0022-ordinary-output/restart_guest_audit.py --root <guest-restart-run> --binary <exact-static-worker> --public docs/write-safety/windows-restart-guest.json
+```
+
+Native evidence has **61 cases**, including fresh guards, foreign/changed artifact
+refusals, reader deferral, exact context binding and partial action retention.
+The guest audit covers **five faults in three scenario sets** with fresh boots:
+unpublished prune, observation creation followed by interruption and renewed
+context validation, and interrupted partial prune whose original-context retry
+refuses. The renewed three-record context is emitted after observation-file flush
+before `restart-record-file-flushed`; an old two-record context refuses the newly
+present record. Source and root remain, and all commitment/profile flags stay false.
+
+No caller-context persistence service, replay, rollback, source ACL rewrite,
+privileged production helper or cryptographic authentication is introduced.
+Durable context custody, complete namespace/receipt and storage-error qualification,
+physical power loss and independent RAW admission remain open.

@@ -114,6 +114,10 @@ select exact unpublished owned handles; source/root/foreign objects remain. Outp
 observation creation still never grants durable commit or production repair.
 See `docs/write-safety/windows-restart-actions.md`; arbitrary JSON is not authenticated,
 and automatic durable context custody, full profiles and RAW admission remain open.
+Its 61-case native audit and five-fault guest audit cover caller-attested unpublished
+prune, renewed-context observation validation and partial-prune retry refusal.
+The guest retains host caches and the same verified host boot; namespace/storage/
+physical-power qualification and durable caller-context custody remain separate.
 
 ## Product intent
 

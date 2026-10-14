@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-14",
+  "sourceRevision": "0c8d78e4f4b3ef667d5aad771665191ccf2fdee9",
+  "implementationRevision": "15d1dff31cd59d44fd6a0b6782af14fd6e47f8e1",
+  "runId": 38640857466,
+  "runUrl": "https://github.com/imageinfo/imageinfo/actions/runs/38640857466",
+  "status": "passed",
+  "scope": "23 portable research tests; Windows 61-case caller-directed restart matrix plus 64 ordinary/69 persistence/78 publication/35 inspection regressions; unsupported restart refusal on Unix, root Rust/release/doc gates and tooling syntax. The private five-fault Windows guest audit is separate, not run by CI. No complete profile, durable context custody or production recovery enabled.",
+  "priorRun": {
+    "id": 38640082969,
+    "reason": "Unix test builds rejected unused Windows-only record helpers; 0c8d78e gates their implementation to Windows."
+  },
+  "jobs": [
+    {
+      "id": 116115680813,
+      "runner": "ubuntu-24.04",
+      "status": "completed",
+      "conclusion": "success",
+      "tooling": "success",
+      "restart": "success",
+      "rootContracts": "success",
+      "docs": "success"
+    },
+    {
+      "id": 116115681154,
+      "runner": "windows-2025",
+      "status": "completed",
+      "conclusion": "success",
+      "tooling": "success",
+      "restart": "success",
+      "rootContracts": "success",
+      "docs": "success"
+    },
+    {
+      "id": 116115681549,
+      "runner": "macos-15",
+      "status": "completed",
+      "conclusion": "success",
+      "tooling": "success",
+      "restart": "success",
+      "rootContracts": "success",
+      "docs": "success"
+    }
+  ]
+}
