@@ -6,7 +6,7 @@ use serde_json::{Value, json};
 use std::{
     error::Error,
     fs::{File, OpenOptions},
-    io::{self, BufRead, Read, Seek, SeekFrom, Write},
+    io::{self, BufRead, Cursor, Read, Seek, SeekFrom, Write},
     os::windows::fs::OpenOptionsExt,
     path::{Path, PathBuf},
 };
@@ -42,13 +42,22 @@ impl OwnedArtifact {
         name: &'static str,
         bytes: Vec<u8>,
         no_delete: bool,
+        source_delta: i8,
     ) -> Result<Self> {
         let mut file = if no_delete {
             security.create_file_access(&root.join(name), 0xc0020000)?
         } else {
             security.create_file(&root.join(name))?
         };
-        file.write_all(&bytes)?;
+        // Deliberate short/overlong marker recipes exercise the real copy path;
+        // their failures retain the partial owned file and never publish it.
+        let mut input = bytes.clone();
+        if source_delta < 0 {
+            input.pop();
+        } else if source_delta > 0 {
+            input.push(0);
+        }
+        crate::staging::copy_exact(&mut Cursor::new(input), &mut file, bytes.len() as u64)?;
         file.sync_all()?;
         let before = snapshot(&file)?;
         Ok(Self {
@@ -123,8 +132,8 @@ fn report(outcome: &str, closed: usize, pending: bool, attempted: bool) -> Resul
 }
 pub fn run() -> Result<()> {
     let args: Vec<_> = std::env::args_os().skip(1).collect();
-    if args.len() != 2 {
-        return Err("EXPECTED_MODE_AND_NEW_ROOT".into());
+    if !(2..=3).contains(&args.len()) {
+        return Err("EXPECTED_MODE_NEW_ROOT_AND_OPTIONAL_BYTE_LIMIT".into());
     }
     let mode = args[0].to_str().ok_or("MODE_ENCODING")?;
     if ["admit", "finalize", "prune"].contains(&mode) {
@@ -132,9 +141,30 @@ pub fn run() -> Result<()> {
             json!({"outcome":"refused-before-effects","workerArtifacts":0,"committed":false,"productionPublicationAllowed":false,"missingCells":["qualified-complete-storage-recovery-profile","validated-restart-artifact-ownership"]}),
         );
     }
-    if !["abort", "publish", "inject-error", "no-delete"].contains(&mode) {
+    if ![
+        "abort",
+        "publish",
+        "inject-error",
+        "no-delete",
+        "short-source",
+        "long-source",
+    ]
+    .contains(&mode)
+    {
         return Err("MODE_UNVERIFIED".into());
     }
+    let limit = match args.get(2) {
+        Some(value) => value
+            .to_str()
+            .ok_or("SCRATCH_LIMIT_INVALID")?
+            .parse::<u64>()
+            .map_err(|_| "SCRATCH_LIMIT_INVALID")?,
+        None => 131072,
+    };
+    let record = b"owned-prepublication-marker-v1\n";
+    // Both artifacts must fit before even the private root is created. This
+    // bounds logical file bytes, not filesystem blocks or available disk space.
+    crate::staging::check_budget(&[65536, record.len() as u64], limit)?;
     let root = Path::new(&args[1]);
     marker_path(root)?;
     let held = ancestors(root)?;
@@ -151,13 +181,19 @@ pub fn run() -> Result<()> {
             "stage.marker",
             vec![b'8'; 65536],
             mode == "no-delete",
+            match mode {
+                "short-source" => -1,
+                "long-source" => 1,
+                _ => 0,
+            },
         )?,
         OwnedArtifact::create(
             root,
             &sealed,
             "record.marker",
-            b"owned-prepublication-marker-v1\n".to_vec(),
+            record.to_vec(),
             mode == "no-delete",
+            0,
         )?,
     ];
     directory.sync_all()?;

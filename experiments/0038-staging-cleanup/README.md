@@ -20,7 +20,7 @@ cargo build --locked --release --manifest-path experiments/0038-staging-cleanup/
 python experiments/0038-staging-cleanup/qualify.py --binary experiments/0038-staging-cleanup/target/release/imageinfo-staging-cleanup-probe.exe --parent .local/staging-cleanup-qualification
 ```
 
-Arguments are `<mode> <new-absolute-local-root.marker>`. Modes `abort`, `publish`,
+Arguments are `<mode> <new-absolute-local-root.marker> [logical-byte-limit]`. Modes `abort`, `publish`,
 `inject-error` and `no-delete` qualify actual lifetime/error boundaries. `publish`
 is a marker fixture: cancellation before its namespace call cleans owned staging;
 after a call is attempted, cleanup refuses even on a collision/error. There is no
@@ -46,3 +46,9 @@ bounds, not a hard native-I/O deadline or complete OS quota.
 `audit.py --root <retained-root> --binary <worker> --public <sanitized-json>` binds
 source/binary and captured events, hashes readable evidence, and records inaccessible
 roots without ACL repair. Private captures, paths, SIDs and binaries stay local.
+
+[#0040](../0040-staging-limits/README.md) adds portable combined byte preflight and
+exact-length copying to this worker. Default limit is 131,072 logical bytes; the
+two fixed files need 65,567. Ten portable tests and 17 additional native cases cover
+limits and short/overlong sources. The original 27-case matrix is retained. This is
+not a free-space reservation, OS quota or broader backend admission.

@@ -159,3 +159,10 @@ still return access denied; the unsealed control's setter succeeds but fails exa
 descriptor verification. Thirty marker cases preserve real interruption/collision
 outcomes and distinguish post-exit restricted editing from allowed rename/delete.
 No ordinary output policy, production profile or parent criterion is enabled.
+
+[#0040](write-safety/staging-limits.md) resumes #0022's bounded-scratch cell with
+portable checked total-byte preflight and exact-length copies in the existing
+staging worker. Ten portable tests, 17 actual limit/source/cancellation cases and
+the retained 27-case cleanup regression pass. This bounds logical artifact bytes,
+not disk allocation/available space or cumulative recovery storage. Usable output,
+complete guards, persistence/recovery and actual RAW admission remain open.

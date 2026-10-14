@@ -71,6 +71,11 @@ editing. WRITE_DAC/full-control requests still return access denied; unsealed co
 setter success is distinct from exact descriptor refusal. See
 `docs/write-safety/output-release.md`; sealed research files are not an adopted
 ordinary output policy. No source ACL, privilege, shared SDK or production gate changes.
+#0040 adds portable total planned-byte preflight and exact-length copying to the
+#0038 research worker. Short/overlong sources retain bounded partial staging files;
+below-budget requests refuse before transaction creation. See
+`docs/write-safety/staging-limits.md`; this is a logical-byte bound, not free-space
+reservation, allocation accounting, an OS quota or production writer/profile support.
 
 ## Product intent
 

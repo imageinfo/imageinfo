@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-14",
+  "sourceRevision": null,
+  "status": "pending",
+  "scope": "Source CI will be bound after publication. Ten portable tests, 17 native limit cases and 27 cleanup regression cases pass locally; logical-byte bounds do not enable a storage/writer profile.",
+  "jobs": []
+}

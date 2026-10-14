@@ -8,6 +8,8 @@ mod native;
 #[cfg(windows)]
 #[path = "../../0034-source-oplocks/src/path.rs"]
 mod path;
+#[cfg(any(windows, test))]
+mod staging;
 #[cfg(windows)]
 mod windows;
 fn main() {

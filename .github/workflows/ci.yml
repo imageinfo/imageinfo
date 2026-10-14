@@ -53,6 +53,12 @@ jobs:
       - name: Qualify live owned staging cleanup on Windows
         if: runner.os == 'Windows'
         run: python experiments/0038-staging-cleanup/qualify.py --binary experiments/0038-staging-cleanup/target/release/imageinfo-staging-cleanup-probe.exe --parent experiments/0038-staging-cleanup/target
+      - name: Qualify planned staging limits on Windows
+        if: runner.os == 'Windows'
+        run: python experiments/0040-staging-limits/qualify.py --binary experiments/0038-staging-cleanup/target/release/imageinfo-staging-cleanup-probe.exe --parent experiments/0038-staging-cleanup/target
+      - name: Refuse unsupported staging limits adapter
+        if: runner.os != 'Windows'
+        run: python experiments/0040-staging-limits/qualify.py --binary experiments/0038-staging-cleanup/target/release/imageinfo-staging-cleanup-probe --parent experiments/0038-staging-cleanup/target
       - name: Refuse unsupported staging cleanup adapter
         if: runner.os != 'Windows'
         run: python experiments/0038-staging-cleanup/qualify.py --binary experiments/0038-staging-cleanup/target/release/imageinfo-staging-cleanup-probe --parent experiments/0038-staging-cleanup/target
