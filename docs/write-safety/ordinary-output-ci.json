@@ -1,8 +1,38 @@
 {
   "schemaVersion": 1,
   "observedOn": "2026-10-14",
-  "sourceRevision": null,
-  "status": "pending",
-  "scope": "64 local option A cases, 18 portable research tests and existing 78/35 regressions passed. Source CI and Windows guest qualification are separate; no complete writer/storage profile is enabled.",
-  "jobs": []
+  "sourceRevision": "c63e18b63cb9e06170bce8f15843c2a9017ca40e",
+  "runId": 38611302367,
+  "runUrl": "https://github.com/imageinfo/imageinfo/actions/runs/38611302367",
+  "status": "passed",
+  "scope": "64 live Windows option A cases and 18 portable research tests pass; root 44 Windows/45 Unix tests, release, docs and existing 78 publication/35 inspector regression gates pass. Ubuntu/macOS refuse the filesystem adapter. Windows guest/crash qualification is separate; no complete profile or writer enabled.",
+  "jobs": [
+    {
+      "id": 116015070122,
+      "runner": "windows-2025",
+      "status": "completed",
+      "conclusion": "success",
+      "ordinary": "success",
+      "ordinaryKind": "native-64-case-qualification",
+      "rootContracts": "success"
+    },
+    {
+      "id": 116015070270,
+      "runner": "macos-15",
+      "status": "completed",
+      "conclusion": "success",
+      "ordinary": "success",
+      "ordinaryKind": "unsupported-adapter-refusal",
+      "rootContracts": "success"
+    },
+    {
+      "id": 116015070375,
+      "runner": "ubuntu-24.04",
+      "status": "completed",
+      "conclusion": "success",
+      "ordinary": "success",
+      "ordinaryKind": "unsupported-adapter-refusal",
+      "rootContracts": "success"
+    }
+  ]
 }

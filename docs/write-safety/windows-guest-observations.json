@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-14",
+  "implementationRevision": "c63e18b63cb9e06170bce8f15843c2a9017ca40e",
+  "guestEdition": "Windows 11 EnterpriseEval",
+  "guestBuild": "26300",
+  "filesystem": "guest-local NTFS on QCOW2/SATA, QEMU writeback, WSL KVM",
+  "standardMediumIntegrityWorker": true,
+  "normalRuns": 1,
+  "hostBootContinuityVerified": true,
+  "windowsNmiBugcheckRuns": 8,
+  "emulatorTerminationRuns": 8,
+  "physicalPowerLossRuns": 0,
+  "uniqueFreshBugcheckEvents": 8,
+  "auditedCaptureFiles": 85,
+  "readablePostFaultArtifactPaths": 54,
+  "captureManifestSha256": "8e3af065bd91bafd085bbe7734aa163cdecf7ea3b7e3bd5c025f3e59e02ce006",
+  "workerSha256": "2ddc990bee90a5151319440f9f504507f411465cf330ee73137ccb623915f875",
+  "controllerSourceLocalSha256": {
+    "windows_guest.py": "d29181076b60f7877be0517820ad8507903f9e104d859cf8fb30947cbf78bb07",
+    "guest_qualify.py": "ff93f7db6bb342e76a9ba6dc7aedef53e730a99a59fbb08b0a185c15ba681528"
+  },
+  "cases": [
+    {
+      "id": "nmi-source-guarded",
+      "faultKind": "nmi",
+      "restartMethod": "controlled-emulator-restart",
+      "barrier": "source-guarded",
+      "bootChanged": true,
+      "windowsBugcheckEventObserved": true,
+      "inspection": "unattributed-artifacts",
+      "outputPresent": false,
+      "committed": false
+    },
+    {
+      "id": "nmi-candidate-flushed",
+      "faultKind": "nmi",
+      "restartMethod": "controlled-emulator-restart",
+      "barrier": "candidate-flushed",
+      "bootChanged": true,
+      "windowsBugcheckEventObserved": true,
+      "inspection": "unattributed-artifacts",
+      "outputPresent": false,
+      "committed": false
+    },
+    {
+      "id": "nmi-prepared-record-flushed",
+      "faultKind": "nmi",
+      "restartMethod": "controlled-emulator-restart",
+      "barrier": "prepared-record-flushed",
+      "bootChanged": true,
+      "windowsBugcheckEventObserved": true,
+      "inspection": "candidate-retained-output-absent",
+      "outputPresent": false,
+      "committed": false
+    },
+    {
+      "id": "nmi-intent-record-flushed",
+      "faultKind": "nmi",
+      "restartMethod": "controlled-emulator-restart",
+      "barrier": "intent-record-flushed",
+      "bootChanged": true,
+      "windowsBugcheckEventObserved": true,
+      "inspection": "candidate-retained-output-absent",
+      "outputPresent": false,
+      "committed": false
+    },
+    {
+      "id": "nmi-before-property-check",
+      "faultKind": "nmi",
+      "restartMethod": "controlled-emulator-restart",
+      "barrier": "before-property-check",
+      "bootChanged": true,
+      "windowsBugcheckEventObserved": true,
+      "inspection": "candidate-retained-output-absent",
+      "outputPresent": false,
+      "committed": false
+    },
+    {
+      "id": "nmi-before-namespace-call",
+      "faultKind": "nmi",
+      "restartMethod": "controlled-emulator-restart",
+      "barrier": "before-namespace-call",
+      "bootChanged": true,
+      "windowsBugcheckEventObserved": true,
+      "inspection": "candidate-retained-output-absent",
+      "outputPresent": false,
+      "committed": false
+    },
+    {
+      "id": "nmi-published",
+      "faultKind": "nmi",
+      "restartMethod": "controlled-emulator-restart",
+      "barrier": "published",
+      "bootChanged": true,
+      "windowsBugcheckEventObserved": true,
+      "inspection": "candidate-retained-output-absent",
+      "outputPresent": false,
+      "committed": false
+    },
+    {
+      "id": "nmi-observed-record-flushed",
+      "faultKind": "nmi",
+      "restartMethod": "controlled-emulator-restart",
+      "barrier": "observed-record-flushed",
+      "bootChanged": true,
+      "windowsBugcheckEventObserved": true,
+      "inspection": "matching-output-recovery-required",
+      "outputPresent": true,
+      "committed": false
+    },
+    {
+      "id": "emulator-kill-source-guarded",
+      "faultKind": "emulator-kill",
+      "restartMethod": "restart-after-emulator-sigkill",
+      "barrier": "source-guarded",
+      "bootChanged": true,
+      "windowsBugcheckEventObserved": false,
+      "inspection": "unattributed-artifacts",
+      "outputPresent": false,
+      "committed": false
+    },
+    {
+      "id": "emulator-kill-candidate-flushed",
+      "faultKind": "emulator-kill",
+      "restartMethod": "restart-after-emulator-sigkill",
+      "barrier": "candidate-flushed",
+      "bootChanged": true,
+      "windowsBugcheckEventObserved": false,
+      "inspection": "unattributed-artifacts",
+      "outputPresent": false,
+      "committed": false
+    },
+    {
+      "id": "emulator-kill-prepared-record-flushed",
+      "faultKind": "emulator-kill",
+      "restartMethod": "restart-after-emulator-sigkill",
+      "barrier": "prepared-record-flushed",
+      "bootChanged": true,
+      "windowsBugcheckEventObserved": false,
+      "inspection": "candidate-retained-output-absent",
+      "outputPresent": false,
+      "committed": false
+    },
+    {
+      "id": "emulator-kill-intent-record-flushed",
+      "faultKind": "emulator-kill",
+      "restartMethod": "restart-after-emulator-sigkill",
+      "barrier": "intent-record-flushed",
+      "bootChanged": true,
+      "windowsBugcheckEventObserved": false,
+      "inspection": "candidate-retained-output-absent",
+      "outputPresent": false,
+      "committed": false
+    },
+    {
+      "id": "emulator-kill-before-property-check",
+      "faultKind": "emulator-kill",
+      "restartMethod": "restart-after-emulator-sigkill",
+      "barrier": "before-property-check",
+      "bootChanged": true,
+      "windowsBugcheckEventObserved": false,
+      "inspection": "candidate-retained-output-absent",
+      "outputPresent": false,
+      "committed": false
+    },
+    {
+      "id": "emulator-kill-before-namespace-call",
+      "faultKind": "emulator-kill",
+      "restartMethod": "restart-after-emulator-sigkill",
+      "barrier": "before-namespace-call",
+      "bootChanged": true,
+      "windowsBugcheckEventObserved": false,
+      "inspection": "candidate-retained-output-absent",
+      "outputPresent": false,
+      "committed": false
+    },
+    {
+      "id": "emulator-kill-published",
+      "faultKind": "emulator-kill",
+      "restartMethod": "restart-after-emulator-sigkill",
+      "barrier": "published",
+      "bootChanged": true,
+      "windowsBugcheckEventObserved": false,
+      "inspection": "matching-output-recovery-required",
+      "outputPresent": true,
+      "committed": false
+    },
+    {
+      "id": "emulator-kill-observed-record-flushed",
+      "faultKind": "emulator-kill",
+      "restartMethod": "restart-after-emulator-sigkill",
+      "barrier": "observed-record-flushed",
+      "bootChanged": true,
+      "windowsBugcheckEventObserved": false,
+      "inspection": "matching-output-recovery-required",
+      "outputPresent": true,
+      "committed": false
+    }
+  ],
+  "namespaceAcknowledged": false,
+  "committed": false,
+  "guestActorCases": [
+    {
+      "id": "source-data",
+      "actorAllowed": false,
+      "inspection": "matching-output-recovery-required",
+      "committed": false
+    },
+    {
+      "id": "candidate-data",
+      "actorAllowed": false,
+      "inspection": "matching-output-recovery-required",
+      "committed": false
+    },
+    {
+      "id": "source-time-dotnet",
+      "actorAllowed": false,
+      "inspection": "matching-output-recovery-required",
+      "committed": false
+    },
+    {
+      "id": "foreign-winner",
+      "actorAllowed": true,
+      "inspection": "uninspectable",
+      "committed": false
+    },
+    {
+      "id": "owner-edit",
+      "actorAllowed": true,
+      "inspection": "output-conflict",
+      "committed": false
+    }
+  ],
+  "guestRefusalModes": [
+    "ordinary-admit",
+    "ordinary-finalize",
+    "ordinary-prune"
+  ],
+  "guestActorCaptureFiles": 9,
+  "guestActorCaptureManifestSha256": "73005f74a6ab4e236dc8c5c6c1d6bdc5bf802332e23b2709e034dfac212d30d0",
+  "repairAllowed": false,
+  "productionPublicationAllowed": false,
+  "enabledProfiles": 0,
+  "limits": "NMI bugchecks followed by controlled emulator quit/relaunch; separate SIGKILL/relaunch cases. Host caches remain alive, controlled exit can drain submitted disk work. Not physical power loss or a qualified warm-reset/namespace/receipt protocol. Restart finalize/prune remain refused; no RAW writer is enabled."
+}

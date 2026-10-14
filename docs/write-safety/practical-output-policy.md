@@ -108,7 +108,7 @@ No new CLI switch or settings scheme is selected here.
 | WS-013/014/015/019 | No relaxation of phase-specific persistence, verified installed bytes, owned recovery/cleanup or refusal on uncertainty. |
 | WS-006–008/020/021 | No relaxation of format admission, sensor/opaque preservation, privacy or authenticity gates. |
 | WS-016/022/023/024 | Keep cancellation, truthful partial/uncertain reports, resource bounds and per-profile qualification. Logical-byte evidence does not reserve disk space or enable a backend. |
-| SAF-005/006/007 | Separate default-data/name substitution from property-only actors, with explicit new-output applicability. Boundary comparisons cannot be reported as continuous property exclusion. Runtime qualification remains pending. |
+| SAF-005/006/007 | Separate default-data/name substitution from property-only actors, with explicit new-output applicability. Boundary comparisons cannot be reported as continuous property exclusion. Complete runtime-profile qualification remains pending. |
 | SAF-008/009/015/016 | Keep disk/flush/interruption/recovery/unsupported-profile outcomes and evidence gates. |
 
 Terry's explicit A answer supplies the policy decision required by WS-009. Acceptance
@@ -134,6 +134,10 @@ existing held-object publication where supported. Its minimum evidence cells are
 
 Any new experimental mechanism must have a concrete hypothesis and scope; the existing
 failed setter/oplock tests do not need repeating to reconfirm the same results.
+
+Later direct #0022 work implements the [live ordinary-output protocol](ordinary-output.md)
+and records [Windows guest interruptions](windows-guest.md). Those partial evidence
+cells do not admit a complete profile or relax the retained persistence/repair/RAW gates.
 
 ## Verification of this decision package
 

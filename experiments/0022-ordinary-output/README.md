@@ -55,3 +55,33 @@ must stay private. It exposes no host disks/shared folders; QEMU opens KVM using
 the existing root launcher then drops to the ordinary WSL uid/gid before guest code.
 The Windows worker runs as a standard local test user; provisioning/crash settings
 belong only to this disposable guest. See [the guest notes](../../docs/write-safety/windows-guest.md).
+
+After installation, verify the actual guest build, evaluation state and standard
+worker token, then set `installed: true` in its **private guest manifest** before
+fault qualification. Installed launches detach both installer media. Start the
+loopback controller with the statically linked marker worker, then run inside WSL:
+
+```console
+python3 experiments/0022-ordinary-output/guest_qualify.py --root <private-installed-guest>
+python3 experiments/0022-ordinary-output/guest_actors.py --root <private-installed-guest>
+python3 experiments/0022-ordinary-output/guest_audit.py --root <retained-private-qualification> --binary <exact-static-worker> --actors <retained-private-actors> --public docs/write-safety/windows-guest-observations.json
+```
+
+The driver captures eight NMI-induced Windows bugchecks followed by controlled
+emulator quit/relaunch, and eight separate emulator SIGKILL/relaunch observations.
+It records the reached barrier before injecting a fault, rejects old boot messages,
+and requires fresh Windows bugcheck evidence for NMI cases. Guest logon startup can
+be delayed; the same mutex-protected agent is started through the private QMP
+console after a boot interval. No host console or disk is targeted. The audit checks
+the exact case set, fresh distinct bugcheck events, standard tokens, retained marker
+bytes and truthful permission flags. Capture manifests, logs and screenshots remain
+private. Controlled exit may drain submitted disk work; physical power loss,
+Windows warm-reset reliability and durable namespace/receipt success remain separate.
+
+The five guest actor cases check held source/candidate data refusal, the .NET
+timestamp setter's distinct write-access refusal, preservation of a competing
+output name, and ordinary owner editing after exit. This setter's refusal does not
+establish continuous property exclusion; the native 64-case property actors use
+minimal native access and can change timestamps. Admission/finalization/prune remain refused with unchanged
+artifact byte inventories. These supplement the broader 64 native cases; they do
+not expand the supported storage or RAW scope.

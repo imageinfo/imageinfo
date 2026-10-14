@@ -89,6 +89,13 @@ and read-only restart classification. See `docs/write-safety/ordinary-output.md`
 Actual Windows guest qualification is separate; no namespace/receipt/crash, safe
 restart finalize/prune, production storage profile or RAW permission follows from
 passing live observations. See `docs/write-safety/windows-guest.md` for VM status.
+#0022's activated 90-day Windows Enterprise evaluation guest is installed and
+retained privately. Eight NMI bugchecks with controlled emulator restarts and eight
+SIGKILL/restarts have actual read-only evidence; successful publication loses the
+output name in the measured NMI case. Warm reset stalled in a preliminary run;
+host caches remain alive and physical power loss is unverified. No complete profile
+or restart repair is enabled. Use the exact fixture/restart limits in
+`docs/write-safety/windows-guest.md`; never crash Terry's host or rearm the evaluation.
 
 ## Product intent
 

@@ -40,7 +40,7 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Staging byte limits](write-safety/staging-limits.md) | #0040 portable total-byte preflight and exact-length copies in the existing worker, native partial/refusal/cancellation evidence and cleanup regression; no OS quota or space reservation. |
 | [Practical output-policy decision](write-safety/practical-output-policy.md) | OD-11/#0041 option A accepted: guarded byte/name guarantees, ordinary owner editing and property check boundaries; requirements refined, backend/format gates remain. |
 | [Ordinary-owner output protocol](write-safety/ordinary-output.md) | Direct #0022 live source/candidate/name guards, declared property observations, ordinary owner editing and read-only restart evidence; complete profiles remain gated. |
-| [Disposable Windows guest](write-safety/windows-guest.md) | Official time-limited evaluation image, isolated UEFI/TPM/KVM guest setup and separate Windows interruption qualification status. |
+| [Disposable Windows guest](write-safety/windows-guest.md) | Installed evaluation guest; eight NMI/restart and eight emulator-kill/restart observations, owner actors and preserved namespace/receipt limits. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |

@@ -64,8 +64,12 @@ boundary. New protocol/records use safe Rust and ordinary standard/serde types.
 
 ## Remaining qualification
 
-[Windows guest work](windows-guest.md) separately exercises Windows OS interruption;
-Linux guest evidence cannot stand in for that sequence. Physical power loss is
+[Windows guest work](windows-guest.md) now records eight NMI bugchecks followed by
+controlled emulator restarts and eight separate SIGKILL/restart cases. The output
+name is absent after the NMI at the successful-publication checkpoint, while other
+late cells retain a matching output; all remain recovery-required. These measured
+restart methods are distinct from the preliminary stalled warm reset and from
+physical power loss. Linux guest evidence cannot stand in for this sequence. Physical power loss is
 unverified. Qualified namespace/receipt persistence and safe restart finalization/
 prune remain gated. Current RAW admission still refuses under #0027; #0023 is not
 enabled. #0022's full scope is retained, rather than marked complete from the live
