@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-14",
+  "sourceRevision": "20c2eaf94d78e9ebfec6cd2ee7c11415839a7d10",
+  "runId": 38646422686,
+  "runUrl": "https://github.com/imageinfo/imageinfo/actions/runs/38646422686",
+  "status": "passed",
+  "scope": "Cross-platform compilation, lints, tests and release build of the bounded namespace/receipt proposal's portable test-only model, plus existing root and research CI gates. Qualified acknowledgements are hypothetical model premises. This run does not qualify OS namespace persistence, storage/cache behavior, receipt survivor rules, automatic recovery, a storage profile or RAW mutation.",
+  "model": {
+    "newTests": 9,
+    "researchTestsPerPlatform": 39,
+    "reachableStates": 23,
+    "distinctOfferedEventValues": 28,
+    "stateEventApplications": 644,
+    "restartEvidenceCombinations": 384,
+    "singleEventOmissions": 12,
+    "adjacentSwaps": 11,
+    "interruptionPrefixScopeCombinations": 26,
+    "faultPlanCells": 16,
+    "compiledOnlyUnder": "cfg(test)",
+    "runtimeBackendChanged": false,
+    "sdkBoundaryChanged": false,
+    "dependenciesChanged": false,
+    "profileAdmitted": false
+  },
+  "jobs": [
+    {
+      "id": 116134278532,
+      "runner": "macos-15",
+      "status": "completed",
+      "conclusion": "success",
+      "portableModelTests": 9,
+      "researchTests": 39,
+      "rootTests": 45,
+      "researchFormatting": "success",
+      "researchClippy": "success",
+      "researchTestsAndRelease": "success",
+      "rootContracts": "success",
+      "rootFormattingClippyRelease": "success",
+      "docs": "success"
+    },
+    {
+      "id": 116134278849,
+      "runner": "ubuntu-24.04",
+      "status": "completed",
+      "conclusion": "success",
+      "portableModelTests": 9,
+      "researchTests": 39,
+      "rootTests": 45,
+      "researchFormatting": "success",
+      "researchClippy": "success",
+      "researchTestsAndRelease": "success",
+      "rootContracts": "success",
+      "rootFormattingClippyRelease": "success",
+      "docs": "success"
+    },
+    {
+      "id": 116134279116,
+      "runner": "windows-2025",
+      "status": "completed",
+      "conclusion": "success",
+      "portableModelTests": 9,
+      "researchTests": 39,
+      "rootTests": 44,
+      "researchFormatting": "success",
+      "researchClippy": "success",
+      "researchTestsAndRelease": "success",
+      "rootContracts": "success",
+      "rootFormattingClippyRelease": "success",
+      "docs": "success"
+    }
+  ],
+  "limitations": [
+    "Counts are finite abstract model inputs and assertions, not native fault runs or an exhaustive proof over OS schedules.",
+    "Current worker namespaceAcknowledged, committed, repairAllowed and productionPublicationAllowed flags remain unchanged.",
+    "Backend implementation and qualification are separately scoped to #0046; existing custody, physical-power, storage-error/resource and independent RAW admission gates remain open."
+  ]
+}

@@ -232,6 +232,12 @@ cargo test --locked --manifest-path experiments/0032-windows-publication/Cargo.t
 The normal research test command also runs these tests. `#[cfg(test)]` excludes
 the model from release workers; it adds no command or runtime receipt backend.
 
+The [CI ledger](namespace-receipt-ci.json) records source `20c2eaf` passing on
+Windows, Ubuntu and macOS: all nine model tests within 39 research tests per
+platform, plus root contracts, formatting, lints, release builds and documentation
+checks. These results verify the portable model and existing regression gates;
+they do not supply OS persistence or storage-profile qualification.
+
 An invalid abstract acknowledgement is rejected without changing model state.
 That is not permission to retry a detected filesystem conflict: the backend must
 map actual failed identity/property checks or corrupt/foreign required artifacts

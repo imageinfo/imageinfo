@@ -137,13 +137,15 @@ The current worker and all production/RAW admission flags remain unchanged.
 ## Subagent authorization
 
 Terry authorized parallel subagent work on all tickets authorized to work,
-2026-10-14. The primary agent may use up to **five direct subagents** (width 5),
-at **one level below the primary** (depth 1). Subagents must not spawn subagents.
-Use fewer when the ticket does not benefit from more parallel work; no separate
-per-ticket delegation approval is needed. This does not authorize pulling or
-starting another ticket outside the requested work. The primary owns integration,
-verification, commits/pushes and the bounded ticket handoff. Respect any lower
-limit imposed by the current session; persisted configuration applies when loaded.
+2026-10-14. Use parallel subagents where practical: separate independent
+implementation, verification, documentation and review work when that helps the
+authorized ticket. The updated Codex supports **one parent plus up to five direct
+subagents: six total threads**, with **maximum depth 1** below the parent.
+Subagents must not spawn subagents. The limit is a ceiling, not a quota; use the
+number of agents the work benefits from. No separate per-ticket delegation
+approval is needed. This does not authorize pulling or starting another ticket
+outside the requested work. The primary owns integration, verification,
+commits/pushes and the bounded ticket handoff.
 
 ## Product intent
 
