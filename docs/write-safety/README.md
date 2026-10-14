@@ -1,6 +1,7 @@
 # Safe mutation and recovery contract
 
-Status: **proposal for review**, revision `2026-10-10.1`, card **#0006**.
+Status: **requirements baseline accepted with #0006; OD-11 option A accepted by
+Terry on 2026-10-14**, revision `2026-10-14.1`.
 Scope: EOS R5 full RAW metadata, associated XMP, stored previews, and related file
 operations. No writer, platform profile, real-media mutation, or crash-safety claim
 is implemented or verified by this document.
@@ -99,11 +100,10 @@ postpublication cleanup and full storage/admission remain separate gates.
 
 ## Plan before effects
 
-**2026-10-14 decision pending:** [OD-11/#0041](practical-output-policy.md) proposes
-a narrower same-owner property-concurrency boundary while retaining guarded bytes,
-no-clobber names and all format/persistence/recovery gates. It maps the exact required
-WS/SAF follow-up. No policy choice, normative rule below or profile is changed until
-Terry explicitly decides; publishing/accepting research is not a concurrency waiver.
+**2026-10-14 decision accepted:** [OD-11/#0041 option A](practical-output-policy.md)
+sets the new-output same-owner property-check boundary in WS-009/010/011. It retains
+guarded bytes, no-clobber names and all format/persistence/recovery gates. This is an
+explicit product decision, not profile qualification or writer enablement.
 
 **WS-001 — Explicit application.** Preview does not change media, metadata targets,
 backup retention, collection paths, or file timestamps. A requested saved-plan/report
@@ -224,9 +224,19 @@ just at preflight. Where strict replacement cannot be guaranteed, refuse replace
 or use an explicitly selected new output with no-clobber publication. Do not silently
 downgrade to an overwrite that can lose a concurrent external edit.
 
-This is a conservative proposed initial policy. It does not assert that every
-ordinary filesystem already provides the required guard. A later, weaker concurrency
-mode would require a separate product decision and clearly different guarantees.
+For new outputs, OD-11 option A requires continuous protection of required default-
+stream bytes, object/path bindings and conditional no-clobber publication through
+the profile's publication/final-verification interval. Relevant filesystem properties
+are checked at preflight, immediately before publication and during installed-output
+verification. A detected change is a conflict before publication or recovery-required
+afterward. Same-owner timestamp, ACL, alternate-stream and link-topology changes are
+not continuously excluded; checks do not promise detection of an edit/reversion
+between observations or prevent later owner changes. The profile must state this
+boundary and refuse when its required byte/name guards cannot be established.
+
+Existing-target replacement retains its strict independent concurrency requirements.
+No ordinary filesystem is presumed to provide a required guard. Further weakening
+would require another explicit product decision and clearly different guarantees.
 
 **WS-010 — Paths and aliases.** Bind resolved parents and object identities; reject
 destination races, case-folding collisions, incompatible aliases and unexpected
@@ -234,6 +244,11 @@ reparse/symlink changes. Mutating through a symlink needs an explicit supported
 policy; default refusal is preferable to editing an unintended referent. Existing
 multi-link files refuse ordinary replacement until link-preserving semantics are
 explicitly supported. Reading an alias does not grant mutation permission.
+
+For OD-11 new outputs, unexpected link topology observed at a required property
+check refuses before publication or becomes recovery-required afterward. This
+observation does not claim continuous exclusion of same-owner link creation; the
+required default-stream/object/path guards remain independently mandatory.
 
 New outputs must be published conditionally on continued absence. A prior existence
 check is not sufficient. Never use a cross-filesystem copy/delete fallback while
@@ -257,6 +272,14 @@ to a documented private-owner policy unless a different policy is explicitly sel
 they must not silently expose private metadata through broader inherited permissions.
 This deliberate default protects metadata that may contain owner/location information.
 It does not prescribe a cross-platform ACL implementation.
+
+Under OD-11 option A, a new output must be ordinarily owner-editable after the
+operation; the sealed research descriptor is not the product policy. Sources remain
+untouched. Do not silently clone source ACLs, ownership or filesystem streams; state
+the supported new-output property set and refuse explicit unsupported carry-through.
+Ordinary private-owner permissions are not a security boundary against same-owner
+property edits. Boundary checks follow WS-009; default-stream/name protection and
+required persistence remain mandatory before committed can be reported.
 
 ## Original recovery and publication
 

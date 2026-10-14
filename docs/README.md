@@ -38,7 +38,7 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Owned staging cleanup](write-safety/staging-cleanup.md) | #0038 actual live prepublication file-handle cleanup, foreign-entry preservation, reader deferral and partial/refused outcomes; roots/restart/postpublication actions remain retained. |
 | [Owned output policy](write-safety/output-release.md) | #0039 creator-held release returns access denied; controlled descriptor mismatch, editing/name effects and interruption evidence; ordinary editable output remains unqualified. |
 | [Staging byte limits](write-safety/staging-limits.md) | #0040 portable total-byte preflight and exact-length copies in the existing worker, native partial/refusal/cancellation evidence and cleanup regression; no OS quota or space reservation. |
-| [Practical output-policy decision](write-safety/practical-output-policy.md) | OD-11/#0041 proposed byte/name guarantees, ordinary owner editing and property check boundaries; explicit decision pending, current requirements unchanged. |
+| [Practical output-policy decision](write-safety/practical-output-policy.md) | OD-11/#0041 option A accepted: guarded byte/name guarantees, ordinary owner editing and property check boundaries; requirements refined, backend/format gates remain. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |

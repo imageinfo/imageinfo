@@ -1,31 +1,32 @@
 # OD-11: practical new-output concurrency and property boundary
 
-**Proposed for Terry's decision, 2026-10-14, #0041 under #0022.**
-This is a decision package, not an accepted policy, implementation or enabled profile.
+**Option A accepted by Terry in chat, 2026-10-14, #0041 under #0022.**
+This accepts the product-policy boundary, not an implementation or enabled profile.
 The existing [WS requirements](README.md), [SAF scenarios](acceptance-scenarios.md)
-and production mutation refusals remain in force pending an explicit decision.
+now record this scoped refinement; all other requirements and production mutation
+refusals remain in force. Terry explicitly selected the recommended A answer.
 
-## Decision requested
+## Decision
 
-**Recommend option A:** for new outputs, require proven protection of the file's
+**Selected option A:** for new outputs, require proven protection of the file's
 default-stream bytes, object/path bindings and conditional no-clobber publication;
 use ordinary private-owner editable outputs, with filesystem properties checked at
 declared boundaries. Treat the account owner as trusted to change those properties.
 Do not promise continuous exclusion of same-owner timestamp, ACL, alternate-stream
 or link-topology changes between observations.
 
-This is a narrower property-concurrency promise than #0022's current continuous
+This is a narrower property-concurrency promise than #0022's previous continuous
 exclusion acceptance. It is not permission to replace a source, publish corrupted
 bytes, skip format admission, trust a record blindly or omit required persistence.
 
 | Choice | User-visible result | Work authorized by that choice |
 | --- | --- | --- |
-| **A — ordinary editable output, recommended** | Owner can edit the new file normally. Default-stream integrity and no-clobber names remain mandatory. Same-owner property changes are checked at boundaries, not continuously excluded. | Update the affected requirements/scenarios, then implement and qualify one bounded new-output marker protocol under this promise. |
-| **B — retain continuous property exclusion** | Keep refusing profiles until byte, name and relevant property exclusion plus ordinary editable-output behavior are demonstrated together. | Continue under the current contract. Existing research does not supply a working strategy or a delivery estimate. |
+| **A — ordinary editable output, selected** | Owner can edit the new file normally. Default-stream integrity and no-clobber names remain mandatory. Same-owner property changes are checked at boundaries, not continuously excluded. | Update the affected requirements/scenarios, then implement and qualify one bounded new-output marker protocol under this promise. |
+| **B — continuous property exclusion, not selected** | Would keep refusing profiles until byte, name and relevant property exclusion plus ordinary editable-output behavior were demonstrated together. | Would retain the previous property-exclusion acceptance. Existing research does not supply a working strategy or a delivery estimate. |
 
-Neither choice selects encryption, receipt keys, source ACL mutation, a privileged
-helper or a new runtime framework. No additional privileges or security setting
-changes are authorized by this proposal.
+The decision selects no encryption, receipt keys, source ACL mutation, privileged
+helper or new runtime framework. It authorizes no additional privileges or security
+setting changes.
 
 ## Why the decision is now concrete
 
@@ -52,7 +53,7 @@ They do not prove that every other API, filesystem or platform strategy must fai
 The ordinary owner's property edits are distinct from imageinfo preserving the
 requested media bytes, which remains mandatory.
 
-## Recommended option A, precisely
+## Accepted option A, precisely
 
 1. **New output only.** Never replace/delete the original or silently choose a
    sidecar. Existing-file replacement, source removal and rollback remain separate
@@ -81,7 +82,7 @@ requested media bytes, which remains mandatory.
    namespace and final receipt acknowledgements still need a supported protocol.
    API success alone never means committed. Missing/failed acknowledgements or
    uncertain publication remain recovery-required with artifacts retained. This
-   proposal does not relax OS-crash/power-loss evidence or invent a weaker success code.
+   decision does not relax OS-crash/power-loss evidence or invent a weaker success code.
 7. **Keep recovery conservative.** Validate record integrity, actual identities
    and ownership. Read-only inspection stays available; uncertainty grants no
    replay, rollback, pruning or pathname/pattern deletion authority. No secret key
@@ -97,9 +98,9 @@ are checked at defined points, not prevented as a security boundary. Exact wordi
 would accompany a qualified profile before any user could select or rely on it.
 No new CLI switch or settings scheme is selected here.
 
-## Requirement and scenario impact if A is accepted
+## Requirement and scenario impact
 
-| Contract | Proposed follow-up; current text remains unchanged |
+| Contract | Accepted scope, reflected in the linked WS/SAF text |
 | --- | --- |
 | WS-002/009 | Name the relevant property read set and check boundaries; retain continuous default-stream/object/path guards. Explicitly exclude continuous same-owner property exclusion for this new-output policy. |
 | WS-010 | Retain path/reparse checks, alias handling and conditional no-clobber names. Observed unexpected link topology refuses; do not claim topology cannot change between checks. |
@@ -107,16 +108,17 @@ No new CLI switch or settings scheme is selected here.
 | WS-013/014/015/019 | No relaxation of phase-specific persistence, verified installed bytes, owned recovery/cleanup or refusal on uncertainty. |
 | WS-006–008/020/021 | No relaxation of format admission, sensor/opaque preservation, privacy or authenticity gates. |
 | WS-016/022/023/024 | Keep cancellation, truthful partial/uncertain reports, resource bounds and per-profile qualification. Logical-byte evidence does not reserve disk space or enable a backend. |
-| SAF-005/006/007 | Separate default-data/name substitution from property-only actors. Keep current strict scenarios unevaluated for A until their applicability and expected outcomes are explicitly revised. Do not mark an old continuous-exclusion scenario passed by a boundary comparison. |
+| SAF-005/006/007 | Separate default-data/name substitution from property-only actors, with explicit new-output applicability. Boundary comparisons cannot be reported as continuous property exclusion. Runtime qualification remains pending. |
 | SAF-008/009/015/016 | Keep disk/flush/interruption/recovery/unsupported-profile outcomes and evidence gates. |
 
-Approval of this package's research quality is not automatically approval of option A.
-Record Terry's explicit A/B choice before changing any normative WS/SAF artifact.
+Terry's explicit A answer supplies the policy decision required by WS-009. Acceptance
+of earlier research alone did not supply it. Neither the answer nor this requirement
+update establishes backend implementation or passing runtime qualification.
 
-## Bounded implementation handoff after a decision
+## Bounded implementation handoff
 
-If A is chosen, first update the affected requirements and concrete acceptance cases,
-then qualify a disposable marker protocol using ordinary output permissions and
+The affected requirements and concrete acceptance cases now record A. Next qualify
+a disposable marker protocol using ordinary output permissions and
 existing held-object publication where supported. Its minimum evidence cells are:
 
 | ID | Evidence required before a profile could be admitted |
@@ -130,8 +132,7 @@ existing held-object publication where supported. Its minimum evidence cells are
 | OD-11-T07 | Exact OS/build/filesystem/storage assumptions and persistence qualification are recorded separately for each claimed adapter. Passing source/unit tests is insufficient. |
 | OD-11-T08 | Required RAW admission remains refused until its independent format gates pass. A passing marker protocol alone cannot enable #0023. |
 
-If B is chosen, retain the current requirements and missing cells unchanged. Any
-new experimental mechanism must have a concrete hypothesis and scope; the existing
+Any new experimental mechanism must have a concrete hypothesis and scope; the existing
 failed setter/oplock tests do not need repeating to reconfirm the same results.
 
 ## Verification of this decision package
@@ -139,5 +140,6 @@ failed setter/oplock tests do not need repeating to reconfirm the same results.
 The evidence-to-requirement mapping and follow-up cases were checked against the
 linked primary project reports, WS-001–024 and SAF-005–009/015/016. Internal links,
 status/command consistency, public JSON and `git diff --check` pass. There is no
-runtime/dependency change, imported artifact or new platform experiment. No support
-claim or accepted safety requirement is changed by publishing this proposal.
+runtime/dependency change, imported artifact or new platform experiment. WS-009/010/
+011 and SAF-005/006/007 now reflect the explicit decision; other normative WS text
+and the model/JSON cases are unchanged. No storage or format support claim is added.

@@ -76,11 +76,13 @@ ordinary output policy. No source ACL, privilege, shared SDK or production gate 
 below-budget requests refuse before transaction creation. See
 `docs/write-safety/staging-limits.md`; this is a logical-byte bound, not free-space
 reservation, allocation accounting, an OS quota or production writer/profile support.
-#0041/OD-11 proposes a practical new-output property/concurrency boundary after
-the measured guard/output obstructions. See `docs/write-safety/practical-output-policy.md`.
-Terry's explicit policy choice is pending: publication or acceptance of this research
-does not relax WS/SAF, enable a profile, or authorize an ordinary-output implementation
-under narrower guarantees. Keep format, byte/name, persistence and recovery gates intact.
+#0041/OD-11 option A was explicitly accepted by Terry in chat on 2026-10-14.
+New outputs require proven continuous default-stream byte/name guards and relevant
+filesystem-property checks at declared boundaries, with ordinary owner-editable
+private output. Continuous exclusion of same-owner property changes is not promised.
+See `docs/write-safety/practical-output-policy.md` and revised WS-009/010/011 and
+SAF-005/006/007. Actual protocol/profile qualification and independent RAW admission
+remain required; format, byte/name, persistence and recovery gates are unchanged.
 
 ## Product intent
 

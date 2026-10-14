@@ -63,6 +63,12 @@ tradeoff for review, not evidence that those platforms are unusable. A weaker
 concurrency mode needs its own accepted guarantees before implementation. Do not
 hide the gap behind a complicated abstraction or an unsupported universal promise.
 
+**2026-10-14 policy refinement:** Terry accepted [OD-11 option A](practical-output-policy.md)
+for new outputs: continuous default-stream byte/name guards, ordinary private-owner
+editable output and relevant property checks at declared boundaries. Continuous
+same-owner property exclusion is outside that promise. Replacement and all required
+actual-profile/persistence/recovery/format evidence remain separate and unqualified.
+
 ## Current readiness
 
 Windows/local volume, macOS/local volume, Linux/local filesystem, removable storage,

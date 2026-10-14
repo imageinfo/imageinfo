@@ -6,6 +6,17 @@ filesystem backend, RAW mutation or crash test ran.
 
 ## Artifact results
 
+**2026-10-14 follow-up, #0041:** Terry explicitly accepted OD-11 option A. The
+[decision record](practical-output-policy.md) maps the refinement to WS-009/010/011
+and SAF-005/006/007: continuous default-stream byte/name guards, ordinary private-owner
+editable output and property observations at declared boundaries. Other WS clauses,
+the state/guard JSON model and its synthetic cases remain unchanged. A profile's
+publication guard still must be effective for its declared guarantee; old synthetic
+traces are not evidence of any actual OD-11 implementation. Internal links, normative
+scope, JSON and diff checks pass; native/RAW/profile qualification remains pending.
+
+The results table below is the historical #0006 baseline, not a new runtime result.
+
 | Check | Result |
 | --- | --- |
 | Normative requirements | WS-001 through WS-024; unique and covered by acceptance criteria |
