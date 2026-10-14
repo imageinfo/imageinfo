@@ -18,6 +18,7 @@ pub enum RecordName {
     Intent,
     Observation,
 }
+#[cfg(windows)]
 impl RecordName {
     pub fn leaf(self) -> &'static str {
         match self {
