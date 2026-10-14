@@ -87,6 +87,11 @@ restart actions do not accept an extra receipt as an implicitly authorized recor
 
 ## Verification and limits
 
+The native observation profile is **Windows 11 Pro 10.0.26200**, local **NTFS**,
+using the existing current-token private-marker policy. A passing finite matrix
+on this host does not establish a universal Windows or storage-stack guarantee.
+CI runner results and the separately retained guest profile remain distinct.
+
 The [audited native ledger](namespace-receipt-native.json) records **93 cases**,
 including **43 completed live receipt observations**, **75 unchanged receipt
 inspection inventories** and **5,617 readable artifact paths hashed**, including
@@ -111,6 +116,13 @@ Research formatting, Clippy, tests and release checks pass, as do the root check
 with **44 Windows tests**. Existing ordinary, persistence, restart, custody,
 publication and inspection matrices remain regression obligations; their older
 results do not qualify the new receipt path by themselves.
+
+The [CI ledger](namespace-receipt-marker-ci.json) records source `b819f54`
+passing on Windows, Ubuntu and macOS, with all 45 research tests per platform
+and root contracts (44 Windows tests; 45 on each Unix platform). Windows also
+passes the 93-case receipt matrix and all six regression matrices listed above;
+Unix workers refuse the receipt adapter before creating artifacts. These checks
+do not qualify namespace persistence, receipt survivor rules or a storage profile.
 
 The implementation reuses the existing reviewed Windows SDK calls, dependencies
 and unsafe boundary. It adds no secret, key service, privileged production helper,

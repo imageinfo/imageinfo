@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-14",
+  "sourceRevision": "b819f54533c495b332c3d4dbb0caccef49923036",
+  "runId": 38650694032,
+  "runUrl": "https://github.com/imageinfo/imageinfo/actions/runs/38650694032",
+  "status": "passed",
+  "scope": "Three-platform formatting, lints, tests and release builds for the bounded unqualified Windows marker receipt implementation and existing contracts. Windows runs the 93-case receipt matrix; Ubuntu and macOS verify refusal before artifacts. This is not namespace/storage-profile admission or qualified receipt persistence.",
+  "implementation": {
+    "newPortableReceiptTests": 6,
+    "researchTestsPerPlatform": 45,
+    "windowsReceiptCases": 93,
+    "logicalByteBudget": 327680,
+    "recordByteBound": 65536,
+    "sdkBoundaryChanged": false,
+    "dependenciesChanged": false,
+    "enabledProfiles": 0,
+    "committed": false,
+    "namespaceAcknowledged": false,
+    "repairAllowed": false,
+    "productionPublicationAllowed": false
+  },
+  "jobs": [
+    {
+      "id": 116148451486,
+      "runner": "windows-2025",
+      "status": "completed",
+      "conclusion": "success",
+      "portableReceiptTests": 6,
+      "researchTests": 45,
+      "rootTests": 44,
+      "researchFormatting": "success",
+      "researchClippy": "success",
+      "researchTestsAndRelease": "success",
+      "receiptToolingSyntax": "success",
+      "receiptNativeQualification": "success",
+      "receiptUnsupportedRefusal": "not-applicable",
+      "rootContracts": "success",
+      "rootFormattingClippyRelease": "success",
+      "docs": "success"
+    },
+    {
+      "id": 116148451579,
+      "runner": "ubuntu-24.04",
+      "status": "completed",
+      "conclusion": "success",
+      "portableReceiptTests": 6,
+      "researchTests": 45,
+      "rootTests": 45,
+      "researchFormatting": "success",
+      "researchClippy": "success",
+      "researchTestsAndRelease": "success",
+      "receiptToolingSyntax": "success",
+      "receiptNativeQualification": "not-applicable",
+      "receiptUnsupportedRefusal": "success",
+      "rootContracts": "success",
+      "rootFormattingClippyRelease": "success",
+      "docs": "success"
+    },
+    {
+      "id": 116148451642,
+      "runner": "macos-15",
+      "status": "completed",
+      "conclusion": "success",
+      "portableReceiptTests": 6,
+      "researchTests": 45,
+      "rootTests": 45,
+      "researchFormatting": "success",
+      "researchClippy": "success",
+      "researchTestsAndRelease": "success",
+      "receiptToolingSyntax": "success",
+      "receiptNativeQualification": "not-applicable",
+      "receiptUnsupportedRefusal": "success",
+      "rootContracts": "success",
+      "rootFormattingClippyRelease": "success",
+      "docs": "success"
+    }
+  ],
+  "windowsRegressionCases": {
+    "ordinary": 64,
+    "persistence": 69,
+    "restart": 61,
+    "custody": 41,
+    "publication": 78,
+    "inspection": 35
+  },
+  "limitations": [
+    "Native CI matrices are finite authored-marker observations, not OS crash, physical-power-loss, full-disk/device-error or cumulative-retention qualification.",
+    "The minimal observational receipt cannot attest its own future flush and supplies no qualified namespace acknowledgement, receipt survivor rule, caller authentication or history freshness.",
+    "No production storage profile, automatic restart finalize/prune or independent RAW mutation admission is enabled. Separate #0047/#0048/#0049/#0051 gates remain open."
+  ]
+}
