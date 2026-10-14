@@ -1,8 +1,48 @@
 {
   "schemaVersion": 1,
   "observedOn": "2026-10-14",
-  "sourceRevision": null,
-  "status": "pending",
-  "scope": "Source CI will be bound after publication. Ten portable tests, 17 native limit cases and 27 cleanup regression cases pass locally; logical-byte bounds do not enable a storage/writer profile.",
-  "jobs": []
+  "sourceRevision": "7faa41db4e7cf94caf88947edc353d4d7dc8b29a",
+  "runId": 38598619238,
+  "runUrl": "https://github.com/imageinfo/imageinfo/actions/runs/38598619238",
+  "status": "passed",
+  "scope": "Ten portable staging tests passed on all three platforms. Seventeen actual Windows staging-limit cases and 27 cleanup regression cases passed; Ubuntu/macOS refuse the filesystem adapter. Root 44 Windows/45 Unix tests, release, docs and prior regression gates passed. Logical-byte bounds do not enable a complete storage/writer profile.",
+  "localCaptureProfile": {
+    "os": "Windows 11 Pro",
+    "version": "10.0.26200",
+    "architecture": "64-bit",
+    "filesystem": "NTFS",
+    "scope": "Ordinary current token, marker-only local run; not OS-crash or power-loss qualification."
+  },
+  "jobs": [
+    {
+      "id": 115971722879,
+      "runner": "windows-2025",
+      "status": "completed",
+      "conclusion": "success",
+      "portableStaging": "success",
+      "limits": "success",
+      "limitsKind": "native-17-case-qualification",
+      "rootContracts": "success"
+    },
+    {
+      "id": 115971723412,
+      "runner": "ubuntu-24.04",
+      "status": "completed",
+      "conclusion": "success",
+      "portableStaging": "success",
+      "limits": "success",
+      "limitsKind": "unsupported-adapter-refusal",
+      "rootContracts": "success"
+    },
+    {
+      "id": 115971723597,
+      "runner": "macos-15",
+      "status": "completed",
+      "conclusion": "success",
+      "portableStaging": "success",
+      "limits": "success",
+      "limitsKind": "unsupported-adapter-refusal",
+      "rootContracts": "success"
+    }
+  ]
 }
