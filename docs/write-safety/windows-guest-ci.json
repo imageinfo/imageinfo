@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-14",
+  "sourceRevision": "6d9f3e4fd28d0238415d997dbb8ea8da0d063cdd",
+  "runId": 38625586916,
+  "runUrl": "https://github.com/imageinfo/imageinfo/actions/runs/38625586916",
+  "status": "passed",
+  "scope": "Three-platform tooling syntax, root Rust/doc gates, 18 portable research tests, 64 native Windows ordinary-output cases and the existing publication/inspection regressions pass. The 17 guest protocol runs, five guest actor cases and three repair/admission refusals are separately audited local observations; CI did not run this Windows VM. No complete profile or writer enabled.",
+  "jobs": [
+    {
+      "id": 116063790539,
+      "runner": "ubuntu-24.04",
+      "status": "completed",
+      "conclusion": "success",
+      "guestToolingSyntax": "success",
+      "ordinary": "success",
+      "rootContracts": "success",
+      "docs": "success"
+    },
+    {
+      "id": 116063790922,
+      "runner": "windows-2025",
+      "status": "completed",
+      "conclusion": "success",
+      "guestToolingSyntax": "success",
+      "ordinary": "success",
+      "rootContracts": "success",
+      "docs": "success"
+    },
+    {
+      "id": 116063790993,
+      "runner": "macos-15",
+      "status": "completed",
+      "conclusion": "success",
+      "guestToolingSyntax": "success",
+      "ordinary": "success",
+      "rootContracts": "success",
+      "docs": "success"
+    }
+  ]
+}

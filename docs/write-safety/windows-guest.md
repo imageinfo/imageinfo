@@ -131,4 +131,5 @@ native disk-full/device-error cell, physical power-loss guarantee or RAW writer
 is enabled. Namespace/receipt ordering and safely authorized finalization/prune
 remain next work under #0022. Private media, credentials, disks, screenshots and
 raw logs remain local; public CI checks tooling syntax and the native/portable
-protocol separately from these guest observations.
+protocol separately from these guest observations. All three jobs in the
+[verified source CI ledger](windows-guest-ci.json) pass for source `6d9f3e4`.
