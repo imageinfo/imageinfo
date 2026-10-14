@@ -5,8 +5,11 @@ use windows_sys::Win32::Storage::FileSystem::{
 
 pub fn mark_owned_file(file: &File) -> io::Result<()> {
     let disposition = FILE_DISPOSITION_INFO { DeleteFile: true };
-    // SAFETY: caller retains an exclusively created owned marker, validates its
-    // live guards and calls only before publication. The OS requires DELETE access
+    // SAFETY: caller retains a proven exclusively created owned marker, validates
+    // live guards and calls only before publication. Restart reuse additionally
+    // requires trusted caller identities and confirmed stop before publication;
+    // editable transaction records alone never select this object for deletion.
+    // The OS requires DELETE access
     // (missing access must fail; there is no pathname fallback). Exact
     // SDK layout/size and borrowed handle survive this synchronous call. This
     // sets disposition on that object, never a path from a record or enumeration.

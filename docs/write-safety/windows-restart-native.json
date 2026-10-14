@@ -1,0 +1,2081 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-14",
+  "data": "authored marker bytes only",
+  "caseCount": 61,
+  "cases": [
+    {
+      "id": "ordinary-persistence-buffered-before-namespace-call",
+      "liveMode": "ordinary-persistence-buffered",
+      "liveStop": "before-namespace-call",
+      "change": null,
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": false,
+      "remainingLeaves": [
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "owned-unpublished-handles-pruned",
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-remove",
+        "restart-file-removed",
+        "restart-before-remove",
+        "restart-file-removed",
+        "restart-before-remove",
+        "restart-file-removed"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "source.marker"
+      ]
+    },
+    {
+      "id": "ordinary-persistence-buffered-parent-flushed",
+      "liveMode": "ordinary-persistence-buffered",
+      "liveStop": "parent-flushed",
+      "change": null,
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": false,
+      "remainingLeaves": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "output-observation-recorded-recovery-required",
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-record",
+        "restart-record-file-flushed",
+        "restart-record-parent-flushed"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "ordinary-persistence-buffered-observation-parent-flushed",
+      "liveMode": "ordinary-persistence-buffered",
+      "liveStop": "observation-parent-flushed",
+      "change": null,
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": true,
+      "remainingLeaves": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "output-observation-already-present",
+      "actors": [],
+      "barriers": [
+        "restart-guarded"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "ordinary-flush-after-rename-before-namespace-call",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": null,
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": false,
+      "remainingLeaves": [
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "owned-unpublished-handles-pruned",
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-remove",
+        "restart-file-removed",
+        "restart-before-remove",
+        "restart-file-removed",
+        "restart-before-remove",
+        "restart-file-removed"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "source.marker"
+      ]
+    },
+    {
+      "id": "ordinary-flush-after-rename-parent-flushed",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "parent-flushed",
+      "change": null,
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": false,
+      "remainingLeaves": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "output-observation-recorded-recovery-required",
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-record",
+        "restart-record-file-flushed",
+        "restart-record-parent-flushed"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "ordinary-flush-after-rename-observation-parent-flushed",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "observation-parent-flushed",
+      "change": null,
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": true,
+      "remainingLeaves": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "output-observation-already-present",
+      "actors": [],
+      "barriers": [
+        "restart-guarded"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "ordinary-write-through-before-namespace-call",
+      "liveMode": "ordinary-write-through",
+      "liveStop": "before-namespace-call",
+      "change": null,
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": false,
+      "remainingLeaves": [
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "owned-unpublished-handles-pruned",
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-remove",
+        "restart-file-removed",
+        "restart-before-remove",
+        "restart-file-removed",
+        "restart-before-remove",
+        "restart-file-removed"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "source.marker"
+      ]
+    },
+    {
+      "id": "ordinary-write-through-parent-flushed",
+      "liveMode": "ordinary-write-through",
+      "liveStop": "parent-flushed",
+      "change": null,
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": false,
+      "remainingLeaves": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "output-observation-recorded-recovery-required",
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-record",
+        "restart-record-file-flushed",
+        "restart-record-parent-flushed"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "ordinary-write-through-observation-parent-flushed",
+      "liveMode": "ordinary-write-through",
+      "liveStop": "observation-parent-flushed",
+      "change": null,
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": true,
+      "remainingLeaves": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "output-observation-already-present",
+      "actors": [],
+      "barriers": [
+        "restart-guarded"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-missing-context",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "missing-context",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-malformed-context",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "malformed-context",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-context-identity",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "context-identity",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-context-digest",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "context-digest",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-context-record-digest",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "context-record-digest",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-context-stage",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "context-stage",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-context-purpose",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "context-purpose",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-context-unknown",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "context-unknown",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-context-unattested",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "context-unattested",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-record-corrupt",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "record-corrupt",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-record-replaced",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "record-replaced",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-record-missing",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "record-missing",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-candidate-replaced",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "candidate-replaced",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-source-edit",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "source-edit",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-candidate-property",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "candidate-property",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-source-property",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "source-property",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-collision",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "collision",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-extra",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "extra",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "foreign.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "foreign.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "observe-context-stage",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "parent-flushed",
+      "change": "context-stage",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": true,
+      "remainingLeaves": [
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "observe-context-false-stop",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "parent-flushed",
+      "change": "context-false-stop",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": true,
+      "remainingLeaves": [
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "observe-record-corrupt",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "parent-flushed",
+      "change": "record-corrupt",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": true,
+      "remainingLeaves": [
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "observe-source-edit",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "parent-flushed",
+      "change": "source-edit",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": true,
+      "remainingLeaves": [
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "observe-output-edit",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "parent-flushed",
+      "change": "output-edit",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": true,
+      "remainingLeaves": [
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "observe-output-property",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "parent-flushed",
+      "change": "output-property",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": true,
+      "remainingLeaves": [
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "observe-observation-collision",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "parent-flushed",
+      "change": "observation-collision",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": true,
+      "remainingLeaves": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "observe-extra",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "parent-flushed",
+      "change": "extra",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": true,
+      "remainingLeaves": [
+        "foreign.marker",
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "foreign.marker",
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "held-candidate-write",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": null,
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": false,
+      "remainingLeaves": [
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "owned-unpublished-handles-pruned",
+      "actors": [
+        {
+          "action": "write",
+          "role": "candidate",
+          "allowed": false,
+          "winError": 32
+        }
+      ],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-remove",
+        "restart-file-removed",
+        "restart-before-remove",
+        "restart-file-removed",
+        "restart-before-remove",
+        "restart-file-removed"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "source.marker"
+      ]
+    },
+    {
+      "id": "held-candidate-rename",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": null,
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": false,
+      "remainingLeaves": [
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "owned-unpublished-handles-pruned",
+      "actors": [
+        {
+          "action": "rename",
+          "role": "candidate",
+          "allowed": false,
+          "winError": 32
+        }
+      ],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-remove",
+        "restart-file-removed",
+        "restart-before-remove",
+        "restart-file-removed",
+        "restart-before-remove",
+        "restart-file-removed"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "source.marker"
+      ]
+    },
+    {
+      "id": "held-output-write",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "parent-flushed",
+      "change": null,
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": false,
+      "remainingLeaves": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "output-observation-recorded-recovery-required",
+      "actors": [
+        {
+          "action": "write",
+          "role": "output",
+          "allowed": false,
+          "winError": 32
+        }
+      ],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-record",
+        "restart-record-file-flushed",
+        "restart-record-parent-flushed"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "held-output-rename",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "parent-flushed",
+      "change": null,
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": false,
+      "remainingLeaves": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "output-observation-recorded-recovery-required",
+      "actors": [
+        {
+          "action": "rename",
+          "role": "output",
+          "allowed": false,
+          "winError": 32
+        }
+      ],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-record",
+        "restart-record-file-flushed",
+        "restart-record-parent-flushed"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "held-root-rename",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": null,
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": false,
+      "remainingLeaves": [
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "owned-unpublished-handles-pruned",
+      "actors": [
+        {
+          "action": "rename",
+          "role": "root",
+          "allowed": false,
+          "winError": 32
+        }
+      ],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-remove",
+        "restart-file-removed",
+        "restart-before-remove",
+        "restart-file-removed",
+        "restart-before-remove",
+        "restart-file-removed"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "source.marker"
+      ]
+    },
+    {
+      "id": "cancel-restart-before-remove",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": null,
+      "stop": "cancel",
+      "stopPhase": "restart-before-remove",
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-remove"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "fail-restart-before-remove",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": null,
+      "stop": "fail",
+      "stopPhase": "restart-before-remove",
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-remove"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "kill-restart-before-remove",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": null,
+      "stop": "kill",
+      "stopPhase": "restart-before-remove",
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 1,
+      "outcome": null,
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-remove"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "cancel-restart-file-removed",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": null,
+      "stop": "cancel",
+      "stopPhase": "restart-file-removed",
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": false,
+      "remainingLeaves": [
+        "candidate.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-partial-or-uncertain",
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-remove",
+        "restart-file-removed"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "fail-restart-file-removed",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": null,
+      "stop": "fail",
+      "stopPhase": "restart-file-removed",
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": false,
+      "remainingLeaves": [
+        "candidate.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-partial-or-uncertain",
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-remove",
+        "restart-file-removed"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "kill-restart-file-removed",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": null,
+      "stop": "kill",
+      "stopPhase": "restart-file-removed",
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": false,
+      "remainingLeaves": [
+        "candidate.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 1,
+      "outcome": null,
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-remove",
+        "restart-file-removed"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "cancel-restart-before-record",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "parent-flushed",
+      "change": null,
+      "stop": "cancel",
+      "stopPhase": "restart-before-record",
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": true,
+      "remainingLeaves": [
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-record"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "fail-restart-before-record",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "parent-flushed",
+      "change": null,
+      "stop": "fail",
+      "stopPhase": "restart-before-record",
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": true,
+      "remainingLeaves": [
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-record"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "kill-restart-before-record",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "parent-flushed",
+      "change": null,
+      "stop": "kill",
+      "stopPhase": "restart-before-record",
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": true,
+      "remainingLeaves": [
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 1,
+      "outcome": null,
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-record"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "cancel-restart-record-file-flushed",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "parent-flushed",
+      "change": null,
+      "stop": "cancel",
+      "stopPhase": "restart-record-file-flushed",
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": false,
+      "remainingLeaves": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-partial-or-uncertain",
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-record",
+        "restart-record-file-flushed"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "fail-restart-record-file-flushed",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "parent-flushed",
+      "change": null,
+      "stop": "fail",
+      "stopPhase": "restart-record-file-flushed",
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": false,
+      "remainingLeaves": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-partial-or-uncertain",
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-record",
+        "restart-record-file-flushed"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "kill-restart-record-file-flushed",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "parent-flushed",
+      "change": null,
+      "stop": "kill",
+      "stopPhase": "restart-record-file-flushed",
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": false,
+      "remainingLeaves": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 1,
+      "outcome": null,
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-record",
+        "restart-record-file-flushed"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "foreign-reinsertion",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": null,
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": true,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": false,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-partial-or-uncertain",
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-remove",
+        "restart-file-removed",
+        "restart-before-remove"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "reader-deferral",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": null,
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": true,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": false,
+      "remainingLeaves": [
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "owned-unpublished-handles-pruned",
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-remove",
+        "restart-file-removed",
+        "restart-before-remove",
+        "restart-file-removed",
+        "restart-before-remove",
+        "restart-file-removed"
+      ],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "source.marker"
+      ]
+    },
+    {
+      "id": "preexisting-writable-handle",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": null,
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": "writable-handle",
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "preexisting-writable-map",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": null,
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": "writable-map",
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-record-ads",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "record-ads",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "intent.record:probe",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-record-link",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "record-link",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "alias.marker",
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "alias.marker",
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "prune-record-dacl",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "before-namespace-call",
+      "change": "record-dacl",
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": false,
+      "unchanged": true,
+      "remainingLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-refused-before-effects",
+      "actors": [],
+      "barriers": [],
+      "preexisting": null,
+      "lateExtraAt": null,
+      "remainingDirectoryEntries": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "foreign-extra-restart-record-file-flushed",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "parent-flushed",
+      "change": null,
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": false,
+      "remainingLeaves": [
+        "foreign.marker",
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-partial-or-uncertain",
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-record",
+        "restart-record-file-flushed",
+        "restart-record-parent-flushed"
+      ],
+      "preexisting": null,
+      "lateExtraAt": "restart-record-file-flushed",
+      "remainingDirectoryEntries": [
+        "foreign.marker",
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    },
+    {
+      "id": "foreign-extra-restart-record-parent-flushed",
+      "liveMode": "ordinary-flush-after-rename",
+      "liveStop": "parent-flushed",
+      "change": null,
+      "stop": null,
+      "stopPhase": null,
+      "foreignReinsertion": false,
+      "readerDeferral": false,
+      "sourceRetained": true,
+      "outputRetained": true,
+      "unchanged": false,
+      "remainingLeaves": [
+        "foreign.marker",
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "exitCode": 0,
+      "outcome": "restart-partial-or-uncertain",
+      "actors": [],
+      "barriers": [
+        "restart-guarded",
+        "restart-before-record",
+        "restart-record-file-flushed",
+        "restart-record-parent-flushed"
+      ],
+      "preexisting": null,
+      "lateExtraAt": "restart-record-parent-flushed",
+      "remainingDirectoryEntries": [
+        "foreign.marker",
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "source.marker"
+      ]
+    }
+  ],
+  "workerCapturesAudited": 61,
+  "inventorySnapshotsAudited": 61,
+  "unchangedInventories": 40,
+  "readableArtifactPathsHashed": 1385,
+  "inaccessiblePathsRetained": 1,
+  "enabledProfiles": 0,
+  "physicalPowerLossRuns": 0,
+  "callerAuthority": "context captured externally from the interrupted live caller channel",
+  "committed": false,
+  "namespaceAcknowledged": false,
+  "repairAllowed": false,
+  "productionPublicationAllowed": false
+}

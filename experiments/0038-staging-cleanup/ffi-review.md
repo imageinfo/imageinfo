@@ -38,3 +38,59 @@ Primary Microsoft documentation observed **2026-10-13**:
 This is scoped SDK/source review, not independent maintainer signoff or a complete
 storage-profile proof. Driver/provider errors, OS crash, physical power loss,
 directory removal, restart authority and postpublication recovery remain separate.
+
+## #0022 caller-directed restart reuse
+
+Reviewed **2026-10-14** for the bounded
+[ordinary-owner marker restart actions](../../docs/write-safety/windows-restart-actions.md).
+The SDK structure, information class, borrowed-handle call and synchronous
+lifetime contract remain unchanged. No new native API, dependency, feature or
+root production unsafe permission is added.
+
+`ordinary-restart-prune` extends the caller contract to a previously
+exclusive-created unpublished candidate and records. The live supervisor captures
+their identities, bytes, properties and exact fixed names while the creator's
+guards are held, then retains that explicit caller context outside the mutable
+transaction. At restart, safe protocol code freshly opens and retains the exact
+objects with DELETE access and byte/name guards, and revalidates all bindings,
+private-owner properties and unpublished scope before disposition. Source and
+root are retained. This path does not delete an installed output or accept an
+uncertain publication attempt as unpublished.
+
+The caller must preserve the supervisor's history that the original worker was
+stopped before its namespace call was permitted. An earlier exported context is
+not valid prune authority if publication was later attempted; absent output alone
+does not resolve that uncertainty. This history is an explicit caller precondition,
+not something the disposition API or JSON parser can authenticate.
+The exported `stoppedBeforePublication` field is false. Prune requires the
+supervisor's explicit true attestation after the proven stop; postpublication
+contexts cannot carry it. Changing this field asserts caller knowledge and
+authority, rather than turning arbitrary JSON into a verified permission token.
+
+The supplied context represents the caller's authority; parsing JSON does not
+authenticate that caller or establish where the context was retained. Editable
+transaction checksums, classifications and directory entries cannot substitute
+for that authority. Missing, foreign, changed or inaccessible artifacts refuse;
+there is no pathname fallback, recursive deletion, ACL repair or privilege change.
+
+Deletion marking and eventual removal remain distinct, including compatible
+reader deferral and partial/error reporting. The separate restart-observe path
+does not call disposition. Existing live cleanup rules remain unchanged, and
+legacy `ordinary-prune`/`ordinary-finalize`/`ordinary-admit` still refuse. Qualified
+commitment, persistence and production repair/profile authority remain gated.
+
+Primary Microsoft references rechecked **2026-10-14**:
+
+- [SetFileInformationByHandle](https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-setfileinformationbyhandle)
+  (visible update 2021-10-13): the handle must carry DELETE access and the SDK
+  structure and information class must agree; failure is reported without a
+  different deletion mechanism.
+- [FILE_DISPOSITION_INFO](https://learn.microsoft.com/en-us/windows/win32/api/winbase/ns-winbase-file_disposition_info)
+  (visible update 2024-02-22): the Boolean member requests deletion on the supplied
+  object handle. This worker does not use `FILE_FLAG_DELETE_ON_CLOSE`.
+
+The [61-case native restart ledger](../../docs/write-safety/windows-restart-native.json)
+includes hostile-marker refusal, partial action and compatible-reader deferral
+observations for this caller path. The old live-cleanup tests alone do not qualify
+it. Guest interruption/action evidence remains separate from source/API review;
+no independent maintainer signoff or complete profile proof is inferred.

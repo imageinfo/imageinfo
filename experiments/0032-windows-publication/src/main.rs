@@ -14,6 +14,8 @@ mod ordinary;
 #[cfg(any(windows, test))]
 mod ordinary_record;
 #[cfg(any(windows, test))]
+mod restart_context;
+#[cfg(any(windows, test))]
 #[path = "../../0038-staging-cleanup/src/staging.rs"]
 mod staging;
 #[cfg(windows)]

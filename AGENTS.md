@@ -107,6 +107,13 @@ explicit flush in both buffered-handle modes, two matching write-through API-suc
 observations and matching outputs in all 24 later flush cells. Host caches remain
 alive, OS I/O shares the test volume and physical power loss is unverified. Treat
 these as bounded observations; full namespace/receipt and restart-action gates remain.
+#0022 now has explicit caller-directed marker restart actions: a trusted supervisor
+captures actual owned bindings outside editable transaction records and confirms
+stop before publication for prune. Fresh guards and identities/hash/property checks
+select exact unpublished owned handles; source/root/foreign objects remain. Output
+observation creation still never grants durable commit or production repair.
+See `docs/write-safety/windows-restart-actions.md`; arbitrary JSON is not authenticated,
+and automatic durable context custody, full profiles and RAW admission remain open.
 
 ## Product intent
 

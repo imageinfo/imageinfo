@@ -3,6 +3,7 @@ use crate::{
     inspection_record::{Info, MAX_RECORD},
     native::{self, PrivateSecurity},
     ordinary_record::{self, PersistenceMode, Record},
+    restart_context::{self, Context, OwnedRecord, RecordName, Stage},
 };
 use imageinfo_recovery_probe::digest;
 use serde_json::{Value, json};
@@ -200,6 +201,44 @@ fn save(
     }
     Artifact::create_with_mode(root, name, security, &wire, candidate.persistence)
 }
+fn export_context(stage: Stage, dir: &Info, source: &Artifact, owned: &[Artifact]) -> Result<()> {
+    export_held_context(stage, dir, source, &owned[0], &owned[1..])
+}
+fn export_held_context(
+    stage: Stage,
+    dir: &Info,
+    source: &Artifact,
+    candidate: &Artifact,
+    records: &[Artifact],
+) -> Result<()> {
+    let names = [
+        RecordName::Prepared,
+        RecordName::Intent,
+        RecordName::Observation,
+    ];
+    let context = Context {
+        purpose: "imageinfo-od11-caller-context-v1".into(),
+        stage,
+        stopped_before_publication: false,
+        root: dir.clone(),
+        source: source.before.clone(),
+        candidate: candidate.before.clone(),
+        sha256: source.hash.clone(),
+        persistence_mode: candidate.persistence,
+        records: records
+            .iter()
+            .zip(names)
+            .map(|(a, name)| OwnedRecord {
+                name,
+                info: a.before.clone(),
+                sha256: a.hash.clone(),
+            })
+            .collect(),
+    };
+    // The supervisor retains this outside the editable transaction. A later
+    // record or checksum cannot recreate the caller's authorization/history.
+    emit(json!({"callerContext":context,"observationOnly":true}))
+}
 fn prepare(root: &Path) -> Result<()> {
     let ancestors = crate::windows::ancestors(root.parent().ok_or("PARENT_REQUIRED")?)?;
     let parent = ancestors.last().ok_or("PARENT_REQUIRED")?;
@@ -329,6 +368,9 @@ fn live(
         emit(json!({"boundary":"before-publication","propertiesMatch":true}))?;
         // Property observations are checkpoints under OD-11. Continuous byte/name
         // holds remain; no snapshot/hash is advertised as full property exclusion.
+        if checkpoints {
+            export_context(Stage::BeforePublication, &dir_before, &source, &owned)?;
+        }
         barrier("before-namespace-call")?;
         attempted = true;
         native::rename(&owned[0].file, &dir, &root.join(OUTPUT), false)?;
@@ -361,6 +403,7 @@ fn live(
         dir.sync_all()?;
         parent_flushed = true;
         if checkpoints {
+            export_context(Stage::AfterPublication, &dir_before, &source, &owned)?;
             barrier("parent-flushed")?;
         }
         let observation = save(
@@ -380,6 +423,7 @@ fn live(
         dir.sync_all()?;
         observation_parent_flushed = true;
         if checkpoints {
+            export_context(Stage::AfterPublication, &dir_before, &source, &owned)?;
             barrier("observation-parent-flushed")?;
         }
         barrier("observed-record-flushed")?;
@@ -554,6 +598,263 @@ fn inspect(root: &Path) -> Result<()> {
     })();
     emit(report.unwrap_or_else(|e|json!({"outcome":"uninspectable","diagnostic":e.to_string().chars().filter(|c|!c.is_control()).take(128).collect::<String>(),"observationOnly":true})))
 }
+fn check_restart_layout(root: &Path, candidate: &str, owned: &[Artifact]) -> Result<()> {
+    let entries: Vec<_> = fs::read_dir(root)?
+        .take(8)
+        .map(|v| v.map(|e| e.file_name()))
+        .collect::<io::Result<_>>()?;
+    if entries.len() != owned.len() + 2
+        || entries
+            .iter()
+            .any(|n| n != SOURCE && n != candidate && !owned.iter().any(|a| n == a.name))
+    {
+        return Err("RESTART_NAMESPACE_CONFLICT".into());
+    }
+    Ok(())
+}
+fn open_expected(
+    root: &Path,
+    name: &'static str,
+    expected: &Info,
+    hash: &str,
+    mode: PersistenceMode,
+    access: u32,
+    security: &PrivateSecurity,
+) -> Result<Artifact> {
+    let file = OpenOptions::new()
+        .access_mode(access)
+        .share_mode(1)
+        .custom_flags(
+            0x02200000
+                | if mode == PersistenceMode::WriteThrough {
+                    0x80000000
+                } else {
+                    0
+                },
+        )
+        .open(root.join(name))?;
+    let mut artifact = Artifact {
+        file,
+        before: expected.clone(),
+        hash: hash.into(),
+        name,
+        persistence: mode,
+    };
+    artifact.check(root, security)?;
+    Ok(artifact)
+}
+fn restart(root: &Path, prune: bool) -> Result<()> {
+    let mut line = Vec::new();
+    io::stdin()
+        .lock()
+        .take(MAX_RECORD + 1)
+        .read_until(b'\n', &mut line)?;
+    let context = match restart_context::decode(&line) {
+        Ok(c) => c,
+        Err(e) => {
+            return emit(
+                json!({"outcome":"restart-refused-before-effects","diagnostic":e,"effectsAttempted":false,"ownedHandlesRemoved":0}),
+            );
+        }
+    };
+    if prune != (context.stage == Stage::BeforePublication) {
+        return emit(
+            json!({"outcome":"restart-refused-before-effects","diagnostic":"CALLER_STAGE_DISALLOWS_ACTION","effectsAttempted":false,"ownedHandlesRemoved":0}),
+        );
+    }
+    let mut effects = false;
+    if prune && !context.stopped_before_publication {
+        return emit(
+            json!({"outcome":"restart-refused-before-effects","diagnostic":"CALLER_STOP_CONFIRMATION_REQUIRED","effectsAttempted":false,"ownedHandlesRemoved":0}),
+        );
+    }
+    let mut removed = 0;
+    let mut recorded = false;
+    let mut already_present = false;
+    let result = (|| -> Result<()> {
+        crate::staging::check_budget(&[65536, MAX_RECORD, MAX_RECORD, MAX_RECORD], 262144)?;
+        let _ancestors = crate::windows::ancestors(root.parent().ok_or("PARENT_REQUIRED")?)?;
+        let security = PrivateSecurity::current()?;
+        let dir = OpenOptions::new()
+            .access_mode(0xc0020000)
+            .share_mode(3)
+            .custom_flags(0x02200000)
+            .open(root)?;
+        if native::filesystem(&dir)? != "NTFS" {
+            return Err("FILESYSTEM_UNVERIFIED".into());
+        }
+        directory(root, &dir, &context.root, &security)?;
+        let mut source = open_expected(
+            root,
+            SOURCE,
+            &context.source,
+            &context.sha256,
+            PersistenceMode::Buffered,
+            0x80020000,
+            &security,
+        )?;
+        if read(&mut source.file)? != vec![b'3'; 65536] {
+            return Err("OWNED_MARKER_SOURCE_UNVERIFIED".into());
+        }
+        let candidate_name = if prune { CANDIDATE } else { OUTPUT };
+        let mut candidate = open_expected(
+            root,
+            candidate_name,
+            &context.candidate,
+            &context.sha256,
+            context.persistence_mode,
+            0xc0030000,
+            &security,
+        )?;
+        let mut records = Vec::new();
+        for expected in &context.records {
+            let mut artifact = open_expected(
+                root,
+                expected.name.leaf(),
+                &expected.info,
+                &expected.sha256,
+                context.persistence_mode,
+                0x80030000,
+                &security,
+            )?;
+            let record =
+                ordinary_record::decode(&read(&mut artifact.file)?, expected.name.phase())?;
+            if record.root != context.root
+                || record.source != context.source
+                || record.candidate != context.candidate
+                || record.sha256 != context.sha256
+                || record.persistence_mode != context.persistence_mode
+            {
+                return Err("RESTART_RECORD_CONTEXT_DISAGREES".into());
+            }
+            records.push(artifact);
+        }
+        check_restart_layout(root, candidate_name, &records)?;
+        emit(
+            json!({"restartAction":if prune { "prune-unpublished" } else { "record-output-observation" },"callerStage":context.stage}),
+        )?;
+        barrier("restart-guarded")?;
+        directory(root, &dir, &context.root, &security)?;
+        source.check(root, &security)?;
+        candidate.check(root, &security)?;
+        for r in &mut records {
+            r.check(root, &security)?;
+        }
+        check_restart_layout(root, candidate_name, &records)?;
+        if prune {
+            // These exact objects were created exclusively by the prior worker,
+            // and the caller retained its before-publication context. Reopened
+            // handles, not editable records or pathname patterns, select deletion.
+            while let Some(mut artifact) = records.pop() {
+                emit(json!({"ownedLeaf":artifact.name}))?;
+                barrier("restart-before-remove")?;
+                directory(root, &dir, &context.root, &security)?;
+                source.check(root, &security)?;
+                candidate.check(root, &security)?;
+                artifact.check(root, &security)?;
+                for r in &mut records {
+                    r.check(root, &security)?;
+                }
+                let mut remaining_names: Vec<_> = records.iter().map(|r| r.name).collect();
+                remaining_names.push(artifact.name);
+                let entries: Vec<_> = fs::read_dir(root)?
+                    .take(8)
+                    .map(|v| v.map(|e| e.file_name()))
+                    .collect::<io::Result<_>>()?;
+                if entries.len() != remaining_names.len() + 2
+                    || entries.iter().any(|n| {
+                        n != SOURCE && n != CANDIDATE && !remaining_names.iter().any(|s| n == s)
+                    })
+                {
+                    return Err("RESTART_NAMESPACE_CONFLICT".into());
+                }
+                effects = true;
+                crate::disposition::mark_owned_file(&artifact.file)?;
+                drop(artifact);
+                removed += 1;
+                barrier("restart-file-removed")?;
+            }
+            barrier("restart-before-remove")?;
+            directory(root, &dir, &context.root, &security)?;
+            source.check(root, &security)?;
+            candidate.check(root, &security)?;
+            check_restart_layout(root, CANDIDATE, &[])?;
+            effects = true;
+            crate::disposition::mark_owned_file(&candidate.file)?;
+            drop(candidate);
+            removed += 1;
+            barrier("restart-file-removed")?;
+            source.check(root, &security)?;
+        } else {
+            already_present = context.records.len() == 3;
+            if !already_present {
+                barrier("restart-before-record")?;
+                directory(root, &dir, &context.root, &security)?;
+                source.check(root, &security)?;
+                candidate.check(root, &security)?;
+                for r in &mut records {
+                    r.check(root, &security)?;
+                }
+                check_restart_layout(root, OUTPUT, &records)?;
+                candidate.file.sync_all()?;
+                dir.sync_all()?;
+                effects = true;
+                let record = save(
+                    root,
+                    &security,
+                    RECORDS[2].0,
+                    RECORDS[2].1,
+                    &context.root,
+                    &source,
+                    &candidate,
+                )?;
+                recorded = true;
+                records.push(record);
+                export_held_context(
+                    Stage::AfterPublication,
+                    &context.root,
+                    &source,
+                    &candidate,
+                    &records,
+                )?;
+                barrier("restart-record-file-flushed")?;
+                dir.sync_all()?;
+                barrier("restart-record-parent-flushed")?;
+                directory(root, &dir, &context.root, &security)?;
+                source.check(root, &security)?;
+                candidate.check(root, &security)?;
+                for r in &mut records {
+                    r.check(root, &security)?;
+                }
+                check_restart_layout(root, OUTPUT, &records)?;
+            }
+        }
+        Ok(())
+    })();
+    let diagnostic = result.err().map(|e| {
+        e.to_string()
+            .chars()
+            .filter(|c| !c.is_control())
+            .take(128)
+            .collect::<String>()
+    });
+    let outcome = if diagnostic.is_some() {
+        if effects {
+            "restart-partial-or-uncertain"
+        } else {
+            "restart-refused-before-effects"
+        }
+    } else if prune {
+        "owned-unpublished-handles-pruned"
+    } else if already_present {
+        "output-observation-already-present"
+    } else {
+        "output-observation-recorded-recovery-required"
+    };
+    emit(
+        json!({"outcome":outcome,"diagnostic":diagnostic,"effectsAttempted":effects,"ownedHandlesRemoved":removed,"observationRecordCreated":recorded,"cleanupPending":if prune { retained_work(root) } else { effects && !recorded },"retainedWork":retained_work(root),"sourceRetained":true,"rootRetained":true,"markerResearchOnly":true}),
+    )
+}
 pub fn run(root: &Path, mode: &str) -> Result<()> {
     match mode {
         "-prepare" => prepare(root),
@@ -564,6 +865,8 @@ pub fn run(root: &Path, mode: &str) -> Result<()> {
         "-flush-after-rename" => live(root, "", PersistenceMode::FlushAfterRename, true),
         "-write-through" => live(root, "", PersistenceMode::WriteThrough, true),
         "-inspect" => inspect(root),
+        "-restart-observe" => restart(root, false),
+        "-restart-prune" => restart(root, true),
         "-admit" | "-finalize" | "-prune" => emit(
             json!({"outcome":"refused-before-effects","workerArtifacts":0,"missingCells":["qualified-windows-namespace-receipt-crash-persistence","safe-restart-finalization-prune"]}),
         ),

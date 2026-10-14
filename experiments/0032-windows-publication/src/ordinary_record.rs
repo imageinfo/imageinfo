@@ -64,7 +64,21 @@ pub fn decode(bytes: &[u8], phase: &str) -> Result<Record, &'static str> {
     {
         return Err("RECORD_SCOPE_INVALID");
     }
-    for info in [&record.root, &record.source, &record.candidate] {
+    validate_bindings(
+        &record.root,
+        &record.source,
+        &record.candidate,
+        &record.sha256,
+    )?;
+    Ok(record)
+}
+pub fn validate_bindings(
+    root: &Info,
+    source: &Info,
+    candidate: &Info,
+    sha256: &str,
+) -> Result<(), &'static str> {
+    for info in [root, source, candidate] {
         if !info.identity.split_once(':').is_some_and(|(a, b)| {
             [a, b].iter().all(|p| {
                 !p.is_empty()
@@ -76,22 +90,21 @@ pub fn decode(bytes: &[u8], phase: &str) -> Result<Record, &'static str> {
             return Err("RECORD_IDENTITY_INVALID");
         }
     }
-    if record.source.size != 65536
-        || record.candidate.size != 65536
-        || record.source.links != 1
-        || record.candidate.links != 1
-        || record.root.attributes & 0x410 != 0x10
-        || record.source.attributes & 0x410 != 0
-        || record.candidate.attributes & 0x410 != 0
-        || record.sha256.len() != 64
-        || !record
-            .sha256
+    if source.size != 65536
+        || candidate.size != 65536
+        || source.links != 1
+        || candidate.links != 1
+        || root.attributes & 0x410 != 0x10
+        || source.attributes & 0x410 != 0
+        || candidate.attributes & 0x410 != 0
+        || sha256.len() != 64
+        || !sha256
             .bytes()
             .all(|v| v.is_ascii_digit() || (b'a'..=b'f').contains(&v))
     {
         return Err("RECORD_BINDING_INVALID");
     }
-    Ok(record)
+    Ok(())
 }
 
 #[cfg(test)]

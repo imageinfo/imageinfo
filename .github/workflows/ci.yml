@@ -111,6 +111,14 @@ jobs:
       - name: Qualify ordinary persistence ordering on Windows
         if: runner.os == 'Windows'
         run: python experiments/0022-ordinary-output/persistence_qualify.py native --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe.exe --parent experiments/0032-windows-publication/target
+      - name: Check caller-bound restart tooling syntax
+        run: python -m py_compile experiments/0022-ordinary-output/restart_qualify.py experiments/0022-ordinary-output/restart_audit.py experiments/0022-ordinary-output/restart_guest.py experiments/0022-ordinary-output/restart_guest_audit.py
+      - name: Qualify caller-bound restart marker actions on Windows
+        if: runner.os == 'Windows'
+        run: python experiments/0022-ordinary-output/restart_qualify.py --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe.exe --parent experiments/0032-windows-publication/target
+      - name: Refuse caller-bound restart adapter on unsupported platforms
+        if: runner.os != 'Windows'
+        run: python experiments/0022-ordinary-output/restart_qualify.py --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe --parent experiments/0032-windows-publication/target
       - name: Refuse unsupported ordinary persistence adapter
         if: runner.os != 'Windows'
         run: python experiments/0022-ordinary-output/persistence_qualify.py native --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe --parent experiments/0032-windows-publication/target
