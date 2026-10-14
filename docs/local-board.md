@@ -16,6 +16,12 @@ Ready for review is the verified/published handoff; Terry alone accepts Complete
 See [AGENTS.md](../AGENTS.md) for the standing triage guidance. #0012 is intentionally
 held by Terry and remains Backlog.
 
+Terry clarified triage precedence on **2026-10-14**: every In progress card ranks
+ahead of every Ready for Work card. Lane precedence comes before blocking depth,
+priority and ticket number; those order cards within a lane. Query In progress
+first and work existing cards before pulling from Ready for Work. A combined CLI
+query that interleaves the lanes does not override this rule.
+
 The active board is stored at
 `C:\Projects\localswim-state-store\imageinfo\imageinfo.json` in Terry's private
 state-store repository, approved on 2026-10-12. The old ignored
@@ -35,9 +41,12 @@ commands are:
 uv --directory C:\Projects\localswim run --frozen localswim --autopush C:\Projects\localswim-state-store\imageinfo\imageinfo.json
 localswim-cli C:\Projects\localswim-state-store\imageinfo\imageinfo.json board show
 localswim-cli C:\Projects\localswim-state-store\imageinfo\imageinfo.json board verify
-localswim-cli C:\Projects\localswim-state-store\imageinfo\imageinfo.json card next 5 --lane ready_for_work
+localswim-cli C:\Projects\localswim-state-store\imageinfo\imageinfo.json card next 5 --lane in_progress
 localswim-cli C:\Projects\localswim-state-store\imageinfo\imageinfo.json board shutdown
 ```
+
+When selecting work, consult `card next 5 --lane ready_for_work` only after the
+In progress lane has been considered under the precedence above.
 
 Terry authorized board autopush on 2026-10-12. Every imageinfo service launch,
 including restarts, must include `--autopush`. Verify the status endpoint's `push`

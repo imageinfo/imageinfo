@@ -182,6 +182,13 @@ When triaging, move sufficiently scoped cards out of Backlog unless Terry has
 explicitly held them. Distinguish insufficient scope from unmet prerequisites;
 keep descriptions, dependencies and lane state consistent with the current phase.
 
+Terry's triage precedence, clarified 2026-10-14: **every In progress card ranks
+ahead of every Ready for Work card**, regardless of blocking depth, priority or
+ticket number. Work the existing In progress cards before pulling another card
+from Ready for Work. Apply the configured blocking-depth/priority/ticket ordering
+within each lane. Query the lanes separately if a combined CLI result interleaves
+them; its cross-lane ordering does not override this instruction.
+
 Terry requires the JSON board-write monitor to be running whenever this board's
 localswim service is running. At every startup or resume, verify both the service
 and monitor, and target the monitor at the active Codex thread. Start or retarget
