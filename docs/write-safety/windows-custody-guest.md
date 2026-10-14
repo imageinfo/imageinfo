@@ -102,6 +102,12 @@ disk and captures are retained for review and later authorized qualification.
 Run instructions and private-evidence handling are in the
 [qualification tooling README](../../experiments/0044-custody-guest/README.md).
 
+The [published CI ledger](windows-custody-guest-ci.json) binds the guest tooling
+and public evidence revision `362e7e2` to its Windows, Ubuntu and macOS checks.
+CI checks the tooling's syntax and existing native/portable regressions. The
+four private VM fault cells and exact frozen static worker audit above are
+separate local observations; CI does not run this retained guest.
+
 ## Limits and remaining gates
 
 An NMI deliberately crashes only the disposable Windows guest. Its controlled

@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-14",
+  "sourceRevision": "362e7e2e5c127fa51e7af82cd801169cf0073f77",
+  "runId": 38654291796,
+  "runUrl": "https://github.com/imageinfo/imageinfo/actions/runs/38654291796",
+  "status": "passed",
+  "scope": "Three-platform syntax checks for #0044 guest tooling and existing Rust, native marker and documentation gates. CI does not run the private guest faults or rebuild the frozen #0043 static guest executable.",
+  "jobs": [
+    {
+      "id": 116160263742,
+      "runner": "windows-2025",
+      "status": "completed",
+      "conclusion": "success",
+      "guestToolingSyntax": "success",
+      "researchTests": 45,
+      "rootTests": 44,
+      "researchFormattingClippyTestsRelease": "success",
+      "rootFormattingClippyTestsRelease": "success",
+      "custodyNativeQualification": "success",
+      "custodyUnsupportedRefusal": "skipped",
+      "receiptNativeQualification": "success",
+      "receiptUnsupportedRefusal": "skipped",
+      "docs": "success"
+    },
+    {
+      "id": 116160263850,
+      "runner": "ubuntu-24.04",
+      "status": "completed",
+      "conclusion": "success",
+      "guestToolingSyntax": "success",
+      "researchTests": 45,
+      "rootTests": 45,
+      "researchFormattingClippyTestsRelease": "success",
+      "rootFormattingClippyTestsRelease": "success",
+      "custodyNativeQualification": "skipped",
+      "custodyUnsupportedRefusal": "success",
+      "receiptNativeQualification": "skipped",
+      "receiptUnsupportedRefusal": "success",
+      "docs": "success"
+    },
+    {
+      "id": 116160263694,
+      "runner": "macos-15",
+      "status": "completed",
+      "conclusion": "success",
+      "guestToolingSyntax": "success",
+      "researchTests": 45,
+      "rootTests": 45,
+      "researchFormattingClippyTestsRelease": "success",
+      "rootFormattingClippyTestsRelease": "success",
+      "custodyNativeQualification": "skipped",
+      "custodyUnsupportedRefusal": "success",
+      "receiptNativeQualification": "skipped",
+      "receiptUnsupportedRefusal": "success",
+      "docs": "success"
+    }
+  ],
+  "windowsNativeRegressionCases": {
+    "custody": 41,
+    "receipt": 93,
+    "ordinary": 64,
+    "persistence": 69,
+    "restart": 61,
+    "publication": 78,
+    "inspection": 35
+  },
+  "separateEvidence": {
+    "guestFaultAudit": "windows-custody-guest.json",
+    "guestFaultRuns": 4,
+    "frozenGuestSourceRevision": "b3815765d5230bec979e8a38b1cf9c6f384d1682",
+    "freshStaticGuestNativeCustodyCases": 41,
+    "scope": "The four private guest faults and exact static executable's native baseline were qualified separately; they are not CI executions."
+  },
+  "limitations": [
+    "Syntax checks do not execute the guest supervisor in CI.",
+    "Finite marker observations supply no authenticated caller authority, history freshness, qualified namespace commitment, storage-profile admission, physical-power-loss qualification or RAW mutation permission."
+  ]
+}

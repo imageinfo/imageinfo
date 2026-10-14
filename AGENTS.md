@@ -126,7 +126,7 @@ prefixes and fresh guards reject malformed/conflicting snapshots; source/root re
 See `docs/write-safety/windows-custody.md` and its 41-case native audit. Same-byte
 snapshot replacement is accepted: root identity does not authenticate historical
 file identity, caller authority or freshness. No automatic durable custody/profile
-is enabled; #0044 retains separate guest qualification and #0022 remains open.
+is enabled; #0044 records separate guest observations and #0022 remains open.
 #0045 adds a bounded namespace/receipt protocol proposal and test-only portable
 model. Qualified acknowledgements are explicit hypothetical profile premises,
 not current flush-return claims; a receipt cannot attest its own future flush.
