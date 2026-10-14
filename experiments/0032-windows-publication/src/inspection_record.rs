@@ -1,8 +1,8 @@
 //! Ordinary, platform-independent parsing of the existing #0032 record wire form.
 use imageinfo_recovery_probe::{Envelope, digest};
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 pub const MAX_RECORD: u64 = 65536;
-#[derive(Clone, Debug, Deserialize, PartialEq, Eq)]
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
 pub struct Info {
     pub identity: String,

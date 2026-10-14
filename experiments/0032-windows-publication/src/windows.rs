@@ -194,6 +194,9 @@ pub fn run() -> Result<()> {
     }
     let root = PathBuf::from(&args[0]);
     path_valid(&root)?;
+    if let Some(mode) = args[1].to_str().and_then(|v| v.strip_prefix("ordinary")) {
+        return crate::ordinary::run(&root, mode);
+    }
     let rooted = match args[1].to_str() {
         Some("inspect") => return crate::inspection::run(&root),
         Some("finalize" | "prune") => {

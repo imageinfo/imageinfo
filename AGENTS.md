@@ -83,6 +83,12 @@ private output. Continuous exclusion of same-owner property changes is not promi
 See `docs/write-safety/practical-output-policy.md` and revised WS-009/010/011 and
 SAF-005/006/007. Actual protocol/profile qualification and independent RAW admission
 remain required; format, byte/name, persistence and recovery gates are unchanged.
+#0022 now implements the live ordinary-owner marker sequence in the existing #0032
+research crate, with source/candidate/name holds, property checkpoints, owner editing
+and read-only restart classification. See `docs/write-safety/ordinary-output.md`.
+Actual Windows guest qualification is separate; no namespace/receipt/crash, safe
+restart finalize/prune, production storage profile or RAW permission follows from
+passing live observations. See `docs/write-safety/windows-guest.md` for VM status.
 
 ## Product intent
 

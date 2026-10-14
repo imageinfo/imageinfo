@@ -106,6 +106,12 @@ jobs:
       - name: Inspect interrupted Windows transactions without effects
         if: runner.os == 'Windows'
         run: python experiments/0036-windows-inspection/qualify.py --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe.exe --parent experiments/0032-windows-publication/target
+      - name: Qualify option A ordinary output on Windows
+        if: runner.os == 'Windows'
+        run: python experiments/0022-ordinary-output/qualify.py --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe.exe --parent experiments/0032-windows-publication/target
+      - name: Refuse unsupported ordinary output adapter
+        if: runner.os != 'Windows'
+        run: python experiments/0022-ordinary-output/qualify.py --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe --parent experiments/0032-windows-publication/target
       - name: Refuse unsupported Windows inspection adapter
         if: runner.os != 'Windows'
         run: python experiments/0036-windows-inspection/qualify.py --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe --parent experiments/0032-windows-publication/target

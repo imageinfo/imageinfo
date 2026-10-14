@@ -173,3 +173,10 @@ continuous byte/name guards and boundary property checks. WS-009/010/011 and
 SAF-005/006/007 now record that specific refinement; the eight next evidence cells
 remain unimplemented. Format admission and complete storage/persistence/recovery
 gates are unchanged. Replacement does not inherit this new-output policy.
+
+Direct work on [#0022](write-safety/ordinary-output.md) implements the accepted
+ordinary-owner marker sequence in the existing research crate. Native byte/name,
+property-check, owner-editing and read-only restart observations do not enable a
+complete profile or RAW write. A [disposable Windows guest](write-safety/windows-guest.md)
+is separately provisioned for Windows interruption qualification; host/other-OS
+results and physical power loss remain distinct evidence boundaries.

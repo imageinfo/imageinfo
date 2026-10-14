@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-14",
+  "sourceRevision": null,
+  "status": "pending",
+  "scope": "64 local option A cases, 18 portable research tests and existing 78/35 regressions passed. Source CI and Windows guest qualification are separate; no complete writer/storage profile is enabled.",
+  "jobs": []
+}
