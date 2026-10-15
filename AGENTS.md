@@ -352,9 +352,12 @@ Terry clarified lane meanings on 2026-10-11:
   and the change needed to unblock it. Missing implementation, research or
   qualification that we can pursue is work or a prerequisite, not a Blocked lane
   reason. Keep scoped queued work Ready for Work, or In Progress while actively
-  advancing it. A specific question for Terry belongs in `needs_terry`.
-- `needs_terry`: a specific decision, missing input or approval from Terry is needed.
-  State the concrete question and complete independent authorized work first.
+  advancing it. If Terry can advance it but Codex cannot, use `needs_terry`.
+- `needs_terry`: only Terry can advance the ticket; Codex cannot make further
+  authorized progress without a specific action by Terry. Terry clarified this
+  meaning on 2026-10-15. State the exact decision, input, approval or action
+  required from Terry, and complete independent authorized work first. Merely
+  having a question or unfinished work does not justify this lane.
 - `ready_for_review`: the requested scope is implemented/verified and handed off,
   with committed/pushed work and explicit evidence/limitations where applicable.
 - `completed`: Terry has accepted the handoff; bot does not move its own work here.
