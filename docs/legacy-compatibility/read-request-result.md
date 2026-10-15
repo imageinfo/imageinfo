@@ -134,8 +134,19 @@ reopened through the displayed replacement-character spelling. An authored legal
 duplicate-entry fixture first passes the ordinary reader and then exercises the
 actual oversized-result refusal; the test does not confuse a rejected large
 string with successful result expansion. No-mutation inventories remain equal
-across requests and actual transport failures. Unix non-UTF-8 path vectors still
-require an actual Unix run; compilation or Windows success does not qualify them.
+across requests and actual transport failures. Native filename support is
+filesystem-specific. The Linux CI vector read the actual invalid-UTF-8 filename
+successfully. The initial macOS APFS fixture failed during creation with
+`Illegal byte sequence` (OS error 92), before the API ran; those bytes could not
+be used to create the test input on that filesystem.
+
+The macOS vectors exercise valid Unicode filenames and an invalid-byte request
+alongside an existing valid filename matching its lossy display. The invalid-byte
+request must produce a failed-file `INPUT_IO` result without a snapshot, rather
+than read that neighbor; the selected valid Unicode neighbor must read
+successfully. Both requests require unchanged filesystem inventories and
+no-mutation effects. Exact platform run results are recorded in the associated CI
+and ticket handoff; defining a vector or compiling it is not execution evidence.
 
 The [broader integration document](integration.md) remains a proposal for request
 files and sessions. This slice does not implement its serialized request grammar,

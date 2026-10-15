@@ -531,7 +531,7 @@ fn actual_result_transport_distinguishes_complete_partial_and_failed_flush() {
     assert_eq!(inventory(&directory.path), before);
 }
 
-#[cfg(unix)]
+#[cfg(target_os = "linux")]
 #[test]
 fn native_non_unicode_input_is_read_without_reconstructing_display_path() {
     use std::os::unix::ffi::OsStringExt;
@@ -551,6 +551,45 @@ fn native_non_unicode_input_is_read_without_reconstructing_display_path() {
     );
     assert!(result.files[0].path.contains('\u{fffd}'));
     no_mutation(&result);
+    assert_eq!(inventory(&directory.path), before);
+}
+
+#[cfg(target_os = "macos")]
+#[test]
+fn native_macos_illegal_bytes_refuse_without_reopening_lossy_display_neighbor() {
+    use std::os::unix::ffi::OsStringExt;
+    let directory = support::TempDir::new();
+    let invalid = directory
+        .path
+        .join(OsString::from_vec(b"native-\xff.cr3".to_vec()));
+    // APFS rejects illegal UTF-8 names. A valid fixture at the lossy display
+    // label makes a mistaken String conversion/reopen observable as false success.
+    let lossy_neighbor = directory.path.join("native-\u{fffd}.cr3");
+    let fixture = support::fixture().bytes;
+    fs::write(&lossy_neighbor, &fixture).unwrap();
+    let before = inventory(&directory.path);
+
+    let positive = read_request::execute("caller-macos-neighbor", &tokens(&lossy_neighbor, &[]));
+    assert_eq!(positive.summary.exit_status, 0);
+    assert_eq!(positive.files[0].state, "read");
+    no_mutation(&positive);
+
+    let negative = read_request::execute("caller-macos-illegal", &tokens(&invalid, &[]));
+    assert_eq!(negative.summary.exit_status, 1);
+    assert_eq!(negative.files.len(), 1);
+    assert_eq!(negative.files[0].state, "failed");
+    assert!(negative.files[0].snapshot.is_none());
+    assert!(
+        negative.files[0]
+            .issues
+            .iter()
+            .any(|issue| issue.code == "INPUT_IO")
+    );
+    assert_eq!(
+        negative.files[0].path,
+        lossy_neighbor.to_string_lossy().as_ref()
+    );
+    no_mutation(&negative);
     assert_eq!(inventory(&directory.path), before);
 }
 
