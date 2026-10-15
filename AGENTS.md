@@ -346,9 +346,13 @@ Terry clarified lane meanings on 2026-10-11:
   Readiness is not permission to skip dependencies or restricted-action approvals.
 - `in_progress`: actively being worked, or explicitly designated by Terry as the
   next resumption point. Record an overnight/resume note when work is parked here.
-- `blocked`: started work cannot progress because of an actual blocking condition.
-  Describe the condition and the action/state change needed to unblock it. Do not
-  use this merely for an unstarted scoped card with known ticket dependencies.
+- `blocked`: neither Codex nor Terry can advance the ticket through work or
+  decisions under our control; a specific external condition must change.
+  Terry clarified this meaning on 2026-10-15. Describe that external condition
+  and the change needed to unblock it. Missing implementation, research or
+  qualification that we can pursue is work or a prerequisite, not a Blocked lane
+  reason. Keep scoped queued work Ready for Work, or In Progress while actively
+  advancing it. A specific question for Terry belongs in `needs_terry`.
 - `needs_terry`: a specific decision, missing input or approval from Terry is needed.
   State the concrete question and complete independent authorized work first.
 - `ready_for_review`: the requested scope is implemented/verified and handed off,
