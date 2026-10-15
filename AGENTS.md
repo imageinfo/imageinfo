@@ -342,6 +342,10 @@ the uniform Sol Medium requirement:
   implementation, tests and substantive documentation.
 - GPT-6.1 Sol with High effort (`gpt-6.1-sol`, `high`) for difficult reasoning and
   authentication, transaction, recovery or concurrency review.
+- GPT-6 Astra with Medium effort (`gpt-6-astra`, `medium`) for particularly
+  difficult debugging, design or architecture problems, only after Terry explicitly
+  approves using one or more Astra subagents for that turn. Ask again on each later
+  turn that would use Astra; prior approval does not carry forward.
 
 Reassess each agent's assignment each turn. The mix of models and effort levels
 may vary from turn to turn with task complexity; no fixed distribution or permanent
