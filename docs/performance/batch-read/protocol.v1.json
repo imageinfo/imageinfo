@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "revision": "batch-read-v1",
+  "fixedUtc": "2026-10-15T17:04:12.026946+00:00",
+  "sourceRevision": "188049f8ac4c7d0e107439ed385cdd0ee5208201",
+  "trackedSourceBlobsVerified": 515,
+  "binarySha256": "0d456ab9c9319639201f2b8fb0835103315e1baad1906af4fdeec891c8432181",
+  "runnerSha256": "645ec366c5b6cb6d9a049752fd25030db9e5ffd1d582133662cc01e44942cf73",
+  "collectorSha256": "585c3d923ae49991ce3804afc5b70e7c474ba93c4b245fc9db26f41b9e14bdbb",
+  "orders": [
+    [
+      1,
+      2,
+      4,
+      8
+    ],
+    [
+      8,
+      4,
+      2,
+      1
+    ],
+    [
+      2,
+      8,
+      1,
+      4
+    ]
+  ],
+  "warmupsPerCell": 2,
+  "samplesPerCell": 10,
+  "plannedBatchAttempts": 144,
+  "plannedWarmupAttempts": 24,
+  "plannedSampleAttempts": 120,
+  "plannedFileSlots": 540,
+  "plannedMeasuredFileSlots": 450,
+  "timeoutMs": 30000,
+  "captureBytesPerPipe": 4194304,
+  "maxMetadataBytesPerInput": 8388608,
+  "interRoundDelaySeconds": 5,
+  "processScope": "one ordinary native CLI process per batch; no persistent session or concurrency",
+  "consumer": "two bounded in-memory pipe drains; post-timing private capture writes; no terminal/slow-consumer measurement",
+  "clock": "time.perf_counter_ns before Popen through exit and both bounded drains; capture writes/validation excluded; overhead not subtracted",
+  "cache": "fresh per batch; all eight source hashes before/after each round warm-expose uncontrolled OS cache; device/server uncontrolled or unknown; no cache eviction",
+  "stopping": "fixed schedule; no adaptive stop/retry/outlier trimming; failed/censored slots retained",
+  "statistics": "size-separated success-conditional distributions, noise across rounds and failure/censor counts; whole-batch/N is amortized cost, not per-file latency",
+  "disclosure": "All actual camera-derived measurements/results/reports remain private; current private-analysis grant denies publishReports. No camera-derived statistics or fixture-specific identities appear in this method record."
+}

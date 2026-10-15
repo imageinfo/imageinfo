@@ -9,6 +9,9 @@ Subsequent implementation supplies the [bounded metadata-read collector](read-co
 and an [actual single-file baseline](single-read-baseline.md) for the declared
 Rust reader. The requirements below retain their original scope; those finite
 observations do not establish broader workloads, controlled cold caches or defaults.
+[#0063's batch method](batch-read-baseline.md) adds a finite ordinary-CLI grid
+and independent per-file/whole-batch audit. Camera-derived results remain private
+under their report grants; its public controls use authored inputs only.
 
 Use [measurement and limit selection](measurement.md), the
 [validation record](validation.md), [fixture plan](../fixture-plan/README.md),

@@ -285,6 +285,22 @@ XMP derivative. Opaque CMT2 coverage and cross-IFD companions refuse. Authored
 integration evidence supplies no file publication or storage/RAW admission. See
 `docs/sidecars/native-date-adapter.md`; #0085 retains its full acceptance.
 
+#0063 adds a fixed ordinary-CLI batch-read runner and independent retained-output
+audit. Camera-derived timing/outcomes remain private under their grants; public
+method constants and authored controls establish no public camera baseline.
+See `docs/performance/batch-read-baseline.md`; no performance defaults are selected.
+#0067 supplies a proposed two-person read-only maintainer handoff exercise and
+blank not-run record. Automated recipe/review checks do not appoint people or
+establish staffed operations. See `docs/governance/maintainer-handoff-exercise.md`.
+#0071 reconciles all 29 fixture families with current public scoped evidence and
+five finite P0 assertion needs. It requests no new photos and adds no release or
+JPEG-decoding gate to byte extraction. See `docs/fixture-plan/p0-assertion-gaps.md`.
+#0088 adds a standalone bounded read-only coverage reporter for the named privacy
+catalog. Native CMT/tag matches remain candidates where IFD namespace roles are
+lost; selected supported XMP properties retain exact identity. Camera results
+remain private and no privacy/removal/write certification is enabled. See
+`docs/privacy/read-coverage.md`.
+
 ## Subagent authorization
 
 

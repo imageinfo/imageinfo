@@ -1,0 +1,643 @@
+{
+  "schemaVersion": 1,
+  "kind": "authored-batch-collector-qualification",
+  "privateCameraMediaUsed": false,
+  "scope": "Authored structural fixtures only; these timings are not camera RAW performance evidence",
+  "grid": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "warmupsPerSize": 1,
+  "samplesPerSize": 3,
+  "attempts": [
+    {
+      "size": 1,
+      "index": 0,
+      "phase": "warmup",
+      "elapsedNs": 15615600,
+      "outcome": "exited",
+      "exitCode": 0,
+      "censored": false,
+      "stdoutBytes": 34733,
+      "stderrBytes": 0,
+      "files": [
+        {
+          "fixtureId": "AUTHORED-001",
+          "state": "read",
+          "correctness": "pass"
+        }
+      ],
+      "batchCorrectness": "pass"
+    },
+    {
+      "size": 1,
+      "index": 1,
+      "phase": "sample",
+      "elapsedNs": 11836400,
+      "outcome": "exited",
+      "exitCode": 0,
+      "censored": false,
+      "stdoutBytes": 34733,
+      "stderrBytes": 0,
+      "files": [
+        {
+          "fixtureId": "AUTHORED-001",
+          "state": "read",
+          "correctness": "pass"
+        }
+      ],
+      "batchCorrectness": "pass"
+    },
+    {
+      "size": 1,
+      "index": 2,
+      "phase": "sample",
+      "elapsedNs": 9713700,
+      "outcome": "exited",
+      "exitCode": 0,
+      "censored": false,
+      "stdoutBytes": 34733,
+      "stderrBytes": 0,
+      "files": [
+        {
+          "fixtureId": "AUTHORED-001",
+          "state": "read",
+          "correctness": "pass"
+        }
+      ],
+      "batchCorrectness": "pass"
+    },
+    {
+      "size": 1,
+      "index": 3,
+      "phase": "sample",
+      "elapsedNs": 9764100,
+      "outcome": "exited",
+      "exitCode": 0,
+      "censored": false,
+      "stdoutBytes": 34733,
+      "stderrBytes": 0,
+      "files": [
+        {
+          "fixtureId": "AUTHORED-001",
+          "state": "read",
+          "correctness": "pass"
+        }
+      ],
+      "batchCorrectness": "pass"
+    },
+    {
+      "size": 2,
+      "index": 0,
+      "phase": "warmup",
+      "elapsedNs": 19234200,
+      "outcome": "exited",
+      "exitCode": 0,
+      "censored": false,
+      "stdoutBytes": 68970,
+      "stderrBytes": 0,
+      "files": [
+        {
+          "fixtureId": "AUTHORED-001",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-002",
+          "state": "read",
+          "correctness": "pass"
+        }
+      ],
+      "batchCorrectness": "pass"
+    },
+    {
+      "size": 2,
+      "index": 1,
+      "phase": "sample",
+      "elapsedNs": 11793000,
+      "outcome": "exited",
+      "exitCode": 0,
+      "censored": false,
+      "stdoutBytes": 68970,
+      "stderrBytes": 0,
+      "files": [
+        {
+          "fixtureId": "AUTHORED-001",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-002",
+          "state": "read",
+          "correctness": "pass"
+        }
+      ],
+      "batchCorrectness": "pass"
+    },
+    {
+      "size": 2,
+      "index": 2,
+      "phase": "sample",
+      "elapsedNs": 12942000,
+      "outcome": "exited",
+      "exitCode": 0,
+      "censored": false,
+      "stdoutBytes": 68970,
+      "stderrBytes": 0,
+      "files": [
+        {
+          "fixtureId": "AUTHORED-001",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-002",
+          "state": "read",
+          "correctness": "pass"
+        }
+      ],
+      "batchCorrectness": "pass"
+    },
+    {
+      "size": 2,
+      "index": 3,
+      "phase": "sample",
+      "elapsedNs": 11530600,
+      "outcome": "exited",
+      "exitCode": 0,
+      "censored": false,
+      "stdoutBytes": 68970,
+      "stderrBytes": 0,
+      "files": [
+        {
+          "fixtureId": "AUTHORED-001",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-002",
+          "state": "read",
+          "correctness": "pass"
+        }
+      ],
+      "batchCorrectness": "pass"
+    },
+    {
+      "size": 4,
+      "index": 0,
+      "phase": "warmup",
+      "elapsedNs": 14610000,
+      "outcome": "exited",
+      "exitCode": 0,
+      "censored": false,
+      "stdoutBytes": 137444,
+      "stderrBytes": 0,
+      "files": [
+        {
+          "fixtureId": "AUTHORED-001",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-002",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-003",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-004",
+          "state": "read",
+          "correctness": "pass"
+        }
+      ],
+      "batchCorrectness": "pass"
+    },
+    {
+      "size": 4,
+      "index": 1,
+      "phase": "sample",
+      "elapsedNs": 15060400,
+      "outcome": "exited",
+      "exitCode": 0,
+      "censored": false,
+      "stdoutBytes": 137444,
+      "stderrBytes": 0,
+      "files": [
+        {
+          "fixtureId": "AUTHORED-001",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-002",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-003",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-004",
+          "state": "read",
+          "correctness": "pass"
+        }
+      ],
+      "batchCorrectness": "pass"
+    },
+    {
+      "size": 4,
+      "index": 2,
+      "phase": "sample",
+      "elapsedNs": 14554100,
+      "outcome": "exited",
+      "exitCode": 0,
+      "censored": false,
+      "stdoutBytes": 137433,
+      "stderrBytes": 0,
+      "files": [
+        {
+          "fixtureId": "AUTHORED-001",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-002",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-003",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-004",
+          "state": "read",
+          "correctness": "pass"
+        }
+      ],
+      "batchCorrectness": "pass"
+    },
+    {
+      "size": 4,
+      "index": 3,
+      "phase": "sample",
+      "elapsedNs": 13705900,
+      "outcome": "exited",
+      "exitCode": 0,
+      "censored": false,
+      "stdoutBytes": 137444,
+      "stderrBytes": 0,
+      "files": [
+        {
+          "fixtureId": "AUTHORED-001",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-002",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-003",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-004",
+          "state": "read",
+          "correctness": "pass"
+        }
+      ],
+      "batchCorrectness": "pass"
+    },
+    {
+      "size": 8,
+      "index": 0,
+      "phase": "warmup",
+      "elapsedNs": 20274600,
+      "outcome": "exited",
+      "exitCode": 0,
+      "censored": false,
+      "stdoutBytes": 274392,
+      "stderrBytes": 0,
+      "files": [
+        {
+          "fixtureId": "AUTHORED-001",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-002",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-003",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-004",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-005",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-006",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-007",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-008",
+          "state": "read",
+          "correctness": "pass"
+        }
+      ],
+      "batchCorrectness": "pass"
+    },
+    {
+      "size": 8,
+      "index": 1,
+      "phase": "sample",
+      "elapsedNs": 19039600,
+      "outcome": "exited",
+      "exitCode": 0,
+      "censored": false,
+      "stdoutBytes": 274392,
+      "stderrBytes": 0,
+      "files": [
+        {
+          "fixtureId": "AUTHORED-001",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-002",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-003",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-004",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-005",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-006",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-007",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-008",
+          "state": "read",
+          "correctness": "pass"
+        }
+      ],
+      "batchCorrectness": "pass"
+    },
+    {
+      "size": 8,
+      "index": 2,
+      "phase": "sample",
+      "elapsedNs": 18507200,
+      "outcome": "exited",
+      "exitCode": 0,
+      "censored": false,
+      "stdoutBytes": 274373,
+      "stderrBytes": 0,
+      "files": [
+        {
+          "fixtureId": "AUTHORED-001",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-002",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-003",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-004",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-005",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-006",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-007",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-008",
+          "state": "read",
+          "correctness": "pass"
+        }
+      ],
+      "batchCorrectness": "pass"
+    },
+    {
+      "size": 8,
+      "index": 3,
+      "phase": "sample",
+      "elapsedNs": 21381300,
+      "outcome": "exited",
+      "exitCode": 0,
+      "censored": false,
+      "stdoutBytes": 274392,
+      "stderrBytes": 0,
+      "files": [
+        {
+          "fixtureId": "AUTHORED-001",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-002",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-003",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-004",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-005",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-006",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-007",
+          "state": "read",
+          "correctness": "pass"
+        },
+        {
+          "fixtureId": "AUTHORED-008",
+          "state": "read",
+          "correctness": "pass"
+        }
+      ],
+      "batchCorrectness": "pass"
+    }
+  ],
+  "controls": [
+    {
+      "id": "duplicate-path",
+      "outcome": "exited",
+      "exitCode": 0,
+      "fileStates": [
+        "read"
+      ],
+      "deduplicated": 1,
+      "passed": true
+    },
+    {
+      "id": "missing-input",
+      "outcome": "exited",
+      "exitCode": 1,
+      "fileStates": [
+        "failed"
+      ],
+      "deduplicated": 0,
+      "passed": true
+    },
+    {
+      "id": "mixed-read-failure",
+      "outcome": "exited",
+      "exitCode": 3,
+      "fileStates": [
+        "read",
+        "failed"
+      ],
+      "deduplicated": 0,
+      "passed": true
+    },
+    {
+      "id": "timeout",
+      "outcome": "timeout",
+      "censored": true,
+      "scheduledFiles": 2,
+      "files": [
+        {
+          "fixtureId": "AUTHORED-001",
+          "state": "not-observed",
+          "correctness": "not-checked"
+        },
+        {
+          "fixtureId": "AUTHORED-002",
+          "state": "not-observed",
+          "correctness": "not-checked"
+        }
+      ],
+      "batchCorrectness": "not-checked",
+      "passed": true
+    },
+    {
+      "id": "output-overflow",
+      "outcome": "output-limit",
+      "censored": true,
+      "scheduledFiles": 2,
+      "files": [
+        {
+          "fixtureId": "AUTHORED-001",
+          "state": "not-observed",
+          "correctness": "not-checked"
+        },
+        {
+          "fixtureId": "AUTHORED-002",
+          "state": "not-observed",
+          "correctness": "not-checked"
+        }
+      ],
+      "batchCorrectness": "not-checked",
+      "passed": true
+    },
+    {
+      "id": "malformed-output",
+      "outcome": "exited",
+      "censored": false,
+      "scheduledFiles": 2,
+      "files": [
+        {
+          "fixtureId": "AUTHORED-001",
+          "state": "not-observed",
+          "correctness": "not-checked"
+        },
+        {
+          "fixtureId": "AUTHORED-002",
+          "state": "not-observed",
+          "correctness": "not-checked"
+        }
+      ],
+      "batchCorrectness": "fail",
+      "passed": true
+    }
+  ],
+  "sourcesUnchanged": true,
+  "noMutationArtifacts": true,
+  "runnerSha256": "645ec366c5b6cb6d9a049752fd25030db9e5ffd1d582133662cc01e44942cf73",
+  "collectorSha256": "585c3d923ae49991ce3804afc5b70e7c474ba93c4b245fc9db26f41b9e14bdbb",
+  "qualifierSha256": "d52fa1558983ee0af82f75ec5342f3952544ec6d9053ebe10ecc2705fc92bb68",
+  "binarySha256": "0d456ab9c9319639201f2b8fb0835103315e1baad1906af4fdeec891c8432181",
+  "oracle": "Committed #0053 authored snapshot plus published result contract, not tested-tool self output",
+  "publication": "This artifact contains authored observations only. Actual private-camera measurements and reports are withheld.",
+  "authoredFixtureHelperSha256": "c8354d2609aa664d1b86ceca75a7d9500973fcf222cdd267ce9b3c7bafe34104",
+  "authoredSnapshotSha256": "004b655c0e174c03e298c2735cf5c4829f11d0c39342d485dcbb6dc815a37bec"
+}

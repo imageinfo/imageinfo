@@ -1,0 +1,16 @@
+[package]
+name = "imageinfo-privacy-coverage-research"
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.99"
+license = "MIT"
+publish = false
+
+[dependencies]
+imageinfo = { path = "../.." }
+imageinfo-xmp-model-research = { path = "../0081-xmp-model" }
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = "=1.0.152"
+
+[lints.rust]
+unsafe_code = "forbid"

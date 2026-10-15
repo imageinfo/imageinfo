@@ -64,6 +64,14 @@ in-memory XMP derivative. #0078/#0022/#0085 retain their original acceptance and
 remain queued while these specific children are worked. Neither child completion
 nor the absence of a physical-power requirement grants production mutation.
 
+The following eight-agent wave works four existing executable scopes with paired
+implementation and independent verification: #0063 batch metadata-read scaling,
+#0067 a maintainer handoff exercise proposal, #0071 finite P0 fixture assertions,
+and #0088 read-only named privacy coverage. It creates no new child or acquisition
+request. Actual camera-derived batch/coverage evidence remains private under its
+grants; public methods and authored controls do not grant report publication,
+privacy certification, staffed readiness or a production mutation profile.
+
 ## Existing-work reconciliation
 
 #0042's live ordinary-owner marker scope was already implemented directly under

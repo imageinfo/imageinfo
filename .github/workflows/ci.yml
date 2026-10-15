@@ -36,12 +36,25 @@ jobs:
           cargo clippy --manifest-path experiments/0104-native-xmp-date-adapter/Cargo.toml --locked --all-targets -- -D warnings
           cargo test --manifest-path experiments/0104-native-xmp-date-adapter/Cargo.toml --locked
           cargo build --manifest-path experiments/0104-native-xmp-date-adapter/Cargo.toml --locked --release
+      - name: Check bounded read-only privacy coverage research
+        run: |
+          cargo fmt --manifest-path experiments/0088-privacy-coverage/Cargo.toml --all --check
+          cargo clippy --manifest-path experiments/0088-privacy-coverage/Cargo.toml --locked --all-targets -- -D warnings
+          cargo test --manifest-path experiments/0088-privacy-coverage/Cargo.toml --locked
+          cargo build --manifest-path experiments/0088-privacy-coverage/Cargo.toml --locked --release --examples
+          cargo build --manifest-path experiments/0088-privacy-coverage/Cargo.toml --locked --release
       - name: Check retained-budget and collector tooling syntax
         run: python -m py_compile experiments/0048-native-storage-failures/audit.py experiments/0049-cumulative-budget/supervisor.py experiments/0049-cumulative-budget/qualify.py scripts/read_benchmark.py scripts/test_read_benchmark.py
       - name: Check benchmark collector contracts
         run: |
           python -m pip install jsonschema==4.26.0
           python scripts/test_read_benchmark.py
+      - name: Check finite P0 fixture gaps and batch audit controls
+        run: |
+          python scripts/check_fixture_gaps.py
+          python scripts/test_measure_batch_read.py
+          python scripts/test_audit_batch_read.py
+          python -m py_compile scripts/measure_batch_read.py scripts/qualify_batch_read.py scripts/audit_batch_read.py scripts/check_fixture_gaps.py
       - name: Check single-read evidence verifier
         run: |
           python -m py_compile scripts/measure_single_read.py scripts/audit_read_baseline.py
@@ -236,6 +249,12 @@ jobs:
         run: python scripts/check_output_schemas.py
       - name: Check exact native read JSON
         run: python scripts/check_native_read_json.py
+      - name: Qualify batch collection on authored structural inputs
+        shell: bash
+        run: |
+          binary=target/debug/imageinfo
+          if [ "$RUNNER_OS" = "Windows" ]; then binary=target/debug/imageinfo.exe; fi
+          python scripts/qualify_batch_read.py --binary "$binary" --source-root . --parent .local/batch-read-ci --output .local/batch-read-ci.json
       - name: Build release executable
         run: cargo build --locked --release
       - name: Check experimental candidate formatting

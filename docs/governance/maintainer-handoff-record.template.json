@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "kind": "maintainer-handoff-exercise-record",
+  "ticket": 67,
+  "exercise": "HANDOFF-CLI-01",
+  "exerciseRevision": "maintainer-handoff-v1",
+  "recordStatus": "template-not-run",
+  "exerciseDefinitionCommit": null,
+  "sourceCommit": "188049f8ac4c7d0e107439ed385cdd0ee5208201",
+  "practicalOutcome": "not-run",
+  "participants": {
+    "primary": {
+      "chosenAttribution": null,
+      "consentedAt": null,
+      "consentEvidence": null,
+      "publicAttributionConsent": null
+    },
+    "backup": {
+      "chosenAttribution": null,
+      "consentedAt": null,
+      "consentEvidence": null,
+      "publicAttributionConsent": null
+    },
+    "distinctHumanIndependenceVerified": false,
+    "privateIdentityEvidenceReference": null
+  },
+  "session": {
+    "agreedWindow": null,
+    "primaryPreparationMinutesProposed": 20,
+    "backupSessionMinutesProposed": [
+      45,
+      90
+    ],
+    "actualStartedAt": null,
+    "actualStoppedAt": null
+  },
+  "handoff": {
+    "publicPacketReference": null,
+    "exerciseDefinitionAndSourceFrozenBeforeConsent": false,
+    "lastCompletedCheck": null,
+    "openQuestion": null,
+    "nextAction": null,
+    "knownSetupTrouble": null,
+    "backupReceivedAt": null,
+    "backupAcceptedResponsibilityAt": null,
+    "primaryUnavailableDuringAgreedSession": false
+  },
+  "backupEnvironment": {
+    "os": null,
+    "architecture": null,
+    "rustVersion": null,
+    "cargoVersion": null,
+    "pythonVersion": null,
+    "sourceCommitObserved": null,
+    "separateCheckoutConfirmed": false,
+    "additionalPrivateHelpRequired": null,
+    "helpReferences": []
+  },
+  "checks": [
+    {
+      "command": "cargo build --locked",
+      "status": "not-run",
+      "processStatus": null,
+      "sanitizedEvidence": null
+    },
+    {
+      "command": "cargo fmt --all --check",
+      "status": "not-run",
+      "processStatus": null,
+      "sanitizedEvidence": null
+    },
+    {
+      "command": "cargo clippy --locked --all-targets -- -D warnings",
+      "status": "not-run",
+      "processStatus": null,
+      "sanitizedEvidence": null
+    },
+    {
+      "command": "cargo test --locked",
+      "status": "not-run",
+      "processStatus": null,
+      "sanitizedEvidence": null
+    },
+    {
+      "command": "python scripts/check_output_schemas.py",
+      "status": "not-run",
+      "processStatus": null,
+      "sanitizedEvidence": null
+    },
+    {
+      "command": "cargo build --locked --release",
+      "status": "not-run",
+      "processStatus": null,
+      "sanitizedEvidence": null
+    },
+    {
+      "command": "python scripts/check_docs.py",
+      "status": "not-run",
+      "processStatus": null,
+      "sanitizedEvidence": null
+    }
+  ],
+  "processObservations": [
+    {
+      "id": "HELP-1",
+      "args": [
+        "preview",
+        "date-time-original",
+        "--help"
+      ],
+      "expectedStatus": 0,
+      "expected": "plain leaf help; empty stderr",
+      "status": "not-run",
+      "actualProcessStatus": null,
+      "sanitizedEvidence": null
+    },
+    {
+      "id": "HELP-2",
+      "args": [
+        "help",
+        "preview",
+        "date-time-original"
+      ],
+      "expectedStatus": 0,
+      "expected": "stdout byte-identical to HELP-1; empty stderr",
+      "status": "not-run",
+      "actualProcessStatus": null,
+      "sanitizedEvidence": null
+    },
+    {
+      "id": "HELP-3",
+      "args": [
+        "preview",
+        "help",
+        "date-time-original"
+      ],
+      "expectedStatus": 0,
+      "expected": "stdout byte-identical to HELP-1; empty stderr",
+      "status": "not-run",
+      "actualProcessStatus": null,
+      "sanitizedEvidence": null
+    },
+    {
+      "id": "ERROR-1",
+      "args": [
+        "preview",
+        "date-time-original",
+        "--help",
+        "--bogus",
+        "--output",
+        "json"
+      ],
+      "expectedStatus": 2,
+      "expected": "complete JSON usage-error envelope, empty files/artifacts, selectionComplete false; diagnostic on stderr",
+      "status": "not-run",
+      "actualProcessStatus": null,
+      "sanitizedEvidence": null
+    }
+  ],
+  "review": {
+    "backupReviewNote": null,
+    "concreteNextStep": null,
+    "unresolvedDiscrepancies": [],
+    "allPracticalObservationsReproduced": false
+  },
+  "handback": {
+    "lastCompletedStep": null,
+    "remainingWork": null,
+    "proposedNextAction": null,
+    "backupSentAt": null,
+    "primaryAcknowledgedAt": null,
+    "currentOwner": null
+  },
+  "tabletop": [
+    {
+      "id": "SETUP-FAIL",
+      "prompt": "Required setup/check fails despite older green CI",
+      "status": "not-run",
+      "participantResponse": null,
+      "evidenceOrGap": null
+    },
+    {
+      "id": "SCOPE-CHANGE",
+      "prompt": "Primary supplies a different revision or unclear extra task",
+      "status": "not-run",
+      "participantResponse": null,
+      "evidenceOrGap": null
+    },
+    {
+      "id": "BACKUP-UNAVAILABLE",
+      "prompt": "Backup unavailable or withdraws consent",
+      "status": "not-run",
+      "participantResponse": null,
+      "evidenceOrGap": null
+    },
+    {
+      "id": "INTERRUPTED",
+      "prompt": "Work stops after some checks",
+      "status": "not-run",
+      "participantResponse": null,
+      "evidenceOrGap": null
+    },
+    {
+      "id": "SENSITIVE-PACKET",
+      "prompt": "Packet/output appears to contain restricted or sensitive material",
+      "status": "not-run",
+      "participantResponse": null,
+      "evidenceOrGap": null
+    },
+    {
+      "id": "DISAGREEMENT",
+      "prompt": "Backup and returning primary disagree about completion",
+      "status": "not-run",
+      "participantResponse": null,
+      "evidenceOrGap": null
+    }
+  ],
+  "result": {
+    "independentHumanHandoffDemonstrated": false,
+    "acceptedBy": null,
+    "acceptedAt": null,
+    "sanitizedPublicEvidence": null,
+    "privateEvidenceReference": null,
+    "remainingGaps": [
+      "No consenting primary/backup identified by this proposal",
+      "Actual backup execution and handback unrun"
+    ]
+  },
+  "boundaries": {
+    "codeChangeProposed": false,
+    "mergeAuthorized": false,
+    "externalPostingAuthorized": false,
+    "accessOrRoleAppointmentAuthorized": false,
+    "releaseAuthorized": false,
+    "staffedOperationsDemonstrated": false,
+    "governanceOpen01Closed": false
+  }
+}

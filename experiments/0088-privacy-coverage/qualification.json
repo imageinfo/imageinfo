@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "ticket": 88,
+  "basis": "project-authored structural RAW/XMP inputs only; no camera-derived outcomes, counts, Booleans or hashes",
+  "catalogId": "r5-gps-owner-serial-core",
+  "catalogRevision": 1,
+  "authoredRunPlatform": {
+    "system": "Windows",
+    "machine": "AMD64"
+  },
+  "qualificationCommand": [
+    "cargo",
+    "test",
+    "--locked",
+    "--manifest-path",
+    "experiments\\0088-privacy-coverage\\Cargo.toml",
+    "--test",
+    "qualification"
+  ],
+  "authoredTests": [
+    {
+      "name": "malformed_raw_cannot_return_an_absence_report",
+      "outcome": "pass"
+    },
+    {
+      "name": "denominator_is_expanded_known_documents_not_global_coverage",
+      "outcome": "pass"
+    },
+    {
+      "name": "duplicate_zero_and_empty_opaque_allocations_are_candidates_not_absence",
+      "outcome": "pass"
+    },
+    {
+      "name": "nested_ifd_role_loss_remains_uninspectable_even_with_a_matching_tag_number",
+      "outcome": "pass"
+    },
+    {
+      "name": "equal_numeric_ids_in_wrong_cmt_context_do_not_select_another_catalog_entry",
+      "outcome": "pass"
+    },
+    {
+      "name": "exact_sidecar_duplicates_retain_form_ordinal_and_logical_path_without_values",
+      "outcome": "pass"
+    },
+    {
+      "name": "unselected_sidecar_is_unexamined_and_no_same_stem_search_is_implied",
+      "outcome": "pass"
+    },
+    {
+      "name": "unsupported_nested_or_qualified_xmp_prevents_checked_coverage",
+      "outcome": "pass"
+    },
+    {
+      "name": "preview_payload_lookalikes_are_retained_but_metadata_is_not_inspected",
+      "outcome": "pass"
+    },
+    {
+      "name": "same_labels_wrong_uri_case_or_trailing_slash_never_alias_exact_names",
+      "outcome": "pass"
+    },
+    {
+      "name": "cli_missing_input_reports_a_fixed_code_without_disclosing_the_argument",
+      "outcome": "pass"
+    },
+    {
+      "name": "cli_unpaired_utf16_path_is_not_converted_or_disclosed",
+      "outcome": "pass"
+    },
+    {
+      "name": "cli_reads_only_explicit_inputs_and_preserves_authored_files",
+      "outcome": "pass"
+    }
+  ],
+  "authoredTestCount": 13,
+  "publicSourceBindings": {
+    "experiments/0088-privacy-coverage/Cargo.toml": "d249a5c1a93edf3854c898eeb3965b67deddc47088ab2b0a1ea58b1d07b275cb",
+    "experiments/0088-privacy-coverage/Cargo.lock": "7f63e7d34ef1c0e26c5b83f38d3314917dab2e286510c49b0598b45def67d936",
+    "experiments/0088-privacy-coverage/src/lib.rs": "b49d21eeb2a2fcf1e4f43141f837123675e1353a4d67a9bec9c73e54fe595e47",
+    "experiments/0088-privacy-coverage/src/main.rs": "8ffbc4a2176312c7b78be5aa91718eb1ffb073bad43eea6d5a864e63dcdd2770",
+    "experiments/0088-privacy-coverage/tests/qualification.rs": "3c598232b616493caf1a82235560a7e62de8a5930386b2db37a691c3f6cb05d1",
+    "experiments/0088-privacy-coverage/examples/metadata_oracle.rs": "1d935f710d1d75f37177b4b3b253582ece4934352d260bf6dedea7edeeadf64f",
+    "docs/privacy/r5-catalog.v1.json": "2c40f81340730fc169bd5e62b25d20e43ba32b7b37427324c00662d69019b25c",
+    "tests/support/mod.rs": "c8354d2609aa664d1b86ceca75a7d9500973fcf222cdd267ce9b3c7bafe34104"
+  },
+  "methodLimits": [
+    "same partial root reader; no independent format parser",
+    "native numeric-key allocations are only candidates because IFD roles are not preserved",
+    "preview metadata remains unparsed; unrequested sidecar remains unexamined",
+    "zero observations never establish global absence",
+    "no privacy certification, anonymity or removal permission"
+  ],
+  "disclosureScope": "authored-only; private camera-derived reports are outside this public evidence"
+}

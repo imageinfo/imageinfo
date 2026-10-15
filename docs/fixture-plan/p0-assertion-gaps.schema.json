@@ -1,0 +1,272 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/imageinfo/imageinfo/raw/main/docs/fixture-plan/p0-assertion-gaps.schema.json",
+  "title": "Finite prioritized native R5 P0 assertion-gap ledger v1",
+  "description": "Closed documentation record. Semantic checker joins original families/priorities, bidirectional assertion references, evidence classes, rank order and disclosure boundaries. Not an execution or acquisition authorization.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "kind",
+    "revision",
+    "observedOn",
+    "milestone",
+    "evidenceSources",
+    "families",
+    "assertions"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "kind": {
+      "const": "r5-p0-assertion-gap-ledger"
+    },
+    "revision": {
+      "const": "2026-10-15.1"
+    },
+    "observedOn": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "milestone": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidenceSources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "path",
+          "class",
+          "scope"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^EV-[0-9]{3}$"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "class": {
+            "enum": [
+              "native-authored",
+              "published-private-summary",
+              "research-authored",
+              "method-only",
+              "requirements"
+            ]
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "families": {
+      "type": "array",
+      "minItems": 29,
+      "maxItems": 29,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "sourcePriority",
+          "disposition",
+          "assertionRefs",
+          "rationale",
+          "evidenceRefs"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^FXP-[0-9]{3}$"
+          },
+          "sourcePriority": {
+            "enum": [
+              "P0",
+              "P1",
+              "P2"
+            ]
+          },
+          "disposition": {
+            "enum": [
+              "active-gap",
+              "partial-current-slice",
+              "implementation-prerequisite",
+              "deferred-non-p0",
+              "deferred-secondary",
+              "research-only",
+              "requirement-only"
+            ]
+          },
+          "assertionRefs": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^P0A-[0-9]{3}$"
+            }
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidenceRefs": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^EV-[0-9]{3}$"
+            },
+            "minItems": 1
+          }
+        }
+      }
+    },
+    "assertions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "rank",
+          "familyRefs",
+          "claim",
+          "alreadyCovered",
+          "evidenceRefs",
+          "need",
+          "prerequisites",
+          "nextTicket",
+          "access",
+          "notClaimed"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^P0A-[0-9]{3}$"
+          },
+          "rank": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "familyRefs": {
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^FXP-[0-9]{3}$"
+            }
+          },
+          "claim": {
+            "type": "string",
+            "minLength": 1
+          },
+          "alreadyCovered": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidenceRefs": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^EV-[0-9]{3}$"
+            },
+            "minItems": 1
+          },
+          "need": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "target",
+              "completion"
+            ],
+            "properties": {
+              "kind": {
+                "enum": [
+                  "setting",
+                  "layout",
+                  "negative",
+                  "independent-validator"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "minLength": 1
+              },
+              "completion": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "prerequisites": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "nextTicket": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "access": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "execution",
+              "publication",
+              "constraints"
+            ],
+            "properties": {
+              "execution": {
+                "enum": [
+                  "authored-only",
+                  "restricted-existing-after-review",
+                  "not-authorized"
+                ]
+              },
+              "publication": {
+                "enum": [
+                  "public-authored-only",
+                  "private-camera-only"
+                ]
+              },
+              "constraints": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "notClaimed": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

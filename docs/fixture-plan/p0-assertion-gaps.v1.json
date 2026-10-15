@@ -1,0 +1,658 @@
+{
+  "schemaVersion": 1,
+  "kind": "r5-p0-assertion-gap-ledger",
+  "revision": "2026-10-15.1",
+  "observedOn": "2026-10-15",
+  "milestone": "Current EOS R5 full-RAW native read/preview slice and its bounded read-only date-admission observations; no new feature or mutation gate.",
+  "evidenceSources": [
+    {
+      "id": "EV-001",
+      "path": "docs/fixture-plan/case-plan.v1.json",
+      "class": "requirements",
+      "scope": "Original 29-family plan; original priorities are retained, not current execution results."
+    },
+    {
+      "id": "EV-002",
+      "path": "docs/reader/validation.md",
+      "class": "published-private-summary",
+      "scope": "Already published #0020 read/preview comparison for the declared private stratum; not broader camera coverage."
+    },
+    {
+      "id": "EV-003",
+      "path": "tests/reader_contract.rs",
+      "class": "native-authored",
+      "scope": "Root authored reader/extraction/CLI bounds and profile-negative tests; no camera photographs."
+    },
+    {
+      "id": "EV-004",
+      "path": "tests/admission_contract.rs",
+      "class": "native-authored",
+      "scope": "Root authored date/alias/indicator and JPEG framing/resource-bound tests; refusal observations do not admit writes."
+    },
+    {
+      "id": "EV-005",
+      "path": "docs/write-safety/write-admission.md",
+      "class": "published-private-summary",
+      "scope": "Previously public #0027 bounded admission/refusal observations and limits, not positive writer support."
+    },
+    {
+      "id": "EV-006",
+      "path": "docs/legacy-compatibility/native-read-json.md",
+      "class": "native-authored",
+      "scope": "Published #0053 actual authored CLI JSON/schema/semantic coverage, not expanded input-format support."
+    },
+    {
+      "id": "EV-007",
+      "path": "tests/source_binding.rs",
+      "class": "native-authored",
+      "scope": "Root source-content revalidation and stale/changed plan controls; no mutation authority."
+    },
+    {
+      "id": "EV-008",
+      "path": "docs/sidecars/xmp-component.md",
+      "class": "research-authored",
+      "scope": "Authored bounded XMP component research; not root XML/sidecar parser adoption."
+    },
+    {
+      "id": "EV-009",
+      "path": "docs/sidecars/date-preservation.md",
+      "class": "research-authored",
+      "scope": "Authored one-date XMP no-op/lexical mechanism; no production sidecar writer or storage profile."
+    },
+    {
+      "id": "EV-010",
+      "path": "docs/write-safety/cr3-reference-effects.md",
+      "class": "method-only",
+      "scope": "Public #0099 method only. New camera outcomes and denominators are private and unavailable to this public ledger."
+    },
+    {
+      "id": "EV-011",
+      "path": "docs/write-safety/cr3-rewrite-attribution.md",
+      "class": "method-only",
+      "scope": "Public #0102 read-only attribution method only. No private findings or camera coverage is imported here."
+    },
+    {
+      "id": "EV-012",
+      "path": "docs/provenance/README.md",
+      "class": "requirements",
+      "scope": "Use-specific rights, privacy, phases, publication and redistribution obligations."
+    },
+    {
+      "id": "EV-013",
+      "path": "docs/write-safety/new-output-preservation.md",
+      "class": "published-private-summary",
+      "scope": "Previously public #0021 fixed-candidate and LibRaw unprocessed RAW comparisons; not an independent embedded-JPEG decoder."
+    },
+    {
+      "id": "EV-014",
+      "path": "docs/reader/README.md",
+      "class": "requirements",
+      "scope": "Implemented finite field/profile/budget contract and explicit current exclusions."
+    },
+    {
+      "id": "EV-015",
+      "path": "docs/write-safety/power-test-policy.md",
+      "class": "requirements",
+      "scope": "Accepted best-effort disposable-VM-off ceiling; no physical power testing or hardware prerequisite."
+    },
+    {
+      "id": "EV-016",
+      "path": "docs/sidecars/pairing.md",
+      "class": "native-authored",
+      "scope": "Native explicit read-only pairing; not XMP content resolution or filesystem organization."
+    },
+    {
+      "id": "EV-017",
+      "path": "docs/fixture-plan/validation.md",
+      "class": "research-authored",
+      "scope": "Historical model/schema/provenance controls were synthetic, not executed camera cases."
+    },
+    {
+      "id": "EV-018",
+      "path": "docs/corpus-baseline/README.md",
+      "class": "published-private-summary",
+      "scope": "Previously public reference-only acquisition observations; not current native or independent-validator coverage."
+    }
+  ],
+  "families": [
+    {
+      "id": "FXP-001",
+      "sourcePriority": "P0",
+      "disposition": "partial-current-slice",
+      "assertionRefs": [],
+      "rationale": "Declared full-RAW recognition and misleading-extension/no-effect evidence exist for the current slice. This is not all layouts/settings or tamper-proof camera identity.",
+      "evidenceRefs": [
+        "EV-002",
+        "EV-003",
+        "EV-014"
+      ]
+    },
+    {
+      "id": "FXP-002",
+      "sourcePriority": "P1",
+      "disposition": "deferred-non-p0",
+      "assertionRefs": [],
+      "rationale": "Original P1 capture/firmware/lens variation remains targeted future scope. No additional ISO-only photo stratum is invented as a first-read P0 gate.",
+      "evidenceRefs": [
+        "EV-001",
+        "EV-002"
+      ]
+    },
+    {
+      "id": "FXP-003",
+      "sourcePriority": "P0",
+      "disposition": "active-gap",
+      "assertionRefs": [
+        "P0A-003"
+      ],
+      "rationale": "Distinct origins already survive; the selected missing assertion is one deliberately disagreeing CMT2/CTMD pair.",
+      "evidenceRefs": [
+        "EV-002",
+        "EV-003",
+        "EV-006"
+      ]
+    },
+    {
+      "id": "FXP-004",
+      "sourcePriority": "P0",
+      "disposition": "active-gap",
+      "assertionRefs": [
+        "P0A-003"
+      ],
+      "rationale": "Exact supported integer/rational/string and invalid-state serialization exists; the selected delta is preserving disagreeing source-qualified exact values. Generic model types do not expand the parser.",
+      "evidenceRefs": [
+        "EV-003",
+        "EV-006"
+      ]
+    },
+    {
+      "id": "FXP-005",
+      "sourcePriority": "P0",
+      "disposition": "active-gap",
+      "assertionRefs": [
+        "P0A-004"
+      ],
+      "rationale": "Select only current stored-string host-zone invariance. Broader container integer-time conversion is unimplemented and must not be simulated by extra fixtures.",
+      "evidenceRefs": [
+        "EV-004",
+        "EV-014"
+      ]
+    },
+    {
+      "id": "FXP-006",
+      "sourcePriority": "P1",
+      "disposition": "deferred-non-p0",
+      "assertionRefs": [],
+      "rationale": "Original P1 GPS interpretation is outside this root decoded slice. Opaque GPS bytes or partial reads never establish absence of location information.",
+      "evidenceRefs": [
+        "EV-001",
+        "EV-014"
+      ]
+    },
+    {
+      "id": "FXP-007",
+      "sourcePriority": "P0",
+      "disposition": "active-gap",
+      "assertionRefs": [
+        "P0A-002"
+      ],
+      "rationale": "Current stored-byte extraction/reference equality is observed; JPEG entropy validity is not promised by extraction. The selected independent decoder need is staged future preservation/usability evidence under FXP-022, not a new read gate. Nested metadata interpretation remains unsupported.",
+      "evidenceRefs": [
+        "EV-002",
+        "EV-013",
+        "EV-014"
+      ]
+    },
+    {
+      "id": "FXP-008",
+      "sourcePriority": "P0",
+      "disposition": "implementation-prerequisite",
+      "assertionRefs": [],
+      "rationale": "Original P0 embedded-XMP/sidecar conflict semantics remain. Native explicit pairing and authored XMP component/mapping research are not root XMP parsing or conflict resolution; implementation comes before an acquisition-only task.",
+      "evidenceRefs": [
+        "EV-008",
+        "EV-009",
+        "EV-016"
+      ]
+    },
+    {
+      "id": "FXP-009",
+      "sourcePriority": "P0",
+      "disposition": "implementation-prerequisite",
+      "assertionRefs": [],
+      "rationale": "Original P0 XMP typed-shape requirement remains unfulfilled by a root parser. Research-authored XML/component evidence does not qualify root or real-camera XMP coverage.",
+      "evidenceRefs": [
+        "EV-008",
+        "EV-009"
+      ]
+    },
+    {
+      "id": "FXP-010",
+      "sourcePriority": "P0",
+      "disposition": "active-gap",
+      "assertionRefs": [
+        "P0A-001",
+        "P0A-005"
+      ],
+      "rationale": "Keep existing malformed/bounds/fuzz controls; add two finite named assertions rather than repeating all variants or labeling every fuzz position a family.",
+      "evidenceRefs": [
+        "EV-003",
+        "EV-004"
+      ]
+    },
+    {
+      "id": "FXP-011",
+      "sourcePriority": "P0",
+      "disposition": "partial-current-slice",
+      "assertionRefs": [],
+      "rationale": "Authored camera/mode/encoding/external-reference refusals cover declared recognition limits. Unsupported real variants are not positive coverage; CRX/model fields remain declarations, not authenticated identity.",
+      "evidenceRefs": [
+        "EV-003",
+        "EV-014"
+      ]
+    },
+    {
+      "id": "FXP-012",
+      "sourcePriority": "P0",
+      "disposition": "active-gap",
+      "assertionRefs": [
+        "P0A-005"
+      ],
+      "rationale": "Select the published cross-resource marker counter. Other current parser bounds already have controls; hard native I/O deadlines, OS quotas and richer cancellation are not current implemented promises.",
+      "evidenceRefs": [
+        "EV-003",
+        "EV-004",
+        "EV-014"
+      ]
+    },
+    {
+      "id": "FXP-013",
+      "sourcePriority": "P0",
+      "disposition": "partial-current-slice",
+      "assertionRefs": [],
+      "rationale": "Public three-OS authored CI/path tests do not imply three-OS private-camera parity or every stream/filesystem profile. This ledger adds no private-media upload/hardware prerequisite; broader platform experiments retain their own admission/access work.",
+      "evidenceRefs": [
+        "EV-002",
+        "EV-003",
+        "EV-014"
+      ]
+    },
+    {
+      "id": "FXP-014",
+      "sourcePriority": "P0",
+      "disposition": "partial-current-slice",
+      "assertionRefs": [],
+      "rationale": "Current authored actual CLI/schema/mixed-file/invalid-value observations cover the implemented envelope slice. General reports/import/session behavior remains outside this family coverage claim.",
+      "evidenceRefs": [
+        "EV-003",
+        "EV-006"
+      ]
+    },
+    {
+      "id": "FXP-015",
+      "sourcePriority": "P2",
+      "disposition": "deferred-non-p0",
+      "assertionRefs": [],
+      "rationale": "Original P2 session framing/state isolation remains separate unimplemented transport work, not an extra corpus need.",
+      "evidenceRefs": [
+        "EV-001"
+      ]
+    },
+    {
+      "id": "FXP-016",
+      "sourcePriority": "P0",
+      "disposition": "implementation-prerequisite",
+      "assertionRefs": [],
+      "rationale": "Original P0 sidecar write preservation remains. Authored date no-op/lexical mechanism and read-only pairing do not adopt a production parser/storage/write operation; those prerequisites precede positive fixture claims.",
+      "evidenceRefs": [
+        "EV-009",
+        "EV-016"
+      ]
+    },
+    {
+      "id": "FXP-017",
+      "sourcePriority": "P1",
+      "disposition": "deferred-non-p0",
+      "assertionRefs": [],
+      "rationale": "Original P1 copy/mapping/import breadth remains outside current root read and bounded preview; no automatic write/import authority.",
+      "evidenceRefs": [
+        "EV-001",
+        "EV-009"
+      ]
+    },
+    {
+      "id": "FXP-018",
+      "sourcePriority": "P1",
+      "disposition": "deferred-non-p0",
+      "assertionRefs": [],
+      "rationale": "Original P1 general descriptive EXIF operations are not enabled by the narrower existing date candidate research.",
+      "evidenceRefs": [
+        "EV-001",
+        "EV-005"
+      ]
+    },
+    {
+      "id": "FXP-019",
+      "sourcePriority": "P1",
+      "disposition": "deferred-non-p0",
+      "assertionRefs": [],
+      "rationale": "Original P1 GPS mutation/removal is not current implemented format scope; preserve residual/privacy requirements.",
+      "evidenceRefs": [
+        "EV-001",
+        "EV-014"
+      ]
+    },
+    {
+      "id": "FXP-020",
+      "sourcePriority": "P1",
+      "disposition": "deferred-non-p0",
+      "assertionRefs": [],
+      "rationale": "Original P1 embedded XMP writes/relocation remain outside current production and sidecar research capabilities.",
+      "evidenceRefs": [
+        "EV-001",
+        "EV-008"
+      ]
+    },
+    {
+      "id": "FXP-021",
+      "sourcePriority": "P1",
+      "disposition": "deferred-non-p0",
+      "assertionRefs": [],
+      "rationale": "Original P1 maker-note edits remain unsupported. Correct negative/refusal observations never count as implementing those edits.",
+      "evidenceRefs": [
+        "EV-001",
+        "EV-005"
+      ]
+    },
+    {
+      "id": "FXP-022",
+      "sourcePriority": "P0",
+      "disposition": "active-gap",
+      "assertionRefs": [
+        "P0A-001",
+        "P0A-002"
+      ],
+      "rationale": "The selected authored allocation-boundary assertion advances current read-only admission safety only. Previously public fixed-candidate/RAW unpack evidence and private-method-only newer research do not enable a format operation or close all preservation requirements.",
+      "evidenceRefs": [
+        "EV-004",
+        "EV-005",
+        "EV-010",
+        "EV-011",
+        "EV-013"
+      ]
+    },
+    {
+      "id": "FXP-023",
+      "sourcePriority": "P0",
+      "disposition": "implementation-prerequisite",
+      "assertionRefs": [],
+      "rationale": "Original P0 actual RAW mutation/cancellation/recovery acceptance remains until an admitted operation/profile and adapter exist. Non-authorizing stale-source preview tests and marker/software research are not successful RAW writes; physical hardware tests are not a prerequisite.",
+      "evidenceRefs": [
+        "EV-007",
+        "EV-010",
+        "EV-011",
+        "EV-015"
+      ]
+    },
+    {
+      "id": "FXP-024",
+      "sourcePriority": "P1",
+      "disposition": "deferred-non-p0",
+      "assertionRefs": [],
+      "rationale": "Original P1 privacy inspection/selective removal remains a separate catalog/implementation scope. No signed-camera or general anonymity assertion is promoted to this read-slice P0 ledger or acquired here.",
+      "evidenceRefs": [
+        "EV-001",
+        "EV-005",
+        "EV-014"
+      ]
+    },
+    {
+      "id": "FXP-025",
+      "sourcePriority": "P1",
+      "disposition": "deferred-non-p0",
+      "assertionRefs": [],
+      "rationale": "Original P1 organization/recovery work remains; implemented explicit pairing is read-only and does not move or synchronize files.",
+      "evidenceRefs": [
+        "EV-001",
+        "EV-016"
+      ]
+    },
+    {
+      "id": "FXP-026",
+      "sourcePriority": "P1",
+      "disposition": "deferred-non-p0",
+      "assertionRefs": [],
+      "rationale": "Original P1 date/GPS workflow breadth remains separate from exact stored strings and authored one-date mapping.",
+      "evidenceRefs": [
+        "EV-001",
+        "EV-009",
+        "EV-014"
+      ]
+    },
+    {
+      "id": "FXP-027",
+      "sourcePriority": "P2",
+      "disposition": "deferred-secondary",
+      "assertionRefs": [],
+      "rationale": "Original P2 C-RAW is explicitly secondary and cannot gate the first full-RAW read milestone or inherit its positive evidence.",
+      "evidenceRefs": [
+        "EV-001",
+        "EV-014"
+      ]
+    },
+    {
+      "id": "FXP-028",
+      "sourcePriority": "P2",
+      "disposition": "deferred-secondary",
+      "assertionRefs": [],
+      "rationale": "Original P2 Dual Pixel RAW is explicitly secondary; current refusal controls do not qualify reading/preserving its extra data.",
+      "evidenceRefs": [
+        "EV-001",
+        "EV-014"
+      ]
+    },
+    {
+      "id": "FXP-029",
+      "sourcePriority": "P0",
+      "disposition": "partial-current-slice",
+      "assertionRefs": [],
+      "rationale": "Use-specific rights/privacy/phase and evidence controls exist; model/example validation is not media clearance. New camera-derived results require the actual grant and remain private when report publication is denied. No broad new corpus import is authorized.",
+      "evidenceRefs": [
+        "EV-012",
+        "EV-017",
+        "EV-018"
+      ]
+    }
+  ],
+  "assertions": [
+    {
+      "id": "P0A-001",
+      "rank": 1,
+      "familyRefs": [
+        "FXP-010",
+        "FXP-022"
+      ],
+      "claim": "The single-date admission check distinguishes partial CMT2 allocation overlap from touching half-open boundaries without granting mutation permission.",
+      "alreadyCovered": "Existing root tests exercise decoded and undecoded aliases and field-shape/calendar refusals. They do not name a complete half-open adjacency/one-byte-overlap control family.",
+      "evidenceRefs": [
+        "EV-004",
+        "EV-005",
+        "EV-014"
+      ],
+      "need": {
+        "kind": "negative",
+        "target": "One authored CMT2 DateTimeOriginal ASCII20/unselected DateTimeDigitized ASCII20 allocation-boundary family, with one-byte overlap and exactly-touching controls in both TIFF byte orders.",
+        "completion": "A deterministic independent interval oracle agrees with FIELD_ALLOCATION_ALIAS presence for actual overlap and its absence for touching intervals; all cases retain source bytes and production_mutation_allowed=false, including controls still refused for other gates."
+      },
+      "prerequisites": [
+        "Use the current root read-only admission API and exact declared ASCII20 operation; do not create or publish a RAW candidate."
+      ],
+      "nextTicket": 72,
+      "access": {
+        "execution": "authored-only",
+        "publication": "public-authored-only",
+        "constraints": [
+          "Use project-authored marker/metadata fixtures; no camera bytes, private paths, per-image hashes or restricted reports in source/CI.",
+          "No media acquisition or product capability is authorized by this ledger."
+        ]
+      },
+      "notClaimed": [
+        "No positive RAW format or storage admission.",
+        "No generic claim that all opaque checksums or pointer semantics are understood."
+      ]
+    },
+    {
+      "id": "P0A-002",
+      "rank": 2,
+      "familyRefs": [
+        "FXP-007",
+        "FXP-022"
+      ],
+      "claim": "For a future preservation/usability assertion, independently qualify complete PreviewImage JPEG entropy validation with explicit treatment of the stored extent.",
+      "alreadyCovered": "Published native extraction matches the reference byte extents, including padding. Same-engine reference extraction/API agreement and independent unprocessed RAW unpack do not independently decode the embedded JPEG entropy stream.",
+      "evidenceRefs": [
+        "EV-002",
+        "EV-013",
+        "EV-014"
+      ],
+      "need": {
+        "kind": "independent-validator",
+        "target": "Future independent-usability evidence: one reviewed, pinned JPEG entropy-decoder profile for the PreviewImage stored extent, qualified first on authored valid/truncated entropy controls.",
+        "completion": "The validator demonstrably consumes the authored complete codestream and rejects a truncated-entropy control; it states treatment of allowed trailing zeros and bounded output/error capture. Any later permitted private PreviewImage execution binds exact extracted bytes and records its outcome privately."
+      },
+      "prerequisites": [
+        "This is staged independent-usability evidence, not a new prerequisite or promise for current byte-exact read/extraction; no current operation claims JPEG decode validity.",
+        "Select and review the validator distribution/runtime/recipe before execution.",
+        "Verify the exact existing preview fixture rights, allowed phase and decoded-derivative permission; reference-only admission is not silently expanded."
+      ],
+      "nextTicket": 75,
+      "access": {
+        "execution": "restricted-existing-after-review",
+        "publication": "private-camera-only",
+        "constraints": [
+          "Qualify the tool using authored data first; no new photo is requested.",
+          "Existing restricted previews may be used only after exact phase/rights review.",
+          "All new camera-derived outputs, counts, Boolean findings, decoded pixels and reports remain private when publishReports is denied."
+        ]
+      },
+      "notClaimed": [
+        "No native JPEG decoder or renderer is added.",
+        "No wider preview metadata, full sensor validation or production writer coverage."
+      ]
+    },
+    {
+      "id": "P0A-003",
+      "rank": 3,
+      "familyRefs": [
+        "FXP-003",
+        "FXP-004"
+      ],
+      "claim": "Disagreeing CMT2 and CTMD ISO values survive native observation as distinct source-qualified exact values.",
+      "alreadyCovered": "Public native tests and JSON QA retain duplicate origins and exact value types. The #0053 authored fixture already introduces an additional disagreeing EXIF ISO occurrence, but its named assertions check duplicate identity/counts rather than the targeted CMT2-versus-CTMD 400/800 source-selection result. The published camera stratum remains narrow.",
+      "evidenceRefs": [
+        "EV-002",
+        "EV-003",
+        "EV-006"
+      ],
+      "need": {
+        "kind": "negative",
+        "target": "One authored full-read structural fixture with CMT2 ISO=400 and CTMD type-5 ISO=800, leaving all other profile declarations unchanged.",
+        "completion": "Unqualified ISO emits two distinct paths/ordinals and decimal strings 400 and 800; EXIF:ISO and CTMD:ISO each return the correct origin/value, without first/last-value merging, silent synchronization or changed source bytes."
+      },
+      "prerequisites": [
+        "Split one bounded executable child before any execution.",
+        "Split this assertion into one bounded authored-evidence child before implementation; #0071 records the need rather than authorizing another ticket."
+      ],
+      "nextTicket": 18,
+      "access": {
+        "execution": "authored-only",
+        "publication": "public-authored-only",
+        "constraints": [
+          "Use project-authored marker/metadata fixtures; no camera bytes, private paths, per-image hashes or restricted reports in source/CI.",
+          "No media acquisition or product capability is authorized by this ledger."
+        ]
+      },
+      "notClaimed": [
+        "No real-camera setting stratum is claimed from the authored conflict.",
+        "No metadata conflict resolution, copy mapping or write synchronization is implemented."
+      ]
+    },
+    {
+      "id": "P0A-004",
+      "rank": 4,
+      "familyRefs": [
+        "FXP-005"
+      ],
+      "claim": "Native stored EXIF date/offset/subsecond strings remain literal across controlled process TZ environments.",
+      "alreadyCovered": "The current reader exposes separate exact strings and the date parser rejects incomplete/invalid Gregorian intent without guessing a zone. It does not implement QuickTime integer-time conversion; no dedicated paired host-TZ CLI observation is recorded by the current named tests.",
+      "evidenceRefs": [
+        "EV-003",
+        "EV-004",
+        "EV-006",
+        "EV-014"
+      ],
+      "need": {
+        "kind": "setting",
+        "target": "One authored ambiguous local-time fixture DateTimeOriginal=2020:11:01 01:30:00, OffsetTimeOriginal=-04:00 and SubSecTimeOriginal=050, read in separate UTC and America/New_York process environments.",
+        "completion": "After excluding only per-run request/snapshot IDs, native JSON raw/normalized date, offset and fraction strings agree exactly across both environments; no instant, timezone conversion, trimming of fractional zeros or source-byte change is invented."
+      },
+      "prerequisites": [
+        "Split one bounded executable child before any execution.",
+        "Use only current stored-string fields and controlled subprocess environments.",
+        "Split one bounded environment-invariance child before execution; container integer-time interpretation remains a separate implementation prerequisite."
+      ],
+      "nextTicket": 18,
+      "access": {
+        "execution": "authored-only",
+        "publication": "public-authored-only",
+        "constraints": [
+          "Use project-authored marker/metadata fixtures; no camera bytes, private paths, per-image hashes or restricted reports in source/CI.",
+          "No media acquisition or product capability is authorized by this ledger."
+        ]
+      },
+      "notClaimed": [
+        "No host timezone database, camera clock accuracy or container UTC conversion claim.",
+        "No additional camera, firmware, lens or ISO acquisition is required.",
+        "Changing a process TZ variable is not a claim that the Windows OS timezone changed; no machine-global timezone setting is modified."
+      ]
+    },
+    {
+      "id": "P0A-005",
+      "rank": 5,
+      "familyRefs": [
+        "FXP-010",
+        "FXP-012"
+      ],
+      "claim": "The declared admission JPEG marker ceiling is aggregate across preview resources rather than independently reset per resource.",
+      "alreadyCovered": "Current authored tests exceed the marker/APP11 assembly bounds within one resource. The declared guard is across previews, so per-resource limit evidence alone does not name the cross-resource aggregation assertion.",
+      "evidenceRefs": [
+        "EV-004",
+        "EV-005",
+        "EV-014"
+      ],
+      "need": {
+        "kind": "negative",
+        "target": "One authored three-preview framing family with 2000 COM markers in each JPEG extent: each resource stays below 4096 markers while the combined scan exceeds the declared 4096 ceiling.",
+        "completion": "The actual admission API returns LIMIT_EXCEEDED at the aggregate bound, retains unchanged input and no artifacts, and does not turn an incomplete scan into known authenticity absence. A below-aggregate control records remaining refusals honestly."
+      },
+      "prerequisites": [
+        "Split one bounded executable child before any execution.",
+        "Retain valid bounded JPEG framing so the counter boundary, rather than an earlier malformed-envelope error, is tested.",
+        "Split one bounded resource-counter child before execution; this is not a request for OS quotas, cancellation infrastructure or new camera media."
+      ],
+      "nextTicket": 18,
+      "access": {
+        "execution": "authored-only",
+        "publication": "public-authored-only",
+        "constraints": [
+          "Use project-authored marker/metadata fixtures; no camera bytes, private paths, per-image hashes or restricted reports in source/CI.",
+          "No media acquisition or product capability is authorized by this ledger."
+        ]
+      },
+      "notClaimed": [
+        "No hard I/O deadline, OS memory quota or full adversarial safety proof.",
+        "No extra VM crash, NMI, physical power or hardware testing."
+      ]
+    }
+  ]
+}
