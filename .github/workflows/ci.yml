@@ -93,7 +93,7 @@ jobs:
       - name: Check authored same-value control and diagnostic tooling
         run: |
           python -m unittest discover -s experiments/0105-same-value-control -p "test_*.py" -v
-          python -m py_compile experiments/0105-same-value-control/control_private.py experiments/0105-same-value-control/audit_private.py experiments/0105-same-value-control/reclassify_private.py experiments/0107-jpeg-validator/qualify.py experiments/0108-fresh-name-restore/qualify.py experiments/0108-fresh-name-restore/audit.py
+          python -m py_compile experiments/0105-same-value-control/control_private.py experiments/0105-same-value-control/audit_private.py experiments/0105-same-value-control/reclassify_private.py experiments/0106-receipt-properties/qualify.py experiments/0106-receipt-properties/audit.py experiments/0106-receipt-properties/audit_final.py experiments/0106-receipt-properties/audit_continuation.py experiments/0106-receipt-properties/console.py experiments/0107-jpeg-validator/qualify.py experiments/0108-fresh-name-restore/qualify.py experiments/0108-fresh-name-restore/audit.py
       - name: Check process-owned marker transport and lifecycle
         run: |
           python -W error -m unittest discover -s experiments/0103-process-custody -p "test_*.py" -v

@@ -57,7 +57,7 @@
       "id": "property-policy",
       "status": "counterexample",
       "scope": "OD-11-boundary-observations",
-      "finding": "Ordinary private owner editing follows option A. Two receipt-written emulator/NMI cells have timestamp drift and guarded inspection refusal; cause unproven.",
+      "finding": "Ordinary private owner editing follows option A. Two historical receipt-written emulator/NMI cells have timestamp drift and guarded inspection refusal. The separate #106 disposable-overlay diagnostic records native receipt last-write drift and inspection refusal in both receipt-written VM-off cells; its rich inventory size disagreement and two read-only operator continuations remain explicit. Cause unproven; the separate overlay does not requalify or merge storage configurations.",
       "evidence": [
         {
           "path": "docs/write-safety/namespace-receipt-guest.json",
@@ -66,6 +66,14 @@
         {
           "path": "docs/write-safety/practical-output-policy.md",
           "sha256": "1902f45eaf0fc3040d63c0d63d815e60e7580c6ad74619f6d9b67d06dcb4c91e"
+        },
+        {
+          "path": "docs/write-safety/receipt-vmoff-properties.md",
+          "sha256": "ffdefb3c4e154f264ba9e56720ffc498b576372cf9d74c5be53ecf2d03d85c82"
+        },
+        {
+          "path": "docs/write-safety/receipt-vmoff-properties-guest.json",
+          "sha256": "5818b11e028762d88e6041a1468c86797655d9ed7d787c3a503fa6ab4e21a97d"
         }
       ]
     },

@@ -854,10 +854,10 @@
   "productionPublicationAllowed": false,
   "rawAdmissionAllowed": false,
   "repairAllowed": false,
-  "ledgerSha256": "f89ca6a2d0a6126b2910be83bd890f989a44a8aa70ade6e896578f0e9ccc4da9",
+  "ledgerSha256": "b3abb82c5881f2000ec89d6863ee0d3d84e5c8af62527add3706eddf4fe9e677",
   "modelSourceSha256": {
     "experiments/0051-profile-admission/admission.py": "a15b7093f9254240f31a4d9b3f2d82b9cc4a518b775c09dfca8544614b88d86a",
-    "experiments/0051-profile-admission/build_ledger.py": "6dc8769a8ff7982a2e77638fa9a5a126efe28340bd6b01bfa334aecce47f7240",
+    "experiments/0051-profile-admission/build_ledger.py": "d60b7c36d7529c5087b16ca37a76ade4f26336b7fccb74019ef8d69cac5058c0",
     "experiments/0051-profile-admission/qualify.py": "47eedfc7cceac18d89f83957aef2868f3e4fa0adea93f8ceec96696fc12bb11c"
   }
 }

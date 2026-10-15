@@ -69,6 +69,16 @@ caller-history guest observations do not supply automatic durable current caller
 authority or freshness. Same-byte snapshot replacement remains accepted by that
 bounded history mechanism.
 
+The separate [#0106 disposable-overlay diagnostic](receipt-vmoff-properties.md)
+adds integer native observations around four controlled VM-offs. Both
+`receipt-written` VM-off cells show native receipt last-write drift and frozen
+inspection refusal. One first rich inventory also reports a receipt size that
+disagrees with independently captured bytes and later native information. Two
+read-only operator continuations and their uncertain extra observations remain
+explicit. This updates the `property-policy` evidence inventory while retaining
+its counterexample status; it neither establishes the cause nor requalifies the
+original storage configuration or another ledger cell.
+
 The fixed eleven required cells cover exact configuration, continuous byte/name
 guards, property boundaries, namespace acknowledgement, receipt acknowledgement,
 caller custody, native storage errors, cumulative resources, restart actions,

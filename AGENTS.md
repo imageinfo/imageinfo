@@ -338,6 +338,13 @@ later-edited current target; 58 native cells and three admission refusals have
 independent retained-artifact inspection. See `docs/write-safety/fresh-name-restore.md`.
 This does not import external #0094 context, qualify occupied-name restoration or
 enable durable authority, complete property backup, a production profile or RAW writes.
+#0106 adds a separate read-only native receipt observer and nine frozen-actor
+guest observations with four controlled VM-offs. Both receipt-written VM-off
+cells show native last-write drift and guarded inspection refusal; one rich
+inventory has a separately recorded size disagreement. Two read-only operator
+continuations remain explicit. See `docs/write-safety/receipt-vmoff-properties.md`.
+No cause/fix, physical truncation, merged storage configuration, namespace/receipt
+acknowledgement, custody, production profile or RAW permission follows.
 
 ## Subagent authorization
 

@@ -28,8 +28,9 @@ def build():
          'Held default-stream/object/name guards and no-replacement publication have bounded live evidence. This is not a complete production format/backend guard profile.',
          'ordinary-output.md', 'namespace-receipt-native.json')
     cell('property-policy', 'counterexample', 'OD-11-boundary-observations',
-         'Ordinary private owner editing follows option A. Two receipt-written emulator/NMI cells have timestamp drift and guarded inspection refusal; cause unproven.',
-         'namespace-receipt-guest.json', 'practical-output-policy.md')
+         'Ordinary private owner editing follows option A. Two historical receipt-written emulator/NMI cells have timestamp drift and guarded inspection refusal. The separate #106 disposable-overlay diagnostic records native receipt last-write drift and inspection refusal in both receipt-written VM-off cells; its rich inventory size disagreement and two read-only operator continuations remain explicit. Cause unproven; the separate overlay does not requalify or merge storage configurations.',
+         'namespace-receipt-guest.json', 'practical-output-policy.md',
+         'receipt-vmoff-properties.md', 'receipt-vmoff-properties-guest.json')
     cell('namespace-ack', 'unqualified', 'system-SATA-QCOW2-writeback',
          'Flush returns and matching survivors alone do not qualify the declared namespace acknowledgement. Existing VM-off observations inform the best-effort contract; physical-power tests are not required. Earlier mode-specific NMI output-name loss remains historical evidence, not a current F869 receipt-sequence outcome or a future NMI test requirement.',
          'namespace-receipt-guest.json', 'windows-persistence.md', 'windows-guest.md', 'power-test-policy.md')
