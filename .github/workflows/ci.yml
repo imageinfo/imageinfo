@@ -110,6 +110,8 @@ jobs:
         run: python -m py_compile experiments/0022-ordinary-output/windows_guest.py experiments/0022-ordinary-output/guest_qualify.py experiments/0022-ordinary-output/guest_audit.py experiments/0022-ordinary-output/guest_actors.py experiments/0022-ordinary-output/persistence_qualify.py experiments/0022-ordinary-output/persistence_audit.py
       - name: Check caller-history guest qualification tooling syntax
         run: python -m py_compile experiments/0044-custody-guest/qualify.py experiments/0044-custody-guest/audit.py
+      - name: Check receipt guest qualification tooling syntax
+        run: python -m py_compile experiments/0047-receipt-guest/qualify.py experiments/0047-receipt-guest/audit.py
       - name: Qualify ordinary persistence ordering on Windows
         if: runner.os == 'Windows'
         run: python experiments/0022-ordinary-output/persistence_qualify.py native --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe.exe --parent experiments/0032-windows-publication/target

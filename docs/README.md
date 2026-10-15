@@ -48,6 +48,7 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Windows caller-history guest qualification](write-safety/windows-custody-guest.md) | #0044 four audited interruption cells: two NMI and two emulator terminations; exact #0043 source/static worker binding, explicit caller controls and retained freshness/profile limits. |
 | [Bounded namespace and receipt protocol](write-safety/namespace-receipt-protocol.md) | #0045 proposed single-output state/receipt ordering, portable logical model and finite fault plan; profile, backend and actual durability qualification remain separate. |
 | [Windows marker receipt sequence](write-safety/namespace-receipt-marker.md) | #0046 bounded exclusive receipt construction and caller-bound read-only inspection; raw flush observations retain all commitment/profile refusals. |
+| [Windows marker receipt guest qualification](write-safety/namespace-receipt-guest.md) | #0047 exact #0046 static worker, 11 receipt/publication barriers and three guest fault methods; audit outcomes pending, all commitment/profile/repair gates retained. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |

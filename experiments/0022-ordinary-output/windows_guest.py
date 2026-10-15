@@ -42,6 +42,68 @@ function Start-Probe($root,$mode) {
     $null=$child.Start()
     return $child
 }
+function Get-Inventory($root) {
+    if(Test-Path -LiteralPath $root) {
+        Get-ChildItem -LiteralPath $root -Force | ForEach-Object {
+            try {
+                if($_.PSIsContainer){@{name=$_.Name;directory=$true}}
+                else {@{name=$_.Name;size=$_.Length;sha256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant()}}
+            }
+            catch {@{name=$_.Name;inaccessible=$true;error=$_.Exception.Message}}
+        }
+    }
+}
+function Get-RootInfo($root) {
+    if(-not (Test-Path -LiteralPath $root)){return @{exists=$false}}
+    $item=Get-Item -LiteralPath $root -Force
+    return @{exists=$true;creationTimeUtc=$item.CreationTimeUtc.ToString('o');lastWriteTimeUtc=$item.LastWriteTimeUtc.ToString('o');attributes=[string]$item.Attributes}
+}
+function Get-ReceiptInventory($root) {
+    $capture=@{files=@();rootInfo=@{exists=$false};inventoryComplete=$true;inventoryErrors=@()}
+    try {
+        if(-not (Test-Path -LiteralPath $root)){return $capture}
+        $item=Get-Item -LiteralPath $root -Force
+        $capture.rootInfo=Get-RootInfo $root
+        $capture.rootInfo.kind=if($item.Attributes -band [IO.FileAttributes]::ReparsePoint){'reparse'}elseif($item.PSIsContainer){'directory'}else{'file'}
+        if($capture.rootInfo.kind -ne 'directory'){throw 'Unexpected non-directory or reparse root; not traversed'}
+        $capture.rootInfo.sddl=(Get-Acl -LiteralPath $root).Sddl
+        # The fixture is flat. Retain unexpected entry metadata without opening or
+        # traversing directories/reparse targets, and bound the namespace capture.
+        $entries=@(Get-ChildItem -LiteralPath $root -Force | Select-Object -First 33)
+        if($entries.Count -gt 32){$capture.inventoryComplete=$false;$capture.inventoryErrors+=,'More than 32 immediate entries';$entries=@($entries | Select-Object -First 32)}
+        foreach($entry in $entries) {
+            $value=@{name=$entry.Name;attributes=[string]$entry.Attributes;creationTimeUtc=$entry.CreationTimeUtc.ToString('o');lastWriteTimeUtc=$entry.LastWriteTimeUtc.ToString('o')}
+            $capture.files+=,$value
+            $value.kind=if($entry.Attributes -band [IO.FileAttributes]::ReparsePoint){'reparse'}elseif($entry.PSIsContainer){'directory'}else{'file'}
+            if($value.kind -ne 'file'){$value.unexpected=$true;$capture.inventoryComplete=$false;continue}
+            try {
+                $value.size=$entry.Length
+                # Get-FileHash streams input; no file-sized hash buffer is allocated.
+                $value.sha256=(Get-FileHash -LiteralPath $entry.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+                $value.sddl=(Get-Acl -LiteralPath $entry.FullName).Sddl
+                try {
+                    $streams=@(Get-Item -LiteralPath $entry.FullName -Stream * -ErrorAction Stop | Select-Object -First 33)
+                    if($streams.Count -gt 32){throw 'More than 32 streams'}
+                    $value.streams=@($streams | ForEach-Object {@{name=$_.Stream;length=$_.Length}})
+                    $value.streamsSupported=$true
+                } catch {$value.streamsSupported=$false;$value.streamError=$_.Exception.Message;$capture.inventoryComplete=$false}
+                if($entry.Name -like '*.record') {
+                    $inputFile=New-Object IO.FileStream($entry.FullName,[IO.FileMode]::Open,[IO.FileAccess]::Read,[IO.FileShare]7)
+                    try {
+                        $bytes=New-Object byte[] 65537;$count=0
+                        while($count -lt $bytes.Length) {
+                            $read=$inputFile.Read($bytes,$count,$bytes.Length-$count)
+                            if($read -eq 0){break};$count+=$read
+                        }
+                        if($count -gt 65536){throw 'Record exceeds 65536-byte capture bound'}
+                        $value.recordBytesBase64=[Convert]::ToBase64String($bytes,0,$count)
+                    } finally {$inputFile.Dispose()}
+                }
+            } catch {$value.inaccessible=$true;$value.error=$_.Exception.Message;$capture.inventoryComplete=$false}
+        }
+    } catch {$capture.inventoryComplete=$false;$capture.inventoryErrors+=,$_.Exception.Message}
+    return $capture
+}
 function Record-Control($state,$kind,$barrier,$control) {
     $state.controls+=,@{kind=$kind;barrier=$barrier;control=$control;guestUtc=[DateTime]::UtcNow.ToString('o')}
 }
@@ -113,11 +175,17 @@ while($true) {
                 $events=@(Get-WinEvent -FilterHashtable @{LogName='System';Id=41,1001,6008} -MaxEvents 12 -ErrorAction SilentlyContinue | Select-Object Id,RecordId,ProviderName,TimeCreated,Message)
                 Send '/result' @{id=$work.id;events=$events};continue
             }
-            if($work.action -ne 'run' -or $work.case -notmatch '^[a-z0-9-]{1,60}$' -or $work.mode -notin @('ordinary-prepare','ordinary','ordinary-inspect','ordinary-admit','ordinary-finalize','ordinary-prune','ordinary-persistence-buffered','ordinary-flush-after-rename','ordinary-write-through','ordinary-restart-observe','ordinary-restart-prune','ordinary-custody-save','ordinary-custody-inspect')) {throw 'Invalid guest job'}
+            if($work.action -ne 'run' -or $work.case -notmatch '^[a-z0-9-]{1,60}$' -or $work.mode -notin @('ordinary-prepare','ordinary','ordinary-inspect','ordinary-admit','ordinary-finalize','ordinary-prune','ordinary-persistence-buffered','ordinary-flush-after-rename','ordinary-write-through','ordinary-restart-observe','ordinary-restart-prune','ordinary-custody-save','ordinary-custody-inspect','ordinary-receipt','ordinary-receipt-inspect','ordinary-inventory')) {throw 'Invalid guest job'}
             $root='C:\ImageInfoGuest\cases\'+$work.case+'.marker'
             if($work.custodyCase) {
                 if($work.mode -notin @('ordinary-custody-save','ordinary-custody-inspect') -or $work.custodyCase -notmatch '^[a-z0-9-]{1,60}$') {throw 'Invalid custody root selector'}
                 $root='C:\ImageInfoGuest\cases\'+$work.custodyCase+'.marker'
+            }
+            if($work.mode -eq 'ordinary-inventory') {
+                $inventory=Get-ReceiptInventory $root
+                $inventory.id=$work.id;$inventory.inventoryOnly=$true;$inventory.exitCode=0;$inventory.stdout=@();$inventory.stderr=''
+                Send '/result' $inventory
+                continue
             }
             $custody=$null
             if($work.custodyPlan) {
@@ -126,8 +194,12 @@ while($true) {
             }
             if($work.postActor){Send '/event' @{id=$work.id;event=(Act $work.postActor $root)}}
             $p=Start-Probe $root $work.mode
-            $lines=@();$context=$null
+            $lines=@();$context=$null;$termination=$null
             try {
+            if($work.mode -eq 'ordinary-receipt-inspect') {
+                $wire=if($work.receiptContext){$work.receiptContext | ConvertTo-Json -Depth 16 -Compress}else{''}
+                $p.StandardInput.WriteLine($wire);$p.StandardInput.Flush()
+            }
             if($work.mode -in @('ordinary-restart-observe','ordinary-restart-prune')) {
                 $wire=if($work.callerContext){$work.callerContext | ConvertTo-Json -Depth 16 -Compress}else{''}
                 $p.StandardInput.WriteLine($wire);$p.StandardInput.Flush()
@@ -181,16 +253,25 @@ while($true) {
                     }
                     if($event.barrier -eq $work.actorAt -and $work.actor){Send '/event' @{id=$work.id;event=(Act $work.actor $root)}}
                     if($event.barrier -eq $work.stopAt) {
-                        if($work.control) {$p.StandardInput.WriteLine($work.control);$p.StandardInput.Flush()}
-                    } else {$p.StandardInput.WriteLine('continue');$p.StandardInput.Flush()}
+                        if($work.mode -eq 'ordinary-receipt') {Send '/event' @{id=$work.id;event=@{supervisorControl=@{barrier=$event.barrier;control='held';guestUtc=[DateTime]::UtcNow.ToString('o');processId=$p.Id};supervisorObservation=$true}}}
+                        if($work.control -eq 'terminate') {
+                            # Kill the exact held child without releasing this barrier;
+                            # a worker control-line refusal is not process termination.
+                            $termination=@{barrier=$event.barrier;processId=$p.Id;processStartUtc=$p.StartTime.ToUniversalTime().ToString('o');control='terminate';barrierContinuationSent=$false;killCalled=$false;exitWaitCompleted=$false;exitCode=$null}
+                            $p.Kill();$termination.killCalled=$true
+                            $p.WaitForExit();$termination.exitWaitCompleted=$true;$termination.exitCode=$p.ExitCode
+                            $termination.guestUtc=[DateTime]::UtcNow.ToString('o')
+                            Send '/event' @{id=$work.id;event=@{processTermination=$termination;supervisorObservation=$true;capturedStdout=$lines}}
+                        } elseif($work.control) {$p.StandardInput.WriteLine($work.control);$p.StandardInput.Flush()}
+                    } else {
+                        $p.StandardInput.WriteLine('continue');$p.StandardInput.Flush()
+                        if($work.mode -eq 'ordinary-receipt') {Send '/event' @{id=$work.id;event=@{supervisorControl=@{barrier=$event.barrier;control='continue';guestUtc=[DateTime]::UtcNow.ToString('o');processId=$p.Id};supervisorObservation=$true}}}
+                    }
                 }
             }
             $p.WaitForExit();$stderr=$p.StandardError.ReadToEnd()
-            $files=@()
-            if(Test-Path -LiteralPath $root) {
-                $files=@(Get-ChildItem -LiteralPath $root -File | ForEach-Object {try {@{name=$_.Name;size=$_.Length;sha256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant()}}catch {@{name=$_.Name;inaccessible=$true}}})
-            }
-            Send '/result' @{id=$work.id;exitCode=$p.ExitCode;stdout=$lines;stderr=$stderr;files=$files}
+            $files=@(Get-Inventory $root)
+            Send '/result' @{id=$work.id;exitCode=$p.ExitCode;stdout=$lines;stderr=$stderr;files=$files;rootInfo=(Get-RootInfo $root);processTermination=$termination}
             } finally {
                 if($custody -and -not $p.HasExited){$p.Kill();$p.WaitForExit()}
                 $p.Dispose()
