@@ -114,6 +114,14 @@ five Sol Medium, one Sol High and two Luna Light agents according to actual work
 The mix is selected again each turn. These bounded deliverables do not enable a
 writer/storage profile, adopt proposed defaults or activate repository settings.
 
+The next 2026-10-15 batch pairs implementation and independent review for #0094
+marker-original retention, and prepares #0068 owner-access continuity, #0069 review
+routing and #0070 first-release policy packages. Four Sol Medium authors, two Sol
+High reviewers and two Luna Light mechanical QA agents cover these scoped outcomes.
+Marker retention/refusal observations do not qualify conditional replacement,
+restore or durability. Governance packages do not grant access, activate rules or
+publish a release; their future actions retain explicit operator/consent requirements.
+
 The split preserves [WS/SAF requirements](write-safety/README.md), accepted
 [OD-11 option A](write-safety/practical-output-policy.md) and independent RAW
 admission. #0027's accepted refusal research does not provide an admitted mutation

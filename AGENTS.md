@@ -317,6 +317,11 @@ remain distinct from calendar/zone semantics, writer admission and repair. See
 and CRLF input and canonical LF output. Schema/model vectors are not a decoder,
 process runtime, real pipe/flush test or cancellation implementation. See
 `docs/legacy-compatibility/read-session-framing.md`.
+#0094 implements a fresh authored-marker retained-original copy with overlapping
+identity holds and identical precommit recovery material for keep/no-backup requests.
+Finite process-exit and refusal observations do not qualify conditional replacement,
+durability, complete filesystem-property backup or fresh guarded restore. See
+`docs/write-safety/original-retention.md`; no production profile or RAW writer is enabled.
 
 ## Subagent authorization
 

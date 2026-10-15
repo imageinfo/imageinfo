@@ -94,6 +94,23 @@ jobs:
           cargo clippy --locked --manifest-path experiments/0093-conditional-replacement/Cargo.toml --all-targets -- -D warnings
           cargo test --locked --manifest-path experiments/0093-conditional-replacement/Cargo.toml
           cargo build --locked --release --manifest-path experiments/0093-conditional-replacement/Cargo.toml
+      - name: Check original-retention marker research
+        run: |
+          cargo fmt --manifest-path experiments/0094-original-retention/Cargo.toml --all --check
+          cargo clippy --locked --manifest-path experiments/0094-original-retention/Cargo.toml --all-targets -- -D warnings
+          cargo test --locked --manifest-path experiments/0094-original-retention/Cargo.toml
+          cargo build --locked --release --manifest-path experiments/0094-original-retention/Cargo.toml
+          python -m py_compile experiments/0094-original-retention/qualify.py experiments/0094-original-retention/audit.py
+      - name: Qualify original retention and process interruptions on Windows
+        if: runner.os == 'Windows'
+        run: |
+          python experiments/0094-original-retention/qualify.py --binary experiments/0094-original-retention/target/release/imageinfo-original-retention-probe.exe --parent .local/original-retention-ci --output .local/original-retention-ci.json
+          python -c "import subprocess,sys; from pathlib import Path; roots=list(Path('.local/original-retention-ci').glob('retention-094-*')); assert len(roots)==1; subprocess.run([sys.executable,'experiments/0094-original-retention/audit.py','--scratch',str(roots[0]),'--output','.local/original-retention-ci-audit.json'],check=True)"
+      - name: Refuse original-retention research on unsupported platforms
+        if: runner.os != 'Windows'
+        run: |
+          experiments/0094-original-retention/target/release/imageinfo-original-retention-probe .local/retention-must-not-exist keep > .local/retention-refusal.json
+          python -c "import json; from pathlib import Path; v=json.loads(Path('.local/retention-refusal.json').read_text()); assert v['refusalCode']=='WINDOWS_ONLY' and not v['productionReplacementAllowed'] and not v['restoreAllowed'] and not v['committed'] and v['enabledProfiles']==0; assert not Path('.local/retention-must-not-exist').exists()"
       - name: Qualify conditional replacement markers on Windows
         if: runner.os == 'Windows'
         run: python experiments/0093-conditional-replacement/qualify.py --binary experiments/0093-conditional-replacement/target/release/imageinfo-conditional-replacement-probe.exe --parent .local/conditional-replacement-ci --output .local/conditional-replacement-ci.json

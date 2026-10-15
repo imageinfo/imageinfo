@@ -85,6 +85,10 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Stored-preview measurement](performance/preview-baseline.md) | #0062 finite authored listing/extraction measurements and stored-resource correctness, without a camera-corpus speed claim. |
 | [Read-limit proposal](performance/read-limits-proposal.md) | #0064 measured evidence, proposed operating limits and explicit unmeasured cells; no adopted runtime default change. |
 | [Security-intake readiness proposal](governance/security-intake-readiness.md) | #0066 current read-only setting observation and proposed consent/activation/test package; no settings changes or staffed-intake claim. |
+| [Marker original retention](write-safety/original-retention.md) | #0094 bounded authored-marker retention and refusal/interruption qualification; no production replacement, restore or durability admission. |
+| [Owner-access continuity plan](governance/owner-access-continuity.md) | #0068 private inventory and future drill procedure, with explicit consenting operators and no account/access changes. |
+| [Review-routing plan](governance/review-routing-plan.md) | #0069 proposed rules/routing configuration and finite future tests; no enforcement or appointments enabled by the proposal. |
+| [First-release policy proposal](governance/first-release-policy.md) | #0070 bounded native package version/support/distribution choices and future rehearsal, without release publication or signing infrastructure. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |

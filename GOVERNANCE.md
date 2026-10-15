@@ -159,7 +159,14 @@ verification dates and sanitized evidence before claiming shared maintenance.
 | GOV-OPEN-05 | Choose release authority, version/support policy and signing custody | Named operators, reproducible build/validation instructions and independent release rehearsal after implementation selection |
 | GOV-OPEN-06 | Publish contributor verification commands for the eventual toolchain | Clean-machine setup/checks reproducible without private paths, plus reviewed CI permissions and a conduct/escalation contact |
 
-These are follow-up readiness work, not authorization to grant permissions, change
-settings or publish releases. The [artifact provenance policy](docs/provenance/README.md)
-now supplies the #0010 review process under locked MIT. #0013 is the next evidence-work
-candidate after policy review and lawful input selection; implementation remains deferred.
+The [security-intake package](docs/governance/security-intake-readiness.md),
+[owner-access continuity plan](docs/governance/owner-access-continuity.md),
+[review-routing plan](docs/governance/review-routing-plan.md) and
+[first-release policy proposal](docs/governance/first-release-policy.md) prepare
+bounded follow-up decisions and tests. They do not establish staffed operations,
+grant permissions, activate settings or publish a release. The
+[artifact provenance policy](docs/provenance/README.md) supplies the #0010 review
+process under locked MIT. Subsequent native implementation and its verified limits
+are documented in the [foundation](docs/foundation/README.md) and
+[reader](docs/reader/README.md) guides; their existence does not close these
+operational-readiness actions.
