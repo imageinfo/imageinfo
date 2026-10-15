@@ -362,6 +362,12 @@ Terry clarified lane meanings on 2026-10-11:
   with committed/pushed work and explicit evidence/limitations where applicable.
 - `completed`: Terry has accepted the handoff; bot does not move its own work here.
 
+Terry clarified the queued-work disposition on 2026-10-15: if neither
+`needs_terry` nor `blocked` applies, the card belongs in Backlog or Ready for Work.
+Use Backlog only for insufficient scope/detail or Terry's explicit hold; use
+Ready for Work for sufficiently scoped work, including prerequisites we can
+advance. In Progress remains for active work or Terry's designated resumption point.
+
 When triaging, move sufficiently scoped cards out of Backlog unless Terry has
 explicitly held them. Distinguish insufficient scope from unmet prerequisites;
 keep descriptions, dependencies and lane state consistent with the current phase.
