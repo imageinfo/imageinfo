@@ -1,0 +1,1063 @@
+{
+  "schema": "imageinfo.two-name-cycle.v1",
+  "status": "specification-only",
+  "profile": {
+    "id": "two-name-local-ntfs-v1",
+    "status": "unqualified",
+    "scope": "Windows local fixed NTFS; one volume and one held parent; two distinct single-link regular original objects"
+  },
+  "authority": {
+    "filesystem_mutation": false,
+    "replay": false,
+    "rollback": false,
+    "cleanup": false,
+    "profile_admission": false,
+    "raw_admission": false
+  },
+  "states": {
+    "initial": {
+      "a": "alpha",
+      "b": "beta",
+      "temp": null
+    },
+    "after_first": {
+      "a": null,
+      "b": "beta",
+      "temp": "alpha"
+    },
+    "after_second": {
+      "a": "beta",
+      "b": null,
+      "temp": "alpha"
+    },
+    "complete": {
+      "a": "beta",
+      "b": "alpha",
+      "temp": null
+    }
+  },
+  "moves": [
+    {
+      "id": "a-to-temp",
+      "source": "a",
+      "target": "temp",
+      "object": "alpha"
+    },
+    {
+      "id": "b-to-a",
+      "source": "b",
+      "target": "a",
+      "object": "beta"
+    },
+    {
+      "id": "temp-to-b",
+      "source": "temp",
+      "target": "b",
+      "object": "alpha"
+    }
+  ],
+  "vector_semantics": {
+    "applied": "Hypothetical exact held-source no-replace success, not native evidence",
+    "not-applied": "Hypothetical proven no-effect failure, not an arbitrary OS error",
+    "unknown": "Affected source and destination bindings unknown; stop immediately",
+    "denied-actor": "Assumed guard exclusion in model only; no native enforcement evidence",
+    "foreign": "Create distinct foreign object in empty slot; preserve it",
+    "stop": "No subsequent transition or compensating action",
+    "verify": "Final guarded observation; matched needed for complete-observed",
+    "bindings": "Last confirmed/observed symbolic map; after uncertainty this is not current namespace, identity preservation, custody or guard-continuity evidence"
+  },
+  "vectors": [
+    {
+      "id": "complete-three-moves",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "temp-to-b",
+          "outcome": "applied"
+        },
+        {
+          "kind": "verify",
+          "outcome": "matched"
+        }
+      ],
+      "expected": {
+        "classification": "complete-observed",
+        "bindings": {
+          "a": "beta",
+          "b": "alpha",
+          "temp": null
+        },
+        "applied_moves": 3,
+        "uncertain": false
+      }
+    },
+    {
+      "id": "no-effect-call-a-to-temp",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "not-applied"
+        }
+      ],
+      "expected": {
+        "classification": "no-effect",
+        "bindings": {
+          "a": "alpha",
+          "b": "beta",
+          "temp": null
+        },
+        "applied_moves": 0,
+        "uncertain": false
+      }
+    },
+    {
+      "id": "ambiguous-call-a-to-temp",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "unknown"
+        }
+      ],
+      "expected": {
+        "classification": "recovery-required",
+        "bindings": {
+          "a": "unknown",
+          "b": "beta",
+          "temp": "unknown"
+        },
+        "applied_moves": 0,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "no-effect-call-b-to-a",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "not-applied"
+        }
+      ],
+      "expected": {
+        "classification": "partial",
+        "bindings": {
+          "a": null,
+          "b": "beta",
+          "temp": "alpha"
+        },
+        "applied_moves": 1,
+        "uncertain": false
+      }
+    },
+    {
+      "id": "ambiguous-call-b-to-a",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "unknown"
+        }
+      ],
+      "expected": {
+        "classification": "recovery-required",
+        "bindings": {
+          "a": "unknown",
+          "b": "unknown",
+          "temp": "alpha"
+        },
+        "applied_moves": 1,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "no-effect-call-temp-to-b",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "temp-to-b",
+          "outcome": "not-applied"
+        }
+      ],
+      "expected": {
+        "classification": "partial",
+        "bindings": {
+          "a": "beta",
+          "b": null,
+          "temp": "alpha"
+        },
+        "applied_moves": 2,
+        "uncertain": false
+      }
+    },
+    {
+      "id": "ambiguous-call-temp-to-b",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "temp-to-b",
+          "outcome": "unknown"
+        }
+      ],
+      "expected": {
+        "classification": "recovery-required",
+        "bindings": {
+          "a": "beta",
+          "b": "unknown",
+          "temp": "unknown"
+        },
+        "applied_moves": 2,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "cancel-prefix-0",
+      "events": [
+        {
+          "kind": "stop",
+          "reason": "cancel"
+        }
+      ],
+      "expected": {
+        "classification": "no-effect",
+        "bindings": {
+          "a": "alpha",
+          "b": "beta",
+          "temp": null
+        },
+        "applied_moves": 0,
+        "uncertain": false
+      }
+    },
+    {
+      "id": "guard-lost-prefix-0",
+      "events": [
+        {
+          "kind": "stop",
+          "reason": "guard-lost"
+        }
+      ],
+      "expected": {
+        "classification": "recovery-required",
+        "bindings": {
+          "a": "alpha",
+          "b": "beta",
+          "temp": null
+        },
+        "applied_moves": 0,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "property-mismatch-prefix-0",
+      "events": [
+        {
+          "kind": "stop",
+          "reason": "property-mismatch"
+        }
+      ],
+      "expected": {
+        "classification": "no-effect",
+        "bindings": {
+          "a": "alpha",
+          "b": "beta",
+          "temp": null
+        },
+        "applied_moves": 0,
+        "uncertain": false
+      }
+    },
+    {
+      "id": "restart-prefix-0",
+      "events": [
+        {
+          "kind": "stop",
+          "reason": "restart"
+        }
+      ],
+      "expected": {
+        "classification": "recovery-required",
+        "bindings": {
+          "a": "alpha",
+          "b": "beta",
+          "temp": null
+        },
+        "applied_moves": 0,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "cancel-prefix-1",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "stop",
+          "reason": "cancel"
+        }
+      ],
+      "expected": {
+        "classification": "partial",
+        "bindings": {
+          "a": null,
+          "b": "beta",
+          "temp": "alpha"
+        },
+        "applied_moves": 1,
+        "uncertain": false
+      }
+    },
+    {
+      "id": "guard-lost-prefix-1",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "stop",
+          "reason": "guard-lost"
+        }
+      ],
+      "expected": {
+        "classification": "recovery-required",
+        "bindings": {
+          "a": null,
+          "b": "beta",
+          "temp": "alpha"
+        },
+        "applied_moves": 1,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "property-mismatch-prefix-1",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "stop",
+          "reason": "property-mismatch"
+        }
+      ],
+      "expected": {
+        "classification": "recovery-required",
+        "bindings": {
+          "a": null,
+          "b": "beta",
+          "temp": "alpha"
+        },
+        "applied_moves": 1,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "restart-prefix-1",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "stop",
+          "reason": "restart"
+        }
+      ],
+      "expected": {
+        "classification": "recovery-required",
+        "bindings": {
+          "a": null,
+          "b": "beta",
+          "temp": "alpha"
+        },
+        "applied_moves": 1,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "cancel-prefix-2",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "applied"
+        },
+        {
+          "kind": "stop",
+          "reason": "cancel"
+        }
+      ],
+      "expected": {
+        "classification": "partial",
+        "bindings": {
+          "a": "beta",
+          "b": null,
+          "temp": "alpha"
+        },
+        "applied_moves": 2,
+        "uncertain": false
+      }
+    },
+    {
+      "id": "guard-lost-prefix-2",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "applied"
+        },
+        {
+          "kind": "stop",
+          "reason": "guard-lost"
+        }
+      ],
+      "expected": {
+        "classification": "recovery-required",
+        "bindings": {
+          "a": "beta",
+          "b": null,
+          "temp": "alpha"
+        },
+        "applied_moves": 2,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "property-mismatch-prefix-2",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "applied"
+        },
+        {
+          "kind": "stop",
+          "reason": "property-mismatch"
+        }
+      ],
+      "expected": {
+        "classification": "recovery-required",
+        "bindings": {
+          "a": "beta",
+          "b": null,
+          "temp": "alpha"
+        },
+        "applied_moves": 2,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "restart-prefix-2",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "applied"
+        },
+        {
+          "kind": "stop",
+          "reason": "restart"
+        }
+      ],
+      "expected": {
+        "classification": "recovery-required",
+        "bindings": {
+          "a": "beta",
+          "b": null,
+          "temp": "alpha"
+        },
+        "applied_moves": 2,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "cancel-prefix-3",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "temp-to-b",
+          "outcome": "applied"
+        },
+        {
+          "kind": "stop",
+          "reason": "cancel"
+        }
+      ],
+      "expected": {
+        "classification": "partial",
+        "bindings": {
+          "a": "beta",
+          "b": "alpha",
+          "temp": null
+        },
+        "applied_moves": 3,
+        "uncertain": false
+      }
+    },
+    {
+      "id": "guard-lost-prefix-3",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "temp-to-b",
+          "outcome": "applied"
+        },
+        {
+          "kind": "stop",
+          "reason": "guard-lost"
+        }
+      ],
+      "expected": {
+        "classification": "recovery-required",
+        "bindings": {
+          "a": "beta",
+          "b": "alpha",
+          "temp": null
+        },
+        "applied_moves": 3,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "property-mismatch-prefix-3",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "temp-to-b",
+          "outcome": "applied"
+        },
+        {
+          "kind": "stop",
+          "reason": "property-mismatch"
+        }
+      ],
+      "expected": {
+        "classification": "recovery-required",
+        "bindings": {
+          "a": "beta",
+          "b": "alpha",
+          "temp": null
+        },
+        "applied_moves": 3,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "restart-prefix-3",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "temp-to-b",
+          "outcome": "applied"
+        },
+        {
+          "kind": "stop",
+          "reason": "restart"
+        }
+      ],
+      "expected": {
+        "classification": "recovery-required",
+        "bindings": {
+          "a": "beta",
+          "b": "alpha",
+          "temp": null
+        },
+        "applied_moves": 3,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "foreign-temp-prefix-0",
+      "events": [
+        {
+          "kind": "foreign",
+          "slot": "temp"
+        },
+        {
+          "kind": "stop",
+          "reason": "foreign-winner"
+        }
+      ],
+      "expected": {
+        "classification": "no-effect",
+        "bindings": {
+          "a": "alpha",
+          "b": "beta",
+          "temp": "foreign"
+        },
+        "applied_moves": 0,
+        "uncertain": false
+      }
+    },
+    {
+      "id": "foreign-a-prefix-1",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "foreign",
+          "slot": "a"
+        },
+        {
+          "kind": "stop",
+          "reason": "foreign-winner"
+        }
+      ],
+      "expected": {
+        "classification": "partial",
+        "bindings": {
+          "a": "foreign",
+          "b": "beta",
+          "temp": "alpha"
+        },
+        "applied_moves": 1,
+        "uncertain": false
+      }
+    },
+    {
+      "id": "foreign-b-prefix-2",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "applied"
+        },
+        {
+          "kind": "foreign",
+          "slot": "b"
+        },
+        {
+          "kind": "stop",
+          "reason": "foreign-winner"
+        }
+      ],
+      "expected": {
+        "classification": "partial",
+        "bindings": {
+          "a": "beta",
+          "b": "foreign",
+          "temp": "alpha"
+        },
+        "applied_moves": 2,
+        "uncertain": false
+      }
+    },
+    {
+      "id": "foreign-temp-prefix-3",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "temp-to-b",
+          "outcome": "applied"
+        },
+        {
+          "kind": "foreign",
+          "slot": "temp"
+        },
+        {
+          "kind": "stop",
+          "reason": "foreign-winner"
+        }
+      ],
+      "expected": {
+        "classification": "partial",
+        "bindings": {
+          "a": "beta",
+          "b": "alpha",
+          "temp": "foreign"
+        },
+        "applied_moves": 3,
+        "uncertain": false
+      }
+    },
+    {
+      "id": "denied-source-actor-a-prefix-0",
+      "events": [
+        {
+          "kind": "denied-actor",
+          "slot": "a"
+        },
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "temp-to-b",
+          "outcome": "applied"
+        },
+        {
+          "kind": "verify",
+          "outcome": "matched"
+        }
+      ],
+      "expected": {
+        "classification": "complete-observed",
+        "bindings": {
+          "a": "beta",
+          "b": "alpha",
+          "temp": null
+        },
+        "applied_moves": 3,
+        "uncertain": false
+      }
+    },
+    {
+      "id": "denied-source-actor-b-prefix-0",
+      "events": [
+        {
+          "kind": "denied-actor",
+          "slot": "b"
+        },
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "temp-to-b",
+          "outcome": "applied"
+        },
+        {
+          "kind": "verify",
+          "outcome": "matched"
+        }
+      ],
+      "expected": {
+        "classification": "complete-observed",
+        "bindings": {
+          "a": "beta",
+          "b": "alpha",
+          "temp": null
+        },
+        "applied_moves": 3,
+        "uncertain": false
+      }
+    },
+    {
+      "id": "denied-source-actor-temp-prefix-1",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "denied-actor",
+          "slot": "temp"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "temp-to-b",
+          "outcome": "applied"
+        },
+        {
+          "kind": "verify",
+          "outcome": "matched"
+        }
+      ],
+      "expected": {
+        "classification": "complete-observed",
+        "bindings": {
+          "a": "beta",
+          "b": "alpha",
+          "temp": null
+        },
+        "applied_moves": 3,
+        "uncertain": false
+      }
+    },
+    {
+      "id": "denied-source-actor-b-prefix-1",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "denied-actor",
+          "slot": "b"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "temp-to-b",
+          "outcome": "applied"
+        },
+        {
+          "kind": "verify",
+          "outcome": "matched"
+        }
+      ],
+      "expected": {
+        "classification": "complete-observed",
+        "bindings": {
+          "a": "beta",
+          "b": "alpha",
+          "temp": null
+        },
+        "applied_moves": 3,
+        "uncertain": false
+      }
+    },
+    {
+      "id": "denied-source-actor-a-prefix-2",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "applied"
+        },
+        {
+          "kind": "denied-actor",
+          "slot": "a"
+        },
+        {
+          "kind": "move",
+          "id": "temp-to-b",
+          "outcome": "applied"
+        },
+        {
+          "kind": "verify",
+          "outcome": "matched"
+        }
+      ],
+      "expected": {
+        "classification": "complete-observed",
+        "bindings": {
+          "a": "beta",
+          "b": "alpha",
+          "temp": null
+        },
+        "applied_moves": 3,
+        "uncertain": false
+      }
+    },
+    {
+      "id": "denied-source-actor-temp-prefix-2",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "applied"
+        },
+        {
+          "kind": "denied-actor",
+          "slot": "temp"
+        },
+        {
+          "kind": "move",
+          "id": "temp-to-b",
+          "outcome": "applied"
+        },
+        {
+          "kind": "verify",
+          "outcome": "matched"
+        }
+      ],
+      "expected": {
+        "classification": "complete-observed",
+        "bindings": {
+          "a": "beta",
+          "b": "alpha",
+          "temp": null
+        },
+        "applied_moves": 3,
+        "uncertain": false
+      }
+    },
+    {
+      "id": "final-verification-mismatch",
+      "events": [
+        {
+          "kind": "move",
+          "id": "a-to-temp",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "b-to-a",
+          "outcome": "applied"
+        },
+        {
+          "kind": "move",
+          "id": "temp-to-b",
+          "outcome": "applied"
+        },
+        {
+          "kind": "verify",
+          "outcome": "mismatch"
+        }
+      ],
+      "expected": {
+        "classification": "recovery-required",
+        "bindings": {
+          "a": "beta",
+          "b": "alpha",
+          "temp": null
+        },
+        "applied_moves": 3,
+        "uncertain": true
+      }
+    }
+  ]
+}

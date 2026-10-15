@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "revision": "canon-original-decision-policy-2026-10-15.1",
+  "observedOn": "2026-10-15",
+  "status": "proposed-policy-authored-vectors",
+  "catalogRevision": "raw-known-provenance-2026-10-12.1",
+  "selectedIndicator": {
+    "catalogId": "AUTH-004",
+    "code": "CANON_ORIGINAL_DECISION_INDICATOR",
+    "location": "cr3-cmt3-canon",
+    "tag": "0x0083"
+  },
+  "recommendation": "refuse-before-mutation",
+  "capabilities": {
+    "cryptographicValidationPerformed": false,
+    "generalAuthenticityAbsenceEstablished": false,
+    "signedCameraEvidenceExecuted": false,
+    "mediaParsingPerformed": false,
+    "productionMutationAllowed": false,
+    "invalidationImplemented": false
+  },
+  "vectors": [
+    {
+      "id": "KP-001",
+      "purpose": "A reached nonzero reference is a known indicator, not a valid signature.",
+      "request": "metadata-edit-new-output",
+      "inventoryComplete": true,
+      "occurrences": [{"location": "cr3-cmt3-canon", "tag": "0x0083", "referenceShape": "nonzero"}],
+      "externalValidityClaim": "none",
+      "expected": {"matchedOccurrences": 1, "observation": "indicator-present", "decision": "refuse-known-indicator"}
+    },
+    {
+      "id": "KP-002",
+      "purpose": "Zero does not turn an encountered entry into absence.",
+      "request": "metadata-edit-new-output",
+      "inventoryComplete": true,
+      "occurrences": [{"location": "cr3-cmt3-canon", "tag": "0x0083", "referenceShape": "zero"}],
+      "externalValidityClaim": "none",
+      "expected": {"matchedOccurrences": 1, "observation": "indicator-present", "decision": "refuse-known-indicator"}
+    },
+    {
+      "id": "KP-003",
+      "purpose": "An interpretable entry with an uninterpretable reference still refuses; no pointer is followed.",
+      "request": "metadata-edit-new-output",
+      "inventoryComplete": true,
+      "occurrences": [{"location": "cr3-cmt3-canon", "tag": "0x0083", "referenceShape": "uninterpretable"}],
+      "externalValidityClaim": "none",
+      "expected": {"matchedOccurrences": 1, "observation": "indicator-present", "decision": "refuse-known-indicator"}
+    },
+    {
+      "id": "KP-004",
+      "purpose": "Repeated equal entries retain their occurrence count.",
+      "request": "metadata-edit-new-output",
+      "inventoryComplete": true,
+      "occurrences": [{"location": "cr3-cmt3-canon", "tag": "0x0083", "referenceShape": "zero"}, {"location": "cr3-cmt3-canon", "tag": "0x0083", "referenceShape": "zero"}],
+      "externalValidityClaim": "none",
+      "expected": {"matchedOccurrences": 2, "observation": "indicator-present", "decision": "refuse-known-indicator"}
+    },
+    {
+      "id": "KP-005",
+      "purpose": "An unchanged value with a requested new output does not bypass refusal.",
+      "request": "no-op-new-output",
+      "inventoryComplete": true,
+      "occurrences": [{"location": "cr3-cmt3-canon", "tag": "0x0083", "referenceShape": "nonzero"}],
+      "externalValidityClaim": "none",
+      "expected": {"matchedOccurrences": 1, "observation": "indicator-present", "decision": "refuse-known-indicator"}
+    },
+    {
+      "id": "KP-006",
+      "purpose": "Explicit loss intent is not permission for the deferred invalidation alternative.",
+      "request": "explicit-invalidation",
+      "inventoryComplete": true,
+      "occurrences": [{"location": "cr3-cmt3-canon", "tag": "0x0083", "referenceShape": "nonzero"}],
+      "externalValidityClaim": "none",
+      "expected": {"matchedOccurrences": 1, "observation": "indicator-present", "decision": "refuse-known-indicator"}
+    },
+    {
+      "id": "KP-007",
+      "purpose": "A caller's invalid-signature assertion cannot waive refusal.",
+      "request": "metadata-edit-new-output",
+      "inventoryComplete": true,
+      "occurrences": [{"location": "cr3-cmt3-canon", "tag": "0x0083", "referenceShape": "nonzero"}],
+      "externalValidityClaim": "invalid",
+      "expected": {"matchedOccurrences": 1, "observation": "indicator-present", "decision": "refuse-known-indicator"}
+    },
+    {
+      "id": "KP-008",
+      "purpose": "A caller's valid-signature assertion cannot establish authenticity or preservation.",
+      "request": "metadata-edit-new-output",
+      "inventoryComplete": true,
+      "occurrences": [{"location": "cr3-cmt3-canon", "tag": "0x0083", "referenceShape": "nonzero"}],
+      "externalValidityClaim": "valid",
+      "expected": {"matchedOccurrences": 1, "observation": "indicator-present", "decision": "refuse-known-indicator"}
+    },
+    {
+      "id": "KP-009",
+      "purpose": "A complete empty selected inventory is scoped silence, never writer permission.",
+      "request": "metadata-edit-new-output",
+      "inventoryComplete": true,
+      "occurrences": [],
+      "externalValidityClaim": "none",
+      "expected": {"matchedOccurrences": 0, "observation": "no-match-in-selected-scope", "decision": "continue-other-gates-only"}
+    },
+    {
+      "id": "KP-010",
+      "purpose": "The same numeric ID in another directory is outside this selected identity and remains residual.",
+      "request": "metadata-edit-new-output",
+      "inventoryComplete": true,
+      "occurrences": [{"location": "cr3-cmt2-exif", "tag": "0x0083", "referenceShape": "nonzero"}],
+      "externalValidityClaim": "none",
+      "expected": {"matchedOccurrences": 0, "observation": "no-match-in-selected-scope", "decision": "continue-other-gates-only"}
+    },
+    {
+      "id": "KP-011",
+      "purpose": "Malformed directory prevents complete inspection; it cannot promise indicator detection or absence.",
+      "request": "metadata-edit-new-output",
+      "inventoryComplete": false,
+      "occurrences": [],
+      "externalValidityClaim": "none",
+      "expected": {"matchedOccurrences": 0, "observation": "uninspectable", "decision": "refuse-uninspectable"}
+    },
+    {
+      "id": "KP-012",
+      "purpose": "A bound exhausted after a different tag is not a complete negative.",
+      "request": "no-op-new-output",
+      "inventoryComplete": false,
+      "occurrences": [{"location": "cr3-cmt3-canon", "tag": "0x0009", "referenceShape": "uninterpretable"}],
+      "externalValidityClaim": "none",
+      "expected": {"matchedOccurrences": 0, "observation": "uninspectable", "decision": "refuse-uninspectable"}
+    },
+    {
+      "id": "KP-013",
+      "purpose": "An observed indicator is retained even if the remaining inventory cannot be completed.",
+      "request": "metadata-edit-new-output",
+      "inventoryComplete": false,
+      "occurrences": [{"location": "cr3-cmt3-canon", "tag": "0x0083", "referenceShape": "zero"}],
+      "externalValidityClaim": "none",
+      "expected": {"matchedOccurrences": 1, "observation": "indicator-present", "decision": "refuse-known-indicator"}
+    },
+    {
+      "id": "KP-014",
+      "purpose": "No exact match cannot enable the unimplemented invalidation operation.",
+      "request": "explicit-invalidation",
+      "inventoryComplete": true,
+      "occurrences": [],
+      "externalValidityClaim": "invalid",
+      "expected": {"matchedOccurrences": 0, "observation": "no-match-in-selected-scope", "decision": "refuse-invalidation-unimplemented"}
+    }
+  ]
+}

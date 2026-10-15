@@ -35,9 +35,12 @@ Evidence classes are explicit:
 
 In particular, the public #0099/#0102 documents remain method-only here. New
 camera-derived results from those private experiments are not imported, summarized
-or counted by this ledger. Its five assertion rows are all uncovered named deltas;
-their `alreadyCovered` text identifies existing evidence without relabeling the
-delta verified.
+or counted by this ledger. Its five assertion rows were uncovered named deltas
+when revision `2026-10-15.1` selected them; their `alreadyCovered` text records that
+checkpoint. Subsequent [#0072 authored evidence](alias-boundary-family.md) qualifies
+the narrow P0A-001 interval distinction on sixteen cases. The other four targeted
+needs remain open. The versioned selection ledger and original family plan are
+preserved as historical inputs, rather than rewritten into broader format coverage.
 
 ## Prioritized finite needs
 
@@ -47,7 +50,7 @@ condition. No row requests a settings/layout/OS cross-product.
 
 | Rank / assertion | One targeted need | Route and boundary |
 | --- | --- | --- |
-| 1 / P0A-001 | An authored CMT2 ASCII20 alias-boundary family: one-byte overlap versus exactly touching half-open allocations, both TIFF byte orders. | Candidate scope for #0072. Match actual alias diagnostics to an independent interval oracle; controls still retain all other refusal gates. |
+| 1 / P0A-001 | An authored CMT2 ASCII20 alias-boundary family: one-byte overlap versus exactly touching half-open allocations, both TIFF byte orders. | Delivered by [#0072](alias-boundary-family.md): sixteen ASCII20/rational overlap/touch cases agree with an independent byte-set oracle; all other mutation refusals remain. This does not close the complete FXP-010/022 families. |
 | 2 / P0A-002 | One independent PreviewImage JPEG entropy-validator profile with authored complete/truncated controls and explicit trailing-zero handling. | Candidate scope for #0075, staged future preservation/usability evidence. Current extraction promises byte extents/equality, not JPEG decoding; this adds no new prerequisite to that operation. Tool/fixture/phase review comes before any private execution. |
 | 3 / P0A-003 | One authored CMT2 ISO 400 versus CTMD ISO 800 disagreement, observed through unqualified and source-qualified selection. | A new bounded child of #0018 is needed. Preserve both exact source-qualified values; no first-value merge or synchronization. This is not another camera ISO stratum. |
 | 4 / P0A-004 | One authored ambiguous local date with explicit offset/subsecond strings, read under UTC and America/New_York process settings. | A new bounded child of #0018 is needed. Assert literal stored-string invariance only; no unimplemented container-integer UTC conversion or host-zone inference. |

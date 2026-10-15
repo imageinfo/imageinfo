@@ -122,6 +122,14 @@ Marker retention/refusal observations do not qualify conditional replacement,
 restore or durability. Governance packages do not grant access, activate rules or
 publish a release; their future actions retain explicit operator/consent requirements.
 
+The next evidence batch on 2026-10-15 works #0072 authored allocation boundaries,
+#0073 second-environment reference reproduction, #0091 one known-provenance policy
+cell and #0097 a two-name rename-cycle specification. Six Sol Medium agents and
+two Sol High reviewers cover code, evidence/provenance and concurrency interpretation.
+Private camera grants remain in force; a public method or authored control does
+not disclose new restricted camera results. Retention alone does not admit the
+guarded restore/replacement operations still needed by #0095/#0096.
+
 The split preserves [WS/SAF requirements](write-safety/README.md), accepted
 [OD-11 option A](write-safety/practical-output-policy.md) and independent RAW
 admission. #0027's accepted refusal research does not provide an admitted mutation

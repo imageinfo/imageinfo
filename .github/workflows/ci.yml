@@ -62,6 +62,12 @@ jobs:
           python -m py_compile scripts/check_date_mapping.py scripts/check_read_session.py scripts/check_read_arguments.py
       - name: Check proposed read-limit arithmetic
         run: python scripts/check_read_limits.py
+      - name: Check authored reference audit and policy models
+        run: |
+          python -m unittest discover -s experiments/0073-reference-reproduction -p "test_*.py"
+          python scripts/check_provenance_policy.py
+          python scripts/check_rename_cycle.py
+          python -m py_compile experiments/0073-reference-reproduction/reproduce.py experiments/0073-reference-reproduction/audit.py scripts/check_provenance_policy.py scripts/check_rename_cycle.py
       - name: Check authored preview measurement accounting
         run: |
           python scripts/test_measure_previews.py

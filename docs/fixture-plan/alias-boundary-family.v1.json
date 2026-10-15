@@ -1,0 +1,157 @@
+{
+  "revision": "alias-boundary-family-2026-10-15.1",
+  "sourceRevision": "881f8762654787e115a44e103502d376b34756cd",
+  "recipe": "tests/allocation_family.rs::fixture",
+  "source": "tests/support/mod.rs::fixture_with_previews",
+  "target": {
+    "offset": 64,
+    "length": 20
+  },
+  "denominator": 16,
+  "cases": [
+    {
+      "id": "II-DateTimeDigitized-before-overlap",
+      "byteOrder": "II",
+      "allocation": "DateTimeDigitized",
+      "boundary": "before-overlap",
+      "offset": 45,
+      "length": 20,
+      "overlapBytes": 1
+    },
+    {
+      "id": "II-DateTimeDigitized-before-touch",
+      "byteOrder": "II",
+      "allocation": "DateTimeDigitized",
+      "boundary": "before-touch",
+      "offset": 44,
+      "length": 20,
+      "overlapBytes": 0
+    },
+    {
+      "id": "II-DateTimeDigitized-after-overlap",
+      "byteOrder": "II",
+      "allocation": "DateTimeDigitized",
+      "boundary": "after-overlap",
+      "offset": 83,
+      "length": 20,
+      "overlapBytes": 1
+    },
+    {
+      "id": "II-DateTimeDigitized-after-touch",
+      "byteOrder": "II",
+      "allocation": "DateTimeDigitized",
+      "boundary": "after-touch",
+      "offset": 84,
+      "length": 20,
+      "overlapBytes": 0
+    },
+    {
+      "id": "II-ExposureTime-before-overlap",
+      "byteOrder": "II",
+      "allocation": "ExposureTime",
+      "boundary": "before-overlap",
+      "offset": 57,
+      "length": 8,
+      "overlapBytes": 1
+    },
+    {
+      "id": "II-ExposureTime-before-touch",
+      "byteOrder": "II",
+      "allocation": "ExposureTime",
+      "boundary": "before-touch",
+      "offset": 56,
+      "length": 8,
+      "overlapBytes": 0
+    },
+    {
+      "id": "II-ExposureTime-after-overlap",
+      "byteOrder": "II",
+      "allocation": "ExposureTime",
+      "boundary": "after-overlap",
+      "offset": 83,
+      "length": 8,
+      "overlapBytes": 1
+    },
+    {
+      "id": "II-ExposureTime-after-touch",
+      "byteOrder": "II",
+      "allocation": "ExposureTime",
+      "boundary": "after-touch",
+      "offset": 84,
+      "length": 8,
+      "overlapBytes": 0
+    },
+    {
+      "id": "MM-DateTimeDigitized-before-overlap",
+      "byteOrder": "MM",
+      "allocation": "DateTimeDigitized",
+      "boundary": "before-overlap",
+      "offset": 45,
+      "length": 20,
+      "overlapBytes": 1
+    },
+    {
+      "id": "MM-DateTimeDigitized-before-touch",
+      "byteOrder": "MM",
+      "allocation": "DateTimeDigitized",
+      "boundary": "before-touch",
+      "offset": 44,
+      "length": 20,
+      "overlapBytes": 0
+    },
+    {
+      "id": "MM-DateTimeDigitized-after-overlap",
+      "byteOrder": "MM",
+      "allocation": "DateTimeDigitized",
+      "boundary": "after-overlap",
+      "offset": 83,
+      "length": 20,
+      "overlapBytes": 1
+    },
+    {
+      "id": "MM-DateTimeDigitized-after-touch",
+      "byteOrder": "MM",
+      "allocation": "DateTimeDigitized",
+      "boundary": "after-touch",
+      "offset": 84,
+      "length": 20,
+      "overlapBytes": 0
+    },
+    {
+      "id": "MM-ExposureTime-before-overlap",
+      "byteOrder": "MM",
+      "allocation": "ExposureTime",
+      "boundary": "before-overlap",
+      "offset": 57,
+      "length": 8,
+      "overlapBytes": 1
+    },
+    {
+      "id": "MM-ExposureTime-before-touch",
+      "byteOrder": "MM",
+      "allocation": "ExposureTime",
+      "boundary": "before-touch",
+      "offset": 56,
+      "length": 8,
+      "overlapBytes": 0
+    },
+    {
+      "id": "MM-ExposureTime-after-overlap",
+      "byteOrder": "MM",
+      "allocation": "ExposureTime",
+      "boundary": "after-overlap",
+      "offset": 83,
+      "length": 8,
+      "overlapBytes": 1
+    },
+    {
+      "id": "MM-ExposureTime-after-touch",
+      "byteOrder": "MM",
+      "allocation": "ExposureTime",
+      "boundary": "after-touch",
+      "offset": 84,
+      "length": 8,
+      "overlapBytes": 0
+    }
+  ]
+}

@@ -36,6 +36,11 @@ and [validation record](validation.md). No photographs, identifying metadata,
 source filenames/paths, capture timestamps, per-image hashes or private logs are
 published here. Exact reproduction requires authorized access to the private bundle.
 
+The later [#0073 second-environment method](second-environment.md) keeps its new
+camera-derived ledger and results private under the existing fixture grants.
+Public authored controls and a reproduction method do not extend the disclosure
+permission of this historical summary or establish independent camera validation.
+
 ## Observations and consequences
 
 - Every selected file has a `crx ` major brand and stored Canon EOS R5 model,

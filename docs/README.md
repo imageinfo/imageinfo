@@ -89,6 +89,10 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Owner-access continuity plan](governance/owner-access-continuity.md) | #0068 private inventory and future drill procedure, with explicit consenting operators and no account/access changes. |
 | [Review-routing plan](governance/review-routing-plan.md) | #0069 proposed rules/routing configuration and finite future tests; no enforcement or appointments enabled by the proposal. |
 | [First-release policy proposal](governance/first-release-policy.md) | #0070 bounded native package version/support/distribution choices and future rehearsal, without release publication or signing infrastructure. |
+| [Authored allocation boundaries](fixture-plan/alias-boundary-family.md) | #0072 sixteen actual endian/overlap/touch controls with an independent byte-set oracle; other mutation refusals remain. |
+| [Second-environment reference method](corpus-baseline/second-environment.md) | #0073 pinned-reference reproduction method and authored controls; new camera-derived reports remain private under their grants. |
+| [Known-provenance policy proposal](privacy/known-provenance-policy.md) | #0091 one existing Canon indicator, explicit refusal/invalidation alternatives and authored policy vectors; no signature validation or adopted mutation permission. |
+| [Two-name cycle specification](write-safety/two-name-cycle.md) | #0097 bounded proposed moves, foreign winners and partial states; model checks do not qualify a native rename mechanism. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |
