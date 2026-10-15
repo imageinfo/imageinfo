@@ -82,7 +82,9 @@ requested media bytes, which remains mandatory.
    namespace and final receipt acknowledgements still need a supported protocol.
    API success alone never means committed. Missing/failed acknowledgements or
    uncertain publication remain recovery-required with artifacts retained. This
-   decision does not relax OS-crash/power-loss evidence or invent a weaker success code.
+   concurrency decision does not invent a weaker success code. Terry's subsequent
+   [power-test policy](power-test-policy.md) separately caps power testing at VM-off
+   and removes physical-power/dedicated-hardware qualification requirements.
 7. **Keep recovery conservative.** Validate record integrity, actual identities
    and ownership. Read-only inspection stays available; uncertainty grants no
    replay, rollback, pruning or pathname/pattern deletion authority. No secret key

@@ -14,6 +14,12 @@ gates. The statement above describes the original #0006 baseline, not absence of
 all subsequent experimentation.
 
 Every successful mutation below must satisfy WS-001 through WS-024 as applicable.
+
+Power-related acceptance follows the [VM-off-only best-effort policy](power-test-policy.md).
+There is no physical power-drop, dedicated-hardware or additional NMI qualification
+requirement. VM-off results retain their host-cache limits and confer no physical
+hardware-survival guarantee.
+
 Retain before/after identities, planned effects, preservation maps, diagnostics,
 recovery artifacts and independent evidence using the [fixture plan](../fixture-plan/README.md).
 Refusal cases assert no imageinfo publication, not that another process could not
@@ -29,7 +35,7 @@ have changed a file.
 | SAF-006 | Use a symlink/reparse target, multi-link file, case-folding collision or destination created after preview. For OD-11 new outputs, observe unexpected link topology at each required check. | Default link-policy refusal or evidenced explicit policy; conditional new-name collision refusal. No existence-check-only overwrite. Observed unexpected topology refuses/becomes uncertain at the publication boundary; continuous same-owner link exclusion is not inferred. Required byte/object/path guards remain effective. | WS-009, WS-010 | FXP-013, FXP-023, FXP-025 |
 | SAF-007 | Edit read-only media or a file whose ACL/owner/streams cannot be preserved; compare ordinary and explicit preserve-mtime requests. Verify an OD-11 new output's declared private policy and ordinary owner editing after exit. | Required property failure refuses. Real edits update mtime by default; capture dates remain unaltered unless planned. Source properties stay unchanged; do not silently clone ACL/owner/streams. Unsupported explicit carry-through refuses. New output must be private and ordinarily owner-editable, with declared boundary checks rather than continuous same-owner property exclusion. | WS-009, WS-011, WS-023 | FXP-013, FXP-023 |
 | SAF-008 | Exhaust space, corrupt a candidate, fail a recovery copy or fail each prepublication flush. Repeat with no-backup selected. | No target publication; retain required recovery artifacts. No-backup never skips temporary original recovery or scratch-space checks. | WS-008, WS-012, WS-013, WS-023 | FXP-022, FXP-023 |
-| SAF-009 | Kill/cancel before, during and after publication; fail installed checks, namespace persistence and receipt persistence separately. | Earlier cancellation does not publish. Ambiguous later states need recovery. Recovery inspects actual identities and can establish original or finish a proven commit; it never guesses a rollback. | WS-013, WS-014, WS-015, WS-016, WS-024 | FXP-023 |
+| SAF-009 | Kill/cancel or turn a disposable VM off before, during and after publication; fail installed checks, namespace persistence and receipt persistence separately. | Earlier cancellation does not publish. Ambiguous later states need recovery. Recovery inspects actual identities and makes a best-effort classification; it never guesses a rollback or promises physical-power survival. | WS-013, WS-014, WS-015, WS-016, WS-024 | FXP-023 |
 | SAF-010 | Commit the RAW member, then fail the paired XMP member; resume an append after an interrupted batch. | Report partial pairing and each member's actual outcome. Do not continue broken dependencies. Skip a matching committed receipt; never append twice or reuse a receipt after an external edit. | WS-004, WS-017, WS-022 | FXP-016, FXP-017, FXP-023 |
 | SAF-011 | Rename a RAW/XMP pair, a case-only name, a rename cycle, and a cross-volume move; fail destination publication or source removal. | Explicit collision-safe plan. Cross-volume workflow is not advertised as atomic. Unsafe source removal leaves verified destination plus source and reports partial work. | WS-010, WS-017, WS-018, WS-022 | FXP-025 |
 | SAF-012 | Restore over a later edited target; prune a backup still needed for recovery or a path injected into an untrusted record. | Restore needs a fresh plan and preserves the current version by default. Refuse in-use/unowned prune targets and arbitrary recovery paths. | WS-012, WS-015, WS-019 | FXP-023, FXP-025 |

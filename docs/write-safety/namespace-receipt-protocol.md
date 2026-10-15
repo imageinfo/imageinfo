@@ -167,9 +167,11 @@ The following **16 cells** define this proposal's finite checkpoint obligations.
 They are a test plan, not completed native fault observations. For every persistence
 operation named in a cell, exercise failure before the call, a reported error or
 lost/ambiguous response, and interruption after the return before advancement.
-Separately label injected control failures, process termination, OS crash and
-physical power loss; none substitutes for another. Native storage errors and
-storage/cache behavior need their own recorded profile evidence.
+Separately label injected control failures, process termination and VM-off tests.
+The [accepted power-test scope](power-test-policy.md) requires no physical-power,
+dedicated-hardware or new NMI campaign. Historical crash methods remain distinct;
+VM-off observations do not claim physical survival. Record native storage errors
+and software/cache assumptions without requiring hardware power qualification.
 
 | Cell | Existing barrier or proposed boundary | Required safe outcome and evidence |
 | --- | --- | --- |
@@ -253,5 +255,6 @@ final check becomes `RecoveryRequired`; a later matching check cannot resume it.
 #0045 ends at the reviewable protocol/model and finite fault plan. #0046 starts
 the separately scoped backend work. Full namespace/storage profile admission,
 durable caller-history provenance/freshness, actual storage-error and resource
-qualification, physical-power behavior and independent RAW admission remain open.
+qualification and independent RAW admission remain open. Physical-power behavior
+is outside the accepted test scope and is not a remaining prerequisite.
 #0027's current real-camera mutation refusals and #0023/#0024 gates are unchanged.

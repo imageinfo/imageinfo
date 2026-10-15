@@ -6,6 +6,11 @@ filesystem backend, RAW mutation or crash test ran.
 
 ## Artifact results
 
+**Current test-scope decision, 2026-10-15:** Terry accepted
+[best-effort VM-off-only power testing](power-test-policy.md). Physical power-drop,
+dedicated hardware and new NMI campaigns are not required. Historical zero counts
+or unverified physical-power facts below do not create a current gate or guarantee.
+
 **2026-10-14 follow-up, #0041:** Terry explicitly accepted OD-11 option A. The
 [decision record](practical-output-policy.md) maps the refinement to WS-009/010/011
 and SAF-005/006/007: continuous default-stream byte/name guards, ordinary private-owner

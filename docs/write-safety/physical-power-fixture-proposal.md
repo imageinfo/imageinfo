@@ -1,5 +1,12 @@
 # Disposable physical-power fixture proposal
 
+**WITHDRAWN — Terry's decision, 2026-10-15.** The
+[best-effort VM-off-only policy](power-test-policy.md) supersedes this unrun plan.
+No dedicated hardware, power-drop testing, equipment/license choice or execution
+approval is requested. #0050/#0101 are retired and are not prerequisites for
+#0078. The original planning text below is retained as history, not instructions
+to perform or prepare additional tests.
+
 **#0101 proposal only, 2026-10-15.** This finishes the bounded planning increment
 under #0022 for [#0078's prerequisites](profile-admission.md), before #0050 can identify an
 owner-approved physical fixture. The [review checklist](physical-power-fixture-proposal.json)
@@ -54,10 +61,10 @@ software or credentials are added to imageinfo. A physical operator may perform
 the cut if remote switching is unavailable; the same external timing and power
 witness obligations remain.
 
-## Owner input, then ordinary engineering work
+## Historical owner-input request — withdrawn
 
-Terry alone must identify or decline the expendable equipment and authorize its
-intentional abrupt power interruptions. The concrete input request is:
+The superseded proposal would have requested the following owner inputs. None
+is required under the current policy:
 
 1. Name the spare physical machine and disk(s) that may be dedicated to this
    experiment, with explicit confirmation that their existing contents/OS may
@@ -195,10 +202,10 @@ and every operator continuation; no replay can manufacture a missing cell.
 
 This planning increment is reviewable when topology alternatives, owner inputs,
 isolation, barriers, counters and audit/stop rules are consistent. The actual
-fixture and all 33 physical interruption cells remain **unrun**. #0050 still
-needs the concrete owner input above; #0078 still needs independently admitted
-format and storage capabilities. A later finite run can supply bounded physical
-observations, not automatically discharge every WS/SAF or RAW admission gate.
+fixture and all 33 physical interruption cells remain **unrun**. #0050
+does not require the owner inputs above because the physical campaign is now
+outside scope. #0078 still needs applicable software/VM and format correctness
+work; physical testing is not a gate. No future physical run is planned.
 
 Primary Microsoft references rechecked **2026-10-15**:
 [File Caching](https://learn.microsoft.com/en-us/windows/win32/fileio/file-caching)

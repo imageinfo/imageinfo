@@ -7,7 +7,7 @@ PROFILE = 'win26300-ntfs-sata-qcow2-writeback-marker-f869-v1'
 REQUIRED = (
     'exact-configuration', 'byte-name-guards', 'property-policy', 'namespace-ack',
     'receipt-ack', 'caller-custody', 'native-storage-errors', 'cumulative-resources',
-    'physical-power', 'restart-actions', 'runtime-workflow', 'independent-format-admission',
+    'restart-actions', 'runtime-workflow', 'independent-format-admission',
 )
 STATUSES = {'observed', 'unqualified', 'counterexample', 'missing', 'pending', 'excluded'}
 CRITERIA = {f'WS-{n:03}' for n in range(1, 25)} | {f'SAF-{n:03}' for n in range(1, 17)}
@@ -17,7 +17,6 @@ CONFIGURATION = {
     'qemuMachine': 'q35,accel=kvm,smm=on', 'qemuDriveIf': 'ide',
     'imageFormat': 'QCOW2', 'qemuCache': 'writeback',
     'hostCaches': 'alive-through-observed-faults',
-    'hostStorageQualification': 'absent',
     'workerSha256': 'f86918a7fb3880cf8e09590fcc7d58155ef64d98c95cf9c2a6afc541c5b040fa',
     'mode': 'ordinary-receipt', 'outputPolicy': 'OD-11-option-A',
     'source': 'authored-65536-byte-marker-only', 'publication': 'held-same-volume-no-replacement',
@@ -32,7 +31,7 @@ SECONDARY_CONFIGURATION = {
     'cacheFlags': 'not-explicitly-supplied-defaults-only',
     'queryBlockCache': 'writeback=false,direct=false,no-flush=false',
     'namedBlockNodeCaches': 'file:writeback=true,direct=false,no-flush=false;raw:writeback=true,direct=false,no-flush=false',
-    'hostStorageQualification': 'absent', 'scope': 'native-error-observations-only',
+    'scope': 'native-error-observations-only',
 }
 
 

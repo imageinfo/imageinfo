@@ -131,7 +131,8 @@ test-only and does not grant runtime storage-profile admission.
 
 #0047 retains separate guest interruption qualification, #0048 actual storage-error
 qualification, #0049 cumulative resource/retention policy and #0051 profile
-admission. Durable caller-history provenance/freshness, physical-power behavior
-and independent RAW admission remain open. #0027's real-camera mutation refusals
+admission. Durable caller-history provenance/freshness and independent RAW admission
+remain open. Physical-power testing is excluded by the current
+[VM-off-only policy](power-test-policy.md), not an additional gate. #0027's real-camera mutation refusals
 and #0023/#0024 gates are unchanged. #0046 ends at the implemented and verified
 marker receipt sequence and its explicit unsupported qualification boundary.

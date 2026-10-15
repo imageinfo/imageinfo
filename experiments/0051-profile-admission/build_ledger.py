@@ -21,8 +21,8 @@ def build():
         cells.append({'id': identifier, 'status': status, 'scope': scope, 'finding': finding,
                       'evidence': evidence(*sources)})
 
-    cell('exact-configuration', 'missing', 'declared-system-volume-candidate',
-         'Known build, architecture, q35/SATA and writeback image settings are declared. Exact host storage/cache stack and complete OS servicing revision are not qualified.',
+    cell('exact-configuration', 'observed', 'declared-system-volume-candidate',
+         'Recorded VM build, architecture, q35/SATA and writeback image settings define the bounded candidate. Unknown servicing details and host device/cache behavior are disclosed best-effort limits, not dedicated-hardware, host-crash or NMI qualification prerequisites.',
          'windows-guest.md', 'namespace-receipt-guest.json')
     cell('byte-name-guards', 'observed', 'marker-live-only',
          'Held default-stream/object/name guards and no-replacement publication have bounded live evidence. This is not a complete production format/backend guard profile.',
@@ -31,8 +31,8 @@ def build():
          'Ordinary private owner editing follows option A. Two receipt-written emulator/NMI cells have timestamp drift and guarded inspection refusal; cause unproven.',
          'namespace-receipt-guest.json', 'practical-output-policy.md')
     cell('namespace-ack', 'unqualified', 'system-SATA-QCOW2-writeback',
-         'Flush returns and matching survivors do not qualify a namespace persistence acknowledgement. Earlier mode-specific NMI output-name loss is retained as historical evidence, not asserted as a current F869 receipt-sequence outcome.',
-         'namespace-receipt-guest.json', 'windows-persistence.md', 'windows-guest.md')
+         'Flush returns and matching survivors alone do not qualify the declared namespace acknowledgement. Existing VM-off observations inform the best-effort contract; physical-power tests are not required. Earlier mode-specific NMI output-name loss remains historical evidence, not a current F869 receipt-sequence outcome or a future NMI test requirement.',
+         'namespace-receipt-guest.json', 'windows-persistence.md', 'windows-guest.md', 'power-test-policy.md')
     cell('receipt-ack', 'unqualified', 'unqualified-observational-receipt',
          'The F869 marker receipt binds observations, not its own future durability. Qualified receipt-phase acknowledgements and restart survivor rules remain absent.',
          'namespace-receipt-marker.md', 'namespace-receipt-guest.json', 'namespace-receipt-protocol.md')
@@ -45,9 +45,6 @@ def build():
     cell('cumulative-resources', 'observed', 'one-live-fresh-supervisor',
          '#49 charges 655360 logical bytes and one operation before constructions; 15 native cells pass. No persistent global quota, reservation or free-space guarantee follows.',
          'cumulative-budget-native.json', 'cumulative-budget.md')
-    cell('physical-power', 'missing', 'no-qualified-physical-fixture',
-         '#50 is unscoped. Process/emulator termination and guest NMI preserve host caches; none substitutes for physical power loss.',
-         'namespace-receipt-guest.md')
     cell('restart-actions', 'unqualified', 'caller-directed-marker-actions-only',
          'Narrow caller-attested unpublished owned-handle prune and read-only inspection do not qualify automatic finalization, general cleanup, replay or rollback.',
          'windows-restart-actions.md', 'windows-custody-guest.json')
@@ -90,7 +87,7 @@ def build():
         ('independent-format-admission', 'Affected authenticity-bearing structures refuse without a qualified workflow.', True),
         ('runtime-workflow,receipt-ack', 'Truthful per-unit identities/effects/recovery/cleanup and uncertainty precedence remain required.', False),
         ('cumulative-resources,native-storage-errors,property-policy', 'Private bounded recovery; storage/error/property failures stop unsafe publication.', False),
-        ('exact-configuration,namespace-ack,receipt-ack,physical-power,native-storage-errors', 'Qualify exact OS/FS/storage/failure model before enabling any backend.', False),
+        ('exact-configuration,namespace-ack,receipt-ack,native-storage-errors', 'Qualify the declared OS/FS/storage contract with truthful bounded best-effort claims and VM-off testing at most; physical-power or dedicated-hardware testing is not required.', False),
     ])
     rows('SAF', [
         ('runtime-workflow,caller-custody', 'Preview/imported fabricated authorization cannot mutate a target.', False),
@@ -101,7 +98,7 @@ def build():
         ('byte-name-guards,property-policy', 'Reparse/link/case/collision policy and option-A topology observations remain required.', False),
         ('property-policy', 'Property failure refuses; ordinary owner-editable private output and explicit carry-through policy.', False),
         ('native-storage-errors,cumulative-resources,namespace-ack', 'Space/copy/flush failure retains originals and prevents unsafe release; no-backup cannot waive it.', False),
-        ('namespace-ack,receipt-ack,physical-power,restart-actions', 'Distinct kill/cancel/OS/power and phase failures; no guessed rollback or fabricated commit.', False),
+        ('namespace-ack,receipt-ack,restart-actions', 'Distinguish cancellation, process termination, VM-off and phase failures within the declared best-effort contract; retain historical OS-crash observations without requiring new OS/power tests. No guessed rollback or fabricated commit.', False),
         ('runtime-workflow,receipt-ack', 'Pair/group partial failures and duplicate-free resume remain separate required implementation.', True),
         ('byte-name-guards,runtime-workflow', 'Pair/case/cycle rename and cross-volume source-removal safety are excluded, independently required.', True),
         ('restart-actions,caller-custody', 'Fresh authorized restore; refuse unresolved/unowned/path-injected prune.', False),
@@ -124,7 +121,8 @@ def build():
             'limitations': [
                 'All required actual cells are nonqualifying; accepted child work does not qualify its parent.',
                 'System SATA/QCOW2 and secondary USB/raw evidence cannot be combined into a storage profile.',
-                'Physical power, exact host storage, durable caller freshness and qualified acknowledgements remain absent.',
+                'Physical-power and dedicated-hardware testing are not required; the accepted best-effort policy bounds future power testing to VM-off. Host device/cache behavior beyond observed methods is a disclosed limit, not an admission gate.',
+                'Durable current caller freshness, declared namespace/receipt acknowledgements and other correctness gates remain unqualified.',
                 'This read-only model has no target mutation API and never authorizes a backend, RAW or recovery action.',
             ]}
 

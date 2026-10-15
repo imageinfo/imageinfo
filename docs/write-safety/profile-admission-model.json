@@ -2,10 +2,58 @@
   "ticket": 51,
   "observed": "2026-10-15",
   "kind": "portable-read-only-model-checks",
-  "caseCount": 206,
+  "caseCount": 209,
   "cases": [
     {
       "name": "actual-bound-ledger-refuses-every-target-effect",
+      "passed": true
+    },
+    {
+      "name": "eleven-correctness-cells-without-physical-power-prerequisite",
+      "passed": true
+    },
+    {
+      "name": "obsolete-physical-power-cell-counterexample-refuses",
+      "passed": true
+    },
+    {
+      "name": "obsolete-physical-power-cell-excluded-refuses",
+      "passed": true
+    },
+    {
+      "name": "obsolete-physical-power-cell-missing-refuses",
+      "passed": true
+    },
+    {
+      "name": "obsolete-physical-power-cell-observed-refuses",
+      "passed": true
+    },
+    {
+      "name": "obsolete-physical-power-cell-pending-refuses",
+      "passed": true
+    },
+    {
+      "name": "obsolete-physical-power-cell-qualified-refuses",
+      "passed": true
+    },
+    {
+      "name": "obsolete-physical-power-cell-unqualified-refuses",
+      "passed": true
+    },
+    {
+      "name": "obsolete-physical-power-criterion-reference-refuses",
+      "passed": true
+    },
+    {
+      "name": "fabricated-physical-qualification-field-refuses",
+      "passed": true
+    },
+    {
+      "name": "obsolete-host-hardware-qualification-field-refuses",
+      "passed": true
+    },
+    {
+      "name": "fabricated-secondary-host-hardware-qualification-field-refuses",
       "passed": true
     },
     {
@@ -297,42 +345,6 @@
       "passed": true
     },
     {
-      "name": "physical-power-absent-refuses",
-      "passed": true
-    },
-    {
-      "name": "physical-power-duplicate-refuses",
-      "passed": true
-    },
-    {
-      "name": "physical-power-counterexample-cannot-qualify",
-      "passed": true
-    },
-    {
-      "name": "physical-power-excluded-cannot-qualify",
-      "passed": true
-    },
-    {
-      "name": "physical-power-missing-cannot-qualify",
-      "passed": true
-    },
-    {
-      "name": "physical-power-observed-cannot-qualify",
-      "passed": true
-    },
-    {
-      "name": "physical-power-pending-cannot-qualify",
-      "passed": true
-    },
-    {
-      "name": "physical-power-unqualified-cannot-qualify",
-      "passed": true
-    },
-    {
-      "name": "physical-power-editable-qualified-claim-refuses",
-      "passed": true
-    },
-    {
       "name": "restart-actions-absent-refuses",
       "passed": true
     },
@@ -485,10 +497,6 @@
       "passed": true
     },
     {
-      "name": "configuration-hostStorageQualification-mismatch-refuses",
-      "passed": true
-    },
-    {
       "name": "configuration-workerSha256-mismatch-refuses",
       "passed": true
     },
@@ -574,10 +582,6 @@
     },
     {
       "name": "secondary-configuration-namedBlockNodeCaches-mismatch-refuses",
-      "passed": true
-    },
-    {
-      "name": "secondary-configuration-hostStorageQualification-mismatch-refuses",
       "passed": true
     },
     {
@@ -773,6 +777,14 @@
       "passed": true
     },
     {
+      "name": "hypothetical-eleven-true-premises-need-no-physical-power",
+      "passed": true
+    },
+    {
+      "name": "hypothetical-obsolete-physical-premise-refuses",
+      "passed": true
+    },
+    {
       "name": "hypothetical-missing-key-refuses",
       "passed": true
     },
@@ -830,10 +842,11 @@
     }
   ],
   "allPassed": true,
-  "requiredCells": 12,
+  "requiredCells": 11,
   "WScriteria": 24,
   "SAFcriteria": 16,
-  "hypotheticalTruthTableRows": 4096,
+  "powerTestPolicy": "VM-off-only; no physical-power or dedicated-hardware admission prerequisite",
+  "hypotheticalTruthTableRows": 2048,
   "hypotheticalSatisfyingRows": 1,
   "hypotheticalRowsAreActualEvidence": false,
   "targetEffects": 0,
@@ -841,10 +854,10 @@
   "productionPublicationAllowed": false,
   "rawAdmissionAllowed": false,
   "repairAllowed": false,
-  "ledgerSha256": "7870c6cd459fa1fdcd0973fee1108b9b76547333f71f3fd62bf8e8718881d384",
+  "ledgerSha256": "f89ca6a2d0a6126b2910be83bd890f989a44a8aa70ade6e896578f0e9ccc4da9",
   "modelSourceSha256": {
-    "experiments/0051-profile-admission/admission.py": "cb05179f5a980f33db02304019b07b4bd869b55119e250ebfd1acc825c163845",
-    "experiments/0051-profile-admission/build_ledger.py": "79c1002fd7696b29ef25e233cd1f5cb0678356464f3835ad80048518bbedd8e3",
-    "experiments/0051-profile-admission/qualify.py": "a4d5cd7982eac3b64431f994f03d7bafce7701f89f374e27436656b622f89d66"
+    "experiments/0051-profile-admission/admission.py": "a15b7093f9254240f31a4d9b3f2d82b9cc4a518b775c09dfca8544614b88d86a",
+    "experiments/0051-profile-admission/build_ledger.py": "6dc8769a8ff7982a2e77638fa9a5a126efe28340bd6b01bfa334aecce47f7240",
+    "experiments/0051-profile-admission/qualify.py": "47eedfc7cceac18d89f83957aef2868f3e4fa0adea93f8ceec96696fc12bb11c"
   }
 }

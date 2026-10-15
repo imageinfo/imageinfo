@@ -31,9 +31,11 @@ justifies Backlog. Prerequisites or an organizational role never justify it.
 | #0025 privacy/authenticity | #0087–0092: one catalog, read coverage, one XMP-field removal, retained-artifact report, one provenance policy and one independent assertion. |
 | #0026 replacement | #0093–0098: one NTFS marker primitive, retained original, fresh restore, two-member order, one rename contract and later cross-volume scope. |
 
-The split creates **56 child cards**. Five remain Backlog because a specific
-fixture, assertion, validator, operation or authorization boundary is missing:
-#0050, #0074, #0075, #0092 and #0098. Their descriptions name those inputs. The
+The original split created **56 child cards**. Four original children remain
+Backlog because a specific assertion, validator, operation or authorization
+boundary is missing: #0074, #0075, #0092 and #0098. #0050's physical fixture is now
+retired under Terry's [VM-off-only test scope](write-safety/power-test-policy.md).
+Their descriptions name the applicable inputs. The
 other children and the scoped umbrellas have explicit deliverables and prerequisite
 relationships. Readiness does not waive permissions or prerequisite acceptance.
 
@@ -48,8 +50,9 @@ On 2026-10-15, #0078's unmet qualification work gained three bounded prerequisit
 increments: #0099 exact CR3 reference-write effects, #0100 native receipt timestamp
 binding across writer completion, and #0101 a disposable physical-power fixture
 proposal. #0078 retains its full positive apply acceptance and stays queued while
-these increments advance. #0050 still requires actual owner-approved resources;
-a proposal or diagnostic child never supplies format/storage admission by itself.
+the applicable increments advance. Terry subsequently excluded physical power
+testing: #0050/#0101 and their hardware requests are retired and do not block
+#0078. A diagnostic child does not itself supply format/storage admission.
 
 ## Existing-work reconciliation
 

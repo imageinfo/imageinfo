@@ -110,9 +110,11 @@ explicitly unsupported; complete-profile admission refuses before filesystem eff
 Linux anonymous-stage interruption/restart observations, adversarial evidence and
 actual guest ENOSPC/emulated device flush errors. Every state refuses automated
 repair/prune because complete property/path exclusion, custody authentication and
-durable-receipt admission are missing. Windows OS-crash persistence against #0032
-and physical power loss remain unverified. The #0022/#0014 parent retains those
-enablement cells; this research handoff does not close or weaken them.
+durable-receipt admission are missing. Windows namespace/persistence against #0032
+remains unverified. The #0022/#0014 parent retains the applicable software/VM
+enablement cells. Terry's [best-effort power-test policy](write-safety/power-test-policy.md)
+excludes physical-power and dedicated-hardware qualification; no such cell blocks
+implementation or release. Other correctness gates remain unchanged.
 
 [#0027 read-only admission](write-safety/write-admission.md) adds native calendar,
 occurrence/all-allocation checks and bounded known-provenance refusals. Eight private

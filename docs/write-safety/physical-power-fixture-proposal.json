@@ -6,10 +6,7 @@
   "revision": "physical-power-fixture-v1",
   "observedOn": "2026-10-15",
   "scope": {
-    "planningPrerequisiteFor": [
-      50,
-      78
-    ],
+    "planningPrerequisiteFor": [],
     "actualHardwareSelected": false,
     "ownerExecutionApproval": false,
     "physicalRunsCompleted": 0,
@@ -49,17 +46,8 @@
     "custom mains wiring or energized internal probing",
     "purchase or installation permission inferred from proposal"
   ],
-  "ownerInputs": [
-    "Designate spare physical machine and disposable disk identities; confirm loss of existing OS/data is acceptable, or decline availability.",
-    "Designate packaged power control or operator switching and independent observer; confirm the isolated cut domain.",
-    "Identify lawful Windows test-installation route; later approve exact preparation, device inventory, control method, maximum 34 cuts and stop/retention policy."
-  ],
-  "codexWorkAfterIdentification": [
-    "Read-only hardware/firmware/OS/cache inventory",
-    "Read selected device manuals",
-    "Resolve non-invasive physical-power-state witness and off-hold timing",
-    "Prepare exact bounded execution/audit tooling for final owner approval"
-  ],
+  "ownerInputs": [],
+  "codexWorkAfterIdentification": [],
   "worker": {
     "mode": "ordinary-receipt",
     "sourceRevision": "b819f54533c495b332c3d4dbb0caccef49923036",
@@ -69,7 +57,7 @@
     "bindingsRevalidatedBeforeFutureExecution": true
   },
   "schedule": {
-    "status": "proposed-unrun",
+    "status": "withdrawn-unrun",
     "idlePowerPreflightCuts": 1,
     "normalTransactionsBefore": 1,
     "normalTransactionsAfter": 1,
@@ -112,11 +100,9 @@
     "Malformed/foreign/unreadable artifacts requiring separate inspection decision",
     "Any failed/incomplete trial; retain evidence and seek a new decision before another cut"
   ],
-  "remainingGates": [
-    "Actual approved fixture unavailable",
-    "All physical cells unrun",
-    "Exact namespace/receipt/storage/custody qualification",
-    "Independent RAW format admission",
-    "Production apply and recovery gates"
-  ]
+  "remainingGates": [],
+  "status": "withdrawn-by-product-decision",
+  "withdrawnOn": "2026-10-15",
+  "supersededBy": "power-test-policy-v1",
+  "withdrawalReason": "Terry accepted FOSS best-effort testing with VM-off as the ceiling. No physical tests, dedicated hardware, equipment or license input, or missing physical-power gate."
 }

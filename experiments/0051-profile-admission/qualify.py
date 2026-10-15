@@ -35,11 +35,32 @@ def qualify():
         assert result['outcome'] == 'refused-before-target-effects'
         assert result['targetEffects'] == 0
         assert len(result['blockingCells']) == len(REQUIRED)
+        assert {cell['cell'] for cell in result['blockingCells']} == set(REQUIRED)
         assert not any(result[key] for key in ('profileAdmitted', 'productionPublicationAllowed',
                                                'rawAdmissionAllowed', 'repairAllowed',
                                                'automaticRecoveryAllowed'))
 
     checked('actual-bound-ledger-refuses-every-target-effect', lambda: actual(ledger))
+    checked('eleven-correctness-cells-without-physical-power-prerequisite', lambda: assert_required_scope(ledger))
+    for status in sorted(STATUSES | {'qualified'}):
+        altered = copy.deepcopy(ledger)
+        altered['cells'].append({'id': 'physical-power', 'status': status,
+                                 'scope': 'obsolete-physical-fixture',
+                                 'finding': 'Fabricated obsolete physical qualification claim.', 'evidence': []})
+        checked('obsolete-physical-power-cell-'+status+'-refuses',
+                lambda: refuses(lambda: actual(altered)))
+    altered = copy.deepcopy(ledger)
+    altered['criteriaTrace']['WS-024']['cells'].append('physical-power')
+    checked('obsolete-physical-power-criterion-reference-refuses', lambda: refuses(lambda: actual(altered)))
+    altered = copy.deepcopy(ledger)
+    altered['physicalPowerQualified'] = True
+    checked('fabricated-physical-qualification-field-refuses', lambda: refuses(lambda: actual(altered)))
+    altered = copy.deepcopy(ledger)
+    altered['configuration']['hostStorageQualification'] = 'absent'
+    checked('obsolete-host-hardware-qualification-field-refuses', lambda: refuses(lambda: actual(altered)))
+    altered = copy.deepcopy(ledger)
+    altered['combinations']['secondaryObservationConfiguration']['hostStorageQualification'] = 'qualified'
+    checked('fabricated-secondary-host-hardware-qualification-field-refuses', lambda: refuses(lambda: actual(altered)))
     for identifier in REQUIRED:
         altered = copy.deepcopy(ledger)
         altered['cells'] = [c for c in altered['cells'] if c['id'] != identifier]
@@ -99,6 +120,10 @@ def qualify():
         assert result == all(values)
         satisfied += result
     assert satisfied == 1
+    checked('hypothetical-eleven-true-premises-need-no-physical-power',
+            lambda: assert_true(hypothetical_conjunction(dict.fromkeys(REQUIRED, True))))
+    checked('hypothetical-obsolete-physical-premise-refuses', lambda: assert_false(
+        hypothetical_conjunction({**dict.fromkeys(REQUIRED, True), 'physical-power': True})))
     checked('hypothetical-missing-key-refuses', lambda: assert_false(hypothetical_conjunction({})))
     checked('hypothetical-truthy-nonboolean-refuses', lambda: assert_false(
         hypothetical_conjunction(dict.fromkeys(REQUIRED, 1))))
@@ -129,6 +154,7 @@ def qualify():
     return {'ticket': 51, 'observed': '2026-10-15', 'kind': 'portable-read-only-model-checks',
             'caseCount': len(cases), 'cases': cases, 'allPassed': True,
             'requiredCells': len(REQUIRED), 'WScriteria': 24, 'SAFcriteria': 16,
+            'powerTestPolicy': 'VM-off-only; no physical-power or dedicated-hardware admission prerequisite',
             'hypotheticalTruthTableRows': 2 ** len(REQUIRED), 'hypotheticalSatisfyingRows': 1,
             'hypotheticalRowsAreActualEvidence': False, 'targetEffects': 0,
             'profileAdmitted': False, 'productionPublicationAllowed': False,
@@ -140,6 +166,19 @@ def qualify():
 
 def assert_false(value):
     assert value is False
+
+
+def assert_true(value):
+    assert value is True
+
+
+def assert_required_scope(ledger):
+    assert len(REQUIRED) == 11
+    assert 'physical-power' not in REQUIRED
+    assert 'hostStorageQualification' not in CONFIGURATION
+    assert 'hostStorageQualification' not in SECONDARY_CONFIGURATION
+    assert {cell['id'] for cell in ledger['cells']} == set(REQUIRED)
+    assert all(set(criterion['cells']) <= set(REQUIRED) for criterion in ledger['criteriaTrace'].values())
 
 
 def assert_trace(ledger):

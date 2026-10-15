@@ -69,8 +69,10 @@ controlled emulator restarts and eight separate SIGKILL/restart cases. The outpu
 name is absent after the NMI at the successful-publication checkpoint, while other
 late cells retain a matching output; all remain recovery-required. These measured
 restart methods are distinct from the preliminary stalled warm reset and from
-physical power loss. Linux guest evidence cannot stand in for this sequence. Physical power loss is
-unverified. Qualified namespace/receipt persistence and safe restart finalization/
+physical power loss. These are historical methods; the current
+[best-effort policy](power-test-policy.md) caps future power testing at VM-off.
+Physical-power testing is outside scope, not a prerequisite. Linux guest evidence
+cannot stand in for this Windows sequence. Qualified namespace/receipt persistence and safe restart finalization/
 prune remain gated. Current RAW admission still refuses under #0027; #0023 is not
 enabled. #0022's full scope is retained, rather than marked complete from the live
 marker observations alone. Source/candidate properties are observed at declared

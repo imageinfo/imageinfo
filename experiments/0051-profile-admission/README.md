@@ -8,8 +8,10 @@ All actual results refuse before target effects. It has no worker or target muta
 API. Explicit hypothetical Boolean premises are consumed only by a separate pure
 test conjunction; logical satisfaction enables no actual profile.
 
-`build_ledger.py` authors the twelve required cells and all 24 WS/16 SAF traces.
-`qualify.py` checks 206 refusal/structure/configuration/trace cases and all 4,096
+`build_ledger.py` authors the eleven required cells and all 24 WS/16 SAF traces.
+The accepted [power-test policy](../../docs/write-safety/power-test-policy.md)
+removes physical-power and dedicated-hardware qualification from admission.
+`qualify.py` checks 209 refusal/structure/configuration/trace cases and all 2,048
 hypothetical truth-table rows. Its authored witness remains retained privately.
 
 ```console

@@ -4,6 +4,10 @@ Observed **2026-10-10**. These primary-source observations inform WS-009 through
 WS-024. They do not select a language, library, syscall sequence, or supported
 storage profile. **No imageinfo platform profile is verified.**
 
+**Current product scope, 2026-10-15:** [best-effort power testing](power-test-policy.md)
+stops at turning disposable VMs off. No dedicated hardware, physical cuts or new
+NMI/host-crash campaign is required. Physical-power evidence is not a profile gate.
+
 ## Facts that constrain the design
 
 | Source | Observation | Consequence for the proposed contract |
@@ -40,14 +44,16 @@ The evidence must demonstrate:
   supported behavior for case-only names, links, read-only files and long paths.
 - The exact order and meaning of persistence acknowledgements for candidates,
   recoverable originals, recovery records, directory changes and final receipts.
-- Deterministic fault injection at each boundary, plus separate process-kill,
-  OS-crash and power-loss evidence appropriate to the advertised guarantee.
+- Deterministic software fault injection and process-kill/VM-off observations at
+  relevant boundaries. Dedicated physical power-loss or additional OS-crash/NMI
+  qualification is outside the accepted scope.
 - Recovery with missing, foreign, corrupted and inaccessible artifacts; bounded
   errors; no unguarded restoration or cleanup of unrelated files.
 
 Use [fixture-plan experiment records](../fixture-plan/README.md) for actual runs.
 Record expected and observed file identities, bytes, properties, reports and
-termination. A process-kill test does not demonstrate power-loss survival.
+termination. VM-off tests do not demonstrate physical-power survival; that limit
+is disclosed rather than turned into an additional hardware-testing requirement.
 
 ## Proposed fallback and tradeoff
 

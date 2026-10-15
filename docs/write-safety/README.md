@@ -1,10 +1,16 @@
 # Safe mutation and recovery contract
 
 Status: **requirements baseline accepted with #0006; OD-11 option A accepted by
-Terry on 2026-10-14**, revision `2026-10-14.1`.
+Terry on 2026-10-14; best-effort VM-off-only power-test scope accepted
+2026-10-15**, revision `2026-10-15.1`.
 Scope: EOS R5 full RAW metadata, associated XMP, stored previews, and related file
 operations. No writer, platform profile, real-media mutation, or crash-safety claim
 is implemented or verified by this document.
+
+The [current power-test policy](power-test-policy.md) excludes physical power-drop
+testing and dedicated hardware. Turning disposable VMs off is the maximum future
+power-related test; missing physical-power evidence is not an enablement gate.
+Historical crash observations below do not prescribe new NMI/host-crash campaigns.
 
 The [metadata contract](../metadata-model/README.md) defines values and edit intents.
 The [fixture plan](../fixture-plan/README.md) defines evidence. This contract defines
@@ -336,8 +342,10 @@ the edit. This also matters for privacy when an old copy remains.
 **WS-016 — Cancellation.** Honor cooperative cancellation before publication with
 no target publication. Once publication is in flight, complete the short safe
 finalization or classify it recovery-required; do not interrupt into a knowingly
-ambiguous rollback. A forced process kill or power loss is handled by recovery
-inspection. A cancelled batch may already contain committed units and must say so.
+ambiguous rollback. After a forced process kill or VM-off interruption, recovery
+inspection makes a best-effort classification of the retained state. This is not
+a physical-power survival or recovery guarantee. A cancelled batch may already
+contain committed units and must say so.
 
 ## Groups and file operations
 
@@ -408,7 +416,9 @@ part of recovery.
 **WS-024 — Verify the backend, then enable it.** A supported profile must demonstrate
 publication visibility, concurrency/collision guarantees, property handling, flush
 semantics, interrupted-operation recovery and bounded errors on its declared
-OS/filesystem/configuration. Real hardware/OS testing remains future evidence.
+OS/filesystem/configuration under the accepted best-effort test scope. Power-related
+validation stops at VM-off tests; dedicated hardware, physical cuts and new NMI
+campaigns are not required. Missing physical-power evidence is not a refusal gate.
 No profile is marked verified by this proposal, and no API/library is selected.
 Document the storage assumptions: software cannot promise survival of lying hardware,
 media failure or loss of every recovery copy.

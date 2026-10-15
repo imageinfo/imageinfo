@@ -1,5 +1,10 @@
 # Windows marker receipt guest interruption qualification
 
+**Current scope, 2026-10-15:** [best-effort power testing](power-test-policy.md)
+is limited to turning VMs off. The captured NMI cases below remain historical;
+do not run a new NMI/host-crash or physical-power campaign to satisfy admission.
+Missing physical-power evidence is an excluded guarantee, not a prerequisite.
+
 Bounded **#0047** research under **#0022**, observed **2026-10-15**, using the
 [#0046 marker receipt sequence](namespace-receipt-marker.md) and the existing
 [disposable Windows evaluation guest](windows-guest.md). The matrix uses authored

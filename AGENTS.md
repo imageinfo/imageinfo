@@ -1,5 +1,20 @@
 # imageinfo project guidance
 
+## Current power-test scope — Terry's decision, 2026-10-15
+
+This FOSS project uses best-effort testing. No physical power-drop testing or
+dedicated test hardware is required or planned. Future power-related tests stop
+at turning disposable VMs off; do not add host crashes, guest NMI/bugcheck
+campaigns, DUT/storage power cuts or hardware qualification as further gates.
+Missing physical-power evidence is not a blocker or admission prerequisite.
+#0050/#0101 and their equipment/license requests are retired. Preserve old
+observations as history, label VM-off/cache limits honestly, and do not promise
+physical hardware survival. This decision supersedes contrary historical power
+requirements below. See `docs/write-safety/power-test-policy.md`. Other format,
+preservation, concurrency and truthful-outcome requirements remain separate.
+
+## Implemented foundation and historical qualification
+
 Terry accepted Rust/ADR-0011 on 2026-10-10 and authorized the production foundation
 under #0019. The root Cargo package contains a small library and CLI; its implemented
 foundation is documented in `docs/foundation`; the bounded native R5 read/preview
@@ -227,13 +242,10 @@ Windows, Ubuntu and macOS jobs and records sanitized CI token permissions. Those
 images supply development prerequisites; bare-OS installation, hermetic builds,
 staffed operations and release readiness are not qualified. See
 `docs/contributing/clean-machine.md`.
-#0101 specifies a disposable physical-power fixture proposal before #0050's
-owner-approved hardware selection. The independently powered observer, isolated
-DUT/storage domain, finite maximum of 34 cuts and explicit audit/stop rules are
-planning only; no hardware is selected or approved and no physical test has run.
-See `docs/write-safety/physical-power-fixture-proposal.md`. Actual equipment,
-license route and final device-specific execution approval require Terry; no
-physical-power, storage-profile or #0078 apply permission follows from this plan.
+#0101's physical-power fixture proposal is withdrawn by the current VM-off-only
+best-effort policy. Its unrun schedule is historical; no equipment, license,
+power-control or execution approval is requested. #0050/#0101 are not prerequisites
+for #0078. See `docs/write-safety/power-test-policy.md`.
 #0087 defines the versioned `r5-gps-owner-serial-core` catalog: 31 exact native/XMP
 selectors, occurrence and protected-data rules, explicit residuals and all 29
 fixture-family dispositions. Its 57 authored vectors pass; no media parsing,

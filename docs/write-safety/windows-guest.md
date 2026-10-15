@@ -1,5 +1,10 @@
 # Disposable Windows qualification guest
 
+**Current scope, 2026-10-15:** [power testing stops at VM-off](power-test-policy.md).
+The NMI/bugcheck and reset procedures/results below are historical research,
+not authorization or requirements for new campaigns. No dedicated hardware or
+physical power-drop testing is required or planned.
+
 Operational research tooling for **#0022**, **2026-10-14**. Terry requested creation
 of a Windows guest after confirming no existing disposable Windows VM was known.
 Its purpose is Windows interruption/restart qualification, not running imageinfo

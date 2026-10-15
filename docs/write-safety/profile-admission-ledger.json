@@ -14,7 +14,6 @@
     "imageFormat": "QCOW2",
     "qemuCache": "writeback",
     "hostCaches": "alive-through-observed-faults",
-    "hostStorageQualification": "absent",
     "workerSha256": "f86918a7fb3880cf8e09590fcc7d58155ef64d98c95cf9c2a6afc541c5b040fa",
     "mode": "ordinary-receipt",
     "outputPolicy": "OD-11-option-A",
@@ -24,13 +23,13 @@
   "cells": [
     {
       "id": "exact-configuration",
-      "status": "missing",
+      "status": "observed",
       "scope": "declared-system-volume-candidate",
-      "finding": "Known build, architecture, q35/SATA and writeback image settings are declared. Exact host storage/cache stack and complete OS servicing revision are not qualified.",
+      "finding": "Recorded VM build, architecture, q35/SATA and writeback image settings define the bounded candidate. Unknown servicing details and host device/cache behavior are disclosed best-effort limits, not dedicated-hardware, host-crash or NMI qualification prerequisites.",
       "evidence": [
         {
           "path": "docs/write-safety/windows-guest.md",
-          "sha256": "bea59d97f1ebd616216ed2978ee2b3a8a8029bcaccaf210e58a9d7305a91b582"
+          "sha256": "30acfad1d41e3ef278b51d6197bac56f95ea2bf4e4d421cad5ec7f673c5f49e1"
         },
         {
           "path": "docs/write-safety/namespace-receipt-guest.json",
@@ -46,7 +45,7 @@
       "evidence": [
         {
           "path": "docs/write-safety/ordinary-output.md",
-          "sha256": "c090863e51c80e09b05a17fc1436505b5d8128f94c52094231bf02e6f9c88385"
+          "sha256": "2fffe442f1497de697aff44e88d27bb37023ed5524da4df5bc6cf3d020c23ee1"
         },
         {
           "path": "docs/write-safety/namespace-receipt-native.json",
@@ -66,7 +65,7 @@
         },
         {
           "path": "docs/write-safety/practical-output-policy.md",
-          "sha256": "2dd9686b17ba4ca03dd70197a868110186d99c5994be3c2bbb9db89a245f88d4"
+          "sha256": "1902f45eaf0fc3040d63c0d63d815e60e7580c6ad74619f6d9b67d06dcb4c91e"
         }
       ]
     },
@@ -74,7 +73,7 @@
       "id": "namespace-ack",
       "status": "unqualified",
       "scope": "system-SATA-QCOW2-writeback",
-      "finding": "Flush returns and matching survivors do not qualify a namespace persistence acknowledgement. Earlier mode-specific NMI output-name loss is retained as historical evidence, not asserted as a current F869 receipt-sequence outcome.",
+      "finding": "Flush returns and matching survivors alone do not qualify the declared namespace acknowledgement. Existing VM-off observations inform the best-effort contract; physical-power tests are not required. Earlier mode-specific NMI output-name loss remains historical evidence, not a current F869 receipt-sequence outcome or a future NMI test requirement.",
       "evidence": [
         {
           "path": "docs/write-safety/namespace-receipt-guest.json",
@@ -86,7 +85,11 @@
         },
         {
           "path": "docs/write-safety/windows-guest.md",
-          "sha256": "bea59d97f1ebd616216ed2978ee2b3a8a8029bcaccaf210e58a9d7305a91b582"
+          "sha256": "30acfad1d41e3ef278b51d6197bac56f95ea2bf4e4d421cad5ec7f673c5f49e1"
+        },
+        {
+          "path": "docs/write-safety/power-test-policy.md",
+          "sha256": "f610ce0b5806f5617cd22fe82e5a75e32dc69f53f9793867be259dee055c45e5"
         }
       ]
     },
@@ -98,7 +101,7 @@
       "evidence": [
         {
           "path": "docs/write-safety/namespace-receipt-marker.md",
-          "sha256": "170bafdfbeec13a9f44156e9e1b8ded13e28e8c08922917de12b1f0e36def5c9"
+          "sha256": "9250feecf29a7b25a56bf3a85ff93a56525cfdf7eadf4647e6c62452af9dabea"
         },
         {
           "path": "docs/write-safety/namespace-receipt-guest.json",
@@ -106,7 +109,7 @@
         },
         {
           "path": "docs/write-safety/namespace-receipt-protocol.md",
-          "sha256": "7984ec52170e67a7de639e6e29ef132232f454cb0850e3b5af6c00525756f2c0"
+          "sha256": "f64ff7be4f1fde379ccb547843a54c5cba6e213199cba08c6dc4823d6f190560"
         }
       ]
     },
@@ -159,18 +162,6 @@
       ]
     },
     {
-      "id": "physical-power",
-      "status": "missing",
-      "scope": "no-qualified-physical-fixture",
-      "finding": "#50 is unscoped. Process/emulator termination and guest NMI preserve host caches; none substitutes for physical power loss.",
-      "evidence": [
-        {
-          "path": "docs/write-safety/namespace-receipt-guest.md",
-          "sha256": "df2d51f6276181727c04aece8ae958b3fbc088538e2b02c770b13b69ee25665b"
-        }
-      ]
-    },
-    {
       "id": "restart-actions",
       "status": "unqualified",
       "scope": "caller-directed-marker-actions-only",
@@ -194,7 +185,7 @@
       "evidence": [
         {
           "path": "docs/write-safety/README.md",
-          "sha256": "aeed45d55aaa835f2341f8c617ace9c2c7cc6de62686d5dad88e93c385237542"
+          "sha256": "b2fef8e47a18d9834e59dc517967278c36d3dfc52c5d47c2bc7db3d0683b186a"
         }
       ]
     },
@@ -398,11 +389,10 @@
         "exact-configuration",
         "namespace-ack",
         "receipt-ack",
-        "physical-power",
         "native-storage-errors"
       ],
       "disposition": "required-unqualified",
-      "obligation": "Qualify exact OS/FS/storage/failure model before enabling any backend."
+      "obligation": "Qualify the declared OS/FS/storage contract with truthful bounded best-effort claims and VM-off testing at most; physical-power or dedicated-hardware testing is not required."
     },
     "SAF-001": {
       "cells": [
@@ -471,11 +461,10 @@
       "cells": [
         "namespace-ack",
         "receipt-ack",
-        "physical-power",
         "restart-actions"
       ],
       "disposition": "required-unqualified",
-      "obligation": "Distinct kill/cancel/OS/power and phase failures; no guessed rollback or fabricated commit."
+      "obligation": "Distinguish cancellation, process termination, VM-off and phase failures within the declared best-effort contract; retain historical OS-crash observations without requiring new OS/power tests. No guessed rollback or fabricated commit."
     },
     "SAF-010": {
       "cells": [
@@ -553,7 +542,6 @@
       "cacheFlags": "not-explicitly-supplied-defaults-only",
       "queryBlockCache": "writeback=false,direct=false,no-flush=false",
       "namedBlockNodeCaches": "file:writeback=true,direct=false,no-flush=false;raw:writeback=true,direct=false,no-flush=false",
-      "hostStorageQualification": "absent",
       "scope": "native-error-observations-only"
     },
     "refusedCandidates": [
@@ -578,7 +566,8 @@
   "limitations": [
     "All required actual cells are nonqualifying; accepted child work does not qualify its parent.",
     "System SATA/QCOW2 and secondary USB/raw evidence cannot be combined into a storage profile.",
-    "Physical power, exact host storage, durable caller freshness and qualified acknowledgements remain absent.",
+    "Physical-power and dedicated-hardware testing are not required; the accepted best-effort policy bounds future power testing to VM-off. Host device/cache behavior beyond observed methods is a disclosed limit, not an admission gate.",
+    "Durable current caller freshness, declared namespace/receipt acknowledgements and other correctness gates remain unqualified.",
     "This read-only model has no target mutation API and never authorizes a backend, RAW or recovery action."
   ]
 }

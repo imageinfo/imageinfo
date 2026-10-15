@@ -1,5 +1,10 @@
 # Disposable guest durability and recovery observations
 
+**Current scope, 2026-10-15:** [best-effort power testing](power-test-policy.md)
+stops at turning VMs off. Historical guest panic/NMI procedures and results below
+do not authorize or require new crash campaigns. Physical power-drop testing is
+outside scope and is not a qualification blocker.
+
 **#0031**, observed **2026-10-12**, under #0022. The
 [standalone research tools](../../experiments/0031-guest-durability/README.md)
 exercise Linux marker publication, independent guest interruptions and restart
