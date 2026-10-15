@@ -10,10 +10,14 @@ The [case ledger](native-paths/cases.json) enumerates 94 rows, with explicit
 platform applicability, transport, native operands, created file contents and
 expected status/error outcomes. Each of Windows's 70 applicable rows passed in
 the [actual Windows report](native-paths/windows.results.json), using PowerShell
-7.6.6. Linux and macOS each have 88 prescribed rows; their execution belongs to
-the existing hosted CI jobs, and local Windows results do not qualify those
-platforms. The [CI workflow](../../.github/workflows/ci.yml) and its retained
-platform reports establish whether those jobs actually ran successfully.
+7.6.6. The actual [Linux](native-paths/linux.results.json) and
+[macOS](native-paths/macos.results.json) reports each pass all 88 applicable rows
+in [hosted CI](https://github.com/imageinfo/imageinfo/actions/runs/38784815175)
+against source `4af340cdf9336da79f26564319649bbe12dd418c`. The reports bind the
+same ledger, checker and relevant source bytes, and record the actual Bash versions.
+That is 246 successful qualification invocations across the three declared
+environments, including expected refusals. It does not extend qualification to
+other shells or operating-system configurations.
 
 ## Exact finite scope
 
