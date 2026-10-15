@@ -1,6 +1,6 @@
 # Windows marker receipt guest interruption qualification
 
-Bounded **#0047** research under **#0022**, using the
+Bounded **#0047** research under **#0022**, observed **2026-10-15**, using the
 [#0046 marker receipt sequence](namespace-receipt-marker.md) and the existing
 [disposable Windows evaluation guest](windows-guest.md). The matrix uses authored
 65,536-byte markers. It does not accept camera media.
@@ -12,8 +12,14 @@ The worker source is frozen at accepted #0046 revision
 static CRT linkage for the installed guest. Its exact executable hash and frozen
 source bindings must be recorded separately from the historical dynamically
 linked worker. The exact static executable must pass the original **93-case
-native receipt matrix** before guest fault observations are admitted. Reusing a
-historical passing label does not verify a rebuilt executable.
+native receipt matrix** before guest fault observations are admitted. That fresh
+baseline passes with **43 completed receipt observations**, **75 unchanged
+inspection inventories**, **5,617 readable hashed artifact paths** and three
+deliberately inaccessible DACL paths retained without repair. The frozen archive's
+**365 Git blobs** and **22 historical source bindings** are verified. The exact
+static executable SHA-256 is
+`f86918a7fb3880cf8e09590fcc7d58155ef64d98c95cf9c2a6afc541c5b040fa`.
+This is separate from the historical dynamically linked executable.
 
 The retained fixture runs Windows 11 EnterpriseEval build **26300**, local NTFS,
 as its existing standard local test user. The same frozen worker and loaded
@@ -78,13 +84,29 @@ a successful native inspection, caller authority or durability. Lost names,
 changed bytes, inaccessible objects and other mismatches must be retained as
 counterexamples rather than converted into assumed successful persistence.
 
-## Evidence status
+## Audited observations
 
-The method above defines the requested matrix. No guest result is claimed until
-the private raw captures and exact static native baseline have been reconciled
-by the #0047 audit. The sanitized ledger will distinguish completed cells,
-matching receipt observations, refusals and survivor counterexamples. Successful
-Windows calls and barrier labels alone cannot establish those outcomes.
+The [guest ledger](namespace-receipt-guest.json) reconciles **34 cases**: one
+normal control and **33 faults**, comprising 11 process kills, 11 emulator kills
+and 11 fresh NMI bugchecks. It verifies **22 distinct post-fault boots**, standard
+worker tokens, the same independently recorded host boot and **204 private
+capture files**. All **34 byte/name inventory pairs** match; **32 property
+observation pairs and full inspection inventories** match. Two pairs exhibit
+property drift and remain explicit counterexamples to exact property agreement.
+
+All 13 receipt-bearing cases have independently decoded `matching-context`
+receipt content. Native inspection returns
+`observed-receipt-recovery-required` in **11 cases**, including the normal
+control, and refuses in **23 cases**. The 21 pre-receipt cells have no external
+receipt context and refuse. The other two refusals are emulator-kill and NMI
+`receipt-written` cells: each observes drift in `receipt.record.lastWriteTimeUtc`
+and the native inspector refuses `FILE_PROPERTIES_CHANGED`. Names, bytes,
+hashes, sizes, streams, SDDL and root observations match across those pairs.
+The cause is unproven; the evidence neither establishes that inspection wrote
+the timestamp nor dismisses it as a cache effect. No guarded property check was
+weakened. Output names are present after all measured postpublication faults;
+the three before-publication cells retain the candidate instead. These are
+finite survivor observations, not qualified persistence or committed outcomes.
 
 A preliminary attempt completed 19 progress rows and stopped in the twentieth
 cell, emulator kill at `receipt-written`, when the rich inventory pair observed
@@ -95,9 +117,34 @@ the observation does not establish that inspection wrote the timestamp, and it
 is not dismissed as a cache effect. The incomplete attempt, including the
 twentieth cell's before/after captures and source copies, remains private.
 
-The driver and audit now distinguish byte/name agreement from property-observation
-drift while retaining the native inspector's property checks. A fresh complete
-run is required; the preliminary rows are not a completed matrix or final audit.
+That preliminary attempt remains separate from the fresh 34-case audited set.
+The driver and audit distinguish byte/name agreement from property-observation
+drift while retaining the native inspector's property checks.
+
+The fresh run completed 32 rows before the guest, already faulted and relaunched
+for the NMI `receipt-parent-flushed` cell, waited at standard-user sign-in beyond
+the original controller's 240-second deadline. Signing in with the existing
+credential and slower QMP keystrokes succeeded without policy, credential or
+license changes. A bounded operator-assisted continuation verified frozen
+source/worker bindings, finished read-only inspection of that already-faulted
+33rd transaction, then ran one fresh `final-checked` NMI cell. It did not replay
+publication. This was not an unassisted uninterrupted original CLI run.
+
+The original timeout artifact's exact bytes are retained under
+`interrupted-before-signin.private.json` with a SHA-256 binding. The private
+continuation helper's source and SHA-256
+`46ec7861ef0ff7862b8b1884f1bec92c4352291a0fab107189c5c3c3d253d27f`
+are retained and covered by the frozen auditor's private hash manifest. Its
+continuation semantics were independently reviewed; this is distinct from an
+automated assertion about those semantics. The independent frozen audit
+reconciles all 34 raw cases and their common bindings.
+
+The guest was shut down normally after qualification. Its private disk and
+captures are retained. The [CI ledger](namespace-receipt-guest-ci.json) binds
+tooling revision `83b2621` to passing Windows, Ubuntu and macOS checks, including
+syntax, existing native/portable regressions and documentation gates. Hosted CI
+does not execute these private guest fault cells or rebuild the frozen static
+guest executable; its worker results are separate evidence.
 
 Reproduction and private-evidence requirements are in the
 [qualification tooling README](../../experiments/0047-receipt-guest/README.md).

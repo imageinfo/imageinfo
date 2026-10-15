@@ -152,6 +152,17 @@ caches remain alive and the guest is normally shut down with private disk/captur
 retained. No automatic freshness/custody, physical-power, namespace/receipt,
 production profile or RAW admission is qualified.
 
+#0047 qualifies 33 receipt interruption cells plus a normal control against frozen
+#0046 source and an exact static worker with a separate 93-case native baseline.
+Eleven process kills, eleven emulator kills and eleven fresh NMI bugchecks retain
+34 unchanged byte/name inspection pairs and 32 matching property-observation pairs.
+The `receipt-written` emulator/NMI cells show timestamp drift and guarded inspection
+refusal; the cause remains unproven. A sign-in timeout required an explicitly
+recorded operator continuation of pending read-only inspection and one final fresh
+cell, without publication replay. See `docs/write-safety/namespace-receipt-guest.md`.
+Host boot is unchanged; the guest is normally shut down with private disk/captures
+retained. Host caches remain alive and no profile, repair or RAW gate is enabled.
+
 ## Subagent authorization
 
 Terry authorized parallel subagent work on all tickets authorized to work,

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-15",
+  "sourceRevision": "83b2621efc6c08defbe291ce847383736f2ad21b",
+  "runId": 38732347617,
+  "runAttempt": 1,
+  "runUrl": "https://github.com/imageinfo/imageinfo/actions/runs/38732347617",
+  "status": "passed",
+  "scope": "Three-platform syntax checks for #0047 receipt guest tooling and existing Rust, native marker and documentation gates. Hosted CI does not run the private guest matrix or rebuild the frozen accepted #0046 static guest executable.",
+  "jobs": [
+    {
+      "id": 116412941511,
+      "runner": "windows-2025",
+      "status": "completed",
+      "conclusion": "success",
+      "receiptGuestToolingSyntax": "success",
+      "researchTests": 45,
+      "rootTests": 44,
+      "researchFormattingClippyTestsRelease": "success",
+      "rootFormattingClippyTestsRelease": "success",
+      "custodyNativeQualification": "success",
+      "custodyUnsupportedRefusal": "skipped",
+      "receiptNativeQualification": "success",
+      "receiptUnsupportedRefusal": "skipped",
+      "docs": "success"
+    },
+    {
+      "id": 116412941521,
+      "runner": "ubuntu-24.04",
+      "status": "completed",
+      "conclusion": "success",
+      "receiptGuestToolingSyntax": "success",
+      "researchTests": 45,
+      "rootTests": 45,
+      "researchFormattingClippyTestsRelease": "success",
+      "rootFormattingClippyTestsRelease": "success",
+      "custodyNativeQualification": "skipped",
+      "custodyUnsupportedRefusal": "success",
+      "receiptNativeQualification": "skipped",
+      "receiptUnsupportedRefusal": "success",
+      "docs": "success"
+    },
+    {
+      "id": 116412941239,
+      "runner": "macos-15",
+      "status": "completed",
+      "conclusion": "success",
+      "receiptGuestToolingSyntax": "success",
+      "researchTests": 45,
+      "rootTests": 45,
+      "researchFormattingClippyTestsRelease": "success",
+      "rootFormattingClippyTestsRelease": "success",
+      "custodyNativeQualification": "skipped",
+      "custodyUnsupportedRefusal": "success",
+      "receiptNativeQualification": "skipped",
+      "receiptUnsupportedRefusal": "success",
+      "docs": "success"
+    }
+  ],
+  "windowsNativeRegressionCases": {
+    "custody": 41,
+    "receipt": 93,
+    "ordinary": 64,
+    "persistence": 69,
+    "restart": 61,
+    "publication": 78,
+    "inspection": 35
+  },
+  "verification": "Run metadata binds the exact source revision. Completed job steps and decoded job logs were inspected: portable research and root test totals, Windows native caseCount summaries, and Unix custody/receipt refusal outputs match this ledger. Unix receipt adapters report artifactsCreated: 0.",
+  "separateEvidence": {
+    "guestFaultAudit": "namespace-receipt-guest.json",
+    "guestMatrix": "The separate private local audit passed one normal transaction and 33 fault cells: 11 process interruptions, 11 emulator kills and 11 NMI bugchecks, with 22 fresh boots. It verified 34 byte/name pairs, 32 property pairs and two timestamp-drift pairs across 204 capture files; 11 receipt observations matched and 23 inspections refused. These are not hosted CI executions.",
+    "operatorAssistedContinuation": "Existing-account sign-in exceeded the frozen 240-second wait. An independently reviewed private helper completed read-only inspection of the pending 33rd cell and ran one fresh 34th cell, without replaying publication. The bound code, source bindings and timeout remained unchanged and were retained and hashed.",
+    "privateContinuationHelperSha256": "46ec7861ef0ff7862b8b1884f1bec92c4352291a0fab107189c5c3c3d253d27f",
+    "frozenGuestSourceRevision": "b819f54533c495b332c3d4dbb0caccef49923036",
+    "staticGuestWorkerSha256": "f86918a7fb3880cf8e09590fcc7d58155ef64d98c95cf9c2a6afc541c5b040fa",
+    "staticGuestNativeReceiptBaseline": "The exact static executable built from frozen accepted #0046 source separately passed 93 native receipt cases: 43 successful outcomes, 75 unchanged-tree checks, 5,617 file hashes and three inaccessible-tree checks. Hosted CI's freshly built worker is separate evidence."
+  },
+  "limitations": [
+    "Syntax checks do not execute the guest supervisor or interruption matrix in CI.",
+    "Finite marker observations supply no authenticated caller authority, history freshness, qualified namespace commitment, storage-profile admission, physical-power-loss qualification or RAW mutation permission."
+  ]
+}

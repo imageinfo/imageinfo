@@ -1,0 +1,1643 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-15",
+  "sourceRevision": "b819f54533c495b332c3d4dbb0caccef49923036",
+  "data": "authored marker bytes only",
+  "workerSha256": "f86918a7fb3880cf8e09590fcc7d58155ef64d98c95cf9c2a6afc541c5b040fa",
+  "guestBuild": "26300",
+  "caseCount": 34,
+  "faultRuns": 33,
+  "processTerminationFaults": 11,
+  "emulatorTerminationFaults": 11,
+  "freshNmiBugchecks": 11,
+  "distinctPostFaultBootsVerified": 22,
+  "unchangedByteNameInventoryPairs": 34,
+  "unchangedPropertyObservationPairs": 32,
+  "unchangedReceiptInspectionInventories": 32,
+  "propertyObservationDriftPairs": 2,
+  "standardWorkerToken": true,
+  "hostBootUnchanged": true,
+  "frozenSourceGitBlobBindingsVerified": true,
+  "servedAgentBytesBoundAcrossFaults": true,
+  "controllerSourceCopiesVerified": true,
+  "auditedCaptureFiles": 204,
+  "cases": [
+    {
+      "id": "normal",
+      "faultKind": null,
+      "barrier": null,
+      "receiptContextCaptured": true,
+      "inspection": "observed-receipt-recovery-required",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": true,
+      "bootChanged": false,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "matching-context",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 924,
+          "sha256": "9f18e0c9f6a57f88cf873eac51a593a781523bc5bf5fb51439e864188b2ea213",
+          "classification": "matching-context"
+        },
+        {
+          "name": "observation.record",
+          "size": 923,
+          "sha256": "d673dd7176459122fb9a28e1e7704118fa088b27b58b719bc11c74e1933bb4db",
+          "classification": "matching-context"
+        },
+        {
+          "name": "prepared.record",
+          "size": 914,
+          "sha256": "1c354cbd9536d9c14c6fcb918619ad30bed4a6f1d185e70b138d43e721d4135b",
+          "classification": "matching-context"
+        },
+        {
+          "name": "receipt.record",
+          "size": 1813,
+          "sha256": "a14b9188049a8ef31c5346e6f0122d9d8603d5575ef4ef667d4bcbbbd272232e",
+          "classification": "matching-context"
+        }
+      ]
+    },
+    {
+      "id": "process-kill-before-namespace-call",
+      "faultKind": "process-kill",
+      "barrier": "before-namespace-call",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": false,
+      "receiptPresent": false,
+      "bootChanged": false,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "matching-marker",
+        "output.marker": "absent"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 921,
+          "sha256": "b3dfabd25f2d2cddb8732b879a63ef4b88bfee0c35616a2e20c6d38320dcb4d8",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 911,
+          "sha256": "b4d1ab52095f0c9cda1b324871d5a23b389eff980072aa50ffe7a17e468afab3",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "process-kill-published",
+      "faultKind": "process-kill",
+      "barrier": "published",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": false,
+      "bootChanged": false,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 921,
+          "sha256": "bd60c3a96ab88a21cb27a0964ac46f333c523095f15105f94495bdba0b406e2b",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 911,
+          "sha256": "0947e1ffc9f57333fa4cbc9343dde645c4ab3b24f5ed88fcdcf7452bdc2d6972",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "process-kill-installed-file-flushed",
+      "faultKind": "process-kill",
+      "barrier": "installed-file-flushed",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": false,
+      "bootChanged": false,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 921,
+          "sha256": "681584938c237ae0273974697a205f783455c82f6165b0e036e232b7ffc962cc",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 911,
+          "sha256": "3b3eb2654f06d1be1a73cbf0d72d690747b80aa935b7036ff7a10d38475a0013",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "process-kill-parent-flushed",
+      "faultKind": "process-kill",
+      "barrier": "parent-flushed",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": false,
+      "bootChanged": false,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 921,
+          "sha256": "b25dce5506d5aea4a340b8ff5e8f8eb9da87f17c7fdfab028f22de893b0b2d50",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 911,
+          "sha256": "56b5c78b026a359d0fa9cb884fe9f4d6c9d3cbe6c06fce93ed9c57153945c5ef",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "process-kill-observation-file-flushed",
+      "faultKind": "process-kill",
+      "barrier": "observation-file-flushed",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": false,
+      "bootChanged": false,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 921,
+          "sha256": "3a9876cbb72c7514615f4219f90c498cd5fb98f8acabece915437067309fa855",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "observation.record",
+          "size": 920,
+          "sha256": "061b54fdfd4e2b0380030d2eed83b28c6583a443fb7c9b3d706ee92a9062e35e",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 911,
+          "sha256": "f7c5eaf4a8accda6418173b9538c746e26820fd10fe874173a192a7b7bf2bbfc",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "process-kill-observation-parent-flushed",
+      "faultKind": "process-kill",
+      "barrier": "observation-parent-flushed",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": false,
+      "bootChanged": false,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 922,
+          "sha256": "7472ff072f2989450db845e2a588ebcced0b17c505177f8008f7fca2daf5333b",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "observation.record",
+          "size": 921,
+          "sha256": "a99ef500e43a04bcc397830053759dbab9450f9399a59ebd8be8e01f7a8d9a54",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 912,
+          "sha256": "1c4f140a98104098c41dfb60a5f56fcae5e1e418945432456332bb0efc37265b",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "process-kill-observed-record-flushed",
+      "faultKind": "process-kill",
+      "barrier": "observed-record-flushed",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": false,
+      "bootChanged": false,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 924,
+          "sha256": "ecdad97291c028d9e752468b23db5c5ad46985b2c89a36094267528f14ba3021",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "observation.record",
+          "size": 923,
+          "sha256": "eef94e405560e8cb27a208435021b32b3a5cd022939b9ebf99c2a0e07c1a7516",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 914,
+          "sha256": "b3572ffb12777c475db85b21317b71283832af164d587042e7179ac6e12315fe",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "process-kill-receipt-written",
+      "faultKind": "process-kill",
+      "barrier": "receipt-written",
+      "receiptContextCaptured": true,
+      "inspection": "observed-receipt-recovery-required",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": true,
+      "bootChanged": false,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "matching-context",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 921,
+          "sha256": "bc89fd634102a9ef21aef6c22f82bb35cc1572a5d42f8a5b45bf2c9cf646f33d",
+          "classification": "matching-context"
+        },
+        {
+          "name": "observation.record",
+          "size": 920,
+          "sha256": "e6005d13a04f6f05d6481b221558467e848305ec732c7a9c91adbe2ce37964f4",
+          "classification": "matching-context"
+        },
+        {
+          "name": "prepared.record",
+          "size": 911,
+          "sha256": "02d40d7c4f5cd5797f74ddbedfc428d7858655dae62ace56efdb4ced1c5775e3",
+          "classification": "matching-context"
+        },
+        {
+          "name": "receipt.record",
+          "size": 1810,
+          "sha256": "1753c1ce27d3f4a473aab3f0f29a9f605d859799cd1a96dbcc31616555bd54a1",
+          "classification": "matching-context"
+        }
+      ]
+    },
+    {
+      "id": "process-kill-receipt-file-flushed",
+      "faultKind": "process-kill",
+      "barrier": "receipt-file-flushed",
+      "receiptContextCaptured": true,
+      "inspection": "observed-receipt-recovery-required",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": true,
+      "bootChanged": false,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "matching-context",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 921,
+          "sha256": "415506c7fce3b4651ac42347ed62ad8fa58cd950eebc04308f2bd81bf35674d3",
+          "classification": "matching-context"
+        },
+        {
+          "name": "observation.record",
+          "size": 920,
+          "sha256": "654798e61878a82373f050b31a7207673809340566b8a87162dadf35e8cd6d59",
+          "classification": "matching-context"
+        },
+        {
+          "name": "prepared.record",
+          "size": 911,
+          "sha256": "e4c346fd27c2f9dee99feaa27583fc7f2242d983cf4b9b1e11de366c9d2417ad",
+          "classification": "matching-context"
+        },
+        {
+          "name": "receipt.record",
+          "size": 1810,
+          "sha256": "8c6c509bb0acbe48df25a9d38acd0d67b37cc8f0836d0452558351b7d3d4f176",
+          "classification": "matching-context"
+        }
+      ]
+    },
+    {
+      "id": "process-kill-receipt-parent-flushed",
+      "faultKind": "process-kill",
+      "barrier": "receipt-parent-flushed",
+      "receiptContextCaptured": true,
+      "inspection": "observed-receipt-recovery-required",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": true,
+      "bootChanged": false,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "matching-context",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 921,
+          "sha256": "183f3e98d46d0646c49701876f443df0f1ff14099289bdcabe7b6e2657ccea0b",
+          "classification": "matching-context"
+        },
+        {
+          "name": "observation.record",
+          "size": 920,
+          "sha256": "23513729bd2b46cb3a108e4c3d9e91bceff7d1caab0ac057d35c9a9fb7b335f0",
+          "classification": "matching-context"
+        },
+        {
+          "name": "prepared.record",
+          "size": 911,
+          "sha256": "f30fd90816f4eaf55b0852480dd341e3e8d02c969a48582a0b730ccc6e5887e1",
+          "classification": "matching-context"
+        },
+        {
+          "name": "receipt.record",
+          "size": 1810,
+          "sha256": "964d886968e13f630d1b8631efefa5ffb05b6d67e5ff0942aaa290d7f116e4dd",
+          "classification": "matching-context"
+        }
+      ]
+    },
+    {
+      "id": "process-kill-final-checked",
+      "faultKind": "process-kill",
+      "barrier": "final-checked",
+      "receiptContextCaptured": true,
+      "inspection": "observed-receipt-recovery-required",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": true,
+      "bootChanged": false,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "matching-context",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 921,
+          "sha256": "3511a472a7ed1777ac8992f4554512f907aaac6d7e5da170b52eb0770e0aef10",
+          "classification": "matching-context"
+        },
+        {
+          "name": "observation.record",
+          "size": 920,
+          "sha256": "5f6e6ee14ce8ccad5a8acd1d8cac506242335878628402c67c5a0b71a5936358",
+          "classification": "matching-context"
+        },
+        {
+          "name": "prepared.record",
+          "size": 911,
+          "sha256": "ff5b4b01a3ce96a14f6264c575b371fc9dcf8fd6b6140186ad3cc54aae2266af",
+          "classification": "matching-context"
+        },
+        {
+          "name": "receipt.record",
+          "size": 1810,
+          "sha256": "855b49bda294d80fb88e76e80a4499c72ebd8c586691a09aae6495f0d5bf570a",
+          "classification": "matching-context"
+        }
+      ]
+    },
+    {
+      "id": "emulator-kill-before-namespace-call",
+      "faultKind": "emulator-kill",
+      "barrier": "before-namespace-call",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": false,
+      "receiptPresent": false,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "matching-marker",
+        "output.marker": "absent"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 921,
+          "sha256": "b60f365d8b771198e62b0174e155a257aee6f7ab682a65110591a2866f4e4efa",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 911,
+          "sha256": "eaccd887848b4993b56e502dcf0b8a43320392061f81db9c7590ff202d82c850",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "emulator-kill-published",
+      "faultKind": "emulator-kill",
+      "barrier": "published",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": false,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 921,
+          "sha256": "bf452b29c615d44bf45bbaf17081a5c8cb71399d3e27201ef1a0f468f011250d",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 911,
+          "sha256": "c962a0752f18486138c6560c62ca8a2e1406e5e00cf097edf41a43eef00520af",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "emulator-kill-installed-file-flushed",
+      "faultKind": "emulator-kill",
+      "barrier": "installed-file-flushed",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": false,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 922,
+          "sha256": "6422589f2b086d04bddd6eab7fefc73a77b3d30a7cfba694c153bcac4a60c45e",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 912,
+          "sha256": "e5d666a9e0d1b8ab66ff189f13e91f68fd4ba41a696998048dd424b34a4b2890",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "emulator-kill-parent-flushed",
+      "faultKind": "emulator-kill",
+      "barrier": "parent-flushed",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": false,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 922,
+          "sha256": "4fcc42f93baf5f977ad3d92b9c5d7954f5ccf19e05860ad5b98fb2a629ffe26b",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 912,
+          "sha256": "901363c0e383b230214455958f058dd3378c72134110174e344357b7c2eb34d4",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "emulator-kill-observation-file-flushed",
+      "faultKind": "emulator-kill",
+      "barrier": "observation-file-flushed",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": false,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 923,
+          "sha256": "d35924e8c654dc649bccd654f8ba10274e92e4b2aceccdb73a60b6e164a79a7c",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "observation.record",
+          "size": 922,
+          "sha256": "598a8e9e57191a0357d05912a14834f7ddf97c5c6d2e7845ee56e818ddf876f5",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 913,
+          "sha256": "e912583f614dc8723850b29463d8a1eea2d62e446276e03101427427f2e7cdd3",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "emulator-kill-observation-parent-flushed",
+      "faultKind": "emulator-kill",
+      "barrier": "observation-parent-flushed",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": false,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 922,
+          "sha256": "bbb41e3598e348c64bb1a06958e4e526f46cba5b4de148362224fff4a91eb7bb",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "observation.record",
+          "size": 921,
+          "sha256": "60a60ef991cace0df25a36fa3c6c84a0ebb5324b791616673629e3aa553b5545",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 912,
+          "sha256": "6677eb0e2b4d9d698ee0121eefea2b9060b0b3aa2fa11894214d5fea7c331002",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "emulator-kill-observed-record-flushed",
+      "faultKind": "emulator-kill",
+      "barrier": "observed-record-flushed",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": false,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 921,
+          "sha256": "96ddae562aa67ee71b6bcb3635ca5fc3ddacdee39cccdc742baff3d0a3c48d72",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "observation.record",
+          "size": 920,
+          "sha256": "08fbe7f8f96bc209ad3b9848ceb880bf37d7a27359f05e7898bffa3ce435bf11",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 911,
+          "sha256": "303b74857c79d1dd386689171d9b58f6587f1bf0c7520d30462a47659c1104c3",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "emulator-kill-receipt-written",
+      "faultKind": "emulator-kill",
+      "barrier": "receipt-written",
+      "receiptContextCaptured": true,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": true,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": false,
+      "changedPropertyFields": [
+        "receipt.record.lastWriteTimeUtc"
+      ],
+      "inspectionUnchanged": false,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "matching-context",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 922,
+          "sha256": "a00f83fc13335180dda9a9137c2e9e36654df5e922132663d487daf1e64d75bb",
+          "classification": "matching-context"
+        },
+        {
+          "name": "observation.record",
+          "size": 921,
+          "sha256": "cd3ce56a4805b8f6e8b5a4818ef9ec3fc06069b18c2d4236a4aadf25c829c60a",
+          "classification": "matching-context"
+        },
+        {
+          "name": "prepared.record",
+          "size": 912,
+          "sha256": "396eeddfeba916b047d0750d999b47e4c9dae3bfc6facbaf4839549e142588e2",
+          "classification": "matching-context"
+        },
+        {
+          "name": "receipt.record",
+          "size": 1811,
+          "sha256": "2d3dc2a30b691bfca3da74dc0f487d33f729908d35aa11869f9173bd4d75d7e9",
+          "classification": "matching-context"
+        }
+      ]
+    },
+    {
+      "id": "emulator-kill-receipt-file-flushed",
+      "faultKind": "emulator-kill",
+      "barrier": "receipt-file-flushed",
+      "receiptContextCaptured": true,
+      "inspection": "observed-receipt-recovery-required",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": true,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "matching-context",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 922,
+          "sha256": "f96b971927297d59cab7b6b04e56af28bbc002ca0f19840e09558eca147e5d29",
+          "classification": "matching-context"
+        },
+        {
+          "name": "observation.record",
+          "size": 921,
+          "sha256": "e08c52d0441f3afea0fa6a93d5be35635290bb8bee2e2abbad3c50011d6be7ff",
+          "classification": "matching-context"
+        },
+        {
+          "name": "prepared.record",
+          "size": 912,
+          "sha256": "8af0f756e82d1c5d04624a3951b8a5180363e20a918ae3f0f917b56809869583",
+          "classification": "matching-context"
+        },
+        {
+          "name": "receipt.record",
+          "size": 1811,
+          "sha256": "241e8fbf83d882ff9018b987b84e912ac85fda7a5bbf6e56c949f469b56e56c8",
+          "classification": "matching-context"
+        }
+      ]
+    },
+    {
+      "id": "emulator-kill-receipt-parent-flushed",
+      "faultKind": "emulator-kill",
+      "barrier": "receipt-parent-flushed",
+      "receiptContextCaptured": true,
+      "inspection": "observed-receipt-recovery-required",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": true,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "matching-context",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 922,
+          "sha256": "92d6d9de5efbbac23301f2d3f6fe727fff68c23eb9f945caf72899d361ab26c7",
+          "classification": "matching-context"
+        },
+        {
+          "name": "observation.record",
+          "size": 921,
+          "sha256": "b2a015d4de93c66a409e6ac19ee523e39adfc4fb63eb2a4fbea90a36d8615817",
+          "classification": "matching-context"
+        },
+        {
+          "name": "prepared.record",
+          "size": 912,
+          "sha256": "6c74b0db42e5b26291b005fbc04266b6c07f72c2bb5bc9a68ff3945e0d508c7e",
+          "classification": "matching-context"
+        },
+        {
+          "name": "receipt.record",
+          "size": 1811,
+          "sha256": "e46d4b09e456ccc29c927c40af6f23b2366ec9cffa6af2faa4ad6c7883242eab",
+          "classification": "matching-context"
+        }
+      ]
+    },
+    {
+      "id": "emulator-kill-final-checked",
+      "faultKind": "emulator-kill",
+      "barrier": "final-checked",
+      "receiptContextCaptured": true,
+      "inspection": "observed-receipt-recovery-required",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": true,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "matching-context",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 922,
+          "sha256": "4ce9862e298319ea560fe05719d0b4a633e7c0a2a3a4c49ed1c39690bd3a7c1a",
+          "classification": "matching-context"
+        },
+        {
+          "name": "observation.record",
+          "size": 921,
+          "sha256": "7b1031a74b42ae4b3d23cccc8621bd4b9312d77a8ce9038faadca73b904becb0",
+          "classification": "matching-context"
+        },
+        {
+          "name": "prepared.record",
+          "size": 912,
+          "sha256": "72cf6d1c499e0ac523881d63111aeb22b989a6512aefc78b7c6ae678a1c1a70a",
+          "classification": "matching-context"
+        },
+        {
+          "name": "receipt.record",
+          "size": 1811,
+          "sha256": "dd634ed352451ae4e7bc49c865077c1c25334d1c58b5f61e14cc6d73b85d8e4f",
+          "classification": "matching-context"
+        }
+      ]
+    },
+    {
+      "id": "nmi-before-namespace-call",
+      "faultKind": "nmi",
+      "barrier": "before-namespace-call",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": false,
+      "receiptPresent": false,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "matching-marker",
+        "output.marker": "absent"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 922,
+          "sha256": "8d6a5e318f60eee6472de80c98efed61182f015b8e053179c53c9cae7ec93401",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 912,
+          "sha256": "1a2254dfd1a7a9189b622933d61b6f6061d3bef03503957b79c601dc17172056",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "nmi-published",
+      "faultKind": "nmi",
+      "barrier": "published",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": false,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 921,
+          "sha256": "d4ac4741db5e8acea317dcc6d95259a21f827ecc4b1c097d8f9b7385fed691f3",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 911,
+          "sha256": "4c7d76785645622204160039c394b8f890233bfc93602c40dc9d52c93fa8290e",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "nmi-installed-file-flushed",
+      "faultKind": "nmi",
+      "barrier": "installed-file-flushed",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": false,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 921,
+          "sha256": "593def4aafa805b993cc5e3ed9db9629af536b3df6e579e3e63a7079d81223e0",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 911,
+          "sha256": "6ed7b44e2b4ac21389d03f708e080f1aff42a04f9610cccbe2bac76fcc956322",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "nmi-parent-flushed",
+      "faultKind": "nmi",
+      "barrier": "parent-flushed",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": false,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 922,
+          "sha256": "f1d5d6fcc77121e21b4890230c3181bb77c5364b9560de460fa81a8f0e03865d",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 912,
+          "sha256": "29dae98c1b6990a63bfc8fb362be30ac544def048e4dfa36d8f45fc2b71a2a60",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "nmi-observation-file-flushed",
+      "faultKind": "nmi",
+      "barrier": "observation-file-flushed",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": false,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 921,
+          "sha256": "cebab9e06a94d2be84185598430bf200b6f680c5ca58f3e620cd6f502ddbdb55",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "observation.record",
+          "size": 920,
+          "sha256": "938610283a27c0a767f5598ea07c5bd67b667f94f4e75932c21a147ec709da0d",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 911,
+          "sha256": "a80e3177086a48c0a48204c1d8cdfe4bdb7eb10b72fc7ca04f3bc02c85c4ed41",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "nmi-observation-parent-flushed",
+      "faultKind": "nmi",
+      "barrier": "observation-parent-flushed",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": false,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 924,
+          "sha256": "93e59c656bbde9928eca7123d2cb7befae84888b12ab8d31d1b34e726d3c2661",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "observation.record",
+          "size": 923,
+          "sha256": "9f4ddb2b9eb557f19b8311d6ef7fa4579f58a34c33774b0893692dfd2aea8926",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 914,
+          "sha256": "ddfef61d8d236bc7ea4da36c0604475f50239753df4e25a2c1b8ded932aac5c0",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "nmi-observed-record-flushed",
+      "faultKind": "nmi",
+      "barrier": "observed-record-flushed",
+      "receiptContextCaptured": false,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": false,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "absent",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 921,
+          "sha256": "0fd3e58d83043735d1ddf814679f5798d90b9ed961c5bab08b6bc38b272930db",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "observation.record",
+          "size": 920,
+          "sha256": "52b23abe2f0f6448ad53add4ab399441315e4c9c100bd5d4073e4b1c8ba3f3cd",
+          "classification": "valid-unattributed"
+        },
+        {
+          "name": "prepared.record",
+          "size": 911,
+          "sha256": "f05972ffd07a13ab94b39357fb9f71daff7b64f0baf71f4674a1d04db715c22c",
+          "classification": "valid-unattributed"
+        }
+      ]
+    },
+    {
+      "id": "nmi-receipt-written",
+      "faultKind": "nmi",
+      "barrier": "receipt-written",
+      "receiptContextCaptured": true,
+      "inspection": "receipt-inspection-refused",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": true,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": false,
+      "changedPropertyFields": [
+        "receipt.record.lastWriteTimeUtc"
+      ],
+      "inspectionUnchanged": false,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "matching-context",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 922,
+          "sha256": "b01389b6665f37b487074bc5c2c33bbac8e3dfca2f641c26053870747559c49c",
+          "classification": "matching-context"
+        },
+        {
+          "name": "observation.record",
+          "size": 921,
+          "sha256": "1dbc0c84156a7ec09999c56cbbac1032627bcd6adad8b79b36c170b60b9a29e7",
+          "classification": "matching-context"
+        },
+        {
+          "name": "prepared.record",
+          "size": 912,
+          "sha256": "257144dfd6587892b08397ca8dc08dfad4cfb11b2b6c4cf3ea182d341f178a2c",
+          "classification": "matching-context"
+        },
+        {
+          "name": "receipt.record",
+          "size": 1811,
+          "sha256": "c88bb9a19b9ceeb8c29d932e097f2f2c78745a387443e646dd677635d102375e",
+          "classification": "matching-context"
+        }
+      ]
+    },
+    {
+      "id": "nmi-receipt-file-flushed",
+      "faultKind": "nmi",
+      "barrier": "receipt-file-flushed",
+      "receiptContextCaptured": true,
+      "inspection": "observed-receipt-recovery-required",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": true,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "matching-context",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 923,
+          "sha256": "36e65287e4514200c677859b872a71e90451eed160aa7536206bf7399aa3c8b2",
+          "classification": "matching-context"
+        },
+        {
+          "name": "observation.record",
+          "size": 922,
+          "sha256": "6cb46cc1a4428f74c1bbdd64772faa3d807a3c55ee8daa85ac325cfbba1ffc86",
+          "classification": "matching-context"
+        },
+        {
+          "name": "prepared.record",
+          "size": 913,
+          "sha256": "dddf6d379bedb6e8b40929af9863edd47bcd9920a3375a5ac233ff3d6ec952f4",
+          "classification": "matching-context"
+        },
+        {
+          "name": "receipt.record",
+          "size": 1812,
+          "sha256": "21fe0624a033a31dd692ab63a145520a69db4f8c1c7200dabf2f4eff5fe262d5",
+          "classification": "matching-context"
+        }
+      ]
+    },
+    {
+      "id": "nmi-receipt-parent-flushed",
+      "faultKind": "nmi",
+      "barrier": "receipt-parent-flushed",
+      "receiptContextCaptured": true,
+      "inspection": "observed-receipt-recovery-required",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": true,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "matching-context",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 923,
+          "sha256": "20706098b4ab9ff77a7c4589b2f81bdca574832414db1a95bf58e38f95bf2e22",
+          "classification": "matching-context"
+        },
+        {
+          "name": "observation.record",
+          "size": 922,
+          "sha256": "b37154e1c8fa53f85860576d20c861062d17bc6dadf3e5a6b6b6c01b279b30e6",
+          "classification": "matching-context"
+        },
+        {
+          "name": "prepared.record",
+          "size": 913,
+          "sha256": "08069d09f4c2ea9b6e144c70b116b1ab2ad32f428c5cde0f816fc6f0d36c7ee9",
+          "classification": "matching-context"
+        },
+        {
+          "name": "receipt.record",
+          "size": 1812,
+          "sha256": "fd98199c25040640ad7a35efe77c008b8b3dc6cfb44adb0c5f469185afe248a8",
+          "classification": "matching-context"
+        }
+      ]
+    },
+    {
+      "id": "nmi-final-checked",
+      "faultKind": "nmi",
+      "barrier": "final-checked",
+      "receiptContextCaptured": true,
+      "inspection": "observed-receipt-recovery-required",
+      "inspectionExitCode": 0,
+      "outputPresent": true,
+      "receiptPresent": true,
+      "bootChanged": true,
+      "sourceRetained": true,
+      "rootRetained": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "byteNameInventoryUnchanged": true,
+      "propertyObservationsUnchanged": true,
+      "changedPropertyFields": [],
+      "inspectionUnchanged": true,
+      "markerBytes": {
+        "source.marker": "matching-marker",
+        "candidate.marker": "absent",
+        "output.marker": "matching-marker"
+      },
+      "receiptClassification": "matching-context",
+      "recordSurvivors": [
+        {
+          "name": "intent.record",
+          "size": 923,
+          "sha256": "81f66bd32b04a83a00c54aa83b9cf2df9c98c73afa14fcf99217d5ab6f347cb4",
+          "classification": "matching-context"
+        },
+        {
+          "name": "observation.record",
+          "size": 922,
+          "sha256": "eeceef33e5d58e5ba342a4b47017b4559a32c528aef5556cf3e225905fe93932",
+          "classification": "matching-context"
+        },
+        {
+          "name": "prepared.record",
+          "size": 913,
+          "sha256": "b683fcb157f0694962c07afde2a3f447f9b9ff9b3fc40aa61b130c250eb335ca",
+          "classification": "matching-context"
+        },
+        {
+          "name": "receipt.record",
+          "size": 1812,
+          "sha256": "ebad754478bbda9aa84501fcf71f1a4f65107ddc39b3581d99ef2d228b6aac90",
+          "classification": "matching-context"
+        }
+      ]
+    }
+  ],
+  "enabledProfiles": 0,
+  "physicalPowerLossRuns": 0,
+  "callerAuthorityAuthenticated": false,
+  "custodyFreshnessProven": false,
+  "limits": "Finite NTFS/QCOW2 marker observations. Host caches remain alive; guest OS I/O shares the test volume. NMI bugchecks use controlled emulator exit/relaunch. Metadata differences between inventory observations do not establish that inspection caused a change; observation-source uncertainty remains. Flush returns and surviving names are observations, not qualified namespace persistence, durable receipt authentication, automatic custody, repair, production or RAW admission.",
+  "committed": false,
+  "namespaceAcknowledged": false,
+  "repairAllowed": false,
+  "productionPublicationAllowed": false
+}

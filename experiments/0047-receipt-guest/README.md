@@ -37,19 +37,31 @@ or unexpected survivor remains a counterexample to the relevant persistence
 expectation. Inspection never authorizes cleanup or repair. The normal control
 checks successful explicit-context inspection.
 
-The driver and audit live in `qualify.py` and `audit.py`. Use their `--help`
-output for the exact current arguments before running against private paths.
 Run only after the frozen static build, native baseline and existing installed
-guest/controller are ready. The audit must reconcile the actual captures and
-bindings before producing `docs/write-safety/namespace-receipt-guest.json`.
+guest/controller are ready. Inside WSL:
+
+```console
+python3 experiments/0047-receipt-guest/qualify.py --root <installed-private-guest> --binary <exact-static-worker> --source-root <frozen-b819f54-source> --output <fresh-private-capture-directory>
+python3 experiments/0047-receipt-guest/audit.py --root <private-capture-directory> --binary <exact-static-worker> --source-root <frozen-b819f54-source> --public docs/write-safety/namespace-receipt-guest.json
+```
+
+`--output` is optional; its omission selects a fresh directory under the private
+guest root. Paths above identify the existing owned fixture, not an arbitrary
+Windows installation. The audit reconciles actual captures and bindings before
+producing the public ledger.
 The public ledger contains bounded sanitized observations; raw captures and its
 private hash manifest are not publication artifacts.
 
-At this drafting stage no guest cells are claimed to pass. A completed audit
-must state the actual counts and survivor outcomes, retain any counterexamples,
-and record the guest/controller's final shutdown state. Successful flush returns
-and surviving receipts do not qualify namespace acknowledgements, a committed
-receipt, a production profile, automatic freshness, repair or RAW mutation.
+The [audited ledger](../../docs/write-safety/namespace-receipt-guest.json) covers
+34 cases: one normal control and 11 each process kills, emulator kills and NMI
+bugchecks, with 22 distinct post-fault boots and 204 private capture files.
+All 34 byte/name pairs match; 32 property-observation pairs/full inspection
+inventories match. Native inspection reports 11 matching observations and 23
+refusals. The emulator-kill and NMI `receipt-written` cells retain matching
+receipt content but show receipt timestamp drift and refuse native inspection.
+The cause is unproven. Successful flush returns and surviving receipts do not
+qualify namespace acknowledgements, a committed receipt, a production profile,
+automatic freshness, repair or RAW mutation.
 
 The first attempt stopped after 19 progress rows in the emulator-kill
 `receipt-written` cell. Its receipt timestamp differed by about 2.56 ms across
@@ -58,7 +70,28 @@ the rich inspection inventory pair; the native inspector refused
 observations matched. The cause is unproven. Keep that incomplete attempt and
 its twentieth-cell before/after evidence private, and preserve it when starting
 a fresh full run. The revised inventory audit distinguishes property drift from
-byte/name changes without weakening native guarded checks.
+byte/name changes without weakening native guarded checks. This preliminary
+attempt is separate from the final audited set.
+
+The fresh run required operator assistance after 32 rows: the already-faulted
+and relaunched NMI `receipt-parent-flushed` cell waited at standard-user sign-in
+beyond the original 240-second controller deadline. The existing credential
+worked with slower QMP keystrokes; no policy, credential or license changed.
+A private continuation helper verified frozen bindings, completed read-only
+inspection of the pending 33rd transaction and ran one fresh final NMI cell.
+There was no publication replay. Do not describe this as an unassisted original
+CLI completion. The original timeout bytes remain bound in
+`interrupted-before-signin.private.json`. Helper source and SHA-256
+`46ec7861ef0ff7862b8b1884f1bec92c4352291a0fab107189c5c3c3d253d27f`
+are retained in the private audit manifest. The helper's continuation semantics
+were independently reviewed; the frozen auditor independently reconciles all
+34 raw cases and common bindings.
+
+The exact static guest worker also passes the fresh original 93-case native
+receipt baseline. The [CI ledger](../../docs/write-safety/namespace-receipt-guest-ci.json)
+records passing Windows, Ubuntu and macOS checks for tooling source `83b2621`.
+CI does not run the private VM matrix or rebuild this frozen static executable.
+The guest is normally shut down; its disk and captures remain private and retained.
 
 Host caches remain live; the OS, crash dump and markers share the guest's test
 volume. NMI followed by controlled quit may drain I/O and is distinct from
