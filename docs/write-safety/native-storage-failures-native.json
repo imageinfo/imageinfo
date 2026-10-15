@@ -1,0 +1,285 @@
+{
+  "schema": "imageinfo-native-storage-failures-v1",
+  "sourceRevision": "b819f54533c495b332c3d4dbb0caccef49923036",
+  "workerSha256": "f86918a7fb3880cf8e09590fcc7d58155ef64d98c95cf9c2a6afc541c5b040fa",
+  "qualifierSha256": "14628dec7f18ffb797cce4b26a561ddb470b0e6ad0782cbc2e440697be87802c",
+  "auditorSha256": "bb0e134403d11c1fca54b5873b806226d2278c36afd1dd20136b013eb81086cb",
+  "privateCaptureManifestSha256": "48a1c214cf57a4b5752b8689068f0d32908406ceb0893dea84769012d1a41fe0",
+  "observationDate": "2026-10-15",
+  "os": {
+    "edition": "Windows 11 Enterprise Evaluation",
+    "version": "10.0.26300",
+    "architecture": "x86_64",
+    "standardUser": true
+  },
+  "fixture": {
+    "filesystem": "NTFS",
+    "volumeBytes": 133165056,
+    "secondaryDisposableOnly": true,
+    "systemOrBoot": false,
+    "rawImageBytes": 134217728,
+    "partitionStartLba": 2048,
+    "partitionType": "07",
+    "imageDriver": "raw",
+    "underlyingDriver": "file",
+    "device": "usb-storage",
+    "controller": "qemu-xhci",
+    "explicitCacheFlagsSupplied": false,
+    "queryBlockCache": {
+      "no-flush": false,
+      "direct": false,
+      "writeback": false
+    },
+    "namedBlockNodeCaches": [
+      {
+        "driver": "file",
+        "cache": {
+          "no-flush": false,
+          "direct": false,
+          "writeback": true
+        }
+      },
+      {
+        "driver": "raw",
+        "cache": {
+          "no-flush": false,
+          "direct": false,
+          "writeback": true
+        }
+      }
+    ],
+    "initialImageSha256": "c16c9cb600a5dad6b3e4dfcc6ed66836c2bb2964e3bd9d3dabb2c0d72e400e21",
+    "retainedFinalImageSha256": "81105569bad8316cc28b46e20b3ed8aba1a9375764dd815a8398d77d47f09558"
+  },
+  "guestNormallyShutdown": true,
+  "hostBootUnchanged": true,
+  "hostCachesRemainAlive": true,
+  "cases": [
+    {
+      "id": "normal-control",
+      "fillAtBarrier": null,
+      "outcome": "observed-receipt-recovery-required",
+      "diagnostic": null,
+      "actualWorkerNativeErrorCodes": [],
+      "fillerNativeErrorCode": null,
+      "retainedArtifacts": [
+        {
+          "name": "intent.record",
+          "bytes": 921,
+          "sha256": "313904f3ee85b095a9c5952ad89aca315009a133a82b6245c14f744360c628eb"
+        },
+        {
+          "name": "observation.record",
+          "bytes": 920,
+          "sha256": "d374ea6fd444ca4381b3f629209fc29868259292734f8ff5f8356e1f729ae9b4"
+        },
+        {
+          "name": "output.marker",
+          "bytes": 65536,
+          "sha256": "9e9c1dddb8787259606e29a6fe515a3df88249ed84331d7ac49f51759ba175a5"
+        },
+        {
+          "name": "prepared.record",
+          "bytes": 911,
+          "sha256": "5ceec592fb8be63cd0e769db71a5d3c8cacf8ed146bbd05bee6ceda89f272087"
+        },
+        {
+          "name": "receipt.record",
+          "bytes": 1810,
+          "sha256": "6a9e74ecd0ccf956ef6c191ccc4323a2a38d80532062e55dba3d151d784025a3"
+        },
+        {
+          "name": "source.marker",
+          "bytes": 65536,
+          "sha256": "9e9c1dddb8787259606e29a6fe515a3df88249ed84331d7ac49f51759ba175a5"
+        }
+      ],
+      "sourceUnchanged": true,
+      "inspectionInventoryUnchanged": true,
+      "retainedFileIdentitiesChecked": true,
+      "inspectionOutcome": "observed-receipt-recovery-required",
+      "inspectionHasActualReceiptContext": true,
+      "ownedHandlesRemoved": 0,
+      "publicationAttempted": true,
+      "publicationCallSucceeded": true,
+      "cleanupPending": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false
+    },
+    {
+      "id": "candidate-full",
+      "fillAtBarrier": "source-guarded",
+      "outcome": "conflict-or-failed-before-publication",
+      "diagnostic": "There is not enough space on the disk. (os error 112)",
+      "actualWorkerNativeErrorCodes": [
+        112
+      ],
+      "fillerNativeErrorCode": 112,
+      "retainedArtifacts": [
+        {
+          "name": "candidate.marker",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "source.marker",
+          "bytes": 65536,
+          "sha256": "9e9c1dddb8787259606e29a6fe515a3df88249ed84331d7ac49f51759ba175a5"
+        }
+      ],
+      "sourceUnchanged": true,
+      "inspectionInventoryUnchanged": true,
+      "retainedFileIdentitiesChecked": true,
+      "inspectionOutcome": "receipt-inspection-refused",
+      "inspectionHasActualReceiptContext": false,
+      "ownedHandlesRemoved": 0,
+      "publicationAttempted": false,
+      "publicationCallSucceeded": false,
+      "cleanupPending": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false
+    },
+    {
+      "id": "candidate-partial-attempt",
+      "fillAtBarrier": "source-guarded",
+      "outcome": "conflict-or-failed-before-publication",
+      "diagnostic": "There is not enough space on the disk. (os error 112)",
+      "actualWorkerNativeErrorCodes": [
+        112
+      ],
+      "fillerNativeErrorCode": 112,
+      "retainedArtifacts": [
+        {
+          "name": "candidate.marker",
+          "bytes": 32768,
+          "sha256": "c35a1c07b3a6c317013c4fb118fb62bb68b60321a5101c02f1c918bc3d143308"
+        },
+        {
+          "name": "source.marker",
+          "bytes": 65536,
+          "sha256": "9e9c1dddb8787259606e29a6fe515a3df88249ed84331d7ac49f51759ba175a5"
+        }
+      ],
+      "sourceUnchanged": true,
+      "inspectionInventoryUnchanged": true,
+      "retainedFileIdentitiesChecked": true,
+      "inspectionOutcome": "receipt-inspection-refused",
+      "inspectionHasActualReceiptContext": false,
+      "ownedHandlesRemoved": 0,
+      "publicationAttempted": false,
+      "publicationCallSucceeded": false,
+      "cleanupPending": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false
+    },
+    {
+      "id": "prepared-record-full",
+      "fillAtBarrier": "candidate-flushed",
+      "outcome": "conflict-or-failed-before-publication",
+      "diagnostic": "There is not enough space on the disk. (os error 112)",
+      "actualWorkerNativeErrorCodes": [
+        112
+      ],
+      "fillerNativeErrorCode": 112,
+      "retainedArtifacts": [
+        {
+          "name": "candidate.marker",
+          "bytes": 65536,
+          "sha256": "9e9c1dddb8787259606e29a6fe515a3df88249ed84331d7ac49f51759ba175a5"
+        },
+        {
+          "name": "source.marker",
+          "bytes": 65536,
+          "sha256": "9e9c1dddb8787259606e29a6fe515a3df88249ed84331d7ac49f51759ba175a5"
+        }
+      ],
+      "sourceUnchanged": true,
+      "inspectionInventoryUnchanged": true,
+      "retainedFileIdentitiesChecked": true,
+      "inspectionOutcome": "receipt-inspection-refused",
+      "inspectionHasActualReceiptContext": false,
+      "ownedHandlesRemoved": 0,
+      "publicationAttempted": false,
+      "publicationCallSucceeded": false,
+      "cleanupPending": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false
+    },
+    {
+      "id": "receipt-full",
+      "fillAtBarrier": "observation-parent-flushed",
+      "outcome": "recovery-required",
+      "diagnostic": "There is not enough space on the disk. (os error 112)",
+      "actualWorkerNativeErrorCodes": [
+        112
+      ],
+      "fillerNativeErrorCode": 112,
+      "retainedArtifacts": [
+        {
+          "name": "intent.record",
+          "bytes": 921,
+          "sha256": "e0faacb8f733da68f869490964d85db4eedefcea938d23df84be0da62b3958aa"
+        },
+        {
+          "name": "observation.record",
+          "bytes": 920,
+          "sha256": "991180584ae6946a60c5926d716432aac1f172f4bff4e4135b7e14fe9a1dd7e5"
+        },
+        {
+          "name": "output.marker",
+          "bytes": 65536,
+          "sha256": "9e9c1dddb8787259606e29a6fe515a3df88249ed84331d7ac49f51759ba175a5"
+        },
+        {
+          "name": "prepared.record",
+          "bytes": 911,
+          "sha256": "64a80fc0fd2e66a4e397d08ce192a1b88ee0af69c9c49b873e6f7eda174786e2"
+        },
+        {
+          "name": "receipt.record",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "source.marker",
+          "bytes": 65536,
+          "sha256": "9e9c1dddb8787259606e29a6fe515a3df88249ed84331d7ac49f51759ba175a5"
+        }
+      ],
+      "sourceUnchanged": true,
+      "inspectionInventoryUnchanged": true,
+      "retainedFileIdentitiesChecked": true,
+      "inspectionOutcome": "receipt-inspection-refused",
+      "inspectionHasActualReceiptContext": false,
+      "ownedHandlesRemoved": 0,
+      "publicationAttempted": true,
+      "publicationCallSucceeded": true,
+      "cleanupPending": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false
+    }
+  ],
+  "unqualified": [
+    "actual native read failure",
+    "actual native device flush failure",
+    "isolated metadata-only exhaustion",
+    "physical power loss",
+    "production profile",
+    "RAW admission"
+  ],
+  "partialCandidateObserved": true,
+  "committed": false,
+  "namespaceAcknowledged": false,
+  "repairAllowed": false,
+  "productionPublicationAllowed": false
+}

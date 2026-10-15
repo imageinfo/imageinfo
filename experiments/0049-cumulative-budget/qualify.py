@@ -168,5 +168,5 @@ if __name__ == '__main__':
     parser.add_argument('--public', type=Path, required=True)
     args = parser.parse_args()
     result = qualify(args.binary.resolve(), args.parent.resolve())
-    args.public.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
+    args.public.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8', newline='\n')
     print(json.dumps({'allPassed': True, 'cellCount': result['cellCount']}))

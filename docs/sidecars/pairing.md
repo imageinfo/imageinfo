@@ -84,8 +84,8 @@ case check. When the filesystem retains two distinct case-equivalent names, the
 Unix vector requires ambiguity refusal. When the names alias one directory entry,
 as on commonly case-insensitive APFS, it requires successful explicit pairing with
 the distinct RAW and same-file refusal between the sidecar's two spellings.
-Neither branch skips the case assertions. Successful and refused observations retain input bytes and
-unrelated neighboring files.
+Neither branch skips the case assertions. Successful and refused observations
+retain input bytes and unrelated neighboring files.
 
 On 2026-10-15, `cargo test --locked --test pairing` passed all eight Windows vectors
 on the actual local NTFS test volume. The synthetic hard-link fixture required

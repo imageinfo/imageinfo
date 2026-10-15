@@ -1,0 +1,850 @@
+{
+  "ticket": 51,
+  "observed": "2026-10-15",
+  "kind": "portable-read-only-model-checks",
+  "caseCount": 206,
+  "cases": [
+    {
+      "name": "actual-bound-ledger-refuses-every-target-effect",
+      "passed": true
+    },
+    {
+      "name": "exact-configuration-absent-refuses",
+      "passed": true
+    },
+    {
+      "name": "exact-configuration-duplicate-refuses",
+      "passed": true
+    },
+    {
+      "name": "exact-configuration-counterexample-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "exact-configuration-excluded-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "exact-configuration-missing-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "exact-configuration-observed-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "exact-configuration-pending-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "exact-configuration-unqualified-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "exact-configuration-editable-qualified-claim-refuses",
+      "passed": true
+    },
+    {
+      "name": "byte-name-guards-absent-refuses",
+      "passed": true
+    },
+    {
+      "name": "byte-name-guards-duplicate-refuses",
+      "passed": true
+    },
+    {
+      "name": "byte-name-guards-counterexample-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "byte-name-guards-excluded-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "byte-name-guards-missing-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "byte-name-guards-observed-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "byte-name-guards-pending-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "byte-name-guards-unqualified-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "byte-name-guards-editable-qualified-claim-refuses",
+      "passed": true
+    },
+    {
+      "name": "property-policy-absent-refuses",
+      "passed": true
+    },
+    {
+      "name": "property-policy-duplicate-refuses",
+      "passed": true
+    },
+    {
+      "name": "property-policy-counterexample-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "property-policy-excluded-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "property-policy-missing-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "property-policy-observed-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "property-policy-pending-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "property-policy-unqualified-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "property-policy-editable-qualified-claim-refuses",
+      "passed": true
+    },
+    {
+      "name": "namespace-ack-absent-refuses",
+      "passed": true
+    },
+    {
+      "name": "namespace-ack-duplicate-refuses",
+      "passed": true
+    },
+    {
+      "name": "namespace-ack-counterexample-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "namespace-ack-excluded-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "namespace-ack-missing-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "namespace-ack-observed-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "namespace-ack-pending-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "namespace-ack-unqualified-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "namespace-ack-editable-qualified-claim-refuses",
+      "passed": true
+    },
+    {
+      "name": "receipt-ack-absent-refuses",
+      "passed": true
+    },
+    {
+      "name": "receipt-ack-duplicate-refuses",
+      "passed": true
+    },
+    {
+      "name": "receipt-ack-counterexample-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "receipt-ack-excluded-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "receipt-ack-missing-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "receipt-ack-observed-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "receipt-ack-pending-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "receipt-ack-unqualified-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "receipt-ack-editable-qualified-claim-refuses",
+      "passed": true
+    },
+    {
+      "name": "caller-custody-absent-refuses",
+      "passed": true
+    },
+    {
+      "name": "caller-custody-duplicate-refuses",
+      "passed": true
+    },
+    {
+      "name": "caller-custody-counterexample-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "caller-custody-excluded-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "caller-custody-missing-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "caller-custody-observed-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "caller-custody-pending-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "caller-custody-unqualified-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "caller-custody-editable-qualified-claim-refuses",
+      "passed": true
+    },
+    {
+      "name": "native-storage-errors-absent-refuses",
+      "passed": true
+    },
+    {
+      "name": "native-storage-errors-duplicate-refuses",
+      "passed": true
+    },
+    {
+      "name": "native-storage-errors-counterexample-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "native-storage-errors-excluded-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "native-storage-errors-missing-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "native-storage-errors-observed-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "native-storage-errors-pending-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "native-storage-errors-unqualified-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "native-storage-errors-editable-qualified-claim-refuses",
+      "passed": true
+    },
+    {
+      "name": "cumulative-resources-absent-refuses",
+      "passed": true
+    },
+    {
+      "name": "cumulative-resources-duplicate-refuses",
+      "passed": true
+    },
+    {
+      "name": "cumulative-resources-counterexample-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "cumulative-resources-excluded-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "cumulative-resources-missing-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "cumulative-resources-observed-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "cumulative-resources-pending-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "cumulative-resources-unqualified-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "cumulative-resources-editable-qualified-claim-refuses",
+      "passed": true
+    },
+    {
+      "name": "physical-power-absent-refuses",
+      "passed": true
+    },
+    {
+      "name": "physical-power-duplicate-refuses",
+      "passed": true
+    },
+    {
+      "name": "physical-power-counterexample-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "physical-power-excluded-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "physical-power-missing-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "physical-power-observed-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "physical-power-pending-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "physical-power-unqualified-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "physical-power-editable-qualified-claim-refuses",
+      "passed": true
+    },
+    {
+      "name": "restart-actions-absent-refuses",
+      "passed": true
+    },
+    {
+      "name": "restart-actions-duplicate-refuses",
+      "passed": true
+    },
+    {
+      "name": "restart-actions-counterexample-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "restart-actions-excluded-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "restart-actions-missing-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "restart-actions-observed-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "restart-actions-pending-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "restart-actions-unqualified-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "restart-actions-editable-qualified-claim-refuses",
+      "passed": true
+    },
+    {
+      "name": "runtime-workflow-absent-refuses",
+      "passed": true
+    },
+    {
+      "name": "runtime-workflow-duplicate-refuses",
+      "passed": true
+    },
+    {
+      "name": "runtime-workflow-counterexample-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "runtime-workflow-excluded-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "runtime-workflow-missing-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "runtime-workflow-observed-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "runtime-workflow-pending-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "runtime-workflow-unqualified-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "runtime-workflow-editable-qualified-claim-refuses",
+      "passed": true
+    },
+    {
+      "name": "independent-format-admission-absent-refuses",
+      "passed": true
+    },
+    {
+      "name": "independent-format-admission-duplicate-refuses",
+      "passed": true
+    },
+    {
+      "name": "independent-format-admission-counterexample-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "independent-format-admission-excluded-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "independent-format-admission-missing-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "independent-format-admission-observed-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "independent-format-admission-pending-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "independent-format-admission-unqualified-cannot-qualify",
+      "passed": true
+    },
+    {
+      "name": "independent-format-admission-editable-qualified-claim-refuses",
+      "passed": true
+    },
+    {
+      "name": "configuration-architecture-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "configuration-os-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "configuration-build-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "configuration-filesystem-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "configuration-volume-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "configuration-controller-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "configuration-qemuMachine-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "configuration-qemuDriveIf-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "configuration-imageFormat-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "configuration-qemuCache-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "configuration-hostCaches-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "configuration-hostStorageQualification-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "configuration-workerSha256-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "configuration-mode-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "configuration-outputPolicy-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "configuration-source-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "configuration-publication-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "secondary-fixture-cannot-substitute-for-primary-configuration",
+      "passed": true
+    },
+    {
+      "name": "secondary-configuration-os-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "secondary-configuration-version-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "secondary-configuration-volume-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "secondary-configuration-filesystem-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "secondary-configuration-diskCapacityBytes-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "secondary-configuration-partitionStartLBA-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "secondary-configuration-partitionSectors-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "secondary-configuration-partitionBytes-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "secondary-configuration-filesystemReportedBytes-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "secondary-configuration-qmpBlockDriver-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "secondary-configuration-qmpBackingDriver-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "secondary-configuration-device-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "secondary-configuration-controller-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "secondary-configuration-cacheFlags-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "secondary-configuration-queryBlockCache-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "secondary-configuration-namedBlockNodeCaches-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "secondary-configuration-hostStorageQualification-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "secondary-configuration-scope-mismatch-refuses",
+      "passed": true
+    },
+    {
+      "name": "secondary-integer-capacity-type-is-exact",
+      "passed": true
+    },
+    {
+      "name": "SAF-001-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "SAF-002-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "SAF-003-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "SAF-004-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "SAF-005-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "SAF-006-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "SAF-007-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "SAF-008-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "SAF-009-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "SAF-010-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "SAF-011-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "SAF-012-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "SAF-013-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "SAF-014-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "SAF-015-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "SAF-016-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-001-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-002-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-003-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-004-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-005-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-006-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-007-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-008-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-009-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-010-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-011-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-012-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-013-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-014-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-015-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-016-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-017-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-018-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-019-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-020-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-021-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-022-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-023-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "WS-024-missing-trace-refuses",
+      "passed": true
+    },
+    {
+      "name": "changed-evidence-refuses",
+      "passed": true
+    },
+    {
+      "name": "missing-evidence-refuses",
+      "passed": true
+    },
+    {
+      "name": "nonpublic-evidence-path-refuses",
+      "passed": true
+    },
+    {
+      "name": "duplicate-json-member-refuses",
+      "passed": true
+    },
+    {
+      "name": "imported-supported-profile-claim-refuses",
+      "passed": true
+    },
+    {
+      "name": "hypothetical-domain-cannot-enter-actual-inspector",
+      "passed": true
+    },
+    {
+      "name": "hypothetical-missing-key-refuses",
+      "passed": true
+    },
+    {
+      "name": "hypothetical-truthy-nonboolean-refuses",
+      "passed": true
+    },
+    {
+      "name": "target-witness-byte-name-mtime-unchanged",
+      "passed": true
+    },
+    {
+      "name": "malformed-root-NoneType",
+      "passed": true
+    },
+    {
+      "name": "malformed-root-list",
+      "passed": true
+    },
+    {
+      "name": "malformed-root-int",
+      "passed": true
+    },
+    {
+      "name": "malformed-root-bool",
+      "passed": true
+    },
+    {
+      "name": "malformed-root-str",
+      "passed": true
+    },
+    {
+      "name": "malformed-cells",
+      "passed": true
+    },
+    {
+      "name": "malformed-criteriaTrace",
+      "passed": true
+    },
+    {
+      "name": "malformed-combinations",
+      "passed": true
+    },
+    {
+      "name": "malformed-limitations",
+      "passed": true
+    },
+    {
+      "name": "unknown-nested-combination-field",
+      "passed": true
+    },
+    {
+      "name": "all-normative-criteria-traced",
+      "passed": true
+    }
+  ],
+  "allPassed": true,
+  "requiredCells": 12,
+  "WScriteria": 24,
+  "SAFcriteria": 16,
+  "hypotheticalTruthTableRows": 4096,
+  "hypotheticalSatisfyingRows": 1,
+  "hypotheticalRowsAreActualEvidence": false,
+  "targetEffects": 0,
+  "profileAdmitted": false,
+  "productionPublicationAllowed": false,
+  "rawAdmissionAllowed": false,
+  "repairAllowed": false,
+  "ledgerSha256": "7870c6cd459fa1fdcd0973fee1108b9b76547333f71f3fd62bf8e8718881d384",
+  "modelSourceSha256": {
+    "experiments/0051-profile-admission/admission.py": "cb05179f5a980f33db02304019b07b4bd869b55119e250ebfd1acc825c163845",
+    "experiments/0051-profile-admission/build_ledger.py": "79c1002fd7696b29ef25e233cd1f5cb0678356464f3835ad80048518bbedd8e3",
+    "experiments/0051-profile-admission/qualify.py": "a4d5cd7982eac3b64431f994f03d7bafce7701f89f374e27436656b622f89d66"
+  }
+}

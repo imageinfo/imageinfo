@@ -19,7 +19,7 @@
     "experiments/0032-windows-publication/src/windows.rs": "264a21ad1e5d8cb6e1229bfe12fc9e49137eac4904adc6d583acaa7f21d7b564",
     "experiments/0038-staging-cleanup/src/staging.rs": "998a159a64d420bc0bac634f2b5c305048eff3d1874636d264d24cea59e442f2",
     "experiments/0049-cumulative-budget/supervisor.py": "e0d7cf9b18c5612486c30bf863dee4b3fa6e576b0411d4367be38f1037ccdbb6",
-    "experiments/0049-cumulative-budget/qualify.py": "106976c992a093e2df51249ba8aa60d506bad61cc425bb1fb1f574f71e1e1c54"
+    "experiments/0049-cumulative-budget/qualify.py": "b24802c516f8f4b363a1a31be8a6fd4e5f60151eb8d4472af7be19e92f00861c"
   },
   "cells": [
     {

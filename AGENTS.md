@@ -193,6 +193,19 @@ exact source fractions/offsets, explicit existing singleton destination and
 default conflict refusal. Replacement intent requires named destination losses
 to be acknowledged. Its separate test-only model has ten passing vectors; see
 `docs/sidecars/date-mapping.md`. No XML serialization or publication is enabled.
+#0048 observes five actual native storage cases on a separate bounded secondary
+NTFS USB/raw disk in the standard-user Windows guest. Four real storage-full
+worker failures retain source and partial/postpublication artifacts, including
+a 32 KiB candidate and an output with an empty failed receipt. Read-only inspection
+preserves inventories and removes no owned handles. See
+`docs/write-safety/native-storage-failures.md`; native read/device-flush failure,
+physical power, complete storage profiles and RAW admission remain unqualified.
+#0051 assembles the exact candidate's evidence and all 24 WS/16 SAF obligations
+in a read-only ledger/model. Secondary USB error observations never qualify the
+system SATA/QCOW2 image. Missing, contrary and unqualified evidence mechanically
+refuses before target effects; editable qualification claims are rejected. See
+`docs/write-safety/profile-admission.md`; no actual profile, production writer,
+automatic custody/recovery, repair or independent RAW permission is enabled.
 
 ## Subagent authorization
 

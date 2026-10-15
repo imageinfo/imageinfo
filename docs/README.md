@@ -57,6 +57,8 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Saved preview source binding](legacy-compatibility/cr3-preview-source-binding.md) | #0077 actual bounded content hash, exact occurrence revalidation and stale-plan refusals without live guard or mutation authority. |
 | [Explicit RAW/XMP pairing](sidecars/pairing.md) | #0082 explicit canonical paths, held physical-identity comparison and alias/collision refusals without basename inference or XMP parsing. |
 | [One-way XMP date mapping](sidecars/date-mapping.md) | #0083 bounded versioned original-snapshot date intent, exact fraction/zone preservation and explicit conflict/loss choices; no serializer or write integration. |
+| [Native storage-full observations](write-safety/native-storage-failures.md) | #0048 five actual secondary-volume Windows guest cases, native errors, retained partial/postpublication artifacts and read-only inspection; device-error and production gates remain. |
+| [Exact backend admission ledger](write-safety/profile-admission.md) | #0051 complete WS/SAF trace and portable refusal model; every current profile remains refused and hypothetical premises grant no authority. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |
