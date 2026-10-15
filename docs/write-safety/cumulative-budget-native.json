@@ -1,0 +1,150 @@
+{
+  "ticket": 49,
+  "observed": "2026-10-15",
+  "operationBoundBytes": 655360,
+  "perFileBoundBytes": 65536,
+  "maximumFilesPerOperation": 10,
+  "workerSha256": "f86918a7fb3880cf8e09590fcc7d58155ef64d98c95cf9c2a6afc541c5b040fa",
+  "sourceSha256": {
+    "experiments/0032-windows-publication/src/custody.rs": "5663780d6389b264e9ddc96905b5f3457e2c925b5f40b558cc9a3ea34a21b21b",
+    "experiments/0032-windows-publication/src/inspection.rs": "a9d8d4d77e7a410532b9143b10ca07754f990d945fcdc845d345561e55124660",
+    "experiments/0032-windows-publication/src/inspection_record.rs": "cba37205daad7d2da6ba2f7ea8e1c98b5066fc3082c70ca081045babdc1653e5",
+    "experiments/0032-windows-publication/src/main.rs": "81084c19b90ce665ad51d11c5d6bd1fefbbdaab14138235a7eed4f0d8e29a902",
+    "experiments/0032-windows-publication/src/native.rs": "4f6a3fc2df76569d7aa0fd5a75b66c175d71db53613d4227bbb1be87cbacdbb1",
+    "experiments/0032-windows-publication/src/ordinary.rs": "83b518af85fd53dc184be43616aa250de92e4ec5f166aaac906c6fe230700767",
+    "experiments/0032-windows-publication/src/ordinary_record.rs": "fc0f7f58951ae3feb70fc3cbbf3ff78faa7049ac84aa917b503417f9f999c7ca",
+    "experiments/0032-windows-publication/src/receipt_model.rs": "b080d1a8c1c7d5b48e8d84e402dd05fa0c1d0adf53668ac854e48cdf0063caed",
+    "experiments/0032-windows-publication/src/receipt_record.rs": "ba84dc3e1e4f6a1b152de357cd41403ec1ff13433acb9edb62f14fc19c47bf67",
+    "experiments/0032-windows-publication/src/restart_context.rs": "33967a46aceb52a7fc400ec1aaa30b7513d2aa99f2e973f482a1152466ed1e6a",
+    "experiments/0032-windows-publication/src/windows.rs": "264a21ad1e5d8cb6e1229bfe12fc9e49137eac4904adc6d583acaa7f21d7b564",
+    "experiments/0038-staging-cleanup/src/staging.rs": "998a159a64d420bc0bac634f2b5c305048eff3d1874636d264d24cea59e442f2",
+    "experiments/0049-cumulative-budget/supervisor.py": "e0d7cf9b18c5612486c30bf863dee4b3fa6e576b0411d4367be38f1037ccdbb6",
+    "experiments/0049-cumulative-budget/qualify.py": "106976c992a093e2df51249ba8aa60d506bad61cc425bb1fb1f574f71e1e1c54"
+  },
+  "cells": [
+    {
+      "name": "invalid-u64-limits",
+      "passed": true
+    },
+    {
+      "name": "checked-byte-overflow-before-charge",
+      "passed": true
+    },
+    {
+      "name": "checked-operation-overflow-before-charge",
+      "passed": true
+    },
+    {
+      "name": "actual-serialized-request-exact-and-over-bound",
+      "passed": true
+    },
+    {
+      "name": "unsupported-stable-worker-refuses-before-root-creation",
+      "passed": true
+    },
+    {
+      "name": "one-byte-below-refuses-before-operation-directory",
+      "passed": true
+    },
+    {
+      "name": "operation-cap-refuses-before-effects",
+      "passed": true
+    },
+    {
+      "name": "preexisting-unknown-root-retained",
+      "passed": true
+    },
+    {
+      "name": "exact-full-receipt-four-custody-snapshots-and-retained-charge",
+      "passed": true,
+      "outcome": "observed-receipt-recovery-required",
+      "chargedBytes": 655360,
+      "operations": 1,
+      "observedFiles": 10,
+      "observedLogicalBytes": 144777,
+      "custodySnapshots": 4,
+      "committed": false,
+      "productionPublicationAllowed": false,
+      "repairAllowed": false,
+      "namespaceAcknowledged": false
+    },
+    {
+      "name": "two-incomplete-operations-failed-control-short-copy-third-refused",
+      "passed": true,
+      "first": {
+        "outcome": "conflict-or-failed-before-publication",
+        "chargedBytes": 655360,
+        "operations": 1,
+        "observedFiles": 4,
+        "observedLogicalBytes": 132904,
+        "custodySnapshots": 0,
+        "committed": false,
+        "productionPublicationAllowed": false,
+        "repairAllowed": false,
+        "namespaceAcknowledged": false
+      },
+      "second": {
+        "outcome": "conflict-or-failed-before-publication",
+        "chargedBytes": 1310720,
+        "operations": 2,
+        "observedFiles": 2,
+        "observedLogicalBytes": 131071,
+        "custodySnapshots": 0,
+        "committed": false,
+        "productionPublicationAllowed": false,
+        "repairAllowed": false,
+        "namespaceAcknowledged": false
+      }
+    },
+    {
+      "name": "cancel-retains-full-charge-after-worker-owned-cleanup",
+      "passed": true,
+      "outcome": "cancelled-before-publication",
+      "chargedBytes": 655360,
+      "operations": 1,
+      "observedFiles": 1,
+      "observedLogicalBytes": 65536,
+      "custodySnapshots": 0,
+      "committed": false,
+      "productionPublicationAllowed": false,
+      "repairAllowed": false,
+      "namespaceAcknowledged": false
+    },
+    {
+      "name": "short-receipt-retains-candidate-records-and-custody",
+      "passed": true,
+      "outcome": "recovery-required",
+      "chargedBytes": 655360,
+      "operations": 1,
+      "observedFiles": 10,
+      "observedLogicalBytes": 143872,
+      "custodySnapshots": 4,
+      "committed": false,
+      "productionPublicationAllowed": false,
+      "repairAllowed": false,
+      "namespaceAcknowledged": false
+    },
+    {
+      "name": "supervisor-exception-after-real-source-construction-poisons-and-retains-charge",
+      "passed": true
+    },
+    {
+      "name": "late-unknown-entry-poisons-without-removal-or-second-charge",
+      "passed": true
+    },
+    {
+      "name": "foreign-operation-directory-refuses-before-charge",
+      "passed": true
+    }
+  ],
+  "cellCount": 15,
+  "allPassed": true,
+  "logicalByteAdmissionOnly": true,
+  "diskReservation": false,
+  "physicalAllocationQuota": false,
+  "freeSpaceQualified": false,
+  "automaticCustody": false,
+  "productionPublicationAllowed": false,
+  "rawAdmissionAllowed": false,
+  "repairAllowed": false
+}

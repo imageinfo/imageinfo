@@ -24,6 +24,18 @@ jobs:
           persist-credentials: false
       - name: Install pinned Rust toolchain
         run: rustup toolchain install 1.99.0 --profile minimal --component clippy,rustfmt
+      - name: Check bounded XMP component research
+        run: |
+          cargo fmt --manifest-path experiments/0081-xmp-model/Cargo.toml --check
+          cargo clippy --locked --manifest-path experiments/0081-xmp-model/Cargo.toml --all-targets -- -D warnings
+          cargo test --locked --manifest-path experiments/0081-xmp-model/Cargo.toml
+          cargo build --locked --release --manifest-path experiments/0081-xmp-model/Cargo.toml
+      - name: Check retained-budget and collector tooling syntax
+        run: python -m py_compile experiments/0049-cumulative-budget/supervisor.py experiments/0049-cumulative-budget/qualify.py scripts/read_benchmark.py scripts/test_read_benchmark.py
+      - name: Check benchmark collector contracts
+        run: |
+          python -m pip install jsonschema==4.26.0
+          python scripts/test_read_benchmark.py
       - name: Check bound Windows publication formatting
         run: cargo fmt --manifest-path experiments/0032-windows-publication/Cargo.toml --check
       - name: Check existing-source oplock research

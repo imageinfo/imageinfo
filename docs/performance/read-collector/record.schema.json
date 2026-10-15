@@ -1,0 +1,642 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/imageinfo/imageinfo/raw/main/docs/performance/read-collector/record.schema.json",
+  "title": "Bounded metadata-read private measurement record v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "collectorRevision",
+    "driverSha256",
+    "pythonExecutableSha256",
+    "pythonVersion",
+    "configuration",
+    "evidenceSha256",
+    "argv",
+    "cwd",
+    "processEnvironment",
+    "host",
+    "inputBytes",
+    "cache",
+    "consumer",
+    "clock",
+    "unavailableTelemetry",
+    "unavailableReason",
+    "attempts",
+    "sourceUnchanged",
+    "binaryUnchanged",
+    "status",
+    "aggregates"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "collectorRevision": {
+      "const": "read-collector-v1"
+    },
+    "driverSha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "pythonExecutableSha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "pythonVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "configuration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "binary",
+        "input",
+        "oracle",
+        "fixtureId",
+        "admissionEvidence",
+        "correctnessEvidence",
+        "binarySha256",
+        "inputSha256",
+        "oracleSha256",
+        "environment",
+        "repeats",
+        "warmups",
+        "timeoutMs",
+        "captureBytes",
+        "maxBytes"
+      ],
+      "properties": {
+        "binary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "input": {
+          "type": "string",
+          "minLength": 1
+        },
+        "oracle": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fixtureId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "admissionEvidence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "correctnessEvidence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "binarySha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "inputSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "oracleSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "environment": {
+          "type": "object",
+          "minProperties": 1
+        },
+        "repeats": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "warmups": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 60000
+        },
+        "captureBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4194304
+        },
+        "maxBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 268435456
+        }
+      }
+    },
+    "evidenceSha256": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "admissionEvidence",
+        "correctnessEvidence"
+      ],
+      "properties": {
+        "admissionEvidence": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "correctnessEvidence": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "argv": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "cwd": {
+      "type": "string",
+      "minLength": 1
+    },
+    "processEnvironment": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "host": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "system",
+        "release",
+        "version",
+        "machine"
+      ],
+      "properties": {
+        "system": {
+          "type": "string",
+          "minLength": 1
+        },
+        "release": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "machine": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "inputBytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "cache": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "process",
+        "application",
+        "os",
+        "device",
+        "server",
+        "conditioning"
+      ],
+      "properties": {
+        "process": {
+          "type": "string",
+          "minLength": 1
+        },
+        "application": {
+          "type": "string",
+          "minLength": 1
+        },
+        "os": {
+          "type": "string",
+          "minLength": 1
+        },
+        "device": {
+          "type": "string",
+          "minLength": 1
+        },
+        "server": {
+          "type": "string",
+          "minLength": 1
+        },
+        "conditioning": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "consumer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "clock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "resolutionSeconds",
+        "unit",
+        "boundary"
+      ],
+      "properties": {
+        "name": {
+          "const": "time.perf_counter_ns"
+        },
+        "resolutionSeconds": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "unit": {
+          "const": "nanoseconds"
+        },
+        "boundary": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "unavailableTelemetry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cpuNs",
+        "peakMemoryBytes",
+        "logicalIoBytes",
+        "physicalIoBytes",
+        "firstResultNs",
+        "queueDepth",
+        "scratchBytes"
+      ],
+      "properties": {
+        "cpuNs": {
+          "type": "null"
+        },
+        "peakMemoryBytes": {
+          "type": "null"
+        },
+        "logicalIoBytes": {
+          "type": "null"
+        },
+        "physicalIoBytes": {
+          "type": "null"
+        },
+        "firstResultNs": {
+          "type": "null"
+        },
+        "queueDepth": {
+          "type": "null"
+        },
+        "scratchBytes": {
+          "type": "null"
+        }
+      }
+    },
+    "unavailableReason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "attempts": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 110,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "startedUtc",
+          "elapsedNs",
+          "outcome",
+          "exitCode",
+          "censored",
+          "errorClass",
+          "stdoutBytes",
+          "stderrBytes",
+          "stdoutCapturedBytes",
+          "stderrCapturedBytes",
+          "stdoutSha256",
+          "stderrSha256",
+          "index",
+          "phase",
+          "correctness",
+          "eligible"
+        ],
+        "properties": {
+          "startedUtc": {
+            "type": "string",
+            "minLength": 1
+          },
+          "elapsedNs": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "outcome": {
+            "enum": [
+              "launch-error",
+              "exited",
+              "timeout",
+              "output-limit",
+              "consumer-error"
+            ]
+          },
+          "exitCode": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "censored": {
+            "type": "boolean"
+          },
+          "errorClass": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "stdoutBytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "stderrBytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "stdoutCapturedBytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "stderrCapturedBytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "stdoutSha256": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "stderrSha256": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "index": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 109
+          },
+          "phase": {
+            "enum": [
+              "warmup",
+              "sample"
+            ]
+          },
+          "correctness": {
+            "enum": [
+              "pass",
+              "fail",
+              "not-checked"
+            ]
+          },
+          "eligible": {
+            "type": "boolean"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "outcome": {
+                  "enum": [
+                    "timeout",
+                    "output-limit",
+                    "consumer-error"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "censored": {
+                  "const": true
+                },
+                "correctness": {
+                  "const": "not-checked"
+                },
+                "eligible": {
+                  "const": false
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "eligible": {
+                  "const": true
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "phase": {
+                  "const": "sample"
+                },
+                "correctness": {
+                  "const": "pass"
+                },
+                "outcome": {
+                  "const": "exited"
+                },
+                "exitCode": {
+                  "const": 0
+                },
+                "censored": {
+                  "const": false
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "phase": {
+                  "const": "warmup"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "eligible": {
+                  "const": false
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "outcome": {
+                  "const": "exited"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "censored": {
+                  "const": false
+                },
+                "exitCode": {
+                  "type": "integer"
+                },
+                "errorClass": {
+                  "type": "null"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "outcome": {
+                  "const": "launch-error"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "censored": {
+                  "const": false
+                },
+                "exitCode": {
+                  "type": "null"
+                },
+                "correctness": {
+                  "const": "not-checked"
+                },
+                "eligible": {
+                  "const": false
+                },
+                "errorClass": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "correctness": {
+                  "const": "fail"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "eligible": {
+                  "const": false
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "sourceUnchanged": {
+      "type": "boolean"
+    },
+    "binaryUnchanged": {
+      "type": "boolean"
+    },
+    "status": {
+      "enum": [
+        "completed",
+        "invalid-measurement"
+      ]
+    },
+    "aggregates": {
+      "type": "null"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "completed"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "sourceUnchanged": {
+            "const": true
+          },
+          "binaryUnchanged": {
+            "const": true
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "invalid-measurement"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "attempts": {
+            "items": {
+              "properties": {
+                "eligible": {
+                  "const": false
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "kind": "read-collector-qualification",
+  "observedOn": "2026-10-15",
+  "purpose": "Actual collector functionality smoke; not #0061 performance baseline or policy evidence",
+  "collectorRevision": "read-collector-v1",
+  "driverSha256": "585c3d923ae49991ce3804afc5b70e7c474ba93c4b245fc9db26f41b9e14bdbb",
+  "binarySha256": "1388e8201398b63918e6bd1af8eed7c3c51346f286d87daa146a115dcfb57445",
+  "binarySourceRevision": "b819f54 (frozen root source supplied by parent)",
+  "pythonVersion": "3.14.7",
+  "validator": "jsonschema 4.26.0; Draft202012Validator",
+  "workload": "one admitted EOS R5 full RAW CR3; all supported metadata and all value views; partial coverage",
+  "fixtureId": "FX-R5-001",
+  "inputCount": 1,
+  "inputBytes": 54459478,
+  "correctness": "#0013 lawful admitted hash; #0020 passing differential experiment and exact prior native JSON oracle; invocation IDs/display paths only rebound",
+  "cache": {
+    "process": "fresh per attempt",
+    "application": "no persistent session",
+    "os": "uncontrolled; preflight SHA-256 reads may warm caches",
+    "device": "uncontrolled",
+    "server": "unknown/not established",
+    "conditioning": "none; sequential warmups then repeats, no eviction"
+  },
+  "consumer": "two bounded in-memory pipe drains; complete JSON validation after timed drain/exit",
+  "clock": {
+    "name": "time.perf_counter_ns",
+    "resolutionSeconds": 1e-07,
+    "unit": "nanoseconds",
+    "boundary": "before Popen through direct exit and pipe drains; validation excluded; overhead not subtracted"
+  },
+  "budget": {
+    "repeats": 2,
+    "warmups": 1,
+    "timeoutMs": 10000,
+    "captureBytes": 1048576,
+    "maxBytes": 8388608
+  },
+  "attempts": [
+    {
+      "index": 0,
+      "phase": "warmup",
+      "elapsedNs": 118804800,
+      "outcome": "exited",
+      "exitCode": 0,
+      "censored": false,
+      "stdoutBytes": 61199,
+      "stderrBytes": 0,
+      "stdoutCapturedBytes": 61199,
+      "stderrCapturedBytes": 0,
+      "correctness": "pass",
+      "eligible": false
+    },
+    {
+      "index": 1,
+      "phase": "sample",
+      "elapsedNs": 9453500,
+      "outcome": "exited",
+      "exitCode": 0,
+      "censored": false,
+      "stdoutBytes": 61199,
+      "stderrBytes": 0,
+      "stdoutCapturedBytes": 61199,
+      "stderrCapturedBytes": 0,
+      "correctness": "pass",
+      "eligible": true
+    },
+    {
+      "index": 2,
+      "phase": "sample",
+      "elapsedNs": 9406400,
+      "outcome": "exited",
+      "exitCode": 0,
+      "censored": false,
+      "stdoutBytes": 61199,
+      "stderrBytes": 0,
+      "stdoutCapturedBytes": 61199,
+      "stderrCapturedBytes": 0,
+      "correctness": "pass",
+      "eligible": true
+    }
+  ],
+  "sourceUnchanged": true,
+  "binaryUnchanged": true,
+  "status": "completed",
+  "unavailableTelemetry": {
+    "cpuNs": null,
+    "peakMemoryBytes": null,
+    "logicalIoBytes": null,
+    "physicalIoBytes": null,
+    "firstResultNs": null,
+    "queueDepth": null,
+    "scratchBytes": null
+  },
+  "unavailableReason": "not instrumented by this stdlib direct-process collector; not zero",
+  "aggregates": null,
+  "qa": {
+    "tests": 9,
+    "invalidSchemaMutations": 11,
+    "finiteChildCases": [
+      "nonzero exit with invalid JSON and stderr",
+      "timeout",
+      "capture overflow",
+      "launch error"
+    ],
+    "result": "pass"
+  },
+  "privacy": "Exact paths/argv/environment, per-image and output hashes, media and raw logs remain private. Public timing rows are derived from the private collector ledger.",
+  "limits": "Uncontrolled host and caches; one fixture; no speed/default/threshold, broader workload, resource-policy or platform claim."
+}

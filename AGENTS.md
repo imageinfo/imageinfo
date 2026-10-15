@@ -163,7 +163,23 @@ cell, without publication replay. See `docs/write-safety/namespace-receipt-guest
 Host boot is unchanged; the guest is normally shut down with private disk/captures
 retained. Host caches remain alive and no profile, repair or RAW gate is enabled.
 
+#0049 adds an external fixed-worker cumulative logical-byte supervisor. All
+candidate, record and custody constructions are charged before effects, and
+charges remain retained across failures/cancellation. Fifteen native cells pass;
+unknown state and other worker builds refuse. See
+`docs/write-safety/cumulative-budget.md`; no physical allocation quota, persistent
+budget, automatic custody or production profile is enabled.
+#0081 reviews a pinned read-only XML component and bounded expanded-name XMP
+model in a separate research crate. Unknown namespaces and duplicate occurrences
+retain identity; unsupported structures refuse. See `docs/sidecars/xmp-component.md`;
+no production dependency, XML writer or lossless round-trip capability follows.
+#0060 adds a bounded read benchmark collector with real nanosecond timing,
+deadline/capture limits, retained failed attempts and exact expected-output checks.
+Its actual private R5 smoke run is functionality evidence, not a performance
+baseline or cache/limit policy. See `docs/performance/read-collector.md`.
+
 ## Subagent authorization
+
 
 Terry authorized parallel subagent work on all tickets authorized to work,
 2026-10-14. Use parallel subagents where practical: separate independent

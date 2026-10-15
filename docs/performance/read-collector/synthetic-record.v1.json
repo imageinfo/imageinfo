@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "collectorRevision": "read-collector-v1",
+  "driverSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "pythonExecutableSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "pythonVersion": "synthetic",
+  "configuration": {
+    "binary": "SYNTHETIC-binary",
+    "input": "SYNTHETIC-input",
+    "oracle": "SYNTHETIC-oracle",
+    "fixtureId": "FX-R5-001",
+    "admissionEvidence": "SYNTHETIC-admissionEvidence",
+    "correctnessEvidence": "SYNTHETIC-correctnessEvidence",
+    "environment": {
+      "scope": "synthetic contract vector; no measurements"
+    },
+    "repeats": 1,
+    "warmups": 0,
+    "timeoutMs": 10000,
+    "captureBytes": 1048576,
+    "maxBytes": 8388608,
+    "binarySha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "inputSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "oracleSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "evidenceSha256": {
+    "admissionEvidence": "0000000000000000000000000000000000000000000000000000000000000000",
+    "correctnessEvidence": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "argv": [
+    "SYNTHETIC-binary",
+    "metadata",
+    "read",
+    "--values",
+    "all",
+    "--output",
+    "json",
+    "--max-bytes",
+    "8388608",
+    "--",
+    "SYNTHETIC-input"
+  ],
+  "cwd": "SYNTHETIC-cwd",
+  "processEnvironment": {
+    "LC_ALL": "C",
+    "LANG": "C",
+    "TZ": "UTC"
+  },
+  "host": {
+    "system": "synthetic",
+    "release": "synthetic",
+    "version": "synthetic",
+    "machine": "synthetic"
+  },
+  "inputBytes": 1,
+  "cache": {
+    "process": "fresh per attempt",
+    "application": "no persistent session",
+    "os": "uncontrolled; preflight SHA-256 reads may warm caches",
+    "device": "uncontrolled",
+    "server": "unknown/not established",
+    "conditioning": "none; sequential warmups then repeats, no eviction"
+  },
+  "consumer": "two bounded in-memory pipe drains; complete JSON validation after timed drain/exit",
+  "clock": {
+    "name": "time.perf_counter_ns",
+    "resolutionSeconds": 1e-09,
+    "unit": "nanoseconds",
+    "boundary": "before Popen through direct exit and pipe drains; validation excluded; overhead not subtracted"
+  },
+  "unavailableTelemetry": {
+    "cpuNs": null,
+    "peakMemoryBytes": null,
+    "logicalIoBytes": null,
+    "physicalIoBytes": null,
+    "firstResultNs": null,
+    "queueDepth": null,
+    "scratchBytes": null
+  },
+  "unavailableReason": "not instrumented by this stdlib direct-process collector; not zero",
+  "attempts": [
+    {
+      "startedUtc": "2000-01-01T00:00:00+00:00",
+      "elapsedNs": 1,
+      "outcome": "exited",
+      "exitCode": 0,
+      "censored": false,
+      "errorClass": null,
+      "stdoutBytes": 0,
+      "stderrBytes": 0,
+      "stdoutSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "stderrSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "index": 0,
+      "phase": "sample",
+      "correctness": "pass",
+      "eligible": true,
+      "stdoutCapturedBytes": 0,
+      "stderrCapturedBytes": 0
+    }
+  ],
+  "sourceUnchanged": true,
+  "binaryUnchanged": true,
+  "status": "completed",
+  "aggregates": null
+}

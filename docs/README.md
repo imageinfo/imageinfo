@@ -49,6 +49,9 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Bounded namespace and receipt protocol](write-safety/namespace-receipt-protocol.md) | #0045 proposed single-output state/receipt ordering, portable logical model and finite fault plan; profile, backend and actual durability qualification remain separate. |
 | [Windows marker receipt sequence](write-safety/namespace-receipt-marker.md) | #0046 bounded exclusive receipt construction and caller-bound read-only inspection; raw flush observations retain all commitment/profile refusals. |
 | [Windows marker receipt guest qualification](write-safety/namespace-receipt-guest.md) | #0047 exact #0046 static worker; 34 audited cases, three fault methods, two property-drift refusals and disclosed operator continuation; all commitment/profile/repair gates retained. |
+| [Cumulative retained-work budget](write-safety/cumulative-budget.md) | #0049 fixed-worker supervisor, monotonic logical charges and 15 native cases; no disk reservation or persistent quota. |
+| [XMP component and model review](sidecars/xmp-component.md) | #0081 pinned read-only XML experiment, expanded-name/occurrence model and finite limits; no production parser or serializer. |
+| [Reproducible read collector](performance/read-collector.md) | #0060 bounded timed subprocess collection, correctness oracle and versioned records; actual smoke evidence without a performance baseline claim. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |
