@@ -79,8 +79,12 @@ Primary sources: [same-file 1.0.6 API](https://docs.rs/same-file/1.0.6/same_file
 vectors cover explicit differing stems/directories, no basename inference,
 missing sidecar without creation, lexical aliases, hard links versus equal-byte
 distinct files, directories, unsupported non-ASCII leaves, and the directory bound.
-Windows adds a case-alias refusal; Unix adds a symlink alias and an actual
-case-collision refusal. Successful and refused observations retain input bytes and
+Windows adds a case-alias refusal; Unix adds a symlink alias and a directory-entry
+case check. When the filesystem retains two distinct case-equivalent names, the
+Unix vector requires ambiguity refusal. When the names alias one directory entry,
+as on commonly case-insensitive APFS, it requires successful explicit pairing with
+the distinct RAW and same-file refusal between the sidecar's two spellings.
+Neither branch skips the case assertions. Successful and refused observations retain input bytes and
 unrelated neighboring files.
 
 On 2026-10-15, `cargo test --locked --test pairing` passed all eight Windows vectors

@@ -139,7 +139,7 @@ fn directory_scan_bound_refuses_before_pairing() {
 
 #[cfg(unix)]
 #[test]
-fn unix_symlink_alias_and_case_collision_refuse() {
+fn unix_symlink_alias_refuses() {
     use std::os::unix::fs::symlink;
     let files = Files::new();
     let raw = files.file("camera.CR3");
@@ -149,12 +149,46 @@ fn unix_symlink_alias_and_case_collision_refuse() {
         resolve_pair(&raw, Some(&alias)).unwrap_err().code,
         "PAIRING_SAME_FILE"
     );
+}
+
+#[cfg(unix)]
+#[test]
+fn unix_case_resolution_matches_actual_directory_entries() {
+    let files = Files::new();
+    let raw = files.file("camera.CR3");
     let sidecar = files.file("camera.xmp");
-    files.file("CAMERA.XMP");
-    assert_eq!(
-        resolve_pair(&raw, Some(&sidecar)).unwrap_err().code,
-        "PAIRING_CASE_AMBIGUITY"
-    );
+    let uppercase = files.file("CAMERA.XMP");
+    let matches = fs::read_dir(&files.0)
+        .unwrap()
+        .map(|entry| entry.unwrap().file_name())
+        .filter(|name| {
+            name.to_str()
+                .is_some_and(|name| name.eq_ignore_ascii_case("camera.xmp"))
+        })
+        .count();
+    // Unix includes both case-sensitive Linux filesystems and commonly
+    // case-insensitive APFS. Assert the resolver's behavior in either case.
+    match matches {
+        2 => {
+            assert_eq!(
+                resolve_pair(&raw, Some(&sidecar)).unwrap_err().code,
+                "PAIRING_CASE_AMBIGUITY"
+            );
+            assert_ne!(
+                fs::canonicalize(&sidecar).unwrap(),
+                fs::canonicalize(&uppercase).unwrap()
+            );
+        }
+        1 => {
+            assert!(resolve_pair(&raw, Some(&sidecar)).is_ok());
+            assert!(resolve_pair(&raw, Some(&uppercase)).is_ok());
+            assert_eq!(
+                resolve_pair(&sidecar, Some(&uppercase)).unwrap_err().code,
+                "PAIRING_SAME_FILE"
+            );
+        }
+        count => panic!("expected one case-alias entry or two distinct entries, found {count}"),
+    }
 }
 
 #[cfg(windows)]

@@ -2,3 +2,5 @@
 *.md text eol=lf
 *.json text eol=lf
 *.csv text eol=lf
+# Preserve the upstream notice bytes bound by the dependency inventory.
+licenses/dependencies/generic-array-0.14.7-LICENSE.txt -text whitespace=cr-at-eol
