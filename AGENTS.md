@@ -171,6 +171,11 @@ spawning subagents; use a fresh context when the spawn tool requires it for mode
 overrides, and provide the relevant task context in the delegation message.
 Preserve the eight-direct-subagent and depth-1 limits above.
 
+Terry also requires **Fast mode** for all subagents (2026-10-15). Keep the parent
+session in Fast mode: subagents inherit the root session's service tier rather
+than overriding it in individual agent files. Persist `service_tier = "fast"`
+and `[features] fast_mode = true` in the user Codex configuration.
+
 ## Product intent
 
 - Design imageinfo from a clean whiteboard. Terry clarified on 2026-10-10 that
