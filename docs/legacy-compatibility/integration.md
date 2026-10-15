@@ -5,6 +5,11 @@ bounded native token array and caller request ID in process, returning the exist
 result envelope. It shares the ordinary metadata-read workflow. The request-file,
 subprocess and persistent-session protocols below remain proposals; this first
 library slice does not implement their framing or lifecycle.
+Subsequent [#0058's bounded framing specification](read-session-framing.md)
+defines a smaller proposed sequential metadata-read/close session with explicit
+finite limits and authored wire vectors. It implements no session. The broader
+cancel/apply/queue protocol below retains its historical proposed status and is
+not permission to advertise those operations through the narrower v1 boundary.
 
 Proposal `2026-10-10.1`, initially local subprocess integration. No executable,
 network service, transport library or runtime concurrency model is selected.

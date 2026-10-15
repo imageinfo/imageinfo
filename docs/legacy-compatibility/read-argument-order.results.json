@@ -1,0 +1,956 @@
+{
+  "schemaVersion": 1,
+  "ledgerSha256": "cf088f0cf6f7352630c6c6f3b811e9c175c0a071a75623a51396c5d3b63a598d",
+  "binarySha256": "478769e284ba34298dca8f2fcd6622db33a305046b29a49e1337bf5b547dde0c",
+  "checkerSha256": "6e420b276f9d4c529b051992f895234f0b30567b2073568e815391a18db408e7",
+  "sourceSha256": {
+    "src/cli.rs": "13dd8ba2e6d6d40511ef829104a457c2a00a339b8d1f8c28f2cd8d9b46961a87",
+    "src/app.rs": "824655b6f49fa3dac92c599ac88a7d52787726db851740d2acf8c3aa7af4e28d",
+    "src/read_request.rs": "612f84defa717f481e34e7ebf18f662c2935ded67d1c20ce2238f1645bbe9ee1",
+    "src/reader/wire.rs": "c5c3c2adacec69a48d9a4a0586ce0f47f2023e065c83174a64602bccb9d13944",
+    "Cargo.lock": "f810db2731ce49b2c51d048e1bbefbe585ebef35b36a0575e0ff5e47c97e86e8"
+  },
+  "supportSha256": "c8354d2609aa664d1b86ceca75a7d9500973fcf222cdd267ce9b3c7bafe34104",
+  "cases": [
+    {
+      "id": "RA-001",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 33232,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-002",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 33232,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-003",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 33232,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-004",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 33232,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-005",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 33232,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-006",
+      "status": 2,
+      "channel": "empty",
+      "stdoutBytes": 0,
+      "stderrBytes": 198,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-007",
+      "status": 2,
+      "channel": "empty",
+      "stdoutBytes": 0,
+      "stderrBytes": 87,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-008",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 765,
+      "stderrBytes": 196,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-009",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 651,
+      "stderrBytes": 86,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-010",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 773,
+      "stderrBytes": 204,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-011",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 789,
+      "stderrBytes": 220,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-012",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 771,
+      "stderrBytes": 203,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-013",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 794,
+      "stderrBytes": 223,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-014",
+      "status": 0,
+      "channel": "text",
+      "stdoutBytes": 1176,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-015",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 33220,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-016",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 782,
+      "stderrBytes": 211,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-017",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 33232,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-018",
+      "status": 0,
+      "channel": "text",
+      "stdoutBytes": 950,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-019",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 33242,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-020",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 33240,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-021",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 782,
+      "stderrBytes": 211,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-022",
+      "status": 2,
+      "channel": "empty",
+      "stdoutBytes": 0,
+      "stderrBytes": 223,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-023",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 615,
+      "stderrBytes": 50,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-024",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 649,
+      "stderrBytes": 84,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-025",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11268,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-026",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11268,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-027",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11268,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-028",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11268,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-029",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11268,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-030",
+      "status": 2,
+      "channel": "empty",
+      "stdoutBytes": 0,
+      "stderrBytes": 196,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-031",
+      "status": 2,
+      "channel": "empty",
+      "stdoutBytes": 0,
+      "stderrBytes": 85,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-032",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 763,
+      "stderrBytes": 194,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-033",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 649,
+      "stderrBytes": 84,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-034",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 771,
+      "stderrBytes": 202,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-035",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 787,
+      "stderrBytes": 218,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-036",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 772,
+      "stderrBytes": 201,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-037",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 792,
+      "stderrBytes": 221,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-038",
+      "status": 0,
+      "channel": "text",
+      "stdoutBytes": 795,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-039",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11256,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-040",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 780,
+      "stderrBytes": 209,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-041",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11268,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-042",
+      "status": 0,
+      "channel": "text",
+      "stdoutBytes": 274,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-043",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11278,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-044",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11276,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-045",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 780,
+      "stderrBytes": 209,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-046",
+      "status": 2,
+      "channel": "empty",
+      "stdoutBytes": 0,
+      "stderrBytes": 221,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-047",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 615,
+      "stderrBytes": 50,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-048",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 647,
+      "stderrBytes": 82,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-049",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 905,
+      "stderrBytes": 0,
+      "effects": "exact-new-preview-only",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-050",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 909,
+      "stderrBytes": 0,
+      "effects": "exact-new-preview-only",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-051",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 909,
+      "stderrBytes": 0,
+      "effects": "exact-new-preview-only",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-052",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 909,
+      "stderrBytes": 0,
+      "effects": "exact-new-preview-only",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-053",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 909,
+      "stderrBytes": 0,
+      "effects": "exact-new-preview-only",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-054",
+      "status": 2,
+      "channel": "empty",
+      "stdoutBytes": 0,
+      "stderrBytes": 199,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-055",
+      "status": 2,
+      "channel": "empty",
+      "stdoutBytes": 0,
+      "stderrBytes": 88,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-056",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 766,
+      "stderrBytes": 197,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-057",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 652,
+      "stderrBytes": 87,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-058",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 774,
+      "stderrBytes": 205,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-059",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 790,
+      "stderrBytes": 221,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-060",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 775,
+      "stderrBytes": 204,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-061",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 795,
+      "stderrBytes": 224,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-062",
+      "status": 0,
+      "channel": "text",
+      "stdoutBytes": 1106,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-063",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 903,
+      "stderrBytes": 0,
+      "effects": "exact-new-preview-only",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-064",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 783,
+      "stderrBytes": 212,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-065",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 909,
+      "stderrBytes": 0,
+      "effects": "exact-new-preview-only",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-066",
+      "status": 0,
+      "channel": "text",
+      "stdoutBytes": 53,
+      "stderrBytes": 0,
+      "effects": "exact-new-preview-only",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-067",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 914,
+      "stderrBytes": 0,
+      "effects": "exact-new-preview-only",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-068",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 913,
+      "stderrBytes": 0,
+      "effects": "exact-new-preview-only",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-069",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 783,
+      "stderrBytes": 212,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-070",
+      "status": 2,
+      "channel": "empty",
+      "stdoutBytes": 0,
+      "stderrBytes": 224,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-071",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 615,
+      "stderrBytes": 50,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-072",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 650,
+      "stderrBytes": 85,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-073",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 10832,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-074",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11909,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-075",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11909,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-076",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 10827,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-077",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 10832,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-078",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 10931,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-079",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 10936,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-080",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 767,
+      "stderrBytes": 198,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-081",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 21168,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-082",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 762,
+      "stderrBytes": 191,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-083",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 762,
+      "stderrBytes": 193,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-084",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 778,
+      "stderrBytes": 209,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-085",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 909,
+      "stderrBytes": 0,
+      "effects": "exact-new-preview-only",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-086",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 905,
+      "stderrBytes": 0,
+      "effects": "exact-new-preview-only",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-087",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 806,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-088",
+      "status": 1,
+      "channel": "json",
+      "stdoutBytes": 953,
+      "stderrBytes": 63,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-089",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 910,
+      "stderrBytes": 0,
+      "effects": "exact-new-preview-only",
+      "classification": "native-difference",
+      "passed": true
+    },
+    {
+      "id": "RA-090",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 783,
+      "stderrBytes": 212,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-091",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 671,
+      "stderrBytes": 106,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-092",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 671,
+      "stderrBytes": 106,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-093",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 801,
+      "stderrBytes": 234,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    },
+    {
+      "id": "RA-094",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 661,
+      "stderrBytes": 83,
+      "effects": "unchanged",
+      "classification": "native-refusal",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,511 @@
+{
+  "schemaVersion": 1,
+  "catalogId": "r5-date-family-bounded",
+  "revision": "2026-10-15.1",
+  "observedOn": "2026-10-15",
+  "sourceRevision": "211f395e62c2dc35f396c1d40336d87344e4b4d1",
+  "requirements": [
+    "LG-005"
+  ],
+  "authority": {
+    "productionMutationAllowed": false,
+    "repairEnabled": false,
+    "runtimeRegistry": false,
+    "completeDateFamily": false
+  },
+  "statusMeaning": {
+    "supported": "Implemented bounded observation/report capability; does not imply admission success.",
+    "refused": "Requested named operation is explicitly unavailable or outside the declared native subset; no new runtime error code is introduced by this ledger.",
+    "unverified": "Evidence is insufficient to establish the stated proof; this is never permission."
+  },
+  "sources": [
+    {
+      "id": "reader",
+      "path": "src/reader/mod.rs",
+      "purpose": "native date decode, path and allocation identity",
+      "observedOn": "2026-10-15"
+    },
+    {
+      "id": "selector",
+      "path": "src/reader/wire.rs",
+      "purpose": "exact named selectors and unresolved partial coverage",
+      "observedOn": "2026-10-15"
+    },
+    {
+      "id": "tiff",
+      "path": "src/reader/tiff.rs",
+      "purpose": "ASCII framing and IFD traversal",
+      "observedOn": "2026-10-15"
+    },
+    {
+      "id": "admission",
+      "path": "src/reader/admission.rs",
+      "purpose": "single DTO shape, calendar and all-allocation refusal",
+      "observedOn": "2026-10-15"
+    },
+    {
+      "id": "preview",
+      "path": "src/preview.rs",
+      "purpose": "hypothetical changed/identical intent, immutable authority flag",
+      "observedOn": "2026-10-15"
+    },
+    {
+      "id": "authored-reader",
+      "path": "tests/support/mod.rs",
+      "purpose": "independently authored CMT2 date strings",
+      "observedOn": "2026-10-15"
+    },
+    {
+      "id": "authored-alias",
+      "path": "tests/admission_contract.rs",
+      "purpose": "undecoded 0x9004 and decoded 0x9291 allocation alias negatives",
+      "observedOn": "2026-10-15"
+    },
+    {
+      "id": "authored-preview",
+      "path": "tests/date_preview.rs",
+      "purpose": "identical-intent, ambiguity, shape and advisory partition tests",
+      "observedOn": "2026-10-15"
+    },
+    {
+      "id": "read-observations",
+      "path": "docs/reader/validation.md",
+      "purpose": "historical eight-file scoped native comparison",
+      "observedOn": "2026-10-11"
+    },
+    {
+      "id": "read-map",
+      "path": "docs/reader/format-evidence.md",
+      "purpose": "public independently recorded date IDs and pinned primary sources",
+      "observedOn": "2026-10-11"
+    },
+    {
+      "id": "admission-observations",
+      "path": "docs/write-safety/admission-observations.json",
+      "purpose": "56 named refusal assessments over eight sources",
+      "observedOn": "2026-10-12"
+    },
+    {
+      "id": "admission-method",
+      "path": "docs/write-safety/write-admission.md",
+      "purpose": "published alias-coupled observation and dependency limits",
+      "observedOn": "2026-10-12"
+    },
+    {
+      "id": "preview-observations",
+      "path": "docs/reader/date-preview.md",
+      "purpose": "published authored/private read-only preview evidence",
+      "observedOn": "2026-10-15"
+    },
+    {
+      "id": "fixture-families",
+      "path": "docs/fixture-plan/case-plan.v1.json",
+      "purpose": "FXP-005 timestamp/timezone behavior and FXP-026 date/GPS workflows remain broader than this finite ledger",
+      "observedOn": "2026-10-15"
+    },
+    {
+      "id": "plan",
+      "path": "src/plan.rs",
+      "purpose": "strict nonexecuting saved intent and unavailable profile",
+      "observedOn": "2026-10-15"
+    },
+    {
+      "id": "binding",
+      "path": "src/source_binding.rs",
+      "purpose": "complete bounded content snapshot and occurrence revalidation",
+      "observedOn": "2026-10-15"
+    },
+    {
+      "id": "authored-binding",
+      "path": "tests/source_binding.rs",
+      "purpose": "binding mismatches and equal-byte replacement limitations",
+      "observedOn": "2026-10-15"
+    }
+  ],
+  "fields": [
+    {
+      "id": "dto",
+      "name": "DateTimeOriginal",
+      "namespace": "exif",
+      "nativeId": "36867",
+      "tagHex": "0x9003",
+      "container": "CMT2",
+      "parentUuid": "85c0b687820f11e08111f4ce462b6a48",
+      "pathRule": "Canonical Canon UUID / CMT2 / IFD@<TIFF-relative-directory-offset> / <decimal-tag>; retain box indices and tag entry ordinal; value range uses absolute source offset and length.",
+      "selectors": [
+        "DateTimeOriginal",
+        "EXIF:DateTimeOriginal",
+        "exif:DateTimeOriginal"
+      ],
+      "evidenceKind": "decoded-stored-string",
+      "storage": "TIFF type 2 ASCII; decoded fields require length <=4096, terminating NUL, printable ASCII before the first NUL and only NULs thereafter.",
+      "sourceRefs": [
+        "reader",
+        "selector",
+        "tiff",
+        "authored-reader",
+        "read-map"
+      ]
+    },
+    {
+      "id": "offset-original",
+      "name": "OffsetTimeOriginal",
+      "namespace": "exif",
+      "nativeId": "36881",
+      "tagHex": "0x9011",
+      "container": "CMT2",
+      "parentUuid": "85c0b687820f11e08111f4ce462b6a48",
+      "pathRule": "Canonical Canon UUID / CMT2 / IFD@<TIFF-relative-directory-offset> / <decimal-tag>; retain box indices and tag entry ordinal; value range uses absolute source offset and length.",
+      "selectors": [
+        "OffsetTimeOriginal",
+        "EXIF:OffsetTimeOriginal",
+        "exif:OffsetTimeOriginal"
+      ],
+      "evidenceKind": "decoded-stored-string",
+      "storage": "TIFF type 2 ASCII; decoded fields require length <=4096, terminating NUL, printable ASCII before the first NUL and only NULs thereafter.",
+      "sourceRefs": [
+        "reader",
+        "selector",
+        "tiff",
+        "authored-reader",
+        "read-map"
+      ]
+    },
+    {
+      "id": "subsec-original",
+      "name": "SubSecTimeOriginal",
+      "namespace": "exif",
+      "nativeId": "37521",
+      "tagHex": "0x9291",
+      "container": "CMT2",
+      "parentUuid": "85c0b687820f11e08111f4ce462b6a48",
+      "pathRule": "Canonical Canon UUID / CMT2 / IFD@<TIFF-relative-directory-offset> / <decimal-tag>; retain box indices and tag entry ordinal; value range uses absolute source offset and length.",
+      "selectors": [
+        "SubSecTimeOriginal",
+        "EXIF:SubSecTimeOriginal",
+        "exif:SubSecTimeOriginal"
+      ],
+      "evidenceKind": "decoded-stored-string",
+      "storage": "TIFF type 2 ASCII; decoded fields require length <=4096, terminating NUL, printable ASCII before the first NUL and only NULs thereafter.",
+      "sourceRefs": [
+        "reader",
+        "selector",
+        "tiff",
+        "authored-reader",
+        "read-map"
+      ]
+    },
+    {
+      "id": "digitized-alias",
+      "name": "DateTimeDigitized",
+      "namespace": "exif",
+      "nativeId": "36868",
+      "tagHex": "0x9004",
+      "container": "CMT2",
+      "parentUuid": "85c0b687820f11e08111f4ce462b6a48",
+      "pathRule": "Canonical Canon UUID / CMT2 / IFD@<TIFF-relative-directory-offset> / <decimal-tag>; retain box indices and tag entry ordinal; value range uses absolute source offset and length.",
+      "selectors": [],
+      "evidenceKind": "opaque-alias-witness",
+      "storage": "Authored and historical negative witness uses type 2/count 20 sharing the DTO allocation; generic entry allocation is inspected but no native date value is emitted.",
+      "sourceRefs": [
+        "authored-alias",
+        "admission-method",
+        "admission-observations"
+      ]
+    }
+  ],
+  "operationRows": [
+    {
+      "id": "dto:named-read",
+      "fieldId": "dto",
+      "operation": "named-read",
+      "status": "supported",
+      "reason": "Read exact stored ASCII without timezone, fraction, calendar or instant interpretation; returns every selected occurrence with its provenance.",
+      "runtimeCode": null,
+      "sourceRefs": [
+        "reader",
+        "selector",
+        "tiff"
+      ]
+    },
+    {
+      "id": "dto:changed-intent-preview",
+      "fieldId": "dto",
+      "operation": "changed-intent-preview",
+      "status": "supported",
+      "reason": "Advisory report for one unique valid existing ASCII20 Gregorian DTO allocation; proposed bytes/ranges may be reported alongside admission refusals.",
+      "runtimeCode": null,
+      "sourceRefs": [
+        "preview",
+        "admission",
+        "authored-preview"
+      ]
+    },
+    {
+      "id": "dto:identical-intent-preview",
+      "fieldId": "dto",
+      "operation": "identical-intent-preview",
+      "status": "supported",
+      "reason": "Advisory report for one unique valid existing ASCII20 Gregorian DTO allocation; identical bytes produce zero changed bytes and retain every refusal.",
+      "runtimeCode": null,
+      "sourceRefs": [
+        "preview",
+        "admission",
+        "authored-preview"
+      ]
+    },
+    {
+      "id": "dto:repair",
+      "fieldId": "dto",
+      "operation": "repair",
+      "status": "refused",
+      "reason": "No production date writer, repair, synchronization, insertion, type conversion or publication operation is enabled.",
+      "runtimeCode": null,
+      "sourceRefs": [
+        "admission",
+        "preview",
+        "admission-method"
+      ]
+    },
+    {
+      "id": "dto:dependency-absence-proof",
+      "fieldId": "dto",
+      "operation": "dependency-absence-proof",
+      "status": "unverified",
+      "reason": "Within the declared field-mutation scope, dependency coverage remains insufficient for relevant unknown pointer/checksum/signature or coupled-date effects; opaque bytes and exact complement/RAW-unpack equality do not supply that proof.",
+      "runtimeCode": null,
+      "sourceRefs": [
+        "admission",
+        "admission-method",
+        "authored-alias"
+      ]
+    },
+    {
+      "id": "offset-original:named-read",
+      "fieldId": "offset-original",
+      "operation": "named-read",
+      "status": "supported",
+      "reason": "Read exact stored ASCII without timezone, fraction, calendar or instant interpretation; returns every selected occurrence with its provenance.",
+      "runtimeCode": null,
+      "sourceRefs": [
+        "reader",
+        "selector",
+        "tiff"
+      ]
+    },
+    {
+      "id": "offset-original:changed-intent-preview",
+      "fieldId": "offset-original",
+      "operation": "changed-intent-preview",
+      "status": "refused",
+      "reason": "No native preview operation for this field; no implicit companion synchronization, alias repair or target substitution.",
+      "runtimeCode": null,
+      "sourceRefs": [
+        "preview",
+        "admission",
+        "authored-preview"
+      ]
+    },
+    {
+      "id": "offset-original:identical-intent-preview",
+      "fieldId": "offset-original",
+      "operation": "identical-intent-preview",
+      "status": "refused",
+      "reason": "No native preview operation for this field; no implicit companion synchronization, alias repair or target substitution.",
+      "runtimeCode": null,
+      "sourceRefs": [
+        "preview",
+        "admission",
+        "authored-preview"
+      ]
+    },
+    {
+      "id": "offset-original:repair",
+      "fieldId": "offset-original",
+      "operation": "repair",
+      "status": "refused",
+      "reason": "No production date writer, repair, synchronization, insertion, type conversion or publication operation is enabled.",
+      "runtimeCode": null,
+      "sourceRefs": [
+        "admission",
+        "preview",
+        "admission-method"
+      ]
+    },
+    {
+      "id": "offset-original:dependency-absence-proof",
+      "fieldId": "offset-original",
+      "operation": "dependency-absence-proof",
+      "status": "unverified",
+      "reason": "Within the declared field-mutation scope, dependency coverage remains insufficient for relevant unknown pointer/checksum/signature or coupled-date effects; opaque bytes and exact complement/RAW-unpack equality do not supply that proof.",
+      "runtimeCode": null,
+      "sourceRefs": [
+        "admission",
+        "admission-method",
+        "authored-alias"
+      ]
+    },
+    {
+      "id": "subsec-original:named-read",
+      "fieldId": "subsec-original",
+      "operation": "named-read",
+      "status": "supported",
+      "reason": "Read exact stored ASCII without timezone, fraction, calendar or instant interpretation; returns every selected occurrence with its provenance.",
+      "runtimeCode": null,
+      "sourceRefs": [
+        "reader",
+        "selector",
+        "tiff"
+      ]
+    },
+    {
+      "id": "subsec-original:changed-intent-preview",
+      "fieldId": "subsec-original",
+      "operation": "changed-intent-preview",
+      "status": "refused",
+      "reason": "No native preview operation for this field; no implicit companion synchronization, alias repair or target substitution.",
+      "runtimeCode": null,
+      "sourceRefs": [
+        "preview",
+        "admission",
+        "authored-preview"
+      ]
+    },
+    {
+      "id": "subsec-original:identical-intent-preview",
+      "fieldId": "subsec-original",
+      "operation": "identical-intent-preview",
+      "status": "refused",
+      "reason": "No native preview operation for this field; no implicit companion synchronization, alias repair or target substitution.",
+      "runtimeCode": null,
+      "sourceRefs": [
+        "preview",
+        "admission",
+        "authored-preview"
+      ]
+    },
+    {
+      "id": "subsec-original:repair",
+      "fieldId": "subsec-original",
+      "operation": "repair",
+      "status": "refused",
+      "reason": "No production date writer, repair, synchronization, insertion, type conversion or publication operation is enabled.",
+      "runtimeCode": null,
+      "sourceRefs": [
+        "admission",
+        "preview",
+        "admission-method"
+      ]
+    },
+    {
+      "id": "subsec-original:dependency-absence-proof",
+      "fieldId": "subsec-original",
+      "operation": "dependency-absence-proof",
+      "status": "unverified",
+      "reason": "Within the declared field-mutation scope, dependency coverage remains insufficient for relevant unknown pointer/checksum/signature or coupled-date effects; opaque bytes and exact complement/RAW-unpack equality do not supply that proof.",
+      "runtimeCode": null,
+      "sourceRefs": [
+        "admission",
+        "admission-method",
+        "authored-alias"
+      ]
+    },
+    {
+      "id": "digitized-alias:named-read",
+      "fieldId": "digitized-alias",
+      "operation": "named-read",
+      "status": "refused",
+      "reason": "Named selector is outside the native decoded subset (TAG_UNSUPPORTED); ordinary whole-source reading may succeed and retain this allocation as opaque.",
+      "runtimeCode": "TAG_UNSUPPORTED",
+      "sourceRefs": [
+        "reader",
+        "selector",
+        "tiff"
+      ]
+    },
+    {
+      "id": "digitized-alias:changed-intent-preview",
+      "fieldId": "digitized-alias",
+      "operation": "changed-intent-preview",
+      "status": "refused",
+      "reason": "No native preview operation for this field; no implicit companion synchronization, alias repair or target substitution.",
+      "runtimeCode": null,
+      "sourceRefs": [
+        "preview",
+        "admission",
+        "authored-preview"
+      ]
+    },
+    {
+      "id": "digitized-alias:identical-intent-preview",
+      "fieldId": "digitized-alias",
+      "operation": "identical-intent-preview",
+      "status": "refused",
+      "reason": "No native preview operation for this field; no implicit companion synchronization, alias repair or target substitution.",
+      "runtimeCode": null,
+      "sourceRefs": [
+        "preview",
+        "admission",
+        "authored-preview"
+      ]
+    },
+    {
+      "id": "digitized-alias:repair",
+      "fieldId": "digitized-alias",
+      "operation": "repair",
+      "status": "refused",
+      "reason": "No production date writer, repair, synchronization, insertion, type conversion or publication operation is enabled.",
+      "runtimeCode": null,
+      "sourceRefs": [
+        "admission",
+        "preview",
+        "admission-method"
+      ]
+    },
+    {
+      "id": "digitized-alias:dependency-absence-proof",
+      "fieldId": "digitized-alias",
+      "operation": "dependency-absence-proof",
+      "status": "unverified",
+      "reason": "Within the declared field-mutation scope, dependency coverage remains insufficient for relevant unknown pointer/checksum/signature or coupled-date effects; opaque bytes and exact complement/RAW-unpack equality do not supply that proof.",
+      "runtimeCode": null,
+      "sourceRefs": [
+        "admission",
+        "admission-method",
+        "authored-alias"
+      ]
+    }
+  ],
+  "denominators": {
+    "fieldRows": 4,
+    "decodedFieldRows": 3,
+    "opaqueWitnessRows": 1,
+    "operationsPerField": 5,
+    "operationRows": 20,
+    "supported": 5,
+    "refused": 11,
+    "unverified": 4
+  },
+  "evidenceCounts": {
+    "readSourceCount": 8,
+    "readDeclaredScalarRationalChecks": 160,
+    "readAllPrimitiveSpanChecks": 184,
+    "admissionSourceCount": 8,
+    "admissionRows": 56,
+    "admissionCaseKindsPerSource": 7,
+    "admissionMutationRefusals": 56,
+    "admissionAliasKindsPerSource": 2,
+    "admissionAliasRefusals": 16,
+    "privateAliasCandidates": 8,
+    "privateAliasDecodedPairsEqual": 8,
+    "realCameraNewMutationAdmissions": 0
+  },
+  "exclusions": [
+    "Other native date tags, CTMD/container copies and composites have no rows and no invented IDs here.",
+    "No host timezone, date shifting, fraction conversion, companion synchronization or general repair.",
+    "No all-tag catalog, all-DATE-family completion or full legacy mapping claim.",
+    "No new media reads, reference writes or imported upstream tables.",
+    "No #0099/#0102 private derived outcomes or aggregate claims are incorporated.",
+    "No general checksum/signature absence proof, storage profile or source/path guard."
+  ]
+}

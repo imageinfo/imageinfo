@@ -1,0 +1,1705 @@
+{
+  "schemaVersion": 1,
+  "scope": "finite native argv evidence; no reference executable comparison",
+  "cases": [
+    {
+      "id": "RA-001",
+      "label": "metadata-read root",
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "source.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "read",
+      "classification": "native-difference",
+      "paths": [
+        "source.cr3"
+      ]
+    },
+    {
+      "id": "RA-002",
+      "label": "metadata-read group",
+      "argv": [
+        "metadata",
+        "--output=json",
+        "read",
+        "source.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "read",
+      "classification": "native-difference",
+      "paths": [
+        "source.cr3"
+      ]
+    },
+    {
+      "id": "RA-003",
+      "label": "metadata-read leaf",
+      "argv": [
+        "metadata",
+        "read",
+        "--output",
+        "json",
+        "source.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "read",
+      "classification": "native-difference",
+      "paths": [
+        "source.cr3"
+      ]
+    },
+    {
+      "id": "RA-004",
+      "label": "metadata-read after-input",
+      "argv": [
+        "metadata",
+        "read",
+        "source.cr3",
+        "--output=json"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "read",
+      "classification": "native-difference",
+      "paths": [
+        "source.cr3"
+      ]
+    },
+    {
+      "id": "RA-005",
+      "label": "metadata-read attached-and-literal",
+      "argv": [
+        "metadata",
+        "read",
+        "--output=json",
+        "--",
+        "source.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "read",
+      "classification": "native-difference",
+      "paths": [
+        "source.cr3"
+      ]
+    },
+    {
+      "id": "RA-006",
+      "label": "metadata-read duplicate output same-scope",
+      "argv": [
+        "metadata",
+        "read",
+        "--output=json",
+        "--output=text",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "empty",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-007",
+      "label": "metadata-read duplicate output across-scopes",
+      "argv": [
+        "--output=json",
+        "metadata",
+        "--output=text",
+        "read",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "empty",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-008",
+      "label": "metadata-read duplicate color same-scope",
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--color=never",
+        "--color=always",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-009",
+      "label": "metadata-read duplicate color across-scopes",
+      "argv": [
+        "--output=json",
+        "--color=never",
+        "metadata",
+        "--color=always",
+        "read",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-010",
+      "label": "metadata-read duplicate max-bytes",
+      "argv": [
+        "metadata",
+        "read",
+        "--output=json",
+        "--max-bytes=100000",
+        "--max-bytes=100001",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-011",
+      "label": "metadata-read duplicate max-preview-bytes",
+      "argv": [
+        "metadata",
+        "read",
+        "--output=json",
+        "--max-preview-bytes=100000",
+        "--max-preview-bytes=100001",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-012",
+      "label": "metadata-read leaf-only budget at group",
+      "argv": [
+        "metadata",
+        "--max-bytes=100000",
+        "read",
+        "--output=json",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-013",
+      "label": "metadata-read malformed wins over help",
+      "argv": [
+        "metadata",
+        "read",
+        "--help",
+        "--bogus",
+        "--output=json",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-014",
+      "label": "metadata-read valid help plain",
+      "argv": [
+        "metadata",
+        "read",
+        "--output=json",
+        "--help"
+      ],
+      "status": 0,
+      "channel": "text",
+      "check": "help",
+      "classification": "native-difference",
+      "prefix": "Read"
+    },
+    {
+      "id": "RA-015",
+      "label": "metadata-read literal help",
+      "argv": [
+        "metadata",
+        "read",
+        "--output=json",
+        "--",
+        "help"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "read",
+      "classification": "native-difference",
+      "paths": [
+        "help"
+      ]
+    },
+    {
+      "id": "RA-016",
+      "label": "metadata-read hyphen path refuses without separator",
+      "argv": [
+        "metadata",
+        "read",
+        "--output=json",
+        "-photo.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-017",
+      "label": "metadata-read literal hyphen path",
+      "argv": [
+        "metadata",
+        "read",
+        "--output=json",
+        "--",
+        "-photo.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "read",
+      "classification": "native-difference",
+      "paths": [
+        "-photo.cr3"
+      ]
+    },
+    {
+      "id": "RA-018",
+      "label": "metadata-read literal output selector",
+      "argv": [
+        "metadata",
+        "read",
+        "--",
+        "--output=json"
+      ],
+      "status": 0,
+      "channel": "text",
+      "check": "read",
+      "classification": "native-difference",
+      "paths": [
+        "--output=json"
+      ]
+    },
+    {
+      "id": "RA-019",
+      "label": "metadata-read Unicode spaced input",
+      "argv": [
+        "metadata",
+        "read",
+        "--output=json",
+        "--",
+        "写真 🦆.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "read",
+      "classification": "native-difference",
+      "paths": [
+        "写真 🦆.cr3"
+      ]
+    },
+    {
+      "id": "RA-020",
+      "label": "metadata-read spaced input",
+      "argv": [
+        "metadata",
+        "read",
+        "--output=json",
+        "--",
+        "space name.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "read",
+      "classification": "native-difference",
+      "paths": [
+        "space name.cr3"
+      ]
+    },
+    {
+      "id": "RA-021",
+      "label": "metadata-read unknown legacy flag",
+      "argv": [
+        "metadata",
+        "read",
+        "--output=json",
+        "-j",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-022",
+      "label": "metadata-read abbreviation refuses",
+      "argv": [
+        "metadata",
+        "read",
+        "--out=json",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "empty",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-023",
+      "label": "metadata-read empty input",
+      "argv": [
+        "metadata",
+        "read",
+        "--output=json",
+        "--",
+        ""
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_INPUT"
+    },
+    {
+      "id": "RA-024",
+      "label": "metadata-read missing input",
+      "argv": [
+        "metadata",
+        "read",
+        "--output=json"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "MISSING_ARGUMENT"
+    },
+    {
+      "id": "RA-025",
+      "label": "binary-list root",
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "source.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "list",
+      "classification": "native-difference",
+      "paths": [
+        "source.cr3"
+      ],
+      "names": [
+        "ThumbnailImage",
+        "PreviewImage",
+        "JpgFromRaw"
+      ]
+    },
+    {
+      "id": "RA-026",
+      "label": "binary-list group",
+      "argv": [
+        "binary",
+        "--output=json",
+        "list",
+        "source.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "list",
+      "classification": "native-difference",
+      "paths": [
+        "source.cr3"
+      ],
+      "names": [
+        "ThumbnailImage",
+        "PreviewImage",
+        "JpgFromRaw"
+      ]
+    },
+    {
+      "id": "RA-027",
+      "label": "binary-list leaf",
+      "argv": [
+        "binary",
+        "list",
+        "--output",
+        "json",
+        "source.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "list",
+      "classification": "native-difference",
+      "paths": [
+        "source.cr3"
+      ],
+      "names": [
+        "ThumbnailImage",
+        "PreviewImage",
+        "JpgFromRaw"
+      ]
+    },
+    {
+      "id": "RA-028",
+      "label": "binary-list after-input",
+      "argv": [
+        "binary",
+        "list",
+        "source.cr3",
+        "--output=json"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "list",
+      "classification": "native-difference",
+      "paths": [
+        "source.cr3"
+      ],
+      "names": [
+        "ThumbnailImage",
+        "PreviewImage",
+        "JpgFromRaw"
+      ]
+    },
+    {
+      "id": "RA-029",
+      "label": "binary-list attached-and-literal",
+      "argv": [
+        "binary",
+        "list",
+        "--output=json",
+        "--",
+        "source.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "list",
+      "classification": "native-difference",
+      "paths": [
+        "source.cr3"
+      ],
+      "names": [
+        "ThumbnailImage",
+        "PreviewImage",
+        "JpgFromRaw"
+      ]
+    },
+    {
+      "id": "RA-030",
+      "label": "binary-list duplicate output same-scope",
+      "argv": [
+        "binary",
+        "list",
+        "--output=json",
+        "--output=text",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "empty",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-031",
+      "label": "binary-list duplicate output across-scopes",
+      "argv": [
+        "--output=json",
+        "binary",
+        "--output=text",
+        "list",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "empty",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-032",
+      "label": "binary-list duplicate color same-scope",
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--color=never",
+        "--color=always",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-033",
+      "label": "binary-list duplicate color across-scopes",
+      "argv": [
+        "--output=json",
+        "--color=never",
+        "binary",
+        "--color=always",
+        "list",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-034",
+      "label": "binary-list duplicate max-bytes",
+      "argv": [
+        "binary",
+        "list",
+        "--output=json",
+        "--max-bytes=100000",
+        "--max-bytes=100001",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-035",
+      "label": "binary-list duplicate max-preview-bytes",
+      "argv": [
+        "binary",
+        "list",
+        "--output=json",
+        "--max-preview-bytes=100000",
+        "--max-preview-bytes=100001",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-036",
+      "label": "binary-list leaf-only budget at group",
+      "argv": [
+        "binary",
+        "--max-bytes=100000",
+        "list",
+        "--output=json",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-037",
+      "label": "binary-list malformed wins over help",
+      "argv": [
+        "binary",
+        "list",
+        "--help",
+        "--bogus",
+        "--output=json",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-038",
+      "label": "binary-list valid help plain",
+      "argv": [
+        "binary",
+        "list",
+        "--output=json",
+        "--help"
+      ],
+      "status": 0,
+      "channel": "text",
+      "check": "help",
+      "classification": "native-difference",
+      "prefix": "List"
+    },
+    {
+      "id": "RA-039",
+      "label": "binary-list literal help",
+      "argv": [
+        "binary",
+        "list",
+        "--output=json",
+        "--",
+        "help"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "list",
+      "classification": "native-difference",
+      "paths": [
+        "help"
+      ],
+      "names": [
+        "ThumbnailImage",
+        "PreviewImage",
+        "JpgFromRaw"
+      ]
+    },
+    {
+      "id": "RA-040",
+      "label": "binary-list hyphen path refuses without separator",
+      "argv": [
+        "binary",
+        "list",
+        "--output=json",
+        "-photo.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-041",
+      "label": "binary-list literal hyphen path",
+      "argv": [
+        "binary",
+        "list",
+        "--output=json",
+        "--",
+        "-photo.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "list",
+      "classification": "native-difference",
+      "paths": [
+        "-photo.cr3"
+      ]
+    },
+    {
+      "id": "RA-042",
+      "label": "binary-list literal output selector",
+      "argv": [
+        "binary",
+        "list",
+        "--",
+        "--output=json"
+      ],
+      "status": 0,
+      "channel": "text",
+      "check": "list",
+      "classification": "native-difference",
+      "paths": [
+        "--output=json"
+      ]
+    },
+    {
+      "id": "RA-043",
+      "label": "binary-list Unicode spaced input",
+      "argv": [
+        "binary",
+        "list",
+        "--output=json",
+        "--",
+        "写真 🦆.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "list",
+      "classification": "native-difference",
+      "paths": [
+        "写真 🦆.cr3"
+      ]
+    },
+    {
+      "id": "RA-044",
+      "label": "binary-list spaced input",
+      "argv": [
+        "binary",
+        "list",
+        "--output=json",
+        "--",
+        "space name.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "list",
+      "classification": "native-difference",
+      "paths": [
+        "space name.cr3"
+      ]
+    },
+    {
+      "id": "RA-045",
+      "label": "binary-list unknown legacy flag",
+      "argv": [
+        "binary",
+        "list",
+        "--output=json",
+        "-j",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-046",
+      "label": "binary-list abbreviation refuses",
+      "argv": [
+        "binary",
+        "list",
+        "--out=json",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "empty",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-047",
+      "label": "binary-list empty input",
+      "argv": [
+        "binary",
+        "list",
+        "--output=json",
+        "--",
+        ""
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_INPUT"
+    },
+    {
+      "id": "RA-048",
+      "label": "binary-list missing input",
+      "argv": [
+        "binary",
+        "list",
+        "--output=json"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "MISSING_ARGUMENT"
+    },
+    {
+      "id": "RA-049",
+      "label": "binary-extract root",
+      "argv": [
+        "--output=json",
+        "binary",
+        "extract",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "source.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "extract",
+      "classification": "native-difference",
+      "destination": "out.jpg",
+      "preview": "PreviewImage"
+    },
+    {
+      "id": "RA-050",
+      "label": "binary-extract group",
+      "argv": [
+        "binary",
+        "--output=json",
+        "extract",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "source.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "extract",
+      "classification": "native-difference",
+      "destination": "out.jpg",
+      "preview": "PreviewImage"
+    },
+    {
+      "id": "RA-051",
+      "label": "binary-extract leaf",
+      "argv": [
+        "binary",
+        "extract",
+        "--output",
+        "json",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "source.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "extract",
+      "classification": "native-difference",
+      "destination": "out.jpg",
+      "preview": "PreviewImage"
+    },
+    {
+      "id": "RA-052",
+      "label": "binary-extract after-input",
+      "argv": [
+        "binary",
+        "extract",
+        "source.cr3",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "--output=json"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "extract",
+      "classification": "native-difference",
+      "destination": "out.jpg",
+      "preview": "PreviewImage"
+    },
+    {
+      "id": "RA-053",
+      "label": "binary-extract attached-and-literal",
+      "argv": [
+        "binary",
+        "extract",
+        "--output=json",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "--",
+        "source.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "extract",
+      "classification": "native-difference",
+      "destination": "out.jpg",
+      "preview": "PreviewImage"
+    },
+    {
+      "id": "RA-054",
+      "label": "binary-extract duplicate output same-scope",
+      "argv": [
+        "binary",
+        "extract",
+        "--output=json",
+        "--output=text",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "empty",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-055",
+      "label": "binary-extract duplicate output across-scopes",
+      "argv": [
+        "--output=json",
+        "binary",
+        "--output=text",
+        "extract",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "empty",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-056",
+      "label": "binary-extract duplicate color same-scope",
+      "argv": [
+        "--output=json",
+        "binary",
+        "extract",
+        "--color=never",
+        "--color=always",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-057",
+      "label": "binary-extract duplicate color across-scopes",
+      "argv": [
+        "--output=json",
+        "--color=never",
+        "binary",
+        "--color=always",
+        "extract",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-058",
+      "label": "binary-extract duplicate max-bytes",
+      "argv": [
+        "binary",
+        "extract",
+        "--output=json",
+        "--max-bytes=100000",
+        "--max-bytes=100001",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-059",
+      "label": "binary-extract duplicate max-preview-bytes",
+      "argv": [
+        "binary",
+        "extract",
+        "--output=json",
+        "--max-preview-bytes=100000",
+        "--max-preview-bytes=100001",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-060",
+      "label": "binary-extract leaf-only budget at group",
+      "argv": [
+        "binary",
+        "--max-bytes=100000",
+        "extract",
+        "--output=json",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-061",
+      "label": "binary-extract malformed wins over help",
+      "argv": [
+        "binary",
+        "extract",
+        "--help",
+        "--bogus",
+        "--output=json",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-062",
+      "label": "binary-extract valid help plain",
+      "argv": [
+        "binary",
+        "extract",
+        "--output=json",
+        "--help"
+      ],
+      "status": 0,
+      "channel": "text",
+      "check": "help",
+      "classification": "native-difference",
+      "prefix": "Copy"
+    },
+    {
+      "id": "RA-063",
+      "label": "binary-extract literal help",
+      "argv": [
+        "binary",
+        "extract",
+        "--output=json",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "--",
+        "help"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "extract",
+      "classification": "native-difference",
+      "destination": "out.jpg",
+      "preview": "PreviewImage"
+    },
+    {
+      "id": "RA-064",
+      "label": "binary-extract hyphen path refuses without separator",
+      "argv": [
+        "binary",
+        "extract",
+        "--output=json",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "-photo.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-065",
+      "label": "binary-extract literal hyphen path",
+      "argv": [
+        "binary",
+        "extract",
+        "--output=json",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "--",
+        "-photo.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "extract",
+      "classification": "native-difference",
+      "destination": "out.jpg",
+      "preview": "PreviewImage"
+    },
+    {
+      "id": "RA-066",
+      "label": "binary-extract literal output selector",
+      "argv": [
+        "binary",
+        "extract",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "--",
+        "--output=json"
+      ],
+      "status": 0,
+      "channel": "text",
+      "check": "extract",
+      "classification": "native-difference",
+      "destination": "out.jpg",
+      "preview": "PreviewImage"
+    },
+    {
+      "id": "RA-067",
+      "label": "binary-extract Unicode spaced input",
+      "argv": [
+        "binary",
+        "extract",
+        "--output=json",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "--",
+        "写真 🦆.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "extract",
+      "classification": "native-difference",
+      "destination": "out.jpg",
+      "preview": "PreviewImage"
+    },
+    {
+      "id": "RA-068",
+      "label": "binary-extract spaced input",
+      "argv": [
+        "binary",
+        "extract",
+        "--output=json",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "--",
+        "space name.cr3"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "extract",
+      "classification": "native-difference",
+      "destination": "out.jpg",
+      "preview": "PreviewImage"
+    },
+    {
+      "id": "RA-069",
+      "label": "binary-extract unknown legacy flag",
+      "argv": [
+        "binary",
+        "extract",
+        "--output=json",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "-j",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-070",
+      "label": "binary-extract abbreviation refuses",
+      "argv": [
+        "binary",
+        "extract",
+        "--out=json",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "empty",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-071",
+      "label": "binary-extract empty input",
+      "argv": [
+        "binary",
+        "extract",
+        "--output=json",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "--",
+        ""
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_INPUT"
+    },
+    {
+      "id": "RA-072",
+      "label": "binary-extract missing input",
+      "argv": [
+        "binary",
+        "extract",
+        "--output=json",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "MISSING_ARGUMENT"
+    },
+    {
+      "id": "RA-073",
+      "label": "metadata read repeat same",
+      "argv": [
+        "metadata",
+        "read",
+        "source.cr3",
+        "--output=json",
+        "--tag=ISO",
+        "--tag=ISO"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "read",
+      "classification": "native-difference",
+      "paths": [
+        "source.cr3"
+      ],
+      "names": [
+        "ISO",
+        "ISO"
+      ]
+    },
+    {
+      "id": "RA-074",
+      "label": "metadata read two selectors",
+      "argv": [
+        "metadata",
+        "read",
+        "source.cr3",
+        "--output=json",
+        "--tag=ISO",
+        "--tag=Model"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "read",
+      "classification": "native-difference",
+      "paths": [
+        "source.cr3"
+      ],
+      "names": [
+        "Model",
+        "ISO",
+        "ISO"
+      ]
+    },
+    {
+      "id": "RA-075",
+      "label": "metadata read reverse selectors",
+      "argv": [
+        "metadata",
+        "read",
+        "source.cr3",
+        "--output=json",
+        "--tag=Model",
+        "--tag=ISO"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "read",
+      "classification": "native-difference",
+      "paths": [
+        "source.cr3"
+      ],
+      "names": [
+        "Model",
+        "ISO",
+        "ISO"
+      ]
+    },
+    {
+      "id": "RA-076",
+      "label": "metadata read value view raw",
+      "argv": [
+        "metadata",
+        "read",
+        "source.cr3",
+        "--values=raw",
+        "--output=json",
+        "--tag=ISO"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "read",
+      "classification": "native-difference",
+      "paths": [
+        "source.cr3"
+      ],
+      "names": [
+        "ISO",
+        "ISO"
+      ],
+      "view": "raw"
+    },
+    {
+      "id": "RA-077",
+      "label": "metadata read value view normalized",
+      "argv": [
+        "metadata",
+        "read",
+        "source.cr3",
+        "--values=normalized",
+        "--output=json",
+        "--tag=ISO"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "read",
+      "classification": "native-difference",
+      "paths": [
+        "source.cr3"
+      ],
+      "names": [
+        "ISO",
+        "ISO"
+      ],
+      "view": "normalized"
+    },
+    {
+      "id": "RA-078",
+      "label": "metadata read value view display",
+      "argv": [
+        "metadata",
+        "read",
+        "source.cr3",
+        "--values=display",
+        "--output=json",
+        "--tag=ISO"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "read",
+      "classification": "native-difference",
+      "paths": [
+        "source.cr3"
+      ],
+      "names": [
+        "ISO",
+        "ISO"
+      ],
+      "view": "display"
+    },
+    {
+      "id": "RA-079",
+      "label": "metadata read value view all",
+      "argv": [
+        "metadata",
+        "read",
+        "source.cr3",
+        "--values=all",
+        "--output=json",
+        "--tag=ISO"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "read",
+      "classification": "native-difference",
+      "paths": [
+        "source.cr3"
+      ],
+      "names": [
+        "ISO",
+        "ISO"
+      ],
+      "view": "all"
+    },
+    {
+      "id": "RA-080",
+      "label": "metadata read duplicate values",
+      "argv": [
+        "metadata",
+        "read",
+        "source.cr3",
+        "--values=raw",
+        "--values=display",
+        "--output=json"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-081",
+      "label": "metadata read options interspersed",
+      "argv": [
+        "metadata",
+        "read",
+        "source.cr3",
+        "--tag=ISO",
+        "second.cr3",
+        "--output=json"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "read",
+      "classification": "native-difference",
+      "paths": [
+        "source.cr3",
+        "second.cr3"
+      ],
+      "names": [
+        "ISO",
+        "ISO"
+      ]
+    },
+    {
+      "id": "RA-082",
+      "label": "metadata read tag only at leaf",
+      "argv": [
+        "metadata",
+        "--tag=ISO",
+        "read",
+        "--output=json",
+        "source.cr3"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-083",
+      "label": "extract duplicate tag",
+      "argv": [
+        "binary",
+        "extract",
+        "source.cr3",
+        "--output=json",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "--tag=JpgFromRaw"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-084",
+      "label": "extract duplicate output-file",
+      "argv": [
+        "binary",
+        "extract",
+        "source.cr3",
+        "--output=json",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "--output-file=other.jpg"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-085",
+      "label": "extract ThumbnailImage",
+      "argv": [
+        "binary",
+        "extract",
+        "source.cr3",
+        "--output=json",
+        "--tag=ThumbnailImage",
+        "--output-file=out.jpg"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "extract",
+      "classification": "native-difference",
+      "destination": "out.jpg",
+      "preview": "ThumbnailImage"
+    },
+    {
+      "id": "RA-086",
+      "label": "extract JpgFromRaw",
+      "argv": [
+        "binary",
+        "extract",
+        "source.cr3",
+        "--output=json",
+        "--tag=JpgFromRaw",
+        "--output-file=out.jpg"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "extract",
+      "classification": "native-difference",
+      "destination": "out.jpg",
+      "preview": "JpgFromRaw"
+    },
+    {
+      "id": "RA-087",
+      "label": "extract dry run after operand",
+      "argv": [
+        "binary",
+        "extract",
+        "source.cr3",
+        "--output=json",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg",
+        "--dry-run"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "dry-run",
+      "classification": "native-difference"
+    },
+    {
+      "id": "RA-088",
+      "label": "extract existing destination",
+      "argv": [
+        "binary",
+        "extract",
+        "source.cr3",
+        "--output=json",
+        "--tag=PreviewImage",
+        "--output-file=occupied.jpg"
+      ],
+      "status": 1,
+      "channel": "json",
+      "check": "file-error",
+      "classification": "native-refusal",
+      "code": "DESTINATION_EXISTS"
+    },
+    {
+      "id": "RA-089",
+      "label": "extract hyphen destination attached",
+      "argv": [
+        "binary",
+        "extract",
+        "source.cr3",
+        "--output=json",
+        "--tag=PreviewImage",
+        "--output-file=-new.jpg"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "extract",
+      "classification": "native-difference",
+      "destination": "-new.jpg",
+      "preview": "PreviewImage"
+    },
+    {
+      "id": "RA-090",
+      "label": "extract hyphen destination separate",
+      "argv": [
+        "binary",
+        "extract",
+        "source.cr3",
+        "--output=json",
+        "--tag=PreviewImage",
+        "--output-file",
+        "-new.jpg"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-091",
+      "label": "extract extra input refuses",
+      "argv": [
+        "binary",
+        "extract",
+        "source.cr3",
+        "second.cr3",
+        "--output=json",
+        "--tag=PreviewImage",
+        "--output-file=out.jpg"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "MISSING_ARGUMENT"
+    },
+    {
+      "id": "RA-092",
+      "label": "extract missing output refuses",
+      "argv": [
+        "binary",
+        "extract",
+        "source.cr3",
+        "--output=json",
+        "--tag=PreviewImage"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "MISSING_ARGUMENT"
+    },
+    {
+      "id": "RA-093",
+      "label": "extract selector case refuses",
+      "argv": [
+        "binary",
+        "extract",
+        "source.cr3",
+        "--output=json",
+        "--tag=previewimage",
+        "--output-file=out.jpg"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "RA-094",
+      "label": "read unknown selector refuses",
+      "argv": [
+        "metadata",
+        "read",
+        "source.cr3",
+        "--output=json",
+        "--tag=NotATag"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "classification": "native-refusal",
+      "code": "TAG_UNSUPPORTED"
+    }
+  ]
+}

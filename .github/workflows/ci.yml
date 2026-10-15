@@ -55,6 +55,11 @@ jobs:
           python scripts/test_measure_batch_read.py
           python scripts/test_audit_batch_read.py
           python -m py_compile scripts/measure_batch_read.py scripts/qualify_batch_read.py scripts/audit_batch_read.py scripts/check_fixture_gaps.py
+      - name: Check bounded date mapping and read-session specification
+        run: |
+          python scripts/check_date_mapping.py
+          python scripts/check_read_session.py
+          python -m py_compile scripts/check_date_mapping.py scripts/check_read_session.py scripts/check_read_arguments.py
       - name: Check single-read evidence verifier
         run: |
           python -m py_compile scripts/measure_single_read.py scripts/audit_read_baseline.py
@@ -255,6 +260,8 @@ jobs:
           binary=target/debug/imageinfo
           if [ "$RUNNER_OS" = "Windows" ]; then binary=target/debug/imageinfo.exe; fi
           python scripts/qualify_batch_read.py --binary "$binary" --source-root . --parent .local/batch-read-ci --output .local/batch-read-ci.json
+      - name: Qualify finite native read argument ordering
+        run: python scripts/check_read_arguments.py
       - name: Build release executable
         run: cargo build --locked --release
       - name: Check experimental candidate formatting

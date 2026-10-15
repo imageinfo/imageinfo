@@ -77,6 +77,10 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Process-owned marker custody](write-safety/process-custody.md) | #0103 actual child-process custody and narrow unpublished prune, with retained uncertainty and no imported-context authority. |
 | [Native date to XMP candidate](sidecars/native-date-adapter.md) | #0104 actual native date observations feed the in-memory XMP derivative; authored parser-path evidence without file publication. |
 | [Read-only request/result API](legacy-compatibility/read-request-result.md) | #0057 bounded native token-array metadata reads and caller-owned JSON transport, without a persistent session. |
+| [Native argument ordering](legacy-compatibility/read-argument-order.md) | #0052 actual finite read/list/extract argv and effect qualification; documented native differences without a reference-executable parity claim. |
+| [Expression/module boundary proposal](legacy-compatibility/executable-extension-boundary.md) | #0054 nine named RAW uses, three alternatives and an explicit product choice; no extension runtime or adopted policy. |
+| [R5 date lookup/refusal mapping](legacy-compatibility/r5-date-mapping.md) | #0056 four exact fields and twenty observation/refusal/unverified cells, without a writer or repair capability. |
+| [Read-only session framing proposal](legacy-compatibility/read-session-framing.md) | #0058 bounded sequential JSONL specification and authored schema/model vectors; no persistent runtime or pipe qualification. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |

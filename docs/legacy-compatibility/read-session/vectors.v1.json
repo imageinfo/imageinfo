@@ -1,0 +1,858 @@
+{
+  "schemaVersion": 1,
+  "kind": "read-session-framing-vectors",
+  "basis": "authored-specification-model-not-runtime-traces",
+  "cases": [
+    {
+      "id": "empty-eof",
+      "utf8": "",
+      "expect": {
+        "reason": "eof",
+        "exitStatus": 0,
+        "frames": 0,
+        "results": 0,
+        "closeId": null,
+        "error": null
+      }
+    },
+    {
+      "id": "read-eof",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[]}\n",
+      "expect": {
+        "reason": "eof",
+        "exitStatus": 0,
+        "frames": 1,
+        "results": 1,
+        "closeId": null,
+        "error": null
+      }
+    },
+    {
+      "id": "close-eof",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"close\",\"id\":\"done\"}\n",
+      "expect": {
+        "reason": "close",
+        "exitStatus": 0,
+        "frames": 1,
+        "results": 0,
+        "closeId": "done",
+        "error": null
+      }
+    },
+    {
+      "id": "close-ignores-trailing-malformed",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"close\",\"id\":\"done\"}\nnot-json",
+      "expect": {
+        "reason": "close",
+        "exitStatus": 0,
+        "frames": 1,
+        "results": 0,
+        "closeId": "done",
+        "error": null
+      }
+    },
+    {
+      "id": "crlf",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[]}\r\n",
+      "expect": {
+        "reason": "eof",
+        "exitStatus": 0,
+        "frames": 1,
+        "results": 1,
+        "closeId": null,
+        "error": null
+      }
+    },
+    {
+      "id": "json-cr-whitespace",
+      "utf8": "\r{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[]}\n",
+      "expect": {
+        "reason": "eof",
+        "exitStatus": 0,
+        "frames": 1,
+        "results": 1,
+        "closeId": null,
+        "error": null
+      }
+    },
+    {
+      "id": "escaped-newline-and-brackets",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[\"metadata\",\"read\",\"--\",\"literal\\n[{}]\\\\\\\".cr3\"]}\n",
+      "expect": {
+        "reason": "eof",
+        "exitStatus": 0,
+        "frames": 1,
+        "results": 1,
+        "closeId": null,
+        "error": null
+      }
+    },
+    {
+      "id": "unicode-scalars",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[\"\u00e9\",\"\ud83d\ude00\"]}\n",
+      "expect": {
+        "reason": "eof",
+        "exitStatus": 0,
+        "frames": 1,
+        "results": 1,
+        "closeId": null,
+        "error": null
+      }
+    },
+    {
+      "id": "read-refusal-then-next",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[]}\n{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r2\",\"tokens\":[\"metadata\",\"read\",\"--values\",\"raw\",\"--\",\"other.cr3\"]}\n",
+      "expect": {
+        "reason": "eof",
+        "exitStatus": 0,
+        "frames": 2,
+        "results": 2,
+        "closeId": null,
+        "error": null
+      }
+    },
+    {
+      "id": "duplicate-read-id",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[]}\n{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[]}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 2,
+        "results": 1,
+        "closeId": null,
+        "error": "DUPLICATE_ID"
+      }
+    },
+    {
+      "id": "read-close-id-collision",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[]}\n{\"protocolVersion\":1,\"kind\":\"close\",\"id\":\"r1\"}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 2,
+        "results": 1,
+        "closeId": null,
+        "error": "DUPLICATE_ID"
+      }
+    },
+    {
+      "id": "malformed",
+      "utf8": "{]\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_JSON"
+      }
+    },
+    {
+      "id": "multiple-values",
+      "utf8": "{} {}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_JSON"
+      }
+    },
+    {
+      "id": "blank",
+      "utf8": "\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_JSON"
+      }
+    },
+    {
+      "id": "whitespace",
+      "utf8": " \t\r\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_JSON"
+      }
+    },
+    {
+      "id": "nonfinite",
+      "utf8": "{\"protocolVersion\":NaN}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_JSON"
+      }
+    },
+    {
+      "id": "duplicate-member",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[],\"id\":\"r2\"}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_JSON"
+      }
+    },
+    {
+      "id": "nested-duplicate",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[{\"x\":1,\"x\":2}]}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_JSON"
+      }
+    },
+    {
+      "id": "raw-cr-string",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[\"a\rb\"]}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_JSON"
+      }
+    },
+    {
+      "id": "unpaired-surrogate",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[\"\\ud800\"]}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_ENCODING"
+      }
+    },
+    {
+      "id": "bom",
+      "utf8": "\ufeff{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[]}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_ENCODING"
+      }
+    },
+    {
+      "id": "invalid-utf8",
+      "hex": "ff0a",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_ENCODING"
+      }
+    },
+    {
+      "id": "no-final-lf",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[]}",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_TRUNCATED"
+      }
+    },
+    {
+      "id": "partial-utf8-eof",
+      "utf8": "\u00e9",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_TRUNCATED"
+      }
+    },
+    {
+      "id": "bare-cr-eof",
+      "utf8": "\r",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_TRUNCATED"
+      }
+    },
+    {
+      "id": "unknown-member",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[],\"other\":true}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_SCHEMA"
+      }
+    },
+    {
+      "id": "unsupported-version",
+      "utf8": "{\"protocolVersion\":2,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[]}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_SCHEMA"
+      }
+    },
+    {
+      "id": "cancel-control",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"cancel\",\"id\":\"c1\",\"requestId\":\"r1\"}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_SCHEMA"
+      }
+    },
+    {
+      "id": "close-policy",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"close\",\"id\":\"c1\",\"policy\":\"drain\"}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_SCHEMA"
+      }
+    },
+    {
+      "id": "null-id",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":null,\"tokens\":[]}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_SCHEMA"
+      }
+    },
+    {
+      "id": "nonascii-id",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"\u00e9\",\"tokens\":[]}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_SCHEMA"
+      }
+    },
+    {
+      "id": "newline-id",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\\n\",\"tokens\":[]}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_SCHEMA"
+      }
+    },
+    {
+      "id": "id-too-long",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr\",\"tokens\":[]}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_SCHEMA"
+      }
+    },
+    {
+      "id": "id-leading-digit",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"1read\",\"tokens\":[]}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_SCHEMA"
+      }
+    },
+    {
+      "id": "nul-token",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[\"a\\u0000b\"]}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_SCHEMA"
+      }
+    },
+    {
+      "id": "wrong-tokens",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":\"metadata read\"}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_SCHEMA"
+      }
+    },
+    {
+      "id": "token-count",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"]}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_SCHEMA"
+      }
+    },
+    {
+      "id": "non-string-token",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[false]}\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_SCHEMA"
+      }
+    },
+    {
+      "id": "top-level-array",
+      "utf8": "[]\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_SCHEMA"
+      }
+    },
+    {
+      "id": "null-frame",
+      "utf8": "null\n",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_SCHEMA"
+      }
+    },
+    {
+      "id": "max-input-frame",
+      "recipe": {
+        "kind": "padding",
+        "bytes": 524288
+      },
+      "expect": {
+        "reason": "close",
+        "exitStatus": 0,
+        "frames": 1,
+        "results": 0,
+        "closeId": "done",
+        "error": null
+      }
+    },
+    {
+      "id": "oversized-frame",
+      "recipe": {
+        "kind": "padding",
+        "bytes": 524289
+      },
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_TOO_LARGE"
+      }
+    },
+    {
+      "id": "oversized-without-lf",
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_TOO_LARGE"
+      },
+      "recipe": {
+        "kind": "unterminated",
+        "bytes": 524288
+      }
+    },
+    {
+      "id": "depth-8",
+      "recipe": {
+        "kind": "depth",
+        "depth": 8
+      },
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_SCHEMA"
+      }
+    },
+    {
+      "id": "depth-9",
+      "recipe": {
+        "kind": "depth",
+        "depth": 9
+      },
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_SCHEMA"
+      }
+    },
+    {
+      "id": "token-byte-limit",
+      "recipe": {
+        "kind": "tokens",
+        "tokens": [
+          {
+            "text": "a",
+            "repeat": 32768
+          }
+        ]
+      },
+      "expect": {
+        "reason": "eof",
+        "exitStatus": 0,
+        "frames": 1,
+        "results": 1,
+        "closeId": null,
+        "error": null
+      }
+    },
+    {
+      "id": "token-byte-overflow",
+      "recipe": {
+        "kind": "tokens",
+        "tokens": [
+          {
+            "text": "a",
+            "repeat": 32769
+          }
+        ]
+      },
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_SCHEMA"
+      }
+    },
+    {
+      "id": "token-multibyte-limit",
+      "recipe": {
+        "kind": "tokens",
+        "tokens": [
+          {
+            "text": "\ud83d\ude00",
+            "repeat": 8192
+          }
+        ]
+      },
+      "expect": {
+        "reason": "eof",
+        "exitStatus": 0,
+        "frames": 1,
+        "results": 1,
+        "closeId": null,
+        "error": null
+      }
+    },
+    {
+      "id": "token-multibyte-overflow",
+      "recipe": {
+        "kind": "tokens",
+        "tokens": [
+          {
+            "text": "\ud83d\ude00",
+            "repeat": 8193
+          }
+        ]
+      },
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_SCHEMA"
+      }
+    },
+    {
+      "id": "aggregate-token-limit",
+      "recipe": {
+        "kind": "tokens",
+        "tokens": [
+          {
+            "text": "a",
+            "repeat": 32768
+          },
+          {
+            "text": "b",
+            "repeat": 32768
+          }
+        ]
+      },
+      "expect": {
+        "reason": "eof",
+        "exitStatus": 0,
+        "frames": 1,
+        "results": 1,
+        "closeId": null,
+        "error": null
+      }
+    },
+    {
+      "id": "aggregate-token-overflow",
+      "recipe": {
+        "kind": "tokens",
+        "tokens": [
+          {
+            "text": "a",
+            "repeat": 32768
+          },
+          {
+            "text": "b",
+            "repeat": 32768
+          },
+          {
+            "text": "c",
+            "repeat": 1
+          }
+        ]
+      },
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 1,
+        "results": 0,
+        "closeId": null,
+        "error": "FRAME_SCHEMA"
+      }
+    },
+    {
+      "id": "max-frame-count",
+      "recipe": {
+        "kind": "count",
+        "count": 256,
+        "tail": "{bad\n"
+      },
+      "expect": {
+        "reason": "limit",
+        "exitStatus": 0,
+        "frames": 256,
+        "results": 256,
+        "closeId": null,
+        "error": null
+      }
+    },
+    {
+      "id": "error-on-last-attempt",
+      "recipe": {
+        "kind": "count",
+        "count": 255,
+        "tail": "{bad\n"
+      },
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 256,
+        "results": 255,
+        "closeId": null,
+        "error": "FRAME_JSON"
+      }
+    },
+    {
+      "id": "close-on-last-attempt",
+      "recipe": {
+        "kind": "count",
+        "count": 255,
+        "tail": "{\"protocolVersion\":1,\"kind\":\"close\",\"id\":\"done\"}\n"
+      },
+      "expect": {
+        "reason": "close",
+        "exitStatus": 0,
+        "frames": 256,
+        "results": 255,
+        "closeId": "done",
+        "error": null
+      }
+    },
+    {
+      "id": "duplicate-on-last-attempt",
+      "recipe": {
+        "kind": "count",
+        "count": 255,
+        "tail": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r0\",\"tokens\":[]}\n"
+      },
+      "expect": {
+        "reason": "protocol-error",
+        "exitStatus": 2,
+        "frames": 256,
+        "results": 255,
+        "closeId": null,
+        "error": "DUPLICATE_ID"
+      }
+    },
+    {
+      "id": "status-one-two-three-clean-session",
+      "utf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[]}\n{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r2\",\"tokens\":[]}\n{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r3\",\"tokens\":[]}\n",
+      "expect": {
+        "reason": "eof",
+        "exitStatus": 0,
+        "frames": 3,
+        "results": 3,
+        "closeId": null,
+        "error": null
+      },
+      "responses": [
+        {
+          "status": 1,
+          "code": "RESULT_LIMIT"
+        },
+        {
+          "status": 2,
+          "code": "REQUEST_LIMIT"
+        },
+        {
+          "status": 3,
+          "code": "AUTHORED_PARTIAL"
+        }
+      ]
+    }
+  ],
+  "wireTranscripts": [
+    {
+      "id": "empty-session",
+      "inputUtf8": "",
+      "outputUtf8": "{\"protocolVersion\":1,\"kind\":\"session-ready\",\"limits\":{\"maxInputFrameBytes\":524288,\"maxOutputFrameBytes\":16777728,\"maxFrames\":256,\"maxQueuedRequests\":0,\"maxTokens\":128,\"maxTokenBytes\":32768,\"maxTotalTokenBytes\":65536,\"maxInputs\":4,\"maxMetadataBytes\":8388608,\"maxResultBytes\":16777216},\"allowApply\":false}\n{\"protocolVersion\":1,\"kind\":\"session-complete\",\"reason\":\"eof\",\"exitStatus\":0,\"frames\":0,\"results\":0,\"closeId\":null}\n"
+    },
+    {
+      "id": "two-requests-then-close",
+      "inputUtf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[]}\n{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r2\",\"tokens\":[]}\n{\"protocolVersion\":1,\"kind\":\"close\",\"id\":\"done\"}\n",
+      "outputUtf8": "{\"protocolVersion\":1,\"kind\":\"session-ready\",\"limits\":{\"maxInputFrameBytes\":524288,\"maxOutputFrameBytes\":16777728,\"maxFrames\":256,\"maxQueuedRequests\":0,\"maxTokens\":128,\"maxTokenBytes\":32768,\"maxTotalTokenBytes\":65536,\"maxInputs\":4,\"maxMetadataBytes\":8388608,\"maxResultBytes\":16777216},\"allowApply\":false}\n{\"protocolVersion\":1,\"kind\":\"read-result\",\"id\":\"r1\",\"result\":{\"schemaVersion\":1,\"requestId\":\"r1\",\"request\":{\"schemaVersion\":1,\"kind\":\"request\",\"requestId\":\"r1\",\"operation\":null,\"mode\":null,\"issues\":[{\"code\":\"AUTHORED_REFUSAL\",\"severity\":\"error\",\"message\":\"Authored protocol vector.\",\"inputId\":null,\"path\":null,\"occurrenceRef\":null}]},\"files\":[],\"summary\":{\"schemaVersion\":1,\"kind\":\"summary\",\"requestId\":\"r1\",\"exitStatus\":2,\"selectionComplete\":false,\"counts\":{\"discovered\":0,\"excluded\":0,\"deduplicated\":0,\"byState\":{}},\"artifacts\":[],\"issues\":[],\"interrupted\":false,\"outputComplete\":true}}}\n{\"protocolVersion\":1,\"kind\":\"read-result\",\"id\":\"r2\",\"result\":{\"schemaVersion\":1,\"requestId\":\"r2\",\"request\":{\"schemaVersion\":1,\"kind\":\"request\",\"requestId\":\"r2\",\"operation\":null,\"mode\":null,\"issues\":[{\"code\":\"AUTHORED_REFUSAL\",\"severity\":\"error\",\"message\":\"Authored protocol vector.\",\"inputId\":null,\"path\":null,\"occurrenceRef\":null}]},\"files\":[],\"summary\":{\"schemaVersion\":1,\"kind\":\"summary\",\"requestId\":\"r2\",\"exitStatus\":2,\"selectionComplete\":false,\"counts\":{\"discovered\":0,\"excluded\":0,\"deduplicated\":0,\"byState\":{}},\"artifacts\":[],\"issues\":[],\"interrupted\":false,\"outputComplete\":true}}}\n{\"protocolVersion\":1,\"kind\":\"session-complete\",\"reason\":\"close\",\"exitStatus\":0,\"frames\":3,\"results\":2,\"closeId\":\"done\"}\n"
+    },
+    {
+      "id": "duplicate-after-result",
+      "inputUtf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[]}\n{\"protocolVersion\":1,\"kind\":\"close\",\"id\":\"r1\"}\n",
+      "outputUtf8": "{\"protocolVersion\":1,\"kind\":\"session-ready\",\"limits\":{\"maxInputFrameBytes\":524288,\"maxOutputFrameBytes\":16777728,\"maxFrames\":256,\"maxQueuedRequests\":0,\"maxTokens\":128,\"maxTokenBytes\":32768,\"maxTotalTokenBytes\":65536,\"maxInputs\":4,\"maxMetadataBytes\":8388608,\"maxResultBytes\":16777216},\"allowApply\":false}\n{\"protocolVersion\":1,\"kind\":\"read-result\",\"id\":\"r1\",\"result\":{\"schemaVersion\":1,\"requestId\":\"r1\",\"request\":{\"schemaVersion\":1,\"kind\":\"request\",\"requestId\":\"r1\",\"operation\":null,\"mode\":null,\"issues\":[{\"code\":\"AUTHORED_REFUSAL\",\"severity\":\"error\",\"message\":\"Authored protocol vector.\",\"inputId\":null,\"path\":null,\"occurrenceRef\":null}]},\"files\":[],\"summary\":{\"schemaVersion\":1,\"kind\":\"summary\",\"requestId\":\"r1\",\"exitStatus\":2,\"selectionComplete\":false,\"counts\":{\"discovered\":0,\"excluded\":0,\"deduplicated\":0,\"byState\":{}},\"artifacts\":[],\"issues\":[],\"interrupted\":false,\"outputComplete\":true}}}\n{\"protocolVersion\":1,\"kind\":\"protocol-error\",\"id\":null,\"code\":\"DUPLICATE_ID\"}\n{\"protocolVersion\":1,\"kind\":\"session-complete\",\"reason\":\"protocol-error\",\"exitStatus\":2,\"frames\":2,\"results\":1,\"closeId\":null}\n"
+    },
+    {
+      "id": "result-limit-continues",
+      "inputUtf8": "{\"protocolVersion\":1,\"kind\":\"read\",\"id\":\"r1\",\"tokens\":[]}\n{\"protocolVersion\":1,\"kind\":\"close\",\"id\":\"done\"}\n",
+      "responses": [
+        {
+          "status": 1,
+          "code": "RESULT_LIMIT"
+        }
+      ],
+      "outputUtf8": "{\"protocolVersion\":1,\"kind\":\"session-ready\",\"limits\":{\"maxInputFrameBytes\":524288,\"maxOutputFrameBytes\":16777728,\"maxFrames\":256,\"maxQueuedRequests\":0,\"maxTokens\":128,\"maxTokenBytes\":32768,\"maxTotalTokenBytes\":65536,\"maxInputs\":4,\"maxMetadataBytes\":8388608,\"maxResultBytes\":16777216},\"allowApply\":false}\n{\"protocolVersion\":1,\"kind\":\"read-result\",\"id\":\"r1\",\"result\":{\"schemaVersion\":1,\"requestId\":\"r1\",\"request\":{\"schemaVersion\":1,\"kind\":\"request\",\"requestId\":\"r1\",\"operation\":null,\"mode\":null,\"issues\":[{\"code\":\"RESULT_LIMIT\",\"severity\":\"error\",\"message\":\"Authored protocol vector.\",\"inputId\":null,\"path\":null,\"occurrenceRef\":null}]},\"files\":[],\"summary\":{\"schemaVersion\":1,\"kind\":\"summary\",\"requestId\":\"r1\",\"exitStatus\":1,\"selectionComplete\":false,\"counts\":{\"discovered\":0,\"excluded\":0,\"deduplicated\":0,\"byState\":{}},\"artifacts\":[],\"issues\":[],\"interrupted\":false,\"outputComplete\":true}}}\n{\"protocolVersion\":1,\"kind\":\"session-complete\",\"reason\":\"close\",\"exitStatus\":0,\"frames\":2,\"results\":1,\"closeId\":\"done\"}\n"
+    }
+  ],
+  "transportVectors": [
+    {
+      "id": "input-failure-before-bytes",
+      "outputUtf8": "{\"protocolVersion\":1,\"kind\":\"session-ready\",\"limits\":{\"maxInputFrameBytes\":524288,\"maxOutputFrameBytes\":16777728,\"maxFrames\":256,\"maxQueuedRequests\":0,\"maxTokens\":128,\"maxTokenBytes\":32768,\"maxTotalTokenBytes\":65536,\"maxInputs\":4,\"maxMetadataBytes\":8388608,\"maxResultBytes\":16777216},\"allowApply\":false}\n{\"protocolVersion\":1,\"kind\":\"protocol-error\",\"id\":null,\"code\":\"INPUT_IO\"}\n{\"protocolVersion\":1,\"kind\":\"session-complete\",\"reason\":\"input-error\",\"exitStatus\":1,\"frames\":0,\"results\":0,\"closeId\":null}\n",
+      "processStatus": 1,
+      "completeSession": false
+    },
+    {
+      "id": "input-failure-during-second-frame",
+      "outputUtf8": "{\"protocolVersion\":1,\"kind\":\"session-ready\",\"limits\":{\"maxInputFrameBytes\":524288,\"maxOutputFrameBytes\":16777728,\"maxFrames\":256,\"maxQueuedRequests\":0,\"maxTokens\":128,\"maxTokenBytes\":32768,\"maxTotalTokenBytes\":65536,\"maxInputs\":4,\"maxMetadataBytes\":8388608,\"maxResultBytes\":16777216},\"allowApply\":false}\n{\"protocolVersion\":1,\"kind\":\"read-result\",\"id\":\"r1\",\"result\":{\"schemaVersion\":1,\"requestId\":\"r1\",\"request\":{\"schemaVersion\":1,\"kind\":\"request\",\"requestId\":\"r1\",\"operation\":null,\"mode\":null,\"issues\":[{\"code\":\"AUTHORED_REFUSAL\",\"severity\":\"error\",\"message\":\"Authored protocol vector.\",\"inputId\":null,\"path\":null,\"occurrenceRef\":null}]},\"files\":[],\"summary\":{\"schemaVersion\":1,\"kind\":\"summary\",\"requestId\":\"r1\",\"exitStatus\":2,\"selectionComplete\":false,\"counts\":{\"discovered\":0,\"excluded\":0,\"deduplicated\":0,\"byState\":{}},\"artifacts\":[],\"issues\":[],\"interrupted\":false,\"outputComplete\":true}}}\n{\"protocolVersion\":1,\"kind\":\"protocol-error\",\"id\":null,\"code\":\"INPUT_IO\"}\n{\"protocolVersion\":1,\"kind\":\"session-complete\",\"reason\":\"input-error\",\"exitStatus\":1,\"frames\":2,\"results\":1,\"closeId\":null}\n",
+      "processStatus": 1,
+      "completeSession": false
+    },
+    {
+      "id": "output-failure-no-bytes",
+      "outputUtf8": "",
+      "processStatus": 1,
+      "completeSession": false
+    },
+    {
+      "id": "output-failure-partial-ready",
+      "outputUtf8": "{\"protocolVersion",
+      "processStatus": 1,
+      "completeSession": false
+    },
+    {
+      "id": "output-failure-final-lf-missing",
+      "outputUtf8": "{\"protocolVersion\":1,\"kind\":\"session-ready\",\"limits\":{\"maxInputFrameBytes\":524288,\"maxOutputFrameBytes\":16777728,\"maxFrames\":256,\"maxQueuedRequests\":0,\"maxTokens\":128,\"maxTokenBytes\":32768,\"maxTotalTokenBytes\":65536,\"maxInputs\":4,\"maxMetadataBytes\":8388608,\"maxResultBytes\":16777216},\"allowApply\":false}\n{\"protocolVersion\":1,\"kind\":\"session-complete\",\"reason\":\"eof\",\"exitStatus\":0,\"frames\":0,\"results\":0,\"closeId\":null}",
+      "processStatus": 1,
+      "completeSession": false
+    },
+    {
+      "id": "flush-failure-after-visible-completion",
+      "outputUtf8": "{\"protocolVersion\":1,\"kind\":\"session-ready\",\"limits\":{\"maxInputFrameBytes\":524288,\"maxOutputFrameBytes\":16777728,\"maxFrames\":256,\"maxQueuedRequests\":0,\"maxTokens\":128,\"maxTokenBytes\":32768,\"maxTotalTokenBytes\":65536,\"maxInputs\":4,\"maxMetadataBytes\":8388608,\"maxResultBytes\":16777216},\"allowApply\":false}\n{\"protocolVersion\":1,\"kind\":\"session-complete\",\"reason\":\"eof\",\"exitStatus\":0,\"frames\":0,\"results\":0,\"closeId\":null}\n",
+      "processStatus": 1,
+      "completeSession": false
+    },
+    {
+      "id": "normal-completion-control",
+      "outputUtf8": "{\"protocolVersion\":1,\"kind\":\"session-ready\",\"limits\":{\"maxInputFrameBytes\":524288,\"maxOutputFrameBytes\":16777728,\"maxFrames\":256,\"maxQueuedRequests\":0,\"maxTokens\":128,\"maxTokenBytes\":32768,\"maxTotalTokenBytes\":65536,\"maxInputs\":4,\"maxMetadataBytes\":8388608,\"maxResultBytes\":16777216},\"allowApply\":false}\n{\"protocolVersion\":1,\"kind\":\"session-complete\",\"reason\":\"eof\",\"exitStatus\":0,\"frames\":0,\"results\":0,\"closeId\":null}\n",
+      "processStatus": 0,
+      "completeSession": true
+    }
+  ],
+  "responseStubScope": "Responses are authored transport-only engine stubs. Injected statuses exercise session-status independence; they do not assert native file/count/issue semantics or evidence any command execution. Existing #0053/#0057 tests own native result production.",
+  "transportScope": "Delivery bytes and process statuses are authored inputs to client-interpretation checks, not real pipe or flush observations."
+}

@@ -301,6 +301,23 @@ lost; selected supported XMP properties retain exact identity. Camera results
 remain private and no privacy/removal/write certification is enabled. See
 `docs/privacy/read-coverage.md`.
 
+#0052 qualifies a finite actual read/list/extract argument matrix with authored
+fixtures, exact preview-copy effects and documented native differences. It makes
+no reference-executable or exhaustive compatibility claim. See
+`docs/legacy-compatibility/read-argument-order.md`.
+#0054 proposes one bounded RAW expression/module boundary, including alternatives
+and the exact Terry decision. No proposed pure filter/data form or executable
+runtime is enabled by delivery. See
+`docs/legacy-compatibility/executable-extension-boundary.md`.
+#0056 maps four bounded date fields to twenty supported-observation, refused and
+unverified cells. ASCII read/lookup, advisory preview and source-content checks
+remain distinct from calendar/zone semantics, writer admission and repair. See
+`docs/legacy-compatibility/r5-date-mapping.md`.
+#0058 specifies a bounded sequential metadata-read/close JSONL session, with LF
+and CRLF input and canonical LF output. Schema/model vectors are not a decoder,
+process runtime, real pipe/flush test or cancellation implementation. See
+`docs/legacy-compatibility/read-session-framing.md`.
+
 ## Subagent authorization
 
 
@@ -315,11 +332,23 @@ approval is needed. This does not authorize pulling or starting another ticket
 outside the requested work. The primary owns integration, verification,
 commits/pushes and the bounded ticket handoff.
 
-Terry specified on 2026-10-15 that all subagents use **GPT-6.1 Sol**
-(`gpt-6.1-sol`) with **Medium** reasoning (`medium`). Set both explicitly when
-spawning subagents; use a fresh context when the spawn tool requires it for model
-overrides, and provide the relevant task context in the delegation message.
-Preserve the eight-direct-subagent and depth-1 limits above.
+Terry authorized task-based model and effort selection on 2026-10-15, superseding
+the uniform Sol Medium requirement:
+
+- GPT-6 Luna with Low effort (`gpt-6-luna`, `low`; Terry calls this Light) for
+  narrow mechanical documentation, inventories and prescribed test execution.
+  Keep code interpretation, safety conclusions and integration with a Sol agent.
+- GPT-6.1 Sol with Medium effort (`gpt-6.1-sol`, `medium`) for ordinary
+  implementation, tests and substantive documentation.
+- GPT-6.1 Sol with High effort (`gpt-6.1-sol`, `high`) for difficult reasoning and
+  authentication, transaction, recovery or concurrency review.
+
+Reassess each agent's assignment each turn. The mix of models and effort levels
+may vary from turn to turn with task complexity; no fixed distribution or permanent
+per-agent model is required. Set model and effort explicitly when spawning. Use a
+fresh context for overrides and supply scope, authority, file ownership, constraints
+and handoff criteria. If an existing agent cannot be retuned, use a freshly
+configured agent while respecting the eight-active-direct-subagent/depth-1 limits.
 
 Terry chose **Standard speed** for the parent and subagents on 2026-10-15,
 superseding the earlier Fast-mode requirement. Subagents inherit the root

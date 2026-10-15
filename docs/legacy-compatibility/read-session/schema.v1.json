@@ -1,0 +1,382 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/imageinfo/imageinfo/raw/main/docs/legacy-compatibility/read-session/schema.v1.json",
+  "title": "Proposed bounded metadata-read JSONL session v1; no runtime implementation",
+  "description": "Exact individual input/output shapes. UTF8/byte limits, duplicate members, scalar Unicode, depth, identity equality, ordering, counts and transport completion require independent semantic validation. Token byte limits are stricter than character lengths. Existing result envelope schema is reused without enabling other operations.",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z][A-Za-z0-9._:-]{0,127}$",
+      "not": {
+        "pattern": "[^A-Za-z0-9._:-]"
+      }
+    },
+    "read": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "protocolVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "read"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "tokens": {
+          "type": "array",
+          "maxItems": 128,
+          "items": {
+            "type": "string",
+            "maxLength": 32768,
+            "not": {
+              "pattern": "\u0000"
+            }
+          }
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "kind",
+        "id",
+        "tokens"
+      ]
+    },
+    "close": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "protocolVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "close"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "kind",
+        "id"
+      ]
+    },
+    "input": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/read"
+        },
+        {
+          "$ref": "#/$defs/close"
+        }
+      ]
+    },
+    "ready": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "protocolVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "session-ready"
+        },
+        "limits": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "maxInputFrameBytes": {
+              "const": 524288
+            },
+            "maxOutputFrameBytes": {
+              "const": 16777728
+            },
+            "maxFrames": {
+              "const": 256
+            },
+            "maxQueuedRequests": {
+              "const": 0
+            },
+            "maxTokens": {
+              "const": 128
+            },
+            "maxTokenBytes": {
+              "const": 32768
+            },
+            "maxTotalTokenBytes": {
+              "const": 65536
+            },
+            "maxInputs": {
+              "const": 4
+            },
+            "maxMetadataBytes": {
+              "const": 8388608
+            },
+            "maxResultBytes": {
+              "const": 16777216
+            }
+          },
+          "required": [
+            "maxInputFrameBytes",
+            "maxOutputFrameBytes",
+            "maxFrames",
+            "maxQueuedRequests",
+            "maxTokens",
+            "maxTokenBytes",
+            "maxTotalTokenBytes",
+            "maxInputs",
+            "maxMetadataBytes",
+            "maxResultBytes"
+          ]
+        },
+        "allowApply": {
+          "const": false
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "kind",
+        "limits",
+        "allowApply"
+      ]
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "protocolVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "read-result"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "result": {
+          "$ref": "https://github.com/imageinfo/imageinfo/raw/main/docs/legacy-compatibility/result.schema.json#/$defs/envelope"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "kind",
+        "id",
+        "result"
+      ]
+    },
+    "error": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "protocolVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "protocol-error"
+        },
+        "id": {
+          "const": null
+        },
+        "code": {
+          "enum": [
+            "FRAME_TOO_LARGE",
+            "FRAME_TRUNCATED",
+            "FRAME_ENCODING",
+            "FRAME_JSON",
+            "FRAME_SCHEMA",
+            "DUPLICATE_ID",
+            "INPUT_IO"
+          ]
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "kind",
+        "id",
+        "code"
+      ]
+    },
+    "complete": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "protocolVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "session-complete"
+        },
+        "reason": {
+          "enum": [
+            "eof",
+            "close",
+            "limit",
+            "protocol-error",
+            "input-error"
+          ]
+        },
+        "exitStatus": {
+          "enum": [
+            0,
+            1,
+            2
+          ]
+        },
+        "frames": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 256
+        },
+        "results": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 256
+        },
+        "closeId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "kind",
+        "reason",
+        "exitStatus",
+        "frames",
+        "results",
+        "closeId"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "reason": {
+                "const": "eof"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "exitStatus": {
+                "const": 0
+              },
+              "closeId": {
+                "const": null
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "reason": {
+                "const": "close"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "exitStatus": {
+                "const": 0
+              },
+              "closeId": {
+                "$ref": "#/$defs/id"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "reason": {
+                "const": "limit"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "exitStatus": {
+                "const": 0
+              },
+              "closeId": {
+                "const": null
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "reason": {
+                "const": "protocol-error"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "exitStatus": {
+                "const": 2
+              },
+              "closeId": {
+                "const": null
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "reason": {
+                "const": "input-error"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "exitStatus": {
+                "const": 1
+              },
+              "closeId": {
+                "const": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    "output": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ready"
+        },
+        {
+          "$ref": "#/$defs/result"
+        },
+        {
+          "$ref": "#/$defs/error"
+        },
+        {
+          "$ref": "#/$defs/complete"
+        }
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/input"
+    },
+    {
+      "$ref": "#/$defs/output"
+    }
+  ]
+}

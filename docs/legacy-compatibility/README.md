@@ -8,6 +8,11 @@ and full result/CLI compatibility are not established by foundation help/version
 cell with actual executable tests; other compatibility gaps remain open.
 [#0057](read-request-result.md) supplies a bounded in-process metadata-read
 request/result path with native tokens and caller-owned JSON transport.
+[#0052](read-argument-order.md) qualifies the finite implemented native argv
+surface. [#0056](r5-date-mapping.md) maps the bounded date family to actual lookup
+and refusal behavior. The [#0054 extension boundary](executable-extension-boundary.md)
+and [#0058 session framing](read-session-framing.md) remain proposals with explicit
+product/runtime work still open.
 
 Status: **proposal for review**, `2026-10-10.1`, card **#0007**. Source observation
 date: **2026-10-10**. Baseline: ExifTool source 13.59 at commit

@@ -72,6 +72,13 @@ request. Actual camera-derived batch/coverage evidence remains private under its
 grants; public methods and authored controls do not grant report publication,
 privacy certification, staffed readiness or a production mutation profile.
 
+The next eligible compatibility wave uses four Sol Medium authors, two Sol High
+semantic reviewers and two Luna Low prescribed-QA workers on #0052/#0054/#0056/#0058.
+The chosen mix is specific to that turn, not a permanent allocation. The scopes
+are actual finite native argv qualification, an executable-extension proposal,
+bounded date lookup/refusal mapping and a read-only session framing specification.
+Proposals and offline vectors do not supply runtime or mutation permission.
+
 ## Existing-work reconciliation
 
 #0042's live ordinary-owner marker scope was already implemented directly under
