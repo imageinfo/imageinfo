@@ -322,6 +322,22 @@ identity holds and identical precommit recovery material for keep/no-backup requ
 Finite process-exit and refusal observations do not qualify conditional replacement,
 durability, complete filesystem-property backup or fresh guarded restore. See
 `docs/write-safety/original-retention.md`; no production profile or RAW writer is enabled.
+#0105 adds a same-value reference-write causal control against frozen changed-date
+artifacts. Public method and authored controls do not disclose new camera-derived
+values, counts or outcomes; actual evidence stays private under the bound grants.
+See `docs/write-safety/same-value-control.md`; shared rewrites do not prove necessity
+or semantic independence, and #0078 retains its full admission requirements.
+#0107 qualifies the installed Pillow/libjpeg candidate on four authored JPEG
+controls. Early-EOI acceptance rejects the proposed strict entropy-validator
+profile; full decoding with truncation tolerance disabled is insufficient.
+See `docs/fixture-plan/jpeg-entropy-validator.md`. #0075/P0A-002 retain actual
+camera validation and fixture-phase review; no production validator is enabled.
+#0108 implements explicit fresh-name restoration in a recreated typed-owned marker
+retention fixture. Fresh guards and authorization preserve the separately named
+later-edited current target; 58 native cells and three admission refusals have
+independent retained-artifact inspection. See `docs/write-safety/fresh-name-restore.md`.
+This does not import external #0094 context, qualify occupied-name restoration or
+enable durable authority, complete property backup, a production profile or RAW writes.
 
 ## Subagent authorization
 

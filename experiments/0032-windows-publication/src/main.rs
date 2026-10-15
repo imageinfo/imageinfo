@@ -21,6 +21,8 @@ mod receipt_model;
 mod receipt_record;
 #[cfg(any(windows, test))]
 mod restart_context;
+#[cfg(windows)]
+mod restore;
 #[cfg(any(windows, test))]
 #[path = "../../0038-staging-cleanup/src/staging.rs"]
 mod staging;

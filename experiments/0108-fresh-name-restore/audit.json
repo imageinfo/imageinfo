@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "caseCount": 58,
+  "restoredCopyObservedCount": 13,
+  "otherOutcomes": 45,
+  "ownedProcessKills": 7,
+  "admissionRefusalCount": 3,
+  "allActualRetainedArtifactsMatchCompletedRun": true,
+  "currentTargetsRetained": true,
+  "auditChangedMarkerArtifacts": false,
+  "committed": false,
+  "productionPublicationAllowed": false,
+  "enabledProfiles": 0
+}

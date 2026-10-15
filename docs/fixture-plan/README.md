@@ -13,6 +13,9 @@ remain historical, synthetic and explicitly planned/not-run.
 - [Current P0 assertion gaps](p0-assertion-gaps.md): #0071's versioned reconciliation
   of the historical family plan with current scoped evidence and five targeted
   next assertions; no new acquisition or capability permission.
+- [Authored JPEG decoder qualification](jpeg-entropy-validator.md): #0107's
+  installed candidate fails the proposed strict entropy profile on an authored
+  early-EOI control. P0A-002 camera validation remains open on #0075.
 - [Case plan](case-plan.v1.json): 29 prioritized case families, their needed fixtures,
   assertions, and links to all 49 current capability rows.
 - [Evidence schema](evidence.schema.json): fixture, oracle-profile, and experiment records.

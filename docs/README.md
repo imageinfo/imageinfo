@@ -74,6 +74,8 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [CR3 reference-write method](write-safety/cr3-reference-effects.md) | #0099 bounded differential method and public authored controls; camera-derived reports remain private under their disclosure grants. |
 | [Native receipt timestamp diagnostic](write-safety/receipt-timestamp-completion.md) | #0100 native write-handle lifecycle observations and read-only inspection; non-reproduction leaves the guest crash cause and profile gates open. |
 | [CR3 rewrite attribution](write-safety/cr3-rewrite-attribution.md) | #0102 allocation, gap and offset-relocation accounting against frozen reference-write research; camera-derived evidence remains private. |
+| [Same-value CR3 control](write-safety/same-value-control.md) | #0105 original-value causal control against frozen changed-date outputs; method and authored controls are public, camera-derived evidence stays private. |
+| [Authored JPEG decoder qualification](fixture-plan/jpeg-entropy-validator.md) | #0107 finite installed-decoder controls reject the proposed strict entropy-validator profile; camera assertion and phase review remain separate. |
 | [Process-owned marker custody](write-safety/process-custody.md) | #0103 actual child-process custody and narrow unpublished prune, with retained uncertainty and no imported-context authority. |
 | [Native date to XMP candidate](sidecars/native-date-adapter.md) | #0104 actual native date observations feed the in-memory XMP derivative; authored parser-path evidence without file publication. |
 | [Read-only request/result API](legacy-compatibility/read-request-result.md) | #0057 bounded native token-array metadata reads and caller-owned JSON transport, without a persistent session. |
@@ -86,6 +88,7 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Read-limit proposal](performance/read-limits-proposal.md) | #0064 measured evidence, proposed operating limits and explicit unmeasured cells; no adopted runtime default change. |
 | [Security-intake readiness proposal](governance/security-intake-readiness.md) | #0066 current read-only setting observation and proposed consent/activation/test package; no settings changes or staffed-intake claim. |
 | [Marker original retention](write-safety/original-retention.md) | #0094 bounded authored-marker retention and refusal/interruption qualification; no production replacement, restore or durability admission. |
+| [Fresh-name marker restoration](write-safety/fresh-name-restore.md) | #0108 typed live caller custody, explicit authorization and held no-replace publication; finite native observations preserve the later-edited current target. |
 | [Owner-access continuity plan](governance/owner-access-continuity.md) | #0068 private inventory and future drill procedure, with explicit consenting operators and no account/access changes. |
 | [Review-routing plan](governance/review-routing-plan.md) | #0069 proposed rules/routing configuration and finite future tests; no enforcement or appointments enabled by the proposal. |
 | [First-release policy proposal](governance/first-release-policy.md) | #0070 bounded native package version/support/distribution choices and future rehearsal, without release publication or signing infrastructure. |

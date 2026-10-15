@@ -130,6 +130,15 @@ Private camera grants remain in force; a public method or authored control does
 not disclose new restricted camera results. Retention alone does not admit the
 guarded restore/replacement operations still needed by #0095/#0096.
 
+The next 2026-10-15 batch pairs implementation with independent review for four
+bounded children: #0105 same-value CR3 reference-write controls, #0106 native
+receipt-property observation around VM-off, #0107 authored JPEG decoder
+qualification and #0108 fresh-name marker restoration. Five Sol Medium agents
+and three Sol High reviewers cover these outcomes. #0075's assertion and installed
+tool candidate are now selected, so the stale missing-scope Backlog reason is
+superseded; actual camera validation retains its separate prerequisites. Research
+or a rejected validator candidate does not close the broader parent requirements.
+
 The split preserves [WS/SAF requirements](write-safety/README.md), accepted
 [OD-11 option A](write-safety/practical-output-policy.md) and independent RAW
 admission. #0027's accepted refusal research does not provide an admitted mutation

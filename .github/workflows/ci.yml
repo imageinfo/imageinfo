@@ -90,6 +90,10 @@ jobs:
         run: |
           python -m unittest discover -s experiments/0102-cr3-rewrite-attribution -p "test_*.py" -v
           python -m py_compile experiments/0102-cr3-rewrite-attribution/attribute_private.py experiments/0102-cr3-rewrite-attribution/independent_audit.py
+      - name: Check authored same-value control and diagnostic tooling
+        run: |
+          python -m unittest discover -s experiments/0105-same-value-control -p "test_*.py" -v
+          python -m py_compile experiments/0105-same-value-control/control_private.py experiments/0105-same-value-control/audit_private.py experiments/0105-same-value-control/reclassify_private.py experiments/0107-jpeg-validator/qualify.py experiments/0108-fresh-name-restore/qualify.py experiments/0108-fresh-name-restore/audit.py
       - name: Check process-owned marker transport and lifecycle
         run: |
           python -W error -m unittest discover -s experiments/0103-process-custody -p "test_*.py" -v
@@ -215,6 +219,14 @@ jobs:
         run: |
           cargo test --locked --manifest-path experiments/0032-windows-publication/Cargo.toml
           cargo build --locked --release --manifest-path experiments/0032-windows-publication/Cargo.toml
+      - name: Qualify explicit fresh-name marker restoration on Windows
+        if: runner.os == 'Windows'
+        run: |
+          python experiments/0108-fresh-name-restore/qualify.py --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe.exe --parent .local/fresh-restore-ci --output .local/fresh-restore-ci.json
+          python -c "import subprocess,sys; from pathlib import Path; roots=list(Path('.local/fresh-restore-ci').glob('restore108-*')); assert len(roots)==1; subprocess.run([sys.executable,'experiments/0108-fresh-name-restore/audit.py','--scratch',str(roots[0]),'--output','.local/fresh-restore-ci-audit.json'],check=True)"
+      - name: Refuse fresh-name restoration on unsupported platforms
+        if: runner.os != 'Windows'
+        run: python -c "import json,subprocess; from pathlib import Path; root=Path('.local/fresh-restore-must-not-exist'); assert not root.exists(); p=subprocess.run(['experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe',str(root),'fresh-restore'],capture_output=True,text=True); v=json.loads(p.stderr); assert p.returncode==5 and v['diagnostic']=='WINDOWS_BACKEND_UNVERIFIED' and not v['committed'] and not v['productionPublicationAllowed'] and not root.exists()"
       - name: Qualify held Windows publication and strict unsupported admission
         if: runner.os == 'Windows'
         run: python experiments/0032-windows-publication/qualify.py --binary experiments/0032-windows-publication/target/release/imageinfo-windows-publication-probe.exe --parent experiments/0032-windows-publication/target

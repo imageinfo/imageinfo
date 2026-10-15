@@ -1,0 +1,66 @@
+{
+  "id": "pillow-12.3.0-windows-authored-2026-10-15.1",
+  "runtime": {
+    "components": {
+      "pillow-image": {
+        "byteLength": 158171,
+        "sha256": "59f1b98ed7bfd7b516b9f13ffd9dd3bc0aa1a495042accdb5ae4609b41c329d5"
+      },
+      "pillow-image-file": {
+        "byteLength": 30828,
+        "sha256": "e972c9d8785ad1fd44f860a375d8719f3fdff8e46da1cc311950699f93e4f539"
+      },
+      "pillow-init": {
+        "byteLength": 2122,
+        "sha256": "3fffff8502f4b59ca61d39cce713d55ffef046954262fce1abac3e97f3803734"
+      },
+      "pillow-jpeg-plugin": {
+        "byteLength": 32223,
+        "sha256": "049fc12cf436b101a5622456a1b83ba8b28b54cf8106d3953aed751bb0c08f3f"
+      },
+      "pillow-metadata": {
+        "byteLength": 9273,
+        "sha256": "2c4378001803cfac65809a50722d46e0da4ce8061e717f103e5d52734bab30f5"
+      },
+      "pillow-native-decoder": {
+        "byteLength": 2648368,
+        "sha256": "f791f26ad9ee887309d59ffd8f1fa741ae43ece5bb5aaa5d4d0dc91f5e13b0ef"
+      },
+      "pillow-notices": {
+        "byteLength": 78016,
+        "sha256": "4f7866a74802c6326f81faff59a56546b6aec2b10b91973e0e9308de95e79857"
+      },
+      "pillow-sbom": {
+        "byteLength": 22279,
+        "sha256": "40fa909b0f23405a7b97a6d91671a639a40acea7671b04387da22ba3e9fca50a"
+      },
+      "python-executable": {
+        "byteLength": 107312,
+        "sha256": "b847bb9f4e48c19f585c8bf7d8b355f3f8c6d2125717ece9c9d7e16fb9f09de8"
+      },
+      "python-notices": {
+        "byteLength": 25066,
+        "sha256": "886a0ead2d89030ee62dbff52b04e47ab91998341295bb9c56fb952b4e081c7a"
+      },
+      "python-runtime": {
+        "byteLength": 6985520,
+        "sha256": "2b6fffde96cf24a57fca642aaefd5788816ab5ef8624ea63b722cbceb94d49b1"
+      }
+    },
+    "jpegApi": "8.0",
+    "libjpegTurbo": "3.1.4.1",
+    "licenseExpression": "MIT-CMU",
+    "machine": "AMD64",
+    "pillow": "12.3.0",
+    "platform": "Windows",
+    "python": "3.12.14"
+  },
+  "settings": {
+    "captureBytesPerStream": 8192,
+    "childDeadlineSeconds": 10,
+    "dimensionCeiling": 128,
+    "extentPolicy": "Pass the complete authored stored extent unchanged; accept exactly 32 appended zero bytes only as a measured control. Never trim extraction bytes.",
+    "inputByteCeiling": 65536,
+    "loadTruncatedImages": false
+  }
+}

@@ -1263,6 +1263,71 @@ fn custody_store(root: &Path, save: bool) -> Result<()> {
         "retainedWork":retained_work(root)
     }))
 }
+// Diagnostic handles share read/write/delete so observation adds no byte/name
+// guard to the frozen actor. This mode performs no content reads or repairs.
+fn receipt_properties(root: &Path) -> Result<()> {
+    let security = PrivateSecurity::current()?;
+    let mut observations = Vec::new();
+    for name in [
+        ".",
+        SOURCE,
+        OUTPUT,
+        RECORDS[0].0,
+        RECORDS[1].0,
+        RECORDS[2].0,
+        RECEIPT,
+    ] {
+        let path = if name == "." {
+            root.to_path_buf()
+        } else {
+            root.join(name)
+        };
+        let mut observation = json!({"name":name});
+        let result = (|| -> Result<()> {
+            let file = OpenOptions::new()
+                .access_mode(0x20080)
+                .share_mode(7)
+                .custom_flags(0x02200000)
+                .open(&path)?;
+            // Capture integer FILETIME/identity before security and stream queries.
+            let before = info(&file)?;
+            observation["before"] = serde_json::to_value(&before)?;
+            if name == "." && before.attributes & 0x410 != 0x10 {
+                return Err("ROOT_TYPE_UNVERIFIED_NO_CHILD_TRAVERSAL".into());
+            }
+            observation["securityDiagnostic"] =
+                json!(security.check(&file).err().map(|e| e.to_string()));
+            observation["streamDiagnostic"] = if name == "." {
+                json!("DIRECTORY_STREAM_QUERY_NOT_APPLICABLE")
+            } else {
+                json!(native::check_streams(&file).err().map(|e| e.to_string()))
+            };
+            observation["bindingDiagnostic"] =
+                json!(binding(&path, &file).err().map(|e| e.to_string()));
+            observation["after"] = serde_json::to_value(info(&file)?)?;
+            if name == "."
+                && (!observation["bindingDiagnostic"].is_null()
+                    || !observation["securityDiagnostic"].is_null()
+                    || observation["before"] != observation["after"])
+            {
+                return Err("ROOT_CHANGED_NO_CHILD_TRAVERSAL".into());
+            }
+            Ok(())
+        })();
+        let failed = result.is_err();
+        observation["diagnostic"] = json!(result.err().map(|e| e.to_string()));
+        observations.push(observation);
+        if name == "." && failed {
+            break;
+        }
+    }
+    emit(
+        json!({"outcome":"receipt-properties-observed","observations":observations,
+        "queryOrder":["native-info","security","streams","path-binding","native-info"],
+        "contentRead":false,"effectsAttempted":false,"ownedHandlesRemoved":0,
+        "markerResearchOnly":true,"propertyExclusionPromised":false}),
+    )
+}
 pub fn run(root: &Path, mode: &str) -> Result<()> {
     match mode {
         "-prepare" => prepare(root),
@@ -1281,6 +1346,7 @@ pub fn run(root: &Path, mode: &str) -> Result<()> {
             true,
         ),
         "-receipt-inspect" => receipt_inspect(root),
+        "-receipt-properties" => receipt_properties(root),
         "-inspect" => inspect(root),
         "-restart-observe" => restart(root, false),
         "-restart-prune" => restart(root, true),
