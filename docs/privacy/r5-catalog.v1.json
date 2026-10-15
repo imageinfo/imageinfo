@@ -1,0 +1,820 @@
+{
+  "schemaVersion": 1,
+  "catalogId": "r5-gps-owner-serial-core",
+  "revision": 1,
+  "observedOn": "2026-10-15",
+  "status": "proposal-only",
+  "entries": [
+    {
+      "id": "R5P-001",
+      "category": "gps",
+      "label": "GPSLatitudeRef",
+      "selector": {
+        "kind": "native",
+        "namespace": "tiff-gps",
+        "nativeId": "0x0001",
+        "locations": [
+          "cr3.cmt4.gps",
+          "preview.exif.gps"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-GPS",
+        "SRC-CR3-LOCATIONS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-006",
+        "FXP-019",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-002",
+      "category": "gps",
+      "label": "GPSLatitude",
+      "selector": {
+        "kind": "native",
+        "namespace": "tiff-gps",
+        "nativeId": "0x0002",
+        "locations": [
+          "cr3.cmt4.gps",
+          "preview.exif.gps"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-GPS",
+        "SRC-CR3-LOCATIONS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-006",
+        "FXP-019",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-003",
+      "category": "gps",
+      "label": "GPSLongitudeRef",
+      "selector": {
+        "kind": "native",
+        "namespace": "tiff-gps",
+        "nativeId": "0x0003",
+        "locations": [
+          "cr3.cmt4.gps",
+          "preview.exif.gps"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-GPS",
+        "SRC-CR3-LOCATIONS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-006",
+        "FXP-019",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-004",
+      "category": "gps",
+      "label": "GPSLongitude",
+      "selector": {
+        "kind": "native",
+        "namespace": "tiff-gps",
+        "nativeId": "0x0004",
+        "locations": [
+          "cr3.cmt4.gps",
+          "preview.exif.gps"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-GPS",
+        "SRC-CR3-LOCATIONS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-006",
+        "FXP-019",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-005",
+      "category": "gps",
+      "label": "GPSAltitudeRef",
+      "selector": {
+        "kind": "native",
+        "namespace": "tiff-gps",
+        "nativeId": "0x0005",
+        "locations": [
+          "cr3.cmt4.gps",
+          "preview.exif.gps"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-GPS",
+        "SRC-CR3-LOCATIONS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-006",
+        "FXP-019",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-006",
+      "category": "gps",
+      "label": "GPSAltitude",
+      "selector": {
+        "kind": "native",
+        "namespace": "tiff-gps",
+        "nativeId": "0x0006",
+        "locations": [
+          "cr3.cmt4.gps",
+          "preview.exif.gps"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-GPS",
+        "SRC-CR3-LOCATIONS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-006",
+        "FXP-019",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-007",
+      "category": "gps",
+      "label": "GPSTimeStamp",
+      "selector": {
+        "kind": "native",
+        "namespace": "tiff-gps",
+        "nativeId": "0x0007",
+        "locations": [
+          "cr3.cmt4.gps",
+          "preview.exif.gps"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-GPS",
+        "SRC-CR3-LOCATIONS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-006",
+        "FXP-019",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-008",
+      "category": "gps",
+      "label": "GPSDestLatitudeRef",
+      "selector": {
+        "kind": "native",
+        "namespace": "tiff-gps",
+        "nativeId": "0x0013",
+        "locations": [
+          "cr3.cmt4.gps",
+          "preview.exif.gps"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-GPS",
+        "SRC-CR3-LOCATIONS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-006",
+        "FXP-019",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-009",
+      "category": "gps",
+      "label": "GPSDestLatitude",
+      "selector": {
+        "kind": "native",
+        "namespace": "tiff-gps",
+        "nativeId": "0x0014",
+        "locations": [
+          "cr3.cmt4.gps",
+          "preview.exif.gps"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-GPS",
+        "SRC-CR3-LOCATIONS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-006",
+        "FXP-019",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-010",
+      "category": "gps",
+      "label": "GPSDestLongitudeRef",
+      "selector": {
+        "kind": "native",
+        "namespace": "tiff-gps",
+        "nativeId": "0x0015",
+        "locations": [
+          "cr3.cmt4.gps",
+          "preview.exif.gps"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-GPS",
+        "SRC-CR3-LOCATIONS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-006",
+        "FXP-019",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-011",
+      "category": "gps",
+      "label": "GPSDestLongitude",
+      "selector": {
+        "kind": "native",
+        "namespace": "tiff-gps",
+        "nativeId": "0x0016",
+        "locations": [
+          "cr3.cmt4.gps",
+          "preview.exif.gps"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-GPS",
+        "SRC-CR3-LOCATIONS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-006",
+        "FXP-019",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-012",
+      "category": "gps",
+      "label": "GPSDateStamp",
+      "selector": {
+        "kind": "native",
+        "namespace": "tiff-gps",
+        "nativeId": "0x001d",
+        "locations": [
+          "cr3.cmt4.gps",
+          "preview.exif.gps"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-GPS",
+        "SRC-CR3-LOCATIONS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-006",
+        "FXP-019",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-013",
+      "category": "owner",
+      "label": "CameraOwnerName",
+      "selector": {
+        "kind": "native",
+        "namespace": "tiff-exif",
+        "nativeId": "0xa430",
+        "locations": [
+          "cr3.cmt2.exif",
+          "preview.exif.exif"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-EXIF",
+        "SRC-CIPA-2017",
+        "SRC-CR3-LOCATIONS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-014",
+      "category": "serial",
+      "label": "BodySerialNumber",
+      "selector": {
+        "kind": "native",
+        "namespace": "tiff-exif",
+        "nativeId": "0xa431",
+        "locations": [
+          "cr3.cmt2.exif",
+          "preview.exif.exif"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-EXIF",
+        "SRC-CIPA-2017",
+        "SRC-CR3-LOCATIONS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-015",
+      "category": "serial",
+      "label": "LensSerialNumber",
+      "selector": {
+        "kind": "native",
+        "namespace": "tiff-exif",
+        "nativeId": "0xa435",
+        "locations": [
+          "cr3.cmt2.exif",
+          "preview.exif.exif"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-EXIF",
+        "SRC-CIPA-2017",
+        "SRC-CR3-LOCATIONS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-016",
+      "category": "owner",
+      "label": "OwnerName",
+      "selector": {
+        "kind": "native",
+        "namespace": "canon-main",
+        "nativeId": "0x0009",
+        "locations": [
+          "cr3.cmt3.canon"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-CANON",
+        "SRC-CR3-LOCATIONS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-021",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-017",
+      "category": "serial",
+      "label": "SerialNumber",
+      "selector": {
+        "kind": "native",
+        "namespace": "canon-main",
+        "nativeId": "0x000c",
+        "locations": [
+          "cr3.cmt3.canon"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-CANON",
+        "SRC-CR3-LOCATIONS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-021",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-018",
+      "category": "serial",
+      "label": "InternalSerialNumber",
+      "selector": {
+        "kind": "native",
+        "namespace": "canon-main",
+        "nativeId": "0x0096",
+        "locations": [
+          "cr3.cmt3.canon"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-CANON",
+        "SRC-CR3-LOCATIONS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-021",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-019",
+      "category": "gps",
+      "label": "GPSLatitude",
+      "selector": {
+        "kind": "xmp",
+        "namespaceUri": "http://ns.adobe.com/exif/1.0/",
+        "localName": "GPSLatitude",
+        "locations": [
+          "sidecar.xmp",
+          "preview.xmp"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-XMP-GPS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-016",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-020",
+      "category": "gps",
+      "label": "GPSLongitude",
+      "selector": {
+        "kind": "xmp",
+        "namespaceUri": "http://ns.adobe.com/exif/1.0/",
+        "localName": "GPSLongitude",
+        "locations": [
+          "sidecar.xmp",
+          "preview.xmp"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-XMP-GPS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-016",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-021",
+      "category": "gps",
+      "label": "GPSAltitude",
+      "selector": {
+        "kind": "xmp",
+        "namespaceUri": "http://ns.adobe.com/exif/1.0/",
+        "localName": "GPSAltitude",
+        "locations": [
+          "sidecar.xmp",
+          "preview.xmp"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-XMP-GPS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-016",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-022",
+      "category": "gps",
+      "label": "GPSAltitudeRef",
+      "selector": {
+        "kind": "xmp",
+        "namespaceUri": "http://ns.adobe.com/exif/1.0/",
+        "localName": "GPSAltitudeRef",
+        "locations": [
+          "sidecar.xmp",
+          "preview.xmp"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-XMP-GPS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-016",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-023",
+      "category": "gps",
+      "label": "GPSTimeStamp",
+      "selector": {
+        "kind": "xmp",
+        "namespaceUri": "http://ns.adobe.com/exif/1.0/",
+        "localName": "GPSTimeStamp",
+        "locations": [
+          "sidecar.xmp",
+          "preview.xmp"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-XMP-GPS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-016",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-024",
+      "category": "gps",
+      "label": "GPSDestLatitude",
+      "selector": {
+        "kind": "xmp",
+        "namespaceUri": "http://ns.adobe.com/exif/1.0/",
+        "localName": "GPSDestLatitude",
+        "locations": [
+          "sidecar.xmp",
+          "preview.xmp"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-XMP-GPS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-016",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-025",
+      "category": "gps",
+      "label": "GPSDestLongitude",
+      "selector": {
+        "kind": "xmp",
+        "namespaceUri": "http://ns.adobe.com/exif/1.0/",
+        "localName": "GPSDestLongitude",
+        "locations": [
+          "sidecar.xmp",
+          "preview.xmp"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-XMP-GPS"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-016",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-026",
+      "category": "owner",
+      "label": "OwnerName",
+      "selector": {
+        "kind": "xmp",
+        "namespaceUri": "http://ns.adobe.com/exif/1.0/aux/",
+        "localName": "OwnerName",
+        "locations": [
+          "sidecar.xmp",
+          "preview.xmp"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-XMP-AUX"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-016",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-027",
+      "category": "serial",
+      "label": "SerialNumber",
+      "selector": {
+        "kind": "xmp",
+        "namespaceUri": "http://ns.adobe.com/exif/1.0/aux/",
+        "localName": "SerialNumber",
+        "locations": [
+          "sidecar.xmp",
+          "preview.xmp"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-XMP-AUX"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-016",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-028",
+      "category": "serial",
+      "label": "LensSerialNumber",
+      "selector": {
+        "kind": "xmp",
+        "namespaceUri": "http://ns.adobe.com/exif/1.0/aux/",
+        "localName": "LensSerialNumber",
+        "locations": [
+          "sidecar.xmp",
+          "preview.xmp"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-XMP-AUX"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-016",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-029",
+      "category": "owner",
+      "label": "CameraOwnerName",
+      "selector": {
+        "kind": "xmp",
+        "namespaceUri": "http://cipa.jp/exif/1.0/",
+        "localName": "CameraOwnerName",
+        "locations": [
+          "sidecar.xmp",
+          "preview.xmp"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-XMP-EXIFEX",
+        "SRC-CIPA-2017"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-016",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-030",
+      "category": "serial",
+      "label": "BodySerialNumber",
+      "selector": {
+        "kind": "xmp",
+        "namespaceUri": "http://cipa.jp/exif/1.0/",
+        "localName": "BodySerialNumber",
+        "locations": [
+          "sidecar.xmp",
+          "preview.xmp"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-XMP-EXIFEX",
+        "SRC-CIPA-2017"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-016",
+        "FXP-024"
+      ]
+    },
+    {
+      "id": "R5P-031",
+      "category": "serial",
+      "label": "LensSerialNumber",
+      "selector": {
+        "kind": "xmp",
+        "namespaceUri": "http://cipa.jp/exif/1.0/",
+        "localName": "LensSerialNumber",
+        "locations": [
+          "sidecar.xmp",
+          "preview.xmp"
+        ]
+      },
+      "sourceRefs": [
+        "SRC-XMP-EXIFEX",
+        "SRC-CIPA-2017"
+      ],
+      "occurrenceRule": "every-exact-property-occurrence",
+      "fixtureFamilies": [
+        "FXP-016",
+        "FXP-024"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "SRC-GPS",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/lib/Image/ExifTool/GPS.pm",
+      "revision": "2200871d9cef988051d2a99d67df3bda6cbb30a8",
+      "observedOn": "2026-10-15",
+      "locator": "Selected GPS Main scalar tag identities; not the complete upstream table"
+    },
+    {
+      "id": "SRC-EXIF",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/lib/Image/ExifTool/Exif.pm",
+      "revision": "2200871d9cef988051d2a99d67df3bda6cbb30a8",
+      "observedOn": "2026-10-15",
+      "locator": "Exif Main 0xa430, 0xa431 and 0xa435; source display aliases differ from standard field names"
+    },
+    {
+      "id": "SRC-CANON",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/lib/Image/ExifTool/Canon.pm",
+      "revision": "2200871d9cef988051d2a99d67df3bda6cbb30a8",
+      "observedOn": "2026-10-15",
+      "locator": "Canon Main 0x0009, 0x000c, conditional 0x0096; R5 fallback scalar only"
+    },
+    {
+      "id": "SRC-XMP-GPS",
+      "url": "https://developer.adobe.com/xmp/docs/xmp-namespaces/exif/",
+      "revision": null,
+      "observedOn": "2026-10-15",
+      "locator": "Seven selected EXIF-namespace GPS properties; no displayed revision; latitude reference is embedded in coordinate value"
+    },
+    {
+      "id": "SRC-XMP-AUX",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/lib/Image/ExifTool/XMP.pm",
+      "revision": "2200871d9cef988051d2a99d67df3bda6cbb30a8",
+      "observedOn": "2026-10-15",
+      "locator": "Namespace aux and selected OwnerName, SerialNumber, LensSerialNumber properties"
+    },
+    {
+      "id": "SRC-XMP-EXIFEX",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/lib/Image/ExifTool/XMP.pm",
+      "revision": "2200871d9cef988051d2a99d67df3bda6cbb30a8",
+      "observedOn": "2026-10-15",
+      "locator": "Namespace exifEX and selected CameraOwnerName, BodySerialNumber, LensSerialNumber properties"
+    },
+    {
+      "id": "SRC-CIPA-2017",
+      "url": "https://cipa.jp/std/documents/e/DC-X010-2017.pdf",
+      "revision": "CIPA DC-X010-2017, Exif 2.31 metadata for XMP",
+      "observedOn": "2026-10-15",
+      "locator": "Table 1 namespace URI; selected owner/body/lens identities in Table 14 (PDF page 22, printed page 18); historical official document with placeholder publication dates, not a claim of latest standard"
+    },
+    {
+      "id": "SRC-CR3-LOCATIONS",
+      "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/lib/Image/ExifTool/Canon.pm",
+      "revision": "2200871d9cef988051d2a99d67df3bda6cbb30a8",
+      "observedOn": "2026-10-15",
+      "locator": "Canon uuid CMT2 -> Exif Main, CMT3 -> Canon Main, CMT4 -> GPS Main directory descriptors; structural mapping only, no camera occurrence claim"
+    }
+  ],
+  "occurrenceRules": {
+    "select": "Match exact native namespace, ID and declared location, or exact XMP URI/local name and declared location; labels and prefixes are not selectors.",
+    "repetitions": "Report every reached occurrence independently, including equal duplicates; retain source/document/path/ordinal identity.",
+    "values": "Presence matches even if empty, invalid or zero; never interpret zero coordinates/serials as absence.",
+    "absence": "Absent only for complete checked enumeration of the exact selector/location; unsupported, limited, opaque or unvisited locations are uninspectable.",
+    "previews": "Each declared preview document is separate; enumerating preview bytes does not inspect its EXIF or XMP.",
+    "xmp": "Match properties at any supported structural depth. Qualifier-only matches are residual diagnostics, not selected properties. Unsupported structures refuse complete coverage.",
+    "canon0096": "Only the R5 Canon Main scalar branch is selected; SerialInfo subdirectories or an unverified variant remain uninspectable. Never wipe a whole maker-note block."
+  },
+  "protectedData": [
+    "Sensor sample bytes and all additional/dual-pixel planes",
+    "CMP1/CCTP sample role, encoding, dimensions, offsets, lengths and sample tables",
+    "CFA, black/white levels, linearization, calibration, color matrices, lens corrections and maker-note rendering parameters",
+    "Every embedded preview payload, ICC profile and rendering interpretation data",
+    "Opaque metadata, unknown pointers/checksums and container structure outside an exact future proved edit"
+  ],
+  "exclusions": [
+    "GPS fields outside the twelve native and seven XMP selectors, including map datum, processing method, area information, direction, speed, track and destination bearing/distance",
+    "Artist, Copyright, XPAuthor, dc:creator, contact fields, free text, faces/regions, ImageUniqueID and other image/document identifiers, timestamps and filesystem paths/times",
+    "Other Canon serial locations/substructures, lens serials outside named selectors, unknown UUID boxes, CTMD and arbitrary maker-note fields",
+    "GPS/owner/serial lookalikes in unknown namespaces, unsupported IPTC/MWG/PLUS schemas or unparsed embedded metadata",
+    "Root CR3 embedded XMP packets: this version names only explicitly selected sidecar and preview XMP document locations; root embedded packets remain uninspectable/residual",
+    "Pixel content, visible locations/faces, thumbnails/previews as image content, filenames, logs/plans/backups/recovery artifacts and external copies",
+    "C-RAW, DPRAW, other cameras/firmware variants and malformed/unsupported source layouts; no coverage inherited from a model string alone"
+  ],
+  "unknownPolicy": {
+    "namespaceUris": "Exact opaque strings; never fetch, normalize, repair or guess aliases from a URI/prefix/local name.",
+    "opaque": "Always report uninspectable/residual scope; unknown data is not safe or absent.",
+    "bounds": "Any parser/scan bound or unsupported shape prevents complete coverage for affected selectors.",
+    "futureMutation": "This catalog grants no removal authority. Unknown dependencies or protected-data overlap refuse any future mutation until independently qualified."
+  },
+  "authenticityCatalog": "../write-safety/known-authenticity.v1.json",
+  "claims": {
+    "runtimeInspectionImplemented": false,
+    "removalImplemented": false,
+    "productionMutationAllowed": false,
+    "allPrivacyCovered": false,
+    "anonymityEstablished": false,
+    "secureErasureEstablished": false,
+    "cryptographicValidationPerformed": false
+  }
+}

@@ -1,0 +1,345 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://imageinfo.invalid/schemas/r5-privacy-catalog-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "catalogId": {
+      "const": "r5-gps-owner-serial-core"
+    },
+    "revision": {
+      "const": 1
+    },
+    "observedOn": {
+      "const": "2026-10-15"
+    },
+    "status": {
+      "const": "proposal-only"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 31,
+      "maxItems": 31,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^R5P-[0-9]{3}$"
+          },
+          "category": {
+            "enum": [
+              "gps",
+              "owner",
+              "serial"
+            ]
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "selector": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "kind": {
+                    "const": "native"
+                  },
+                  "namespace": {
+                    "enum": [
+                      "tiff-gps",
+                      "tiff-exif",
+                      "canon-main"
+                    ]
+                  },
+                  "nativeId": {
+                    "type": "string",
+                    "pattern": "^0x[0-9a-f]{4}$"
+                  },
+                  "locations": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                      "enum": [
+                        "cr3.cmt4.gps",
+                        "preview.exif.gps",
+                        "cr3.cmt2.exif",
+                        "preview.exif.exif",
+                        "cr3.cmt3.canon",
+                        "sidecar.xmp",
+                        "preview.xmp"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "kind",
+                  "namespace",
+                  "nativeId",
+                  "locations"
+                ]
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "kind": {
+                    "const": "xmp"
+                  },
+                  "namespaceUri": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "localName": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9]*$"
+                  },
+                  "locations": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                      "enum": [
+                        "cr3.cmt4.gps",
+                        "preview.exif.gps",
+                        "cr3.cmt2.exif",
+                        "preview.exif.exif",
+                        "cr3.cmt3.canon",
+                        "sidecar.xmp",
+                        "preview.xmp"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "kind",
+                  "namespaceUri",
+                  "localName",
+                  "locations"
+                ]
+              }
+            ]
+          },
+          "sourceRefs": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "occurrenceRule": {
+            "const": "every-exact-property-occurrence"
+          },
+          "fixtureFamilies": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^FXP-[0-9]{3}$"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "category",
+          "label",
+          "selector",
+          "sourceRefs",
+          "occurrenceRule",
+          "fixtureFamilies"
+        ]
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string",
+            "pattern": "^https://"
+          },
+          "revision": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "observedOn": {
+            "const": "2026-10-15"
+          },
+          "locator": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "url",
+          "revision",
+          "observedOn",
+          "locator"
+        ]
+      }
+    },
+    "occurrenceRules": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "select": {
+          "type": "string",
+          "minLength": 1
+        },
+        "repetitions": {
+          "type": "string",
+          "minLength": 1
+        },
+        "values": {
+          "type": "string",
+          "minLength": 1
+        },
+        "absence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "previews": {
+          "type": "string",
+          "minLength": 1
+        },
+        "xmp": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canon0096": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "select",
+        "repetitions",
+        "values",
+        "absence",
+        "previews",
+        "xmp",
+        "canon0096"
+      ]
+    },
+    "protectedData": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "exclusions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "unknownPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "namespaceUris": {
+          "type": "string",
+          "minLength": 1
+        },
+        "opaque": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bounds": {
+          "type": "string",
+          "minLength": 1
+        },
+        "futureMutation": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "namespaceUris",
+        "opaque",
+        "bounds",
+        "futureMutation"
+      ]
+    },
+    "authenticityCatalog": {
+      "const": "../write-safety/known-authenticity.v1.json"
+    },
+    "claims": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "runtimeInspectionImplemented": {
+          "const": false
+        },
+        "removalImplemented": {
+          "const": false
+        },
+        "productionMutationAllowed": {
+          "const": false
+        },
+        "allPrivacyCovered": {
+          "const": false
+        },
+        "anonymityEstablished": {
+          "const": false
+        },
+        "secureErasureEstablished": {
+          "const": false
+        },
+        "cryptographicValidationPerformed": {
+          "const": false
+        }
+      },
+      "required": [
+        "runtimeInspectionImplemented",
+        "removalImplemented",
+        "productionMutationAllowed",
+        "allPrivacyCovered",
+        "anonymityEstablished",
+        "secureErasureEstablished",
+        "cryptographicValidationPerformed"
+      ]
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "catalogId",
+    "revision",
+    "observedOn",
+    "status",
+    "entries",
+    "sources",
+    "occurrenceRules",
+    "protectedData",
+    "exclusions",
+    "unknownPolicy",
+    "authenticityCatalog",
+    "claims"
+  ]
+}

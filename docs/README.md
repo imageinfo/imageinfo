@@ -64,6 +64,10 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Single-file read baseline](performance/single-read-baseline.md) | #0061 fixed 99-attempt experiment, independently checked output and elapsed distributions, with explicit cache/noise scope. |
 | [Clean hosted contributor checks](contributing/clean-machine.md) | #0065 exact fresh hosted-image/toolchain/source outcomes and sanitized CI permissions; bare-OS setup and release readiness remain separate. |
 | [Physical-power fixture proposal](write-safety/physical-power-fixture-proposal.md) | #0101 concrete isolated DUT/observer alternatives, finite cut schedule and Terry-only resource inputs; all physical tests remain unrun. |
+| [Named R5 privacy catalog](privacy/r5-catalog.md) | #0087 exact GPS/owner/serial selectors, protected data and explicit residuals, with 29-family trace and authored validation; no removal/anonymity claim. |
+| [Conditional marker replacement](write-safety/conditional-replacement.md) | #0093 actual guarded refusals and weak-control object-binding counterexamples on native NTFS; the measured primitive remains unsupported. |
+| [CR3 reference-write method](write-safety/cr3-reference-effects.md) | #0099 bounded differential method and public authored controls; camera-derived reports remain private under their disclosure grants. |
+| [Native receipt timestamp diagnostic](write-safety/receipt-timestamp-completion.md) | #0100 native write-handle lifecycle observations and read-only inspection; non-reproduction leaves the guest crash cause and profile gates open. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |

@@ -1,0 +1,244 @@
+{
+  "ticket": 87,
+  "kind": "privacy-catalog-proposal-qa",
+  "observedOn": "2026-10-15",
+  "catalogEntries": 31,
+  "fixtureFamiliesTraced": 29,
+  "vectors": [
+    {
+      "id": "reviewed-proposal",
+      "passed": true
+    },
+    {
+      "id": "wrong-catalog-identifier",
+      "passed": true
+    },
+    {
+      "id": "wrong-revision",
+      "passed": true
+    },
+    {
+      "id": "implemented-status-claim",
+      "passed": true
+    },
+    {
+      "id": "claim-runtimeInspectionImplemented",
+      "passed": true
+    },
+    {
+      "id": "claim-removalImplemented",
+      "passed": true
+    },
+    {
+      "id": "claim-productionMutationAllowed",
+      "passed": true
+    },
+    {
+      "id": "claim-allPrivacyCovered",
+      "passed": true
+    },
+    {
+      "id": "claim-anonymityEstablished",
+      "passed": true
+    },
+    {
+      "id": "claim-secureErasureEstablished",
+      "passed": true
+    },
+    {
+      "id": "claim-cryptographicValidationPerformed",
+      "passed": true
+    },
+    {
+      "id": "private-media-result-member",
+      "passed": true
+    },
+    {
+      "id": "missing-selector",
+      "passed": true
+    },
+    {
+      "id": "duplicate-selector-identifier",
+      "passed": true
+    },
+    {
+      "id": "duplicate-exact-selector",
+      "passed": true
+    },
+    {
+      "id": "invented-native-id",
+      "passed": true
+    },
+    {
+      "id": "wrong-native-table",
+      "passed": true
+    },
+    {
+      "id": "uppercase-native-spelling",
+      "passed": true
+    },
+    {
+      "id": "namespace-uri-prefix-confusion",
+      "passed": true
+    },
+    {
+      "id": "namespace-uri-lookalike",
+      "passed": true
+    },
+    {
+      "id": "invented-xmp-coordinate-ref",
+      "passed": true
+    },
+    {
+      "id": "invented-xmp-date-stamp",
+      "passed": true
+    },
+    {
+      "id": "xmp-name-case-change",
+      "passed": true
+    },
+    {
+      "id": "whole-namespace-wildcard",
+      "passed": true
+    },
+    {
+      "id": "root-embedded-xmp-scope-expansion",
+      "passed": true
+    },
+    {
+      "id": "missing-preview-location",
+      "passed": true
+    },
+    {
+      "id": "unproved-canon-subdirectory",
+      "passed": true
+    },
+    {
+      "id": "wrong-privacy-category",
+      "passed": true
+    },
+    {
+      "id": "collapsed-equal-occurrences",
+      "passed": true
+    },
+    {
+      "id": "unresolved-primary-source",
+      "passed": true
+    },
+    {
+      "id": "wrong-source-for-selector",
+      "passed": true
+    },
+    {
+      "id": "unpinned-upstream-source",
+      "passed": true
+    },
+    {
+      "id": "wrong-source-observation",
+      "passed": true
+    },
+    {
+      "id": "duplicate-source-identity",
+      "passed": true
+    },
+    {
+      "id": "unknown-fixture-reference",
+      "passed": true
+    },
+    {
+      "id": "weakened-absence-policy",
+      "passed": true
+    },
+    {
+      "id": "zero-is-absence",
+      "passed": true
+    },
+    {
+      "id": "preview-byte-discovery-is-inspection",
+      "passed": true
+    },
+    {
+      "id": "canon0096-block-wipe",
+      "passed": true
+    },
+    {
+      "id": "protected-sensor-data-removed",
+      "passed": true
+    },
+    {
+      "id": "protected-rendering-data-replaced",
+      "passed": true
+    },
+    {
+      "id": "root-xmp-residual-omitted",
+      "passed": true
+    },
+    {
+      "id": "unknown-data-safe-claim",
+      "passed": true
+    },
+    {
+      "id": "normalizing-namespace-uri",
+      "passed": true
+    },
+    {
+      "id": "unknown-mutation-authority",
+      "passed": true
+    },
+    {
+      "id": "wrong-authenticity-policy",
+      "passed": true
+    },
+    {
+      "id": "missing-fixture-family",
+      "passed": true
+    },
+    {
+      "id": "duplicate-fixture-family",
+      "passed": true
+    },
+    {
+      "id": "claimed-fixture-execution",
+      "passed": true
+    },
+    {
+      "id": "unknown-trace-selector",
+      "passed": true
+    },
+    {
+      "id": "missing-reciprocal-gps-family",
+      "passed": true
+    },
+    {
+      "id": "secondary-variant-admission",
+      "passed": true
+    },
+    {
+      "id": "duplicate-json-member",
+      "passed": true
+    },
+    {
+      "id": "nonfinite-json-value",
+      "passed": true
+    },
+    {
+      "id": "live-source-invented-revision",
+      "passed": true
+    },
+    {
+      "id": "historical-cipa-mislabelled-latest",
+      "passed": true
+    },
+    {
+      "id": "trace-boolean-version",
+      "passed": true
+    }
+  ],
+  "allPassed": true,
+  "mediaFixturesExecuted": 0,
+  "primaryIdentityReview": "Selected identifiers reviewed against pinned upstream source, Adobe EXIF namespace and historical CIPA2017 mapping; no R5 presence claim.",
+  "privateMediaValuesOrHashesIncluded": false,
+  "runtimeInspectionImplemented": false,
+  "removalImplemented": false,
+  "anonymityEstablished": false
+}

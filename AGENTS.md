@@ -234,6 +234,25 @@ planning only; no hardware is selected or approved and no physical test has run.
 See `docs/write-safety/physical-power-fixture-proposal.md`. Actual equipment,
 license route and final device-specific execution approval require Terry; no
 physical-power, storage-profile or #0078 apply permission follows from this plan.
+#0087 defines the versioned `r5-gps-owner-serial-core` catalog: 31 exact native/XMP
+selectors, occurrence and protected-data rules, explicit residuals and all 29
+fixture-family dispositions. Its 57 authored vectors pass; no media parsing,
+removal or anonymity is implemented. See `docs/privacy/r5-catalog.md`.
+#0093 measures one isolated standard-library existing-target marker replacement
+sequence. All 29 native cases retain the protected original; 25 refusals preserve
+the observed namespace, while weak controls expose object-binding failures.
+The profile remains unsupported. See `docs/write-safety/conditional-replacement.md`;
+no production replacement, source deletion or new root SDK boundary is enabled.
+#0099 supplies a bounded exact-reference-write effects method with public authored
+controls. Actual RAW-derived reports stay private: the revised fixture grants
+permit private modification/differential analysis but deny public reports. Do not
+publish even aggregate camera outcomes from those reports. See
+`docs/write-safety/cr3-reference-effects.md`; no format or #0078 admission follows.
+#0100 records twelve native timestamp-lifecycle cells and twelve receipt
+inspections against the unchanged F869 worker, with zero observed drift under
+the declared observers. This native non-reproduction does not explain the two
+guest crash drifts or establish a mitigation. See
+`docs/write-safety/receipt-timestamp-completion.md`; full profile gates remain.
 
 ## Subagent authorization
 
@@ -359,9 +378,10 @@ Terry clarified lane meanings on 2026-10-11:
   and the change needed to unblock it. Missing implementation, research or
   qualification that we can pursue is work or a prerequisite, not a Blocked lane
   reason. Keep scoped queued work Ready for Work, or In Progress while actively
-  advancing it. If Terry can advance it but Codex cannot, use `needs_terry`.
-- `needs_terry`: only Terry can advance the ticket; Codex cannot make further
-  authorized progress without a specific action by Terry. Terry clarified this
+  advancing it. If Terry can advance it but Codex cannot, use Needs Terry.
+- Needs Terry (`needs_terry_action` in the CLI): only Terry can advance the
+  ticket. Codex cannot make further authorized progress without a specific action
+  by Terry. Terry clarified this
   meaning on 2026-10-15. State the exact decision, input, approval or action
   required from Terry, and complete independent authorized work first. Merely
   having a question or unfinished work does not justify this lane.
@@ -370,7 +390,7 @@ Terry clarified lane meanings on 2026-10-11:
 - `completed`: Terry has accepted the handoff; bot does not move its own work here.
 
 Terry clarified the queued-work disposition on 2026-10-15: if neither
-`needs_terry` nor `blocked` applies, the card belongs in Backlog or Ready for Work.
+Needs Terry nor `blocked` applies, the card belongs in Backlog or Ready for Work.
 Use Backlog only for insufficient scope/detail or Terry's explicit hold; use
 Ready for Work for sufficiently scoped work, including prerequisites we can
 advance. In Progress remains for active work or Terry's designated resumption point.

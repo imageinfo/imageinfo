@@ -40,6 +40,28 @@ jobs:
         run: |
           python -m py_compile scripts/measure_single_read.py scripts/audit_read_baseline.py
           python scripts/test_read_baseline.py
+      - name: Check named privacy catalog
+        run: python scripts/check_privacy_catalog.py
+      - name: Check receipt timestamp tooling syntax
+        run: python -m py_compile experiments/0100-receipt-timestamps/native.py experiments/0100-receipt-timestamps/qualify.py experiments/0100-receipt-timestamps/audit.py
+      - name: Check authored CR3 reference-write accounting
+        run: |
+          python -m unittest discover -s experiments/0099-cr3-reference-effects -p test_controls.py -v
+          python -m py_compile experiments/0099-cr3-reference-effects/qualify_private.py
+      - name: Check conditional replacement research
+        run: |
+          cargo fmt --manifest-path experiments/0093-conditional-replacement/Cargo.toml --check
+          cargo clippy --locked --manifest-path experiments/0093-conditional-replacement/Cargo.toml --all-targets -- -D warnings
+          cargo test --locked --manifest-path experiments/0093-conditional-replacement/Cargo.toml
+          cargo build --locked --release --manifest-path experiments/0093-conditional-replacement/Cargo.toml
+      - name: Qualify conditional replacement markers on Windows
+        if: runner.os == 'Windows'
+        run: python experiments/0093-conditional-replacement/qualify.py --binary experiments/0093-conditional-replacement/target/release/imageinfo-conditional-replacement-probe.exe --parent .local/conditional-replacement-ci --output .local/conditional-replacement-ci.json
+      - name: Refuse conditional replacement on unsupported platforms
+        if: runner.os != 'Windows'
+        run: |
+          experiments/0093-conditional-replacement/target/release/imageinfo-conditional-replacement-probe .local/replacement-must-not-exist both-guard > .local/replacement-refusal.json
+          python -c "import json; from pathlib import Path; v=json.loads(Path('.local/replacement-refusal.json').read_text()); assert v['refusalCode']=='WINDOWS_ONLY' and not v['renameAttempted'] and not v['renameSucceeded'] and not v['productionReplacementAllowed'] and not v['committed'] and v['enabledProfiles']==0; assert not Path('.local/replacement-must-not-exist').exists()"
       - name: Check exact backend refusal ledger
         run: python experiments/0051-profile-admission/qualify.py --public .local/profile-admission-ci.json
       - name: Check one-way XMP date mapping model

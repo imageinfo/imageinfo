@@ -1,0 +1,435 @@
+{
+  "schemaVersion": 1,
+  "observationDate": "2026-10-15",
+  "ticket": 100,
+  "scope": "native marker timestamp lifecycle only",
+  "workerSha256": "f86918a7fb3880cf8e09590fcc7d58155ef64d98c95cf9c2a6afc541c5b040fa",
+  "sourceRevision": "b819f54533c495b332c3d4dbb0caccef49923036",
+  "host": {
+    "system": "Windows",
+    "version": "10.0.26200",
+    "machine": "AMD64"
+  },
+  "tooling": {
+    "experiments/0100-receipt-timestamps/native.py": "97dd77e1c8569fdd5c0abc93618db74e3ecef72856daec970987462121efe2b6",
+    "experiments/0100-receipt-timestamps/qualify.py": "4a1b0122b36872c6e61e6d81ff48ba42d8d72b077abfe79f4140ccaaf8eae71a",
+    "experiments/0100-receipt-timestamps/audit.py": "0da83852c8a299ae574873edb4fb6a25aa434a8c545c6fb5cbca1b0c2e5304c3",
+    "experiments/0034-source-oplocks/qualify.py": "7f682f904f6a3cf7af9869b3a9260c98d0ed9220a92beb1120cbc5b81684471f"
+  },
+  "observer": {
+    "access": 2147614720,
+    "sharing": 7,
+    "creation": 3,
+    "flags": 2097152,
+    "lifetime": "retained across writer exit/close; then replaced with fresh readonly observer"
+  },
+  "tickUnit": "100 nanoseconds FILETIME; differences only",
+  "cells": [
+    {
+      "kind": "frozen-worker",
+      "phase": "receipt-written",
+      "completion": "continue",
+      "afterExitMinusBarrierMtimeTicks": 0,
+      "readObservationDeltas": [
+        {
+          "stage": "at-worker-barrier",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "worker-exited-observer-retained",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "original-observer-closed-fresh-readonly",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        }
+      ],
+      "inspections": [
+        {
+          "contextKind": "phase-context",
+          "outcome": "observed-receipt-recovery-required",
+          "diagnostic": null,
+          "mtimeObservationDrifts": [],
+          "nonMtimeInventoryUnchanged": true
+        },
+        {
+          "contextKind": "latest-context",
+          "outcome": "observed-receipt-recovery-required",
+          "diagnostic": null,
+          "mtimeObservationDrifts": [],
+          "nonMtimeInventoryUnchanged": true
+        }
+      ],
+      "nonMtimeLifecycleInvariantsUnchanged": true
+    },
+    {
+      "kind": "frozen-worker",
+      "phase": "receipt-written",
+      "completion": "terminate",
+      "afterExitMinusBarrierMtimeTicks": 0,
+      "readObservationDeltas": [
+        {
+          "stage": "at-worker-barrier",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "worker-exited-observer-retained",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "original-observer-closed-fresh-readonly",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        }
+      ],
+      "inspections": [
+        {
+          "contextKind": "phase-context",
+          "outcome": "observed-receipt-recovery-required",
+          "diagnostic": null,
+          "mtimeObservationDrifts": [],
+          "nonMtimeInventoryUnchanged": true
+        },
+        {
+          "contextKind": "latest-context",
+          "outcome": "observed-receipt-recovery-required",
+          "diagnostic": null,
+          "mtimeObservationDrifts": [],
+          "nonMtimeInventoryUnchanged": true
+        }
+      ],
+      "nonMtimeLifecycleInvariantsUnchanged": true
+    },
+    {
+      "kind": "frozen-worker",
+      "phase": "receipt-file-flushed",
+      "completion": "continue",
+      "afterExitMinusBarrierMtimeTicks": 0,
+      "readObservationDeltas": [
+        {
+          "stage": "at-worker-barrier",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "worker-exited-observer-retained",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "original-observer-closed-fresh-readonly",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        }
+      ],
+      "inspections": [
+        {
+          "contextKind": "phase-context",
+          "outcome": "observed-receipt-recovery-required",
+          "diagnostic": null,
+          "mtimeObservationDrifts": [],
+          "nonMtimeInventoryUnchanged": true
+        },
+        {
+          "contextKind": "latest-context",
+          "outcome": "observed-receipt-recovery-required",
+          "diagnostic": null,
+          "mtimeObservationDrifts": [],
+          "nonMtimeInventoryUnchanged": true
+        }
+      ],
+      "nonMtimeLifecycleInvariantsUnchanged": true
+    },
+    {
+      "kind": "frozen-worker",
+      "phase": "receipt-file-flushed",
+      "completion": "terminate",
+      "afterExitMinusBarrierMtimeTicks": 0,
+      "readObservationDeltas": [
+        {
+          "stage": "at-worker-barrier",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "worker-exited-observer-retained",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "original-observer-closed-fresh-readonly",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        }
+      ],
+      "inspections": [
+        {
+          "contextKind": "phase-context",
+          "outcome": "observed-receipt-recovery-required",
+          "diagnostic": null,
+          "mtimeObservationDrifts": [],
+          "nonMtimeInventoryUnchanged": true
+        },
+        {
+          "contextKind": "latest-context",
+          "outcome": "observed-receipt-recovery-required",
+          "diagnostic": null,
+          "mtimeObservationDrifts": [],
+          "nonMtimeInventoryUnchanged": true
+        }
+      ],
+      "nonMtimeLifecycleInvariantsUnchanged": true
+    },
+    {
+      "kind": "frozen-worker",
+      "phase": "final-checked",
+      "completion": "continue",
+      "afterExitMinusBarrierMtimeTicks": 0,
+      "readObservationDeltas": [
+        {
+          "stage": "at-worker-barrier",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "worker-exited-observer-retained",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "original-observer-closed-fresh-readonly",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        }
+      ],
+      "inspections": [
+        {
+          "contextKind": "phase-context",
+          "outcome": "observed-receipt-recovery-required",
+          "diagnostic": null,
+          "mtimeObservationDrifts": [],
+          "nonMtimeInventoryUnchanged": true
+        },
+        {
+          "contextKind": "latest-context",
+          "outcome": "observed-receipt-recovery-required",
+          "diagnostic": null,
+          "mtimeObservationDrifts": [],
+          "nonMtimeInventoryUnchanged": true
+        }
+      ],
+      "nonMtimeLifecycleInvariantsUnchanged": true
+    },
+    {
+      "kind": "frozen-worker",
+      "phase": "final-checked",
+      "completion": "terminate",
+      "afterExitMinusBarrierMtimeTicks": 0,
+      "readObservationDeltas": [
+        {
+          "stage": "at-worker-barrier",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "worker-exited-observer-retained",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "original-observer-closed-fresh-readonly",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        }
+      ],
+      "inspections": [
+        {
+          "contextKind": "phase-context",
+          "outcome": "observed-receipt-recovery-required",
+          "diagnostic": null,
+          "mtimeObservationDrifts": [],
+          "nonMtimeInventoryUnchanged": true
+        },
+        {
+          "contextKind": "latest-context",
+          "outcome": "observed-receipt-recovery-required",
+          "diagnostic": null,
+          "mtimeObservationDrifts": [],
+          "nonMtimeInventoryUnchanged": true
+        }
+      ],
+      "nonMtimeLifecycleInvariantsUnchanged": true
+    },
+    {
+      "kind": "authored-actor",
+      "writeThrough": false,
+      "bindingBoundary": "write",
+      "postCloseMinusPhaseBindingMtimeTicks": 0,
+      "freshPostCloseRepeatedMtimeDeltaTicks": 0,
+      "readObservationDeltas": [
+        {
+          "stage": "after-write-before-explicit-flush",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "all-writer-handles-closed",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        }
+      ],
+      "nonMtimeLifecycleInvariantsUnchanged": true
+    },
+    {
+      "kind": "authored-actor",
+      "writeThrough": false,
+      "bindingBoundary": "flush",
+      "postCloseMinusPhaseBindingMtimeTicks": 0,
+      "freshPostCloseRepeatedMtimeDeltaTicks": 0,
+      "readObservationDeltas": [
+        {
+          "stage": "after-write-before-explicit-flush",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "after-explicit-flush",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "all-writer-handles-closed",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        }
+      ],
+      "nonMtimeLifecycleInvariantsUnchanged": true
+    },
+    {
+      "kind": "authored-actor",
+      "writeThrough": false,
+      "bindingBoundary": "close",
+      "postCloseMinusPhaseBindingMtimeTicks": 0,
+      "freshPostCloseRepeatedMtimeDeltaTicks": 0,
+      "readObservationDeltas": [
+        {
+          "stage": "after-write-before-explicit-flush",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "after-explicit-flush",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "after-writer-close-observer-retained",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "all-writer-handles-closed",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        }
+      ],
+      "nonMtimeLifecycleInvariantsUnchanged": true
+    },
+    {
+      "kind": "authored-actor",
+      "writeThrough": true,
+      "bindingBoundary": "write",
+      "postCloseMinusPhaseBindingMtimeTicks": 0,
+      "freshPostCloseRepeatedMtimeDeltaTicks": 0,
+      "readObservationDeltas": [
+        {
+          "stage": "after-write-before-explicit-flush",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "all-writer-handles-closed",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        }
+      ],
+      "nonMtimeLifecycleInvariantsUnchanged": true
+    },
+    {
+      "kind": "authored-actor",
+      "writeThrough": true,
+      "bindingBoundary": "flush",
+      "postCloseMinusPhaseBindingMtimeTicks": 0,
+      "freshPostCloseRepeatedMtimeDeltaTicks": 0,
+      "readObservationDeltas": [
+        {
+          "stage": "after-write-before-explicit-flush",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "after-explicit-flush",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "all-writer-handles-closed",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        }
+      ],
+      "nonMtimeLifecycleInvariantsUnchanged": true
+    },
+    {
+      "kind": "authored-actor",
+      "writeThrough": true,
+      "bindingBoundary": "close",
+      "postCloseMinusPhaseBindingMtimeTicks": 0,
+      "freshPostCloseRepeatedMtimeDeltaTicks": 0,
+      "readObservationDeltas": [
+        {
+          "stage": "after-write-before-explicit-flush",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "after-explicit-flush",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "after-writer-close-observer-retained",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        },
+        {
+          "stage": "all-writer-handles-closed",
+          "freshPathMinusRetainedBeforeTicks": 0,
+          "retainedAfterReadsMinusBeforeTicks": 0
+        }
+      ],
+      "nonMtimeLifecycleInvariantsUnchanged": true
+    }
+  ],
+  "workerMtimeDriftCells": 0,
+  "actorPreCloseBindingDriftCells": 0,
+  "postCloseRepeatedDriftCells": 0,
+  "unqualified": [
+    "historical #0047 crash timestamp cause",
+    "OS crash/restart",
+    "physical power loss",
+    "storage persistence",
+    "qualified namespace acknowledgement",
+    "full profile",
+    "RAW admission"
+  ],
+  "committed": false,
+  "namespaceAcknowledged": false,
+  "repairAllowed": false,
+  "productionPublicationAllowed": false
+}
