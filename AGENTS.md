@@ -266,6 +266,25 @@ the declared observers. This native non-reproduction does not explain the two
 guest crash drifts or establish a mitigation. See
 `docs/write-safety/receipt-timestamp-completion.md`; full profile gates remain.
 
+#0057 adds a bounded in-process metadata-read request/result API using native
+token arrays and caller-owned JSON transport. It shares the ordinary CLI read
+workflow and retains request-local state, finite input/result bounds and explicit
+transport errors. See `docs/legacy-compatibility/read-request-result.md`; serialized
+request imports and persistent sessions remain separate work.
+#0102 attributes frozen #0099 reference-write effects to CMT allocations, gaps and
+container/track offsets. Camera-derived reports remain private; the public method
+and authored controls do not enable #0078. See
+`docs/write-safety/cr3-rewrite-attribution.md`.
+#0103 implements a process-owned marker supervisor: actual child custody and a
+completed stop-before-release history permit one narrow unpublished prune. Release,
+uncertainty, incomplete saves and recreated supervisors confer no prune authority.
+See `docs/write-safety/process-custody.md`; automatic durable custody and production
+profile admission remain separate.
+#0104 connects actual immutable native CR3 date observations to #0084's in-memory
+XMP derivative. Opaque CMT2 coverage and cross-IFD companions refuse. Authored
+integration evidence supplies no file publication or storage/RAW admission. See
+`docs/sidecars/native-date-adapter.md`; #0085 retains its full acceptance.
+
 ## Subagent authorization
 
 

@@ -69,6 +69,10 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Conditional marker replacement](write-safety/conditional-replacement.md) | #0093 actual guarded refusals and weak-control object-binding counterexamples on native NTFS; the measured primitive remains unsupported. |
 | [CR3 reference-write method](write-safety/cr3-reference-effects.md) | #0099 bounded differential method and public authored controls; camera-derived reports remain private under their disclosure grants. |
 | [Native receipt timestamp diagnostic](write-safety/receipt-timestamp-completion.md) | #0100 native write-handle lifecycle observations and read-only inspection; non-reproduction leaves the guest crash cause and profile gates open. |
+| [CR3 rewrite attribution](write-safety/cr3-rewrite-attribution.md) | #0102 allocation, gap and offset-relocation accounting against frozen reference-write research; camera-derived evidence remains private. |
+| [Process-owned marker custody](write-safety/process-custody.md) | #0103 actual child-process custody and narrow unpublished prune, with retained uncertainty and no imported-context authority. |
+| [Native date to XMP candidate](sidecars/native-date-adapter.md) | #0104 actual native date observations feed the in-memory XMP derivative; authored parser-path evidence without file publication. |
+| [Read-only request/result API](legacy-compatibility/read-request-result.md) | #0057 bounded native token-array metadata reads and caller-owned JSON transport, without a persistent session. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |

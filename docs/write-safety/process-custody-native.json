@@ -1,0 +1,641 @@
+{
+  "schemaVersion": 1,
+  "ticket": 103,
+  "observationDate": "2026-10-15",
+  "scope": "process-local live caller custody, authored markers only",
+  "workerSha256": "f86918a7fb3880cf8e09590fcc7d58155ef64d98c95cf9c2a6afc541c5b040fa",
+  "sourceRevision": "b819f54533c495b332c3d4dbb0caccef49923036",
+  "host": {
+    "system": "Windows",
+    "version": "10.0.26200",
+    "machine": "AMD64"
+  },
+  "tooling": {
+    "experiments/0103-process-custody/runtime.py": "4b80b2cc5885a70294fb548727b3f8eb0a1ea76d64278e2eff3ab0e3bcd99c36",
+    "experiments/0103-process-custody/qualify.py": "1b8609c134e4ccfab660185b5fc0e63cd289922d745007732dc8f7738fb1eab3",
+    "experiments/0103-process-custody/audit.py": "5df601cd967d75f91310916130e2c89ecbcfa3e59117e2d1dd65b89d1546170a",
+    "experiments/0100-receipt-timestamps/native.py": "97dd77e1c8569fdd5c0abc93618db74e3ecef72856daec970987462121efe2b6",
+    "experiments/0049-cumulative-budget/supervisor.py": "e0d7cf9b18c5612486c30bf863dee4b3fa6e576b0411d4367be38f1037ccdbb6"
+  },
+  "cases": [
+    {
+      "id": "stop-prune",
+      "sourceObservationsChecked": 7,
+      "sourceUnchanged": true,
+      "nativeWorkerEventCount": 33,
+      "runtimeLifecycle": [
+        "captured-save-complete",
+        "owned-child-exit-confirmed-before-release",
+        "stop-save-complete",
+        "prune-invocation-started"
+      ],
+      "protocolInjectedFailures": 0,
+      "pruneOutcome": "owned-unpublished-handles-pruned",
+      "ownedHandlesRemoved": 3,
+      "retainedTransactionLeaves": [
+        "source.marker"
+      ],
+      "retainedCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "finalStatus": {
+        "state": "owned-unpublished-handles-pruned",
+        "chargedBytes": 655360,
+        "operationCount": 1,
+        "custodySnapshots": 2,
+        "originalProcessStarted": true,
+        "ownedChildExited": true,
+        "releaseAttempted": false,
+        "publicationReleasePossible": false,
+        "releaseContinuationSent": false,
+        "pruneAttempted": true,
+        "uncertain": false,
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "repairAllowed": false,
+        "productionPublicationAllowed": false,
+        "automaticDurableCustody": false
+      },
+      "operationOutcomes": [
+        {
+          "label": "begin",
+          "refusedOrFailed": false
+        },
+        {
+          "label": "stop",
+          "refusedOrFailed": false
+        },
+        {
+          "label": "prune",
+          "refusedOrFailed": false
+        },
+        {
+          "label": "second-prune-denied",
+          "refusedOrFailed": true
+        }
+      ]
+    },
+    {
+      "id": "captured-no-authority",
+      "sourceObservationsChecked": 5,
+      "sourceUnchanged": true,
+      "nativeWorkerEventCount": 16,
+      "runtimeLifecycle": [
+        "captured-save-complete"
+      ],
+      "protocolInjectedFailures": 0,
+      "pruneOutcome": null,
+      "ownedHandlesRemoved": 0,
+      "retainedTransactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "retainedCustodyLeaves": [
+        "custody-1.record"
+      ],
+      "finalStatus": {
+        "state": "captured-unreleased",
+        "chargedBytes": 655360,
+        "operationCount": 1,
+        "custodySnapshots": 1,
+        "originalProcessStarted": true,
+        "ownedChildExited": false,
+        "releaseAttempted": false,
+        "publicationReleasePossible": false,
+        "releaseContinuationSent": false,
+        "pruneAttempted": false,
+        "uncertain": false,
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "repairAllowed": false,
+        "productionPublicationAllowed": false,
+        "automaticDurableCustody": false
+      },
+      "operationOutcomes": [
+        {
+          "label": "begin",
+          "refusedOrFailed": false
+        },
+        {
+          "label": "prune-denied-live-child",
+          "refusedOrFailed": true
+        },
+        {
+          "label": "arbitrary-context-keyword-denied",
+          "refusedOrFailed": true
+        }
+      ]
+    },
+    {
+      "id": "released-no-prune",
+      "sourceObservationsChecked": 5,
+      "sourceUnchanged": true,
+      "nativeWorkerEventCount": 51,
+      "runtimeLifecycle": [
+        "captured-save-complete",
+        "fence-save-complete",
+        "publication-continuation-sent",
+        "observed-save-complete",
+        "renewed-save-complete"
+      ],
+      "protocolInjectedFailures": 0,
+      "pruneOutcome": null,
+      "ownedHandlesRemoved": 0,
+      "retainedTransactionLeaves": [
+        "intent.record",
+        "observation.record",
+        "output.marker",
+        "prepared.record",
+        "receipt.record",
+        "source.marker"
+      ],
+      "retainedCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record",
+        "custody-3.record",
+        "custody-4.record"
+      ],
+      "finalStatus": {
+        "state": "receipt-observed-unqualified",
+        "chargedBytes": 655360,
+        "operationCount": 1,
+        "custodySnapshots": 4,
+        "originalProcessStarted": true,
+        "ownedChildExited": true,
+        "releaseAttempted": true,
+        "publicationReleasePossible": true,
+        "releaseContinuationSent": true,
+        "pruneAttempted": false,
+        "uncertain": false,
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "repairAllowed": false,
+        "productionPublicationAllowed": false,
+        "automaticDurableCustody": false
+      },
+      "operationOutcomes": [
+        {
+          "label": "begin",
+          "refusedOrFailed": false
+        },
+        {
+          "label": "release",
+          "refusedOrFailed": false
+        },
+        {
+          "label": "prune-denied-after-release-attempt",
+          "refusedOrFailed": true
+        }
+      ]
+    },
+    {
+      "id": "original-failure",
+      "sourceObservationsChecked": 3,
+      "sourceUnchanged": true,
+      "nativeWorkerEventCount": 4,
+      "runtimeLifecycle": [],
+      "protocolInjectedFailures": 1,
+      "pruneOutcome": null,
+      "ownedHandlesRemoved": 0,
+      "retainedTransactionLeaves": [
+        "source.marker"
+      ],
+      "retainedCustodyLeaves": [],
+      "finalStatus": {
+        "state": "uncertain-retained",
+        "chargedBytes": 655360,
+        "operationCount": 1,
+        "custodySnapshots": 0,
+        "originalProcessStarted": true,
+        "ownedChildExited": true,
+        "releaseAttempted": false,
+        "publicationReleasePossible": false,
+        "releaseContinuationSent": false,
+        "pruneAttempted": false,
+        "uncertain": true,
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "repairAllowed": false,
+        "productionPublicationAllowed": false,
+        "automaticDurableCustody": false
+      },
+      "operationOutcomes": [
+        {
+          "label": "begin",
+          "refusedOrFailed": true
+        },
+        {
+          "label": "prune-denied-after-begin-failure",
+          "refusedOrFailed": true
+        }
+      ]
+    },
+    {
+      "id": "captured-save-failure",
+      "sourceObservationsChecked": 3,
+      "sourceUnchanged": true,
+      "nativeWorkerEventCount": 14,
+      "runtimeLifecycle": [],
+      "protocolInjectedFailures": 1,
+      "pruneOutcome": null,
+      "ownedHandlesRemoved": 0,
+      "retainedTransactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "retainedCustodyLeaves": [
+        "custody-1.record"
+      ],
+      "finalStatus": {
+        "state": "uncertain-retained",
+        "chargedBytes": 655360,
+        "operationCount": 1,
+        "custodySnapshots": 0,
+        "originalProcessStarted": true,
+        "ownedChildExited": true,
+        "releaseAttempted": false,
+        "publicationReleasePossible": false,
+        "releaseContinuationSent": false,
+        "pruneAttempted": false,
+        "uncertain": true,
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "repairAllowed": false,
+        "productionPublicationAllowed": false,
+        "automaticDurableCustody": false
+      },
+      "operationOutcomes": [
+        {
+          "label": "begin",
+          "refusedOrFailed": true
+        },
+        {
+          "label": "prune-denied-after-begin-failure",
+          "refusedOrFailed": true
+        }
+      ]
+    },
+    {
+      "id": "stop-save-failure",
+      "sourceObservationsChecked": 5,
+      "sourceUnchanged": true,
+      "nativeWorkerEventCount": 20,
+      "runtimeLifecycle": [
+        "captured-save-complete",
+        "owned-child-exit-confirmed-before-release"
+      ],
+      "protocolInjectedFailures": 1,
+      "pruneOutcome": null,
+      "ownedHandlesRemoved": 0,
+      "retainedTransactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "retainedCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "finalStatus": {
+        "state": "uncertain-retained",
+        "chargedBytes": 655360,
+        "operationCount": 1,
+        "custodySnapshots": 1,
+        "originalProcessStarted": true,
+        "ownedChildExited": true,
+        "releaseAttempted": false,
+        "publicationReleasePossible": false,
+        "releaseContinuationSent": false,
+        "pruneAttempted": false,
+        "uncertain": true,
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "repairAllowed": false,
+        "productionPublicationAllowed": false,
+        "automaticDurableCustody": false
+      },
+      "operationOutcomes": [
+        {
+          "label": "begin",
+          "refusedOrFailed": false
+        },
+        {
+          "label": "stop",
+          "refusedOrFailed": true
+        },
+        {
+          "label": "prune",
+          "refusedOrFailed": true
+        }
+      ]
+    },
+    {
+      "id": "fence-save-failure",
+      "sourceObservationsChecked": 5,
+      "sourceUnchanged": true,
+      "nativeWorkerEventCount": 20,
+      "runtimeLifecycle": [
+        "captured-save-complete"
+      ],
+      "protocolInjectedFailures": 1,
+      "pruneOutcome": null,
+      "ownedHandlesRemoved": 0,
+      "retainedTransactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "retainedCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "finalStatus": {
+        "state": "uncertain-retained",
+        "chargedBytes": 655360,
+        "operationCount": 1,
+        "custodySnapshots": 1,
+        "originalProcessStarted": true,
+        "ownedChildExited": true,
+        "releaseAttempted": true,
+        "publicationReleasePossible": false,
+        "releaseContinuationSent": false,
+        "pruneAttempted": false,
+        "uncertain": true,
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "repairAllowed": false,
+        "productionPublicationAllowed": false,
+        "automaticDurableCustody": false
+      },
+      "operationOutcomes": [
+        {
+          "label": "begin",
+          "refusedOrFailed": false
+        },
+        {
+          "label": "release",
+          "refusedOrFailed": true
+        },
+        {
+          "label": "prune-denied-after-release-attempt",
+          "refusedOrFailed": true
+        }
+      ]
+    },
+    {
+      "id": "foreign-extra",
+      "sourceObservationsChecked": 5,
+      "sourceUnchanged": true,
+      "nativeWorkerEventCount": 23,
+      "runtimeLifecycle": [
+        "captured-save-complete",
+        "owned-child-exit-confirmed-before-release",
+        "stop-save-complete",
+        "prune-invocation-started"
+      ],
+      "protocolInjectedFailures": 0,
+      "pruneOutcome": "restart-refused-before-effects",
+      "ownedHandlesRemoved": 0,
+      "retainedTransactionLeaves": [
+        "candidate.marker",
+        "foreign.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "retainedCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "finalStatus": {
+        "state": "uncertain-retained",
+        "chargedBytes": 655360,
+        "operationCount": 1,
+        "custodySnapshots": 2,
+        "originalProcessStarted": true,
+        "ownedChildExited": true,
+        "releaseAttempted": false,
+        "publicationReleasePossible": false,
+        "releaseContinuationSent": false,
+        "pruneAttempted": true,
+        "uncertain": true,
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "repairAllowed": false,
+        "productionPublicationAllowed": false,
+        "automaticDurableCustody": false
+      },
+      "operationOutcomes": [
+        {
+          "label": "begin",
+          "refusedOrFailed": false
+        },
+        {
+          "label": "stop",
+          "refusedOrFailed": false
+        },
+        {
+          "label": "prune",
+          "refusedOrFailed": false
+        }
+      ]
+    },
+    {
+      "id": "candidate-substitution",
+      "sourceObservationsChecked": 5,
+      "sourceUnchanged": true,
+      "nativeWorkerEventCount": 23,
+      "runtimeLifecycle": [
+        "captured-save-complete",
+        "owned-child-exit-confirmed-before-release",
+        "stop-save-complete",
+        "prune-invocation-started"
+      ],
+      "protocolInjectedFailures": 0,
+      "pruneOutcome": "restart-refused-before-effects",
+      "ownedHandlesRemoved": 0,
+      "retainedTransactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "retainedCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "finalStatus": {
+        "state": "uncertain-retained",
+        "chargedBytes": 655360,
+        "operationCount": 1,
+        "custodySnapshots": 2,
+        "originalProcessStarted": true,
+        "ownedChildExited": true,
+        "releaseAttempted": false,
+        "publicationReleasePossible": false,
+        "releaseContinuationSent": false,
+        "pruneAttempted": true,
+        "uncertain": true,
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "repairAllowed": false,
+        "productionPublicationAllowed": false,
+        "automaticDurableCustody": false
+      },
+      "operationOutcomes": [
+        {
+          "label": "begin",
+          "refusedOrFailed": false
+        },
+        {
+          "label": "stop",
+          "refusedOrFailed": false
+        },
+        {
+          "label": "prune",
+          "refusedOrFailed": false
+        }
+      ]
+    },
+    {
+      "id": "partial-prune",
+      "sourceObservationsChecked": 7,
+      "sourceUnchanged": true,
+      "nativeWorkerEventCount": 28,
+      "runtimeLifecycle": [
+        "captured-save-complete",
+        "owned-child-exit-confirmed-before-release",
+        "stop-save-complete",
+        "prune-invocation-started"
+      ],
+      "protocolInjectedFailures": 1,
+      "pruneOutcome": "restart-partial-or-uncertain",
+      "ownedHandlesRemoved": 1,
+      "retainedTransactionLeaves": [
+        "candidate.marker",
+        "prepared.record",
+        "source.marker"
+      ],
+      "retainedCustodyLeaves": [
+        "custody-1.record",
+        "custody-2.record"
+      ],
+      "finalStatus": {
+        "state": "uncertain-retained",
+        "chargedBytes": 655360,
+        "operationCount": 1,
+        "custodySnapshots": 2,
+        "originalProcessStarted": true,
+        "ownedChildExited": true,
+        "releaseAttempted": false,
+        "publicationReleasePossible": false,
+        "releaseContinuationSent": false,
+        "pruneAttempted": true,
+        "uncertain": true,
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "repairAllowed": false,
+        "productionPublicationAllowed": false,
+        "automaticDurableCustody": false
+      },
+      "operationOutcomes": [
+        {
+          "label": "begin",
+          "refusedOrFailed": false
+        },
+        {
+          "label": "stop",
+          "refusedOrFailed": false
+        },
+        {
+          "label": "prune",
+          "refusedOrFailed": false
+        },
+        {
+          "label": "second-prune-denied",
+          "refusedOrFailed": true
+        }
+      ]
+    },
+    {
+      "id": "existing-root",
+      "sourceObservationsChecked": 5,
+      "sourceUnchanged": true,
+      "nativeWorkerEventCount": 16,
+      "runtimeLifecycle": [
+        "captured-save-complete"
+      ],
+      "protocolInjectedFailures": 0,
+      "pruneOutcome": null,
+      "ownedHandlesRemoved": 0,
+      "retainedTransactionLeaves": [
+        "candidate.marker",
+        "intent.record",
+        "prepared.record",
+        "source.marker"
+      ],
+      "retainedCustodyLeaves": [
+        "custody-1.record"
+      ],
+      "finalStatus": {
+        "state": "captured-unreleased",
+        "chargedBytes": 655360,
+        "operationCount": 1,
+        "custodySnapshots": 1,
+        "originalProcessStarted": true,
+        "ownedChildExited": false,
+        "releaseAttempted": false,
+        "publicationReleasePossible": false,
+        "releaseContinuationSent": false,
+        "pruneAttempted": false,
+        "uncertain": false,
+        "committed": false,
+        "namespaceAcknowledged": false,
+        "repairAllowed": false,
+        "productionPublicationAllowed": false,
+        "automaticDurableCustody": false
+      },
+      "operationOutcomes": [
+        {
+          "label": "begin",
+          "refusedOrFailed": false
+        },
+        {
+          "label": "existing-root-recreation-denied",
+          "refusedOrFailed": true
+        },
+        {
+          "label": "prune-denied-original-still-live",
+          "refusedOrFailed": true
+        }
+      ]
+    },
+    {
+      "id": "below-budget",
+      "constructorRefused": true,
+      "runtimeRootCreated": false,
+      "nativeWorkerEventCount": 0,
+      "sourceUnchanged": null,
+      "ownedHandlesRemoved": 0,
+      "protocolInjectedFailures": 0
+    }
+  ],
+  "limitations": [
+    "no supervisor reload or arbitrary JSON authority",
+    "no OS restart authority",
+    "no automatic durable custody",
+    "logical bytes are not a physical quota",
+    "no production profile or independent format admission"
+  ],
+  "committed": false,
+  "namespaceAcknowledged": false,
+  "repairAllowed": false,
+  "productionPublicationAllowed": false
+}

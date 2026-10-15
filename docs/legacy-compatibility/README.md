@@ -6,6 +6,8 @@ The broader examples/requirements below retain their proposed status; media pars
 and full result/CLI compatibility are not established by foundation help/version.
 [#0037](native-json-errors.md) implements the scoped native JSON syntax-error routing
 cell with actual executable tests; other compatibility gaps remain open.
+[#0057](read-request-result.md) supplies a bounded in-process metadata-read
+request/result path with native tokens and caller-owned JSON transport.
 
 Status: **proposal for review**, `2026-10-10.1`, card **#0007**. Source observation
 date: **2026-10-10**. Baseline: ExifTool source 13.59 at commit

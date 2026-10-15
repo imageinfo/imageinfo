@@ -54,6 +54,16 @@ the applicable increments advance. Terry subsequently excluded physical power
 testing: #0050/#0101 and their hardware requests are retired and do not block
 #0078. A diagnostic child does not itself supply format/storage admission.
 
+The next eight-subagent wave, 2026-10-15, uses paired implementation and independent
+verification on four executable cards. #0057 implements the bounded read-only
+request/result API. Three newly scoped prerequisites advance the leading queued
+integration work: #0102 attributes #0099's CR3 reference rewrites to allocations
+and relocated offsets; #0103 implements process-owned marker custody and narrow
+unpublished prune; #0104 connects actual native CR3 date reads to the existing
+in-memory XMP derivative. #0078/#0022/#0085 retain their original acceptance and
+remain queued while these specific children are worked. Neither child completion
+nor the absence of a physical-power requirement grants production mutation.
+
 ## Existing-work reconciliation
 
 #0042's live ordinary-owner marker scope was already implemented directly under

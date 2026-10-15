@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "kind": "native-xmp-date-adapter-authored-qualification",
+  "ticket": 104,
+  "parentTicket": 85,
+  "observedOn": "2026-10-15",
+  "sourceScope": "Exact tested working-tree source bytes below; no claim these uncommitted child files belonged to an earlier commit. Includes all root Rust source, root toolchain/manifest/lock, sibling research Rust sources/manifests/locks, child tests and public authored root fixture builder.",
+  "sourceSha256": {
+    "Cargo.lock": "f810db2731ce49b2c51d048e1bbefbe585ebef35b36a0575e0ff5e47c97e86e8",
+    "Cargo.toml": "4190239a3023a219cf3f718dc39f66d6cb4f5a43d1c4d0f6c7d3cffac4f1bbd9",
+    "experiments/0081-xmp-model/Cargo.lock": "c7984b94774919f212f87989c5870e7df7c12d397ceed2f0af5d3e9b668bc698",
+    "experiments/0081-xmp-model/Cargo.toml": "1fad2ea72f8b4ea08f4dba30fabdad65748046c6b3e44915921d677bca4b5656",
+    "experiments/0081-xmp-model/src/lib.rs": "a7a370936066108424d9cce8513f094ceb285af5c7c1cdfe2edcf1455465082f",
+    "experiments/0083-xmp-date-mapping/Cargo.lock": "c607ff63b652d16b2d7a2862359c8517feda4ee079f71cc7a7d3956fd999a22a",
+    "experiments/0083-xmp-date-mapping/Cargo.toml": "9c9d79e57c4fffeabf5dbcfb39dd612a5053f40e93fd43619254dc32d924c0a0",
+    "experiments/0083-xmp-date-mapping/src/lib.rs": "ad91aeb94c6c40edb4478cded6b52ea0dc1251ca1ccbd47ab5687821ebdd9748",
+    "experiments/0084-xmp-preservation/Cargo.lock": "3f024fe4d9a2266b45ef696cb34f17482f8bdbc45143f0abff44633a0eae677a",
+    "experiments/0084-xmp-preservation/Cargo.toml": "a1acdf8c49798e54689dfb498fbde54c74a2de4daa91ba1e5f154f59db22294c",
+    "experiments/0084-xmp-preservation/src/lib.rs": "3aa4d748994ea506b2c3941ee7938bc0cc3bd1a5187e9db5582788bedb546d4f",
+    "experiments/0104-native-xmp-date-adapter/Cargo.lock": "cef96abc4284815b3a49b9a912e4bcb3db7dbb9faefa8b18fffd9b8f7229c1f7",
+    "experiments/0104-native-xmp-date-adapter/Cargo.toml": "871f1258e6e58307cef164a4558c7898e891a54e1e468ef3f621a1e7e80d10a2",
+    "experiments/0104-native-xmp-date-adapter/src/lib.rs": "5e603b96b19e81e0d71246aca788c8304595daf03a96b92ec8fb5fe4350c569e",
+    "experiments/0104-native-xmp-date-adapter/tests/qualification.rs": "098fc5231c27100dfaee35cfaf71e8cd3b765e3577e142ca2e58bf210621d88f",
+    "rust-toolchain.toml": "b2c19d86958ed6810741488db5cd352856f303c53bcf0ea774e72f94ee4d201e",
+    "src/app.rs": "824655b6f49fa3dac92c599ac88a7d52787726db851740d2acf8c3aa7af4e28d",
+    "src/cli.rs": "13dd8ba2e6d6d40511ef829104a457c2a00a339b8d1f8c28f2cd8d9b46961a87",
+    "src/lib.rs": "4450ac0e36ddadddceaa96c03b5d3c2520c6bf1ee875f114b93a8187d2d5b6b2",
+    "src/main.rs": "d2fa3287537ede87ffeeb77823af3bb889ff2568392d30bd94d82c6f3f2c0f1e",
+    "src/output.rs": "fe19962fb81f01d4be1fc501153ad345864ff2fba669182870d42f6d6daaaacc",
+    "src/pairing.rs": "a17564bdc53a41137bf04b3a59fbff50146683c6248ee382904e394bafd85530",
+    "src/plan.rs": "2b577dde8b8df377606123abd6a69042374bec973f9aee0e4544d6693fcb9ccc",
+    "src/preview.rs": "4b6b7568621b8e7a6df27ea51a848d3614c23f0ae48b60ced67998feac15d745",
+    "src/read_request.rs": "612f84defa717f481e34e7ebf18f662c2935ded67d1c20ce2238f1645bbe9ee1",
+    "src/reader/admission.rs": "7e9c7a8d97285f1a305ac8c7b479a5a0b149803c93220684ca7480fab829fca9",
+    "src/reader/bmff.rs": "4c7eb8bee983af5d52f3ae20b9259a1aef5b832b5508e56c717e84c63fee29b7",
+    "src/reader/bounded.rs": "9f1c63430fc4a4bfa08375215be83afa2e91284a727cd4fb4055af774215030c",
+    "src/reader/extract.rs": "55421d72372117c88fff30d2e8d7a81dbd44c583e03cbb33dd67f79c21871f4e",
+    "src/reader/mod.rs": "a1377465287cf87ac1d44698aeea5d4cb017d6ce9c74888ab9ce79ed5b3e84a3",
+    "src/reader/tiff.rs": "7d595889277ae3b326e53864da921d4f471bfcc40312fa5ee5df908ef78ee0fb",
+    "src/reader/tracks.rs": "50599aedea1ad5c9976130f4b933701def645df76bf8f3b3243cd954712d17e3",
+    "src/reader/wire.rs": "c5c3c2adacec69a48d9a4a0586ce0f47f2023e065c83174a64602bccb9d13944",
+    "src/source_binding.rs": "7a56fd81449825c12b6309f0342bf21330cef881067b9741cc6e42f83e7b9b68",
+    "tests/support/mod.rs": "c8354d2609aa664d1b86ceca75a7d9500973fcf222cdd267ce9b3c7bafe34104"
+  },
+  "environment": "Existing Windows x86_64 MSVC developer environment, pinned Rust1.99.0; no fresh-host or other-platform claim",
+  "testFunctions": 11,
+  "prepareCalls": 23,
+  "derivatives": 6,
+  "borrowedNoOps": 1,
+  "refusals": 16,
+  "allPassed": true,
+  "cases": [
+    {
+      "test": "actual_native_source_fields_drive_only_the_selected_xmp_value",
+      "prepareCalls": 1,
+      "derivatives": 1,
+      "borrowedNoOps": 0,
+      "refusals": 0,
+      "passed": true
+    },
+    {
+      "test": "no_op_borrows_exact_original_sidecar_after_actual_native_read",
+      "prepareCalls": 1,
+      "derivatives": 0,
+      "borrowedNoOps": 1,
+      "refusals": 0,
+      "passed": true
+    },
+    {
+      "test": "a_second_actual_native_snapshot_drives_its_own_date_fraction_and_zone",
+      "prepareCalls": 1,
+      "derivatives": 1,
+      "borrowedNoOps": 0,
+      "refusals": 0,
+      "passed": true
+    },
+    {
+      "test": "absent_companions_are_observed_from_exhaustive_known_cmt2_entries",
+      "prepareCalls": 1,
+      "derivatives": 1,
+      "borrowedNoOps": 0,
+      "refusals": 0,
+      "passed": true
+    },
+    {
+      "test": "opaque_cmt2_entry_never_supplies_a_forged_complete_coverage_attestation",
+      "prepareCalls": 2,
+      "derivatives": 0,
+      "borrowedNoOps": 0,
+      "refusals": 2,
+      "passed": true
+    },
+    {
+      "test": "a_companion_from_a_second_ifd_is_not_combined_with_the_selected_primary",
+      "prepareCalls": 1,
+      "derivatives": 0,
+      "borrowedNoOps": 0,
+      "refusals": 1,
+      "passed": true
+    },
+    {
+      "test": "missing_and_duplicate_source_occurrences_refuse_instead_of_choosing_one",
+      "prepareCalls": 3,
+      "derivatives": 0,
+      "borrowedNoOps": 0,
+      "refusals": 3,
+      "passed": true
+    },
+    {
+      "test": "conflict_loss_and_target_selection_decisions_remain_explicit",
+      "prepareCalls": 5,
+      "derivatives": 1,
+      "borrowedNoOps": 0,
+      "refusals": 4,
+      "passed": true
+    },
+    {
+      "test": "reader_byte_order_and_exact_source_calendar_are_respected",
+      "prepareCalls": 2,
+      "derivatives": 1,
+      "borrowedNoOps": 0,
+      "refusals": 1,
+      "passed": true
+    },
+    {
+      "test": "malformed_or_unbounded_inputs_refuse_without_any_candidate",
+      "prepareCalls": 4,
+      "derivatives": 0,
+      "borrowedNoOps": 0,
+      "refusals": 4,
+      "passed": true
+    },
+    {
+      "test": "actual_input_files_and_neighbor_remain_byte_name_and_mtime_unchanged",
+      "prepareCalls": 2,
+      "derivatives": 1,
+      "borrowedNoOps": 0,
+      "refusals": 1,
+      "passed": true
+    }
+  ],
+  "fixtureProvenance": "Independently authored structural CR3 bytes from tests/support/mod.rs plus local controlled mutations and authored XML/invented dates. MIT project material; no private camera bytes, filenames, hashes or native camera results.",
+  "checks": [
+    "cargo fmt --manifest-path experiments/0104-native-xmp-date-adapter/Cargo.toml --check",
+    "cargo clippy --locked --manifest-path experiments/0104-native-xmp-date-adapter/Cargo.toml --all-targets -- -D warnings",
+    "cargo test --locked --manifest-path experiments/0104-native-xmp-date-adapter/Cargo.toml",
+    "cargo build --locked --release --manifest-path experiments/0104-native-xmp-date-adapter/Cargo.toml"
+  ],
+  "preservationEvidence": [
+    "Exact independently assembled whole-byte derivative",
+    "Changed lexical range and full shifted complement",
+    "Independent semantic reparse property list",
+    "Actual native source tag/range/text provenance",
+    "Borrowed full-byte/pointer no-op",
+    "Source/sidecar/neighbor bytes+names+modification times unchanged"
+  ],
+  "rootDependencyOrProductionChanges": false,
+  "publicationAllowed": false,
+  "rawMutationAllowed": false,
+  "storageProfileAdmitted": false,
+  "automaticRecoveryAllowed": false,
+  "remaining": [
+    "No authenticated imported snapshot or future source binding",
+    "No semantic linkage proof between explicitly supplied RAW/XMP bytes",
+    "Opaque CMT2 and cross-IFD source combinations refuse",
+    "No XML serializer or root XMP adoption",
+    "No actual sidecar output/publication or storage profile",
+    "No camera corpus or crash/power qualification"
+  ]
+}

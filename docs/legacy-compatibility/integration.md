@@ -1,5 +1,11 @@
 # Requests, persistent sessions and library operations
 
+Subsequent [#0057's implemented read-only API](read-request-result.md) accepts a
+bounded native token array and caller request ID in process, returning the existing
+result envelope. It shares the ordinary metadata-read workflow. The request-file,
+subprocess and persistent-session protocols below remain proposals; this first
+library slice does not implement their framing or lifecycle.
+
 Proposal `2026-10-10.1`, initially local subprocess integration. No executable,
 network service, transport library or runtime concurrency model is selected.
 The schemas are language-independent boundary data; normal native values remain

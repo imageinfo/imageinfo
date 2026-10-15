@@ -30,6 +30,12 @@ jobs:
           cargo clippy --locked --manifest-path experiments/0081-xmp-model/Cargo.toml --all-targets -- -D warnings
           cargo test --locked --manifest-path experiments/0081-xmp-model/Cargo.toml
           cargo build --locked --release --manifest-path experiments/0081-xmp-model/Cargo.toml
+      - name: Check native CR3 to in-memory XMP date adapter
+        run: |
+          cargo fmt --manifest-path experiments/0104-native-xmp-date-adapter/Cargo.toml --all --check
+          cargo clippy --manifest-path experiments/0104-native-xmp-date-adapter/Cargo.toml --locked --all-targets -- -D warnings
+          cargo test --manifest-path experiments/0104-native-xmp-date-adapter/Cargo.toml --locked
+          cargo build --manifest-path experiments/0104-native-xmp-date-adapter/Cargo.toml --locked --release
       - name: Check retained-budget and collector tooling syntax
         run: python -m py_compile experiments/0048-native-storage-failures/audit.py experiments/0049-cumulative-budget/supervisor.py experiments/0049-cumulative-budget/qualify.py scripts/read_benchmark.py scripts/test_read_benchmark.py
       - name: Check benchmark collector contracts
@@ -48,6 +54,14 @@ jobs:
         run: |
           python -m unittest discover -s experiments/0099-cr3-reference-effects -p test_controls.py -v
           python -m py_compile experiments/0099-cr3-reference-effects/qualify_private.py
+      - name: Check authored CR3 rewrite attribution
+        run: |
+          python -m unittest discover -s experiments/0102-cr3-rewrite-attribution -p "test_*.py" -v
+          python -m py_compile experiments/0102-cr3-rewrite-attribution/attribute_private.py experiments/0102-cr3-rewrite-attribution/independent_audit.py
+      - name: Check process-owned marker transport and lifecycle
+        run: |
+          python -W error -m unittest discover -s experiments/0103-process-custody -p "test_*.py" -v
+          python -m py_compile experiments/0103-process-custody/runtime.py experiments/0103-process-custody/qualify.py experiments/0103-process-custody/audit.py
       - name: Check conditional replacement research
         run: |
           cargo fmt --manifest-path experiments/0093-conditional-replacement/Cargo.toml --check
