@@ -23,9 +23,19 @@ The first reader is separately scoped on #0020.
 Install Rust through the [official rustup instructions](https://rustup.rs/).
 On Windows, the MSVC toolchain also needs the C++ build tools/linker described in
 the [Rust installation guide](https://doc.rust-lang.org/book/ch01-01-installation.html).
-Then, at the repository root:
+Linux also needs a native C compiler/linker (GCC or Clang, such as Ubuntu's
+`build-essential` package); macOS needs the compiler/linker and SDK supplied by
+Xcode Command Line Tools or Xcode. The same official guide describes these
+prerequisites. The verified hosted images already provide them; installing them
+on a bare OS was not exercised by the contributor check.
+Documentation/schema QA also needs Python 3.10 or newer available as `python`, with pip
+(the pinned `jsonschema` package's declared installation minimum).
+Install its pinned QA dependency in a disposable or isolated Python environment;
+it is separate from the Cargo graph and imageinfo runtime. Then, at the repository root:
 
 ```console
+rustup toolchain install 1.99.0 --profile minimal --component clippy,rustfmt
+python -m pip install jsonschema==4.26.0
 cargo build --locked
 cargo run --locked -- help
 cargo run --locked -- metadata read help
@@ -33,6 +43,8 @@ cargo run --locked -- version --output json
 cargo fmt --all --check
 cargo clippy --locked --all-targets -- -D warnings
 cargo test --locked
+python scripts/check_output_schemas.py
+cargo build --locked --release
 python scripts/check_docs.py
 ```
 
@@ -43,6 +55,11 @@ tested change. Ordinary dependency resolution is recorded in the root Cargo.lock
 use `--locked`, and use `--offline` after populating a trusted dependency cache.
 Build-time downloads are separate from runtime: help/version/refusal dispatch
 uses no network, media or user-configuration access.
+
+The [clean hosted contributor verification](../contributing/clean-machine.md)
+maps these checks to actual Windows, Ubuntu and macOS jobs at an exact source
+revision. Its fresh hosted images include development prerequisites; bare-OS
+installation and a fully locked Python environment remain separate.
 
 The installed development executable is `target/debug/imageinfo` on Unix or
 `target/debug/imageinfo.exe` on Windows. `cargo build --locked --release` produces

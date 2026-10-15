@@ -59,6 +59,10 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [One-way XMP date mapping](sidecars/date-mapping.md) | #0083 bounded versioned original-snapshot date intent, exact fraction/zone preservation and explicit conflict/loss choices; no serializer or write integration. |
 | [Native storage-full observations](write-safety/native-storage-failures.md) | #0048 five actual secondary-volume Windows guest cases, native errors, retained partial/postpublication artifacts and read-only inspection; device-error and production gates remain. |
 | [Exact backend admission ledger](write-safety/profile-admission.md) | #0051 complete WS/SAF trace and portable refusal model; every current profile remains refused and hypothetical premises grant no authority. |
+| [Native read JSON contract](legacy-compatibility/native-read-json.md) | #0053 exact current snapshot types, occurrences, partial coverage and export limits, with actual-output schema/vector QA. |
+| [XMP date preservation](sidecars/date-preservation.md) | #0084 authored in-memory derivatives and byte-exact no-ops, parser-bound lexical replacement and unknown-sibling complement checks; no publication. |
+| [Single-file read baseline](performance/single-read-baseline.md) | #0061 fixed 99-attempt experiment, independently checked output and elapsed distributions, with explicit cache/noise scope. |
+| [Clean hosted contributor checks](contributing/clean-machine.md) | #0065 exact fresh hosted-image/toolchain/source outcomes and sanitized CI permissions; bare-OS setup and release readiness remain separate. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |

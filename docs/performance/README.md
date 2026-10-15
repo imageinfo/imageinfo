@@ -1,9 +1,14 @@
 # Reproducible RAW performance requirements
 
-Status: **proposal for review**, revision `2026-10-10.1`, card **#0008**.
-There is no benchmark result, numerical speed target or selected implementation
-language in this document. First target: Canon EOS R5 **full RAW CR3**. C-RAW and
+Status: initial **requirements proposal**, revision `2026-10-10.1`, card **#0008**.
+These requirements remain language independent and select no numerical speed target.
+First target: Canon EOS R5 **full RAW CR3**. C-RAW and
 Dual Pixel RAW are separate secondary strata, not substitutes for the first corpus.
+
+Subsequent implementation supplies the [bounded metadata-read collector](read-collector.md)
+and an [actual single-file baseline](single-read-baseline.md) for the declared
+Rust reader. The requirements below retain their original scope; those finite
+observations do not establish broader workloads, controlled cold caches or defaults.
 
 Use [measurement and limit selection](measurement.md), the
 [validation record](validation.md), [fixture plan](../fixture-plan/README.md),

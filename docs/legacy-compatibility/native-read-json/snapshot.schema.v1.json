@@ -1,0 +1,607 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/imageinfo/imageinfo/raw/main/docs/legacy-compatibility/native-read-json/snapshot.schema.v1.json",
+  "title": "Implemented bounded native R5 metadata-read snapshot v1",
+  "description": "Finite emitted subset of metadata-contract snapshot. Requires the inherited schema plus NRJ semantic and lexical checks; no import, write, full-coverage or lossless standalone export capability.",
+  "allOf": [
+    {
+      "$ref": "https://github.com/imageinfo/imageinfo/raw/main/docs/metadata-model/metadata-contract.schema.json#/$defs/snapshot"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "$schema": {
+          "const": "https://github.com/imageinfo/imageinfo/raw/main/docs/metadata-model/metadata-contract.schema.json"
+        },
+        "schemaVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "metadata-snapshot"
+        },
+        "basis": {
+          "const": "observed"
+        },
+        "producer": {
+          "type": "object",
+          "properties": {
+            "modelRevision": {
+              "const": "2026-10-10.1"
+            },
+            "readerRevision": {
+              "const": "r5-read-slice-2026-10-11.1"
+            },
+            "registryRevision": {
+              "const": "r5-read-slice-2026-10-11.1"
+            }
+          },
+          "required": [
+            "modelRevision",
+            "readerRevision",
+            "registryRevision"
+          ],
+          "additionalProperties": false
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "id": {
+                "const": "src-raw"
+              },
+              "role": {
+                "const": "raw"
+              },
+              "byteLength": {
+                "$ref": "#/$defs/u64"
+              },
+              "identity": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "unavailable"
+                  },
+                  "reason": {
+                    "const": "Bounded metadata reading does not hash the complete source; this snapshot cannot authorize mutations."
+                  }
+                },
+                "required": [
+                  "kind",
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "documents": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "id": {
+                "const": "doc-raw"
+              },
+              "sourceRef": {
+                "const": "src-raw"
+              },
+              "kind": {
+                "const": "raw"
+              },
+              "format": {
+                "const": "CR3"
+              },
+              "parentDocumentRef": {
+                "const": null
+              },
+              "resourceRef": {
+                "const": null
+              },
+              "path": {
+                "type": "array",
+                "maxItems": 0
+              }
+            }
+          },
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^(value|preview|opaque)-[0-9]+$"
+              },
+              "byteLength": {
+                "$ref": "#/$defs/u64"
+              },
+              "mediaType": {
+                "enum": [
+                  null,
+                  "image/jpeg",
+                  "application/octet-stream"
+                ]
+              },
+              "sha256": {
+                "const": null
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "source-ranges"
+                  },
+                  "ranges": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "space": {
+                          "const": "source"
+                        },
+                        "ref": {
+                          "const": "src-raw"
+                        },
+                        "offset": {
+                          "$ref": "#/$defs/u64"
+                        },
+                        "length": {
+                          "$ref": "#/$defs/u64"
+                        }
+                      },
+                      "required": [
+                        "space",
+                        "ref",
+                        "offset",
+                        "length"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  }
+                },
+                "required": [
+                  "kind",
+                  "ranges"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "minItems": 0
+        },
+        "occurrences": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^occ-[0-9]+$"
+              },
+              "documentRef": {
+                "const": "doc-raw"
+              },
+              "tag": {
+                "properties": {
+                  "namespace": {
+                    "enum": [
+                      "exif",
+                      "canon",
+                      "canon:ctmd",
+                      "canon:binary"
+                    ]
+                  },
+                  "name": {
+                    "enum": [
+                      "ThumbnailImage",
+                      "PreviewImage",
+                      "JpgFromRaw",
+                      "Make",
+                      "Model",
+                      "ImageWidth",
+                      "ImageHeight",
+                      "ExposureTime",
+                      "FNumber",
+                      "ISO",
+                      "FocalLength",
+                      "DateTimeOriginal",
+                      "OffsetTimeOriginal",
+                      "SubSecTimeOriginal",
+                      "PixelXDimension",
+                      "PixelYDimension",
+                      "CanonFirmwareVersion",
+                      "CanonModelID",
+                      "Quality",
+                      "DualPixelRaw"
+                    ]
+                  },
+                  "definitionRef": {
+                    "type": "string",
+                    "pattern": "^r5-read-slice-2026-10-11[.]1:"
+                  }
+                }
+              },
+              "groups": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "axis": {
+                      "const": "metadata-family"
+                    },
+                    "label": {
+                      "enum": [
+                        "exif",
+                        "canon",
+                        "canon:ctmd",
+                        "canon:binary"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "axis",
+                    "label"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1,
+                "maxItems": 1
+              },
+              "ordinal": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 2147483647
+              },
+              "origin": {
+                "properties": {
+                  "kind": {
+                    "const": "stored"
+                  },
+                  "resourceRef": {
+                    "type": "string"
+                  },
+                  "encoding": {
+                    "enum": [
+                      "ASCII",
+                      "uint16",
+                      "uint32",
+                        "rational64u",
+                        "rational32u",
+                        "binary"
+                    ]
+                  },
+                  "byteOrder": {
+                    "enum": [
+                      "little",
+                      "big",
+                      "not-applicable"
+                    ]
+                  }
+                }
+              },
+              "values": {
+                "type": "object",
+                "properties": {
+                  "raw": {
+                    "$ref": "#/$defs/nativeState"
+                  },
+                  "normalized": {
+                    "$ref": "#/$defs/nativeState"
+                  },
+                  "normalization": {
+                    "type": "object",
+                    "properties": {
+                      "ruleRef": {
+                        "const": "identity-exact-stored-value"
+                      },
+                      "reversibility": {
+                        "enum": [
+                          "exact",
+                          "not-applicable"
+                        ]
+                      },
+                      "assumptions": {
+                        "type": "array",
+                        "maxItems": 0
+                      },
+                      "dependencies": {
+                        "type": "array",
+                        "maxItems": 0
+                      },
+                      "unit": {
+                        "enum": [
+                          null,
+                          "seconds",
+                          "f-number",
+                          "mm",
+                          "pixels"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "ruleRef",
+                      "reversibility",
+                      "assumptions",
+                      "dependencies",
+                      "unit"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "display": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "state": {
+                            "const": "present"
+                          },
+                          "text": {
+                            "type": "string"
+                          },
+                          "locale": {
+                            "const": "en"
+                          },
+                          "timeZone": {
+                            "const": null
+                          },
+                          "formatterRef": {
+                            "const": "native-r5-display-v1"
+                          }
+                        },
+                        "required": [
+                          "state",
+                          "text",
+                          "locale",
+                          "timeZone",
+                          "formatterRef"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "state": {
+                            "const": "unavailable"
+                          },
+                          "reason": {
+                            "enum": [
+                              "Not requested",
+                              "Invalid stored rational"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "state",
+                          "reason"
+                        ],
+                        "additionalProperties": false
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "raw",
+                  "normalized",
+                  "normalization",
+                  "display"
+                ],
+                "additionalProperties": false
+              },
+              "capabilityRefs": {
+                "type": "array",
+                "maxItems": 0
+              }
+            }
+          },
+          "minItems": 0
+        },
+        "associations": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "coverage": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "id": {
+                "const": "coverage-raw"
+              },
+              "documentRef": {
+                "const": "doc-raw"
+              },
+              "namespace": {
+                "const": "*"
+              },
+              "pathPrefix": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "state": {
+                "const": "partial"
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "selections": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "issues": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^invalid-[0-9]+$"
+              },
+              "code": {
+                "const": "ZERO_DENOMINATOR"
+              },
+              "severity": {
+                "const": "error"
+              },
+              "occurrenceRefs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^occ-[0-9]+$"
+                },
+                "minItems": 1,
+                "maxItems": 1
+              },
+              "documentRefs": {
+                "const": [
+                  "doc-raw"
+                ]
+              }
+            }
+          },
+          "minItems": 0
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "u64": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)$",
+      "maxLength": 20,
+      "description": "Canonical unsigned decimal; semantic validation also requires <=18446744073709551615."
+    },
+    "u32": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)$",
+      "maxLength": 10,
+      "description": "Canonical unsigned decimal; semantic validation also requires <=4294967295."
+    },
+    "u32nonzero": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*$",
+      "maxLength": 10,
+      "description": "Canonical positive decimal; semantic validation also requires <=4294967295."
+    },
+    "nativeValue": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "integer"
+            },
+            "decimal": {
+              "$ref": "#/$defs/u64"
+            }
+          },
+          "required": [
+            "kind",
+            "decimal"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "rational"
+            },
+            "numerator": {
+              "$ref": "#/$defs/u32"
+            },
+            "denominator": {
+              "$ref": "#/$defs/u32nonzero"
+            }
+          },
+          "required": [
+            "kind",
+            "numerator",
+            "denominator"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "text"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "binary"
+            },
+            "resourceRef": {
+              "$ref": "https://github.com/imageinfo/imageinfo/raw/main/docs/metadata-model/metadata-contract.schema.json#/$defs/id"
+            }
+          },
+          "required": [
+            "kind",
+            "resourceRef"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "nativeState": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "state": {
+              "const": "present"
+            },
+            "value": {
+              "$ref": "#/$defs/nativeValue"
+            }
+          },
+          "required": [
+            "state",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "state": {
+              "const": "invalid"
+            },
+            "code": {
+              "const": "ZERO_DENOMINATOR"
+            },
+            "detail": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "state",
+            "code",
+            "detail"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}

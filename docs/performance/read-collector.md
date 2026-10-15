@@ -139,7 +139,8 @@ censoring. The schema checks record shape and selected local invariants; hash
 truth, evidence trust, sample ordering/count agreement and timing authenticity
 still depend on collector execution and review.
 
-Single-file baseline distributions and environment/noise admission remain #0061;
+The [single-file baseline](single-read-baseline.md) now records #0061's bounded
+distributions and explicit environment/noise limits;
 preview collection and scaling workloads remain #0062/#0063. Comparison,
 regression thresholds, memory/CPU/I/O instrumentation and resource-policy selection
 remain unrun here. No production reader behavior or mutation/profile gate changes.

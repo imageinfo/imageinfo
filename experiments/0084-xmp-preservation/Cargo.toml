@@ -1,0 +1,15 @@
+[package]
+name = "imageinfo-xmp-preservation-research"
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.99"
+license = "MIT"
+publish = false
+
+[dependencies]
+imageinfo-xmp-model-research = { path = "../0081-xmp-model" }
+imageinfo-xmp-date-mapping-research = { path = "../0083-xmp-date-mapping" }
+roxmltree = { version = "=0.21.1", default-features = false, features = ["std", "positions"] }
+
+[lints.rust]
+unsafe_code = "forbid"

@@ -1,0 +1,236 @@
+{
+  "ticket": 53,
+  "kind": "authored-native-cli-json-qualification",
+  "observed": "2026-10-15",
+  "actualCliRecords": 10,
+  "vectors": [
+    {
+      "id": "actual-example-shape",
+      "passed": true
+    },
+    {
+      "id": "wide-u64-boundary-shape",
+      "passed": true
+    },
+    {
+      "id": "wide-u64-overflow",
+      "passed": true
+    },
+    {
+      "id": "metadata-integer-number",
+      "passed": true
+    },
+    {
+      "id": "metadata-integer-leading-zero",
+      "passed": true
+    },
+    {
+      "id": "metadata-integer-negative",
+      "passed": true
+    },
+    {
+      "id": "metadata-integer-negative-zero",
+      "passed": true
+    },
+    {
+      "id": "rational-zero-denominator",
+      "passed": true
+    },
+    {
+      "id": "rational-number-component",
+      "passed": true
+    },
+    {
+      "id": "rational-u32-overflow",
+      "passed": true
+    },
+    {
+      "id": "rational-signed-component",
+      "passed": true
+    },
+    {
+      "id": "rational-reduction-loses-pair",
+      "passed": true
+    },
+    {
+      "id": "normalization-loss-claim",
+      "passed": true
+    },
+    {
+      "id": "normalization-dependency-claim",
+      "passed": true
+    },
+    {
+      "id": "duplicate-occurrence-identity",
+      "passed": true
+    },
+    {
+      "id": "duplicate-occurrence-ordinal",
+      "passed": true
+    },
+    {
+      "id": "reordered-native-traversal",
+      "passed": true
+    },
+    {
+      "id": "duplicate-resource-identity",
+      "passed": true
+    },
+    {
+      "id": "duplicate-exact-native-key-with-distinct-ids",
+      "passed": true
+    },
+    {
+      "id": "unresolved-origin-reference",
+      "passed": true
+    },
+    {
+      "id": "scalar-origin-swapped",
+      "passed": true
+    },
+    {
+      "id": "binary-origin-swapped",
+      "passed": true
+    },
+    {
+      "id": "range-beyond-source",
+      "passed": true
+    },
+    {
+      "id": "range-total-mismatch",
+      "passed": true
+    },
+    {
+      "id": "range-u64-overflow",
+      "passed": true
+    },
+    {
+      "id": "complete-coverage-claim",
+      "passed": true
+    },
+    {
+      "id": "missing-coverage",
+      "passed": true
+    },
+    {
+      "id": "source-identity-authority-claim",
+      "passed": true
+    },
+    {
+      "id": "arbitrary-snapshot-field",
+      "passed": true
+    },
+    {
+      "id": "family-namespace-mismatch",
+      "passed": true
+    },
+    {
+      "id": "definition-reference-mismatch",
+      "passed": true
+    },
+    {
+      "id": "normalization-unit-mismatch",
+      "passed": true
+    },
+    {
+      "id": "invalid-state-without-linked-issue",
+      "passed": true
+    },
+    {
+      "id": "unrequested-display-reason-mismatch",
+      "passed": true
+    },
+    {
+      "id": "orphan-invalid-issue-on-present-value",
+      "passed": true
+    },
+    {
+      "id": "duplicate-json-member",
+      "passed": true
+    },
+    {
+      "id": "nonfinite-nan",
+      "passed": true
+    },
+    {
+      "id": "nonfinite-infinity",
+      "passed": true
+    },
+    {
+      "id": "unpaired-surrogate",
+      "passed": true
+    },
+    {
+      "id": "valid-surrogate-pair",
+      "passed": true
+    }
+  ],
+  "allPassed": true,
+  "actualCases": [
+    {
+      "id": "normal-all",
+      "exitStatus": 0
+    },
+    {
+      "id": "raw-mode",
+      "exitStatus": 0
+    },
+    {
+      "id": "normalized-mode",
+      "exitStatus": 0
+    },
+    {
+      "id": "display-mode",
+      "exitStatus": 0
+    },
+    {
+      "id": "ascii-json-escaping",
+      "exitStatus": 0
+    },
+    {
+      "id": "iso-selection",
+      "exitStatus": 0
+    },
+    {
+      "id": "empty-selection",
+      "exitStatus": 0
+    },
+    {
+      "id": "invalid-rational",
+      "exitStatus": 1
+    },
+    {
+      "id": "big-endian",
+      "exitStatus": 0
+    },
+    {
+      "id": "duplicate-native-tag",
+      "exitStatus": 0
+    }
+  ],
+  "authoredFixtureSha256": {
+    "authored.cr3": "7781896f985d5af5153e17b8959df04053fe8418262ca99a7ef2290d853992af",
+    "duplicates.cr3": "5c66ca954cea0e20ef42be381ced6720517ca4e44c21ec943b6a61afd866786d",
+    "endian.cr3": "a50cee7ad5ce35f402014b0c61f289e6bfce869f920058f6d96dbe88c3cacf6b",
+    "escaping.cr3": "76e2555ecc674f9d571a70ef2a17c78c810828a6cf0b24b0382c280b8c89e9d7",
+    "invalid.cr3": "1976e053d83b9687c1a189b71571f4462332e8dfacb59637680d69c04b4096fb"
+  },
+  "privateMediaUsed": false,
+  "nonUnicodePath": {
+    "method": "native Unix filename bytes",
+    "status": "not-run-on-Windows"
+  },
+  "artifactSha256": {
+    "docs/legacy-compatibility/native-read-json/example.v1.json": "004b655c0e174c03e298c2735cf5c4829f11d0c39342d485dcbb6dc815a37bec",
+    "docs/legacy-compatibility/native-read-json/snapshot.schema.v1.json": "8677731ee9cb76c92eefc1e700bd4bea5007b9d4c0634e8eef77f6dd35be2e4c",
+    "docs/legacy-compatibility/native-read-json/vectors.v1.json": "9c41823e48f45c176ce888b66295787f0958480eecfe8d0c9e627301ad0982ff",
+    "docs/legacy-compatibility/native-read-json/zero-denominator.v1.json": "2ac3588a1ee1a711af463874eb033fe17575a7fe7cf6a602d3ab0a189631f44d",
+    "docs/legacy-compatibility/result.schema.json": "484d6e5e0b1c7ece7b4a2b2588c1aeaf505cdcbb6de6e8e525b5189956ba8bbd",
+    "docs/metadata-model/metadata-contract.schema.json": "f053933be413876923ff99a197b26eee33ded012cc267346f249e5158011f1b6",
+    "scripts/check_native_read_json.py": "f9f4b8996324445783db6f899e6ea0d5503ecaa01db1dd66101dbf9c282e92d7",
+    "src/reader/wire.rs": "c5c3c2adacec69a48d9a4a0586ce0f47f2023e065c83174a64602bccb9d13944",
+    "tests/native_read_json_contract.rs": "c5d25b4b2735ca8e5904a311b765c0d2b9ad507d22247b8660b82ce72517af50",
+    "tests/support/mod.rs": "c8354d2609aa664d1b86ceca75a7d9500973fcf222cdd267ce9b3c7bafe34104"
+  },
+  "schemaValidationDoesNotAuthorizeMutation": true
+}

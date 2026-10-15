@@ -43,6 +43,12 @@ Read `AGENTS.md` if using an assistant. Contributors can work entirely from the
 public repository; private board files, local service credentials and personal
 media are not prerequisites. Keep them out of commits.
 
+Follow the [pinned Rust setup and check recipe](docs/foundation/README.md),
+including Python/pip and the pinned schema QA dependency. The
+[clean hosted contributor verification](docs/contributing/clean-machine.md)
+records an actual exact-revision run on fresh Windows, Ubuntu and macOS hosted
+images, their supplied prerequisites and the limits of that evidence.
+
 For documentation changes, before opening a PR:
 
 1. Run `git diff --check` after your edits.

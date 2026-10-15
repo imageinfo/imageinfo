@@ -1,0 +1,2804 @@
+{
+  "$schema": "https://github.com/imageinfo/imageinfo/raw/main/docs/metadata-model/metadata-contract.schema.json",
+  "associations": [],
+  "basis": "observed",
+  "coverage": [
+    {
+      "documentRef": "doc-raw",
+      "id": "coverage-raw",
+      "namespace": "*",
+      "pathPrefix": [],
+      "reason": "Only the declared R5 read slice is decoded; other fields, embedded metadata and opaque regions are not interpreted. Full-source/resource hashes are not computed by this bounded read.",
+      "state": "partial"
+    }
+  ],
+  "documents": [
+    {
+      "format": "CR3",
+      "id": "doc-raw",
+      "kind": "raw",
+      "parentDocumentRef": null,
+      "path": [],
+      "resourceRef": null,
+      "sourceRef": "src-raw"
+    }
+  ],
+  "id": "req-41816-1792075020490900200-snapshot-0",
+  "issues": [],
+  "kind": "metadata-snapshot",
+  "occurrences": [
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "exif"
+        }
+      ],
+      "id": "occ-0",
+      "issueRefs": [],
+      "ordinal": 0,
+      "origin": {
+        "byteOrder": "little",
+        "encoding": "uint16",
+        "kind": "stored",
+        "resourceRef": "value-0"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "uuid"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "CMT1"
+        },
+        {
+          "index": 0,
+          "kind": "ifd",
+          "name": "IFD@8"
+        },
+        {
+          "index": 0,
+          "kind": "tag",
+          "name": "256"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:exif:256",
+        "name": "ImageWidth",
+        "namespace": "exif",
+        "nativeId": "256"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "8192",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": "pixels"
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "decimal": "8192",
+            "kind": "integer"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "decimal": "8192",
+            "kind": "integer"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "exif"
+        }
+      ],
+      "id": "occ-1",
+      "issueRefs": [],
+      "ordinal": 1,
+      "origin": {
+        "byteOrder": "little",
+        "encoding": "uint16",
+        "kind": "stored",
+        "resourceRef": "value-1"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "uuid"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "CMT1"
+        },
+        {
+          "index": 0,
+          "kind": "ifd",
+          "name": "IFD@8"
+        },
+        {
+          "index": 1,
+          "kind": "tag",
+          "name": "257"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:exif:257",
+        "name": "ImageHeight",
+        "namespace": "exif",
+        "nativeId": "257"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "5464",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": "pixels"
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "decimal": "5464",
+            "kind": "integer"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "decimal": "5464",
+            "kind": "integer"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "exif"
+        }
+      ],
+      "id": "occ-2",
+      "issueRefs": [],
+      "ordinal": 2,
+      "origin": {
+        "byteOrder": "little",
+        "encoding": "ASCII",
+        "kind": "stored",
+        "resourceRef": "value-2"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "uuid"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "CMT1"
+        },
+        {
+          "index": 0,
+          "kind": "ifd",
+          "name": "IFD@8"
+        },
+        {
+          "index": 2,
+          "kind": "tag",
+          "name": "271"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:exif:271",
+        "name": "Make",
+        "namespace": "exif",
+        "nativeId": "271"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "Canon",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": null
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "Canon"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "Canon"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "exif"
+        }
+      ],
+      "id": "occ-3",
+      "issueRefs": [],
+      "ordinal": 3,
+      "origin": {
+        "byteOrder": "little",
+        "encoding": "ASCII",
+        "kind": "stored",
+        "resourceRef": "value-3"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "uuid"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "CMT1"
+        },
+        {
+          "index": 0,
+          "kind": "ifd",
+          "name": "IFD@8"
+        },
+        {
+          "index": 3,
+          "kind": "tag",
+          "name": "272"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:exif:272",
+        "name": "Model",
+        "namespace": "exif",
+        "nativeId": "272"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "Canon EOS R5",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": null
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "Canon EOS R5"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "Canon EOS R5"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "exif"
+        }
+      ],
+      "id": "occ-4",
+      "issueRefs": [],
+      "ordinal": 4,
+      "origin": {
+        "byteOrder": "little",
+        "encoding": "rational64u",
+        "kind": "stored",
+        "resourceRef": "value-4"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "uuid"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "CMT2"
+        },
+        {
+          "index": 0,
+          "kind": "ifd",
+          "name": "IFD@8"
+        },
+        {
+          "index": 0,
+          "kind": "tag",
+          "name": "33434"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:exif:33434",
+        "name": "ExposureTime",
+        "namespace": "exif",
+        "nativeId": "33434"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "0.004",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": "seconds"
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "denominator": "500",
+            "kind": "rational",
+            "numerator": "2"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "denominator": "500",
+            "kind": "rational",
+            "numerator": "2"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "exif"
+        }
+      ],
+      "id": "occ-5",
+      "issueRefs": [],
+      "ordinal": 5,
+      "origin": {
+        "byteOrder": "little",
+        "encoding": "rational64u",
+        "kind": "stored",
+        "resourceRef": "value-5"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "uuid"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "CMT2"
+        },
+        {
+          "index": 0,
+          "kind": "ifd",
+          "name": "IFD@8"
+        },
+        {
+          "index": 1,
+          "kind": "tag",
+          "name": "33437"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:exif:33437",
+        "name": "FNumber",
+        "namespace": "exif",
+        "nativeId": "33437"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "6.3",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": "f-number"
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "denominator": "10",
+            "kind": "rational",
+            "numerator": "63"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "denominator": "10",
+            "kind": "rational",
+            "numerator": "63"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "exif"
+        }
+      ],
+      "id": "occ-6",
+      "issueRefs": [],
+      "ordinal": 6,
+      "origin": {
+        "byteOrder": "little",
+        "encoding": "uint16",
+        "kind": "stored",
+        "resourceRef": "value-6"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "uuid"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "CMT2"
+        },
+        {
+          "index": 0,
+          "kind": "ifd",
+          "name": "IFD@8"
+        },
+        {
+          "index": 2,
+          "kind": "tag",
+          "name": "34855"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:exif:34855",
+        "name": "ISO",
+        "namespace": "exif",
+        "nativeId": "34855"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "800",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": null
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "decimal": "800",
+            "kind": "integer"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "decimal": "800",
+            "kind": "integer"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "exif"
+        }
+      ],
+      "id": "occ-7",
+      "issueRefs": [],
+      "ordinal": 7,
+      "origin": {
+        "byteOrder": "little",
+        "encoding": "ASCII",
+        "kind": "stored",
+        "resourceRef": "value-7"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "uuid"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "CMT2"
+        },
+        {
+          "index": 0,
+          "kind": "ifd",
+          "name": "IFD@8"
+        },
+        {
+          "index": 3,
+          "kind": "tag",
+          "name": "36867"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:exif:36867",
+        "name": "DateTimeOriginal",
+        "namespace": "exif",
+        "nativeId": "36867"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "2026:01:02 03:04:05",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": null
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "2026:01:02 03:04:05"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "2026:01:02 03:04:05"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "exif"
+        }
+      ],
+      "id": "occ-8",
+      "issueRefs": [],
+      "ordinal": 8,
+      "origin": {
+        "byteOrder": "little",
+        "encoding": "ASCII",
+        "kind": "stored",
+        "resourceRef": "value-8"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "uuid"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "CMT2"
+        },
+        {
+          "index": 0,
+          "kind": "ifd",
+          "name": "IFD@8"
+        },
+        {
+          "index": 4,
+          "kind": "tag",
+          "name": "36881"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:exif:36881",
+        "name": "OffsetTimeOriginal",
+        "namespace": "exif",
+        "nativeId": "36881"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "+00:00",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": null
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "+00:00"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "+00:00"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "exif"
+        }
+      ],
+      "id": "occ-9",
+      "issueRefs": [],
+      "ordinal": 9,
+      "origin": {
+        "byteOrder": "little",
+        "encoding": "rational64u",
+        "kind": "stored",
+        "resourceRef": "value-9"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "uuid"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "CMT2"
+        },
+        {
+          "index": 0,
+          "kind": "ifd",
+          "name": "IFD@8"
+        },
+        {
+          "index": 5,
+          "kind": "tag",
+          "name": "37386"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:exif:37386",
+        "name": "FocalLength",
+        "namespace": "exif",
+        "nativeId": "37386"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "240.0 mm",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": "mm"
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "denominator": "10",
+            "kind": "rational",
+            "numerator": "2400"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "denominator": "10",
+            "kind": "rational",
+            "numerator": "2400"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "exif"
+        }
+      ],
+      "id": "occ-10",
+      "issueRefs": [],
+      "ordinal": 10,
+      "origin": {
+        "byteOrder": "little",
+        "encoding": "ASCII",
+        "kind": "stored",
+        "resourceRef": "value-10"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "uuid"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "CMT2"
+        },
+        {
+          "index": 0,
+          "kind": "ifd",
+          "name": "IFD@8"
+        },
+        {
+          "index": 6,
+          "kind": "tag",
+          "name": "37521"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:exif:37521",
+        "name": "SubSecTimeOriginal",
+        "namespace": "exif",
+        "nativeId": "37521"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "00",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": null
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "00"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "00"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "exif"
+        }
+      ],
+      "id": "occ-11",
+      "issueRefs": [],
+      "ordinal": 11,
+      "origin": {
+        "byteOrder": "little",
+        "encoding": "uint32",
+        "kind": "stored",
+        "resourceRef": "value-11"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "uuid"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "CMT2"
+        },
+        {
+          "index": 0,
+          "kind": "ifd",
+          "name": "IFD@8"
+        },
+        {
+          "index": 7,
+          "kind": "tag",
+          "name": "40962"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:exif:40962",
+        "name": "PixelXDimension",
+        "namespace": "exif",
+        "nativeId": "40962"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "8192",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": "pixels"
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "decimal": "8192",
+            "kind": "integer"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "decimal": "8192",
+            "kind": "integer"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "exif"
+        }
+      ],
+      "id": "occ-12",
+      "issueRefs": [],
+      "ordinal": 12,
+      "origin": {
+        "byteOrder": "little",
+        "encoding": "uint32",
+        "kind": "stored",
+        "resourceRef": "value-12"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "uuid"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "CMT2"
+        },
+        {
+          "index": 0,
+          "kind": "ifd",
+          "name": "IFD@8"
+        },
+        {
+          "index": 8,
+          "kind": "tag",
+          "name": "40963"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:exif:40963",
+        "name": "PixelYDimension",
+        "namespace": "exif",
+        "nativeId": "40963"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "5464",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": "pixels"
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "decimal": "5464",
+            "kind": "integer"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "decimal": "5464",
+            "kind": "integer"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "canon"
+        }
+      ],
+      "id": "occ-13",
+      "issueRefs": [],
+      "ordinal": 13,
+      "origin": {
+        "byteOrder": "little",
+        "encoding": "uint16",
+        "kind": "stored",
+        "resourceRef": "value-13"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "uuid"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "CMT3"
+        },
+        {
+          "index": 0,
+          "kind": "ifd",
+          "name": "IFD@8"
+        },
+        {
+          "index": 0,
+          "kind": "tag",
+          "name": "1"
+        },
+        {
+          "index": 3,
+          "kind": "field",
+          "name": "Quality"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:canon:1/3",
+        "name": "Quality",
+        "namespace": "canon",
+        "nativeId": "1/3"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "RAW",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": null
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "decimal": "4",
+            "kind": "integer"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "decimal": "4",
+            "kind": "integer"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "canon"
+        }
+      ],
+      "id": "occ-14",
+      "issueRefs": [],
+      "ordinal": 14,
+      "origin": {
+        "byteOrder": "little",
+        "encoding": "ASCII",
+        "kind": "stored",
+        "resourceRef": "value-14"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "uuid"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "CMT3"
+        },
+        {
+          "index": 0,
+          "kind": "ifd",
+          "name": "IFD@8"
+        },
+        {
+          "index": 1,
+          "kind": "tag",
+          "name": "7"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:canon:7",
+        "name": "CanonFirmwareVersion",
+        "namespace": "canon",
+        "nativeId": "7"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "Firmware Version test",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": null
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "Firmware Version test"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "string",
+            "text": "Firmware Version test"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "canon"
+        }
+      ],
+      "id": "occ-15",
+      "issueRefs": [],
+      "ordinal": 15,
+      "origin": {
+        "byteOrder": "little",
+        "encoding": "uint32",
+        "kind": "stored",
+        "resourceRef": "value-15"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "uuid"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "CMT3"
+        },
+        {
+          "index": 0,
+          "kind": "ifd",
+          "name": "IFD@8"
+        },
+        {
+          "index": 2,
+          "kind": "tag",
+          "name": "16"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:canon:16",
+        "name": "CanonModelID",
+        "namespace": "canon",
+        "nativeId": "16"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "EOS R5",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": null
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "decimal": "2147484705",
+            "kind": "integer"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "decimal": "2147484705",
+            "kind": "integer"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "canon"
+        }
+      ],
+      "id": "occ-16",
+      "issueRefs": [],
+      "ordinal": 16,
+      "origin": {
+        "byteOrder": "little",
+        "encoding": "uint32",
+        "kind": "stored",
+        "resourceRef": "value-16"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "uuid"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "CMT3"
+        },
+        {
+          "index": 0,
+          "kind": "ifd",
+          "name": "IFD@8"
+        },
+        {
+          "index": 3,
+          "kind": "tag",
+          "name": "16408"
+        },
+        {
+          "index": 11,
+          "kind": "field",
+          "name": "DualPixelRaw"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:canon:16408/11",
+        "name": "DualPixelRaw",
+        "namespace": "canon",
+        "nativeId": "16408/11"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "Off",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": null
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "decimal": "0",
+            "kind": "integer"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "decimal": "0",
+            "kind": "integer"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "canon:binary"
+        }
+      ],
+      "id": "occ-17",
+      "issueRefs": [],
+      "ordinal": 17,
+      "origin": {
+        "byteOrder": "not-applicable",
+        "encoding": "binary",
+        "kind": "stored",
+        "resourceRef": "preview-0"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "uuid"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "THMB"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:canon:binary:THMB",
+        "name": "ThumbnailImage",
+        "namespace": "canon:binary",
+        "nativeId": "THMB"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "[6 stored bytes]",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": null
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "binary",
+            "resourceRef": "preview-0"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "binary",
+            "resourceRef": "preview-0"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "canon:binary"
+        }
+      ],
+      "id": "occ-18",
+      "issueRefs": [],
+      "ordinal": 18,
+      "origin": {
+        "byteOrder": "not-applicable",
+        "encoding": "binary",
+        "kind": "stored",
+        "resourceRef": "preview-1"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "uuid"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "PRVW"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:canon:binary:PRVW",
+        "name": "PreviewImage",
+        "namespace": "canon:binary",
+        "nativeId": "PRVW"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "[10 stored bytes]",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": null
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "binary",
+            "resourceRef": "preview-1"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "binary",
+            "resourceRef": "preview-1"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "canon:binary"
+        }
+      ],
+      "id": "occ-19",
+      "issueRefs": [],
+      "ordinal": 19,
+      "origin": {
+        "byteOrder": "not-applicable",
+        "encoding": "binary",
+        "kind": "stored",
+        "resourceRef": "preview-2"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "trak"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:canon:binary:JPEG-sample",
+        "name": "JpgFromRaw",
+        "namespace": "canon:binary",
+        "nativeId": "JPEG-sample"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "[7 stored bytes]",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": null
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "kind": "binary",
+            "resourceRef": "preview-2"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "kind": "binary",
+            "resourceRef": "preview-2"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "canon:ctmd"
+        }
+      ],
+      "id": "occ-20",
+      "issueRefs": [],
+      "ordinal": 20,
+      "origin": {
+        "byteOrder": "little",
+        "encoding": "rational32u",
+        "kind": "stored",
+        "resourceRef": "value-20"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 3,
+          "kind": "box",
+          "name": "trak"
+        },
+        {
+          "index": 0,
+          "kind": "record",
+          "name": "CTMD-type-5"
+        },
+        {
+          "index": 0,
+          "kind": "field",
+          "name": "FNumber"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:canon:ctmd:5/0",
+        "name": "FNumber",
+        "namespace": "canon:ctmd",
+        "nativeId": "5/0"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "6.3",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": "f-number"
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "denominator": "10",
+            "kind": "rational",
+            "numerator": "63"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "denominator": "10",
+            "kind": "rational",
+            "numerator": "63"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "canon:ctmd"
+        }
+      ],
+      "id": "occ-21",
+      "issueRefs": [],
+      "ordinal": 21,
+      "origin": {
+        "byteOrder": "little",
+        "encoding": "rational32u",
+        "kind": "stored",
+        "resourceRef": "value-21"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 3,
+          "kind": "box",
+          "name": "trak"
+        },
+        {
+          "index": 0,
+          "kind": "record",
+          "name": "CTMD-type-5"
+        },
+        {
+          "index": 4,
+          "kind": "field",
+          "name": "ExposureTime"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:canon:ctmd:5/4",
+        "name": "ExposureTime",
+        "namespace": "canon:ctmd",
+        "nativeId": "5/4"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "1/250",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": "seconds"
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "denominator": "250",
+            "kind": "rational",
+            "numerator": "1"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "denominator": "250",
+            "kind": "rational",
+            "numerator": "1"
+          }
+        }
+      }
+    },
+    {
+      "capabilityRefs": [],
+      "documentRef": "doc-raw",
+      "groups": [
+        {
+          "axis": "metadata-family",
+          "label": "canon:ctmd"
+        }
+      ],
+      "id": "occ-22",
+      "issueRefs": [],
+      "ordinal": 22,
+      "origin": {
+        "byteOrder": "little",
+        "encoding": "uint32",
+        "kind": "stored",
+        "resourceRef": "value-22"
+      },
+      "path": [
+        {
+          "index": 0,
+          "kind": "box",
+          "name": "moov"
+        },
+        {
+          "index": 3,
+          "kind": "box",
+          "name": "trak"
+        },
+        {
+          "index": 0,
+          "kind": "record",
+          "name": "CTMD-type-5"
+        },
+        {
+          "index": 8,
+          "kind": "field",
+          "name": "ISO"
+        }
+      ],
+      "tag": {
+        "definitionRef": "r5-read-slice-2026-10-11.1:canon:ctmd:5/8",
+        "name": "ISO",
+        "namespace": "canon:ctmd",
+        "nativeId": "5/8"
+      },
+      "values": {
+        "display": {
+          "formatterRef": "native-r5-display-v1",
+          "locale": "en",
+          "state": "present",
+          "text": "800",
+          "timeZone": null
+        },
+        "normalization": {
+          "assumptions": [],
+          "dependencies": [],
+          "reversibility": "exact",
+          "ruleRef": "identity-exact-stored-value",
+          "unit": null
+        },
+        "normalized": {
+          "state": "present",
+          "value": {
+            "decimal": "800",
+            "kind": "integer"
+          }
+        },
+        "raw": {
+          "state": "present",
+          "value": {
+            "decimal": "800",
+            "kind": "integer"
+          }
+        }
+      }
+    }
+  ],
+  "producer": {
+    "modelRevision": "2026-10-10.1",
+    "readerRevision": "r5-read-slice-2026-10-11.1",
+    "registryRevision": "r5-read-slice-2026-10-11.1"
+  },
+  "resources": [
+    {
+      "byteLength": "2",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "2",
+            "offset": "174",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "value-0",
+      "mediaType": null,
+      "sha256": null
+    },
+    {
+      "byteLength": "2",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "2",
+            "offset": "186",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "value-1",
+      "mediaType": null,
+      "sha256": null
+    },
+    {
+      "byteLength": "6",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "6",
+            "offset": "218",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "value-2",
+      "mediaType": null,
+      "sha256": null
+    },
+    {
+      "byteLength": "13",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "13",
+            "offset": "224",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "value-3",
+      "mediaType": null,
+      "sha256": null
+    },
+    {
+      "byteLength": "8",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "8",
+            "offset": "367",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "value-4",
+      "mediaType": null,
+      "sha256": null
+    },
+    {
+      "byteLength": "8",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "8",
+            "offset": "375",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "value-5",
+      "mediaType": null,
+      "sha256": null
+    },
+    {
+      "byteLength": "2",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "2",
+            "offset": "287",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "value-6",
+      "mediaType": null,
+      "sha256": null
+    },
+    {
+      "byteLength": "20",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "20",
+            "offset": "383",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "value-7",
+      "mediaType": null,
+      "sha256": null
+    },
+    {
+      "byteLength": "7",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "7",
+            "offset": "403",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "value-8",
+      "mediaType": null,
+      "sha256": null
+    },
+    {
+      "byteLength": "8",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "8",
+            "offset": "410",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "value-9",
+      "mediaType": null,
+      "sha256": null
+    },
+    {
+      "byteLength": "3",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "3",
+            "offset": "335",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "value-10",
+      "mediaType": null,
+      "sha256": null
+    },
+    {
+      "byteLength": "4",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "4",
+            "offset": "347",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "value-11",
+      "mediaType": null,
+      "sha256": null
+    },
+    {
+      "byteLength": "4",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "4",
+            "offset": "359",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "value-12",
+      "mediaType": null,
+      "sha256": null
+    },
+    {
+      "byteLength": "2",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "2",
+            "offset": "494",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "value-13",
+      "mediaType": null,
+      "sha256": null
+    },
+    {
+      "byteLength": "22",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "22",
+            "offset": "598",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "value-14",
+      "mediaType": null,
+      "sha256": null
+    },
+    {
+      "byteLength": "4",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "4",
+            "offset": "468",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "value-15",
+      "mediaType": null,
+      "sha256": null
+    },
+    {
+      "byteLength": "4",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "4",
+            "offset": "664",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "value-16",
+      "mediaType": null,
+      "sha256": null
+    },
+    {
+      "byteLength": "4",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "4",
+            "offset": "2303",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "value-20",
+      "mediaType": null,
+      "sha256": null
+    },
+    {
+      "byteLength": "4",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "4",
+            "offset": "2307",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "value-21",
+      "mediaType": null,
+      "sha256": null
+    },
+    {
+      "byteLength": "4",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "4",
+            "offset": "2311",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "value-22",
+      "mediaType": null,
+      "sha256": null
+    },
+    {
+      "byteLength": "6",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "6",
+            "offset": "726",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "preview-0",
+      "mediaType": "image/jpeg",
+      "sha256": null
+    },
+    {
+      "byteLength": "10",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "10",
+            "offset": "2258",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "preview-1",
+      "mediaType": "image/jpeg",
+      "sha256": null
+    },
+    {
+      "byteLength": "7",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "7",
+            "offset": "2276",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "preview-2",
+      "mediaType": "image/jpeg",
+      "sha256": null
+    },
+    {
+      "byteLength": "110",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "110",
+            "offset": "488",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-0",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "60",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "60",
+            "offset": "620",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-1",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "676",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "676",
+            "offset": "56",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-2",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "84",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "84",
+            "offset": "64",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-3",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "84",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "84",
+            "offset": "748",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-4",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "20",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "20",
+            "offset": "864",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-5",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "110",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "110",
+            "offset": "900",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-6",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "20",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "20",
+            "offset": "1018",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-7",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "12",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "12",
+            "offset": "1046",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-8",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "16",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "16",
+            "offset": "1066",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-9",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "84",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "84",
+            "offset": "1098",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-10",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "20",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "20",
+            "offset": "1214",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-11",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "158",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "158",
+            "offset": "1250",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-12",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "20",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "20",
+            "offset": "1416",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-13",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "12",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "12",
+            "offset": "1444",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-14",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "16",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "16",
+            "offset": "1464",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-15",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "84",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "84",
+            "offset": "1496",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-16",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "20",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "20",
+            "offset": "1612",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-17",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "158",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "158",
+            "offset": "1648",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-18",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "20",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "20",
+            "offset": "1814",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-19",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "12",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "12",
+            "offset": "1842",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-20",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "16",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "16",
+            "offset": "1862",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-21",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "84",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "84",
+            "offset": "1894",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-22",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "20",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "20",
+            "offset": "2010",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-23",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "84",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "84",
+            "offset": "2046",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-24",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "20",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "20",
+            "offset": "2138",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-25",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "12",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "12",
+            "offset": "2166",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-26",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "16",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "16",
+            "offset": "2186",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-27",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "42",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "42",
+            "offset": "2226",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-28",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    },
+    {
+      "byteLength": "55",
+      "content": {
+        "kind": "source-ranges",
+        "ranges": [
+          {
+            "length": "55",
+            "offset": "2276",
+            "ref": "src-raw",
+            "space": "source"
+          }
+        ]
+      },
+      "id": "opaque-29",
+      "mediaType": "application/octet-stream",
+      "sha256": null
+    }
+  ],
+  "schemaVersion": 1,
+  "selections": [],
+  "sources": [
+    {
+      "byteLength": "2331",
+      "displayPath": "authored.cr3",
+      "id": "src-raw",
+      "identity": {
+        "kind": "unavailable",
+        "reason": "Bounded metadata reading does not hash the complete source; this snapshot cannot authorize mutations."
+      },
+      "role": "raw"
+    }
+  ]
+}

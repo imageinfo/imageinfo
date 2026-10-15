@@ -206,6 +206,27 @@ system SATA/QCOW2 image. Missing, contrary and unqualified evidence mechanically
 refuses before target effects; editable qualification claims are rejected. See
 `docs/write-safety/profile-admission.md`; no actual profile, production writer,
 automatic custody/recovery, repair or independent RAW permission is enabled.
+#0053 specifies the current partial native metadata-read JSON subset and verifies
+actual emitted snapshots against exact schemas and semantic vectors. A stored
+zero-denominator rational now emits invalid raw/normalized states with its exact
+source range retained, matching the accepted metadata contract. See
+`docs/legacy-compatibility/native-read-json.md`; no importer or broader wire/API
+compatibility is inferred.
+#0084 implements a standalone in-memory XMP date derivative mechanism. A no-op
+borrows the entire original byte slice; replacement uses parser-bound plain-value
+ranges, exact prefix/suffix complements and a target-only semantic reparse. Its
+finite evidence uses authored fixtures only. See `docs/sidecars/date-preservation.md`;
+declaration/full XMP conformance, source dependency admission, RAW mutation and
+sidecar publication remain unqualified.
+#0061 records one fixed single-file full-RAW metadata-read baseline against frozen
+source, with 99 retained attempts and independent output/statistics audit. OS cache
+is warm-exposed/uncontrolled; cold-device/OS and resource-policy claims remain
+unrun. See `docs/performance/single-read-baseline.md`.
+#0065 verifies the documented contributor procedure against exact fresh hosted
+Windows, Ubuntu and macOS jobs and records sanitized CI token permissions. Those
+images supply development prerequisites; bare-OS installation, hermetic builds,
+staffed operations and release readiness are not qualified. See
+`docs/contributing/clean-machine.md`.
 
 ## Subagent authorization
 

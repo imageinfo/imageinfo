@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "protocolRevision": "single-read-v1",
+  "fixedUtc": "2026-10-15T14:37:11.288844+00:00",
+  "trialCount": 3,
+  "interTrialDelaySeconds": 5,
+  "sourceRevision": "5f7a86eca8e36b48d8334c8e754e3859dd9bb213",
+  "runnerSha256": "e6d4999100ebfcbde1d93b66d26e97199f41202ed6995cef0ea076a9c0378cec",
+  "collectorSha256": "585c3d923ae49991ce3804afc5b70e7c474ba93c4b245fc9db26f41b9e14bdbb",
+  "buildManifestSha256": "d6522fbc62dfb98baa662a85fe8f91439a7551ac43fee53304adb147bd6deec1",
+  "beforeEnvironmentSha256": "3590c40919bdcb3c282037f9b46749e27f06039c2db01c8c63e8138cc3c52a95",
+  "trialConfigurationSha256": [
+    "6f68df8dcf6a53135e633e8663d8b383cf1db12e98c4bf1afb7a154805cc5d66",
+    "f9a907cd24a8209cf80c2eac45220583ca4da3a137badccb4f849de090f447fd",
+    "2f39276a0b7fcda04088e3356bc59a304bb9f4793753ccfd616723ab407ab569"
+  ],
+  "binarySha256": "dd89a754210e47ee3e3cec4dc5b68ddb925da581699fe8fe885efd828885aabb",
+  "fixtureId": "FX-R5-001",
+  "warmupsPerTrial": 3,
+  "samplesPerTrial": 30,
+  "timeoutMs": 10000,
+  "captureBytesPerPipe": 1048576,
+  "maxMetadataBytes": 8388608,
+  "order": "trial1,trial2,trial3;warmups then samples;no retries/trims/exclusions/adaptive stopping",
+  "cache": "fresh process;OS warm-exposed/uncontrolled after preflight hash;device/server uncontrolled or unknown",
+  "coldCells": "OS/device cold unrun;no validated eviction/control and no host policy changes",
+  "statistics": "success-conditional min/max/mean/sampleSD/median/MAD/CV/nearest-rankp95;pertrial+pooled;trial-median range;first10/last10 attempted-window medians;no inferential CI",
+  "status": "fixed-before-collection"
+}

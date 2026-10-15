@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "kind": "authored-xmp-preservation-qualification",
+  "observedOn": "2026-10-15",
+  "source": "tests/qualification.rs",
+  "provenance": "All XML, date values and unknown properties in these tests are independently authored. No camera media, identifying metadata or upstream fixture bytes are included.",
+  "actualRun": {
+    "platform": "Windows x86_64; tests consume authored bytes in memory",
+    "toolchain": "Pinned Rust 1.99.0",
+    "command": "cargo test --locked --manifest-path experiments/0084-xmp-preservation/Cargo.toml --test qualification --target-dir .local/84-qualification-target",
+    "testFunctions": 14,
+    "passed": 14,
+    "failed": 0,
+    "prepareInvocations": 33,
+    "derivatives": 9,
+    "borrowedNoOps": 5,
+    "refusals": 19,
+    "countingRule": "Counts include each explicit prepare call and each completed loop iteration in this one test target. This record is a finite observed summary, not a generated local test log."
+  },
+  "derivativeAssertions": [
+    "Actual candidate bytes contain the intended mapped text at the returned derivative span.",
+    "Candidate prefix before the span and suffix after the span equal the original bytes exactly, including length-changing date values.",
+    "Candidate bytes reparse through the bounded XMP model; other properties retain exact model identities and values.",
+    "Unknown namespace/sibling bytes, namespace declarations, attribute quotes, CRLF, comments, processing instructions, list order and CDATA outside the selected span remain unchanged.",
+    "Identical date strings in unrelated attributes, unknown namespaces, comments and siblings do not become the selected target."
+  ],
+  "noOpAssertions": [
+    "The entire result equals the original byte slice and uses the same borrowed pointer.",
+    "No changed span is reported, including entity spellings, CDATA, comment-split date text and quoted attributes."
+  ],
+  "refusalFamilies": [
+    "Non-plain target lexical representations for replacement: numeric entities, CDATA, comment/processing-instruction splits and attribute entities.",
+    "Missing, duplicate, list-valued and wrong/stale ordinal targets.",
+    "Conflict, keep-destination and unacknowledged-loss outcomes.",
+    "Malformed XML, DTD and non-UTF-8 bytes.",
+    "Input above 65536 bytes and a 65530-byte input whose larger derivative exceeds 65536 bytes.",
+    "Incomplete source-tag coverage."
+  ],
+  "limits": {
+    "qualifiedScope": "One in-memory existing simple-date replacement under the exact #0083 mapping and #0081 parser subset.",
+    "privateMediaUsed": false,
+    "publicXmlSerialization": false,
+    "rawMutationAllowed": false,
+    "publicationAllowed": false,
+    "productionMutationAllowed": false,
+    "otherPlatforms": "This record claims the actual Windows run only; independent CI may add platform observations."
+  }
+}

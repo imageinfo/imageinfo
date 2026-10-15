@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "kind": "clean-machine-contributor-verification",
+  "ticket": 65,
+  "observedOn": "2026-10-15",
+  "procedureRevision": "clean-machine-v1",
+  "sourceRevision": "5f7a86eca8e36b48d8334c8e754e3859dd9bb213",
+  "sourceUrl": "https://github.com/imageinfo/imageinfo/commit/5f7a86eca8e36b48d8334c8e754e3859dd9bb213",
+  "workflowRun": 38749270366,
+  "workflowRunUrl": "https://github.com/imageinfo/imageinfo/actions/runs/38749270366",
+  "evidenceAcquisition": "GitHub connector run jobs and decoded job logs, plus exact local Git blobs; sanitized summaries only.",
+  "cleanEnvironment": "Fresh GitHub-hosted VM jobs and freshly initialized public checkouts; preinstalled development image prerequisites. Not bare OS, hermetic build, or parent-host cleanliness.",
+  "sourceFilesSha256": {
+    "CONTRIBUTING.md": "eaf5ce0570decb36a4d02614ea80f05c4bc35858e555769a35473859a533ba67",
+    "docs/foundation/README.md": "46c796f15560c7d9888fd9a6a3a700612da43ef1b37d6f7e54ebb398c88088b7",
+    "docs/foundation/validation.md": "8aa39a5de1d123f949d5e33425a9f0072b3c26f2e69b665dc752300e121af26a",
+    ".github/workflows/ci.yml": "a599199a83668b066e2957ccc22a18213a1934f2b6808cf1995ef860a2cc4998",
+    "rust-toolchain.toml": "b2c19d86958ed6810741488db5cd352856f303c53bcf0ea774e72f94ee4d201e",
+    "Cargo.lock": "f810db2731ce49b2c51d048e1bbefbe585ebef35b36a0575e0ff5e47c97e86e8",
+    "scripts/check_docs.py": "a762f566e3740aff9f80ece8dd36696ed78a65dd2af90a9922d0a4e17ad69b3f",
+    "scripts/check_output_schemas.py": "af1fbb8c1c5965d652848e057100cf9f3f4d07542876f9f21b761305249680d8"
+  },
+  "jobs": [
+    {
+      "label": "windows-2025",
+      "jobId": 116471054132,
+      "url": "https://github.com/imageinfo/imageinfo/actions/runs/38749270366/job/116471054132",
+      "conclusion": "success",
+      "runnerVersion": "2.337.0",
+      "osFromJobSetup": [
+        "Microsoft Windows Server 2025",
+        "10.0.26100",
+        "Datacenter"
+      ],
+      "imageFromJobSetup": [
+        "Image: windows-2025-vs2026",
+        "Version: 20261007.264.1",
+        "Included Software: https://github.com/actions/runner-images/blob/win25-vs2026/20261007.264/images/windows/Windows2025-VS2026-Readme.md",
+        "Image Release: https://github.com/actions/runner-images/releases/tag/win25-vs2026%2F20261007.264"
+      ],
+      "observedTokenPermissions": [
+        "Contents: read",
+        "Metadata: read"
+      ],
+      "rustInstall": "1.99.0-x86_64-pc-windows-msvc installed - rustc 1.99.0 (b940084d7 2026-09-28)",
+      "rootPassed": 80,
+      "rootFailed": 0,
+      "rootIgnored": 0,
+      "schemaCheck": "12 actual native records match their published schemas; 6 altered observation records refused"
+    },
+    {
+      "label": "ubuntu-24.04",
+      "jobId": 116471054342,
+      "url": "https://github.com/imageinfo/imageinfo/actions/runs/38749270366/job/116471054342",
+      "conclusion": "success",
+      "runnerVersion": "2.337.0",
+      "osFromJobSetup": [
+        "Ubuntu",
+        "24.04.5",
+        "LTS"
+      ],
+      "imageFromJobSetup": [
+        "Image: ubuntu-24.04",
+        "Version: 20261004.327.1",
+        "Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md",
+        "Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327"
+      ],
+      "observedTokenPermissions": [
+        "Contents: read",
+        "Metadata: read"
+      ],
+      "rustInstall": "1.99.0-x86_64-unknown-linux-gnu installed - rustc 1.99.0 (b940084d7 2026-09-28)",
+      "rootPassed": 82,
+      "rootFailed": 0,
+      "rootIgnored": 0,
+      "schemaCheck": "12 actual native records match their published schemas; 6 altered observation records refused"
+    },
+    {
+      "label": "macos-15",
+      "jobId": 116471053742,
+      "url": "https://github.com/imageinfo/imageinfo/actions/runs/38749270366/job/116471053742",
+      "conclusion": "success",
+      "runnerVersion": "2.337.0",
+      "osFromJobSetup": [
+        "macOS",
+        "15.7.9",
+        "24G830"
+      ],
+      "imageFromJobSetup": [
+        "Image: macos-15-arm64",
+        "Version: 20260907.0337.1",
+        "Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20260907.0337/images/macos/macos-15-arm64-Readme.md",
+        "Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20260907.0337"
+      ],
+      "observedTokenPermissions": [
+        "Contents: read",
+        "Metadata: read"
+      ],
+      "rustInstall": "1.99.0-aarch64-apple-darwin installed - rustc 1.99.0 (b940084d7 2026-09-28)",
+      "rootPassed": 82,
+      "rootFailed": 0,
+      "rootIgnored": 0,
+      "schemaCheck": "12 actual native records match their published schemas; 6 altered observation records refused"
+    }
+  ],
+  "sharedObservedProcedure": [
+    "Fresh public source checkout at sourceRevision with checkout clean=true and persist-credentials=false",
+    "rustup toolchain install 1.99.0 --profile minimal --component clippy,rustfmt",
+    "python -m pip install jsonschema==4.26.0",
+    "cargo fmt --all --check",
+    "cargo clippy --locked --all-targets -- -D warnings",
+    "cargo test --locked",
+    "python scripts/check_output_schemas.py",
+    "cargo build --locked --release",
+    "python scripts/check_docs.py"
+  ],
+  "permissionsReview": {
+    "workflowContents": "read",
+    "jobOverrides": false,
+    "observedTokenScopes": [
+      "contents:read",
+      "metadata:read"
+    ],
+    "checkoutAction": "actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+    "persistCredentials": false,
+    "explicitSecretsReferences": 0,
+    "usesPullRequestTarget": false,
+    "usesOIDC": false,
+    "publishingSteps": false,
+    "limitation": "Workflow source and observed run token scopes only. Repository settings, protected branches/environments, account access, secret inventory and staffed roles were not audited. Read-only repository token does not remove VM administrator/sudo privileges."
+  },
+  "supplementaryParentHostCheck": {
+    "source": "Git archive of sourceRevision in ignored private directory",
+    "cleanEnvironmentClaim": false,
+    "outcomes": {
+      "cargo build --locked": "pass",
+      "cargo run --locked -- help": "pass",
+      "cargo run --locked -- metadata read help": "pass",
+      "cargo run --locked -- version --output json": "pass",
+      "python scripts/check_docs.py": "pass",
+      "publishedNoticeHashes": "31 of 31 match; 30 root packages"
+    },
+    "scope": "Existing configured Windows developer host; cached dependencies may be used. No fresh OS or toolchain-bootstrap claim."
+  },
+  "corrections": [
+    "Make Python, pip and the pinned jsonschema QA dependency explicit in contributor setup.",
+    "Include release build and actual emitted-output schema validation in the root check recipe.",
+    "Correct obsolete schema-checker description: it now also uses public authored temporary fixtures and explicit path association.",
+    "Link current exact hosted verification without replacing original #0019 historical evidence."
+  ],
+  "unrun": [
+    "Bare OS Git/rustup/C++ SDK/Xcode/Python installation",
+    "Offline or hermetic dependency bootstrap",
+    "Arbitrary toolchain/runner image or OS versions",
+    "Repository governance/settings audit",
+    "Staffed maintainer handoff or release readiness"
+  ],
+  "noProductionCapabilityEnabled": true,
+  "noStaffedMaintenanceClaim": true,
+  "noReleaseReadinessClaim": true,
+  "pythonQaPrerequisite": {
+    "package": "jsonschema==4.26.0",
+    "requiresPython": ">=3.10",
+    "basis": "Installed distribution METADATA, queried through importlib.metadata on 2026-10-15",
+    "allNewerVersionsQualified": false
+  }
+}

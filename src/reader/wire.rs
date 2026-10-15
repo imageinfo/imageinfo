@@ -47,7 +47,13 @@ impl Metadata {
             if invalid {
                 issues.push(json!({"id":issue_id,"code":"ZERO_DENOMINATOR","severity":"error","message":"Stored rational has a zero denominator","occurrenceRefs":[occurrence_id],"documentRefs":["doc-raw"]}));
             }
-            let raw = json!({"state":"present","value":if matches!(occurrence.value,Value::Binary(_)){json!({"kind":"binary","resourceRef":resource_id})}else{native_value(&occurrence.value)}});
+            // A zero-denominator pair is invalid stored data, not a valid
+            // rational value. Its exact bytes remain available through origin.
+            let raw = if invalid {
+                json!({"state":"invalid","code":"ZERO_DENOMINATOR","detail":"Cannot interpret a zero-denominator rational"})
+            } else {
+                json!({"state":"present","value":if matches!(occurrence.value,Value::Binary(_)){json!({"kind":"binary","resourceRef":resource_id})}else{native_value(&occurrence.value)}})
+            };
             let normalized = if invalid {
                 json!({"state":"invalid","code":"ZERO_DENOMINATOR","detail":"Cannot interpret a zero-denominator rational"})
             } else {

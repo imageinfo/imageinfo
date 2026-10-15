@@ -36,6 +36,10 @@ jobs:
         run: |
           python -m pip install jsonschema==4.26.0
           python scripts/test_read_benchmark.py
+      - name: Check single-read evidence verifier
+        run: |
+          python -m py_compile scripts/measure_single_read.py scripts/audit_read_baseline.py
+          python scripts/test_read_baseline.py
       - name: Check exact backend refusal ledger
         run: python experiments/0051-profile-admission/qualify.py --public .local/profile-admission-ci.json
       - name: Check one-way XMP date mapping model
@@ -44,6 +48,12 @@ jobs:
           cargo clippy --locked --manifest-path experiments/0083-xmp-date-mapping/Cargo.toml --all-targets -- -D warnings
           cargo test --locked --manifest-path experiments/0083-xmp-date-mapping/Cargo.toml
           cargo build --locked --release --manifest-path experiments/0083-xmp-date-mapping/Cargo.toml
+      - name: Check authored XMP date preservation
+        run: |
+          cargo fmt --manifest-path experiments/0084-xmp-preservation/Cargo.toml --check
+          cargo clippy --locked --manifest-path experiments/0084-xmp-preservation/Cargo.toml --all-targets -- -D warnings
+          cargo test --locked --manifest-path experiments/0084-xmp-preservation/Cargo.toml
+          cargo build --locked --release --manifest-path experiments/0084-xmp-preservation/Cargo.toml
       - name: Check bound Windows publication formatting
         run: cargo fmt --manifest-path experiments/0032-windows-publication/Cargo.toml --check
       - name: Check existing-source oplock research
@@ -188,6 +198,8 @@ jobs:
         run: cargo test --locked
       - name: Check actual CLI result schemas
         run: python scripts/check_output_schemas.py
+      - name: Check exact native read JSON
+        run: python scripts/check_native_read_json.py
       - name: Build release executable
         run: cargo build --locked --release
       - name: Check experimental candidate formatting

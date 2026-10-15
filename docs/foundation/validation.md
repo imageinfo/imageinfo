@@ -39,9 +39,12 @@ command uses Python tooling; it is not an imageinfo runtime dependency:
 uv run --no-project --with jsonschema==4.26.0 python scripts/check_output_schemas.py
 ```
 
-Build `target/debug/imageinfo` first. The checker executes only help/version and
-unavailable requests against invented paths, resolves the metadata-schema reference
-locally and never fetches schemas or opens a personal fixture.
+Build `target/debug/imageinfo` first (or `target/debug/imageinfo.exe` on Windows).
+The checker validates actual version/error records plus read-only date-preview
+and explicit-path pairing observations. It compiles a temporary standard-library
+Rust fixture harness using the public authored structural builder, so the pinned
+`rustc` must also be on PATH. It resolves schema references locally, uses only
+temporary authored inputs, and never fetches schemas or opens personal media.
 
 ## CI evidence
 
@@ -53,6 +56,14 @@ bytes. The macOS toolchain log confirms `aarch64-apple-darwin`.
 See [recorded run/job evidence](ci-results.json). These are foundation environments,
 not a future RAW-reader compatibility or OS-baseline certification. The final board
 handoff links the final published commit and its corresponding CI run.
+
+**#0065 update, 2026-10-15:** The
+[clean hosted contributor verification](../contributing/clean-machine.md)
+records fresh hosted checkouts and pinned toolchain installation at
+`5f7a86eca8e36b48d8334c8e754e3859dd9bb213`, with the actual 80 Windows / 82
+Unix root tests, schema checks, release builds and sanitized token permission
+inspection. This is a current contributor-check outcome; the original #0019
+results above remain historical and no bare-OS or release-readiness claim follows.
 
 ## Remaining boundaries
 
