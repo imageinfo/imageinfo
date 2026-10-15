@@ -305,10 +305,11 @@ spawning subagents; use a fresh context when the spawn tool requires it for mode
 overrides, and provide the relevant task context in the delegation message.
 Preserve the eight-direct-subagent and depth-1 limits above.
 
-Terry also requires **Fast mode** for all subagents (2026-10-15). Keep the parent
-session in Fast mode: subagents inherit the root session's service tier rather
-than overriding it in individual agent files. Persist `service_tier = "fast"`
-and `[features] fast_mode = true` in the user Codex configuration.
+Terry chose **Standard speed** for the parent and subagents on 2026-10-15,
+superseding the earlier Fast-mode requirement. Subagents inherit the root
+session's service tier. Keep `service_tier = "default"` in the user Codex
+configuration; do not re-enable Fast mode unless Terry requests it. The model
+and reasoning defaults remain GPT-6.1 Sol with Medium effort.
 
 ## Product intent
 
