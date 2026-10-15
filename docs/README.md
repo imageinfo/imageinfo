@@ -52,6 +52,11 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Cumulative retained-work budget](write-safety/cumulative-budget.md) | #0049 fixed-worker supervisor, monotonic logical charges and 15 native cases; no disk reservation or persistent quota. |
 | [XMP component and model review](sidecars/xmp-component.md) | #0081 pinned read-only XML experiment, expanded-name/occurrence model and finite limits; no production parser or serializer. |
 | [Reproducible read collector](performance/read-collector.md) | #0060 bounded timed subprocess collection, correctness oracle and versioned records; actual smoke evidence without a performance baseline claim. |
+| [Single-date saved preview contract](legacy-compatibility/cr3-preview-plan.md) | #0055 strict nonexecuting versioned plan, exact occurrence/bytes and separate caller authority. |
+| [Nonmutating date preview](reader/date-preview.md) | #0076 actual field/admission checks, advisory byte partition and CLI observations with no output effects. |
+| [Saved preview source binding](legacy-compatibility/cr3-preview-source-binding.md) | #0077 actual bounded content hash, exact occurrence revalidation and stale-plan refusals without live guard or mutation authority. |
+| [Explicit RAW/XMP pairing](sidecars/pairing.md) | #0082 explicit canonical paths, held physical-identity comparison and alias/collision refusals without basename inference or XMP parsing. |
+| [One-way XMP date mapping](sidecars/date-mapping.md) | #0083 bounded versioned original-snapshot date intent, exact fraction/zone preservation and explicit conflict/loss choices; no serializer or write integration. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |

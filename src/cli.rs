@@ -40,12 +40,29 @@ pub struct ExtractRequest {
 }
 
 #[derive(Debug, PartialEq, Eq)]
+pub struct DatePreviewRequest {
+    pub input: PathBuf,
+    pub value: String,
+    pub offset: Option<u64>,
+    pub output: OutputFormat,
+}
+
+#[derive(Debug, PartialEq, Eq)]
+pub struct PairRequest {
+    pub raw: PathBuf,
+    pub sidecar: Option<PathBuf>,
+    pub output: OutputFormat,
+}
+
+#[derive(Debug, PartialEq, Eq)]
 pub enum Invocation {
     Help(String),
     Version(OutputFormat),
     Read(ReadRequest),
     BinaryList(ReadRequest),
     Extract(ExtractRequest),
+    DatePreview(DatePreviewRequest),
+    Pair(PairRequest),
 }
 
 #[derive(Debug, PartialEq, Eq)]
@@ -67,7 +84,7 @@ impl std::error::Error for UsageError {}
 /// Build the command tree used for parsing, help and future menu introspection.
 pub fn command() -> Command {
     common(Command::new("imageinfo").about("Camera RAW metadata tooling"))
-        .after_help("Reads a declared Canon EOS R5 full RAW metadata/preview subset. Other cameras, variants, XMP and metadata writes are not supported yet.")
+        .after_help("Reads a declared Canon EOS R5 full RAW metadata/preview subset, describes a read-only date intent, and associates explicit existing RAW/sidecar paths. Other cameras, variants, XMP content operations and metadata writes are not supported yet.")
         .subcommand(help_command())
         .subcommand(common(Command::new("version").about("Show version and current implementation scope")))
         .subcommand(
@@ -90,6 +107,21 @@ pub fn command() -> Command {
                 .arg(Arg::new("tag").long("tag").value_parser(["ThumbnailImage","PreviewImage","JpgFromRaw"]).help("Exactly one named preview"))
                 .arg(Arg::new("output-file").long("output-file").value_parser(OsStringValueParser::new()).help("New output path; existing destinations are refused"))
                 .arg(Arg::new("dry-run").long("dry-run").action(ArgAction::SetTrue).help("Validate and report extraction without creating an output"))))
+        .subcommand(common(Command::new("preview").about("Describe read-only metadata intents"))
+            .subcommand(help_command())
+            .subcommand(common(Command::new("date-time-original").about("Inspect one existing CMT2 DateTimeOriginal ASCII20 intent"))
+                .subcommand(help_command()).subcommand_precedence_over_arg(true)
+                .arg(input_argument())
+                .arg(Arg::new("value").long("value").help("Exact YYYY:MM:DD HH:MM:SS Gregorian date"))
+                .arg(Arg::new("offset").long("offset").value_parser(clap::value_parser!(u64)).help("Assert the existing unique 20-byte allocation's source offset"))
+                .after_help("Reports hypothetical changed/preserved bytes and actual admission refusals. Creates no output; never authorizes application or a production storage profile.")))
+        .subcommand(common(Command::new("sidecar").about("Inspect explicit RAW/sidecar associations"))
+            .subcommand(help_command())
+            .subcommand(common(Command::new("pair").about("Associate two explicit existing files without modifying either"))
+                .subcommand(help_command()).subcommand_precedence_over_arg(true)
+                .arg(input_argument())
+                .arg(Arg::new("sidecar").long("sidecar").value_parser(OsStringValueParser::new()).help("Explicit existing sidecar path; no basename selection"))
+                .after_help("Missing sidecars, aliases and ambiguous names are refused. Contents are not interpreted. No sidecar is created or synchronized.")))
 }
 
 fn input_argument() -> Arg {
@@ -258,7 +290,12 @@ where
     if scopes.iter().any(|scope| scope.get_flag("version-flag")) || path == ["version"] {
         return Ok(Invocation::Version(output));
     }
-    if path.is_empty() || path == ["metadata"] || path == ["binary"] {
+    if path.is_empty()
+        || path == ["metadata"]
+        || path == ["binary"]
+        || path == ["preview"]
+        || path == ["sidecar"]
+    {
         return render_help(&tree, &path, output);
     }
 
@@ -282,6 +319,49 @@ where
             "Empty input paths are not allowed.".into(),
             output,
         ));
+    }
+    if path == ["preview", "date-time-original"] || path == ["sidecar", "pair"] {
+        if inputs.len() != 1 {
+            return Err(usage(
+                "INVALID_INPUT",
+                format!(
+                    "Exactly one INPUT is required. See {}.",
+                    help_spelling(&path)
+                ),
+                output,
+            ));
+        }
+        if path == ["preview", "date-time-original"] {
+            let value = current.get_one::<String>("value").ok_or_else(|| {
+                usage(
+                    "MISSING_ARGUMENT",
+                    "Date preview requires --value. See imageinfo preview date-time-original help."
+                        .into(),
+                    output,
+                )
+            })?;
+            crate::reader::admission::DateTime::parse(value)
+                .map_err(|error| usage(error.code, error.message, output))?;
+            return Ok(Invocation::DatePreview(DatePreviewRequest {
+                input: inputs[0].clone(),
+                value: value.clone(),
+                offset: current.get_one::<u64>("offset").copied(),
+                output,
+            }));
+        }
+        let sidecar = current.get_one::<OsString>("sidecar");
+        if sidecar.is_some_and(|value| value.is_empty()) {
+            return Err(usage(
+                "INVALID_INPUT",
+                "Empty sidecar paths are not allowed.".into(),
+                output,
+            ));
+        }
+        return Ok(Invocation::Pair(PairRequest {
+            raw: inputs[0].clone(),
+            sidecar: sidecar.map(PathBuf::from),
+            output,
+        }));
     }
     let tags: Vec<String> = current
         .try_get_many::<String>("tag")

@@ -3,6 +3,8 @@ import copy
 import json
 import os
 from pathlib import Path
+import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -18,6 +20,9 @@ DATA = ROOT / "docs/performance/read-collector"
 class CollectorTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        # Fresh checkouts have no ignored local state. Keep test scratch inside
+        # the workspace for restricted Windows sessions and create its parent.
+        (ROOT / ".local").mkdir(exist_ok=True)
         cls.schema = b.load(DATA / "record.schema.json", 100000)
         Draft202012Validator.check_schema(cls.schema)
         cls.validator = Draft202012Validator(cls.schema)
@@ -106,6 +111,27 @@ class CollectorTests(unittest.TestCase):
             path.write_bytes(b" " * 100)
             with self.assertRaisesRegex(ValueError, "bound"):
                 b.load(path, 10)
+
+    def test_scratch_parent_on_fresh_and_existing_checkout(self):
+        for local_exists in (False, True):
+            with self.subTest(local_exists=local_exists), tempfile.TemporaryDirectory(dir=ROOT / ".local") as directory:
+                checkout = Path(directory)
+                (checkout / "scripts").mkdir()
+                data = checkout / "docs/performance/read-collector"
+                data.mkdir(parents=True)
+                for name in ("read_benchmark.py", "test_read_benchmark.py"):
+                    shutil.copyfile(ROOT / "scripts" / name, checkout / "scripts" / name)
+                for name in ("record.schema.json", "synthetic-record.v1.json"):
+                    shutil.copyfile(DATA / name, data / name)
+                if local_exists:
+                    (checkout / ".local").mkdir()
+                result = subprocess.run([
+                    sys.executable, str(checkout / "scripts/test_read_benchmark.py"),
+                    "CollectorTests.test_bounded_json_load",
+                    "CollectorTests.test_existing_record_never_overwrites_source",
+                ], cwd=checkout, capture_output=True, timeout=10, check=False)
+                self.assertEqual(result.returncode, 0, result.stderr.decode(errors="replace"))
+                self.assertTrue((checkout / ".local").is_dir())
 
 
 if __name__ == "__main__":

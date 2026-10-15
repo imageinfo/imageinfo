@@ -1,0 +1,106 @@
+{
+  "schema": "imageinfo.cr3-date-preview.v1",
+  "revisions": {
+    "model": "cr3-date-preview-2026-10-15.1",
+    "reader": "r5-read-slice-2026-10-11.1",
+    "admission": "r5-date-admission-2026-10-12.1",
+    "registry": "raw-known-provenance-2026-10-12.1",
+    "capability": "2026-10-12.1",
+    "conversion": "exact-gregorian-ascii20",
+    "policy": "ordinary-private-owner-od11-a"
+  },
+  "source": {
+    "path": "fixture.cr3",
+    "length": 4096,
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "occurrence": {
+    "path": [
+      {
+        "kind": "box",
+        "name": "moov",
+        "index": 0
+      },
+      {
+        "kind": "box",
+        "name": "uuid",
+        "index": 0
+      },
+      {
+        "kind": "box",
+        "name": "CMT2",
+        "index": 0
+      },
+      {
+        "kind": "ifd",
+        "name": "IFD@8",
+        "index": 0
+      },
+      {
+        "kind": "tag",
+        "name": "36867",
+        "index": 0
+      }
+    ],
+    "native_id": 36867,
+    "allocation": {
+      "offset": 256,
+      "length": 20
+    },
+    "byte_order": "little-endian",
+    "original_bytes": [
+      50,
+      48,
+      50,
+      48,
+      58,
+      48,
+      50,
+      58,
+      50,
+      57,
+      32,
+      49,
+      50,
+      58,
+      51,
+      48,
+      58,
+      53,
+      57,
+      0
+    ]
+  },
+  "intended_bytes": [
+    50,
+    48,
+    50,
+    54,
+    58,
+    49,
+    48,
+    58,
+    49,
+    53,
+    32,
+    49,
+    48,
+    58,
+    50,
+    48,
+    58,
+    51,
+    48,
+    0
+  ],
+  "output": {
+    "path": "new-output.cr3",
+    "policy": "ordinary-private-owner-od11-a",
+    "profile": "unavailable-production",
+    "collision": "require-absent"
+  },
+  "preservation": "entire-source-except-selected-allocation",
+  "execution_bindings": "must-recompute-before-any-apply",
+  "recovery": "no-mutation-or-recovery-authority",
+  "apply_authorization": "separate-caller-required"
+}

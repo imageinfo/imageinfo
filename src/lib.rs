@@ -5,7 +5,11 @@
 
 pub mod cli;
 pub mod output;
+pub mod pairing;
+pub mod plan;
+pub mod preview;
 pub mod reader;
+pub mod source_binding;
 
 /// The current capability inventory revision. It is not a runtime support claim.
 pub const CAPABILITY_DATA_REVISION: &str = "2026-10-12.1";

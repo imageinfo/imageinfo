@@ -13,12 +13,19 @@ other RAW families follow later. See the
 [ADR-0011](docs/implementation-selection/README.md). The current build provides
 a [declared R5 full RAW metadata/preview slice](docs/reader/README.md), contextual
 help, version reporting and explicit partial coverage. Broader command examples
-remain proposals; XMP, other variants and metadata writes are not implemented.
+remain proposals; XMP parsing, other variants and metadata writes are not implemented.
+The build also provides a [read-only date-intent preview](docs/reader/date-preview.md)
+and [explicit RAW/XMP path pairing](docs/sidecars/pairing.md). The library can
+validate [saved preview intent](docs/legacy-compatibility/cr3-preview-plan.md) and
+[revalidate its source binding](docs/legacy-compatibility/cr3-preview-source-binding.md).
+These observations keep mutation and storage admission refused.
 
 ```console
 cargo run --locked -- help
 cargo run --locked -- metadata read help
 cargo run --locked -- version --output json
+cargo run --locked -- preview date-time-original help
+cargo run --locked -- sidecar pair help
 ```
 
 See [reader behavior and limits](docs/reader/README.md),

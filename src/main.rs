@@ -25,6 +25,8 @@ fn main() -> ExitCode {
         Ok(Invocation::Read(request)) => write_report(&mut stdout,&mut stderr,app::read(request,request_id(),false)),
         Ok(Invocation::BinaryList(request)) => write_report(&mut stdout,&mut stderr,app::read(request,request_id(),true)),
         Ok(Invocation::Extract(request)) => write_report(&mut stdout,&mut stderr,app::extract(request,request_id())),
+        Ok(Invocation::DatePreview(request)) => write_report(&mut stdout,&mut stderr,app::date_preview(request,request_id())),
+        Ok(Invocation::Pair(request)) => write_report(&mut stdout,&mut stderr,app::pair(request,request_id())),
         Err(error) => report_error(
             &mut stdout,
             &mut stderr,

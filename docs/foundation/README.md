@@ -6,6 +6,12 @@ extract behavior and tests are authoritative in the linked reader guide.
 Subsequent #0027 supplies [read-only field/admission observations](../write-safety/write-admission.md)
 through the library and a separate research executable. Product CLI writes remain
 unsupported; neither a field match nor a read-only query authorizes mutation.
+Subsequent #0055/#0076/#0077 add the bounded
+[saved date-preview contract](../legacy-compatibility/cr3-preview-plan.md),
+[nonmutating CLI preview](../reader/date-preview.md), and
+[source-content revalidation](../legacy-compatibility/cr3-preview-source-binding.md).
+#0082 adds [explicit path pairing](../sidecars/pairing.md). These implemented
+read-only boundaries preserve all format/storage admission and caller-authority gates.
 
 Implemented under **#0019**, 2026-10-10, after Terry accepted Rust/ADR-0011.
 This package provides a production library/binary boundary, command definitions,

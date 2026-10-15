@@ -177,6 +177,22 @@ no production dependency, XML writer or lossless round-trip capability follows.
 deadline/capture limits, retained failed attempts and exact expected-output checks.
 Its actual private R5 smoke run is functionality evidence, not a performance
 baseline or cache/limit policy. See `docs/performance/read-collector.md`.
+#0055/#0076/#0077 implement one nonexecuting saved-date intent, actual read-only
+preview and bounded whole-source SHA-256/occurrence revalidation. Imported intent
+never authorizes apply; matching content is not object identity or a live guard.
+All current RAW dependencies and unavailable production storage profiles still
+refuse. See `docs/legacy-compatibility/cr3-preview-plan.md`,
+`docs/reader/date-preview.md` and
+`docs/legacy-compatibility/cr3-preview-source-binding.md`.
+#0082 resolves explicitly selected RAW/XMP paths with retained safe physical-file
+identity comparison, finite directory/case checks and alias refusals. Basenames
+never infer pairing; no content parsing or continuing guard is promised. See
+`docs/sidecars/pairing.md` and the reviewed exact root dependency inventory.
+#0083 specifies one original-snapshot CMT2-to-XMP DateTimeOriginal mapping with
+exact source fractions/offsets, explicit existing singleton destination and
+default conflict refusal. Replacement intent requires named destination losses
+to be acknowledged. Its separate test-only model has ten passing vectors; see
+`docs/sidecars/date-mapping.md`. No XML serialization or publication is enabled.
 
 ## Subagent authorization
 

@@ -1,0 +1,83 @@
+[
+  {
+    "name": "self-authorized",
+    "pointer": "/apply_authorization",
+    "replacement": "authorized"
+  },
+  {
+    "name": "invented-profile",
+    "pointer": "/output/profile",
+    "replacement": "qualified-windows"
+  },
+  {
+    "name": "stale-reader",
+    "pointer": "/revisions/reader",
+    "replacement": "old-reader"
+  },
+  {
+    "name": "malformed-digest",
+    "pointer": "/source/sha256",
+    "replacement": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+  },
+  {
+    "name": "out-of-range",
+    "pointer": "/occurrence/allocation/offset",
+    "replacement": 4090
+  },
+  {
+    "name": "wrong-allocation",
+    "pointer": "/occurrence/allocation/length",
+    "replacement": 19
+  },
+  {
+    "name": "wrong-tag",
+    "pointer": "/occurrence/native_id",
+    "replacement": 36868
+  },
+  {
+    "name": "invalid-calendar",
+    "pointer": "/intended_bytes",
+    "replacement": [
+      50,
+      48,
+      50,
+      54,
+      58,
+      48,
+      50,
+      58,
+      50,
+      57,
+      32,
+      49,
+      48,
+      58,
+      50,
+      48,
+      58,
+      51,
+      48,
+      0
+    ]
+  },
+  {
+    "name": "missing-nul",
+    "pointer": "/intended_bytes/19",
+    "replacement": 32
+  },
+  {
+    "name": "unknown-authority",
+    "pointer": "/source/authorized",
+    "replacement": true
+  },
+  {
+    "name": "same-output",
+    "pointer": "/output/path",
+    "replacement": "fixture.cr3"
+  },
+  {
+    "name": "opaque-claims",
+    "pointer": "/format_admitted",
+    "replacement": true
+  }
+]

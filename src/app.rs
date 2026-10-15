@@ -1,6 +1,6 @@
 //! Filesystem workflow and result adaptation for the thin executable.
 use imageinfo::{
-    cli::{ExtractRequest, OutputFormat, ReadRequest, ValueView},
+    cli::{DatePreviewRequest, ExtractRequest, OutputFormat, PairRequest, ReadRequest, ValueView},
     output::{ArtifactRecord, Effects, FileRecord, Issue, ResultEnvelope},
     reader::{self, Value},
 };
@@ -28,6 +28,129 @@ fn issue(
         path: None,
         occurrence_ref: None,
     }
+}
+
+pub fn date_preview(request: DatePreviewRequest, id: String) -> Report {
+    let mut report = observation_report(
+        request.output,
+        id,
+        "preview date-time-original",
+        "preview",
+        &request.input,
+    );
+    let result = (|| {
+        let unsupported = || reader::Error {
+            code: "CAPABILITY_UNSUPPORTED",
+            message: "Only regular file inputs are supported".into(),
+        };
+        if !std::fs::metadata(&request.input)?.is_file() {
+            return Err(unsupported());
+        }
+        let input = std::fs::File::open(&request.input)?;
+        if !input.metadata()?.is_file() {
+            return Err(unsupported());
+        }
+        imageinfo::preview::date_time_original(
+            input,
+            &request.value,
+            request
+                .offset
+                .map(|offset| reader::Range { offset, length: 20 }),
+        )
+    })();
+    match result {
+        Ok(preview) => {
+            report.record.files[0].state =
+                if preview.status == imageinfo::preview::PreviewStatus::Refused {
+                    "refused"
+                } else {
+                    "previewed"
+                };
+            report.text = format!(
+                "Read-only DateTimeOriginal preview: {:?}\nHypothetical changed bytes: {}; preserved bytes: {:?}\nProduction mutation allowed: false\n",
+                preview.status, preview.changed_bytes, preview.preserved_bytes
+            );
+            for finding in &preview.refusals {
+                observation_error(
+                    &mut report,
+                    finding.code,
+                    "Date intent refused by the actual admission checks.".into(),
+                );
+            }
+            report.record.files[0].snapshot = Some(
+                serde_json::json!({"schemaVersion": 1, "kind": "date-preview", "preview": preview}),
+            );
+        }
+        Err(error) => observation_error(&mut report, error.code, error.message),
+    }
+    finish_observation(report)
+}
+
+pub fn pair(request: PairRequest, id: String) -> Report {
+    let mut report = observation_report(request.output, id, "sidecar pair", "read", &request.raw);
+    match imageinfo::pairing::resolve_pair(&request.raw, request.sidecar.as_deref()) {
+        Ok(pair) => {
+            report.record.files[0].state = "read";
+            report.text = format!(
+                "Explicit RAW/sidecar association: {:?} -> {:?}\nNo files created or modified; contents not interpreted.\n",
+                pair.raw_path, pair.sidecar_path
+            );
+            report.record.files[0].snapshot = Some(
+                serde_json::json!({"schemaVersion": 1, "kind": "explicit-pair", "pair": pair}),
+            );
+        }
+        Err(error) => observation_error(&mut report, error.code, error.message),
+    }
+    finish_observation(report)
+}
+
+fn observation_report(
+    format: OutputFormat,
+    id: String,
+    operation: &'static str,
+    mode: &'static str,
+    input: &std::path::Path,
+) -> Report {
+    let mut record = ResultEnvelope::empty(id.clone(), operation, mode);
+    record.files.push(FileRecord {
+        schema_version: 1,
+        kind: "file",
+        request_id: id,
+        input_id: "input-0".into(),
+        path: input.to_string_lossy().into_owned(),
+        state: "refused",
+        snapshot: None,
+        transaction_id: None,
+        effects: Effects::default(),
+        issues: Vec::new(),
+    });
+    Report {
+        format,
+        record,
+        text: String::new(),
+        diagnostics: Vec::new(),
+        status: 0,
+    }
+}
+
+fn observation_error(report: &mut Report, code: &'static str, message: String) {
+    report.status = 1;
+    report.diagnostics.push(format!("{code}: {message}"));
+    report.record.files[0]
+        .issues
+        .push(issue(code, "error", message, Some("input-0".into())));
+}
+
+fn finish_observation(mut report: Report) -> Report {
+    report.record.summary.counts.discovered = 1;
+    report
+        .record
+        .summary
+        .counts
+        .by_state
+        .insert(report.record.files[0].state.into(), 1);
+    report.record.summary.exit_status = report.status;
+    report
 }
 
 pub fn read(request: ReadRequest, id: String, binary_only: bool) -> Report {

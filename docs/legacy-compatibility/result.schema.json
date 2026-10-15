@@ -300,6 +300,12 @@
             },
             {
               "type": "null"
+            },
+            {
+              "$ref": "#/$defs/datePreviewSnapshot"
+            },
+            {
+              "$ref": "#/$defs/explicitPairSnapshot"
             }
           ]
         },
@@ -554,6 +560,327 @@
         "request",
         "files",
         "summary"
+      ]
+    },
+    "previewByteRange": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "offset": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 18446744073709551615
+        },
+        "length": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 18446744073709551615
+        }
+      },
+      "required": [
+        "offset",
+        "length"
+      ]
+    },
+    "previewAscii20": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "prefixItems": [
+        {
+          "type": "integer",
+          "minimum": 48,
+          "maximum": 57
+        },
+        {
+          "type": "integer",
+          "minimum": 48,
+          "maximum": 57
+        },
+        {
+          "type": "integer",
+          "minimum": 48,
+          "maximum": 57
+        },
+        {
+          "type": "integer",
+          "minimum": 48,
+          "maximum": 57
+        },
+        {
+          "const": 58
+        },
+        {
+          "type": "integer",
+          "minimum": 48,
+          "maximum": 57
+        },
+        {
+          "type": "integer",
+          "minimum": 48,
+          "maximum": 57
+        },
+        {
+          "const": 58
+        },
+        {
+          "type": "integer",
+          "minimum": 48,
+          "maximum": 57
+        },
+        {
+          "type": "integer",
+          "minimum": 48,
+          "maximum": 57
+        },
+        {
+          "const": 32
+        },
+        {
+          "type": "integer",
+          "minimum": 48,
+          "maximum": 57
+        },
+        {
+          "type": "integer",
+          "minimum": 48,
+          "maximum": 57
+        },
+        {
+          "const": 58
+        },
+        {
+          "type": "integer",
+          "minimum": 48,
+          "maximum": 57
+        },
+        {
+          "type": "integer",
+          "minimum": 48,
+          "maximum": 57
+        },
+        {
+          "const": 58
+        },
+        {
+          "type": "integer",
+          "minimum": 48,
+          "maximum": 57
+        },
+        {
+          "type": "integer",
+          "minimum": 48,
+          "maximum": 57
+        },
+        {
+          "const": 0
+        }
+      ],
+      "items": false
+    },
+    "previewFinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]*$"
+        },
+        "range": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/previewByteRange"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "range"
+      ]
+    },
+    "datePreviewObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "previewed",
+            "refused"
+          ]
+        },
+        "field": {
+          "const": "exif:DateTimeOriginal"
+        },
+        "source_length": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 268435456
+        },
+        "allocation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/previewByteRange"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "original_bytes": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/previewAscii20"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "proposed_bytes": {
+          "$ref": "#/$defs/previewAscii20"
+        },
+        "changed_ranges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/previewByteRange"
+          },
+          "maxItems": 20
+        },
+        "preserved_ranges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/previewByteRange"
+          },
+          "maxItems": 21
+        },
+        "changed_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 20
+        },
+        "preserved_bytes": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 18446744073709551615
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "value_already_matches": {
+          "type": "boolean"
+        },
+        "field_shape_verified": {
+          "type": "boolean"
+        },
+        "expected_occurrence_matches": {
+          "type": "boolean"
+        },
+        "known_structures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/previewFinding"
+          }
+        },
+        "refusals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/previewFinding"
+          }
+        },
+        "bytes_examined": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 18446744073709551615
+        },
+        "production_mutation_allowed": {
+          "const": false
+        }
+      },
+      "required": [
+        "status",
+        "field",
+        "source_length",
+        "allocation",
+        "original_bytes",
+        "proposed_bytes",
+        "changed_ranges",
+        "preserved_ranges",
+        "changed_bytes",
+        "preserved_bytes",
+        "value_already_matches",
+        "field_shape_verified",
+        "expected_occurrence_matches",
+        "known_structures",
+        "refusals",
+        "bytes_examined",
+        "production_mutation_allowed"
+      ]
+    },
+    "datePreviewSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "date-preview"
+        },
+        "preview": {
+          "$ref": "#/$defs/datePreviewObservation"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "kind",
+        "preview"
+      ]
+    },
+    "explicitPairSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "explicit-pair"
+        },
+        "pair": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "raw_path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sidecar_path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "association": {
+              "const": "explicit_paths"
+            }
+          },
+          "required": [
+            "raw_path",
+            "sidecar_path",
+            "association"
+          ]
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "kind",
+        "pair"
       ]
     }
   }

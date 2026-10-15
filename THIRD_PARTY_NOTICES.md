@@ -7,23 +7,56 @@ This collection identifies the exact Cargo.lock graph admitted for local/CI foun
 | Package | Selected terms | Retained notice |
 | --- | --- | --- |
 | anstyle 1.0.14 | MIT | [anstyle-1.0.14-LICENSE-MIT.txt](licenses/dependencies/anstyle-1.0.14-LICENSE-MIT.txt) |
+| block-buffer 0.10.4 | MIT | [block-buffer-0.10.4-LICENSE-MIT.txt](licenses/dependencies/block-buffer-0.10.4-LICENSE-MIT.txt) |
+| cfg-if 1.0.5 | MIT | [cfg-if-1.0.5-LICENSE-MIT.txt](licenses/dependencies/cfg-if-1.0.5-LICENSE-MIT.txt) |
 | clap 4.6.7 | MIT | [clap-4.6.7-LICENSE-MIT.txt](licenses/dependencies/clap-4.6.7-LICENSE-MIT.txt) |
 | clap_builder 4.6.7 | MIT | [clap_builder-4.6.7-LICENSE-MIT.txt](licenses/dependencies/clap_builder-4.6.7-LICENSE-MIT.txt) |
 | clap_lex 1.1.1 | MIT | [clap_lex-1.1.1-LICENSE-MIT.txt](licenses/dependencies/clap_lex-1.1.1-LICENSE-MIT.txt) |
+| cpufeatures 0.2.17 | MIT | [cpufeatures-0.2.17-LICENSE-MIT.txt](licenses/dependencies/cpufeatures-0.2.17-LICENSE-MIT.txt) |
+| crypto-common 0.1.7 | MIT | [crypto-common-0.1.7-LICENSE-MIT.txt](licenses/dependencies/crypto-common-0.1.7-LICENSE-MIT.txt) |
+| digest 0.10.7 | MIT | [digest-0.10.7-LICENSE-MIT.txt](licenses/dependencies/digest-0.10.7-LICENSE-MIT.txt) |
+| generic-array 0.14.7 | MIT | [generic-array-0.14.7-LICENSE.txt](licenses/dependencies/generic-array-0.14.7-LICENSE.txt) |
 | itoa 1.0.18 | MIT | [itoa-1.0.18-LICENSE-MIT.txt](licenses/dependencies/itoa-1.0.18-LICENSE-MIT.txt) |
+| libc 0.2.190 | MIT | [libc-0.2.190-LICENSE-MIT.txt](licenses/dependencies/libc-0.2.190-LICENSE-MIT.txt) |
 | memchr 2.8.3 | MIT | [memchr-2.8.3-LICENSE-MIT.txt](licenses/dependencies/memchr-2.8.3-LICENSE-MIT.txt) |
 | proc-macro2 1.0.107 | MIT | [proc-macro2-1.0.107-LICENSE-MIT.txt](licenses/dependencies/proc-macro2-1.0.107-LICENSE-MIT.txt) |
 | quote 1.0.47 | MIT | [quote-1.0.47-LICENSE-MIT.txt](licenses/dependencies/quote-1.0.47-LICENSE-MIT.txt) |
+| same-file 1.0.6 | MIT | [same-file-1.0.6-LICENSE-MIT.txt](licenses/dependencies/same-file-1.0.6-LICENSE-MIT.txt) |
 | serde 1.0.229 | MIT | [serde-1.0.229-LICENSE-MIT.txt](licenses/dependencies/serde-1.0.229-LICENSE-MIT.txt) |
 | serde_core 1.0.229 | MIT | [serde_core-1.0.229-LICENSE-MIT.txt](licenses/dependencies/serde_core-1.0.229-LICENSE-MIT.txt) |
 | serde_derive 1.0.229 | MIT | [serde_derive-1.0.229-LICENSE-MIT.txt](licenses/dependencies/serde_derive-1.0.229-LICENSE-MIT.txt) |
 | serde_json 1.0.152 | MIT | [serde_json-1.0.152-LICENSE-MIT.txt](licenses/dependencies/serde_json-1.0.152-LICENSE-MIT.txt) |
+| sha2 0.10.9 | MIT | [sha2-0.10.9-LICENSE-MIT.txt](licenses/dependencies/sha2-0.10.9-LICENSE-MIT.txt) |
 | strsim 0.11.1 | MIT | [strsim-0.11.1-LICENSE.txt](licenses/dependencies/strsim-0.11.1-LICENSE.txt) |
 | syn 3.0.7 | MIT | [syn-3.0.7-LICENSE-MIT.txt](licenses/dependencies/syn-3.0.7-LICENSE-MIT.txt) |
+| typenum 1.20.1 | MIT | [typenum-1.20.1-LICENSE-MIT.txt](licenses/dependencies/typenum-1.20.1-LICENSE-MIT.txt) |
 | unicode-ident 1.0.26 | MIT AND Unicode-3.0 | [unicode-ident-1.0.26-LICENSE-MIT.txt](licenses/dependencies/unicode-ident-1.0.26-LICENSE-MIT.txt), [unicode-ident-1.0.26-LICENSE-UNICODE.txt](licenses/dependencies/unicode-ident-1.0.26-LICENSE-UNICODE.txt) |
+| version_check 0.9.5 | MIT | [version_check-0.9.5-LICENSE-MIT.txt](licenses/dependencies/version_check-0.9.5-LICENSE-MIT.txt) |
+| winapi-util 0.1.11 | MIT | [winapi-util-0.1.11-LICENSE-MIT.txt](licenses/dependencies/winapi-util-0.1.11-LICENSE-MIT.txt) |
+| windows-link 0.2.1 | MIT | [windows-link-0.2.1-license-mit.txt](licenses/dependencies/windows-link-0.2.1-license-mit.txt) |
+| windows-sys 0.61.2 | MIT | [windows-sys-0.61.2-license-mit.txt](licenses/dependencies/windows-sys-0.61.2-license-mit.txt) |
 | zmij 1.0.23 | MIT | [zmij-1.0.23-LICENSE-MIT.txt](licenses/dependencies/zmij-1.0.23-LICENSE-MIT.txt) |
 
 See [the admission record](docs/foundation/dependencies.json). No license choice here relicenses upstream source.
+
+The #0082 read-only explicit pairing resolver adds exact `same-file` 1.0.6 to
+the root graph, with `winapi-util` 0.1.11, `windows-sys` 0.61.2 and `windows-link`
+0.2.1 on Windows. Their MIT notice bytes were checked against the exact cached
+package archives and reused where already retained for research. This is a
+separate production dependency admission for the
+[bounded pairing API](docs/sidecars/pairing.md); it does not promote any research
+publication, storage or recovery implementation.
+
+The #0077 source binding admits exact `sha2` 0.10.9 with default features disabled
+and `std` enabled. Its locked hashing/buffering/CPU-detection closure appears in
+the table and admission record, including target-only `libc`. MIT notice bytes
+and package archive hashes were checked against the exact registry packages.
+SHA-256 supplies content integrity comparisons; it introduces no secrecy,
+encryption or key-management requirement. The optional assembly dependency is
+disabled. `generic-array` has a compiler-version cfg build script; target-only
+`libc` has its upstream ABI/configuration build script. Their reviewed behavior
+and target limits are recorded in the admission record. No new SDK wrapper or
+root unsafe code is introduced.
 
 The separate #0028 research package has its own
 [exact dependency admission](docs/write-safety/recovery-dependencies.json) and

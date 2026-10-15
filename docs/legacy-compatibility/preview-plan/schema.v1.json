@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://imageinfo.invalid/contracts/cr3-date-preview.v1.schema.json",
+  "title": "Nonexecuting single CR3 date preview intent",
+  "$comment": "Shape only. Rust validation additionally checks date semantics, range arithmetic, occurrence path, source/output inequality, bounded UTF-8 bytes and controls. A schema pass never grants freshness or authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "revisions",
+    "source",
+    "occurrence",
+    "intended_bytes",
+    "output",
+    "preservation",
+    "execution_bindings",
+    "recovery",
+    "apply_authorization"
+  ],
+  "properties": {
+    "schema": {
+      "const": "imageinfo.cr3-date-preview.v1"
+    },
+    "revisions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model",
+        "reader",
+        "admission",
+        "registry",
+        "capability",
+        "conversion",
+        "policy"
+      ],
+      "properties": {
+        "model": {
+          "const": "cr3-date-preview-2026-10-15.1"
+        },
+        "reader": {
+          "const": "r5-read-slice-2026-10-11.1"
+        },
+        "admission": {
+          "const": "r5-date-admission-2026-10-12.1"
+        },
+        "registry": {
+          "const": "raw-known-provenance-2026-10-12.1"
+        },
+        "capability": {
+          "const": "2026-10-12.1"
+        },
+        "conversion": {
+          "const": "exact-gregorian-ascii20"
+        },
+        "policy": {
+          "const": "ordinary-private-owner-od11-a"
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "length",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+        },
+        "length": {
+          "type": "integer",
+          "minimum": 20,
+          "maximum": 268435456
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "occurrence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "native_id",
+        "allocation",
+        "byte_order",
+        "original_bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 64,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "name",
+              "index"
+            ],
+            "properties": {
+              "kind": {
+                "enum": [
+                  "box",
+                  "ifd",
+                  "tag"
+                ]
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "index": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              }
+            }
+          }
+        },
+        "native_id": {
+          "const": 36867
+        },
+        "allocation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "offset",
+            "length"
+          ],
+          "properties": {
+            "offset": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 18446744073709551615
+            },
+            "length": {
+              "const": 20
+            }
+          }
+        },
+        "byte_order": {
+          "enum": [
+            "little-endian",
+            "big-endian"
+          ]
+        },
+        "original_bytes": {
+          "type": "array",
+          "minItems": 20,
+          "maxItems": 20,
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+          }
+        }
+      }
+    },
+    "intended_bytes": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 255
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "policy",
+        "profile",
+        "collision"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+        },
+        "policy": {
+          "const": "ordinary-private-owner-od11-a"
+        },
+        "profile": {
+          "const": "unavailable-production"
+        },
+        "collision": {
+          "const": "require-absent"
+        }
+      }
+    },
+    "preservation": {
+      "const": "entire-source-except-selected-allocation"
+    },
+    "execution_bindings": {
+      "const": "must-recompute-before-any-apply"
+    },
+    "recovery": {
+      "const": "no-mutation-or-recovery-authority"
+    },
+    "apply_authorization": {
+      "const": "separate-caller-required"
+    }
+  }
+}
