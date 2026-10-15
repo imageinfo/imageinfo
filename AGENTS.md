@@ -157,13 +157,19 @@ production profile or RAW admission is qualified.
 Terry authorized parallel subagent work on all tickets authorized to work,
 2026-10-14. Use parallel subagents where practical: separate independent
 implementation, verification, documentation and review work when that helps the
-authorized ticket. The updated Codex supports **one parent plus up to five direct
-subagents: six total threads**, with **maximum depth 1** below the parent.
+authorized ticket. Terry updated the limit on 2026-10-15 to **one parent plus up to
+eight direct subagents: nine total threads**, with **maximum depth 1** below the parent.
 Subagents must not spawn subagents. The limit is a ceiling, not a quota; use the
 number of agents the work benefits from. No separate per-ticket delegation
 approval is needed. This does not authorize pulling or starting another ticket
 outside the requested work. The primary owns integration, verification,
 commits/pushes and the bounded ticket handoff.
+
+Terry specified on 2026-10-15 that all subagents use **GPT-6.1 Sol**
+(`gpt-6.1-sol`) with **Medium** reasoning (`medium`). Set both explicitly when
+spawning subagents; use a fresh context when the spawn tool requires it for model
+overrides, and provide the relevant task context in the delegation message.
+Preserve the eight-direct-subagent and depth-1 limits above.
 
 ## Product intent
 
