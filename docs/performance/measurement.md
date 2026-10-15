@@ -113,14 +113,16 @@ unexpected slow results are not automatically outliers to discard.
 
 ## Choosing limits and targets
 
-All defaults and release thresholds below have status **unmeasured/unset**. Finite
-values must be chosen before a release enables the corresponding operation. A
-capability can remain unavailable until a safe bounded configuration is established.
-This specification does not authorize running an unbounded implementation meanwhile.
+This table describes the evidence needed for policy choices, rather than the
+implemented runtime configuration. The [read-limit proposal](read-limits-proposal.md)
+records current finite parser defaults and separately proposed operating limits;
+new policy choices and release thresholds remain unadopted. A capability can remain
+unavailable until a safe bounded configuration is established. This specification
+does not authorize running an unbounded implementation meanwhile.
 
 | Budget | Evidence required to choose default and supported ceiling | Boundary/failure tests |
 | --- | --- | --- |
-| Cumulative input bytes / `--max-bytes` | Actual read amplification, including repeated passes, sidecars and nested reads | Below/at/above limit; no false complete coverage |
+| Cumulative metadata bytes per input / `--max-bytes` | Bytes requested by the reader, including repeated reads; separate source length and batch-wide work | Below/at/above limit; no false complete coverage |
 | Metadata depth, occurrences, allocations | Legitimate large structures plus malformed/cyclic derivatives | Reject before dangerous allocation; controlled diagnostic |
 | Extracted/decoded/output bytes | Every preview and bounded consumer/projection behavior | Expansion and slow-output cases, no partial final artifact labeled complete |
 | Memory / worker count | Whole process-tree series across batch size and concurrency | Bounded queues/buffers and deterministic order; no parallel writes to one physical file |

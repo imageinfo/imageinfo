@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "protocolRevision": "preview-collector-v1",
+  "fixedUtc": "2026-10-15T18:17:04.981426+00:00",
+  "status": "fixed-before-collection",
+  "sourceRevision": "d8c9f99eebf9d49455ad8b21cbd978567ee94cac",
+  "fixtureKind": "authored-structural-no-camera-data",
+  "binarySha256": "d023d2e86d7e5af33270c44c343925a439777830c8e745cd2b3bbd674f28bba5",
+  "sourceSha256": "775807752f6381b483ae0afd14ce8fd1c5da6d8554d0fb988d4af6d353f7db89",
+  "sourceBytes": 1120527,
+  "resources": [
+    {
+      "tag": "ThumbnailImage",
+      "bytes": 4096,
+      "sha256": "66352a6461ad09a38fc7f48a18bffdb192bd972c4b41c51f5e27189584c63964",
+      "offset": 730
+    },
+    {
+      "tag": "PreviewImage",
+      "bytes": 65536,
+      "sha256": "b812ac72cb63bd768b40daf85e910a82fb8a302a088862936718f3e9dd08ec2b",
+      "offset": 6352
+    },
+    {
+      "tag": "JpgFromRaw",
+      "bytes": 1048583,
+      "sha256": "2ea02d923bb3b8ca20e3a211142e22b13b90d4f19dcc05cfd13fe95a46a6ad97",
+      "offset": 71896
+    }
+  ],
+  "sourcePins": {
+    "scripts/measure_previews.py": "b89962861824bd97778af2cf35703551016da6e8841101df564f8eccb9751f2c",
+    "scripts/read_benchmark.py": "585c3d923ae49991ce3804afc5b70e7c474ba93c4b245fc9db26f41b9e14bdbb",
+    "docs/performance/preview/fixture.rs": "1fb58e5a889a975f7462c5e249c262b2239ce743e03d05270cc964a46391f392",
+    "tests/support/mod.rs": "c8354d2609aa664d1b86ceca75a7d9500973fcf222cdd267ce9b3c7bafe34104",
+    "Cargo.lock": "f810db2731ce49b2c51d048e1bbefbe585ebef35b36a0575e0ff5e47c97e86e8",
+    "Cargo.toml": "4190239a3023a219cf3f718dc39f66d6cb4f5a43d1c4d0f6c7d3cffac4f1bbd9"
+  },
+  "warmups": 2,
+  "repeats": 10,
+  "timeoutMs": 30000,
+  "captureBytes": 1048576,
+  "maxBytes": 8388608,
+  "maxPreviewBytes": 67108864,
+  "schedule": "list then ThumbnailImage/PreviewImage/JpgFromRaw; each 2 warmups then 10 samples; then each tag collision then each tag preview-limit; fixed 54 attempts; no retries/trims/adaptive stops",
+  "consumer": "concurrently drained bounded in-memory JSON stdout/stderr capture, 4096-byte chunks; direct CLI process; extraction bytes to fresh local files; validation outside timing",
+  "cache": "fresh application process each attempt; source/preflight expected-resource hashing exposes warm OS cache; OS/device caches uncontrolled; server not applicable; no eviction",
+  "storage": {
+    "scope": "same local C: NTFS volume for source, executable, captures and extracted outputs",
+    "observedFreeBytesBefore": 1474939342848,
+    "observedVolumeBytes": 1997989212160,
+    "deviceTopology": "unknown; CIM unavailable in sandbox",
+    "compressionEncryption": "unknown",
+    "durability": "native extraction includes file flush/sync and no-clobber hard-link publication; no directory/storage durability qualification"
+  },
+  "environment": {
+    "os": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "cpuModel": "unknown; CIM unavailable",
+    "ramBytes": null,
+    "ramReason": "CIM unavailable",
+    "powerPlan": "Balanced (powercfg /getactivescheme)",
+    "powerSource": "unknown",
+    "localeTimezone": "Python process locale inherited; Windows Eastern time per task context",
+    "securityScannerIndexer": "uncontrolled/unknown",
+    "backgroundLoad": "uncontrolled shared developer workstation; parallel documentation/verification work possible"
+  },
+  "telemetry": "elapsed only; CPU/memory/physical I/O/first-result/allocated scratch unavailable, null with reasons in record",
+  "statistics": "success-conditional per-operation/tag min, median, nearest-rank p95, max and total elapsed ns; n=10; warmups/controls/failed/censored excluded from latency distribution and retained in denominator",
+  "limits": "local authored operation smoke; no real-camera baseline, decoder, comparative speed, cold-cache, defaults or release/regression thresholds",
+  "supersession": "Earlier complete 54-attempt setup series retained privately; superseded solely to normalize source LF and rustfmt fixture generator before this final frozen series."
+}

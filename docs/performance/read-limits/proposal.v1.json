@@ -1,0 +1,289 @@
+{
+  "schemaVersion": 1,
+  "proposal": "read-limits-v1",
+  "status": "proposed-not-adopted",
+  "observationDate": "2026-10-15",
+  "scope": "logical parser limits; scalar model only; no media reads or runtime changes",
+  "limits": [
+    {
+      "name": "metadata_bytes",
+      "unit": "successful request bytes per reader invocation including repeated reads",
+      "implementedDefault": 8388608,
+      "proposedDefault": 8388608,
+      "proposedOperatingCeiling": 8388608,
+      "implementedHardCeiling": 268435456
+    },
+    {
+      "name": "block_bytes",
+      "unit": "bytes per metadata read request",
+      "implementedDefault": 1048576,
+      "proposedDefault": 1048576,
+      "proposedOperatingCeiling": 1048576,
+      "implementedHardCeiling": 8388608
+    },
+    {
+      "name": "boxes",
+      "unit": "scanned boxes per input",
+      "implementedDefault": 4096,
+      "proposedDefault": 4096,
+      "proposedOperatingCeiling": 4096,
+      "implementedHardCeiling": 65536
+    },
+    {
+      "name": "depth",
+      "unit": "internal BMFF parent-path or TIFF traversal depth",
+      "implementedDefault": 16,
+      "proposedDefault": 16,
+      "proposedOperatingCeiling": 16,
+      "implementedHardCeiling": 64
+    },
+    {
+      "name": "entries",
+      "unit": "cumulative entries per TIFF parse",
+      "implementedDefault": 4096,
+      "proposedDefault": 4096,
+      "proposedOperatingCeiling": 4096,
+      "implementedHardCeiling": 65536
+    },
+    {
+      "name": "records",
+      "unit": "timed records per supported track sample",
+      "implementedDefault": 4096,
+      "proposedDefault": 4096,
+      "proposedOperatingCeiling": 4096,
+      "implementedHardCeiling": 65536
+    }
+  ],
+  "boundaryVectors": [
+    {
+      "limit": "metadata_bytes",
+      "boundary": "proposedOperatingCeiling",
+      "value": 8388607,
+      "expected": "within"
+    },
+    {
+      "limit": "metadata_bytes",
+      "boundary": "proposedOperatingCeiling",
+      "value": 8388608,
+      "expected": "within"
+    },
+    {
+      "limit": "metadata_bytes",
+      "boundary": "proposedOperatingCeiling",
+      "value": 8388609,
+      "expected": "exceeds"
+    },
+    {
+      "limit": "metadata_bytes",
+      "boundary": "implementedHardCeiling",
+      "value": 268435455,
+      "expected": "within"
+    },
+    {
+      "limit": "metadata_bytes",
+      "boundary": "implementedHardCeiling",
+      "value": 268435456,
+      "expected": "within"
+    },
+    {
+      "limit": "metadata_bytes",
+      "boundary": "implementedHardCeiling",
+      "value": 268435457,
+      "expected": "exceeds"
+    },
+    {
+      "limit": "block_bytes",
+      "boundary": "proposedOperatingCeiling",
+      "value": 1048575,
+      "expected": "within"
+    },
+    {
+      "limit": "block_bytes",
+      "boundary": "proposedOperatingCeiling",
+      "value": 1048576,
+      "expected": "within"
+    },
+    {
+      "limit": "block_bytes",
+      "boundary": "proposedOperatingCeiling",
+      "value": 1048577,
+      "expected": "exceeds"
+    },
+    {
+      "limit": "block_bytes",
+      "boundary": "implementedHardCeiling",
+      "value": 8388607,
+      "expected": "within"
+    },
+    {
+      "limit": "block_bytes",
+      "boundary": "implementedHardCeiling",
+      "value": 8388608,
+      "expected": "within"
+    },
+    {
+      "limit": "block_bytes",
+      "boundary": "implementedHardCeiling",
+      "value": 8388609,
+      "expected": "exceeds"
+    },
+    {
+      "limit": "boxes",
+      "boundary": "proposedOperatingCeiling",
+      "value": 4095,
+      "expected": "within"
+    },
+    {
+      "limit": "boxes",
+      "boundary": "proposedOperatingCeiling",
+      "value": 4096,
+      "expected": "within"
+    },
+    {
+      "limit": "boxes",
+      "boundary": "proposedOperatingCeiling",
+      "value": 4097,
+      "expected": "exceeds"
+    },
+    {
+      "limit": "boxes",
+      "boundary": "implementedHardCeiling",
+      "value": 65535,
+      "expected": "within"
+    },
+    {
+      "limit": "boxes",
+      "boundary": "implementedHardCeiling",
+      "value": 65536,
+      "expected": "within"
+    },
+    {
+      "limit": "boxes",
+      "boundary": "implementedHardCeiling",
+      "value": 65537,
+      "expected": "exceeds"
+    },
+    {
+      "limit": "depth",
+      "boundary": "proposedOperatingCeiling",
+      "value": 15,
+      "expected": "within"
+    },
+    {
+      "limit": "depth",
+      "boundary": "proposedOperatingCeiling",
+      "value": 16,
+      "expected": "within"
+    },
+    {
+      "limit": "depth",
+      "boundary": "proposedOperatingCeiling",
+      "value": 17,
+      "expected": "exceeds"
+    },
+    {
+      "limit": "depth",
+      "boundary": "implementedHardCeiling",
+      "value": 63,
+      "expected": "within"
+    },
+    {
+      "limit": "depth",
+      "boundary": "implementedHardCeiling",
+      "value": 64,
+      "expected": "within"
+    },
+    {
+      "limit": "depth",
+      "boundary": "implementedHardCeiling",
+      "value": 65,
+      "expected": "exceeds"
+    },
+    {
+      "limit": "entries",
+      "boundary": "proposedOperatingCeiling",
+      "value": 4095,
+      "expected": "within"
+    },
+    {
+      "limit": "entries",
+      "boundary": "proposedOperatingCeiling",
+      "value": 4096,
+      "expected": "within"
+    },
+    {
+      "limit": "entries",
+      "boundary": "proposedOperatingCeiling",
+      "value": 4097,
+      "expected": "exceeds"
+    },
+    {
+      "limit": "entries",
+      "boundary": "implementedHardCeiling",
+      "value": 65535,
+      "expected": "within"
+    },
+    {
+      "limit": "entries",
+      "boundary": "implementedHardCeiling",
+      "value": 65536,
+      "expected": "within"
+    },
+    {
+      "limit": "entries",
+      "boundary": "implementedHardCeiling",
+      "value": 65537,
+      "expected": "exceeds"
+    },
+    {
+      "limit": "records",
+      "boundary": "proposedOperatingCeiling",
+      "value": 4095,
+      "expected": "within"
+    },
+    {
+      "limit": "records",
+      "boundary": "proposedOperatingCeiling",
+      "value": 4096,
+      "expected": "within"
+    },
+    {
+      "limit": "records",
+      "boundary": "proposedOperatingCeiling",
+      "value": 4097,
+      "expected": "exceeds"
+    },
+    {
+      "limit": "records",
+      "boundary": "implementedHardCeiling",
+      "value": 65535,
+      "expected": "within"
+    },
+    {
+      "limit": "records",
+      "boundary": "implementedHardCeiling",
+      "value": 65536,
+      "expected": "within"
+    },
+    {
+      "limit": "records",
+      "boundary": "implementedHardCeiling",
+      "value": 65537,
+      "expected": "exceeds"
+    }
+  ],
+  "noise": {
+    "source": "../single-read/results.v1.json",
+    "unit": "nanoseconds",
+    "baselineMedianNs": 10013100,
+    "trialMedianSpanNs": 356850,
+    "maximumAbsoluteWindowShiftNs": 399650,
+    "noiseScaleNs": 399650,
+    "relativeFloorNumerator": 1,
+    "relativeFloorDenominator": 10,
+    "noiseMultiplier": 3,
+    "advisoryBudgetNs": 1198950,
+    "status": "proposed-advisory-not-release-gate",
+    "batchBudget": null
+  }
+}

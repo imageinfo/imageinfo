@@ -60,6 +60,14 @@ jobs:
           python scripts/check_date_mapping.py
           python scripts/check_read_session.py
           python -m py_compile scripts/check_date_mapping.py scripts/check_read_session.py scripts/check_read_arguments.py
+      - name: Check proposed read-limit arithmetic
+        run: python scripts/check_read_limits.py
+      - name: Check authored preview measurement accounting
+        run: |
+          python scripts/test_measure_previews.py
+          python -m py_compile scripts/measure_previews.py scripts/audit_previews.py
+          rustfmt --edition 2024 --check docs/performance/preview/fixture.rs
+          rustc --edition=2024 --emit=metadata --out-dir .local docs/performance/preview/fixture.rs
       - name: Check single-read evidence verifier
         run: |
           python -m py_compile scripts/measure_single_read.py scripts/audit_read_baseline.py
@@ -262,6 +270,16 @@ jobs:
           python scripts/qualify_batch_read.py --binary "$binary" --source-root . --parent .local/batch-read-ci --output .local/batch-read-ci.json
       - name: Qualify finite native read argument ordering
         run: python scripts/check_read_arguments.py
+      - name: Qualify native paths and declared shells
+        run: python scripts/check_native_paths.py --public-results .local/native-paths-ci.json
+      - name: Retain finite native path observations
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: native-paths-${{ matrix.os }}
+          path: .local/native-paths-ci.json
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
       - name: Build release executable
         run: cargo build --locked --release
       - name: Check experimental candidate formatting

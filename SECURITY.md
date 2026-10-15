@@ -1,13 +1,14 @@
 # Security reporting
 
-imageinfo is in requirements and research. There are **no published executable
+imageinfo has a bounded native RAW metadata reader and stored-preview extractor,
+alongside requirements and research code. There are **no published executable
 releases or supported software version ranges** yet. Security concerns about the
 repository, future parser/write behavior, workflows or exposed sensitive material
 are still relevant.
 
 ## Contact the project
 
-As checked on **2026-10-10**, GitHub private vulnerability reporting is **disabled**
+As checked on **2026-10-15**, GitHub private vulnerability reporting is **disabled**
 for this repository. No dedicated private security inbox has been established by
 the current governance work. Do not assume that posting an issue makes it private.
 
@@ -41,3 +42,7 @@ The operational response and release/access recovery procedure is in
 [the runbook](docs/governance/release-and-recovery.md). Named primary/backup responders,
 working private intake and response expectations remain explicit readiness actions
 in [GOVERNANCE.md](GOVERNANCE.md). No repository settings were changed by this card.
+
+The [security-intake readiness proposal](docs/governance/security-intake-readiness.md)
+records the current setting observation and a future activation/test procedure.
+It does not establish a staffed private reporting route.

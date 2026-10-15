@@ -107,6 +107,13 @@ the configured ordering within each lane. Umbrellas are organizational records,
 not execution/resumption points. See [local-board procedures](local-board.md) and
 [AGENTS.md](../AGENTS.md).
 
+The following 2026-10-15 batch pairs authors and verification on #0059 native
+path/shell qualification, #0062 authored preview measurements, #0064 read-limit
+proposal and #0066 security-intake readiness proposal. Its eight assignments use
+five Sol Medium, one Sol High and two Luna Light agents according to actual work.
+The mix is selected again each turn. These bounded deliverables do not enable a
+writer/storage profile, adopt proposed defaults or activate repository settings.
+
 The split preserves [WS/SAF requirements](write-safety/README.md), accepted
 [OD-11 option A](write-safety/practical-output-policy.md) and independent RAW
 admission. #0027's accepted refusal research does not provide an admitted mutation

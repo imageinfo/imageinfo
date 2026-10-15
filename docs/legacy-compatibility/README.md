@@ -13,6 +13,8 @@ surface. [#0056](r5-date-mapping.md) maps the bounded date family to actual look
 and refusal behavior. The [#0054 extension boundary](executable-extension-boundary.md)
 and [#0058 session framing](read-session-framing.md) remain proposals with explicit
 product/runtime work still open.
+[#0059 native path qualification](native-paths.md) separately exercises a finite
+set of native argv and declared shell paths; it does not establish all-shell parity.
 
 Status: **proposal for review**, `2026-10-10.1`, card **#0007**. Source observation
 date: **2026-10-10**. Baseline: ExifTool source 13.59 at commit

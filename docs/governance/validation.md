@@ -35,6 +35,11 @@ Private reporting enablement and responder verification are **GOV-OPEN-02**, not
 silently completed by adding SECURITY.md. Its fallback asks only for a minimal
 public contact request, never exploit details, credentials or private media.
 
+The subsequent [#0066 readiness proposal](security-intake-readiness.md) rechecked
+the reporting setting read-only on 2026-10-15: HTTP 200, disabled. It prepares the
+activation, consent and notification-test package; no setting change, human
+appointment or completed intake exercise follows from that proposal.
+
 ## Scenario review
 
 These are walkthrough checks of the process, not executed permission/release drills.

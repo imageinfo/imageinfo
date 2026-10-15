@@ -81,6 +81,10 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Expression/module boundary proposal](legacy-compatibility/executable-extension-boundary.md) | #0054 nine named RAW uses, three alternatives and an explicit product choice; no extension runtime or adopted policy. |
 | [R5 date lookup/refusal mapping](legacy-compatibility/r5-date-mapping.md) | #0056 four exact fields and twenty observation/refusal/unverified cells, without a writer or repair capability. |
 | [Read-only session framing proposal](legacy-compatibility/read-session-framing.md) | #0058 bounded sequential JSONL specification and authored schema/model vectors; no persistent runtime or pipe qualification. |
+| [Native path and shell qualification](legacy-compatibility/native-paths.md) | #0059 finite native argv and declared shell path cases, with explicit platform and byte-representation limits. |
+| [Stored-preview measurement](performance/preview-baseline.md) | #0062 finite authored listing/extraction measurements and stored-resource correctness, without a camera-corpus speed claim. |
+| [Read-limit proposal](performance/read-limits-proposal.md) | #0064 measured evidence, proposed operating limits and explicit unmeasured cells; no adopted runtime default change. |
+| [Security-intake readiness proposal](governance/security-intake-readiness.md) | #0066 current read-only setting observation and proposed consent/activation/test package; no settings changes or staffed-intake claim. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |

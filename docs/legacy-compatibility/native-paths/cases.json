@@ -1,0 +1,3944 @@
+{
+  "schemaVersion": 1,
+  "scope": "Finite authored metadata-read and binary-list native argv and declared-shell cells; no reference runtime comparison",
+  "cases": [
+    {
+      "id": "NP-001",
+      "label": "literal source.cr3",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "source.cr3"
+      ],
+      "paths": [
+        "source.cr3"
+      ],
+      "files": [
+        {
+          "path": "source.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-002",
+      "label": "literal source.cr3",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "source.cr3"
+      ],
+      "paths": [
+        "source.cr3"
+      ],
+      "files": [
+        {
+          "path": "source.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-003",
+      "label": "literal source.cr3",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "source.cr3"
+      ],
+      "paths": [
+        "source.cr3"
+      ],
+      "files": [
+        {
+          "path": "source.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-004",
+      "label": "literal source.cr3",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "source.cr3"
+      ],
+      "paths": [
+        "source.cr3"
+      ],
+      "files": [
+        {
+          "path": "source.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-005",
+      "label": "literal space name.cr3",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "space name.cr3"
+      ],
+      "paths": [
+        "space name.cr3"
+      ],
+      "files": [
+        {
+          "path": "space name.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-006",
+      "label": "literal space name.cr3",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "space name.cr3"
+      ],
+      "paths": [
+        "space name.cr3"
+      ],
+      "files": [
+        {
+          "path": "space name.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-007",
+      "label": "literal space name.cr3",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "space name.cr3"
+      ],
+      "paths": [
+        "space name.cr3"
+      ],
+      "files": [
+        {
+          "path": "space name.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-008",
+      "label": "literal space name.cr3",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "space name.cr3"
+      ],
+      "paths": [
+        "space name.cr3"
+      ],
+      "files": [
+        {
+          "path": "space name.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-009",
+      "label": "literal \u5199\u771f \ud83e\udd86.cr3",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "\u5199\u771f \ud83e\udd86.cr3"
+      ],
+      "paths": [
+        "\u5199\u771f \ud83e\udd86.cr3"
+      ],
+      "files": [
+        {
+          "path": "\u5199\u771f \ud83e\udd86.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-010",
+      "label": "literal \u5199\u771f \ud83e\udd86.cr3",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "\u5199\u771f \ud83e\udd86.cr3"
+      ],
+      "paths": [
+        "\u5199\u771f \ud83e\udd86.cr3"
+      ],
+      "files": [
+        {
+          "path": "\u5199\u771f \ud83e\udd86.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-011",
+      "label": "literal \u5199\u771f \ud83e\udd86.cr3",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "\u5199\u771f \ud83e\udd86.cr3"
+      ],
+      "paths": [
+        "\u5199\u771f \ud83e\udd86.cr3"
+      ],
+      "files": [
+        {
+          "path": "\u5199\u771f \ud83e\udd86.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-012",
+      "label": "literal \u5199\u771f \ud83e\udd86.cr3",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "\u5199\u771f \ud83e\udd86.cr3"
+      ],
+      "paths": [
+        "\u5199\u771f \ud83e\udd86.cr3"
+      ],
+      "files": [
+        {
+          "path": "\u5199\u771f \ud83e\udd86.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-013",
+      "label": "literal caf\u00e9.cr3",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "caf\u00e9.cr3"
+      ],
+      "paths": [
+        "caf\u00e9.cr3"
+      ],
+      "files": [
+        {
+          "path": "caf\u00e9.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-014",
+      "label": "literal caf\u00e9.cr3",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "caf\u00e9.cr3"
+      ],
+      "paths": [
+        "caf\u00e9.cr3"
+      ],
+      "files": [
+        {
+          "path": "caf\u00e9.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-015",
+      "label": "literal caf\u00e9.cr3",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "caf\u00e9.cr3"
+      ],
+      "paths": [
+        "caf\u00e9.cr3"
+      ],
+      "files": [
+        {
+          "path": "caf\u00e9.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-016",
+      "label": "literal caf\u00e9.cr3",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "caf\u00e9.cr3"
+      ],
+      "paths": [
+        "caf\u00e9.cr3"
+      ],
+      "files": [
+        {
+          "path": "caf\u00e9.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-017",
+      "label": "literal cafe\u0301.cr3",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "cafe\u0301.cr3"
+      ],
+      "paths": [
+        "cafe\u0301.cr3"
+      ],
+      "files": [
+        {
+          "path": "cafe\u0301.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-018",
+      "label": "literal cafe\u0301.cr3",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "cafe\u0301.cr3"
+      ],
+      "paths": [
+        "cafe\u0301.cr3"
+      ],
+      "files": [
+        {
+          "path": "cafe\u0301.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-019",
+      "label": "literal cafe\u0301.cr3",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "cafe\u0301.cr3"
+      ],
+      "paths": [
+        "cafe\u0301.cr3"
+      ],
+      "files": [
+        {
+          "path": "cafe\u0301.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-020",
+      "label": "literal cafe\u0301.cr3",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "cafe\u0301.cr3"
+      ],
+      "paths": [
+        "cafe\u0301.cr3"
+      ],
+      "files": [
+        {
+          "path": "cafe\u0301.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-021",
+      "label": "literal -photo.cr3",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "-photo.cr3"
+      ],
+      "paths": [
+        "-photo.cr3"
+      ],
+      "files": [
+        {
+          "path": "-photo.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-022",
+      "label": "literal -photo.cr3",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "-photo.cr3"
+      ],
+      "paths": [
+        "-photo.cr3"
+      ],
+      "files": [
+        {
+          "path": "-photo.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-023",
+      "label": "literal -photo.cr3",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "-photo.cr3"
+      ],
+      "paths": [
+        "-photo.cr3"
+      ],
+      "files": [
+        {
+          "path": "-photo.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-024",
+      "label": "literal -photo.cr3",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "-photo.cr3"
+      ],
+      "paths": [
+        "-photo.cr3"
+      ],
+      "files": [
+        {
+          "path": "-photo.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-025",
+      "label": "literal --output=json",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "--output=json"
+      ],
+      "paths": [
+        "--output=json"
+      ],
+      "files": [
+        {
+          "path": "--output=json",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-026",
+      "label": "literal --output=json",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "--output=json"
+      ],
+      "paths": [
+        "--output=json"
+      ],
+      "files": [
+        {
+          "path": "--output=json",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-027",
+      "label": "literal --output=json",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "--output=json"
+      ],
+      "paths": [
+        "--output=json"
+      ],
+      "files": [
+        {
+          "path": "--output=json",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-028",
+      "label": "literal --output=json",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "--output=json"
+      ],
+      "paths": [
+        "--output=json"
+      ],
+      "files": [
+        {
+          "path": "--output=json",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-029",
+      "label": "literal help",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "help"
+      ],
+      "paths": [
+        "help"
+      ],
+      "files": [
+        {
+          "path": "help",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-030",
+      "label": "literal help",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "help"
+      ],
+      "paths": [
+        "help"
+      ],
+      "files": [
+        {
+          "path": "help",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-031",
+      "label": "literal help",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "help"
+      ],
+      "paths": [
+        "help"
+      ],
+      "files": [
+        {
+          "path": "help",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-032",
+      "label": "literal help",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "help"
+      ],
+      "paths": [
+        "help"
+      ],
+      "files": [
+        {
+          "path": "help",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-033",
+      "label": "literal single'quote.cr3",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "single'quote.cr3"
+      ],
+      "paths": [
+        "single'quote.cr3"
+      ],
+      "files": [
+        {
+          "path": "single'quote.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-034",
+      "label": "literal single'quote.cr3",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "single'quote.cr3"
+      ],
+      "paths": [
+        "single'quote.cr3"
+      ],
+      "files": [
+        {
+          "path": "single'quote.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-035",
+      "label": "literal single'quote.cr3",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "single'quote.cr3"
+      ],
+      "paths": [
+        "single'quote.cr3"
+      ],
+      "files": [
+        {
+          "path": "single'quote.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-036",
+      "label": "literal single'quote.cr3",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "single'quote.cr3"
+      ],
+      "paths": [
+        "single'quote.cr3"
+      ],
+      "files": [
+        {
+          "path": "single'quote.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-037",
+      "label": "literal dollar$HOME`tick.cr3",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "dollar$HOME`tick.cr3"
+      ],
+      "paths": [
+        "dollar$HOME`tick.cr3"
+      ],
+      "files": [
+        {
+          "path": "dollar$HOME`tick.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-038",
+      "label": "literal dollar$HOME`tick.cr3",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "dollar$HOME`tick.cr3"
+      ],
+      "paths": [
+        "dollar$HOME`tick.cr3"
+      ],
+      "files": [
+        {
+          "path": "dollar$HOME`tick.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-039",
+      "label": "literal dollar$HOME`tick.cr3",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "dollar$HOME`tick.cr3"
+      ],
+      "paths": [
+        "dollar$HOME`tick.cr3"
+      ],
+      "files": [
+        {
+          "path": "dollar$HOME`tick.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-040",
+      "label": "literal dollar$HOME`tick.cr3",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "dollar$HOME`tick.cr3"
+      ],
+      "paths": [
+        "dollar$HOME`tick.cr3"
+      ],
+      "files": [
+        {
+          "path": "dollar$HOME`tick.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-041",
+      "label": "literal semi;and&paren().cr3",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "semi;and&paren().cr3"
+      ],
+      "paths": [
+        "semi;and&paren().cr3"
+      ],
+      "files": [
+        {
+          "path": "semi;and&paren().cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-042",
+      "label": "literal semi;and&paren().cr3",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "semi;and&paren().cr3"
+      ],
+      "paths": [
+        "semi;and&paren().cr3"
+      ],
+      "files": [
+        {
+          "path": "semi;and&paren().cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-043",
+      "label": "literal semi;and&paren().cr3",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "semi;and&paren().cr3"
+      ],
+      "paths": [
+        "semi;and&paren().cr3"
+      ],
+      "files": [
+        {
+          "path": "semi;and&paren().cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-044",
+      "label": "literal semi;and&paren().cr3",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "semi;and&paren().cr3"
+      ],
+      "paths": [
+        "semi;and&paren().cr3"
+      ],
+      "files": [
+        {
+          "path": "semi;and&paren().cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-045",
+      "label": "literal [literal].cr3",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "[literal].cr3"
+      ],
+      "paths": [
+        "[literal].cr3"
+      ],
+      "files": [
+        {
+          "path": "[literal].cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-046",
+      "label": "literal [literal].cr3",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "[literal].cr3"
+      ],
+      "paths": [
+        "[literal].cr3"
+      ],
+      "files": [
+        {
+          "path": "[literal].cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-047",
+      "label": "literal [literal].cr3",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "[literal].cr3"
+      ],
+      "paths": [
+        "[literal].cr3"
+      ],
+      "files": [
+        {
+          "path": "[literal].cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-048",
+      "label": "literal [literal].cr3",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "[literal].cr3"
+      ],
+      "paths": [
+        "[literal].cr3"
+      ],
+      "files": [
+        {
+          "path": "[literal].cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-049",
+      "label": "two literal input operands preserve order",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "space name.cr3",
+        "\u5199\u771f \ud83e\udd86.cr3"
+      ],
+      "paths": [
+        "space name.cr3",
+        "\u5199\u771f \ud83e\udd86.cr3"
+      ],
+      "files": [
+        {
+          "path": "space name.cr3",
+          "content": "fixture"
+        },
+        {
+          "path": "\u5199\u771f \ud83e\udd86.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-050",
+      "label": "two literal input operands preserve order",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "space name.cr3",
+        "\u5199\u771f \ud83e\udd86.cr3"
+      ],
+      "paths": [
+        "space name.cr3",
+        "\u5199\u771f \ud83e\udd86.cr3"
+      ],
+      "files": [
+        {
+          "path": "space name.cr3",
+          "content": "fixture"
+        },
+        {
+          "path": "\u5199\u771f \ud83e\udd86.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-051",
+      "label": "two literal input operands preserve order",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "space name.cr3",
+        "\u5199\u771f \ud83e\udd86.cr3"
+      ],
+      "paths": [
+        "space name.cr3",
+        "\u5199\u771f \ud83e\udd86.cr3"
+      ],
+      "files": [
+        {
+          "path": "space name.cr3",
+          "content": "fixture"
+        },
+        {
+          "path": "\u5199\u771f \ud83e\udd86.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-052",
+      "label": "two literal input operands preserve order",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "space name.cr3",
+        "\u5199\u771f \ud83e\udd86.cr3"
+      ],
+      "paths": [
+        "space name.cr3",
+        "\u5199\u771f \ud83e\udd86.cr3"
+      ],
+      "files": [
+        {
+          "path": "space name.cr3",
+          "content": "fixture"
+        },
+        {
+          "path": "\u5199\u771f \ud83e\udd86.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-053",
+      "label": "explicit dot relative path",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "./space name.cr3"
+      ],
+      "paths": [
+        "./space name.cr3"
+      ],
+      "files": [
+        {
+          "path": "space name.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-054",
+      "label": "explicit dot relative path",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "./space name.cr3"
+      ],
+      "paths": [
+        "./space name.cr3"
+      ],
+      "files": [
+        {
+          "path": "space name.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-055",
+      "label": "explicit dot relative path",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "./space name.cr3"
+      ],
+      "paths": [
+        "./space name.cr3"
+      ],
+      "files": [
+        {
+          "path": "space name.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-056",
+      "label": "explicit dot relative path",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "./space name.cr3"
+      ],
+      "paths": [
+        "./space name.cr3"
+      ],
+      "files": [
+        {
+          "path": "space name.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-057",
+      "label": "missing literal input",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "missing file.cr3"
+      ],
+      "paths": [
+        "missing file.cr3"
+      ],
+      "files": [],
+      "expected": {
+        "windows": {
+          "status": 1,
+          "kind": "file-refusal",
+          "code": "INPUT_IO"
+        },
+        "linux": {
+          "status": 1,
+          "kind": "file-refusal",
+          "code": "INPUT_IO"
+        },
+        "macos": {
+          "status": 1,
+          "kind": "file-refusal",
+          "code": "INPUT_IO"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-058",
+      "label": "missing literal input",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "missing file.cr3"
+      ],
+      "paths": [
+        "missing file.cr3"
+      ],
+      "files": [],
+      "expected": {
+        "windows": {
+          "status": 1,
+          "kind": "file-refusal",
+          "code": "INPUT_IO"
+        },
+        "linux": {
+          "status": 1,
+          "kind": "file-refusal",
+          "code": "INPUT_IO"
+        },
+        "macos": {
+          "status": 1,
+          "kind": "file-refusal",
+          "code": "INPUT_IO"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-059",
+      "label": "missing literal input",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "missing file.cr3"
+      ],
+      "paths": [
+        "missing file.cr3"
+      ],
+      "files": [],
+      "expected": {
+        "windows": {
+          "status": 1,
+          "kind": "file-refusal",
+          "code": "INPUT_IO"
+        },
+        "linux": {
+          "status": 1,
+          "kind": "file-refusal",
+          "code": "INPUT_IO"
+        },
+        "macos": {
+          "status": 1,
+          "kind": "file-refusal",
+          "code": "INPUT_IO"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-060",
+      "label": "missing literal input",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "missing file.cr3"
+      ],
+      "paths": [
+        "missing file.cr3"
+      ],
+      "files": [],
+      "expected": {
+        "windows": {
+          "status": 1,
+          "kind": "file-refusal",
+          "code": "INPUT_IO"
+        },
+        "linux": {
+          "status": 1,
+          "kind": "file-refusal",
+          "code": "INPUT_IO"
+        },
+        "macos": {
+          "status": 1,
+          "kind": "file-refusal",
+          "code": "INPUT_IO"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-061",
+      "label": "hyphen operand without terminator",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "-photo.cr3"
+      ],
+      "paths": [],
+      "files": [
+        {
+          "path": "-photo.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_OPTION"
+        },
+        "linux": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_OPTION"
+        },
+        "macos": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_OPTION"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-062",
+      "label": "hyphen operand without terminator",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "-photo.cr3"
+      ],
+      "paths": [],
+      "files": [
+        {
+          "path": "-photo.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_OPTION"
+        },
+        "linux": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_OPTION"
+        },
+        "macos": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_OPTION"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-063",
+      "label": "hyphen operand without terminator",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "-photo.cr3"
+      ],
+      "paths": [],
+      "files": [
+        {
+          "path": "-photo.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_OPTION"
+        },
+        "linux": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_OPTION"
+        },
+        "macos": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_OPTION"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-064",
+      "label": "hyphen operand without terminator",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "-photo.cr3"
+      ],
+      "paths": [],
+      "files": [
+        {
+          "path": "-photo.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_OPTION"
+        },
+        "linux": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_OPTION"
+        },
+        "macos": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_OPTION"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-065",
+      "label": "empty operand",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        ""
+      ],
+      "paths": [],
+      "files": [],
+      "expected": {
+        "windows": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_INPUT"
+        },
+        "linux": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_INPUT"
+        },
+        "macos": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_INPUT"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-066",
+      "label": "empty operand",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        ""
+      ],
+      "paths": [],
+      "files": [],
+      "expected": {
+        "windows": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_INPUT"
+        },
+        "linux": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_INPUT"
+        },
+        "macos": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_INPUT"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-067",
+      "label": "empty operand",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        ""
+      ],
+      "paths": [],
+      "files": [],
+      "expected": {
+        "windows": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_INPUT"
+        },
+        "linux": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_INPUT"
+        },
+        "macos": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_INPUT"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-068",
+      "label": "empty operand",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        ""
+      ],
+      "paths": [],
+      "files": [],
+      "expected": {
+        "windows": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_INPUT"
+        },
+        "linux": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_INPUT"
+        },
+        "macos": {
+          "status": 2,
+          "kind": "syntax-refusal",
+          "code": "INVALID_INPUT"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-069",
+      "label": "Unix literal double\"quote.cr3",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "double\"quote.cr3"
+      ],
+      "paths": [
+        "double\"quote.cr3"
+      ],
+      "files": [
+        {
+          "path": "double\"quote.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-070",
+      "label": "Unix literal double\"quote.cr3",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "double\"quote.cr3"
+      ],
+      "paths": [
+        "double\"quote.cr3"
+      ],
+      "files": [
+        {
+          "path": "double\"quote.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-071",
+      "label": "Unix literal double\"quote.cr3",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "double\"quote.cr3"
+      ],
+      "paths": [
+        "double\"quote.cr3"
+      ],
+      "files": [
+        {
+          "path": "double\"quote.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-072",
+      "label": "Unix literal double\"quote.cr3",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "double\"quote.cr3"
+      ],
+      "paths": [
+        "double\"quote.cr3"
+      ],
+      "files": [
+        {
+          "path": "double\"quote.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-073",
+      "label": "Unix literal wild*question?.cr3",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "wild*question?.cr3"
+      ],
+      "paths": [
+        "wild*question?.cr3"
+      ],
+      "files": [
+        {
+          "path": "wild*question?.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-074",
+      "label": "Unix literal wild*question?.cr3",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "wild*question?.cr3"
+      ],
+      "paths": [
+        "wild*question?.cr3"
+      ],
+      "files": [
+        {
+          "path": "wild*question?.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-075",
+      "label": "Unix literal wild*question?.cr3",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "wild*question?.cr3"
+      ],
+      "paths": [
+        "wild*question?.cr3"
+      ],
+      "files": [
+        {
+          "path": "wild*question?.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-076",
+      "label": "Unix literal wild*question?.cr3",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "wild*question?.cr3"
+      ],
+      "paths": [
+        "wild*question?.cr3"
+      ],
+      "files": [
+        {
+          "path": "wild*question?.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-077",
+      "label": "Unix literal back\\slash.cr3",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "back\\slash.cr3"
+      ],
+      "paths": [
+        "back\\slash.cr3"
+      ],
+      "files": [
+        {
+          "path": "back\\slash.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-078",
+      "label": "Unix literal back\\slash.cr3",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "back\\slash.cr3"
+      ],
+      "paths": [
+        "back\\slash.cr3"
+      ],
+      "files": [
+        {
+          "path": "back\\slash.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-079",
+      "label": "Unix literal back\\slash.cr3",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "back\\slash.cr3"
+      ],
+      "paths": [
+        "back\\slash.cr3"
+      ],
+      "files": [
+        {
+          "path": "back\\slash.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-080",
+      "label": "Unix literal back\\slash.cr3",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "back\\slash.cr3"
+      ],
+      "paths": [
+        "back\\slash.cr3"
+      ],
+      "files": [
+        {
+          "path": "back\\slash.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-081",
+      "label": "Unix literal line\nbreak.cr3",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "line\nbreak.cr3"
+      ],
+      "paths": [
+        "line\nbreak.cr3"
+      ],
+      "files": [
+        {
+          "path": "line\nbreak.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-082",
+      "label": "Unix literal line\nbreak.cr3",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        "line\nbreak.cr3"
+      ],
+      "paths": [
+        "line\nbreak.cr3"
+      ],
+      "files": [
+        {
+          "path": "line\nbreak.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-083",
+      "label": "Unix literal line\nbreak.cr3",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "line\nbreak.cr3"
+      ],
+      "paths": [
+        "line\nbreak.cr3"
+      ],
+      "files": [
+        {
+          "path": "line\nbreak.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-084",
+      "label": "Unix literal line\nbreak.cr3",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        "line\nbreak.cr3"
+      ],
+      "paths": [
+        "line\nbreak.cr3"
+      ],
+      "files": [
+        {
+          "path": "line\nbreak.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        },
+        "macos": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-085",
+      "label": "Unix invalid UTF-8 native units with distinct lossy neighbor",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        {
+          "unixHex": "6e61746976652dff2e637233"
+        }
+      ],
+      "paths": [
+        {
+          "unixHex": "6e61746976652dff2e637233"
+        }
+      ],
+      "files": [
+        {
+          "path": "native-\ufffd.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "macos": {
+          "status": 1,
+          "kind": "file-refusal",
+          "code": "INPUT_IO"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-086",
+      "label": "Unix invalid UTF-8 native units with distinct lossy neighbor",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        {
+          "unixHex": "6e61746976652dff2e637233"
+        }
+      ],
+      "paths": [
+        {
+          "unixHex": "6e61746976652dff2e637233"
+        }
+      ],
+      "files": [
+        {
+          "path": "native-\ufffd.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "macos": {
+          "status": 1,
+          "kind": "file-refusal",
+          "code": "INPUT_IO"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-087",
+      "label": "Unix invalid UTF-8 native units with distinct lossy neighbor",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        {
+          "unixHex": "6e61746976652dff2e637233"
+        }
+      ],
+      "paths": [
+        {
+          "unixHex": "6e61746976652dff2e637233"
+        }
+      ],
+      "files": [
+        {
+          "path": "native-\ufffd.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "macos": {
+          "status": 1,
+          "kind": "file-refusal",
+          "code": "INPUT_IO"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-088",
+      "label": "Unix invalid UTF-8 native units with distinct lossy neighbor",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "macos"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        {
+          "unixHex": "6e61746976652dff2e637233"
+        }
+      ],
+      "paths": [
+        {
+          "unixHex": "6e61746976652dff2e637233"
+        }
+      ],
+      "files": [
+        {
+          "path": "native-\ufffd.cr3",
+          "content": "fixture"
+        }
+      ],
+      "expected": {
+        "macos": {
+          "status": 1,
+          "kind": "file-refusal",
+          "code": "INPUT_IO"
+        }
+      },
+      "lossy": false
+    },
+    {
+      "id": "NP-089",
+      "label": "Linux invalid UTF-8 reaches original object",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "linux"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        {
+          "unixHex": "6e61746976652dff2e637233"
+        }
+      ],
+      "paths": [
+        {
+          "unixHex": "6e61746976652dff2e637233"
+        }
+      ],
+      "files": [
+        {
+          "path": {
+            "unixHex": "6e61746976652dff2e637233"
+          },
+          "content": "fixture"
+        },
+        {
+          "path": "native-\ufffd.cr3",
+          "content": "sentinel"
+        }
+      ],
+      "expected": {
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": true
+    },
+    {
+      "id": "NP-090",
+      "label": "Linux invalid UTF-8 reaches original object",
+      "operation": "metadata-read",
+      "transport": "declared-shell",
+      "platforms": [
+        "linux"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        {
+          "unixHex": "6e61746976652dff2e637233"
+        }
+      ],
+      "paths": [
+        {
+          "unixHex": "6e61746976652dff2e637233"
+        }
+      ],
+      "files": [
+        {
+          "path": {
+            "unixHex": "6e61746976652dff2e637233"
+          },
+          "content": "fixture"
+        },
+        {
+          "path": "native-\ufffd.cr3",
+          "content": "sentinel"
+        }
+      ],
+      "expected": {
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": true
+    },
+    {
+      "id": "NP-091",
+      "label": "Linux invalid UTF-8 reaches original object",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "linux"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        {
+          "unixHex": "6e61746976652dff2e637233"
+        }
+      ],
+      "paths": [
+        {
+          "unixHex": "6e61746976652dff2e637233"
+        }
+      ],
+      "files": [
+        {
+          "path": {
+            "unixHex": "6e61746976652dff2e637233"
+          },
+          "content": "fixture"
+        },
+        {
+          "path": "native-\ufffd.cr3",
+          "content": "sentinel"
+        }
+      ],
+      "expected": {
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": true
+    },
+    {
+      "id": "NP-092",
+      "label": "Linux invalid UTF-8 reaches original object",
+      "operation": "binary-list",
+      "transport": "declared-shell",
+      "platforms": [
+        "linux"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        {
+          "unixHex": "6e61746976652dff2e637233"
+        }
+      ],
+      "paths": [
+        {
+          "unixHex": "6e61746976652dff2e637233"
+        }
+      ],
+      "files": [
+        {
+          "path": {
+            "unixHex": "6e61746976652dff2e637233"
+          },
+          "content": "fixture"
+        },
+        {
+          "path": "native-\ufffd.cr3",
+          "content": "sentinel"
+        }
+      ],
+      "expected": {
+        "linux": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": true
+    },
+    {
+      "id": "NP-093",
+      "label": "Windows unpaired UTF-16 native units reach original object",
+      "operation": "metadata-read",
+      "transport": "native-argv",
+      "platforms": [
+        "windows"
+      ],
+      "argv": [
+        "--output=json",
+        "metadata",
+        "read",
+        "--tag",
+        "Model",
+        "--",
+        {
+          "windowsUtf16LeHex": "6e00610074006900760065002d0000d82e00630072003300"
+        }
+      ],
+      "paths": [
+        {
+          "windowsUtf16LeHex": "6e00610074006900760065002d0000d82e00630072003300"
+        }
+      ],
+      "files": [
+        {
+          "path": {
+            "windowsUtf16LeHex": "6e00610074006900760065002d0000d82e00630072003300"
+          },
+          "content": "fixture"
+        },
+        {
+          "path": "native-\ufffd.cr3",
+          "content": "sentinel"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": true
+    },
+    {
+      "id": "NP-094",
+      "label": "Windows unpaired UTF-16 native units reach original object",
+      "operation": "binary-list",
+      "transport": "native-argv",
+      "platforms": [
+        "windows"
+      ],
+      "argv": [
+        "--output=json",
+        "binary",
+        "list",
+        "--",
+        {
+          "windowsUtf16LeHex": "6e00610074006900760065002d0000d82e00630072003300"
+        }
+      ],
+      "paths": [
+        {
+          "windowsUtf16LeHex": "6e00610074006900760065002d0000d82e00630072003300"
+        }
+      ],
+      "files": [
+        {
+          "path": {
+            "windowsUtf16LeHex": "6e00610074006900760065002d0000d82e00630072003300"
+          },
+          "content": "fixture"
+        },
+        {
+          "path": "native-\ufffd.cr3",
+          "content": "sentinel"
+        }
+      ],
+      "expected": {
+        "windows": {
+          "status": 0,
+          "kind": "supported-observation"
+        }
+      },
+      "lossy": true
+    }
+  ]
+}

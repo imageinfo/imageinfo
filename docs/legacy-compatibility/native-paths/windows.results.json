@@ -1,0 +1,967 @@
+{
+  "schemaVersion": 1,
+  "platform": "windows",
+  "osRelease": "11",
+  "observedAtUtc": "2026-10-15T18:15:08.328238+00:00",
+  "shell": "powershell",
+  "shellVersion": "7.6.6",
+  "shellInvocation": [
+    "pwsh",
+    "-NoLogo",
+    "-NoProfile",
+    "-NonInteractive",
+    "-File",
+    "<script>"
+  ],
+  "ledgerSha256": "cd40cdc90364d09247259b946f17ca0b9acad6937854f84ec427ce23c31096f4",
+  "binarySha256": "478769e284ba34298dca8f2fcd6622db33a305046b29a49e1337bf5b547dde0c",
+  "checkerSha256": "b971b2bcc9d6d1cd2c7f624e9f7fb71dce1e82e0fde5a934d55d6947e6a9d326",
+  "sourceSha256": {
+    "src/cli.rs": "13dd8ba2e6d6d40511ef829104a457c2a00a339b8d1f8c28f2cd8d9b46961a87",
+    "src/app.rs": "824655b6f49fa3dac92c599ac88a7d52787726db851740d2acf8c3aa7af4e28d",
+    "src/read_request.rs": "612f84defa717f481e34e7ebf18f662c2935ded67d1c20ce2238f1645bbe9ee1",
+    "src/reader/wire.rs": "c5c3c2adacec69a48d9a4a0586ce0f47f2023e065c83174a64602bccb9d13944",
+    "Cargo.lock": "f810db2731ce49b2c51d048e1bbefbe585ebef35b36a0575e0ff5e47c97e86e8",
+    "tests/support/mod.rs": "c8354d2609aa664d1b86ceca75a7d9500973fcf222cdd267ce9b3c7bafe34104",
+    "scripts/check_read_arguments.py": "6e420b276f9d4c529b051992f895234f0b30567b2073568e815391a18db408e7"
+  },
+  "fixtureSha256": "7781896f985d5af5153e17b8959df04053fe8418262ca99a7ef2290d853992af",
+  "cases": [
+    {
+      "id": "NP-001",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9780,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-002",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9780,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "f5f0e7423921a982eada5ab42327defea3ee8a2a10fa93b6226fc7df16f1aef0",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'metadata' 'read' '--tag' 'Model' '--' 'source.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-003",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11268,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-004",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11268,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "cae1ded1bab2932a00d1faf6acdf0aae0df4d97b42cd3cff15c36a276abd78fb",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'binary' 'list' '--' 'source.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-005",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9788,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-006",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9788,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "2da7d217493bd84936c85a96c9bc2f27413528c12aeaaf4c1fc0b11b34a41db8",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'metadata' 'read' '--tag' 'Model' '--' 'space name.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-007",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11276,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-008",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11276,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "e376a2630729568305100a52b1410d470f6645e9d911e07d5ec8ba5c71461d0a",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'binary' 'list' '--' 'space name.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-009",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9790,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-010",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9790,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "e300655e6bd4dd1041fab3f90b12b097c5df131b2d64132acca1ab2dec3f6b5e",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'metadata' 'read' '--tag' 'Model' '--' '\u5199\u771f \ud83e\udd86.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-011",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11273,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-012",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11278,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "04adec5893f0cd3e8a70aaf4f5d2ad611d270fbc7a3eb2332670912baaae2277",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'binary' 'list' '--' '\u5199\u771f \ud83e\udd86.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-013",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9778,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-014",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9778,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "82897da02e4259ed5dd3eb6dd58229104d4ceedea71ede20fce0a61696ba130c",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'metadata' 'read' '--tag' 'Model' '--' 'caf\u00e9.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-015",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11266,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-016",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11266,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "1011e56dd63a19a249ee601d348e17e55f06c2e89891d83d7ed2936d84d051ee",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'binary' 'list' '--' 'caf\u00e9.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-017",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9780,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-018",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9780,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "8ea1f07fb933d032bc3e76e59255ef5f52b9154534cec8b677d3923d9f301ba9",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'metadata' 'read' '--tag' 'Model' '--' 'cafe\u0301.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-019",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11268,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-020",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11268,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "9f2b9620c73a07ebda8ebb5a5c2654d21ca6145fd351d60375e31791bd1bd905",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'binary' 'list' '--' 'cafe\u0301.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-021",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9780,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-022",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9780,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "9b2ccf70e0893f7c8bf07351b8a4d3b594a31d9c51f12546f150554c9af47fb5",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'metadata' 'read' '--tag' 'Model' '--' '-photo.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-023",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11263,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-024",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11268,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "4819f0ef3406de6f742667963f55448b30ed462b6468fd0e5d92972e93e1a2ef",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'binary' 'list' '--' '-photo.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-025",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9776,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-026",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9786,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "81e8a16bc49f6af9161b68a7bc75e3158947a4113dc8f5c76e10a43182828ed3",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'metadata' 'read' '--tag' 'Model' '--' '--output=json'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-027",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11274,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-028",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11274,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "aadbb1232235557dcb6937fad4540d4d84737a8a8d8ee66d262bdd16a5a21bff",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'binary' 'list' '--' '--output=json'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-029",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9763,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-030",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9768,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "5a066c1454ba2f63b988b368304dd2f6f2d764cdbf9c126bd8eee1d9813400c3",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'metadata' 'read' '--tag' 'Model' '--' 'help'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-031",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11256,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-032",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11256,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "3d95e2bfd060eeae5f51f0db489ec8f88568ce44912163254d826f923713ad0c",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'binary' 'list' '--' 'help'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-033",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9792,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-034",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9792,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "eddee6cd64c856e03707c3fef5beb06432b508bf53306db672f11085828ae850",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'metadata' 'read' '--tag' 'Model' '--' 'single''quote.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-035",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11280,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-036",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11280,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "f4bb15311870553c1598e272c1ebe29324f25b62356b2aa99c80f7d996a6a23b",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'binary' 'list' '--' 'single''quote.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-037",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9800,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-038",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9795,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "52799576e5bf6e28f4c7b2d753720fcf41649cbb886ceba910b88a10a04d63dc",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'metadata' 'read' '--tag' 'Model' '--' 'dollar$HOME`tick.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-039",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11288,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-040",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11288,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "f706de5476d0ab79dcebb1cac92d4f4be5aad9f1d495dfb5304116270a827c3b",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'binary' 'list' '--' 'dollar$HOME`tick.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-041",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9800,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-042",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9800,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "4a83463b33b7676c5d1459c88d5eec96f9ff6ce937cff33544bc02e7a2182fed",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'metadata' 'read' '--tag' 'Model' '--' 'semi;and&paren().cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-043",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11288,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-044",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11288,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "d80952cb95d9422f9aa6fac612d899efa3c73303221537eff0848a52acbac85a",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'binary' 'list' '--' 'semi;and&paren().cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-045",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9781,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-046",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9786,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "d3c2789e8d3b89bb5b495d2fe2af1fc67d0c9eb997838cf809c304c449597293",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'metadata' 'read' '--tag' 'Model' '--' '[literal].cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-047",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11274,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-048",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11274,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "98f375e7ae1f2c06062afd00f7e3ad777957588c83daf0b15476fe5b28af20d0",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'binary' 'list' '--' '[literal].cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-049",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 19082,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-050",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 19075,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "2a4fdbc18a556e2d82c0425761a73cfdc62abab807e1a454f430cf2b62b8b7b8",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'metadata' 'read' '--tag' 'Model' '--' 'space name.cr3' '\u5199\u771f \ud83e\udd86.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-051",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 22060,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-052",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 22060,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "08d731e02558777dfdd9b61093c0b52eb6a6f7e116395caa278fb6320f3892b7",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'binary' 'list' '--' 'space name.cr3' '\u5199\u771f \ud83e\udd86.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-053",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9792,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-054",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 9792,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "95d9125f833667adb672813fc555fc60be09d6665e96d7218c45397215481248",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'metadata' 'read' '--tag' 'Model' '--' './space name.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-055",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11280,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-056",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11280,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": "55f50b8d69f4c7068e10556ff757a9c062700d8e4f09abf355b94e90cec29298",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'binary' 'list' '--' './space name.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-057",
+      "state": "passed",
+      "status": 1,
+      "channel": "json",
+      "stdoutBytes": 933,
+      "stderrBytes": 59,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "file-refusal",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-058",
+      "state": "passed",
+      "status": 1,
+      "channel": "json",
+      "stdoutBytes": 933,
+      "stderrBytes": 59,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "file-refusal",
+      "shellScriptSha256": "fe906d1f687045e4a3de18301b642baa8f18ef99a3f22dd1fdce06ec3a7db594",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'metadata' 'read' '--tag' 'Model' '--' 'missing file.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-059",
+      "state": "passed",
+      "status": 1,
+      "channel": "json",
+      "stdoutBytes": 931,
+      "stderrBytes": 59,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "file-refusal",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-060",
+      "state": "passed",
+      "status": 1,
+      "channel": "json",
+      "stdoutBytes": 931,
+      "stderrBytes": 59,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "file-refusal",
+      "shellScriptSha256": "89f24df27a4801878a7787af855852286014ef51f9b807a86c8d2df9c1d84367",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'binary' 'list' '--' 'missing file.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-061",
+      "state": "passed",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 782,
+      "stderrBytes": 211,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "syntax-refusal",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-062",
+      "state": "passed",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 782,
+      "stderrBytes": 211,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "syntax-refusal",
+      "shellScriptSha256": "26288b3dd112cd07e9ad6f0af85f46515ff5701ca69b3fdda0af9bc678004191",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'metadata' 'read' '--tag' 'Model' '-photo.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-063",
+      "state": "passed",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 780,
+      "stderrBytes": 209,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "syntax-refusal",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-064",
+      "state": "passed",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 780,
+      "stderrBytes": 209,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "syntax-refusal",
+      "shellScriptSha256": "1c4163e743982b1cbd13c677e7912f2f78f84850b84ce280306c2bc2b87fee3d",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'binary' 'list' '-photo.cr3'\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-065",
+      "state": "passed",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 615,
+      "stderrBytes": 50,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "syntax-refusal",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-066",
+      "state": "passed",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 615,
+      "stderrBytes": 50,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "syntax-refusal",
+      "shellScriptSha256": "7f17fb9d27cd823223f337654f1eddfa47c3b77b30077b3bc07bdd85a11cf45c",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'metadata' 'read' '--tag' 'Model' ''\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-067",
+      "state": "passed",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 615,
+      "stderrBytes": 50,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "syntax-refusal",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-068",
+      "state": "passed",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 615,
+      "stderrBytes": 50,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "syntax-refusal",
+      "shellScriptSha256": "f67d972dde9a2641e22d8ba36f6b9b949cf9adda0b6beb77707524823b61ac11",
+      "shellScriptTemplate": "$ErrorActionPreference = 'Stop'\n[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)\n& '<binary>' '--output=json' 'binary' 'list' ''\nexit $LASTEXITCODE\n"
+    },
+    {
+      "id": "NP-069",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-070",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-071",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-072",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-073",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-074",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-075",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-076",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-077",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-078",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-079",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-080",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-081",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-082",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-083",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-084",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-085",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-086",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-087",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-088",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-089",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-090",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-091",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-092",
+      "state": "not-applicable"
+    },
+    {
+      "id": "NP-093",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 10014,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    },
+    {
+      "id": "NP-094",
+      "state": "passed",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 11502,
+      "stderrBytes": 0,
+      "effects": "unchanged-bytes-mtime-native-names",
+      "classification": "supported-observation",
+      "shellScriptSha256": null,
+      "shellScriptTemplate": null
+    }
+  ]
+}

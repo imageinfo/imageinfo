@@ -140,8 +140,12 @@ as refusals separately. A refusal's latency is not a successful edit's throughpu
 
 ## Current handoff
 
-This specifies how to measure and choose targets; **all numerical targets/defaults
-remain unset**. Actual corpus/reference acquisition remains #0013, writer/storage
-proof #0014 and protocol completion #0015. Backlog #0016, performance-measurements,
-owns the real baseline and subsequent limit decisions. Implementation still waits
-for Terry's explicit language/design decision.
+The original specification left numerical targets/defaults unset. Subsequent
+implementation and bounded observations are recorded in the
+[single-read baseline](single-read-baseline.md),
+[batch-read method](batch-read-baseline.md) and
+[authored preview measurements](preview-baseline.md). The
+[read-limit proposal](read-limits-proposal.md) distinguishes measured evidence,
+proposed operating limits and unmeasured resource bounds. These proposals do not
+adopt new runtime defaults. #0016 tracks remaining measurements and limit decisions;
+writer/storage qualification and broader protocol work remain separate.
