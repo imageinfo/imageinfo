@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "kind": "physical-power-fixture-proposal",
+  "ticket": 101,
+  "parentTicket": 22,
+  "revision": "physical-power-fixture-v1",
+  "observedOn": "2026-10-15",
+  "scope": {
+    "planningPrerequisiteFor": [
+      50,
+      78
+    ],
+    "actualHardwareSelected": false,
+    "ownerExecutionApproval": false,
+    "physicalRunsCompleted": 0,
+    "productionPublicationAllowed": false,
+    "rawAdmissionAllowed": false,
+    "repairAllowed": false,
+    "automaticRecoveryAllowed": false
+  },
+  "preferredTopology": {
+    "id": "A",
+    "execution": "bare-metal",
+    "dut": "owner-designated spare x86_64 desktop",
+    "storage": "one owner-disposable internal SATA SSD, Windows OS and NTFS marker root on same disk",
+    "powerCut": "entire DUT and internal storage",
+    "observer": "independent machine and storage outside cut domain",
+    "unselectedHardwareIdentities": null,
+    "osAndMarkerShareDisk": true
+  },
+  "alternatives": [
+    {
+      "id": "B",
+      "difference": "separate disposable OS and internal SATA scratch disks; both in same cut domain",
+      "separateProfile": true
+    },
+    {
+      "id": "C",
+      "difference": "entire separate disposable virtualization host/backing-storage cut; exact guest and host/cache stack declared",
+      "separateProfile": true
+    }
+  ],
+  "excluded": [
+    "Terry's normal host or valuable disks",
+    "existing laptop/WSL guest as physical-cut target",
+    "private RAW media",
+    "USB/removable or storage-only cut as initial topology",
+    "battery/UPS/alternate DUT supply",
+    "custom mains wiring or energized internal probing",
+    "purchase or installation permission inferred from proposal"
+  ],
+  "ownerInputs": [
+    "Designate spare physical machine and disposable disk identities; confirm loss of existing OS/data is acceptable, or decline availability.",
+    "Designate packaged power control or operator switching and independent observer; confirm the isolated cut domain.",
+    "Identify lawful Windows test-installation route; later approve exact preparation, device inventory, control method, maximum 34 cuts and stop/retention policy."
+  ],
+  "codexWorkAfterIdentification": [
+    "Read-only hardware/firmware/OS/cache inventory",
+    "Read selected device manuals",
+    "Resolve non-invasive physical-power-state witness and off-hold timing",
+    "Prepare exact bounded execution/audit tooling for final owner approval"
+  ],
+  "worker": {
+    "mode": "ordinary-receipt",
+    "sourceRevision": "b819f54533c495b332c3d4dbb0caccef49923036",
+    "sha256": "f86918a7fb3880cf8e09590fcc7d58155ef64d98c95cf9c2a6afc541c5b040fa",
+    "data": "authored 65536-byte markers only",
+    "standardUser": true,
+    "bindingsRevalidatedBeforeFutureExecution": true
+  },
+  "schedule": {
+    "status": "proposed-unrun",
+    "idlePowerPreflightCuts": 1,
+    "normalTransactionsBefore": 1,
+    "normalTransactionsAfter": 1,
+    "repetitionsPerBarrier": 3,
+    "transactionFaultCuts": 33,
+    "totalWorkerTransactions": 35,
+    "maximumCampaignCuts": 34,
+    "offHoldSecondsProposed": 30,
+    "offHoldIsHardwareGuarantee": false,
+    "additionalReplacementCutsAllowed": false,
+    "barriers": [
+      "before-namespace-call",
+      "published",
+      "installed-file-flushed",
+      "parent-flushed",
+      "observation-file-flushed",
+      "observation-parent-flushed",
+      "observed-record-flushed",
+      "receipt-written",
+      "receipt-file-flushed",
+      "receipt-parent-flushed",
+      "final-checked"
+    ]
+  },
+  "evidenceRequired": [
+    "Exact approved hardware/power diagram/OS/storage/cache/worker/controller hashes",
+    "Complete externally captured selected barrier and caller-history prefix",
+    "Separate event receipt, cut command, actuator response, physical-power-state witness, off-hold and fresh boot timing",
+    "External source witness and retained raw record/receipt bytes",
+    "Before/after read-only-inspector byte/name/identity/property inventories with errors explicit",
+    "OS boot/mount recovery observations separate from application inspector effects",
+    "All scheduled IDs and deviations reconciled; no repair/replay/prune"
+  ],
+  "stopConditions": [
+    "Missing owner approval or identity/power-domain mismatch",
+    "No confirmed loss of DUT/storage power",
+    "Observer discontinuity or missing required caller context",
+    "Failure to reach selected barrier",
+    "Unexpected boot/automatic repair request or OS/hardware identity change",
+    "Malformed/foreign/unreadable artifacts requiring separate inspection decision",
+    "Any failed/incomplete trial; retain evidence and seek a new decision before another cut"
+  ],
+  "remainingGates": [
+    "Actual approved fixture unavailable",
+    "All physical cells unrun",
+    "Exact namespace/receipt/storage/custody qualification",
+    "Independent RAW format admission",
+    "Production apply and recovery gates"
+  ]
+}

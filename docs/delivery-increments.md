@@ -44,6 +44,13 @@ child once its specific inputs and acceptance are known. The operational-readine
 children are concrete verification/proposal packages; they do not grant permission
 to contact people, change access/settings or publish a release.
 
+On 2026-10-15, #0078's unmet qualification work gained three bounded prerequisite
+increments: #0099 exact CR3 reference-write effects, #0100 native receipt timestamp
+binding across writer completion, and #0101 a disposable physical-power fixture
+proposal. #0078 retains its full positive apply acceptance and stays queued while
+these increments advance. #0050 still requires actual owner-approved resources;
+a proposal or diagnostic child never supplies format/storage admission by itself.
+
 ## Existing-work reconciliation
 
 #0042's live ordinary-owner marker scope was already implemented directly under

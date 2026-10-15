@@ -63,6 +63,7 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [XMP date preservation](sidecars/date-preservation.md) | #0084 authored in-memory derivatives and byte-exact no-ops, parser-bound lexical replacement and unknown-sibling complement checks; no publication. |
 | [Single-file read baseline](performance/single-read-baseline.md) | #0061 fixed 99-attempt experiment, independently checked output and elapsed distributions, with explicit cache/noise scope. |
 | [Clean hosted contributor checks](contributing/clean-machine.md) | #0065 exact fresh hosted-image/toolchain/source outcomes and sanitized CI permissions; bare-OS setup and release readiness remain separate. |
+| [Physical-power fixture proposal](write-safety/physical-power-fixture-proposal.md) | #0101 concrete isolated DUT/observer alternatives, finite cut schedule and Terry-only resource inputs; all physical tests remain unrun. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |

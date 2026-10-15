@@ -197,7 +197,7 @@ or error envelopes. The guide/package is finite verification of serialization;
 camera-read support remains bounded by the reader evidence. No new report/import,
 template, filename-format, mutation, plan or storage capability follows.
 
-The 2026-10-15 native Windows check passed **10 actual CLI records and 39 authored
+The 2026-10-15 native Windows check passed **10 actual CLI records and 40 authored
 conformance vectors**, including all value modes, filtered/empty selections,
 duplicate native tags, big-endian values, printable-ASCII JSON escaping and the
 zero-denominator failure. Three Rust serializer-boundary tests separately passed,

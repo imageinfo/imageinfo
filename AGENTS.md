@@ -227,6 +227,13 @@ Windows, Ubuntu and macOS jobs and records sanitized CI token permissions. Those
 images supply development prerequisites; bare-OS installation, hermetic builds,
 staffed operations and release readiness are not qualified. See
 `docs/contributing/clean-machine.md`.
+#0101 specifies a disposable physical-power fixture proposal before #0050's
+owner-approved hardware selection. The independently powered observer, isolated
+DUT/storage domain, finite maximum of 34 cuts and explicit audit/stop rules are
+planning only; no hardware is selected or approved and no physical test has run.
+See `docs/write-safety/physical-power-fixture-proposal.md`. Actual equipment,
+license route and final device-specific execution approval require Terry; no
+physical-power, storage-profile or #0078 apply permission follows from this plan.
 
 ## Subagent authorization
 

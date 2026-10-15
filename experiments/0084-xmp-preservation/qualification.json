@@ -44,5 +44,14 @@
     "publicationAllowed": false,
     "productionMutationAllowed": false,
     "otherPlatforms": "This record claims the actual Windows run only; independent CI may add platform observations."
+  },
+  "sourceBindings": {
+    "canonicalization": "UTF-8 source bytes with CRLF normalized to LF, matching Git text attributes. qualification.json is excluded to avoid self-reference.",
+    "sha256": {
+      "src/lib.rs": "3aa4d748994ea506b2c3941ee7938bc0cc3bd1a5187e9db5582788bedb546d4f",
+      "tests/qualification.rs": "55295f640c83f5c060bf85d16510bc37778d0b6315d77a89eea3c128896f6cf9",
+      "Cargo.toml": "a1acdf8c49798e54689dfb498fbde54c74a2de4daa91ba1e5f154f59db22294c",
+      "Cargo.lock": "3f024fe4d9a2266b45ef696cb34f17482f8bdbc45143f0abff44633a0eae677a"
+    }
   }
 }
