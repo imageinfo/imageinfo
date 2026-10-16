@@ -427,6 +427,13 @@ and reasoning defaults remain GPT-6.1 Sol with Medium effort.
 
 ## Product intent
 
+- Terry selected #0118 option A on 2026-10-16: retain the current CR3 semantic
+  preservation contract and unsupported embedded-write outcome. Stop generic
+  reference probes for opaque dependencies; resume positive format admission only
+  with a concrete sufficient evidence source or exact semantically justified layout.
+  #0119 remains contingent; #0078/#0014 stay unfulfilled. Reader/preview and
+  separately qualified XMP work can continue. See `docs/write-safety/write-admission.md`.
+
 - Design imageinfo from a clean whiteboard. Terry clarified on 2026-10-10 that
   ExifTool is a functional reference, not an architecture, API, class, or module
   template. Existing design notes are proposals, not accepted architecture.

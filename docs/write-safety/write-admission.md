@@ -6,6 +6,32 @@ by a [separate research executable](../../experiments/0027-cr3-admission/README.
 No production writer, storage profile, committed receipt or apply command is
 enabled. Format/field observations do not grant publication permission.
 
+## Accepted disposition — #0118, 2026-10-16
+
+Terry explicitly selected **option A: retain the current preservation contract and
+current RAW mutation refusal**. Embedded CR3 writes remain unsupported. No weaker
+experimental assurance or acquisition of a format source was selected.
+
+The affected requirements in [the write-safety contract](README.md) remain unchanged:
+
+- **WS-006:** "Unknown modes/layouts or unproven preservation refuse embedded writes".
+- **WS-007:** "Unknown data may be retained byte-for-byte only when its placement/dependencies can remain valid."
+- **WS-008:** "Passing an external sample test never replaces checks on the user's current file."
+
+The #0027 `OPAQUE_DEPENDENCY_UNPROVEN` boundary remains in force. Equal byte
+complements, unchanged opaque values, successful reference writes and matching RAW
+unpacks do not establish unknown semantic independence. Known-authenticity and
+uninspectable-dependency refusals, explicit no-op/new-name effects, current-source
+validation and all storage/publication requirements remain unchanged. Imported
+plans and caller assertions cannot grant format authority.
+
+Stop generic reference experiments aimed at clearing this residual. Positive
+format work resumes only when a concrete sufficient evidence source or an exact
+semantically justified layout can address it. #0119 remains a contingent Backlog
+scope with no sufficient implementation basis; #0078 and the original #0014 safe
+writer acceptance remain unfulfilled. They are not completed by this decision.
+Existing read/preview work and separately qualified XMP sidecar paths can continue.
+
 ## Declared field scope
 
 The proposed operation replaces one existing CMT2 EXIF tag 0x9003,

@@ -6,6 +6,13 @@ The original twenty cards hid ten tracking umbrellas and ten executable outcomes
 
 These are defined work packets, not a promise that 99 successful turns finish the entire project. Each executable estimate assumes its named prerequisites, actual permissions and selected profile. Some mechanisms may prove unsupported. Unselected alternatives, undefined operation families and human exercises without operators are disclosed below rather than assigned invented ticket counts. Future full ExifTool parity remains on the explicitly held #0012.
 
+Subsequent decision, 2026-10-16: Terry selected **#0118 option A**, retaining the
+current preservation contract and unsupported embedded CR3 writes. Five of the six
+original Terry decisions remain unanswered. The decomposition counts below are the
+original planning baseline. #0119 remains an insufficient-scope contingent template;
+#0078/#0014 remain unfulfilled. Stop generic reference probes; see the
+[accepted admission disposition](write-safety/write-admission.md#accepted-disposition--0118-2026-10-16).
+
 ## Count the queue consistently
 
 | Scope | Ready for Work | Needs Terry | Insufficient scope |
@@ -51,7 +58,7 @@ Prerequisites name exact cards. Historical accepted research is evidence of its 
 | Card | Planned outcome | Queue | Prerequisites |
 | --- | --- | --- | --- |
 | #0117 | Prepare the finite RAW/XMP operation matrix under the authorized RAW-write scope | Work | None newly queued |
-| #0118 | Choose the CR3 opaque-dependency admission path without inventing format semantics | Terry decision | #0113, #0109, #0099, #0102, #0105, #0027 |
+| #0118 | Retain the CR3 preservation contract and unsupported embedded-write outcome (option A selected) | Decision recorded | #0113, #0109, #0099, #0102, #0105, #0027 |
 | #0119 | Implement and qualify the selected exact fixed-width CR3 date admission | Scope gap | #0118 |
 | #0078 | Integrate explicit apply for one actually admitted CR3 date profile | Work | #0132, #0076, #0119, #0077, #0176 |
 
