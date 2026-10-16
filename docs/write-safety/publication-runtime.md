@@ -14,8 +14,9 @@ reader and `ExpectedAbsent` output leaf. Current imported plans, preview results
 receipt fields and external booleans cannot construct this decision or select an
 admitted profile. The actual Windows source guard retains the existing source
 separately from the candidate reader; a later format adapter must bind its actual
-validated observation to those held source facts. #0168 owns that phase-qualified
-bridge and #0176 owns exact profile admission. Neither is inferred here.
+validated observation to those held source facts. The
+[#0168 live acknowledgement bridge](live-acknowledgements.md) binds actual
+phase/target/revision results; #0176 still owns exact profile admission.
 
 ## Actual orchestration and bindings
 
@@ -70,10 +71,10 @@ resumes, rebases a snapshot, retries publication or sweeps retained artifacts.
 
 The public result vocabulary includes unchanged, refused, conflict,
 failed-before-publish, cancelled-before-publish, committed, recovered-original
-and recovery-required. This new-output executor does not perform unchanged or
-original-restoration operations. Until actual profile admission is connected,
+and recovery-required. The explicit caller no-op bypass returns unchanged before
+executor invocation; this executor performs no original restoration. Until actual profile admission is connected,
 complete internal execution reports `protocol_complete = true` with `Refused`;
-it never emits `Committed`. This is a completed unqualified execution, not a claim
+only a test-only exact revision capability exercises `Committed`. This is a completed unqualified execution, not a claim
 that a refusal proves the positive admitted storage capability. Every result
 identifies phase, failure, possible release/publication, charged construction,
 retained material and pending cleanup. Cleanup and recovery are explicit separate
@@ -106,8 +107,9 @@ adapter and retains its source, artifacts and private outcome under
 `.local/storage-runtime-tests`. Unsupported native parent/file operations or
 property conflicts are recorded as observed failure phases and fail the authored
 completion test; they are never skipped into success. The observed native result
-is recorded in the private handoff; it is not
-a substitute for #0168's required actual phase acknowledgement evidence. No media,
+is recorded in the private handoff. The separate
+[#0168 joined native schedules](live-acknowledgements.md) add actual phase
+acknowledgements and before/after injected-response controls. No media,
 guest, VM-off or physical-power tests are run for this scope. Native-error,
 interruption, namespace/receipt, source/format binding, restart custody and exact
 profile qualification remain independent work. The accepted

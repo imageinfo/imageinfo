@@ -1,7 +1,7 @@
 //! Actual native invocation for the disabled, unqualified internal runtime.
 //! No profile or format admission is manufactured by this adapter.
 
-use super::runtime::{Artifact, Backend, Binding, ValidatedCandidate, execute};
+use super::runtime::{Artifact, Backend, Binding, LiveEvidence, ValidatedCandidate, execute};
 use super::{Cancellation, Failure, LogicalBudget, MAX_RECORD_BYTES, Phase, UnitResult};
 use imageinfo_windows_storage::{
     GuardedSource, HeldArtifact, MAX_ARTIFACT_BYTES, PrivateRoot, validate_leaf,
@@ -30,6 +30,13 @@ fn classify(error: io::Error) -> Failure {
     }
 }
 
+fn custody_failure(error: super::custody::CustodyRefusal) -> Failure {
+    match error {
+        super::custody::CustodyRefusal::ConstructionBound => Failure::RecordTooLarge,
+        _ => Failure::CallerHistory,
+    }
+}
+
 fn bound(snapshot: &imageinfo_windows_storage::FileSnapshot, bytes: Option<&[u8]>) -> Binding {
     let mut facts = snapshot.binding_bytes();
     if let Some(bytes) = bytes {
@@ -53,6 +60,7 @@ pub(crate) struct WindowsBackend {
     root_path: PathBuf,
     source: Option<GuardedSource>,
     root: Option<PrivateRoot>,
+    parent_binding: Option<Binding>,
     artifacts: Vec<(Artifact, HeldArtifact)>,
     expected: Vec<Binding>,
     output: String,
@@ -60,6 +68,7 @@ pub(crate) struct WindowsBackend {
     release: Option<CallerCapture>,
     checked: Option<CallerCapture>,
     terminal: Option<CallerCapture>,
+    live_evidence: Option<LiveEvidence>,
 }
 
 impl WindowsBackend {
@@ -69,6 +78,7 @@ impl WindowsBackend {
             root_path: root.into(),
             source: None,
             root: None,
+            parent_binding: None,
             artifacts: Vec::new(),
             expected: Vec::new(),
             output: String::new(),
@@ -76,6 +86,7 @@ impl WindowsBackend {
             release: None,
             checked: None,
             terminal: None,
+            live_evidence: None,
         }
     }
 
@@ -136,6 +147,61 @@ impl WindowsBackend {
     fn root(&self) -> Result<&PrivateRoot, Failure> {
         self.root.as_ref().ok_or(Failure::InvalidBinding)
     }
+
+    /// Read-only observation for an explicitly trusted caller. Parsing or
+    /// obtaining this snapshot supplies no recovery-action authority.
+    pub(crate) fn custody_snapshot(
+        &mut self,
+        operation: &str,
+    ) -> Result<super::custody::CurrentBindings, Failure> {
+        let records: Vec<_> = self
+            .artifacts
+            .iter()
+            .filter(|(kind, _)| *kind != Artifact::Candidate)
+            .map(|(kind, artifact)| (*kind, artifact.bytes()))
+            .collect();
+        let parent = self
+            .parent_binding
+            .as_ref()
+            .ok_or(Failure::InvalidBinding)?;
+        // Check the whole exact construction using borrowed views before any
+        // record-content or binding clone. The original held parent observation
+        // was captured with root creation, not reconstructed for this snapshot.
+        super::custody::CurrentBindings::preflight_borrowed(
+            operation,
+            self.profile(),
+            self.implementation(),
+            &self.output,
+            parent,
+            &self.expected,
+            &records,
+            self.published,
+        )
+        .map_err(custody_failure)?;
+        let expected = self.expected.clone();
+        self.check(Phase::InstalledRechecked, &expected)?;
+        let records: Vec<_> = self
+            .artifacts
+            .iter()
+            .filter(|(kind, _)| *kind != Artifact::Candidate)
+            .map(|(kind, artifact)| (*kind, artifact.bytes()))
+            .collect();
+        let parent = self
+            .parent_binding
+            .as_ref()
+            .ok_or(Failure::InvalidBinding)?;
+        super::custody::CurrentBindings::capture_borrowed(
+            operation,
+            self.profile(),
+            self.implementation(),
+            &self.output,
+            parent,
+            &expected,
+            &records,
+            self.published,
+        )
+        .map_err(custody_failure)
+    }
 }
 
 impl Backend for WindowsBackend {
@@ -143,7 +209,7 @@ impl Backend for WindowsBackend {
         "windows-ntfs-unqualified-internal-v1"
     }
     fn implementation(&self) -> &'static str {
-        concat!("imageinfo-storage-runtime-", env!("CARGO_PKG_VERSION"))
+        concat!("imageinfo-storage-live-ack-v1-", env!("CARGO_PKG_VERSION"))
     }
 
     fn preflight(&mut self, output: &str) -> Result<Binding, Failure> {
@@ -168,7 +234,16 @@ impl Backend for WindowsBackend {
             return Err(Failure::InvalidBinding);
         }
         let root = PrivateRoot::create(&self.root_path).map_err(classify)?;
-        let binding = bound(root.snapshot(), None);
+        let mut binding = bound(root.snapshot(), None);
+        let parent_binding = bound(root.parent_snapshot(), None);
+        // Bind the actual held writable containing directory separately inside
+        // the root facts. Its mutable directory size/write time is historical;
+        // the live SDK guard continues checking its actual namespace identity.
+        binding
+            .facts
+            .extend_from_slice(b"held-containing-parent-v1\0");
+        binding.facts.extend_from_slice(&parent_binding.facts);
+        self.parent_binding = Some(parent_binding);
         self.root = Some(root);
         Ok(self.remember(binding))
     }
@@ -309,6 +384,9 @@ impl Backend for WindowsBackend {
         self.terminal = Some(self.capture(bindings)?);
         Ok(())
     }
+    fn retain_live_evidence(&mut self, evidence: &LiveEvidence) {
+        self.live_evidence = Some(evidence.clone());
+    }
 }
 
 /// Internal caller seam for a later admitted format layer. The validation token
@@ -321,6 +399,9 @@ pub(crate) fn run(
 ) -> UnitResult {
     execute(backend, candidate, budget, cancel)
 }
+
+#[cfg(test)]
+mod live_ack_tests;
 
 #[cfg(test)]
 mod tests {

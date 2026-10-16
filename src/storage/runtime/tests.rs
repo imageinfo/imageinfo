@@ -14,6 +14,7 @@ struct Fake<'a> {
     published: bool,
     creates: BTreeMap<String, Vec<u8>>,
     history: Vec<String>,
+    evidence: Option<LiveEvidence>,
 }
 
 impl Fake<'_> {
@@ -91,6 +92,121 @@ impl Backend for Fake<'_> {
     fn export_terminal(&mut self, _: &[Binding]) -> Result<(), Failure> {
         self.call("terminal".into())
     }
+    fn retain_live_evidence(&mut self, evidence: &LiveEvidence) {
+        self.evidence = Some(evidence.clone());
+    }
+}
+
+#[test]
+fn complete_predicate_rejects_missing_reordered_reused_or_foreign_acknowledgements() {
+    let mut fake = Fake::default();
+    let admission = TestAdmission::exact(&fake);
+    let mut reader = Cursor::new(b"abc".as_slice());
+    let result = execute_test_admitted(
+        &mut fake,
+        ValidatedCandidate {
+            operation: "authored-unit-1",
+            format_revision: "authored-bytes-v1",
+            source: &mut reader,
+            planned_len: 3,
+            max_len: 3,
+            output: ExpectedAbsent("output.bin"),
+        },
+        &mut LogicalBudget::new(u64::MAX),
+        &Cancellation::default(),
+        admission,
+    );
+    assert_eq!(result.status, Status::Committed);
+    let evidence = fake.evidence.unwrap();
+    let bindings = evidence.acknowledgements.last().unwrap().bindings.clone();
+    assert!(evidence.complete(&bindings));
+    let mut wrong_protocol = evidence.clone();
+    wrong_protocol.protocol = "foreign-revision";
+    assert!(!wrong_protocol.complete(&bindings));
+    for index in 0..evidence.acknowledgements.len() {
+        let mut missing = evidence.clone();
+        missing.acknowledgements.remove(index);
+        assert!(!missing.complete(&bindings));
+        let mut foreign = evidence.clone();
+        foreign.acknowledgements[index].bindings[0].facts.push(99);
+        assert!(!foreign.complete(&bindings));
+        let mut incomplete_binding = evidence.clone();
+        incomplete_binding.acknowledgements[index].bindings.pop();
+        assert!(!incomplete_binding.complete(&bindings));
+        let mut wrong_target = evidence.clone();
+        wrong_target.acknowledgements[index].target = AckTarget::Source;
+        if index != 0 {
+            assert!(!wrong_target.complete(&bindings));
+        }
+        if index > 0 {
+            let mut replayed = evidence.clone();
+            replayed.acknowledgements[index] = replayed.acknowledgements[index - 1].clone();
+            assert!(!replayed.complete(&bindings));
+            let mut reordered = evidence.clone();
+            reordered.acknowledgements.swap(index, index - 1);
+            assert!(!reordered.complete(&bindings));
+        }
+    }
+}
+
+#[test]
+fn oversized_borrowed_request_fields_are_not_copied_into_refused_evidence() {
+    let oversized = "x".repeat(4 * 1024 * 1024);
+    for field in 0..3 {
+        let mut reader = Cursor::new(b"abc".as_slice());
+        let mut fake = Fake::default();
+        let mut budget = LogicalBudget::new(u64::MAX);
+        let request = ValidatedCandidate {
+            operation: if field == 0 { &oversized } else { "authored" },
+            format_revision: if field == 1 { &oversized } else { "v1" },
+            output: ExpectedAbsent(if field == 2 { &oversized } else { "output.bin" }),
+            source: &mut reader,
+            planned_len: 3,
+            max_len: 3,
+        };
+        let result = execute(&mut fake, request, &mut budget, &Cancellation::default());
+        assert_eq!(result.failure, Some(Failure::InvalidBinding));
+        assert_eq!(result.status, Status::Conflict);
+        assert_eq!(budget.charged(), 0);
+        assert_eq!(reader.position(), 0);
+        assert_eq!(fake.calls, 0);
+        assert!(fake.creates.is_empty());
+        let evidence = fake.evidence.unwrap();
+        for text in [
+            &evidence.operation,
+            &evidence.format_revision,
+            &evidence.output,
+        ] {
+            assert!(text.is_empty());
+            assert_eq!(text.capacity(), 0);
+        }
+        assert!(evidence.acknowledgements.is_empty());
+        assert!(!result.publication_possible && !result.retained_material);
+    }
+    // Even valid bounded identity text is not copied before budget admission.
+    let mut reader = Cursor::new(b"abc".as_slice());
+    let mut fake = Fake::default();
+    let result = execute(
+        &mut fake,
+        ValidatedCandidate {
+            operation: "authored",
+            format_revision: "v1",
+            output: ExpectedAbsent("output.bin"),
+            source: &mut reader,
+            planned_len: 3,
+            max_len: 3,
+        },
+        &mut LogicalBudget::new(0),
+        &Cancellation::default(),
+    );
+    assert_eq!(result.failure, Some(Failure::BudgetExhausted));
+    assert_eq!(fake.calls, 0);
+    let evidence = fake.evidence.unwrap();
+    assert!(
+        evidence.operation.is_empty()
+            && evidence.format_revision.is_empty()
+            && evidence.output.is_empty()
+    );
 }
 
 fn run(

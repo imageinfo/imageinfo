@@ -12,6 +12,9 @@ pub mod privacy;
 pub mod read_request;
 pub mod read_session;
 pub mod reader;
+#[cfg(windows)]
+#[allow(dead_code)]
+pub(crate) mod sidecar_candidate;
 pub mod source_binding;
 pub mod storage;
 pub mod xmp;

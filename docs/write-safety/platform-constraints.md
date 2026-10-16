@@ -77,6 +77,12 @@ actual-profile/persistence/recovery/format evidence remain separate and unqualif
 
 ## Current readiness
 
+Terry's [#0177 option A decision](linux-new-output-boundary.md), 2026-10-16,
+defers positive Linux new-output support from the initial Windows-only new-output
+milestone while preserving its full guarantee as future scope. Linux reads remain
+unchanged. Neither WSL-native nor mounted Windows mutation is admitted; Windows
+implementation and exact-profile qualification remain independent requirements.
+
 Windows/local volume, macOS/local volume, Linux/local filesystem, removable storage,
 network filesystems and cloud-synchronized directories are all **unverified** for
 imageinfo mutation. Existing OS documentation helps define experiments; it cannot

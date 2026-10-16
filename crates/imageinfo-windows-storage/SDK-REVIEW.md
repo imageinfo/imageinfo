@@ -80,6 +80,14 @@ This change adds no external package identity or vendored implementation.
 
 ## Checks and finite native evidence
 
+#0168 adds `PrivateRoot::parent_snapshot`, an immutable observation captured with
+the existing safe `observe` helper from the actual held writable containing
+directory before root creation. Its original volume/file identity and properties
+bind the live parent-flush acknowledgement; directory size/write time remain
+historical observations because normal child creation changes them. The accessor
+does not reopen a pathname, expose a handle, change ownership/access flags or add
+an SDK/unsafe operation. Existing continuous ancestor/name checks remain required.
+
 Immutable snapshots bind volume/file identity, size, link count, creation and
 last-write times, attributes and canonical owner/DACL. Source and artifact checks
 compare complete bounded bytes (maximum 64 MiB) before/after property checks;

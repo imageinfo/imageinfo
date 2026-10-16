@@ -1,0 +1,47 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "kind": {
+      "const": "legacy-invocation"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "pathStyle": {
+      "enum": [
+        "posix",
+        "windows"
+      ]
+    },
+    "workingDirectory": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32768
+    },
+    "arguments": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 32768
+      },
+      "maxItems": 128,
+      "minItems": 1
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "kind",
+    "id",
+    "pathStyle",
+    "workingDirectory",
+    "arguments"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://imageinfo.invalid/inert-translation/invocation.v1"
+}

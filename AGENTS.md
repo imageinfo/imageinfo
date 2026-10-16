@@ -438,6 +438,32 @@ provenance findings through later incomplete inspection and refuses mutation;
 fresh semantic verification. Neither enables filesystem publication, RAW mutation
 or a general privacy certification. See the documentation map for scoped evidence.
 
+#0168 adds phase/object/revision-bound live acknowledgements to the actual internal
+Windows protocol; positive admitted execution remains test-only. #0169 supplies
+bounded explicit current-caller authority and actual owned-child stop/release
+history; imported records confer no authority and restart mutation remains separate.
+#0196 implements mandatory pre-effect strict existing-target property refusal;
+its native inventories are not positive replacement preservation. #0186 binds
+actual guarded RAW/XMP observations to an internal original-snapshot date candidate,
+with authored evidence and no file publication or camera admission.
+#0124 qualifies thirty-two authored preview/pair argv cases, and #0129 specifies
+inert invocation/translation reports with finite token accounting and diagnostics.
+#0144 supplies a frozen-source resource runner/auditor and authored method controls;
+all actual camera-derived telemetry, audit dispositions and outcomes remain private.
+See the documentation map for exact bounded evidence and retained gates.
+
+## Linux new-output scope — Terry's decision, 2026-10-16
+
+Terry selected #0177 option A: defer positive Linux new-output support from the
+initial new-output milestone, which is Windows-only. Retain Linux new-output as
+future scope under its full continuous byte/object/name, ordinary-owner output
+and no-clobber guarantee. WSL-native and mounted Windows paths remain separately
+unsupported for mutation; Linux reads are unchanged. Do not weaken the future
+guarantee, invent a cooperative-writer fallback or create speculative Linux
+implementation cards without a justified selected mechanism. This is a scope
+decision, not a Windows profile/writer admission. See
+`docs/write-safety/linux-new-output-boundary.md`.
+
 ## Default-priority correction completed — 2026-10-16
 
 Terry's queued correction is complete: 102 non-Completed cards whose P2 came
@@ -453,20 +479,38 @@ deliberately raised priorities.
 
 ## Subagent sidebar names
 
-Terry requires every new subagent name to begin with its actual model/effort tag
-(2026-10-16), followed by its task, so the sidebar identifies its level at a glance.
-Prefer `Sol / Medium - implement 0168`, `Sol / High - review 0168`, or
-`Luna / Light - consumer checks`; older versions retain their version prefix,
-for example `5.6 Luna / Light - docs`. These examples do not authorize new models.
-When a tool only accepts lowercase letters, digits and underscores in task names,
-use an equivalent prefix such as `sol_medium_implement_0168`,
-`sol_high_review_0168`, `luna_light_consumer_checks`, or
-`5_6_luna_light_docs`. Never omit the model or effort from the tool-supplied name.
-Use the literal human-readable tag when a display-name field is supported.
-Existing agents may be renamed only through a supported rename capability; do
-not claim sidebar names changed when the tool provides no rename operation.
-Explicit model/effort arguments, model authorization and concurrency limits remain
-unchanged. Reused agents keep the tag for their actual configured model/effort.
+Terry requires a compact model/effort tag, then the ticket number, then a
+Title Case description (2026-10-16). Preferred sidebar examples are
+`S_M 124 Review`, `S_H 168 Review`, `S_M 168 Implement`, `L_L 144 Check`,
+`5.6L_L 124 Docs` and `A_M 177 Design`. Put the ticket before the description
+so agents working the same ticket are easy to count. For non-ticket work use a
+clear scope label instead of inventing a ticket number.
+
+The compact tag represents
+`[version, only if not latest for the family][L|S|A]-[L|M|H]: `; the sidebar
+underscore form above is also preferred. Family letters are L = Luna, S = Sol
+and A = Astra; effort letters are L = Light (API low), M = Medium and H = High.
+Omit the version for the latest family release; include it for older releases
+with no separator before the family letter: 5.6 Luna Light is `5.6L-L: `,
+6.1 Sol High is `S-H: ` and 6 Astra Medium is `A-M: ` at this update.
+Reassess the latest-family release mapping when releases change.
+
+When the spawn tool only accepts lowercase letters, digits and underscores,
+use equivalent names with the same order: `s_m_124_review`, `s_h_168_review`,
+`s_m_168_implement`, `l_l_144_check`, `5_6l_l_124_docs` or `a_m_177_design`.
+Use uppercase tags and Title Case descriptions when a supported display-name
+field permits them. Lowercase task-name constraints and app-controlled formatting
+may prevent the exact preferred sidebar rendering. Existing agents may be renamed
+only through a supported rename capability; do not claim rendering or existing
+names changed without tool support.
+
+Keep explicit model/effort spawn arguments. The compact tag already identifies
+the model and effort in delegation updates: write `S_M Integration Review`
+without repeating `(Sol / Medium)` after it (Terry, 2026-10-16). This supersedes
+earlier guidance requiring a redundant full-word pair alongside the tag.
+These examples do not authorize additional models or efforts, change per-turn
+Astra approval or alter concurrency limits. Reused agents retain a prefix
+matching their actual configured model and effort.
 
 ## Subagent authorization
 

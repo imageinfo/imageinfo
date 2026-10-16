@@ -1,0 +1,489 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "kind": {
+      "const": "legacy-translation-report"
+    },
+    "profile": {
+      "const": "mig-001-012-inert-v1"
+    },
+    "request": {
+      "oneOf": [
+        {
+          "$ref": "https://imageinfo.invalid/inert-translation/invocation.v1"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "status": {
+      "enum": [
+        "complete-with-differences",
+        "needs-input",
+        "unsupported",
+        "malformed"
+      ]
+    },
+    "exitStatus": {
+      "enum": [
+        0,
+        1,
+        2
+      ]
+    },
+    "accounting": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "index": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 127
+          },
+          "token": {
+            "type": "string",
+            "maxLength": 32768
+          },
+          "role": {
+            "enum": [
+              "option",
+              "option-value",
+              "operand",
+              "terminator",
+              "unknown"
+            ]
+          },
+          "valueOwner": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 127
+          },
+          "parts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "start": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "end": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "kind": {
+                  "enum": [
+                    "syntax",
+                    "value",
+                    "literal"
+                  ]
+                },
+                "text": {
+                  "type": "string",
+                  "maxLength": 32768
+                }
+              },
+              "required": [
+                "start",
+                "end",
+                "kind",
+                "text"
+              ]
+            },
+            "maxItems": 8
+          },
+          "findingIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 64
+            },
+            "maxItems": 16,
+            "minItems": 1
+          }
+        },
+        "required": [
+          "index",
+          "token",
+          "role",
+          "valueOwner",
+          "parts",
+          "findingIds"
+        ]
+      },
+      "maxItems": 128
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 64
+          },
+          "code": {
+            "$ref": "#/$defs/diagnosticCode"
+          },
+          "tokenIndices": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 127
+            },
+            "maxItems": 128
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 4096
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "tokenIndices",
+          "message"
+        ]
+      },
+      "maxItems": 256
+    },
+    "differences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "$ref": "#/$defs/diagnosticCode"
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 4096
+          }
+        },
+        "required": [
+          "code",
+          "text"
+        ]
+      },
+      "maxItems": 64
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "$ref": "#/$defs/diagnosticCode"
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 4096
+          },
+          "tokenIndices": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 127
+            },
+            "maxItems": 128
+          }
+        },
+        "required": [
+          "code",
+          "text",
+          "tokenIndices"
+        ]
+      },
+      "maxItems": 64
+    },
+    "prerequisites": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "$ref": "#/$defs/diagnosticCode"
+          },
+          "requirement": {
+            "type": "string",
+            "maxLength": 4096
+          },
+          "owner": {
+            "type": "string",
+            "maxLength": 256
+          }
+        },
+        "required": [
+          "code",
+          "requirement",
+          "owner"
+        ]
+      },
+      "maxItems": 64
+    },
+    "suggestion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "enum": [
+            "usable",
+            "withheld"
+          ]
+        },
+        "executable": {
+          "enum": [
+            "imageinfo",
+            null
+          ]
+        },
+        "arguments": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 32768
+              },
+              "maxItems": 128,
+              "minItems": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "workingDirectory": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 32768
+        },
+        "operation": {
+          "enum": [
+            "metadata read",
+            null
+          ]
+        },
+        "authority": {
+          "const": "none-report-only"
+        }
+      },
+      "required": [
+        "state",
+        "executable",
+        "arguments",
+        "workingDirectory",
+        "operation",
+        "authority"
+      ]
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mediaOpened": {
+          "const": false
+        },
+        "referencedFilesOpened": {
+          "const": false
+        },
+        "commandsExecuted": {
+          "const": false
+        },
+        "authorizationGranted": {
+          "const": false
+        }
+      },
+      "required": [
+        "mediaOpened",
+        "referencedFilesOpened",
+        "commandsExecuted",
+        "authorizationGranted"
+      ]
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "kind",
+    "profile",
+    "request",
+    "status",
+    "exitStatus",
+    "accounting",
+    "findings",
+    "differences",
+    "questions",
+    "prerequisites",
+    "suggestion",
+    "effects"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://imageinfo.invalid/inert-translation/report.v1",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "complete-with-differences"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "exitStatus": {
+            "const": 0
+          },
+          "request": {
+            "$ref": "https://imageinfo.invalid/inert-translation/invocation.v1"
+          },
+          "suggestion": {
+            "properties": {
+              "state": {
+                "const": "usable"
+              },
+              "executable": {
+                "const": "imageinfo"
+              },
+              "arguments": {
+                "type": "array"
+              },
+              "workingDirectory": {
+                "type": "string"
+              },
+              "operation": {
+                "const": "metadata read"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "needs-input",
+              "unsupported"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "exitStatus": {
+            "const": 1
+          },
+          "request": {
+            "$ref": "https://imageinfo.invalid/inert-translation/invocation.v1"
+          },
+          "prerequisites": {
+            "minItems": 1
+          },
+          "suggestion": {
+            "properties": {
+              "state": {
+                "const": "withheld"
+              },
+              "executable": {
+                "const": null
+              },
+              "arguments": {
+                "const": null
+              },
+              "workingDirectory": {
+                "const": null
+              },
+              "operation": {
+                "const": null
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "malformed"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "exitStatus": {
+            "const": 2
+          },
+          "request": {
+            "const": null
+          },
+          "accounting": {
+            "maxItems": 0
+          },
+          "suggestion": {
+            "properties": {
+              "state": {
+                "const": "withheld"
+              },
+              "executable": {
+                "const": null
+              },
+              "arguments": {
+                "const": null
+              },
+              "workingDirectory": {
+                "const": null
+              },
+              "operation": {
+                "const": null
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "diagnosticCode": {
+      "enum": [
+        "APPEND_UNAVAILABLE",
+        "BLANKET_DELETE_UNSUPPORTED",
+        "COPY_ALL_UNAVAILABLE",
+        "DATE_SHIFT_UNAVAILABLE",
+        "DELETE_UNAVAILABLE",
+        "DUPLICATE_OPTION",
+        "ENUMERATION_REQUIRED",
+        "EXECUTABLE_CONFIG_UNSUPPORTED",
+        "IMPORT_UNAVAILABLE",
+        "MALFORMED_INVOCATION",
+        "ORDER_OUTSIDE_FINITE_PROFILE",
+        "OVERWRITE_UNAVAILABLE",
+        "READ_VIEW_DIFFERENCE",
+        "REFERENCED_FILES_UNOPENED",
+        "SESSION_PROTOCOL_REQUIRED",
+        "UNKNOWN_TOKEN",
+        "WRITE_UNAVAILABLE"
+      ]
+    }
+  }
+}

@@ -15,6 +15,12 @@ all subsequent experimentation.
 
 Every successful mutation below must satisfy WS-001 through WS-024 as applicable.
 
+Terry selected [#0177 option A](linux-new-output-boundary.md) on 2026-10-16:
+the initial new-output milestone covers Windows only. Positive Linux new-output
+support is deferred future scope under its complete existing guarantees; Linux
+reads are unchanged. This changes milestone scope, not a SAF scenario's strength
+or qualification status, and supplies no positive Windows or Linux admission.
+
 Power-related acceptance follows the [VM-off-only best-effort policy](power-test-policy.md).
 There is no physical power-drop, dedicated-hardware or additional NMI qualification
 requirement. VM-off results retain their host-cache limits and confer no physical

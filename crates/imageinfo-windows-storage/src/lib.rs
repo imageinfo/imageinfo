@@ -6,6 +6,7 @@
 //! property changes are checked at explicit boundaries, not continuously excluded.
 
 use std::io;
+pub mod existing_properties;
 #[cfg(not(windows))]
 use std::path::Path;
 
@@ -138,6 +139,9 @@ mod unsupported {
             unreachable!("unconstructible")
         }
         pub fn snapshot(&self) -> &FileSnapshot {
+            unreachable!("unconstructible")
+        }
+        pub fn parent_snapshot(&self) -> &FileSnapshot {
             unreachable!("unconstructible")
         }
         pub fn check(&self) -> io::Result<()> {

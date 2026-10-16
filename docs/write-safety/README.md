@@ -106,6 +106,13 @@ postpublication cleanup and full storage/admission remain separate gates.
 
 ## Plan before effects
 
+**2026-10-16 scope decision accepted:** Terry selected [#0177 option A](linux-new-output-boundary.md).
+The initial new-output milestone is Windows-only; positive WSL-native Linux
+new-output support is separately deferred under its full continuous byte/object/name,
+ordinary-owner and no-clobber guarantee. Mounted Windows paths remain separately
+unsupported. Linux reads and all applicable WS/SAF guarantees remain unchanged;
+this scope decision admits no Windows profile or mutation capability.
+
 **2026-10-14 decision accepted:** [OD-11/#0041 option A](practical-output-policy.md)
 sets the new-output same-owner property-check boundary in WS-009/010/011. It retains
 guarded bytes, no-clobber names and all format/persistence/recovery gates. This is an

@@ -3,6 +3,167 @@ use std::io::Read;
 
 pub(crate) const PROTOCOL: &str = "windows-new-output-contract-v1";
 
+/// Acknowledgements exist only in the live executor. Transaction records encode
+/// prior acknowledgements for diagnostics; decoding them cannot recreate these.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub(crate) struct LiveAcknowledgement {
+    pub phase: Phase,
+    pub target: AckTarget,
+    pub bindings: Vec<Binding>,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub(crate) enum AckTarget {
+    Source,
+    Root,
+    ContainingParent,
+    Artifact(Artifact),
+    CompleteSet,
+    Caller,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub(crate) struct LiveEvidence {
+    pub protocol: &'static str,
+    pub profile: &'static str,
+    pub implementation: &'static str,
+    pub operation: String,
+    pub format_revision: String,
+    pub output: String,
+    pub candidate_len: u64,
+    pub acknowledgements: Vec<LiveAcknowledgement>,
+}
+
+impl LiveEvidence {
+    fn target(phase: Phase) -> AckTarget {
+        use Artifact::*;
+        use Phase::*;
+        match phase {
+            Preflight | SourceRead => AckTarget::Source,
+            RootCreated
+            | RootFlushed
+            | CandidateParentFlushed
+            | PreparedParentFlushed
+            | IntentParentFlushed
+            | InstalledParentFlushed
+            | ObservationParentFlushed
+            | ReceiptParentFlushed => AckTarget::Root,
+            ParentFlushed => AckTarget::ContainingParent,
+            CandidateCreated | CandidateFlushed | InstalledFlushed | Publish => {
+                AckTarget::Artifact(Candidate)
+            }
+            PreparedCreated | PreparedFlushed => AckTarget::Artifact(Prepared),
+            IntentCreated | IntentFlushed => AckTarget::Artifact(Intent),
+            ObservationCreated | ObservationFlushed => AckTarget::Artifact(Observation),
+            ReceiptCreated | ReceiptFlushed => AckTarget::Artifact(Receipt),
+            CallerRelease | CheckedContext | TerminalExport => AckTarget::Caller,
+            _ => AckTarget::CompleteSet,
+        }
+    }
+
+    pub(crate) fn complete(&self, bindings: &[Binding]) -> bool {
+        use Phase::*;
+        const REQUIRED: &[Phase] = &[
+            Preflight,
+            RootCreated,
+            RootFlushed,
+            ParentFlushed,
+            CandidateCreated,
+            CandidateChecked,
+            CandidateFlushed,
+            CandidateParentFlushed,
+            PreparedCreated,
+            PreparedChecked,
+            PreparedFlushed,
+            PreparedParentFlushed,
+            IntentCreated,
+            IntentChecked,
+            IntentFlushed,
+            IntentParentFlushed,
+            CallerRelease,
+            Prepublication,
+            Publish,
+            Installed,
+            InstalledFlushed,
+            InstalledParentFlushed,
+            InstalledRechecked,
+            ObservationCreated,
+            ObservationChecked,
+            ObservationFlushed,
+            ObservationParentFlushed,
+            ReceiptCreated,
+            ReceiptChecked,
+            ReceiptFlushed,
+            ReceiptFileChecked,
+            ReceiptParentFlushed,
+            ReceiptParentChecked,
+            CheckedContext,
+            Final,
+            TerminalExport,
+        ];
+        self.protocol == PROTOCOL
+            && !self.profile.is_empty()
+            && !self.implementation.is_empty()
+            && self.acknowledgements.len() == REQUIRED.len()
+            && self
+                .acknowledgements
+                .iter()
+                .zip(REQUIRED)
+                .all(|(ack, phase)| {
+                    ack.phase == *phase
+                        && ack.target == Self::target(*phase)
+                        && !ack.bindings.is_empty()
+                        && ack.bindings.len()
+                            == match phase {
+                                Preflight => 1,
+                                RootCreated | RootFlushed | ParentFlushed => 2,
+                                CandidateCreated
+                                | CandidateChecked
+                                | CandidateFlushed
+                                | CandidateParentFlushed => 3,
+                                PreparedCreated
+                                | PreparedChecked
+                                | PreparedFlushed
+                                | PreparedParentFlushed => 4,
+                                IntentCreated
+                                | IntentChecked
+                                | IntentFlushed
+                                | IntentParentFlushed
+                                | CallerRelease
+                                | Prepublication
+                                | Publish
+                                | Installed
+                                | InstalledFlushed
+                                | InstalledParentFlushed
+                                | InstalledRechecked => 5,
+                                ObservationCreated
+                                | ObservationChecked
+                                | ObservationFlushed
+                                | ObservationParentFlushed => 6,
+                                _ => 7,
+                            }
+                        && bindings.starts_with(&ack.bindings)
+                })
+            && self
+                .acknowledgements
+                .last()
+                .is_some_and(|ack| ack.bindings == bindings)
+    }
+}
+
+trait SuccessfulEffect {
+    fn binding(&self) -> Option<&Binding> {
+        None
+    }
+}
+impl SuccessfulEffect for () {}
+impl SuccessfulEffect for usize {}
+impl SuccessfulEffect for Binding {
+    fn binding(&self) -> Option<&Binding> {
+        Some(self)
+    }
+}
+
 /// Only a format implementation inside this crate may construct this decision.
 /// A parsed plan, receipt or application boolean cannot manufacture it.
 pub(crate) struct ValidatedCandidate<'a> {
@@ -80,6 +241,9 @@ pub(crate) trait Backend {
     fn checked_context(&mut self, bindings: &[Binding]) -> Result<(), Failure>;
     /// Must export while guards remain held; lost response is uncertainty.
     fn export_terminal(&mut self, bindings: &[Binding]) -> Result<(), Failure>;
+    /// Retains actual live results independently of transaction-file claims.
+    /// Called before executor return while all continuous guards remain held.
+    fn retain_live_evidence(&mut self, _evidence: &LiveEvidence) {}
 }
 
 struct Attempt {
@@ -88,14 +252,18 @@ struct Attempt {
     release_possible: bool,
     retained: bool,
     charged: u64,
+    evidence: LiveEvidence,
+    acknowledged_bindings: Vec<Binding>,
 }
 
 impl Attempt {
-    fn result(&self, failure: Option<Failure>, complete: bool) -> UnitResult {
+    fn result(&self, failure: Option<Failure>, complete: bool, admitted: bool) -> UnitResult {
         let status = if complete {
-            // #168/#176 provide admitted profile capabilities. An internal
-            // unqualified execution reports completion without claiming commit.
-            Status::Refused
+            if admitted {
+                Status::Committed
+            } else {
+                Status::Refused
+            }
         } else if self.possible {
             Status::RecoveryRequired
         } else {
@@ -125,7 +293,7 @@ impl Attempt {
         }
     }
 
-    fn step<T>(
+    fn step<T: SuccessfulEffect>(
         &mut self,
         phase: Phase,
         cancel: &Cancellation,
@@ -135,7 +303,18 @@ impl Attempt {
         if cancel.is_requested() {
             return Err(Failure::Cancelled);
         }
-        effect()
+        let value = effect()?;
+        if let Some(binding) = value.binding() {
+            capture(&mut self.acknowledged_bindings, binding.clone())?;
+        }
+        if phase != Phase::SourceRead {
+            self.evidence.acknowledgements.push(LiveAcknowledgement {
+                phase,
+                target: LiveEvidence::target(phase),
+                bindings: self.acknowledged_bindings.clone(),
+            });
+        }
+        Ok(value)
     }
 }
 
@@ -204,12 +383,114 @@ pub(crate) fn execute(
     budget: &mut LogicalBudget,
     cancel: &Cancellation,
 ) -> UnitResult {
+    execute_inner(backend, request, budget, cancel, Admission::Unqualified)
+}
+
+/// The format caller resolves a no-op before constructing a publication request.
+/// None is an explicit bypass, never an inference from candidate byte equality.
+pub(crate) fn execute_resolved(
+    backend: &mut impl Backend,
+    request: Option<ValidatedCandidate<'_>>,
+    budget: &mut LogicalBudget,
+    cancel: &Cancellation,
+) -> UnitResult {
+    match request {
+        Some(request) => execute(backend, request, budget, cancel),
+        None => UnitResult {
+            status: Status::Unchanged,
+            phase: Phase::Preflight,
+            failure: None,
+            publication_possible: false,
+            release_possible: false,
+            retained_material: false,
+            pending_cleanup: false,
+            charged_bytes: 0,
+            protocol_complete: false,
+        },
+    }
+}
+
+/// Exact authored-test capability. This type and constructor do not exist in a
+/// production build; #0176 must supply a separately reviewed admission path.
+#[cfg(test)]
+pub(crate) struct TestAdmission {
+    profile: &'static str,
+    implementation: &'static str,
+}
+
+enum Admission {
+    Unqualified,
+    #[cfg(test)]
+    Authored(TestAdmission),
+}
+
+impl Admission {
+    fn accepts(&self, _backend: &impl Backend) -> bool {
+        match self {
+            Self::Unqualified => false,
+            #[cfg(test)]
+            Self::Authored(admission) => {
+                admission.profile == _backend.profile()
+                    && admission.implementation == _backend.implementation()
+            }
+        }
+    }
+}
+
+#[cfg(test)]
+impl TestAdmission {
+    pub(crate) fn exact(backend: &impl Backend) -> Self {
+        Self {
+            profile: backend.profile(),
+            implementation: backend.implementation(),
+        }
+    }
+}
+
+#[cfg(test)]
+pub(crate) fn execute_test_admitted(
+    backend: &mut impl Backend,
+    request: ValidatedCandidate<'_>,
+    budget: &mut LogicalBudget,
+    cancel: &Cancellation,
+    admission: TestAdmission,
+) -> UnitResult {
+    execute_inner(
+        backend,
+        request,
+        budget,
+        cancel,
+        Admission::Authored(admission),
+    )
+}
+
+fn execute_inner(
+    backend: &mut impl Backend,
+    request: ValidatedCandidate<'_>,
+    budget: &mut LogicalBudget,
+    cancel: &Cancellation,
+    admission: Admission,
+) -> UnitResult {
+    let admitted = admission.accepts(backend);
     let mut attempt = Attempt {
         phase: Phase::Preflight,
         possible: false,
         release_possible: false,
         retained: false,
         charged: 0,
+        evidence: LiveEvidence {
+            protocol: PROTOCOL,
+            profile: backend.profile(),
+            implementation: backend.implementation(),
+            // Refused diagnostics must not copy any unvalidated caller text.
+            // Populate these only after borrowed bounds and budget admission.
+            operation: String::new(),
+            format_revision: String::new(),
+            output: String::new(),
+            candidate_len: request.planned_len,
+            acknowledgements: Vec::new(),
+        },
+        acknowledged_bindings: Vec::new(),
     };
     let mut bindings = Vec::new();
     let mut phases = Vec::new();
@@ -241,6 +522,9 @@ pub(crate) fn execute(
         // Full planned construction bound, including all records and at most
         // four caller-state captures, is charged before allocation/effects.
         attempt.charged = budget.reserve_unit(request.planned_len)?;
+        attempt.evidence.operation = request.operation.into();
+        attempt.evidence.format_revision = request.format_revision.into();
+        attempt.evidence.output = request.output.0.into();
         capture(
             &mut bindings,
             attempt.step(Phase::Preflight, cancel, || {
@@ -353,7 +637,7 @@ pub(crate) fn execute(
             return Err(Failure::Cancelled);
         }
         attempt.possible = true;
-        backend.publish(request.output.0)?;
+        attempt.step(Phase::Publish, cancel, || backend.publish(request.output.0))?;
         attempt.step(Phase::Installed, cancel, || {
             backend.check(Phase::Installed, &bindings)
         })?;
@@ -420,11 +704,15 @@ pub(crate) fn execute(
         attempt.step(Phase::TerminalExport, cancel, || {
             backend.export_terminal(&bindings)
         })?;
+        if !attempt.evidence.complete(&bindings) {
+            return Err(Failure::InvalidBinding);
+        }
         Ok(())
     })();
+    backend.retain_live_evidence(&attempt.evidence);
     match run {
-        Ok(()) => attempt.result(None, true),
-        Err(error) => attempt.result(Some(error), false),
+        Ok(()) => attempt.result(None, true, admitted),
+        Err(error) => attempt.result(Some(error), false, false),
     }
 }
 

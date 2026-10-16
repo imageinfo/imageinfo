@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "ticket": 124,
+  "platform": "nt",
+  "binarySha256": "0d444429fc18427eb921e4d7aacfbc52da548fdc0073c11c38e9c8d9cd34764c",
+  "ledgerSha256": "519c7c86c3bde3043157403b6f05ee18ee52d0862a3b3346557fb94eca5b8ede",
+  "checkerSha256": "1e4228ec23b0a961d714f85d3ec10f0b6b471a183451bfc8fe4d7d9a9b339740",
+  "sourceSha256": {
+    "src/cli.rs": "d891461f5f83b0e92fd5b81b43236aab408024dd5cf81033d321f775abbe749c",
+    "src/app.rs": "824655b6f49fa3dac92c599ac88a7d52787726db851740d2acf8c3aa7af4e28d",
+    "src/preview.rs": "4b6b7568621b8e7a6df27ea51a848d3614c23f0ae48b60ced67998feac15d745",
+    "src/pairing.rs": "a17564bdc53a41137bf04b3a59fbff50146683c6248ee382904e394bafd85530",
+    "src/reader/admission.rs": "4b55957144b096092628bb4b7d5070ecc9ceb4e1046739768dd24bf6e61e8a41",
+    "tests/support/mod.rs": "c8354d2609aa664d1b86ceca75a7d9500973fcf222cdd267ce9b3c7bafe34104",
+    "scripts/check_read_arguments.py": "6e420b276f9d4c529b051992f895234f0b30567b2073568e815391a18db408e7",
+    "Cargo.lock": "28e48ee1d73a3f1160157fe206a860406c428a9918e52ac4103850b2441272ab"
+  },
+  "cases": [
+    {
+      "id": "PP-001",
+      "status": 1,
+      "channel": "json",
+      "stdoutBytes": 1964,
+      "stderrBytes": 80,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-002",
+      "status": 1,
+      "channel": "json",
+      "stdoutBytes": 1964,
+      "stderrBytes": 80,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-003",
+      "status": 1,
+      "channel": "json",
+      "stdoutBytes": 1964,
+      "stderrBytes": 80,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-004",
+      "status": 1,
+      "channel": "json",
+      "stdoutBytes": 1964,
+      "stderrBytes": 80,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-005",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 778,
+      "stderrBytes": 209,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-006",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 780,
+      "stderrBytes": 211,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-007",
+      "status": 0,
+      "channel": "text",
+      "stdoutBytes": 937,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-008",
+      "status": 0,
+      "channel": "text",
+      "stdoutBytes": 87,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-009",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 720,
+      "stderrBytes": 153,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-010",
+      "status": 1,
+      "channel": "json",
+      "stdoutBytes": 1967,
+      "stderrBytes": 80,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-011",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 634,
+      "stderrBytes": 69,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-012",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 746,
+      "stderrBytes": 179,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-013",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 662,
+      "stderrBytes": 97,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-014",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 658,
+      "stderrBytes": 93,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-015",
+      "status": 1,
+      "channel": "json",
+      "stdoutBytes": 1964,
+      "stderrBytes": 80,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-016",
+      "status": 1,
+      "channel": "json",
+      "stdoutBytes": 1800,
+      "stderrBytes": 152,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-017",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 1091,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-018",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 1095,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-019",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 1095,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-020",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 1095,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-021",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 768,
+      "stderrBytes": 199,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-022",
+      "status": 2,
+      "channel": "stderr",
+      "stdoutBytes": 0,
+      "stderrBytes": 86,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-023",
+      "status": 0,
+      "channel": "text",
+      "stdoutBytes": 839,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-024",
+      "status": 0,
+      "channel": "text",
+      "stdoutBytes": 87,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-025",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 713,
+      "stderrBytes": 146,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-026",
+      "status": 0,
+      "channel": "json",
+      "stdoutBytes": 1083,
+      "stderrBytes": 0,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-027",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 648,
+      "stderrBytes": 83,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-028",
+      "status": 2,
+      "channel": "json",
+      "stdoutBytes": 644,
+      "stderrBytes": 79,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-029",
+      "status": 1,
+      "channel": "json",
+      "stdoutBytes": 998,
+      "stderrBytes": 108,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-030",
+      "status": 1,
+      "channel": "json",
+      "stdoutBytes": 967,
+      "stderrBytes": 77,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-031",
+      "status": 1,
+      "channel": "json",
+      "stdoutBytes": 957,
+      "stderrBytes": 67,
+      "effects": "unchanged",
+      "passed": true
+    },
+    {
+      "id": "PP-032",
+      "status": 1,
+      "channel": "json",
+      "stdoutBytes": 959,
+      "stderrBytes": 69,
+      "effects": "unchanged",
+      "passed": true
+    }
+  ],
+  "oracleControls": [
+    "preview-wrong-input",
+    "pair-wrong-input",
+    "pair-wrong-raw-identity",
+    "pair-wrong-input-and-identity"
+  ]
+}

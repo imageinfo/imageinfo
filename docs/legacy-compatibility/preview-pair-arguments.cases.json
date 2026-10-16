@@ -1,0 +1,505 @@
+{
+  "schemaVersion": 1,
+  "ticket": 124,
+  "classification": "finite-native-difference-and-refusal",
+  "cases": [
+    {
+      "id": "PP-001",
+      "argv": [
+        "--output=json",
+        "preview",
+        "date-time-original",
+        "source.cr3",
+        "--value",
+        "2000:02:29 23:59:59"
+      ],
+      "status": 1,
+      "channel": "json",
+      "check": "preview",
+      "code": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "input": "source.cr3"
+    },
+    {
+      "id": "PP-002",
+      "argv": [
+        "preview",
+        "--output=json",
+        "date-time-original",
+        "source.cr3",
+        "--value",
+        "2000:02:29 23:59:59"
+      ],
+      "status": 1,
+      "channel": "json",
+      "check": "preview",
+      "code": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "input": "source.cr3"
+    },
+    {
+      "id": "PP-003",
+      "argv": [
+        "preview",
+        "date-time-original",
+        "--output=json",
+        "--value",
+        "2000:02:29 23:59:59",
+        "source.cr3"
+      ],
+      "status": 1,
+      "channel": "json",
+      "check": "preview",
+      "code": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "input": "source.cr3"
+    },
+    {
+      "id": "PP-004",
+      "argv": [
+        "preview",
+        "date-time-original",
+        "source.cr3",
+        "--value",
+        "2000:02:29 23:59:59",
+        "--output=json"
+      ],
+      "status": 1,
+      "channel": "json",
+      "check": "preview",
+      "code": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "input": "source.cr3"
+    },
+    {
+      "id": "PP-005",
+      "argv": [
+        "--output=json",
+        "preview",
+        "date-time-original",
+        "source.cr3",
+        "--value",
+        "2000:02:29 23:59:59",
+        "--value",
+        "2000:02:29 23:59:59"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "PP-006",
+      "argv": [
+        "--output=json",
+        "preview",
+        "date-time-original",
+        "source.cr3",
+        "--value",
+        "2000:02:29 23:59:59",
+        "--offset",
+        "0",
+        "--offset",
+        "0"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "PP-007",
+      "argv": [
+        "--output=json",
+        "preview",
+        "date-time-original",
+        "--help",
+        "--version"
+      ],
+      "status": 0,
+      "channel": "text",
+      "check": "help"
+    },
+    {
+      "id": "PP-008",
+      "argv": [
+        "preview",
+        "date-time-original",
+        "--version"
+      ],
+      "status": 0,
+      "channel": "text",
+      "check": "version"
+    },
+    {
+      "id": "PP-009",
+      "argv": [
+        "--output=json",
+        "preview",
+        "date-time-original",
+        "--help",
+        "--offset",
+        "bad"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "PP-010",
+      "argv": [
+        "--output=json",
+        "preview",
+        "date-time-original",
+        "--value",
+        "2000:02:29 23:59:59",
+        "--",
+        "--output=json"
+      ],
+      "status": 1,
+      "channel": "json",
+      "check": "preview",
+      "code": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "input": "--output=json"
+    },
+    {
+      "id": "PP-011",
+      "argv": [
+        "--output=json",
+        "preview",
+        "date-time-original",
+        "source.cr3",
+        "--value",
+        "2026:02:30 01:02:03"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "code": "INVALID_DATE"
+    },
+    {
+      "id": "PP-012",
+      "argv": [
+        "--output=json",
+        "preview",
+        "date-time-original",
+        "source.cr3",
+        "--value",
+        "2000:02:29 23:59:59",
+        "--offset",
+        "18446744073709551616"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "PP-013",
+      "argv": [
+        "--output=json",
+        "preview",
+        "date-time-original",
+        "--value",
+        "2000:02:29 23:59:59"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "code": "MISSING_ARGUMENT"
+    },
+    {
+      "id": "PP-014",
+      "argv": [
+        "--output=json",
+        "preview",
+        "date-time-original",
+        "source.cr3",
+        "second.cr3",
+        "--value",
+        "2000:02:29 23:59:59"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "code": "INVALID_INPUT"
+    },
+    {
+      "id": "PP-015",
+      "argv": [
+        "--output=json",
+        "preview",
+        "date-time-original",
+        "source.cr3",
+        "--value",
+        "2000:02:29 23:59:59",
+        "--offset",
+        "{date_offset}"
+      ],
+      "status": 1,
+      "channel": "json",
+      "check": "preview",
+      "code": "OPAQUE_DEPENDENCY_UNPROVEN",
+      "input": "source.cr3"
+    },
+    {
+      "id": "PP-016",
+      "argv": [
+        "--output=json",
+        "preview",
+        "date-time-original",
+        "source.cr3",
+        "--value",
+        "2000:02:29 23:59:59",
+        "--offset",
+        "0"
+      ],
+      "status": 1,
+      "channel": "json",
+      "check": "stale-preview",
+      "code": "OCCURRENCE_CHANGED",
+      "input": "source.cr3"
+    },
+    {
+      "id": "PP-017",
+      "argv": [
+        "--output=json",
+        "sidecar",
+        "pair",
+        "opaque.raw",
+        "--sidecar",
+        "chosen.xmp"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "pair",
+      "input": "opaque.raw",
+      "sidecar": "chosen.xmp"
+    },
+    {
+      "id": "PP-018",
+      "argv": [
+        "sidecar",
+        "--output=json",
+        "pair",
+        "opaque.raw",
+        "--sidecar",
+        "chosen.xmp"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "pair",
+      "input": "opaque.raw",
+      "sidecar": "chosen.xmp"
+    },
+    {
+      "id": "PP-019",
+      "argv": [
+        "sidecar",
+        "pair",
+        "--output=json",
+        "--sidecar",
+        "chosen.xmp",
+        "opaque.raw"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "pair",
+      "input": "opaque.raw",
+      "sidecar": "chosen.xmp"
+    },
+    {
+      "id": "PP-020",
+      "argv": [
+        "sidecar",
+        "pair",
+        "opaque.raw",
+        "--sidecar",
+        "chosen.xmp",
+        "--output=json"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "pair",
+      "input": "opaque.raw",
+      "sidecar": "chosen.xmp"
+    },
+    {
+      "id": "PP-021",
+      "argv": [
+        "--output=json",
+        "sidecar",
+        "pair",
+        "opaque.raw",
+        "--sidecar",
+        "chosen.xmp",
+        "--sidecar",
+        "chosen.xmp"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "PP-022",
+      "argv": [
+        "--output=json",
+        "sidecar",
+        "pair",
+        "opaque.raw",
+        "--sidecar",
+        "chosen.xmp",
+        "--output=json"
+      ],
+      "status": 2,
+      "channel": "stderr",
+      "check": "usage",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "PP-023",
+      "argv": [
+        "--output=json",
+        "sidecar",
+        "pair",
+        "--help",
+        "--version"
+      ],
+      "status": 0,
+      "channel": "text",
+      "check": "help"
+    },
+    {
+      "id": "PP-024",
+      "argv": [
+        "sidecar",
+        "pair",
+        "--version"
+      ],
+      "status": 0,
+      "channel": "text",
+      "check": "version"
+    },
+    {
+      "id": "PP-025",
+      "argv": [
+        "--output=json",
+        "sidecar",
+        "pair",
+        "--help",
+        "--sidecar"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "code": "INVALID_OPTION"
+    },
+    {
+      "id": "PP-026",
+      "argv": [
+        "--output=json",
+        "sidecar",
+        "pair",
+        "--sidecar",
+        "chosen.xmp",
+        "--",
+        "help"
+      ],
+      "status": 0,
+      "channel": "json",
+      "check": "pair",
+      "input": "help",
+      "sidecar": "chosen.xmp"
+    },
+    {
+      "id": "PP-027",
+      "argv": [
+        "--output=json",
+        "sidecar",
+        "pair",
+        "--sidecar",
+        "chosen.xmp"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "code": "MISSING_ARGUMENT"
+    },
+    {
+      "id": "PP-028",
+      "argv": [
+        "--output=json",
+        "sidecar",
+        "pair",
+        "opaque.raw",
+        "second.cr3",
+        "--sidecar",
+        "chosen.xmp"
+      ],
+      "status": 2,
+      "channel": "json",
+      "check": "usage",
+      "code": "INVALID_INPUT"
+    },
+    {
+      "id": "PP-029",
+      "argv": [
+        "--output=json",
+        "sidecar",
+        "pair",
+        "source.cr3"
+      ],
+      "status": 1,
+      "channel": "json",
+      "check": "file-error",
+      "code": "EXPLICIT_SIDECAR_REQUIRED",
+      "input": "source.cr3"
+    },
+    {
+      "id": "PP-030",
+      "argv": [
+        "--output=json",
+        "sidecar",
+        "pair",
+        "opaque.raw",
+        "--sidecar",
+        "missing.xmp"
+      ],
+      "status": 1,
+      "channel": "json",
+      "check": "file-error",
+      "code": "SIDECAR_MISSING",
+      "input": "opaque.raw"
+    },
+    {
+      "id": "PP-031",
+      "argv": [
+        "--output=json",
+        "sidecar",
+        "pair",
+        "opaque.raw",
+        "--sidecar",
+        "opaque.raw"
+      ],
+      "status": 1,
+      "channel": "json",
+      "check": "file-error",
+      "code": "PAIRING_SAME_FILE",
+      "input": "opaque.raw"
+    },
+    {
+      "id": "PP-032",
+      "argv": [
+        "--output=json",
+        "sidecar",
+        "pair",
+        "opaque.raw",
+        "--sidecar",
+        "hard-alias.xmp"
+      ],
+      "status": 1,
+      "channel": "json",
+      "check": "file-error",
+      "code": "PAIRING_SAME_FILE",
+      "input": "opaque.raw"
+    }
+  ]
+}

@@ -14,6 +14,14 @@ The first camera/format target is **Canon EOS R5 CR3**.
 
 | Document | Purpose |
 | --- | --- |
+| [Live publication acknowledgements](write-safety/live-acknowledgements.md) | #0168 joined native protocol with phase/object/revision-bound completion evidence; positive admission is test-only and public apply remains gated. |
+| [Current caller custody](write-safety/caller-custody.md) | #0169 exact bounded current authority and actual owned-child stop/release history; no transaction importer or restart mutation. |
+| [Existing-target property refusal](write-safety/existing-target-properties.md) | #0196 mandatory pre-effect unsupported boundary with twelve authored native property inventories; no positive strict replacement guarantee. |
+| [Guarded date candidate](sidecars/guarded-date-candidate.md) | #0186 actual held RAW/XMP source observations and internal immutable-original date derivative; authored native evidence without publication. |
+| [Preview and pair arguments](legacy-compatibility/preview-pair-arguments.md) | #0124 thirty-two actual authored argv cases with independent input binding and no-effects checks; no broader parity claim. |
+| [Inert translation reports](legacy-compatibility/inert-translation.md) | #0129 finite invocation/report schemas, complete twelve-example token accounting and supported suggestion boundaries; no translator/import runtime. |
+| [Read-resource method](performance/read-resource-characterization.md) | #0144 frozen-source CPU/memory/logical-I/O grid and retained-output audit; authored controls are public and camera-derived observations remain private. |
+| [Accepted Linux new-output deferral](write-safety/linux-new-output-boundary.md) | #0177 option A: initial new-output milestone is Windows-only, with full-guarantee Linux new-output retained as future scope and Linux reads unchanged. |
 | [Production Windows guards](write-safety/windows-production-guards.md) | #0166 owned safe handle/namespace facade and isolated SDK review; finite native evidence without profile admission. |
 | [Single-unit publication runtime](write-safety/publication-runtime.md) | #0167 actual internal orchestration, bounded accounting and Windows adapter; public execution and committed outcomes remain gated. |
 | [Held existing-object move](write-safety/held-existing-move.md) | #0195 same held-object no-replace move and twelve native cases; no expected-target replacement or durability admission. |

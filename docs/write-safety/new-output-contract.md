@@ -215,8 +215,9 @@ minimum number of free gigabytes or new equipment requirement is selected.
 
 Replacement, source deletion, cross-volume copy/delete, symlink/reparse traversal,
 unsupported streams/properties, occupied-name restore, pairs/batches and automatic
-restart effects remain outside this profile. #0177 owns the retained Linux/WSL
-support boundary. Independent format admission remains mandatory; none of these
+restart effects remain outside this profile. #0177 records the [accepted deferral](linux-new-output-boundary.md) of positive
+Linux/WSL new-output support from this initial milestone. Its full guarantee
+remains future scope; Linux reads are unchanged. Independent format admission remains mandatory; none of these
 storage rules authorizes any current CR3 mutation or XMP publication.
 
 ## Exact normative interpretation and verification examples

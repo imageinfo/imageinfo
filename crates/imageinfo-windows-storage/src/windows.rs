@@ -270,6 +270,7 @@ pub struct PrivateRoot {
     file: File,
     path: PathBuf,
     before: FileSnapshot,
+    parent_before: FileSnapshot,
     security: native::PrivateSecurity,
     ancestry: Vec<(PathBuf, File)>,
     failed: Cell<bool>,
@@ -292,6 +293,7 @@ impl PrivateRoot {
         native::check_local_ntfs(parent_file, path)?;
         // Probe required writable parent flush before creating a target artifact.
         parent_file.sync_all()?;
+        let parent_before = observe(parent_file)?;
         let security = native::PrivateSecurity::current()?;
         let file = security.create_directory(parent_file, Path::new(leaf))?;
         let before = observe(&file)?;
@@ -299,6 +301,7 @@ impl PrivateRoot {
             file,
             path: path.into(),
             before,
+            parent_before,
             security,
             ancestry,
             failed: Cell::new(false),
@@ -311,6 +314,11 @@ impl PrivateRoot {
     }
     pub fn snapshot(&self) -> &FileSnapshot {
         &self.before
+    }
+    /// Actual containing-directory observation captured from its continuously
+    /// held writable handle before root creation. This is never a path reopen.
+    pub fn parent_snapshot(&self) -> &FileSnapshot {
+        &self.parent_before
     }
     pub fn check(&self) -> io::Result<()> {
         if self.failed.get() {

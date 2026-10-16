@@ -53,6 +53,13 @@ linked in the [documentation map](README.md). No successor cards are created.
 mechanism, and #0195's same-object move does not satisfy that prerequisite.
 The pair review does not imply positive derivative/publication admission.
 
+The third eight-card wave advances #0168, #0169, #0196, #0186, #0124,
+#0129, #0144 and #0177 from the existing queue. Their scoped implementation,
+qualification methods and accepted Linux deferral are linked in the
+[documentation map](README.md). No successor cards are created. #0196's strict
+pre-effect refusal is not positive replacement preservation; #0185/#0194 still
+need their unmet positive pair/mechanism prerequisites.
+
 ## Count the queue consistently
 
 | Scope | Ready for Work | Needs Terry | Insufficient scope |
@@ -79,7 +86,7 @@ A work card finishes its own concrete implementation/evidence outcome, relevant 
 | Original cards | Remaining acceptance owner |
 | --- | --- |
 | #0014, #0078 | Format decisions, exact admitted date operation and apply adapter; broader WS/SAF/scenario families remain explicit until exact operations are selected. |
-| #0022 | Actual production guards/protocol, acknowledgement and restart authority, inspection/actions, resources, native errors, VM-off evidence and executable exact-profile admission; Linux scope stays explicit. |
+| #0022 | Actual production guards/protocol, acknowledgement and restart authority, inspection/actions, resources, native errors, VM-off evidence and executable exact-profile admission; positive Linux new-output is explicitly deferred under #0177, with its full guarantee retained as future scope. |
 | #0023, #0079, #0080 | Saved-intent/apply contract in #0078, cooperative results, separate actual process-outcome audit, and exact admitted-media/source CI release evidence. |
 | #0024, #0085, #0086 | XML/packet and lawful derivative admission, source/candidate binding, functional new-sidecar integration, expanded fault evidence and actual pair integration. Shared group mechanics are implemented once. |
 | #0025, #0089, #0090 | Selected one-field operation/policy, in-memory removal, actual admitted integration and all-artifact residual audit; missing independent GPS/serial/provenance scopes remain visible. |
@@ -118,7 +125,7 @@ Prerequisites name exact cards. Historical accepted research is evidence of its 
 | #0174 | Exercise actual production native read and device-flush errors in a disposable guest | Work | #0168 |
 | #0175 | Qualify production single-output interruption behavior with bounded VM-off cells | Work | #0168, #0172, #0173, #0171, #0170 |
 | #0176 | Admit the exact implemented Windows new-output profile from actual evidence | Work | #0165, #0168, #0174, #0172, #0167, #0166, #0173, #0169, #0171, #0170, #0175 |
-| #0177 | Resolve the retained WSL-native Linux new-output support boundary | Work | #0165 |
+| #0177 | Defer positive Linux new-output from the initial milestone; retain its full future guarantee ([option A accepted](write-safety/linux-new-output-boundary.md)) | Decision recorded | #0165 |
 
 ### New-CR3 workflow
 
@@ -262,7 +269,7 @@ Prerequisites name exact cards. Historical accepted research is evidence of its 
 These residuals are not silently complete, and their future ticket counts are not yet known:
 
 - Broader #0014 transformation families still need exact tag/layout/operation selection. Current CR3 opaque semantic dependence has no positive admission merely because reference rewrites or authored controls pass. The format decision preserves refusal by default.
-- A positive WSL-native Linux guard/backend scope requires a viable selected mechanism or an explicit Terry scope decision. New-output success does not supply replacement semantics.
+- Terry selected #0177 option A: positive WSL-native Linux new-output is deferred from the initial Windows-only new-output milestone. Its complete continuous guard, ordinary-owner and no-clobber guarantee remains future scope; no viable mechanism or executable successor is invented. Linux reads are unchanged. New-output success does not supply replacement semantics.
 - The six unknown saved-plan profiles and unselected import/report/template/filter/alias/definition/manifest/cancellation alternatives remain conditional. No speculative implementation cards were created for mutually exclusive choices.
 - Technical inspection/profile extension for the selected decoder cell remains separately scoped after the exact permitted use is recorded. The completed readiness review used existing text records, not media or a decoder; restricted observations stay private.
 - #0074 still has no concrete new photo acquisition target. Existing P1/P2 fixture and secondary variant dispositions are retained; no new acquisition is requested.
