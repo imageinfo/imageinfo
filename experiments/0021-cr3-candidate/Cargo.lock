@@ -93,6 +93,7 @@ name = "imageinfo"
 version = "0.2.0-dev"
 dependencies = [
  "clap",
+ "imageinfo-windows-storage",
  "roxmltree",
  "same-file",
  "serde",
@@ -106,6 +107,14 @@ version = "0.0.0"
 dependencies = [
  "imageinfo",
  "serde_json",
+]
+
+[[package]]
+name = "imageinfo-windows-storage"
+version = "0.0.0"
+dependencies = [
+ "winapi-util",
+ "windows-sys",
 ]
 
 [[package]]

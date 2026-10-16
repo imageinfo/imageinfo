@@ -46,6 +46,13 @@ no replacement child batch is created. #0193's negative boundary result leaves
 positive replacement work unsupported, and none of the other scoped results
 silently enables a writer, publication profile or broader parity/privacy claim.
 
+The second eight-card wave delivers #0166, #0167, #0132, #0184, #0195,
+#0163, #0189 and #0190 from the existing queue. Each outcome and its limits are
+linked in the [documentation map](README.md). No successor cards are created.
+#0194 remains queued: #0193 supplied no valid expected-target replacement
+mechanism, and #0195's same-object move does not satisfy that prerequisite.
+The pair review does not imply positive derivative/publication admission.
+
 ## Count the queue consistently
 
 | Scope | Ready for Work | Needs Terry | Insufficient scope |

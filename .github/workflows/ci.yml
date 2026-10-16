@@ -24,6 +24,19 @@ jobs:
           persist-credentials: false
       - name: Install pinned Rust toolchain
         run: rustup toolchain install 1.99.0 --profile minimal --component clippy,rustfmt
+      - name: Check production Windows storage boundary
+        run: |
+          cargo fmt --manifest-path crates/imageinfo-windows-storage/Cargo.toml --all --check
+          cargo clippy --manifest-path crates/imageinfo-windows-storage/Cargo.toml --locked --all-targets -- -D warnings
+          cargo test --manifest-path crates/imageinfo-windows-storage/Cargo.toml --locked
+          cargo build --manifest-path crates/imageinfo-windows-storage/Cargo.toml --locked --release
+      - name: Check native Windows storage actors
+        if: runner.os == 'Windows'
+        run: |
+          cargo build --manifest-path crates/imageinfo-windows-storage/Cargo.toml --locked --example guard_probe
+          python crates/imageinfo-windows-storage/tests/native_actors.py --probe crates/imageinfo-windows-storage/target/debug/examples/guard_probe.exe --output .local/windows-storage-actors-ci
+      - name: Check operation planner and wire ownership
+        run: python scripts/check_operation_plan_map.py
       - name: Check bounded XMP component research
         run: |
           cargo fmt --manifest-path experiments/0081-xmp-model/Cargo.toml --check

@@ -105,13 +105,57 @@ fn finding(code: &'static str, range: Option<Range>) -> Finding {
     Finding { code, range }
 }
 
+/// A failed bounded inspection retains only findings actually reached before
+/// its error. Incomplete observations never establish known-indicator absence.
+#[derive(Debug)]
+pub struct IncompleteInspection {
+    pub partial: Assessment,
+    pub error: Error,
+}
+
 /// Caller supplies a stable stream for this invocation. No pathname reopening,
 /// mutation, cryptographic verification or imported-profile authorization occurs.
 pub fn inspect<R: Read + Seek>(
-    mut input: R,
+    input: R,
     date: DateTime,
     expected: Option<Range>,
 ) -> Result<Assessment> {
+    inspect_with_partial(input, date, expected).map_err(|failure| failure.error)
+}
+
+/// Same inspector and bounds as `inspect`, with reached observations retained
+/// on failure. No imported assessment can be supplied as inspection authority.
+pub fn inspect_with_partial<R: Read + Seek>(
+    input: R,
+    date: DateTime,
+    expected: Option<Range>,
+) -> std::result::Result<Assessment, Box<IncompleteInspection>> {
+    let mut result = Assessment {
+        field: None,
+        field_shape_verified: false,
+        expected_occurrence_matches: false,
+        value_already_matches: false,
+        known_structures: Vec::new(),
+        refusals: Vec::new(),
+        opaque_dependency_regions: 0,
+        jpeg_markers_examined: 0,
+        bytes_examined: 0,
+    };
+    match inspect_into(input, date, expected, &mut result) {
+        Ok(()) => Ok(result),
+        Err(error) => Err(Box::new(IncompleteInspection {
+            partial: result,
+            error,
+        })),
+    }
+}
+
+fn inspect_into<R: Read + Seek>(
+    mut input: R,
+    date: DateTime,
+    expected: Option<Range>,
+    result: &mut Assessment,
+) -> Result<()> {
     if input.seek(SeekFrom::End(0))? > 256 * 1024 * 1024 {
         return Err(Error::limit("Admission source exceeds 256 MiB"));
     }
@@ -125,17 +169,7 @@ pub fn inspect<R: Read + Seek>(
                 && o.path.iter().any(|p| p.name == "CMT2")
         })
         .collect();
-    let mut result = Assessment {
-        field: None,
-        field_shape_verified: false,
-        expected_occurrence_matches: false,
-        value_already_matches: false,
-        known_structures: Vec::new(),
-        refusals: Vec::new(),
-        opaque_dependency_regions: 0,
-        jpeg_markers_examined: 0,
-        bytes_examined: metadata.bytes_read,
-    };
+    result.bytes_examined = metadata.bytes_read;
     if targets.len() != 1 {
         result
             .refusals
@@ -280,7 +314,7 @@ pub fn inspect<R: Read + Seek>(
         }
     }
     for preview in &metadata.previews {
-        scan_jpeg(&mut source, preview.range, &mut result)?;
+        scan_jpeg(&mut source, preview.range, result)?;
     }
     if result.opaque_dependency_regions != 0 {
         result
@@ -293,7 +327,7 @@ pub fn inspect<R: Read + Seek>(
             .push(finding("KNOWN_AUTHENTICITY_STRUCTURE", None));
     }
     result.bytes_examined += source.bytes_read;
-    Ok(result)
+    Ok(())
 }
 
 struct JpegBytes<'a, R> {
@@ -348,128 +382,149 @@ fn scan_jpeg<R: Read + Seek>(
     let mut app11 = Vec::new();
     let mut app11_instance = None;
     let mut sequence = 0u32;
-    loop {
-        let byte = bytes.next()?;
-        if entropy && byte != 0xff {
-            continue;
-        }
-        if byte != 0xff {
-            return Err(Error::invalid("Embedded JPEG marker expected"));
-        }
-        let mut marker = bytes.next()?;
-        while marker == 0xff {
-            marker = bytes.next()?;
-        }
-        if entropy && (marker == 0 || (0xd0..=0xd7).contains(&marker)) {
-            continue;
-        }
-        if marker == 0 {
-            return Err(Error::invalid("JPEG stuffing outside entropy"));
-        }
-        result.jpeg_markers_examined += 1;
-        if result.jpeg_markers_examined > 4096 {
-            return Err(Error::limit("JPEG marker limit exceeded"));
-        }
-        if marker == 0xd9 {
-            // Preserve the reader's extraction extent, including its at-most-16
-            // zero padding bytes. Any other suffix could hide another structure.
-            if range.length - bytes.position > 16 {
-                return Err(Error::unsupported("JPEG trailer scope unverified"));
-            }
-            while bytes.position < range.length {
-                if bytes.next()? != 0 {
-                    return Err(Error::unsupported("JPEG trailer scope unverified"));
-                }
-            }
-            if !app11.is_empty() {
-                inspect_jumbf(&app11, range, result)?;
-            }
-            return Ok(());
-        }
-        if marker == 0xd8 || (0xd0..=0xd7).contains(&marker) {
-            return Err(Error::invalid("Unexpected standalone JPEG marker"));
-        }
-        if marker == 1 {
-            continue;
-        }
-        entropy = false;
-        let segment = bytes.segment()?;
-        if marker == 0xeb {
-            if segment.len() < 8 || &segment[..2] != b"JP" {
-                result
-                    .refusals
-                    .push(finding("APP11_SCOPE_UNINSPECTABLE", Some(range)));
+    let mut app11_inspected = false;
+    let outcome = (|| {
+        loop {
+            let byte = bytes.next()?;
+            if entropy && byte != 0xff {
                 continue;
             }
-            let instance = u16::from_be_bytes([segment[2], segment[3]]);
-            let part = u32::from_be_bytes(
-                segment[4..8]
-                    .try_into()
-                    .map_err(|_| Error::invalid("APP11 sequence missing"))?,
-            );
-            let continuation = app11_instance == Some(instance)
-                && Some(part) == sequence.checked_add(1)
-                && !app11.is_empty();
-            if app11_instance != Some(instance) || Some(part) != sequence.checked_add(1) {
-                if !app11.is_empty() {
-                    inspect_jumbf(&app11, range, result)?;
-                    app11.clear();
-                }
-                if part != 1 {
-                    result
-                        .refusals
-                        .push(finding("APP11_SEQUENCE_UNVERIFIED", Some(range)));
-                }
+            if byte != 0xff {
+                return Err(Error::invalid("Embedded JPEG marker expected"));
             }
-            app11_instance = Some(instance);
-            sequence = part;
-            // JPEG XT repeats LBox/TBox in each continuation segment. Verify the
-            // same header before excluding it from this bounded assembly.
-            let body_at = if continuation {
-                if segment.len() < 16 || app11.len() < 8 || segment[8..16] != app11[..8] {
+            let mut marker = bytes.next()?;
+            while marker == 0xff {
+                marker = bytes.next()?;
+            }
+            if entropy && (marker == 0 || (0xd0..=0xd7).contains(&marker)) {
+                continue;
+            }
+            if marker == 0 {
+                return Err(Error::invalid("JPEG stuffing outside entropy"));
+            }
+            result.jpeg_markers_examined += 1;
+            if result.jpeg_markers_examined > 4096 {
+                return Err(Error::limit("JPEG marker limit exceeded"));
+            }
+            if marker == 0xd9 {
+                // Preserve the reader's extraction extent, including its at-most-16
+                // zero padding bytes. Any other suffix could hide another structure.
+                if range.length - bytes.position > 16 {
+                    return Err(Error::unsupported("JPEG trailer scope unverified"));
+                }
+                while bytes.position < range.length {
+                    if bytes.next()? != 0 {
+                        return Err(Error::unsupported("JPEG trailer scope unverified"));
+                    }
+                }
+                if !app11.is_empty() {
+                    app11_inspected = true;
+                    inspect_jumbf(&app11, range, result)?;
+                }
+                return Ok(());
+            }
+            if marker == 0xd8 || (0xd0..=0xd7).contains(&marker) {
+                return Err(Error::invalid("Unexpected standalone JPEG marker"));
+            }
+            if marker == 1 {
+                continue;
+            }
+            entropy = false;
+            let segment = bytes.segment()?;
+            if marker == 0xeb {
+                if segment.len() < 8 || &segment[..2] != b"JP" {
                     result
                         .refusals
-                        .push(finding("APP11_SEQUENCE_UNVERIFIED", Some(range)));
-                    app11.clear();
-                    app11_instance = None;
-                    sequence = 0;
+                        .push(finding("APP11_SCOPE_UNINSPECTABLE", Some(range)));
                     continue;
                 }
-                16
-            } else {
-                8
-            };
-            if app11.len() + segment.len() - body_at > 1024 * 1024 {
-                return Err(Error::limit("APP11 assembly limit exceeded"));
-            }
-            app11.extend_from_slice(&segment[body_at..]);
-        } else {
-            if !app11.is_empty() {
-                inspect_jumbf(&app11, range, result)?;
-                app11.clear();
-                app11_instance = None;
-                sequence = 0;
-            }
-            if marker == 0xe1 && segment.starts_with(b"Exif\0\0") {
-                let (_, entries) = tiff::entries(&segment[6..], Limits::default())?;
-                for entry in entries {
-                    if entry.tag == 0xcd41 {
-                        result
-                            .known_structures
-                            .push(finding("C2PA_PREVIEW_TIFF_TAG", Some(range)));
+                let instance = u16::from_be_bytes([segment[2], segment[3]]);
+                let part = u32::from_be_bytes(
+                    segment[4..8]
+                        .try_into()
+                        .map_err(|_| Error::invalid("APP11 sequence missing"))?,
+                );
+                let continuation = app11_instance == Some(instance)
+                    && Some(part) == sequence.checked_add(1)
+                    && !app11.is_empty();
+                if app11_instance != Some(instance) || Some(part) != sequence.checked_add(1) {
+                    if !app11.is_empty() {
+                        app11_inspected = true;
+                        inspect_jumbf(&app11, range, result)?;
+                        app11.clear();
+                        app11_inspected = false;
                     }
-                    if entry.tag == 0x927c {
+                    if part != 1 {
                         result
                             .refusals
-                            .push(finding("PREVIEW_MAKERNOTE_UNINSPECTABLE", Some(range)));
+                            .push(finding("APP11_SEQUENCE_UNVERIFIED", Some(range)));
                     }
                 }
-            }
-            if marker == 0xda {
-                entropy = true;
+                app11_instance = Some(instance);
+                sequence = part;
+                // JPEG XT repeats LBox/TBox in each continuation segment. Verify the
+                // same header before excluding it from this bounded assembly.
+                let body_at = if continuation {
+                    if segment.len() < 16 || app11.len() < 8 || segment[8..16] != app11[..8] {
+                        result
+                            .refusals
+                            .push(finding("APP11_SEQUENCE_UNVERIFIED", Some(range)));
+                        // Retain any complete earlier structure before discarding
+                        // the unsupported continuation. The existing refusal and
+                        // successful assessment remain unchanged on parse failure.
+                        let _ = inspect_jumbf(&app11, range, result);
+                        app11.clear();
+                        app11_inspected = false;
+                        app11_instance = None;
+                        sequence = 0;
+                        continue;
+                    }
+                    16
+                } else {
+                    8
+                };
+                if app11.len() + segment.len() - body_at > 1024 * 1024 {
+                    return Err(Error::limit("APP11 assembly limit exceeded"));
+                }
+                app11.extend_from_slice(&segment[body_at..]);
+                app11_inspected = false;
+            } else {
+                if !app11.is_empty() {
+                    app11_inspected = true;
+                    inspect_jumbf(&app11, range, result)?;
+                    app11.clear();
+                    app11_inspected = false;
+                    app11_instance = None;
+                    sequence = 0;
+                }
+                if marker == 0xe1 && segment.starts_with(b"Exif\0\0") {
+                    let (_, entries) = tiff::entries(&segment[6..], Limits::default())?;
+                    for entry in entries {
+                        if entry.tag == 0xcd41 {
+                            result
+                                .known_structures
+                                .push(finding("C2PA_PREVIEW_TIFF_TAG", Some(range)));
+                        }
+                        if entry.tag == 0x927c {
+                            result
+                                .refusals
+                                .push(finding("PREVIEW_MAKERNOTE_UNINSPECTABLE", Some(range)));
+                        }
+                    }
+                }
+                if marker == 0xda {
+                    entropy = true;
+                }
             }
         }
+    })();
+    // A later JPEG error must not erase an already complete pending APP11
+    // structure. The same bounded parser retains only reached box findings;
+    // failure to interpret an incomplete assembly cannot establish absence.
+    if outcome.is_err() && !app11.is_empty() && !app11_inspected {
+        let _ = inspect_jumbf(&app11, range, result);
     }
+    outcome
 }
 fn inspect_jumbf(data: &[u8], range: Range, result: &mut Assessment) -> Result<()> {
     // Detect the fixed description UUID only at an actual jumb/jumd boundary;

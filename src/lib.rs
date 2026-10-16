@@ -8,10 +8,12 @@ pub mod output;
 pub mod pairing;
 pub mod plan;
 pub mod preview;
+pub mod privacy;
 pub mod read_request;
 pub mod read_session;
 pub mod reader;
 pub mod source_binding;
+pub mod storage;
 pub mod xmp;
 
 /// The current capability inventory revision. It is not a runtime support claim.

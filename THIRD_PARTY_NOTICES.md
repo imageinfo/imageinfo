@@ -4,6 +4,12 @@ imageinfo is MIT licensed. Third-party packages keep their own terms.
 
 This collection identifies the exact Cargo.lock graph admitted for local/CI foundation builds. It retains copyright/license notices; dependency source is fetched through Cargo and is not vendored here. A release must include the applicable notices with the actual compiled distribution and receive an assembled-artifact review.
 
+The local MIT `imageinfo-windows-storage` crate (#0166/#0195) uses the existing
+exact `winapi-util 0.1.11`, `windows-sys 0.61.2` and `windows-link 0.2.1`
+packages below. Its additional Windows SDK feature selection and isolated unsafe
+boundary are reviewed in [SDK-REVIEW.md](crates/imageinfo-windows-storage/SDK-REVIEW.md);
+no external package version or notice changes are introduced.
+
 | Package | Selected terms | Retained notice |
 | --- | --- | --- |
 | anstyle 1.0.14 | MIT | [anstyle-1.0.14-LICENSE-MIT.txt](licenses/dependencies/anstyle-1.0.14-LICENSE-MIT.txt) |

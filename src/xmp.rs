@@ -62,6 +62,8 @@ pub struct Packet<'a> {
     /// Source retained for unknown spelling/lexical data; no serialization promise.
     source: &'a str,
     properties: Vec<Property>,
+    deletion_ranges: Vec<Option<std::ops::Range<usize>>>,
+    property_ranges: Vec<std::ops::Range<usize>>,
     packet_mode: PacketMode,
     /// Concrete indicators only; absence is not an authenticity certificate.
     couplings: Vec<Coupling>,
@@ -300,6 +302,8 @@ pub fn inspect(bytes: &[u8], limits: Limits) -> Result<Packet<'_>, Refusal> {
     }
     let description = descriptions[0];
     let mut properties = Vec::new();
+    let mut deletion_ranges = Vec::new();
+    let mut property_ranges = Vec::new();
     for attr in description.attributes() {
         if attr.namespace() == Some(RDF) && attr.name() == "about" && attr.value().is_empty() {
             continue;
@@ -310,6 +314,8 @@ pub fn inspect(bytes: &[u8], limits: Limits) -> Result<Packet<'_>, Refusal> {
         if attr.value().len() > limits.text_bytes {
             return Err(Refusal::Text);
         }
+        property_ranges.push(attr.range());
+        deletion_ranges.push(Some(attr.range()));
         properties.push(Property {
             ordinal: properties.len(),
             name: expanded(attr.namespace(), attr.name())?,
@@ -321,6 +327,11 @@ pub fn inspect(bytes: &[u8], limits: Limits) -> Result<Packet<'_>, Refusal> {
         if properties.len() == limits.properties {
             return Err(Refusal::Properties);
         }
+        let deletable = child.attributes().len() == 0
+            && child.children().all(|n| n.is_text())
+            && !local_namespace_declaration(&source[child.range()]);
+        property_ranges.push(child.range());
+        deletion_ranges.push(deletable.then(|| child.range()));
         properties.push(Property {
             ordinal: properties.len(),
             name: expanded(child.tag_name().namespace(), child.tag_name().name())?,
@@ -331,6 +342,8 @@ pub fn inspect(bytes: &[u8], limits: Limits) -> Result<Packet<'_>, Refusal> {
     Ok(Packet {
         source,
         properties,
+        deletion_ranges,
+        property_ranges,
         packet_mode,
         couplings,
     })
@@ -364,6 +377,15 @@ fn coupling(uri: &str) -> Option<Coupling> {
 }
 
 impl Packet<'_> {
+    pub(crate) fn property_range(&self, ordinal: usize) -> Option<std::ops::Range<usize>> {
+        self.property_ranges.get(ordinal).cloned()
+    }
+
+    /// Parser-bound whole-property range, only for supported deletion shapes.
+    pub(crate) fn deletion_range(&self, ordinal: usize) -> Option<std::ops::Range<usize>> {
+        self.deletion_ranges.get(ordinal).cloned().flatten()
+    }
+
     pub fn source(&self) -> &str {
         self.source
     }
@@ -574,4 +596,40 @@ fn lexical_checks(mut source: &str, limits: Limits) -> Result<(), Refusal> {
         }
     }
     Ok(())
+}
+
+// Inspect only the already parsed element's start tag. Preserve all namespace
+// declaration bytes by refusing deletion of an element that declares one locally.
+fn local_namespace_declaration(mut source: &str) -> bool {
+    source = &source[1..];
+    let end = source
+        .find(|c: char| c.is_ascii_whitespace() || c == '/' || c == '>')
+        .unwrap_or(source.len());
+    source = &source[end..];
+    loop {
+        source = source.trim_start_matches([' ', '\t', '\r', '\n']);
+        if source.starts_with('>') || source.starts_with("/>") {
+            return false;
+        }
+        let Some(end) = source.find(|c: char| c.is_ascii_whitespace() || c == '=') else {
+            return true;
+        };
+        let name = &source[..end];
+        if name == "xmlns" || name.starts_with("xmlns:") {
+            return true;
+        }
+        source = source[end..].trim_start_matches([' ', '\t', '\r', '\n']);
+        let Some(rest) = source.strip_prefix('=') else {
+            return true;
+        };
+        source = rest.trim_start_matches([' ', '\t', '\r', '\n']);
+        let Some(quote) = source.chars().next() else {
+            return true;
+        };
+        source = &source[quote.len_utf8()..];
+        let Some(end) = source.find(quote) else {
+            return true;
+        };
+        source = &source[end + quote.len_utf8()..];
+    }
 }

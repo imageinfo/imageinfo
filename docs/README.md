@@ -14,6 +14,14 @@ The first camera/format target is **Canon EOS R5 CR3**.
 
 | Document | Purpose |
 | --- | --- |
+| [Production Windows guards](write-safety/windows-production-guards.md) | #0166 owned safe handle/namespace facade and isolated SDK review; finite native evidence without profile admission. |
+| [Single-unit publication runtime](write-safety/publication-runtime.md) | #0167 actual internal orchestration, bounded accounting and Windows adapter; public execution and committed outcomes remain gated. |
+| [Held existing-object move](write-safety/held-existing-move.md) | #0195 same held-object no-replace move and twelve native cases; no expected-target replacement or durability admission. |
+| [Operation/planner map](legacy-compatibility/operation-plan-map.md) | #0132 finite WS-002 planner/wire ownership, inert saved intent and explicit residual operation families. |
+| [Aggregate preview markers](fixture-plan/aggregate-preview-markers.md) | #0163 authored three-resource aggregate marker boundary, exact incomplete outcome and source/effect checks. |
+| [Retained-pair admission method](sidecars/pair-admission-method.md) | #0184 rights/technical separation and bounded read-only review method; actual retained-pair evidence remains private. |
+| [Known-provenance refusal](privacy/provenance-refusal.md) | #0189 actual native/XMP findings, retained partial inspection and mutation refusal; incomplete inspection never means absence. |
+| [In-memory OwnerName removal](privacy/xmp-owner-removal.md) | #0190 singleton expanded-name deletion, exact complement and fresh reparse with inherited provenance refusal; no file publication. |
 | [Delivery increments](delivery-increments.md) | All-ticket scope audit, bounded child breakdown and unchanged acceptance/triage gates. |
 | [New-output completion contract](write-safety/new-output-contract.md) | #0165 exact best-effort Windows acknowledgement ordering, trusted explicit caller and noncircular restart decisions; implementation/profile gates remain. |
 | [Existing-target boundary review](write-safety/existing-target-boundary.md) | #0193 bounded negative audit of expected-target identity and strict property exclusion; no positive replacement permission. |

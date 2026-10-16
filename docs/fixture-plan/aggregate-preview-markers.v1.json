@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "kind": "authored-aggregate-preview-marker-observation",
+  "ticket": 163,
+  "assertion": "P0A-005",
+  "observedDate": "2026-10-16",
+  "provenance": "project-authored structural bytes only; no camera media",
+  "implementation": "tests/aggregate_preview_markers.rs",
+  "containerBuilder": "tests/support/mod.rs::fixture_with_previews",
+  "recipe": {
+    "firmware": "Firmware Version 2.2.1",
+    "previewOrder": ["thumbnail", "preview", "JPEG track"],
+    "resourceIdentifiers": [1, 2, 3],
+    "prefixHex": "ffd8",
+    "eachCommentHex": "fffe0005 RR IIII",
+    "commentFields": "RR is the one-byte resource identifier; IIII is zero-based uint16 big-endian comment ordinal",
+    "suffixHex": "ffd9",
+    "extentByteLength": "4 + 7 * COM count",
+    "paddingBytes": 0,
+    "counterPolicy": "SOI excluded; each COM and EOI counted; limit shared by all three extents",
+    "aggregateCounterLimit": 4096
+  },
+  "cells": [
+    {"id": "minimal", "comCounts": [1, 1, 1], "counterTotal": 6, "result": "assessment", "scanComplete": true},
+    {"id": "below-aggregate", "comCounts": [1000, 1000, 1000], "counterTotal": 3003, "result": "assessment", "scanComplete": true},
+    {"id": "thumbnail-individual", "comCounts": [2000, 1, 1], "counterTotal": 2005, "result": "assessment", "scanComplete": true},
+    {"id": "preview-individual", "comCounts": [1, 2000, 1], "counterTotal": 2005, "result": "assessment", "scanComplete": true},
+    {"id": "track-individual", "comCounts": [1, 1, 2000], "counterTotal": 2005, "result": "assessment", "scanComplete": true},
+    {"id": "exact-limit", "comCounts": [1365, 1365, 1363], "counterTotal": 4096, "result": "assessment", "scanComplete": true},
+    {"id": "one-over-limit", "comCounts": [1365, 1365, 1364], "counterTotal": 4097, "result": "LIMIT_EXCEEDED", "scanComplete": false},
+    {"id": "three-times-2000", "comCounts": [2000, 2000, 2000], "counterTotal": 6003, "result": "LIMIT_EXCEEDED", "scanComplete": false}
+  ],
+  "actualResults": {
+    "platform": "Windows",
+    "nativeAdmissionCellsPassed": 10,
+    "integrationTestsPassed": 3,
+    "overLimitMessage": "JPEG marker limit exceeded",
+    "errorReturnsCompletedAssessment": false,
+    "incompleteScanEstablishesAuthenticityAbsence": false,
+    "sourceBytesUnchanged": true,
+    "sourceModificationTimeUnchanged": true,
+    "sourcePhysicalIdentityUnchanged": true,
+    "sourceLengthUnchanged": true,
+    "sourceReadonlyAttributeUnchanged": true,
+    "sourceCreationTimeUnchangedWhereSupported": true,
+    "directoryEntryCountAfterEachCell": 1,
+    "createdArtifacts": [],
+    "production_mutation_allowed": false,
+    "baselineRefusals": ["OPAQUE_DEPENDENCY_UNPROVEN"],
+    "additionalRefusalControls": {
+      "comCounts": [[1, 1, 1], [1000, 1000, 1000]],
+      "firmware": "Firmware Version test",
+      "expectedOccurrence": {"offset": 1, "length": 20},
+      "appendC2paUuidHex": "d8fec3d61b0e483c92975828877ec481",
+      "preservedRefusals": ["OCCURRENCE_CHANGED", "FIRMWARE_UNVERIFIED", "OPAQUE_DEPENDENCY_UNPROVEN", "KNOWN_AUTHENTICITY_STRUCTURE"],
+      "knownStructure": "C2PA_BMFF_UUID"
+    }
+  },
+  "limits": [
+    "JPEG framing/count qualification only, without entropy decoding or camera usability evidence",
+    "Logical aggregate counter only; no OS quota, cancellation infrastructure or hard I/O deadline",
+    "Incomplete scan returns no assessment and no authenticity-absence conclusion",
+    "No format admission, production writer, storage profile or mutation capability"
+  ]
+}

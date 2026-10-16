@@ -19,3 +19,6 @@ roxmltree = { version = "=0.21.1", default-features = false, features = ["std", 
 
 [lints.rust]
 unsafe_code = "forbid"
+
+[target.'cfg(windows)'.dependencies]
+imageinfo-windows-storage = { path = "crates/imageinfo-windows-storage" }

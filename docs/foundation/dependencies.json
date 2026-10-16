@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "kind": "foundation-dependency-admission-summary",
   "reviewedOn": "2026-10-16",
-  "scope": "Exact root locked packages admitted for local/CI builds and tests under #0019, the #0082 read-only pairing boundary and the #0077 integrity-only source binding. #0082 adds same-file and its Windows-only winapi-util/windows-sys/windows-link graph. #0077 adds exact sha2 0.10.9 with std and its locked portable digest/CPU-detection closure. Only selected notices and identity records are published; no dependency implementations, images or compiled release assets are shipped by this admission. #0183 adds the pinned read-only roxmltree 0.21.1 std/positions component for bounded in-memory XML/XMP packet inspection; memchr 2.8.3 is already in the locked graph.",
+  "scope": "Exact root locked packages admitted for local/CI builds and tests under #0019, the #0082 read-only pairing boundary and the #0077 integrity-only source binding. #0082 adds same-file and its Windows-only winapi-util/windows-sys/windows-link graph. #0077 adds exact sha2 0.10.9 with std and its locked portable digest/CPU-detection closure. Only selected notices and identity records are published; no dependency implementations, images or compiled release assets are shipped by this admission. #0183 adds the pinned read-only roxmltree 0.21.1 std/positions component for bounded in-memory XML/XMP packet inspection; memchr 2.8.3 is already in the locked graph. #0166 adds the local MIT imageinfo-windows-storage safe facade with isolated reviewed Windows SDK calls; #0167 and #0195 consume it without adding external package identities.",
   "noticeReview": "Selected copyright/license notice text is cleared for inclusion under its grant; original package declarations are preserved separately from the chosen MIT basis. Unicode-3.0 additionally applies to unicode-ident. Full package/privacy/security and assembled-release review remain separate.",
   "packages": [
     {
@@ -600,5 +600,28 @@
     "evidence": "docs/sidecars/packet-profile.md",
     "historicalReview": "docs/sidecars/xmp-component.md",
     "licenseBoundary": "MIT selected for both packages. Existing memchr MIT notice retained. roxmltree carries heavily modified ego-tree lineage; inherited ISC attribution retained from #0081, exact original fork revision remains unknown."
+  },
+  "windowsStorageReview": {
+    "reviewedOn": "2026-10-16",
+    "localPackage": "imageinfo-windows-storage 0.0.0",
+    "target": "cfg(windows)",
+    "directRequirements": {
+      "winapi-util": "=0.1.11",
+      "windows-sys": "=0.61.2"
+    },
+    "features": [
+      "Win32_Foundation",
+      "Win32_Security",
+      "Win32_Security_Authorization",
+      "Win32_Storage_FileSystem",
+      "Win32_System_Threading",
+      "Win32_System_IO",
+      "Wdk_Foundation",
+      "Wdk_Storage_FileSystem"
+    ],
+    "closure": "Existing windows-link 0.2.1; exact existing archive versions and retained notices unchanged. No native build script, vendored implementation or privileged helper.",
+    "unsafeBoundary": "Root unsafe_code remains forbid. Local storage crate denies unsafe outside its reviewed native module and denies unsafe_op_in_unsafe_fn. Safe facade owns all handles; no raw handle, File, caller-selected flags or descriptor escapes.",
+    "evidence": "crates/imageinfo-windows-storage/SDK-REVIEW.md",
+    "admissionBoundary": "Primitive dependency admission only, not an admitted storage profile, public apply, committed result or RAW mutation."
   }
 }

@@ -1,0 +1,419 @@
+{
+  "schema": "imageinfo.operation-plan-map.v1",
+  "revision": "operation-plan-map-2026-10-16.1",
+  "observed": "2026-10-16",
+  "kind": "requirements-inventory",
+  "executable": false,
+  "productionMutationAllowed": false,
+  "importedRecordsAuthorize": false,
+  "universalPlanSchemaDefined": false,
+  "lg004Complete": false,
+  "scope": "Seven finite operation families; no runtime, media, profile admission or renewed adoption gate.",
+  "duties": [
+    {
+      "id": "P-READ",
+      "requirement": "Original immutable bytes/values, full content identities, input view, assumptions, coverage and every mutable copy source."
+    },
+    {
+      "id": "P-WRITE",
+      "requirement": "Exact occurrences/insertion locations and destinations; expected-old/absent state, collision and conflict policy."
+    },
+    {
+      "id": "P-IDENTITY",
+      "requirement": "Actual physical objects, parents, path/alias/link and candidate bindings; deterministic continuing profile guards."
+    },
+    {
+      "id": "P-PROPERTY",
+      "requirement": "Relevant attributes, ownership/access, times, streams, links, pre/post conditions and checkpoint/refusal policy."
+    },
+    {
+      "id": "P-EFFECT",
+      "requirement": "Typed old/new values, transformations, implicit updates, no-op and protected payload/interpretation/unknown/reference/checksum effects."
+    },
+    {
+      "id": "P-LOSS",
+      "requirement": "Exact losses and acknowledgements, conflict choice, residual/uninspectable scope; no inferred consent."
+    },
+    {
+      "id": "P-REVISION",
+      "requirement": "Schema/model/reader/registry/conversion/mapping/capability/policy and profile revisions, fresh trusted revalidation and visible replanning."
+    },
+    {
+      "id": "P-PUBLICATION",
+      "requirement": "Actual admitted storage profile, checked candidate, expected destination, guards and exact persistence acknowledgements."
+    },
+    {
+      "id": "P-RECOVERY",
+      "requirement": "Original/absent state, owned artifacts and identities, private bounded retention/custody and fresh recovery conditions."
+    },
+    {
+      "id": "P-ORDER",
+      "requirement": "Units, dependencies, pairs, original-snapshot/frozen-copy evaluation, guard/publication order, cancel and partial/resume behavior."
+    },
+    {
+      "id": "P-AUTHORITY",
+      "requirement": "Fresh separate caller application, inert strict bounded imports and trusted current admission; no executable callbacks."
+    }
+  ],
+  "operations": [
+    {
+      "id": "existing-date-preview",
+      "plannerOwners": [
+        55,
+        76,
+        77,
+        23,
+        78
+      ],
+      "evidence": [
+        "docs/legacy-compatibility/cr3-preview-plan.md",
+        "docs/legacy-compatibility/cr3-preview-source-binding.md",
+        "src/plan.rs",
+        "src/source_binding.rs"
+      ],
+      "wireStatus": "existing-inert-v1",
+      "productionMutationAllowed": false,
+      "duties": {
+        "P-READ": "Complete source length/SHA-256 and exact original ASCII20 occurrence; #77 captures actual stable-stream content, not live object custody.",
+        "P-WRITE": "Unique existing CMT2 Exif 36867 allocation/path/byte order plus intended ASCII20; proposed require-absent new output only.",
+        "P-IDENTITY": "Unresolved execution binding: locator/digest are not object, parent, alias or live guard identities.",
+        "P-PROPERTY": "Only declared OD-11 private-owner new-output policy; actual current properties/checkpoints remain unresolved.",
+        "P-EFFECT": "Exact Gregorian ASCII20 intent and complement declaration; equal-byte no-op intent. No implicit transform; opaque dependencies remain refused.",
+        "P-LOSS": "No requested representation/zone loss or mapping; future observed coupled effects must refuse or be explicitly bound, never silently broadened.",
+        "P-REVISION": "Existing exact schema and model/reader/admission/registry/capability/conversion/policy revisions; import and #77 revalidation reject staleness.",
+        "P-PUBLICATION": "Profile is literally unavailable-production; no candidate publication or acknowledgement is implemented by this protocol.",
+        "P-RECOVERY": "Literal no-mutation-or-recovery-authority; no staging, backup, prune, replay or cleanup effect.",
+        "P-ORDER": "One source/occurrence/new output; no mutable copy sources, pairs or ordering choices in this v1.",
+        "P-AUTHORITY": "Separate-caller-required; existing importer never authorizes any execution, even with matching content."
+      }
+    },
+    {
+      "id": "new-cr3-date-apply",
+      "plannerOwners": [
+        23,
+        78,
+        22,
+        119
+      ],
+      "evidence": [
+        "docs/legacy-compatibility/cr3-preview-plan.md",
+        "docs/write-safety/write-admission.md",
+        "docs/write-safety/new-output-contract.md"
+      ],
+      "wireStatus": "undefined-pending-typed-adapter-profile",
+      "productionMutationAllowed": false,
+      "duties": {
+        "P-READ": "Reuse saved exact occurrence/content intent through #78, refreshing trusted source and all dependency observations.",
+        "P-WRITE": "One existing date allocation into explicitly selected absent new CR3 output; no in-place or overwrite fallback.",
+        "P-IDENTITY": "Bind held original/candidate and resolved destination/parent/ancestors with continuous required byte/name guards.",
+        "P-PROPERTY": "OD-11 boundary checks and ordinary private owner-editable output; source properties unchanged, unsupported carry-through refuses.",
+        "P-EFFECT": "Actual reread candidate, exact old/new ASCII20, no-op and complete protected complement/interpretation/dependency proof; current RAW admission refuses.",
+        "P-LOSS": "No invented reduction of RAW semantics; any implicit coupled effect/loss must be exposed and independently admitted.",
+        "P-REVISION": "All inherited revisions plus actual #78 operation, admitted format/layout, storage/receipt and conversion rule revisions.",
+        "P-PUBLICATION": "Exact no-clobber profile and actual acknowledgements; disabled or unavailable storage/format refuses before effects.",
+        "P-RECOVERY": "Expected-absent output, owned bounded staging/receipts and explicit current custody/outcome recovery conditions.",
+        "P-ORDER": "One publication unit; cancellation and post-attempt recovery-required cannot be encoded as unchanged success.",
+        "P-AUTHORITY": "Fresh caller apply through existing #78 bridge, never a serialized authorization boolean or a second adoption gate."
+      }
+    },
+    {
+      "id": "new-xmp-date",
+      "plannerOwners": [
+        24,
+        85,
+        185,
+        186
+      ],
+      "evidence": [
+        "docs/sidecars/date-mapping.md",
+        "docs/sidecars/date-preservation.md",
+        "docs/sidecars/native-date-adapter.md",
+        "docs/sidecars/packet-profile.md"
+      ],
+      "wireStatus": "undefined-pending-typed-adapter-profile",
+      "productionMutationAllowed": false,
+      "duties": {
+        "P-READ": "Freeze RAW and existing XMP bytes/content identities; exact CMT2 primary/fraction/offset observations and complete selected coverage.",
+        "P-WRITE": "Existing singleton exif DateTimeOriginal expanded name/packet ordinal and lexical range; separate absent output, no insertion/empty-sidecar creation.",
+        "P-IDENTITY": "Bind both selected source objects and parents, derivative candidate and new destination; pairing observation alone is insufficient.",
+        "P-PROPERTY": "Documented private-owner new sidecar, source property observations and explicit unsupported property carry-through refusals.",
+        "P-EFFECT": "Original-snapshot mapping with exact source fractions/offsets, XML prefix/suffix preservation, semantic target reparse and whole-byte no-op.",
+        "P-LOSS": "Refuse differing destination by default; explicit keep or exact named replacement loss acknowledgements, never host-zone conversion.",
+        "P-REVISION": "All duties plus native reader, packet/parser, mapping r5-cmt2-original-to-xmp-exif-original/1 and derivative/profile rules.",
+        "P-PUBLICATION": "Admitted derivative plus guarded no-clobber storage/receipts remain required independently of in-memory success.",
+        "P-RECOVERY": "Both originals retained, expected-absent output, exact owned artifacts and bounded custody/recovery conditions.",
+        "P-ORDER": "Freeze both original values before derivative; one output unit, no implicit RAW update or chained overlay read.",
+        "P-AUTHORITY": "Separate explicit caller request and fresh actual rights/technical checks; research result and packet inspection grant no publication."
+      }
+    },
+    {
+      "id": "paired-date-sync",
+      "plannerOwners": [
+        24,
+        86,
+        78,
+        85,
+        179,
+        180,
+        181
+      ],
+      "evidence": [
+        "docs/sidecars/pairing.md",
+        "docs/sidecars/date-mapping.md",
+        "docs/write-safety/README.md"
+      ],
+      "wireStatus": "undefined-pending-admitted-members-executor",
+      "productionMutationAllowed": false,
+      "duties": {
+        "P-READ": "Both immutable original members plus all mutable copy sources; freeze mapping values/resources before dependent publication.",
+        "P-WRITE": "Exact RAW/XMP member effects and destinations/conflict choices from admitted #78/#85 adapters; explicit membership, no basename guess.",
+        "P-IDENTITY": "Actual physical member/destination/parent bindings, duplicate-target rejection and deterministic multi-member guards.",
+        "P-PROPERTY": "Per-member selected profile/property checkpoints; no inference that a new-output policy qualifies existing-target replacement.",
+        "P-EFFECT": "Per-member typed effects and protected dependencies, original-snapshot mapping and independent candidate validation.",
+        "P-LOSS": "Per-member explicit loss decisions and refused/skipped effects; pair agreement cannot be inferred from path association.",
+        "P-REVISION": "All member schema/model/mapping/admission/profile and shared executor/receipt revisions bound together.",
+        "P-PUBLICATION": "Separate qualified publication for each actual member; no cross-file atomicity or shared implied durable commit.",
+        "P-RECOVERY": "Per-member owned artifacts/current trusted receipts and fresh custody, preserving completed work without replay.",
+        "P-ORDER": "Explicit order/dependencies and per-unit committed/refused/pending/recovery-required state; receipt-bound resume never replays committed members.",
+        "P-AUTHORITY": "One explicit resolved caller request plus fresh member admission; an imported group or receipt cannot self-authorize."
+      }
+    },
+    {
+      "id": "xmp-owner-removal",
+      "plannerOwners": [
+        25,
+        89,
+        188,
+        189,
+        190,
+        90
+      ],
+      "evidence": [
+        "docs/privacy/xmp-owner-removal-contract.md",
+        "docs/privacy/read-coverage.md"
+      ],
+      "wireStatus": "undefined-pending-removal-publication",
+      "productionMutationAllowed": false,
+      "duties": {
+        "P-READ": "Actual immutable selected sidecar and complete target inventory; lawful purpose/lineage and retained-artifact inventory remain distinct requirements.",
+        "P-WRITE": "Only R5P-026 sidecar.xmp aux OwnerName, exact document/ordinal/form/whole-property range; zero no-op, one deletion, multiple/unknown refuse.",
+        "P-IDENTITY": "Actual source/derivative/new destination object and parent identities with live byte/name guards; content labels grant no authority.",
+        "P-PROPERTY": "Private-owner output and source property checks, declared original/backup/report retention and supported property scope.",
+        "P-EFFECT": "Whole-property removal, exact lexical complement and target-only semantic deletion; all unrelated/protected data preserved.",
+        "P-LOSS": "Per-artifact removed/retained/residual/uninspectable scope, 31-selector/59-template denominator, originals/backups/previews and provenance refusal; no anonymity claim.",
+        "P-REVISION": "All duties plus catalog, removal contract, parser/mechanism, observer, known-provenance and exact rights/operation records.",
+        "P-PUBLICATION": "Actual admitted removal derivative and selected new-output profile required; contract vectors are not actual publication.",
+        "P-RECOVERY": "Target-bearing source/backups retained and reported; no silent deletion or secure erase, bounded private artifacts with current custody.",
+        "P-ORDER": "One selected output unit, complete request preflight; retained artifact audit is separate from requested removal count.",
+        "P-AUTHORITY": "Fresh caller request plus exact operation rights/technical admission; existing purpose-limited media grants cannot be broadened."
+      }
+    },
+    {
+      "id": "fresh-restore",
+      "plannerOwners": [
+        26,
+        95,
+        199,
+        200,
+        210
+      ],
+      "evidence": [
+        "docs/write-safety/fresh-name-restore.md",
+        "docs/write-safety/original-retention.md",
+        "docs/write-safety/README.md"
+      ],
+      "wireStatus": "undefined-pending-custody-profile-adapter",
+      "productionMutationAllowed": false,
+      "duties": {
+        "P-READ": "Actual owned retained original, properties and byte identity; separately bind later-edited current version, not stale original-path assumptions.",
+        "P-WRITE": "Explicit chosen restore destination and expected-absent or exact expected-old occupied state; preserve later version separately.",
+        "P-IDENTITY": "Fresh original/current/candidate/root/parent holds and trusted retained custody; arbitrary saved JSON is not imported authority.",
+        "P-PROPERTY": "Exact retained property completeness and destination profile; #108 canonical marker observations do not prove complete media/property restore.",
+        "P-EFFECT": "Copy original without consuming it, verify candidate and preserve later current; no implicit rollback or lost later edits.",
+        "P-LOSS": "Expose restoration effects/property limits and preserved later-version location; refuse unsupported loss or occupied overwrite.",
+        "P-REVISION": "All duties plus actual retention, restore, custody and expected-target/profile/receipt revisions.",
+        "P-PUBLICATION": "#108 fresh-name marker observation is bounded research; occupied #95 requires strict replacement, no fallback overwrite.",
+        "P-RECOVERY": "Fresh restore authorization, owned artifacts, original retention and current custody; no imported prune/replay/finalize authority.",
+        "P-ORDER": "Restore is a new planned unit, not automatic recovery; occupied replacement retains its distinct ordered preservation steps.",
+        "P-AUTHORITY": "Fresh explicit caller restore action after checks; #108 typed-owned fixture is not an external saved-context importer."
+      }
+    },
+    {
+      "id": "grouped-effects",
+      "plannerOwners": [
+        26,
+        96,
+        24,
+        86,
+        179,
+        180,
+        181,
+        200,
+        208
+      ],
+      "evidence": [
+        "docs/write-safety/README.md",
+        "docs/write-safety/namespace-receipt-protocol.md",
+        "docs/write-safety/existing-target-boundary.md"
+      ],
+      "wireStatus": "undefined-pending-admitted-members-executor",
+      "productionMutationAllowed": false,
+      "duties": {
+        "P-READ": "Finite two-member original read sets, every copy source and frozen values/resources; never accidentally read earlier edited member bytes.",
+        "P-WRITE": "Exact typed member operations/profiles, destinations and expected states; conflicts/duplicate physical targets refuse.",
+        "P-IDENTITY": "Deterministic physical guard order across originals/candidates/destinations/parents; recheck receipt-bound identities on resume.",
+        "P-PROPERTY": "Per-member properties and strict existing-target obligations; new-output OD-11 does not weaken replacement.",
+        "P-EFFECT": "Per-unit requested/implicit effects and protected regions; validate each candidate independently, no generic free-form effect graph.",
+        "P-LOSS": "Every member loss/conflict choice and partial outcome exposed; grouping grants no extra consent.",
+        "P-REVISION": "All member schema/model/rule/profile revisions plus group order, executor and receipt/finalization revisions.",
+        "P-PUBLICATION": "One file published at a time using qualified member profiles; no assumed atomic two-member namespace transaction.",
+        "P-RECOVERY": "Per-member original retention, trusted current receipts/custody and separate replacement finalization; never replay committed units.",
+        "P-ORDER": "Exact finite order/dependencies, committed/refused/pending/recovery-required outcomes and receipt-bound explicit resume, cancel/crash boundaries.",
+        "P-AUTHORITY": "Separate caller group request and fresh member eligibility; editable order/receipt/plan assertions grant no authority."
+      }
+    }
+  ],
+  "previewFields": [
+    "schema",
+    "revisions",
+    "source",
+    "occurrence",
+    "intended_bytes",
+    "output",
+    "preservation",
+    "execution_bindings",
+    "recovery",
+    "apply_authorization"
+  ],
+  "residuals": [
+    {
+      "id": "scalar-assignment",
+      "mapFamilies": "MAP-009",
+      "owners": [
+        15,
+        23,
+        78
+      ],
+      "unmet": "General set/delete, file-sourced values, raw/normalized conversion and implicit updates beyond one ASCII20 field.",
+      "wireStatus": "undefined-until-typed-effects-bindings-known"
+    },
+    {
+      "id": "insertion-block",
+      "mapFamilies": "MAP-011",
+      "owners": [
+        15,
+        23,
+        24
+      ],
+      "unmet": "Missing field/block creation, allocation/defaults and group creation; existing singleton replacement does not qualify insertion.",
+      "wireStatus": "undefined-until-typed-effects-bindings-known"
+    },
+    {
+      "id": "list-operations",
+      "mapFamilies": "MAP-009",
+      "owners": [
+        15,
+        23,
+        24
+      ],
+      "unmet": "Replace, append, remove exact duplicate/index, explicit deduplication and sequence/bag shape.",
+      "wireStatus": "undefined-until-typed-effects-bindings-known"
+    },
+    {
+      "id": "structure-operations",
+      "mapFamilies": "MAP-009",
+      "owners": [
+        15,
+        24
+      ],
+      "unmet": "Explicit path updates, whole replacement and recursive merge with sibling/unknown-namespace preservation.",
+      "wireStatus": "undefined-until-typed-effects-bindings-known"
+    },
+    {
+      "id": "language-alternatives",
+      "mapFamilies": "MAP-009",
+      "owners": [
+        15,
+        24
+      ],
+      "unmet": "Named language/x-default updates/deletion, whole-property deletion and unrelated-language preservation.",
+      "wireStatus": "undefined-until-typed-effects-bindings-known"
+    },
+    {
+      "id": "date-geotag",
+      "mapFamilies": "MAP-018/MAP-019/MAP-020",
+      "owners": [
+        15,
+        133
+      ],
+      "unmet": "Shifts, AllDates sets, calendar/duration/zone assumptions, clock correction, track interpolation, geotag destinations and inverse lookup/export.",
+      "wireStatus": "undefined-until-typed-effects-bindings-known"
+    },
+    {
+      "id": "copy-redirection",
+      "mapFamilies": "MAP-012/MAP-030",
+      "owners": [
+        15,
+        24,
+        85,
+        86
+      ],
+      "unmet": "General immutable copy/context/redirection, all:all location identity, new-group creation and mapping/loss forms.",
+      "wireStatus": "undefined-until-typed-effects-bindings-known"
+    },
+    {
+      "id": "rename-move-cycle",
+      "mapFamilies": "MAP-017/MAP-021",
+      "owners": [
+        15,
+        26,
+        201,
+        202,
+        212,
+        213
+      ],
+      "unmet": "Ordinary/case-only rename, same-volume cycle, cross-volume move and paired path effects need exact typed bindings and order.",
+      "wireStatus": "undefined-until-typed-effects-bindings-known"
+    },
+    {
+      "id": "restore-prune",
+      "mapFamilies": "MAP-021",
+      "owners": [
+        15,
+        26,
+        95,
+        203,
+        210,
+        211
+      ],
+      "unmet": "Occupied-name actual media restore, complete property backup and explicit finalized-backup prune remain distinct from #108 fresh-name markers.",
+      "wireStatus": "undefined-until-typed-effects-bindings-known"
+    },
+    {
+      "id": "intent-group-lifetime",
+      "mapFamilies": "MAP-029/MAP-030",
+      "owners": [
+        15,
+        23,
+        24,
+        26,
+        96,
+        179
+      ],
+      "unmet": "General inspect/count/save/restore intent lifetime, conflicts and broader groups; imported values never carry execution authority.",
+      "wireStatus": "undefined-until-typed-effects-bindings-known"
+    },
+    {
+      "id": "other-format-privacy-repair",
+      "mapFamilies": "MAP-010/MAP-022",
+      "owners": [
+        15,
+        25,
+        90,
+        133
+      ],
+      "unmet": "Other RAW layouts, native GPS/serial/provenance removal, stored-preview mutations and general repair/validation remain unqualified.",
+      "wireStatus": "undefined-until-typed-effects-bindings-known"
+    }
+  ]
+}

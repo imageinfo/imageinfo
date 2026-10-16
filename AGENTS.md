@@ -423,7 +423,55 @@ checks preserve literal date/offset/fraction strings under two TZ settings;
 no instant conversion or host timezone change is claimed. See
 `docs/fixture-plan/date-timezone-literals.md`.
 
+#0166 adds the production-owned safe Windows storage facade and isolated reviewed
+SDK module; #0167 executes a bounded internal new-output protocol through it.
+Actual authored native execution completes the protocol, while public apply,
+Committed and exact profile admission remain gated. #0195 supplies a separate
+same-held-object no-replace move; it does not satisfy expected-target replacement.
+See `docs/write-safety/windows-production-guards.md`, `publication-runtime.md`
+and `held-existing-move.md` in that directory.
+#0132 maps finite WS-002 planner/wire ownership; #0163 qualifies the aggregate
+preview-marker boundary with authored files. #0184's retained-pair evidence stays
+private and confers no positive publication admission. #0189 retains known
+provenance findings through later incomplete inspection and refuses mutation;
+#0190 removes one supported XMP OwnerName in memory with exact complement and
+fresh semantic verification. Neither enables filesystem publication, RAW mutation
+or a general privacy certification. See the documentation map for scoped evidence.
+
+## Next-turn priority correction — Terry, 2026-10-16
+
+At the start of the next turn, inspect all non-Completed P2 cards and move those
+whose P2 came from the mistaken default to P3 (Normal). Preserve deliberately
+raised priorities with concrete urgency/impact/deadline or explicit owner direction.
+Use localswim-cli, record the correction and do not change Completed history.
+This is queued for the next turn, not part of the current implementation handoff.
+
+## Subagent sidebar names
+
+Terry requires every new subagent name to begin with its actual model/effort tag
+(2026-10-16), followed by its task, so the sidebar identifies its level at a glance.
+Prefer `Sol / Medium - implement 0168`, `Sol / High - review 0168`, or
+`Luna / Light - consumer checks`; older versions retain their version prefix,
+for example `5.6 Luna / Light - docs`. These examples do not authorize new models.
+When a tool only accepts lowercase letters, digits and underscores in task names,
+use an equivalent prefix such as `sol_medium_implement_0168`,
+`sol_high_review_0168`, `luna_light_consumer_checks`, or
+`5_6_luna_light_docs`. Never omit the model or effort from the tool-supplied name.
+Use the literal human-readable tag when a display-name field is supported.
+Existing agents may be renamed only through a supported rename capability; do
+not claim sidebar names changed when the tool provides no rename operation.
+Explicit model/effort arguments, model authorization and concurrency limits remain
+unchanged. Reused agents keep the tag for their actual configured model/effort.
+
 ## Subagent authorization
+
+Terry clarified the rolling implementation/review workflow on 2026-10-16:
+use available slots for eligible implementation first. As an author finishes,
+start a fresh independent reviewer at the permitted model/effort appropriate
+to that review. Do not reserve idle reviewer pairs. The author cannot review
+its own work; route findings for correction and re-review material changes
+before handoff. Retain the eight-active-direct-subagent/depth-1 limits and
+the parent's integration, verification, commit/push and handoff responsibilities.
 
 Terry authorized parallel subagent work on all tickets authorized to work,
 2026-10-14. Use parallel subagents where practical: separate independent
