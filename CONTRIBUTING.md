@@ -87,6 +87,14 @@ current in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) when dependencies ch
 
 ## Make review straightforward
 
+The accepted solo workflow permits Terry-authorized direct commits/pushes after
+required checks, agent review where useful and Terry's acceptance of local-board
+handoffs. Public contributors use ordinary PRs. No mandatory PR approvals,
+CODEOWNERS or new branch-rule requirements were adopted by #0157; see the
+[current review policy](docs/governance/review-routing-plan.md#accepted-solo-workflow--0157-2026-10-16).
+Agent review does not establish independent human review, and technical evidence
+requirements remain applicable.
+
 Explain the problem, changed behavior, evidence, compatibility/safety effects and
 remaining limits. Favor small reviewable changes, conventional names and ordinary
 control flow. Boring is a compliment here. If a deliberate unconventional choice

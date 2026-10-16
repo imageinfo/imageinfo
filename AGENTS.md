@@ -427,6 +427,14 @@ and reasoning defaults remain GPT-6.1 Sol with Medium effort.
 
 ## Product intent
 
+- Terry selected #0157 option A on 2026-10-16: retain direct commits/pushes after
+  required checks, practical agent review without independent-human claims, and
+  Terry's review/acceptance of board handoffs into Completed. Do not add mandatory
+  PR approvals, CODEOWNERS or branch-protection/ruleset requirements. Public
+  contributors still use ordinary PRs; format/preservation verification remains
+  required. See `docs/governance/review-routing-plan.md` for the accepted policy
+  and historical unselected enforcement proposal.
+
 - Terry selected #0155 option A on 2026-10-16 and authorized enabling/verifying
   private reporting for `imageinfo/imageinfo` plus one harmless synthetic report.
   Reporting is enabled and API/public-entry verified. The actual report POST was

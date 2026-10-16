@@ -10,7 +10,7 @@ with Terry as coordinator and conduct/escalation contact. No human backup or
 response deadline is claimed. GOV-OPEN-01's staffing and independent handoff goals
 remain future outcomes, not initial solo-operation requirements. GOV-OPEN-06's
 existing contributor verification evidence remains separate from staffed coverage.
-Review enforcement remains a separate decision. Terry subsequently
+Terry subsequently
 accepted [#0159's solo source-alpha release policy](first-release-policy.md), with
 automated checks and agent review, no independent human verification/backup gate,
 and exact candidate approval before publication. No release operation is verified.
@@ -21,6 +21,11 @@ verified authenticated/unauthenticated status plus the public reporting entry.
 The synthetic report was refused for the administrator account; no report was
 created, and external submission/notification delivery remain unverified. See the
 [actual intake record](security-intake-readiness.md#accepted-route-and-actual-verification--2026-10-16).
+
+Terry selected [#0157's retained solo workflow](review-routing-plan.md#accepted-solo-workflow--0157-2026-10-16):
+direct commits/pushes after required checks, practical agent review and Terry's
+board acceptance. No mandatory PR approval, CODEOWNERS or new branch rules are
+adopted; the earlier multi-maintainer enforcement plan remains historical.
 
 ## Delivered artifacts
 

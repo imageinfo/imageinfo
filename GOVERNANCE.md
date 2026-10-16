@@ -40,7 +40,16 @@ or change format/write guarantees. The subsequent accepted
 [#0159 release policy](docs/governance/first-release-policy.md) makes Terry the
 release authority for a source-only unsigned reader alpha, using automated checks
 and agent review without an independent human verification/backup prerequisite or
-claim. Exact candidate approval remains required; review enforcement remains #0157.
+claim. Exact candidate approval remains required.
+
+Terry selected **#0157 option A** on 2026-10-16: retain direct commits/pushes after
+required checks, practical agent review without an independent-human claim, and
+Terry's review/acceptance of board handoffs into Completed. No mandatory PR
+approvals, CODEOWNERS or new branch-protection/ruleset requirements are adopted.
+Public contributors continue to use PRs. This accepted solo workflow supersedes
+the historical independent-human/enforced-review proposal as a current gate;
+applicable capability, correctness, provenance and preservation evidence remains
+required. See the [review-policy record](docs/governance/review-routing-plan.md).
 
 Terry subsequently adopted #0155's GitHub private-reporting route. It is enabled
 and configuration-verified, with Terry as sole best-effort responder. The synthetic
@@ -115,14 +124,15 @@ Favor idiomatic names, standard types and straightforward control flow. Explain
 non-obvious tradeoffs near the code; do not make reviewers decipher cleverness.
 Review disagreement should identify the requirement, evidence or simpler alternative.
 
-Proposed implementation policy: an author does not supply their own independent
+Historical future multi-maintainer proposal (not a gate for the accepted #0157
+solo workflow): an author does not supply their own independent
 approval. A human reviewer other than the author reviews format/contract changes;
 RAW mutations require relevant format and preservation evidence. Release verification
 uses a second qualified person. Several automated agents do not constitute multiple
 independent maintainers. When expertise is missing, retain the gap and keep the
 affected capability disabled rather than inventing an approval.
 
-The current documentation phase retains Terry's standing authorization for direct
+The current solo development workflow retains Terry's standing authorization for direct
 commits/pushes and his review through the local board. Bots hand off to Ready for
 review; Terry accepts into Completed. This proposal does not retroactively claim
 independent reviews or change that authorized workflow. Proposed future review
@@ -191,7 +201,7 @@ verification dates and sanitized evidence before claiming shared maintenance.
 | GOV-OPEN-01 | Recruit/confirm technical primaries and backups | Named consented roster, scoped access and independent handoff evidence |
 | GOV-OPEN-02 | Verify the adopted solo private-reporting route | Enabled flag/public entry verified under #0155–0156; synthetic attempt refused for admin account; external submission/delivery unverified, Terry responds best effort |
 | GOV-OPEN-03 | Establish owner/access continuity | Authorized additional owner as appropriate, private access inventory, separate account recovery and recovery drill |
-| GOV-OPEN-04 | Adopt review enforcement and ownership routing | Actual repository rules checked with test PRs; CODEOWNERS only after real people/teams and permissions exist |
+| GOV-OPEN-04 | Retain and verify the accepted #0157 solo review workflow | Required checks, authorized direct pushes and Terry board acceptance; no new enforcement adopted, future multi-maintainer routing remains unselected |
 | GOV-OPEN-05 | Execute the accepted #0159 solo source-alpha policy | Exact candidate checks, automated/agent review, Terry's candidate approval and actual publication verification; no human backup or independent human verification claim |
 | GOV-OPEN-06 | Publish contributor verification commands for the eventual toolchain | Clean-machine setup/checks reproducible without private paths, plus reviewed CI permissions and a conduct/escalation contact |
 

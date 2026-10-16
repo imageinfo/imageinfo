@@ -27,8 +27,12 @@ reporting. #0156 verified the enabled setting and public reporting entry; its si
 synthetic report attempt was refused for the available administrator account.
 External submission and notification delivery remain unverified. See the
 [actual intake record](governance/security-intake-readiness.md#accepted-route-and-actual-verification--2026-10-16).
-Two of the original six Terry decisions remain unanswered: review enforcement
-and the private decoder phase.
+Terry selected **#0157 option A**, retaining direct commits/pushes after required
+checks, practical agent review and Terry's board acceptance, without mandatory PR
+approvals, CODEOWNERS or new branch-rule requirements. See the
+[accepted review policy](governance/review-routing-plan.md#accepted-solo-workflow--0157-2026-10-16).
+Only **#0164's private decoder-use/phase decision** remains unanswered among the
+original six Terry decisions.
 
 ## Count the queue consistently
 
@@ -228,7 +232,7 @@ Prerequisites name exact cards. Historical accepted research is evidence of its 
 | #0154 | Solo, best-effort operation with Terry coordinating and no claimed backup (option A selected) | Decision recorded | None newly queued |
 | #0155 | GitHub private reporting adopted with sole best-effort responder (option A selected) | Decision recorded | #0154 |
 | #0156 | Configure and verify the specifically approved security-intake route | Work | #0155 |
-| #0157 | Choose the exact initial review-routing and enforcement policy | Terry decision | #0154 |
+| #0157 | Retain authorized direct pushes, required checks and Terry board review (option A selected) | Decision recorded | #0154 |
 | #0158 | Apply and test the specifically approved review-routing policy | Work | #0157 |
 | #0159 | Source-only unsigned reader alpha with solo authority and best-effort support (option A selected) | Decision recorded | None newly queued |
 | #0160 | Prepare one exact adopted source-reader release candidate | Work | #0159 |

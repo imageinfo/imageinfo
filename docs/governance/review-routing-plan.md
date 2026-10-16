@@ -1,4 +1,28 @@
-# Proposed ownership routing and review-rule test package
+# Review policy and historical enforcement proposal
+
+## Accepted solo workflow — #0157, 2026-10-16
+
+Terry explicitly selected option A: retain authorized direct commits and pushes
+after required checks, use agent review where useful without claiming independent
+human verification, and hand off board cards to Ready for Review for Terry's
+acceptance into Completed. Public contributors can continue submitting ordinary
+PRs. No mandatory PR approval, CODEOWNERS file or new branch-protection/ruleset
+requirement is adopted. Existing correctness, capability, provenance and format
+preservation checks remain required; the policy does not waive technical evidence.
+
+Read-only observations on 2026-10-16 returned zero repository/inherited rulesets
+and `main` with `protected: false`. The current tracked tree contains no CODEOWNERS
+file. This decision changes no repository rules, permissions or reviewer roster,
+and creates no enforcement-test PR. The decision-record commit/push supplies
+ordinary direct-push evidence, not a test of hypothetical enforcement.
+
+#0158 retains the bounded follow-up to verify the selected existing workflow and
+document actual behavior. Do not run the historical eighteen-case proposed
+protection rehearsal or recruit reviewers merely to complete the retained-policy
+branch. Record only actual observations; no enforced review or independent human
+coverage is claimed. Revisit enforcement only if Terry selects a different policy.
+
+## Historical unselected #0069 proposal
 
 **#0069 / GOV-OPEN-04, 2026-10-15**, revision `review-routing-v1`.
 This is a settings recommendation and future test plan, not an adopted policy or
