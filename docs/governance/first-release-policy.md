@@ -1,22 +1,27 @@
 # First release authority and support boundary
 
-Status: **proposal for review**, revision `2026-10-15.1`, card **#0070**;
-choice package for **GOV-OPEN-05**. Recommended first distribution:
+Status: **accepted policy**, revision `2026-10-16.1`, **#0159 / GOV-OPEN-05**;
+adapted from the #0070 proposal to #0154's accepted solo operation. Terry explicitly
+selected option A on 2026-10-16. The adopted first distribution is
 **`v0.2.0-alpha.1`, a source-only GitHub prerelease of the bounded native
-EOS R5 full RAW reader**. Terry has not accepted this choice by the creation of
-this document. No candidate, tag, release, uploaded package, signing identity,
-operator appointment or support commitment is created here.
+EOS R5 full RAW reader**. Terry retains release authority. Support is best effort
+for the latest alpha, without response deadlines or promised backports. Automated
+checks and agent review must be identified honestly; independent human verification
+and backup coverage are not claimed or required for this solo alpha. The exact
+candidate and notes must be prepared for Terry's approval before publication.
+This policy decision creates no candidate, tag, release, uploaded package, signing
+identity or account/access change.
 
 This narrows the earlier [release/recovery proposal](release-and-recovery.md)
 to the implemented Rust package. Its statements that implementation selection
 and a build pipeline are still undecided describe the 2026-10-10 proposal;
 [ADR-0011](../implementation-selection/README.md), the root package and the
 [contributor evidence](../contributing/clean-machine.md) now supply that foundation.
-Release operation and independent release verification remain unrun.
+Release operation remains unrun; no independent human release verification is claimed.
 
-## Proposed choice and ordinary alternatives
+## Adopted choice and ordinary alternatives
 
-| Decision | Recommendation and reason | Alternative / cost |
+| Decision | Adopted choice and reason | Alternative / cost |
 | --- | --- | --- |
 | First version | Cargo version `0.2.0-alpha.1`, tag `v0.2.0-alpha.1`, GitHub prerelease; keeps the current `0.2.0-dev` line recognizable and exposes experimental status | A stable `0.2.0` would imply a stronger compatibility/support commitment before adoption and rehearsal |
 | Distribution | Public Git checkout pinned to the full candidate commit and GitHub's tag source ZIP/tar links; users build the root package with the existing locked Cargo recipe | Prebuilt binaries/installers would need assembled binary provenance, platform packaging/install/uninstall checks and a separate signing decision |
@@ -25,11 +30,11 @@ Release operation and independent release verification remain unrun.
 | Signing | Explicitly unsigned release tag/source archives; no new signing key, certificate, notarization, external attestation service or secret | Signing could add a distinct identity signal after a threat/benefit decision and real custody/recovery operators exist |
 | Support | Best-effort support for the latest published alpha, through existing public issues/PRs and the current security reporting process | No fixed calendar maintenance branch or response SLA without consenting capacity |
 
-These are project recommendations, not platform requirements. Source-only
+These are adopted project choices, not platform requirements. Source-only
 distribution lets experienced contributors use the established Rust workflow
 without inventing release infrastructure. MIT remains locked, including its
 warranty terms. Do not change `Cargo.toml`, version output, access, workflows or
-settings merely to accept delivery of this proposal; version changes belong to
+settings merely to record this policy; version changes belong to
 a separately prepared concrete candidate.
 
 GitHub releases are tied to tags and provide source archives; the UI supports a
@@ -51,6 +56,7 @@ This table describes today's implemented boundaries, not a new qualification.
 | Date preview | [Advisory fixed-width DateTimeOriginal preview](../reader/date-preview.md), with no apply/output command; current RAW dependency and production storage refusals remain |
 | Explicit pairing | [Selected RAW/XMP path observation](../sidecars/pairing.md), no inferred same-stem association, content validation, sidecar creation, continuing guard or synchronization |
 | Library | Current bounded [in-process read request/result API](../legacy-compatibility/read-request-result.md) and implemented modules; no stable ABI or mature library compatibility promise |
+| Sequential read session | Bounded [session read CLI](../legacy-compatibility/read-session-process.md); exact framing, request isolation, limits and actual pipe evidence, without cancellation, queue/server or persistent cross-process recovery promises |
 | Saved intent | Implemented [validation](../legacy-compatibility/cr3-preview-plan.md) and [source-content revalidation](../legacy-compatibility/cr3-preview-source-binding.md) remain nonexecuting observations; matching bytes never authorize mutation |
 
 Preview extraction retains the reader's actual scope: trusted local output
@@ -62,7 +68,7 @@ recovery, hostile namespace races, directory durability and remote filesystem
 guarantees are not certified by this package.
 
 Metadata/RAW writes, privacy removal, XMP parsing/publication, research workers,
-automatic repair/recovery, menus, persistent sessions, executable extensions,
+automatic repair/recovery, menus, persistent cross-process sessions, executable extensions,
 broader RAW support and full ExifTool parity remain outside this release claim.
 Research crates in `experiments/` may be present in repository source archives;
 their presence never makes them shipped production commands. Notes must mark
@@ -74,7 +80,7 @@ Physical-power testing, dedicated hardware, host crashes or guest bugchecks
 are not release gates. No physical survival promise is made. Independent format,
 preservation and truthful-outcome obligations still apply to any future writer.
 
-## Version and support rules proposed for adoption
+## Adopted version and support rules
 
 **FR-01 — Identify exact behavior.** Each release records its version, full source
 commit, root lockfile/toolchain identity, public schema revisions, accepted CLI
@@ -99,7 +105,7 @@ have no promised backports, end-date extension, LTS branch, response deadline or
 guaranteed fix. When a successor is published, state that the prior alpha's
 maintenance has ended; if maintenance stops without a successor, publish that
 fact when capacity permits. Preserve issue history and give a concrete next step
-or an explicitly unassigned status. This proposal does not appoint a support team.
+or an explicitly unassigned status. This policy does not appoint a support team.
 
 Reports should name version/commit, OS/architecture, command, status, expected and
 actual behavior and a minimal lawful reproduction. Users need not supply personal
@@ -130,21 +136,23 @@ coordinator, can accept or revise this version/support/distribution choice.
 A future concrete release needs recorded approval of its exact commit, notes,
 capability/evidence set and unsigned distribution choice. Standing approval for
 source commits/pushes is not approval to publish software, tag a release or grant
-accounts. Delivery of #0070 finishes this proposal's bounded scope only;
-GOV-OPEN-05 operational readiness remains open.
+accounts. #0159 adopts the policy; #0160 prepares the exact candidate and #0161
+publishes only after its exact authorization. GOV-OPEN-05 operational work remains
+open until those steps have actual evidence.
 
 | Duty | Consenting person and evidence needed | Current state |
 | --- | --- | --- |
-| Release steward | Accept the policy and exact candidate; resolve scope/provenance/compatibility gaps | Terry is coordinator; no concrete release approval recorded here |
-| Primary publisher | Own candidate assembly, least-privilege publication using their own approved identity, public verification and incident follow-through | Unassigned |
-| Independent verifier / backup publisher | A different qualified human reproduces checks, inspects source/archive contents and independently performs the no-publication handoff; later publication access is separately authorized | Unassigned |
-| Security coverage | Consenting primary and different backup, tested current route and agreed expectations under GOV-OPEN-02 | Not established by this proposal |
+| Release authority | Approve the exact candidate and notes; resolve scope/provenance/compatibility gaps | Terry; policy accepted, concrete candidate approval pending |
+| Candidate preparation and publication execution | Codex may prepare the candidate and perform the specifically authorized publication using existing authorized access; Terry retains authority | Candidate preparation and actual publication unrun; no new access grant |
+| Verification | Required exact-source automated checks and agent artifact/claim review, with results and limitations recorded | No independent human verifier or backup claimed; additional human coverage is a future goal |
+| Security coverage | Solo best-effort scope; exact route and operational checks remain GOV-OPEN-02 / #0155–0156 | No route decision or notification proof follows from #0159 |
 
-The backup may also be the independent verifier when qualified and independent
-of the candidate author. Several agents or a CI runner do not supply a second
-human. A person may decline or limit the role; record consent, scope and date
-before treating it as filled. No recruitment message, invitation, access change,
-notification test or publication is authorized by these role descriptions.
+This accepted solo-alpha scope supersedes the original proposal's mandatory
+different-human verifier/backup and two-person rehearsal gate. Several agents or
+a CI runner do not supply a second human. Record actual automated checks, agent
+review and Terry's exact candidate decision without claiming human independence.
+Future human appointments require consent and scoped access. No recruitment,
+invitation, access change or notification test is authorized by these roles.
 
 Unsigned distribution creates **no project signing secret to hold or recover**.
 It relies on the selected GitHub repository/account channel and reviewed source
@@ -155,29 +163,29 @@ Do not disable anyone's existing personal commit signing. If future binaries
 need signing/notarization, decide actual benefit, cost, operators and recovery
 before adding a service or credential.
 
-The existing private access/recovery inventory must cover the actual GitHub
-publisher and backup identities and their authorized repository permissions.
+The private access/recovery inventory covers the actual authorized publication
+identity and permissions; it must disclose the lack of a backup.
 Never share a personal login or recovery codes. Publish only consented role names,
 dates and sanitized results. No new account, token, org owner or repository setting
-is created here. Absence of a consenting independent operator remains a human
-readiness action; it is not solved by writing a runbook.
+is created here. Shared operator continuity remains a future goal, not an
+undisclosed staffing prerequisite for this explicitly solo alpha.
 
 ## Finite future rehearsal acceptance
 
 **FR-06 — Rehearse locally before seeking publication approval.** This is a
-future acceptance recipe, **unrun**. It requires consenting people and a frozen
+future acceptance recipe, **unrun**. It requires a frozen
 candidate but performs no tag push, GitHub draft/release creation, upload,
 notification, settings change or source-media mutation. Use the
 [blank rehearsal record](first-release-rehearsal.template.md).
 
 | Cell | Finite action | Pass evidence / refusal |
 | --- | --- | --- |
-| FRR-01 — consent and identity | Steward records accepted policy revision, exact candidate/version, primary and different human verifier/backup, their scoped consent and approved access status | Missing consent, role independence or candidate identity keeps rehearsal incomplete; no invented appointment |
-| FRR-02 — clean checks | Both operators independently check out the frozen revision and follow the public contributor recipe; retain exact toolchain/lockfile/environment and all required root/doc/schema checks plus applicable existing CI results | Record each result and deviation; earlier green runs cannot stand in for this candidate |
-| FRR-03 — public behavior | Each operator runs root/leaf help, text/JSON version and existing authored read/list/extract/preview/pairing fixtures, including invalid syntax, unsupported format, bounds and existing-output refusal | Exact complete outputs/statuses, unchanged source bytes, no overwrite, declared new-preview effects and no mutation/apply authority; no private photos required |
+| FRR-01 — authority and identity | Record adopted solo policy, exact candidate/version, Terry's release authority, actual execution identity and approved access status | Missing candidate/access evidence keeps the relevant cell incomplete; no invented backup or independent human review |
+| FRR-02 — clean checks | Check out the frozen revision and follow the public contributor recipe; retain exact toolchain/lockfile/environment and all required root/doc/schema checks plus exact candidate CI results | Record each result, reviewer and deviation; earlier green runs cannot stand in for this candidate |
+| FRR-03 — public behavior | Run root/leaf help, text/JSON version and existing authored read/list/extract/preview/pairing/session fixtures, including invalid syntax, unsupported format, bounds and existing-output refusal | Exact complete outputs/statuses, unchanged source bytes, no overwrite, declared new-preview effects and no mutation/apply authority; no private photos required |
 | FRR-04 — distribution contents | Build a local source archive from that exact revision using ordinary Git tooling, unpack elsewhere, enumerate tracked content and re-run the root build; inspect LICENSE, THIRD_PARTY_NOTICES, licenses, Cargo.lock and rust-toolchain.toml | No private corpus/report/board/credential/log/cache or unintended executable package; inspect tracked research separately and label it; any unresolved provenance/notice issue fails the affected distribution |
 | FRR-05 — identity comparison | Compare extracted paths/file bytes to the frozen Git tree and record archive byte identity, excluded Git metadata and any archive substitutions; compare independently built binaries if attempted | Source content matches; a binary-byte mismatch is disclosed/investigated and prevents a binary reproducibility claim, not disguised by normalization |
-| FRR-06 — backup and correction | Primary supplies only public instructions plus sanitized candidate record; backup independently identifies the candidate and explains the unsigned trust limit, supported operations, refusal/status handling and simulated bad-release response | Backup can repeat the candidate checks and describe withdrawal/corrected-version actions without primary credentials or private chat; no real deletion, release or tag mutation |
+| FRR-06 — correction walkthrough and continuity gap | Review public instructions and the sanitized candidate record; identify the unsigned trust limit, supported operations, refusal/status handling and simulated bad-release response | Record actual reviewer and no backup coverage; verify correction instructions without claiming backup takeover; no real deletion, release or tag mutation |
 | FRR-07 — review decision | Steward reviews discrepancies, capability/compatibility notes, exact contents and linked security/access readiness | Record pass/incomplete/refused for each cell and unresolved actions; rehearsal completion alone never authorizes publication |
 
 Do not require a byte-identical GitHub-generated compressed archive: GitHub
@@ -208,13 +216,13 @@ expand through this proposal.
 
 | Status | Evidence / remaining action |
 | --- | --- |
-| Proposed | FR-01–06, source-only unsigned alpha choice, compatibility/support boundary and FRR-01–07 |
+| Accepted | #0159 option A, 2026-10-16: source-only unsigned alpha, latest-alpha best-effort support, Terry's release authority, automated/agent checks without independent human verification claim; FR-01–06 and solo-adapted FRR-01–07 |
 | Implemented | Root native package and scoped capabilities linked above; no changes by this handoff |
 | Previously verified | Frozen reader/contributor/contract evidence at their stated revisions; not a release-candidate rehearsal |
-| Unrun | Candidate version/assembly, consented independent release rehearsal, operator continuity, release publication and postpublication verification |
-| Needs a real decision/person | Terry's policy acceptance; consenting primary and independent verifier/backup; security/access operational readiness |
+| Unrun | Candidate version/assembly, solo rehearsal, release publication and postpublication verification; shared operator continuity remains a future goal |
+| Remaining decisions/evidence | Terry's exact candidate approval; separately chosen security route and actual access/security readiness disposition |
 | Outside this delivery | New signing/registry infrastructure, permission changes, uploads, new production capabilities and broad support guarantees |
 
 This document and blank record receive the repository's documentation/link and
-whitespace checks. Scenario criteria are a reviewable proposal; they are not
+whitespace checks. Scenario criteria are an unrun acceptance recipe; they are not
 claims that a release drill, notification test or independent human review ran.

@@ -16,8 +16,14 @@ Terry also selected **#0154 option A: solo, best-effort operation**, with no cla
 human backup or response deadline. Terry coordinates the project and handles
 conduct/escalation contact; additional maintainers and independent handoffs remain
 future goals. See the [accepted operating scope](../GOVERNANCE.md#accepted-initial-operating-scope--0154).
-Four of the original six Terry decisions remain unanswered. Security intake,
-release authority and review enforcement retain their separate decisions.
+Terry selected **#0159 option A**: a source-only unsigned `v0.2.0-alpha.1`
+reader prerelease, best-effort support for the latest alpha and Terry's release
+authority. Automated checks and agent review do not claim independent human
+verification; the original different-human rehearsal gate is superseded for this
+solo alpha. Exact candidate approval is still required before publication. See the
+[accepted release policy](governance/first-release-policy.md).
+Three of the original six Terry decisions remain unanswered: security intake,
+review enforcement and the private decoder phase.
 
 ## Count the queue consistently
 
@@ -219,7 +225,7 @@ Prerequisites name exact cards. Historical accepted research is evidence of its 
 | #0156 | Configure and verify the specifically approved security-intake route | Work | #0155 |
 | #0157 | Choose the exact initial review-routing and enforcement policy | Terry decision | #0154 |
 | #0158 | Apply and test the specifically approved review-routing policy | Work | #0157 |
-| #0159 | Choose the first reader release authority and support boundary | Terry decision | None newly queued |
+| #0159 | Source-only unsigned reader alpha with solo authority and best-effort support (option A selected) | Decision recorded | None newly queued |
 | #0160 | Prepare one exact adopted source-reader release candidate | Work | #0159 |
 | #0161 | Publish and verify the exact authorized source-reader alpha | Work | #0159, #0160 |
 

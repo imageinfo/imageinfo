@@ -427,6 +427,16 @@ and reasoning defaults remain GPT-6.1 Sol with Medium effort.
 
 ## Product intent
 
+- Terry selected #0159 option A on 2026-10-16: first distribution is a source-only,
+  unsigned `v0.2.0-alpha.1` GitHub prerelease of the bounded reader, with
+  `publish = false`, no binary/installer/registry/signing infrastructure and
+  best-effort latest-alpha support without response/backport guarantees. Terry
+  retains release authority; prepare the exact candidate and notes for approval
+  before publication. Use required automated checks and agent review, honestly
+  labeled; no independent human verification/backup gate or claim for this solo
+  alpha. This decision does not itself authorize a tag/release or change versions.
+  See `docs/governance/first-release-policy.md`.
+
 - Terry selected #0154 option A on 2026-10-16: solo, best-effort operation, with
   Terry as project coordinator and conduct/escalation contact. Claim no human
   backup, staffed response team, response deadline or operational independence.

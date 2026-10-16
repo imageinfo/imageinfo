@@ -35,8 +35,11 @@ or public personal contact detail is adopted here; #0155 decides the security ro
 This accepted scope supersedes treating primary/backup staffing proposals as an
 already adopted requirement for initial solo operation. It does not establish
 operational independence or complete account recovery, approve release publication
-or change format/write guarantees. Release authority and verification expectations
-are the separate #0159 decision; review enforcement remains #0157.
+or change format/write guarantees. The subsequent accepted
+[#0159 release policy](docs/governance/first-release-policy.md) makes Terry the
+release authority for a source-only unsigned reader alpha, using automated checks
+and agent review without an independent human verification/backup prerequisite or
+claim. Exact candidate approval remains required; review enforcement remains #0157.
 
 ## Decisions and responsibilities
 
@@ -180,7 +183,7 @@ verification dates and sanitized evidence before claiming shared maintenance.
 | GOV-OPEN-02 | Establish private security intake and notification coverage | Enabled/tested private route, primary and backup responders, agreed response expectations |
 | GOV-OPEN-03 | Establish owner/access continuity | Authorized additional owner as appropriate, private access inventory, separate account recovery and recovery drill |
 | GOV-OPEN-04 | Adopt review enforcement and ownership routing | Actual repository rules checked with test PRs; CODEOWNERS only after real people/teams and permissions exist |
-| GOV-OPEN-05 | Choose release authority, version/support policy and signing custody | Named operators, reproducible build/validation instructions and independent release rehearsal after implementation selection |
+| GOV-OPEN-05 | Execute the accepted #0159 solo source-alpha policy | Exact candidate checks, automated/agent review, Terry's candidate approval and actual publication verification; no human backup or independent human verification claim |
 | GOV-OPEN-06 | Publish contributor verification commands for the eventual toolchain | Clean-machine setup/checks reproducible without private paths, plus reviewed CI permissions and a conduct/escalation contact |
 
 The [security-intake package](docs/governance/security-intake-readiness.md),
