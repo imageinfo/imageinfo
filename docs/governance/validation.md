@@ -10,11 +10,17 @@ with Terry as coordinator and conduct/escalation contact. No human backup or
 response deadline is claimed. GOV-OPEN-01's staffing and independent handoff goals
 remain future outcomes, not initial solo-operation requirements. GOV-OPEN-06's
 existing contributor verification evidence remains separate from staffed coverage.
-Security intake and review enforcement remain separate decisions. Terry subsequently
+Review enforcement remains a separate decision. Terry subsequently
 accepted [#0159's solo source-alpha release policy](first-release-policy.md), with
 automated checks and agent review, no independent human verification/backup gate,
 and exact candidate approval before publication. No release operation is verified.
 The historical proposal audit below does not establish those operations.
+
+Terry also accepted #0155's solo private-reporting route. #0156 enabled it and
+verified authenticated/unauthenticated status plus the public reporting entry.
+The synthetic report was refused for the administrator account; no report was
+created, and external submission/notification delivery remain unverified. See the
+[actual intake record](security-intake-readiness.md#accepted-route-and-actual-verification--2026-10-16).
 
 ## Delivered artifacts
 

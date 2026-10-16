@@ -427,6 +427,15 @@ and reasoning defaults remain GPT-6.1 Sol with Medium effort.
 
 ## Product intent
 
+- Terry selected #0155 option A on 2026-10-16 and authorized enabling/verifying
+  private reporting for `imageinfo/imageinfo` plus one harmless synthetic report.
+  Reporting is enabled and API/public-entry verified. The actual report POST was
+  refused with HTTP 403 for the available administrator account; no report exists.
+  Keep external submission and notification delivery explicitly unverified; never
+  substitute an admin draft as proof. Terry is sole best-effort responder, with no
+  backup/response deadline. No new access or personal notification changes follow.
+  See `SECURITY.md` and `docs/governance/security-intake-readiness.md`.
+
 - Terry selected #0159 option A on 2026-10-16: first distribution is a source-only,
   unsigned `v0.2.0-alpha.1` GitHub prerelease of the bounded reader, with
   `publish = false`, no binary/installer/registry/signing infrastructure and

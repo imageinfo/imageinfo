@@ -30,7 +30,8 @@ GOV-OPEN-06 retains the existing contributor verification evidence and records
 Terry as the conduct/escalation contact; it does not establish a staffed escalation
 service. Public contact requests should contain minimal information and follow
 [SECURITY.md](SECURITY.md) for security concerns. No new private coordination route
-or public personal contact detail is adopted here; #0155 decides the security route.
+or public personal contact detail is adopted by #0154; the subsequent #0155 route
+decision is recorded below.
 
 This accepted scope supersedes treating primary/backup staffing proposals as an
 already adopted requirement for initial solo operation. It does not establish
@@ -40,6 +41,14 @@ or change format/write guarantees. The subsequent accepted
 release authority for a source-only unsigned reader alpha, using automated checks
 and agent review without an independent human verification/backup prerequisite or
 claim. Exact candidate approval remains required; review enforcement remains #0157.
+
+Terry subsequently adopted #0155's GitHub private-reporting route. It is enabled
+and configuration-verified, with Terry as sole best-effort responder. The synthetic
+report attempt was refused for the available administrator account; external
+submission and notification delivery remain unverified. See
+[SECURITY.md](SECURITY.md) for the current route and limits. Historical primary/backup
+security proposals do not impose a staffing prerequisite on this solo scope or
+establish staffed coverage.
 
 ## Decisions and responsibilities
 
@@ -180,7 +189,7 @@ verification dates and sanitized evidence before claiming shared maintenance.
 | ID | Decision/action | Completion evidence |
 | --- | --- | --- |
 | GOV-OPEN-01 | Recruit/confirm technical primaries and backups | Named consented roster, scoped access and independent handoff evidence |
-| GOV-OPEN-02 | Establish private security intake and notification coverage | Enabled/tested private route, primary and backup responders, agreed response expectations |
+| GOV-OPEN-02 | Verify the adopted solo private-reporting route | Enabled flag/public entry verified under #0155–0156; synthetic attempt refused for admin account; external submission/delivery unverified, Terry responds best effort |
 | GOV-OPEN-03 | Establish owner/access continuity | Authorized additional owner as appropriate, private access inventory, separate account recovery and recovery drill |
 | GOV-OPEN-04 | Adopt review enforcement and ownership routing | Actual repository rules checked with test PRs; CODEOWNERS only after real people/teams and permissions exist |
 | GOV-OPEN-05 | Execute the accepted #0159 solo source-alpha policy | Exact candidate checks, automated/agent review, Terry's candidate approval and actual publication verification; no human backup or independent human verification claim |

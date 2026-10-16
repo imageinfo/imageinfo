@@ -1,6 +1,56 @@
 # Private security-intake readiness proposal
 
-Status: **proposal for review**, revision `2026-10-15.1`, card **#0066**;
+Status: **solo route adopted and configured, delivery unverified**,
+**#0155–0156 / 2026-10-16**. The current disposition below supersedes the historical
+two-responder activation proposal for initial solo operation.
+
+## Accepted route and actual verification — 2026-10-16
+
+Terry selected option A: enable private reporting for `imageinfo/imageinfo`, with
+Terry as sole best-effort responder, no backup or response deadline, one harmless
+synthetic report, and notification delivery unverified until observed. This
+authorizes this repository's switch and test, not new accounts, access grants,
+personal notification changes, organization settings, real exploits or publication.
+
+| Cell | Actual result |
+| --- | --- |
+| Target/access | Public, unarchived `imageinfo/imageinfo`; CLI identity has repository admin access |
+| Before | Authenticated GET returned `enabled: false` |
+| Enable | Repository-specific PUT returned HTTP 204 at 2026-10-16 18:37:05 UTC |
+| Readback | Authenticated and separate unauthenticated GETs returned `enabled: true` |
+| Public entry | Browser found `Report a vulnerability` on the advisories page, linking to this repository's private form |
+| Full browser form | Available browser requires sign-in; no authentication was automated or full form validation claimed |
+| Synthetic attempt | Exactly one POST to `/security-advisories/reports` with authored test-only text returned HTTP 403: the available administrator account is not authorized to report through private reporting |
+| Report/closure | No report was created, so none needed acknowledgement or closure. No administrator-created draft was substituted |
+| Notifications | External submission and notification delivery remain unverified; a visible entry and enabled flag establish configuration only |
+| Coverage | Terry alone, best effort; no backup takeover test or staffing claim |
+
+The refusal is an account/endpoint restriction, not an automatic approval rejection.
+No repeat submission, alternate account, invitation, private fork, CVE request or
+notification-preference change was attempted. A preliminary guessed form-metadata
+endpoint returned 404 and supplied no form-policy evidence. The actual synthetic
+API description contained Summary, Details, Proof of concept and Impact sections;
+full form/custom-policy acceptance remains unverified because submission failed.
+
+The authored request and failed response remain private under
+`.local/security-intake-20261016/`; no report identifier exists.
+[SECURITY.md](../../SECURITY.md) publishes the current route and limits. This bounded
+configuration/verification handoff records the failed test; it does not establish
+end-to-end intake qualification or complete GOV-OPEN-02's delivery evidence.
+Further external-reporter/notification evidence needs an eligible consenting
+reporter and observed receipt, not another generic configuration probe. Additional
+staffing is a future goal, not a prerequisite for this accepted solo route.
+
+Primary GitHub documentation rechecked 2026-10-16:
+[configuration and notifications](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/configure-vulnerability-reporting/configure-for-a-repository),
+[private reporting and administrator distinction](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/report-privately),
+and [the private-report API](https://docs.github.com/en/rest/security-advisories/repository-advisories#privately-report-a-security-vulnerability).
+No immutable documentation revision is recorded. These describe the platform;
+the observations above describe this actual repository.
+
+## Historical #0066 proposal — not current staffing or activation gates
+
+Original status: **proposal for review**, revision `2026-10-15.1`, card **#0066**;
 supports **GOV-OPEN-02** under [governance](../../GOVERNANCE.md).
 This handoff prepares a setting, procedure, authorization and consenting-operator
 package. It does not enable reporting, appoint responders or demonstrate staffed

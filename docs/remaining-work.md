@@ -22,8 +22,13 @@ authority. Automated checks and agent review do not claim independent human
 verification; the original different-human rehearsal gate is superseded for this
 solo alpha. Exact candidate approval is still required before publication. See the
 [accepted release policy](governance/first-release-policy.md).
-Three of the original six Terry decisions remain unanswered: security intake,
-review enforcement and the private decoder phase.
+Terry selected **#0155 option A** and authorized enabling/verifying GitHub private
+reporting. #0156 verified the enabled setting and public reporting entry; its single
+synthetic report attempt was refused for the available administrator account.
+External submission and notification delivery remain unverified. See the
+[actual intake record](governance/security-intake-readiness.md#accepted-route-and-actual-verification--2026-10-16).
+Two of the original six Terry decisions remain unanswered: review enforcement
+and the private decoder phase.
 
 ## Count the queue consistently
 
@@ -221,7 +226,7 @@ Prerequisites name exact cards. Historical accepted research is evidence of its 
 | Card | Planned outcome | Queue | Prerequisites |
 | --- | --- | --- | --- |
 | #0154 | Solo, best-effort operation with Terry coordinating and no claimed backup (option A selected) | Decision recorded | None newly queued |
-| #0155 | Approve the exact security-intake route and consenting responder coverage | Terry decision | #0154 |
+| #0155 | GitHub private reporting adopted with sole best-effort responder (option A selected) | Decision recorded | #0154 |
 | #0156 | Configure and verify the specifically approved security-intake route | Work | #0155 |
 | #0157 | Choose the exact initial review-routing and enforcement policy | Terry decision | #0154 |
 | #0158 | Apply and test the specifically approved review-routing policy | Work | #0157 |
