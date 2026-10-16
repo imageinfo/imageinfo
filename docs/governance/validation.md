@@ -4,6 +4,15 @@ Reviewed **2026-10-10**, revision `2026-10-10.1`, card **#0009**. This is a prac
 process proposal with contributor-facing guidance. It does not establish a staffed
 team, enabled repository controls or a tested release/recovery system.
 
+Subsequent accepted scope, **#0154 / 2026-10-16**: Terry selected
+[solo, best-effort operation](../../GOVERNANCE.md#accepted-initial-operating-scope--0154),
+with Terry as coordinator and conduct/escalation contact. No human backup or
+response deadline is claimed. GOV-OPEN-01's staffing and independent handoff goals
+remain future outcomes, not initial solo-operation requirements. GOV-OPEN-06's
+existing contributor verification evidence remains separate from staffed coverage.
+Security intake, review enforcement and release authority remain separate decisions.
+The historical proposal audit below does not establish those operations.
+
 ## Delivered artifacts
 
 - [GOVERNANCE.md](../../GOVERNANCE.md): twelve rules, six ownership areas, review and

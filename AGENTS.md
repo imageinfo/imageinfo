@@ -427,6 +427,13 @@ and reasoning defaults remain GPT-6.1 Sol with Medium effort.
 
 ## Product intent
 
+- Terry selected #0154 option A on 2026-10-16: solo, best-effort operation, with
+  Terry as project coordinator and conduct/escalation contact. Claim no human
+  backup, staffed response team, response deadline or operational independence.
+  Additional maintainers and independent handoff exercises remain future goals;
+  Codex/subagents are assistance, not human backups. Security intake, release
+  authority and review enforcement retain their separate decisions. See `GOVERNANCE.md`.
+
 - Terry selected #0118 option A on 2026-10-16: retain the current CR3 semantic
   preservation contract and unsupported embedded-write outcome. Stop generic
   reference probes for opaque dependencies; resume positive format admission only

@@ -7,11 +7,17 @@ The original twenty cards hid ten tracking umbrellas and ten executable outcomes
 These are defined work packets, not a promise that 99 successful turns finish the entire project. Each executable estimate assumes its named prerequisites, actual permissions and selected profile. Some mechanisms may prove unsupported. Unselected alternatives, undefined operation families and human exercises without operators are disclosed below rather than assigned invented ticket counts. Future full ExifTool parity remains on the explicitly held #0012.
 
 Subsequent decision, 2026-10-16: Terry selected **#0118 option A**, retaining the
-current preservation contract and unsupported embedded CR3 writes. Five of the six
-original Terry decisions remain unanswered. The decomposition counts below are the
+current preservation contract and unsupported embedded CR3 writes. The decomposition counts below are the
 original planning baseline. #0119 remains an insufficient-scope contingent template;
 #0078/#0014 remain unfulfilled. Stop generic reference probes; see the
 [accepted admission disposition](write-safety/write-admission.md#accepted-disposition--0118-2026-10-16).
+
+Terry also selected **#0154 option A: solo, best-effort operation**, with no claimed
+human backup or response deadline. Terry coordinates the project and handles
+conduct/escalation contact; additional maintainers and independent handoffs remain
+future goals. See the [accepted operating scope](../GOVERNANCE.md#accepted-initial-operating-scope--0154).
+Four of the original six Terry decisions remain unanswered. Security intake,
+release authority and review enforcement retain their separate decisions.
 
 ## Count the queue consistently
 
@@ -208,7 +214,7 @@ Prerequisites name exact cards. Historical accepted research is evidence of its 
 
 | Card | Planned outcome | Queue | Prerequisites |
 | --- | --- | --- | --- |
-| #0154 | Choose initial operator coverage and consented escalation contacts | Terry decision | None newly queued |
+| #0154 | Solo, best-effort operation with Terry coordinating and no claimed backup (option A selected) | Decision recorded | None newly queued |
 | #0155 | Approve the exact security-intake route and consenting responder coverage | Terry decision | #0154 |
 | #0156 | Configure and verify the specifically approved security-intake route | Work | #0155 |
 | #0157 | Choose the exact initial review-routing and enforcement policy | Terry decision | #0154 |

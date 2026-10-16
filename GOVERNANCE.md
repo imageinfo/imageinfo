@@ -1,6 +1,7 @@
 # Project governance
 
-Status: **proposal for review**, revision `2026-10-10.1`, card **#0009**.
+Status: **proposal with accepted solo-operation scope**, original revision
+`2026-10-10.1`, card **#0009**; #0154 decision accepted **2026-10-16** below.
 This document assigns proposed responsibilities; it does not grant GitHub access,
 appoint additional maintainers, enable repository rules or authorize a release.
 
@@ -13,6 +14,29 @@ Start with [contributing](CONTRIBUTING.md), [security reporting](SECURITY.md), a
 the [release and recovery runbook](docs/governance/release-and-recovery.md).
 [Validation and open actions](docs/governance/validation.md) distinguish the
 documented process from readiness still to be established.
+
+## Accepted initial operating scope — #0154
+
+On 2026-10-16, Terry explicitly selected **solo, best-effort operation**. Terry is
+the sole project coordinator and conduct/escalation contact. There is no appointed
+human backup, staffed response team, guaranteed response time or continuity promise.
+Codex and its subagents assist with work; they do not count as human backups or
+independent human reviewers.
+
+The six OWN areas below remain a responsibility map, not six staffed specialties
+or demonstrated technical coverage. Additional consenting maintainers, independent
+handoff exercises and shared ownership remain future goals under GOV-OPEN-01.
+GOV-OPEN-06 retains the existing contributor verification evidence and records
+Terry as the conduct/escalation contact; it does not establish a staffed escalation
+service. Public contact requests should contain minimal information and follow
+[SECURITY.md](SECURITY.md) for security concerns. No new private coordination route
+or public personal contact detail is adopted here; #0155 decides the security route.
+
+This accepted scope supersedes treating primary/backup staffing proposals as an
+already adopted requirement for initial solo operation. It does not establish
+operational independence or complete account recovery, approve release publication
+or change format/write guarantees. Release authority and verification expectations
+are the separate #0159 decision; review enforcement remains #0157.
 
 ## Decisions and responsibilities
 
