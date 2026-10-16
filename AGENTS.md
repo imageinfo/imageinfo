@@ -368,6 +368,21 @@ assisted sign-in introduces no read-only retry. See
 `docs/write-safety/checked-receipt-context.md`; this is neither timestamp rebasing
 nor a cause/fix, durable acknowledgement, custody, storage profile or RAW admission.
 
+#0113 adds finite authored opaque CMT dependency controls and an independent
+ownership witness. See `docs/write-safety/cmt-opaque-dependencies.md`; invented
+dependencies are not Canon semantics or positive RAW admission.
+#0114 binds checked receipt observation to an actual process-owned caller and
+uses internally retained context for explicit read-only inspection. See
+`docs/write-safety/checked-receipt-custody.md`; no automatic restart custody,
+namespace acknowledgement or production profile follows.
+#0115 adds actual native/CLI authored CMT2/CTMD ISO disagreement evidence for
+P0A-003. See `docs/fixture-plan/iso-disagreement.md`; no camera phase or broad
+fixture-family completion follows.
+#0116 exposes the existing v1 read-session library through `imageinfo session read`
+with bounded actual process/pipe tests. See
+`docs/legacy-compatibility/read-session-process.md`; cancellation, failing native
+input handles, non-Unicode wire paths and broader compatibility remain separate.
+
 ## Subagent authorization
 
 

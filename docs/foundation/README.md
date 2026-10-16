@@ -16,8 +16,9 @@ read-only boundaries preserve all format/storage admission and caller-authority 
 the ordinary metadata-read workflow for bounded native token arrays and explicit
 request IDs. It provides one-call library integration and caller-owned JSON output;
 [#0112's session runtime](../legacy-compatibility/read-session-library.md) now
-adds opt-in bounded JSONL framing over caller-owned buffered streams. CLI process
-sessions, OS-pipe lifecycle and mutation integration remain separate work.
+adds opt-in bounded JSONL framing over caller-owned buffered streams.
+[#0116](../legacy-compatibility/read-session-process.md) adds its explicit CLI
+entry and finite actual pipe lifecycle evidence. Mutation integration remains separate work.
 
 Implemented under **#0019**, 2026-10-10, after Terry accepted Rust/ADR-0011.
 This package provides a production library/binary boundary, command definitions,

@@ -5,8 +5,9 @@ The production library exposes
 It implements the fixed v1 wire contract from the
 [#0058 session proposal](read-session-framing.md), dispatching each admitted
 read through the existing [#0057 token-array API](read-request-result.md).
-This opt-in library entry adds no CLI command or process entry point. The original
-proposal's authored transcripts remain specification evidence; they are distinct
+The library entry owns no process. Subsequent [#0116](read-session-process.md)
+adds `imageinfo session read` as a thin CLI adapter with actual pipe tests. The
+original proposal's authored transcripts remain specification evidence; they are distinct
 from this runtime's actual stream and native-reader tests.
 
 ```rust

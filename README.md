@@ -21,7 +21,8 @@ validate [saved preview intent](docs/legacy-compatibility/cr3-preview-plan.md) a
 These observations keep mutation and storage admission refused.
 The library also exposes an opt-in [read-session runtime](docs/legacy-compatibility/read-session-library.md)
 over caller-owned buffered input/output, with bounded JSONL frames and fresh
-metadata-read requests. It has no CLI entry point.
+metadata-read requests. The [session CLI](docs/legacy-compatibility/read-session-process.md)
+exposes the same v1 runtime through `imageinfo session read` on standard input/output.
 
 ```console
 cargo run --locked -- help

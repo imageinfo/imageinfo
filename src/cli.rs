@@ -63,6 +63,7 @@ pub enum Invocation {
     Extract(ExtractRequest),
     DatePreview(DatePreviewRequest),
     Pair(PairRequest),
+    ReadSession,
 }
 
 #[derive(Debug, PartialEq, Eq)]
@@ -87,6 +88,11 @@ pub fn command() -> Command {
         .after_help("Reads a declared Canon EOS R5 full RAW metadata/preview subset, describes a read-only date intent, and associates explicit existing RAW/sidecar paths. Other cameras, variants, XMP content operations and metadata writes are not supported yet.")
         .subcommand(help_command())
         .subcommand(common(Command::new("version").about("Show version and current implementation scope")))
+        .subcommand(common(Command::new("session").about("Run bounded read-only JSONL sessions"))
+            .subcommand(help_command())
+            .subcommand(common(Command::new("read").about("Read metadata requests from stdin using session protocol v1"))
+                .subcommand(help_command())
+                .after_help("Uses fixed v1 JSONL on stdout; omit --output. Reads Unicode token arrays sequentially with request-local settings. No queue, cancellation, metadata writes or elapsed-time guarantee.")))
         .subcommand(
             common(Command::new("metadata").about("Inspect camera RAW metadata"))
                 .subcommand(help_command())
@@ -295,8 +301,21 @@ where
         || path == ["binary"]
         || path == ["preview"]
         || path == ["sidecar"]
+        || path == ["session"]
     {
         return render_help(&tree, &path, output);
+    }
+
+    if path == ["session", "read"] {
+        if !output_values.is_empty() {
+            return Err(usage(
+                "INVALID_OPTION",
+                "Read sessions own fixed v1 JSONL transport; omit --output. See imageinfo session read help."
+                    .into(),
+                output,
+            ));
+        }
+        return Ok(Invocation::ReadSession);
     }
 
     let inputs: Vec<PathBuf> = current

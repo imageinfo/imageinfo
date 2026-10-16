@@ -154,3 +154,10 @@ profile. Real apply depends on actual format and storage qualification, not a
 Completed prerequisite label. New-output evidence never enables replacement,
 source deletion, pair atomicity, secure erasure or another storage profile by
 implication.
+
+The second 2026-10-16 batch advances #0113 authored opaque CMT dependency
+controls, #0114 process-owned checked receipt observation, #0115 native authored
+ISO disagreement and #0116 read-session CLI/actual pipes. Five Sol / Medium and
+three Sol / High agents pair implementation with independent review. Format and
+storage research remain prerequisites rather than production writer admission;
+ISO evidence uses authored bytes, and the session adapter adds no mutation protocol.

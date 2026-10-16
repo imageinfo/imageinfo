@@ -99,6 +99,11 @@ jobs:
           python -m unittest discover -s experiments/0109-cmt-serialization -p "test_*.py" -v
           python -m unittest discover -s experiments/0110-receipt-context -p "test_*.py" -v
           python -m compileall -q experiments/0109-cmt-serialization experiments/0110-receipt-context experiments/0111-warning-jpeg
+      - name: Check opaque dependency controls and checked caller custody
+        run: |
+          python -W error -m unittest discover -s experiments/0113-cmt-opaque-dependencies -p "test_*.py" -v
+          python -W error -m unittest discover -s experiments/0114-checked-receipt-custody -p "test_*.py" -v
+          python -m compileall -q experiments/0113-cmt-opaque-dependencies experiments/0114-checked-receipt-custody
       - name: Check process-owned marker transport and lifecycle
         run: |
           python -W error -m unittest discover -s experiments/0103-process-custody -p "test_*.py" -v

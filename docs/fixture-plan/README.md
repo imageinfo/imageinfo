@@ -19,6 +19,8 @@ remain historical, synthetic and explicitly planned/not-run.
 - [Warning-aware JPEG qualification](warning-aware-jpeg-validator.md): #0111's
   installed warning-enforcing API passes its finite authored profile; actual
   camera/phase qualification remains open on #0075.
+- [Authored ISO disagreement](iso-disagreement.md): #0115 exercises actual
+  CMT2/CTMD occurrence selection for P0A-003 without camera media.
 - [Case plan](case-plan.v1.json): 29 prioritized case families, their needed fixtures,
   assertions, and links to all 49 current capability rows.
 - [Evidence schema](evidence.schema.json): fixture, oracle-profile, and experiment records.

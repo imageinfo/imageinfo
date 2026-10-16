@@ -7,7 +7,10 @@ subprocess and persistent-session protocols below remain proposals; this first
 library slice does not implement their framing or lifecycle.
 Subsequent [#0058's bounded framing specification](read-session-framing.md)
 defines a smaller proposed sequential metadata-read/close session with explicit
-finite limits and authored wire vectors. It implements no session. The broader
+finite limits and authored wire vectors. Subsequent [#0112](read-session-library.md)
+implements that narrower v1 runtime and [#0116](read-session-process.md) exposes it
+through `imageinfo session read`. Those implemented boundaries do not adopt the
+request-file, queue or apply protocol in this document. The broader
 cancel/apply/queue protocol below retains its historical proposed status and is
 not permission to advertise those operations through the narrower v1 boundary.
 

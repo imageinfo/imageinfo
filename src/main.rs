@@ -27,6 +27,9 @@ fn main() -> ExitCode {
         Ok(Invocation::Extract(request)) => write_report(&mut stdout,&mut stderr,app::extract(request,request_id())),
         Ok(Invocation::DatePreview(request)) => write_report(&mut stdout,&mut stderr,app::date_preview(request,request_id())),
         Ok(Invocation::Pair(request)) => write_report(&mut stdout,&mut stderr,app::pair(request,request_id())),
+        Ok(Invocation::ReadSession) => imageinfo::read_session::run(&mut io::stdin().lock(), &mut stdout)
+            .map(|outcome| outcome.exit_status)
+            .map_err(|error| error.source),
         Err(error) => report_error(
             &mut stdout,
             &mut stderr,

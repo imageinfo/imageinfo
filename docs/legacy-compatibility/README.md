@@ -13,8 +13,9 @@ surface. [#0056](r5-date-mapping.md) maps the bounded date family to actual look
 and refusal behavior. The [#0054 extension boundary](executable-extension-boundary.md)
 remains a proposal. [#0058 session framing](read-session-framing.md) supplies the
 v1 wire contract; [#0112](read-session-library.md) implements its bounded
-caller-owned library runtime. A CLI process entry, OS-pipe lifecycle and broader
-session compatibility remain open.
+caller-owned library runtime. [#0116](read-session-process.md) exposes the same
+runtime through `imageinfo session read` with finite actual pipe tests. Broader
+session compatibility remains open.
 [#0059 native path qualification](native-paths.md) separately exercises a finite
 set of native argv and declared shell paths; it does not establish all-shell parity.
 

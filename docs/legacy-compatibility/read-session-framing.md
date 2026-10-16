@@ -4,9 +4,10 @@ Specification revision `2026-10-15.1`, protocol version **1**. This is a
 specification-only LG-006 increment grounded in the implemented
 [#0057 read request/result API](read-request-result.md), observed in
 [`src/read_request.rs`](../../src/read_request.rs) on 2026-10-15. There is no
-CLI entry point, server or process-session SDK. Subsequent
+CLI entry point in this specification increment, server or process-session SDK. Subsequent
 [#0112](read-session-library.md) implements this v1 framing, decoder, bounded
-output and read execution in an opt-in caller-owned library runtime. The wire
+output and read execution in an opt-in caller-owned library runtime;
+[#0116](read-session-process.md) adds its CLI adapter and finite actual pipe tests. The wire
 examples and checker below remain historical proposal evidence; they do not
 execute a persistent process or establish throughput, cancellation or broader
 compatibility.
@@ -234,10 +235,11 @@ it does not demonstrate bounded streaming allocation or actual failing pipes.
 #0112's [library evidence](read-session-library.md) now covers an actual bounded
 decoder/output adapter, native-reader state isolation and real faulting I/O trait
 transports. It distinguishes buffered logical consumption from caller-owned
-physical prefetch and supplies no process or OS-pipe result. Remaining
-unimplemented/unrun cells include a process entry point, malformed/truncated/
-oversized OS-pipe observations, actual process exit behavior, broader platform
-path behavior and memory/resource measurements. Cancellation, queues, concurrent requests, persistent
+physical prefetch and supplies no process or OS-pipe result itself.
+[#0116](read-session-process.md) separately covers the CLI entry, finite
+malformed/truncated/oversized pipe observations and actual process exit behavior.
+Broader platform path behavior, failing native input handles and memory/resource
+measurements remain separate. Cancellation, queues, concurrent requests, persistent
 caches, SDK lifecycle, arbitrary native path encoding, performance tuning and
 ExifTool parity remain separate scope. This proposal enables no writer, RAW
 admission, profile or storage/recovery action.

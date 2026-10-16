@@ -1,0 +1,2798 @@
+{
+  "schemaVersion": 1,
+  "ticket": 113,
+  "authoredOnly": true,
+  "independentByteAuditCompleted": true,
+  "auditorSha256": "cc75f0aefce32fedcf0bca8902ae932e5944043e48ed59b5753e248583408f6b",
+  "sourceSha256": {
+    "audit.py": "cc75f0aefce32fedcf0bca8902ae932e5944043e48ed59b5753e248583408f6b",
+    "runner.py": "9fa42ff11fab4973c9162ae3eb8e7656d296d844ba9adaddfb4e8115fbfd2ff5",
+    "test_audit.py": "ce389ffe4bf49d34923ccf2c588a8b04deb5648b27250cb8ca38a3f2b813f3b3",
+    "test_runner.py": "207380261bec085cefeb73ffa41dc5c3c61c5fbdf3118e0e1ed53daf3a32450d"
+  },
+  "toolManifestSha256": {
+    "exiftool-13.59.json": "b55345e4b02d221ffa4cc7c444858337329b433d2d4877ce7a6dc03cce2827ed",
+    "installed-perl.json": "6f4eb552f97a25039ba1c786765a61cd6a1419f5837e75e25da0191f9e91e691",
+    "json-pp.json": "dcb168d2cb67fe46d6de6c540e23b0f97ac3fa7b7a6d04b8f0c0f28d6ecb1fb2"
+  },
+  "cells": [
+    {
+      "id": "II-baseline-same",
+      "selectedDateVerified": true,
+      "knownCompanionValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "unknownEntryState": "not-applicable",
+      "sourceAliasRelationship": "absent",
+      "outputAliasRelationship": "absent",
+      "fixtureDefinedChecksumConsistent": null,
+      "checksumIsCanonAlgorithm": false,
+      "logicalValueChanges": [],
+      "sourceCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "49492a0008000000"
+        },
+        {
+          "offset": 90,
+          "length": 18,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "010003900200140000001a00000000000000"
+        },
+        {
+          "offset": 108,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "49492a0008000000"
+        },
+        {
+          "offset": 90,
+          "length": 18,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "010003900200140000001a00000000000000"
+        },
+        {
+          "offset": 108,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "sourceCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 108,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 108,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "sourceCmt4Gaps": [],
+      "outputCmt4Gaps": []
+    },
+    {
+      "id": "II-baseline-changed",
+      "selectedDateVerified": true,
+      "knownCompanionValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "unknownEntryState": "not-applicable",
+      "sourceAliasRelationship": "absent",
+      "outputAliasRelationship": "absent",
+      "fixtureDefinedChecksumConsistent": null,
+      "checksumIsCanonAlgorithm": false,
+      "logicalValueChanges": [
+        {
+          "identity": [
+            [
+              "root"
+            ],
+            36867,
+            0,
+            2,
+            20
+          ],
+          "sourceHex": "323030313a30323a30332030343a30353a303600",
+          "outputHex": "323030373a30383a30392031303a31313a313200"
+        }
+      ],
+      "sourceCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "49492a0008000000"
+        },
+        {
+          "offset": 90,
+          "length": 18,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "010003900200140000001a00000000000000"
+        },
+        {
+          "offset": 108,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "49492a0008000000"
+        },
+        {
+          "offset": 90,
+          "length": 18,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "010003900200140000001a00000000000000"
+        },
+        {
+          "offset": 108,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030373a30383a30392031303a31313a313200"
+        }
+      ],
+      "sourceCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 108,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 108,
+          "length": 20,
+          "valueHex": "323030373a30383a30392031303a31313a313200"
+        }
+      ],
+      "sourceCmt4Gaps": [],
+      "outputCmt4Gaps": []
+    },
+    {
+      "id": "II-inline-same",
+      "selectedDateVerified": true,
+      "knownCompanionValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "unknownEntryState": "value-preserved",
+      "sourceAliasRelationship": "separate-storage",
+      "outputAliasRelationship": "separate-storage",
+      "fixtureDefinedChecksumConsistent": null,
+      "checksumIsCanonAlgorithm": false,
+      "logicalValueChanges": [],
+      "sourceCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "49492a0008000000"
+        },
+        {
+          "offset": 90,
+          "length": 22,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0200039002001400000026000000fedf070004000000"
+        },
+        {
+          "offset": 112,
+          "length": 4,
+          "owners": [
+            "structure:1",
+            "value:1"
+          ],
+          "hex": "91725334"
+        },
+        {
+          "offset": 116,
+          "length": 4,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "49492a0008000000"
+        },
+        {
+          "offset": 90,
+          "length": 22,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0200039002001400000026000000fedf070004000000"
+        },
+        {
+          "offset": 112,
+          "length": 4,
+          "owners": [
+            "structure:1",
+            "value:1"
+          ],
+          "hex": "91725334"
+        },
+        {
+          "offset": 116,
+          "length": 4,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "sourceCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 7,
+          "count": 4,
+          "offset": 112,
+          "length": 4,
+          "valueHex": "91725334"
+        }
+      ],
+      "outputCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 7,
+          "count": 4,
+          "offset": 112,
+          "length": 4,
+          "valueHex": "91725334"
+        }
+      ],
+      "sourceCmt4Gaps": [],
+      "outputCmt4Gaps": []
+    },
+    {
+      "id": "II-inline-changed",
+      "selectedDateVerified": true,
+      "knownCompanionValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "unknownEntryState": "value-preserved",
+      "sourceAliasRelationship": "separate-storage",
+      "outputAliasRelationship": "separate-storage",
+      "fixtureDefinedChecksumConsistent": null,
+      "checksumIsCanonAlgorithm": false,
+      "logicalValueChanges": [
+        {
+          "identity": [
+            [
+              "root"
+            ],
+            36867,
+            0,
+            2,
+            20
+          ],
+          "sourceHex": "323030313a30323a30332030343a30353a303600",
+          "outputHex": "323030373a30383a30392031303a31313a313200"
+        }
+      ],
+      "sourceCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "49492a0008000000"
+        },
+        {
+          "offset": 90,
+          "length": 22,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0200039002001400000026000000fedf070004000000"
+        },
+        {
+          "offset": 112,
+          "length": 4,
+          "owners": [
+            "structure:1",
+            "value:1"
+          ],
+          "hex": "91725334"
+        },
+        {
+          "offset": 116,
+          "length": 4,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "49492a0008000000"
+        },
+        {
+          "offset": 90,
+          "length": 22,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0200039002001400000026000000fedf070004000000"
+        },
+        {
+          "offset": 112,
+          "length": 4,
+          "owners": [
+            "structure:1",
+            "value:1"
+          ],
+          "hex": "91725334"
+        },
+        {
+          "offset": 116,
+          "length": 4,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030373a30383a30392031303a31313a313200"
+        }
+      ],
+      "sourceCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 7,
+          "count": 4,
+          "offset": 112,
+          "length": 4,
+          "valueHex": "91725334"
+        }
+      ],
+      "outputCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030373a30383a30392031303a31313a313200"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 7,
+          "count": 4,
+          "offset": 112,
+          "length": 4,
+          "valueHex": "91725334"
+        }
+      ],
+      "sourceCmt4Gaps": [],
+      "outputCmt4Gaps": []
+    },
+    {
+      "id": "II-outline-same",
+      "selectedDateVerified": true,
+      "knownCompanionValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "unknownEntryState": "value-preserved",
+      "sourceAliasRelationship": "separate-storage",
+      "outputAliasRelationship": "separate-storage",
+      "fixtureDefinedChecksumConsistent": null,
+      "checksumIsCanonAlgorithm": false,
+      "logicalValueChanges": [],
+      "sourceCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "49492a0008000000"
+        },
+        {
+          "offset": 90,
+          "length": 30,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0200039002001400000026000000fedf07000e0000003a00000000000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "offset": 140,
+          "length": 14,
+          "owners": [
+            "value:1"
+          ],
+          "hex": "415554484f5245442d3031313300"
+        }
+      ],
+      "outputCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "49492a0008000000"
+        },
+        {
+          "offset": 90,
+          "length": 30,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0200039002001400000026000000fedf07000e0000003a00000000000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "offset": 140,
+          "length": 14,
+          "owners": [
+            "value:1"
+          ],
+          "hex": "415554484f5245442d3031313300"
+        }
+      ],
+      "sourceCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 7,
+          "count": 14,
+          "offset": 140,
+          "length": 14,
+          "valueHex": "415554484f5245442d3031313300"
+        }
+      ],
+      "outputCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 7,
+          "count": 14,
+          "offset": 140,
+          "length": 14,
+          "valueHex": "415554484f5245442d3031313300"
+        }
+      ],
+      "sourceCmt4Gaps": [],
+      "outputCmt4Gaps": []
+    },
+    {
+      "id": "II-outline-changed",
+      "selectedDateVerified": true,
+      "knownCompanionValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "unknownEntryState": "value-preserved",
+      "sourceAliasRelationship": "separate-storage",
+      "outputAliasRelationship": "separate-storage",
+      "fixtureDefinedChecksumConsistent": null,
+      "checksumIsCanonAlgorithm": false,
+      "logicalValueChanges": [
+        {
+          "identity": [
+            [
+              "root"
+            ],
+            36867,
+            0,
+            2,
+            20
+          ],
+          "sourceHex": "323030313a30323a30332030343a30353a303600",
+          "outputHex": "323030373a30383a30392031303a31313a313200"
+        }
+      ],
+      "sourceCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "49492a0008000000"
+        },
+        {
+          "offset": 90,
+          "length": 30,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0200039002001400000026000000fedf07000e0000003a00000000000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "offset": 140,
+          "length": 14,
+          "owners": [
+            "value:1"
+          ],
+          "hex": "415554484f5245442d3031313300"
+        }
+      ],
+      "outputCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "49492a0008000000"
+        },
+        {
+          "offset": 90,
+          "length": 30,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0200039002001400000026000000fedf07000e0000003a00000000000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030373a30383a30392031303a31313a313200"
+        },
+        {
+          "offset": 140,
+          "length": 14,
+          "owners": [
+            "value:1"
+          ],
+          "hex": "415554484f5245442d3031313300"
+        }
+      ],
+      "sourceCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 7,
+          "count": 14,
+          "offset": 140,
+          "length": 14,
+          "valueHex": "415554484f5245442d3031313300"
+        }
+      ],
+      "outputCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030373a30383a30392031303a31313a313200"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 7,
+          "count": 14,
+          "offset": 140,
+          "length": 14,
+          "valueHex": "415554484f5245442d3031313300"
+        }
+      ],
+      "sourceCmt4Gaps": [],
+      "outputCmt4Gaps": []
+    },
+    {
+      "id": "II-alias-same",
+      "selectedDateVerified": true,
+      "knownCompanionValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "unknownEntryState": "value-preserved",
+      "sourceAliasRelationship": "exact-shared-storage",
+      "outputAliasRelationship": "separate-storage",
+      "fixtureDefinedChecksumConsistent": null,
+      "checksumIsCanonAlgorithm": false,
+      "logicalValueChanges": [],
+      "sourceCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "49492a0008000000"
+        },
+        {
+          "offset": 90,
+          "length": 30,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0200039002001400000026000000fedf0200140000002600000000000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0",
+            "value:1"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "49492a0008000000"
+        },
+        {
+          "offset": 90,
+          "length": 30,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0200039002001400000026000000fedf0200140000003a00000000000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "offset": 140,
+          "length": 20,
+          "owners": [
+            "value:1"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "sourceCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 140,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "sourceCmt4Gaps": [],
+      "outputCmt4Gaps": []
+    },
+    {
+      "id": "II-alias-changed",
+      "selectedDateVerified": true,
+      "knownCompanionValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "unknownEntryState": "value-preserved",
+      "sourceAliasRelationship": "exact-shared-storage",
+      "outputAliasRelationship": "separate-storage",
+      "fixtureDefinedChecksumConsistent": null,
+      "checksumIsCanonAlgorithm": false,
+      "logicalValueChanges": [
+        {
+          "identity": [
+            [
+              "root"
+            ],
+            36867,
+            0,
+            2,
+            20
+          ],
+          "sourceHex": "323030313a30323a30332030343a30353a303600",
+          "outputHex": "323030373a30383a30392031303a31313a313200"
+        }
+      ],
+      "sourceCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "49492a0008000000"
+        },
+        {
+          "offset": 90,
+          "length": 30,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0200039002001400000026000000fedf0200140000002600000000000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0",
+            "value:1"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "49492a0008000000"
+        },
+        {
+          "offset": 90,
+          "length": 30,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0200039002001400000026000000fedf0200140000003a00000000000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030373a30383a30392031303a31313a313200"
+        },
+        {
+          "offset": 140,
+          "length": 20,
+          "owners": [
+            "value:1"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "sourceCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030373a30383a30392031303a31313a313200"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 140,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "sourceCmt4Gaps": [],
+      "outputCmt4Gaps": []
+    },
+    {
+      "id": "II-checksum-same",
+      "selectedDateVerified": true,
+      "knownCompanionValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "unknownEntryState": "value-preserved",
+      "sourceAliasRelationship": "separate-storage",
+      "outputAliasRelationship": "separate-storage",
+      "fixtureDefinedChecksumConsistent": true,
+      "checksumIsCanonAlgorithm": false,
+      "logicalValueChanges": [],
+      "sourceCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "49492a0008000000"
+        },
+        {
+          "offset": 90,
+          "length": 22,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0200039002001400000026000000fedf040001000000"
+        },
+        {
+          "offset": 112,
+          "length": 4,
+          "owners": [
+            "structure:1",
+            "value:1"
+          ],
+          "hex": "bf030000"
+        },
+        {
+          "offset": 116,
+          "length": 4,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "49492a0008000000"
+        },
+        {
+          "offset": 90,
+          "length": 22,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0200039002001400000026000000fedf040001000000"
+        },
+        {
+          "offset": 112,
+          "length": 4,
+          "owners": [
+            "structure:1",
+            "value:1"
+          ],
+          "hex": "bf030000"
+        },
+        {
+          "offset": 116,
+          "length": 4,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "sourceCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 4,
+          "count": 1,
+          "offset": 112,
+          "length": 4,
+          "valueHex": "bf030000"
+        }
+      ],
+      "outputCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 4,
+          "count": 1,
+          "offset": 112,
+          "length": 4,
+          "valueHex": "bf030000"
+        }
+      ],
+      "sourceCmt4Gaps": [],
+      "outputCmt4Gaps": []
+    },
+    {
+      "id": "II-checksum-changed",
+      "selectedDateVerified": true,
+      "knownCompanionValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "unknownEntryState": "value-preserved",
+      "sourceAliasRelationship": "separate-storage",
+      "outputAliasRelationship": "separate-storage",
+      "fixtureDefinedChecksumConsistent": false,
+      "checksumIsCanonAlgorithm": false,
+      "logicalValueChanges": [
+        {
+          "identity": [
+            [
+              "root"
+            ],
+            36867,
+            0,
+            2,
+            20
+          ],
+          "sourceHex": "323030313a30323a30332030343a30353a303600",
+          "outputHex": "323030373a30383a30392031303a31313a313200"
+        }
+      ],
+      "sourceCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "49492a0008000000"
+        },
+        {
+          "offset": 90,
+          "length": 22,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0200039002001400000026000000fedf040001000000"
+        },
+        {
+          "offset": 112,
+          "length": 4,
+          "owners": [
+            "structure:1",
+            "value:1"
+          ],
+          "hex": "bf030000"
+        },
+        {
+          "offset": 116,
+          "length": 4,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "49492a0008000000"
+        },
+        {
+          "offset": 90,
+          "length": 22,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0200039002001400000026000000fedf040001000000"
+        },
+        {
+          "offset": 112,
+          "length": 4,
+          "owners": [
+            "structure:1",
+            "value:1"
+          ],
+          "hex": "bf030000"
+        },
+        {
+          "offset": 116,
+          "length": 4,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030373a30383a30392031303a31313a313200"
+        }
+      ],
+      "sourceCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 4,
+          "count": 1,
+          "offset": 112,
+          "length": 4,
+          "valueHex": "bf030000"
+        }
+      ],
+      "outputCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030373a30383a30392031303a31313a313200"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 4,
+          "count": 1,
+          "offset": 112,
+          "length": 4,
+          "valueHex": "bf030000"
+        }
+      ],
+      "sourceCmt4Gaps": [],
+      "outputCmt4Gaps": []
+    },
+    {
+      "id": "MM-baseline-same",
+      "selectedDateVerified": true,
+      "knownCompanionValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "unknownEntryState": "not-applicable",
+      "sourceAliasRelationship": "absent",
+      "outputAliasRelationship": "absent",
+      "fixtureDefinedChecksumConsistent": null,
+      "checksumIsCanonAlgorithm": false,
+      "logicalValueChanges": [],
+      "sourceCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "4d4d002a00000008"
+        },
+        {
+          "offset": 90,
+          "length": 18,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "000190030002000000140000001a00000000"
+        },
+        {
+          "offset": 108,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "4d4d002a00000008"
+        },
+        {
+          "offset": 90,
+          "length": 18,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "000190030002000000140000001a00000000"
+        },
+        {
+          "offset": 108,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "sourceCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 108,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 108,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "sourceCmt4Gaps": [],
+      "outputCmt4Gaps": []
+    },
+    {
+      "id": "MM-baseline-changed",
+      "selectedDateVerified": true,
+      "knownCompanionValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "unknownEntryState": "not-applicable",
+      "sourceAliasRelationship": "absent",
+      "outputAliasRelationship": "absent",
+      "fixtureDefinedChecksumConsistent": null,
+      "checksumIsCanonAlgorithm": false,
+      "logicalValueChanges": [
+        {
+          "identity": [
+            [
+              "root"
+            ],
+            36867,
+            0,
+            2,
+            20
+          ],
+          "sourceHex": "323030313a30323a30332030343a30353a303600",
+          "outputHex": "323030373a30383a30392031303a31313a313200"
+        }
+      ],
+      "sourceCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "4d4d002a00000008"
+        },
+        {
+          "offset": 90,
+          "length": 18,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "000190030002000000140000001a00000000"
+        },
+        {
+          "offset": 108,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "4d4d002a00000008"
+        },
+        {
+          "offset": 90,
+          "length": 18,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "000190030002000000140000001a00000000"
+        },
+        {
+          "offset": 108,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030373a30383a30392031303a31313a313200"
+        }
+      ],
+      "sourceCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 108,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 108,
+          "length": 20,
+          "valueHex": "323030373a30383a30392031303a31313a313200"
+        }
+      ],
+      "sourceCmt4Gaps": [],
+      "outputCmt4Gaps": []
+    },
+    {
+      "id": "MM-inline-same",
+      "selectedDateVerified": true,
+      "knownCompanionValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "unknownEntryState": "value-preserved",
+      "sourceAliasRelationship": "separate-storage",
+      "outputAliasRelationship": "separate-storage",
+      "fixtureDefinedChecksumConsistent": null,
+      "checksumIsCanonAlgorithm": false,
+      "logicalValueChanges": [],
+      "sourceCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "4d4d002a00000008"
+        },
+        {
+          "offset": 90,
+          "length": 22,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0002900300020000001400000026dffe000700000004"
+        },
+        {
+          "offset": 112,
+          "length": 4,
+          "owners": [
+            "structure:1",
+            "value:1"
+          ],
+          "hex": "91725334"
+        },
+        {
+          "offset": 116,
+          "length": 4,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "4d4d002a00000008"
+        },
+        {
+          "offset": 90,
+          "length": 22,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0002900300020000001400000026dffe000700000004"
+        },
+        {
+          "offset": 112,
+          "length": 4,
+          "owners": [
+            "structure:1",
+            "value:1"
+          ],
+          "hex": "91725334"
+        },
+        {
+          "offset": 116,
+          "length": 4,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "sourceCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 7,
+          "count": 4,
+          "offset": 112,
+          "length": 4,
+          "valueHex": "91725334"
+        }
+      ],
+      "outputCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 7,
+          "count": 4,
+          "offset": 112,
+          "length": 4,
+          "valueHex": "91725334"
+        }
+      ],
+      "sourceCmt4Gaps": [],
+      "outputCmt4Gaps": []
+    },
+    {
+      "id": "MM-inline-changed",
+      "selectedDateVerified": true,
+      "knownCompanionValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "unknownEntryState": "value-preserved",
+      "sourceAliasRelationship": "separate-storage",
+      "outputAliasRelationship": "separate-storage",
+      "fixtureDefinedChecksumConsistent": null,
+      "checksumIsCanonAlgorithm": false,
+      "logicalValueChanges": [
+        {
+          "identity": [
+            [
+              "root"
+            ],
+            36867,
+            0,
+            2,
+            20
+          ],
+          "sourceHex": "323030313a30323a30332030343a30353a303600",
+          "outputHex": "323030373a30383a30392031303a31313a313200"
+        }
+      ],
+      "sourceCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "4d4d002a00000008"
+        },
+        {
+          "offset": 90,
+          "length": 22,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0002900300020000001400000026dffe000700000004"
+        },
+        {
+          "offset": 112,
+          "length": 4,
+          "owners": [
+            "structure:1",
+            "value:1"
+          ],
+          "hex": "91725334"
+        },
+        {
+          "offset": 116,
+          "length": 4,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "4d4d002a00000008"
+        },
+        {
+          "offset": 90,
+          "length": 22,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0002900300020000001400000026dffe000700000004"
+        },
+        {
+          "offset": 112,
+          "length": 4,
+          "owners": [
+            "structure:1",
+            "value:1"
+          ],
+          "hex": "91725334"
+        },
+        {
+          "offset": 116,
+          "length": 4,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030373a30383a30392031303a31313a313200"
+        }
+      ],
+      "sourceCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 7,
+          "count": 4,
+          "offset": 112,
+          "length": 4,
+          "valueHex": "91725334"
+        }
+      ],
+      "outputCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030373a30383a30392031303a31313a313200"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 7,
+          "count": 4,
+          "offset": 112,
+          "length": 4,
+          "valueHex": "91725334"
+        }
+      ],
+      "sourceCmt4Gaps": [],
+      "outputCmt4Gaps": []
+    },
+    {
+      "id": "MM-outline-same",
+      "selectedDateVerified": true,
+      "knownCompanionValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "unknownEntryState": "value-preserved",
+      "sourceAliasRelationship": "separate-storage",
+      "outputAliasRelationship": "separate-storage",
+      "fixtureDefinedChecksumConsistent": null,
+      "checksumIsCanonAlgorithm": false,
+      "logicalValueChanges": [],
+      "sourceCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "4d4d002a00000008"
+        },
+        {
+          "offset": 90,
+          "length": 30,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0002900300020000001400000026dffe00070000000e0000003a00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "offset": 140,
+          "length": 14,
+          "owners": [
+            "value:1"
+          ],
+          "hex": "415554484f5245442d3031313300"
+        }
+      ],
+      "outputCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "4d4d002a00000008"
+        },
+        {
+          "offset": 90,
+          "length": 30,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0002900300020000001400000026dffe00070000000e0000003a00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "offset": 140,
+          "length": 14,
+          "owners": [
+            "value:1"
+          ],
+          "hex": "415554484f5245442d3031313300"
+        }
+      ],
+      "sourceCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 7,
+          "count": 14,
+          "offset": 140,
+          "length": 14,
+          "valueHex": "415554484f5245442d3031313300"
+        }
+      ],
+      "outputCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 7,
+          "count": 14,
+          "offset": 140,
+          "length": 14,
+          "valueHex": "415554484f5245442d3031313300"
+        }
+      ],
+      "sourceCmt4Gaps": [],
+      "outputCmt4Gaps": []
+    },
+    {
+      "id": "MM-outline-changed",
+      "selectedDateVerified": true,
+      "knownCompanionValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "unknownEntryState": "value-preserved",
+      "sourceAliasRelationship": "separate-storage",
+      "outputAliasRelationship": "separate-storage",
+      "fixtureDefinedChecksumConsistent": null,
+      "checksumIsCanonAlgorithm": false,
+      "logicalValueChanges": [
+        {
+          "identity": [
+            [
+              "root"
+            ],
+            36867,
+            0,
+            2,
+            20
+          ],
+          "sourceHex": "323030313a30323a30332030343a30353a303600",
+          "outputHex": "323030373a30383a30392031303a31313a313200"
+        }
+      ],
+      "sourceCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "4d4d002a00000008"
+        },
+        {
+          "offset": 90,
+          "length": 30,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0002900300020000001400000026dffe00070000000e0000003a00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "offset": 140,
+          "length": 14,
+          "owners": [
+            "value:1"
+          ],
+          "hex": "415554484f5245442d3031313300"
+        }
+      ],
+      "outputCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "4d4d002a00000008"
+        },
+        {
+          "offset": 90,
+          "length": 30,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0002900300020000001400000026dffe00070000000e0000003a00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030373a30383a30392031303a31313a313200"
+        },
+        {
+          "offset": 140,
+          "length": 14,
+          "owners": [
+            "value:1"
+          ],
+          "hex": "415554484f5245442d3031313300"
+        }
+      ],
+      "sourceCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 7,
+          "count": 14,
+          "offset": 140,
+          "length": 14,
+          "valueHex": "415554484f5245442d3031313300"
+        }
+      ],
+      "outputCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030373a30383a30392031303a31313a313200"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 7,
+          "count": 14,
+          "offset": 140,
+          "length": 14,
+          "valueHex": "415554484f5245442d3031313300"
+        }
+      ],
+      "sourceCmt4Gaps": [],
+      "outputCmt4Gaps": []
+    },
+    {
+      "id": "MM-alias-same",
+      "selectedDateVerified": true,
+      "knownCompanionValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "unknownEntryState": "value-preserved",
+      "sourceAliasRelationship": "exact-shared-storage",
+      "outputAliasRelationship": "separate-storage",
+      "fixtureDefinedChecksumConsistent": null,
+      "checksumIsCanonAlgorithm": false,
+      "logicalValueChanges": [],
+      "sourceCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "4d4d002a00000008"
+        },
+        {
+          "offset": 90,
+          "length": 30,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0002900300020000001400000026dffe0002000000140000002600000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0",
+            "value:1"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "4d4d002a00000008"
+        },
+        {
+          "offset": 90,
+          "length": 30,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0002900300020000001400000026dffe0002000000140000003a00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "offset": 140,
+          "length": 20,
+          "owners": [
+            "value:1"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "sourceCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 140,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "sourceCmt4Gaps": [],
+      "outputCmt4Gaps": []
+    },
+    {
+      "id": "MM-alias-changed",
+      "selectedDateVerified": true,
+      "knownCompanionValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "unknownEntryState": "value-preserved",
+      "sourceAliasRelationship": "exact-shared-storage",
+      "outputAliasRelationship": "separate-storage",
+      "fixtureDefinedChecksumConsistent": null,
+      "checksumIsCanonAlgorithm": false,
+      "logicalValueChanges": [
+        {
+          "identity": [
+            [
+              "root"
+            ],
+            36867,
+            0,
+            2,
+            20
+          ],
+          "sourceHex": "323030313a30323a30332030343a30353a303600",
+          "outputHex": "323030373a30383a30392031303a31313a313200"
+        }
+      ],
+      "sourceCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "4d4d002a00000008"
+        },
+        {
+          "offset": 90,
+          "length": 30,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0002900300020000001400000026dffe0002000000140000002600000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0",
+            "value:1"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "4d4d002a00000008"
+        },
+        {
+          "offset": 90,
+          "length": 30,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0002900300020000001400000026dffe0002000000140000003a00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030373a30383a30392031303a31313a313200"
+        },
+        {
+          "offset": 140,
+          "length": 20,
+          "owners": [
+            "value:1"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "sourceCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030373a30383a30392031303a31313a313200"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 140,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "sourceCmt4Gaps": [],
+      "outputCmt4Gaps": []
+    },
+    {
+      "id": "MM-checksum-same",
+      "selectedDateVerified": true,
+      "knownCompanionValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "unknownEntryState": "value-preserved",
+      "sourceAliasRelationship": "separate-storage",
+      "outputAliasRelationship": "separate-storage",
+      "fixtureDefinedChecksumConsistent": true,
+      "checksumIsCanonAlgorithm": false,
+      "logicalValueChanges": [],
+      "sourceCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "4d4d002a00000008"
+        },
+        {
+          "offset": 90,
+          "length": 22,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0002900300020000001400000026dffe000400000001"
+        },
+        {
+          "offset": 112,
+          "length": 4,
+          "owners": [
+            "structure:1",
+            "value:1"
+          ],
+          "hex": "000003bf"
+        },
+        {
+          "offset": 116,
+          "length": 4,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "4d4d002a00000008"
+        },
+        {
+          "offset": 90,
+          "length": 22,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0002900300020000001400000026dffe000400000001"
+        },
+        {
+          "offset": 112,
+          "length": 4,
+          "owners": [
+            "structure:1",
+            "value:1"
+          ],
+          "hex": "000003bf"
+        },
+        {
+          "offset": 116,
+          "length": 4,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "sourceCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 4,
+          "count": 1,
+          "offset": 112,
+          "length": 4,
+          "valueHex": "000003bf"
+        }
+      ],
+      "outputCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 4,
+          "count": 1,
+          "offset": 112,
+          "length": 4,
+          "valueHex": "000003bf"
+        }
+      ],
+      "sourceCmt4Gaps": [],
+      "outputCmt4Gaps": []
+    },
+    {
+      "id": "MM-checksum-changed",
+      "selectedDateVerified": true,
+      "knownCompanionValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "unknownEntryState": "value-preserved",
+      "sourceAliasRelationship": "separate-storage",
+      "outputAliasRelationship": "separate-storage",
+      "fixtureDefinedChecksumConsistent": false,
+      "checksumIsCanonAlgorithm": false,
+      "logicalValueChanges": [
+        {
+          "identity": [
+            [
+              "root"
+            ],
+            36867,
+            0,
+            2,
+            20
+          ],
+          "sourceHex": "323030313a30323a30332030343a30353a303600",
+          "outputHex": "323030373a30383a30392031303a31313a313200"
+        }
+      ],
+      "sourceCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "4d4d002a00000008"
+        },
+        {
+          "offset": 90,
+          "length": 22,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0002900300020000001400000026dffe000400000001"
+        },
+        {
+          "offset": 112,
+          "length": 4,
+          "owners": [
+            "structure:1",
+            "value:1"
+          ],
+          "hex": "000003bf"
+        },
+        {
+          "offset": 116,
+          "length": 4,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030313a30323a30332030343a30353a303600"
+        }
+      ],
+      "outputCmt2Partition": [
+        {
+          "offset": 82,
+          "length": 8,
+          "owners": [
+            "structure:0"
+          ],
+          "hex": "4d4d002a00000008"
+        },
+        {
+          "offset": 90,
+          "length": 22,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "0002900300020000001400000026dffe000400000001"
+        },
+        {
+          "offset": 112,
+          "length": 4,
+          "owners": [
+            "structure:1",
+            "value:1"
+          ],
+          "hex": "000003bf"
+        },
+        {
+          "offset": 116,
+          "length": 4,
+          "owners": [
+            "structure:1"
+          ],
+          "hex": "00000000"
+        },
+        {
+          "offset": 120,
+          "length": 20,
+          "owners": [
+            "value:0"
+          ],
+          "hex": "323030373a30383a30392031303a31313a313200"
+        }
+      ],
+      "sourceCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030313a30323a30332030343a30353a303600"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 4,
+          "count": 1,
+          "offset": 112,
+          "length": 4,
+          "valueHex": "000003bf"
+        }
+      ],
+      "outputCmt2Entries": [
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 36867,
+          "duplicate": 0,
+          "type": 2,
+          "count": 20,
+          "offset": 120,
+          "length": 20,
+          "valueHex": "323030373a30383a30392031303a31313a313200"
+        },
+        {
+          "route": [
+            "root"
+          ],
+          "tag": 57342,
+          "duplicate": 0,
+          "type": 4,
+          "count": 1,
+          "offset": 112,
+          "length": 4,
+          "valueHex": "000003bf"
+        }
+      ],
+      "sourceCmt4Gaps": [],
+      "outputCmt4Gaps": []
+    }
+  ],
+  "productionMutationAllowed": false,
+  "formatAdmissionAttempted": false
+}
