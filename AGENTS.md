@@ -438,13 +438,18 @@ provenance findings through later incomplete inspection and refuses mutation;
 fresh semantic verification. Neither enables filesystem publication, RAW mutation
 or a general privacy certification. See the documentation map for scoped evidence.
 
-## Next-turn priority correction — Terry, 2026-10-16
+## Default-priority correction completed — 2026-10-16
 
-At the start of the next turn, inspect all non-Completed P2 cards and move those
-whose P2 came from the mistaken default to P3 (Normal). Preserve deliberately
-raised priorities with concrete urgency/impact/deadline or explicit owner direction.
-Use localswim-cli, record the correction and do not change Completed history.
-This is queued for the next turn, not part of the current implementation handoff.
+Terry's queued correction is complete: 102 non-Completed cards whose P2 came
+from the mistaken default now use P3 (Normal): 98 active cards (92 Ready for Work
+and six Backlog), plus four archived cards. Current details/comments were reviewed
+for deliberate urgency or explicit higher-priority direction; none was found.
+The shared CLI's atomic `card set-priorities` updated the full reviewed selection
+together, avoiding dependency floors that kept some single-card requests at P2.
+Completed history, archive/lane state and the existing P5 broader-parity hold were
+preserved. Future priorities above P3 require a concrete reason under the global
+default rule; this completed correction is not an ongoing instruction to reset
+deliberately raised priorities.
 
 ## Subagent sidebar names
 
