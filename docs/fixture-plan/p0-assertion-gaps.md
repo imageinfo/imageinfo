@@ -104,6 +104,32 @@ in force.
 
 ## Rights, access and completion
 
+### Accepted limited preview use — #0164, 2026-10-16
+
+Terry explicitly selected option A and approved one exact existing private
+PreviewImage for the P0A-002 JPEG completeness/usability assertion. The permission
+covers bounded non-decoding identity/syntax/stored-extent preflight and temporary,
+separately named local decoded-pixel derivatives consumed/hashed for validation.
+Original and received bytes remain immutable. All pixels, captures, input identities,
+counts, Boolean outcomes and reports remain restricted locally; uploads, public
+findings, new media and broader privacy/mutation uses remain outside this grant.
+
+The private decision record binds the completed readiness packet, its exact prior
+grant/fixture/provenance text records, and the selected fixture/parent/recipe lineage.
+It explicitly extends the historical reference-characterization permission to the
+`differential` phase **only for this selected P0A-002 use**. Historical records stay
+unchanged; future admission must bind the scoped permission overlay with them.
+This exact use requires no repeated grants review or further Terry permission.
+
+Technical work remains: fresh permitted structural preflight and an independently
+reviewed finite authored-qualified decoder profile supporting the exact input must
+precede decoding. The unchanged #0111 authored-only profile does not supply that
+support. #0075 remains queued; no media or decoder was accessed to record this
+decision, and the actual assertion remains unrun. No production decoder, writer,
+RAW development feature or new extraction/release gate follows from permission.
+
+### Continuing handling rules
+
 Authored negative/setting cases use project-created marker/metadata bytes and can
 be public. A later camera/preview validator run needs the exact admitted bytes,
 reviewed tool/runtime recipe and allowed phase/decoded-derivative permission.

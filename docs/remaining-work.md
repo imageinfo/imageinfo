@@ -31,8 +31,13 @@ Terry selected **#0157 option A**, retaining direct commits/pushes after require
 checks, practical agent review and Terry's board acceptance, without mandatory PR
 approvals, CODEOWNERS or new branch-rule requirements. See the
 [accepted review policy](governance/review-routing-plan.md#accepted-solo-workflow--0157-2026-10-16).
-Only **#0164's private decoder-use/phase decision** remains unanswered among the
-original six Terry decisions.
+Terry selected **#0164 option A**, authorizing the exact selected existing private
+preview's bounded P0A-002 preflight and local decoded-pixel validation derivatives,
+with a purpose-limited differential phase and all privacy restrictions retained.
+The [permission record](fixture-plan/p0-assertion-gaps.md#accepted-limited-preview-use--0164-2026-10-16)
+leaves the actual #0075 assertion unrun until technical profile/identity checks pass.
+**All six original Terry decisions are answered.** The counts below remain the
+historical decomposition baseline, not a live count of unanswered decisions.
 
 ## Count the queue consistently
 
@@ -206,7 +211,7 @@ Prerequisites name exact cards. Historical accepted research is evidence of its 
 | --- | --- | --- | --- |
 | #0162 | Qualify literal R5 date strings across two process TZ settings | Work | #0071 |
 | #0163 | Qualify the aggregate marker limit across three authored previews | Work | #0071 |
-| #0164 | Decide the exact existing private PreviewImage decoder use and derivative phase | Terry decision | #0111; explicit condition on card |
+| #0164 | Limited private preview preflight/decode and scoped differential phase authorized (option A selected) | Decision recorded | #0111; exact scope retained |
 | #0075 | Qualify one actual private R5 PreviewImage entropy assertion | Work | #0164, #0111; explicit condition on card |
 
 ### Measured resource policy

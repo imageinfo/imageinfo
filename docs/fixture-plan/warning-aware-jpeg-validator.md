@@ -8,6 +8,13 @@ This advances the tool qualification work under #0075/P0A-002. Actual camera
 assertion execution, fixture phase and decoded-derivative permission remain open.
 No camera or PreviewImage bytes were decoded.
 
+Subsequent decision, **#0164 / 2026-10-16**: Terry approved the
+[limited private preview use](p0-assertion-gaps.md#accepted-limited-preview-use--0164-2026-10-16),
+including its scoped differential phase and temporary local decoded derivatives.
+Permission is now recorded. Fresh structural preflight, exact-input profile
+qualification and the actual #0075 assertion remain separate unrun technical work;
+the unchanged finite profile documented below does not establish camera support.
+
 The [#0107 Pillow result](jpeg-entropy-validator.md) remains a rejected profile.
 Pillow returned substituted pixels for early EOI. This recipe uses the codec's
 warning-aware API and requires zero status after full decoding; returned pixels

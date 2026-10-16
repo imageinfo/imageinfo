@@ -427,6 +427,19 @@ and reasoning defaults remain GPT-6.1 Sol with Medium effort.
 
 ## Product intent
 
+- Terry selected #0164 option A on 2026-10-16: authorize the one selected existing
+  private PreviewImage's P0A-002 bounded structural preflight and local JPEG
+  completeness/usability decode, including temporary separately named decoded-pixel
+  derivatives. Bind the exact private permission overlay and historical fixture
+  lineage; the differential phase extension applies only to that use. Keep originals
+  immutable and all pixels/results/reports restricted locally, with no uploads,
+  public findings, new-media or broader mutation grant. Decode only after an
+  independently reviewed authored-qualified profile supports the exact input and
+  fresh identity/syntax/extent checks pass. This decision records permission only;
+  #0075's technical work and actual assertion remain unrun. See
+  `docs/fixture-plan/p0-assertion-gaps.md` and private
+  `.local/rfw-decomposition-20261016/corpus.decoder-decision.private.json`.
+
 - Terry selected #0157 option A on 2026-10-16: retain direct commits/pushes after
   required checks, practical agent review without independent-human claims, and
   Terry's review/acceptance of board handoffs into Completed. Do not add mandatory
