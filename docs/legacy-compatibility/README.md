@@ -11,8 +11,10 @@ request/result path with native tokens and caller-owned JSON transport.
 [#0052](read-argument-order.md) qualifies the finite implemented native argv
 surface. [#0056](r5-date-mapping.md) maps the bounded date family to actual lookup
 and refusal behavior. The [#0054 extension boundary](executable-extension-boundary.md)
-and [#0058 session framing](read-session-framing.md) remain proposals with explicit
-product/runtime work still open.
+remains a proposal. [#0058 session framing](read-session-framing.md) supplies the
+v1 wire contract; [#0112](read-session-library.md) implements its bounded
+caller-owned library runtime. A CLI process entry, OS-pipe lifecycle and broader
+session compatibility remain open.
 [#0059 native path qualification](native-paths.md) separately exercises a finite
 set of native argv and declared shell paths; it does not establish all-shell parity.
 

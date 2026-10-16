@@ -4,9 +4,12 @@ Specification revision `2026-10-15.1`, protocol version **1**. This is a
 specification-only LG-006 increment grounded in the implemented
 [#0057 read request/result API](read-request-result.md), observed in
 [`src/read_request.rs`](../../src/read_request.rs) on 2026-10-15. There is no
-session runtime, CLI entry point, input parser, server or session SDK. The wire
-examples and checker validate this proposal; they do not execute a persistent
-process or establish throughput, cancellation or broader compatibility.
+CLI entry point, server or process-session SDK. Subsequent
+[#0112](read-session-library.md) implements this v1 framing, decoder, bounded
+output and read execution in an opt-in caller-owned library runtime. The wire
+examples and checker below remain historical proposal evidence; they do not
+execute a persistent process or establish throughput, cancellation or broader
+compatibility.
 
 The [broader integration proposal](integration.md) retains its historical
 request-file, queue, preview/apply, cancellation and concurrency ideas. This
@@ -31,6 +34,10 @@ LF always terminates a frame. Ordinary JSON whitespace outside strings is
 allowed, including CR. Raw CR inside a string is an ordinary JSON syntax error.
 Duplicate object members at any depth, unknown members,
 non-finite numbers, malformed UTF-8 and unpaired Unicode surrogate escapes refuse.
+Here non-finite tokens such as `NaN` and `Infinity` are JSON syntax errors.
+A syntactically valid exponent outside the numeric decoder's range fails schema
+admission after complete syntax/member and Unicode scalar checks; v1's only
+numeric input field is the fixed protocol version.
 All token strings contain Unicode scalar values and exclude U+0000. JSON escaping
 is decoded once; there is no shell splitting, globbing, variable expansion,
 command substitution or argument-file interpretation.
@@ -224,11 +231,13 @@ The native result/snapshot checks remain #0053/#0057's responsibility. The
 checker uses whole retained byte strings and synthetic delivery observations;
 it does not demonstrate bounded streaming allocation or actual failing pipes.
 
-Remaining unimplemented/unrun cells include an actual bounded decoder and
-process entry point, bounded output adapter, real malformed/truncated/oversized
-pipe observations, real short/failed input/output and flush tests, fresh-state
-cross-request observations, actual exit behavior, platform path behavior and
-memory/resource evidence. Cancellation, queues, concurrent requests, persistent
+#0112's [library evidence](read-session-library.md) now covers an actual bounded
+decoder/output adapter, native-reader state isolation and real faulting I/O trait
+transports. It distinguishes buffered logical consumption from caller-owned
+physical prefetch and supplies no process or OS-pipe result. Remaining
+unimplemented/unrun cells include a process entry point, malformed/truncated/
+oversized OS-pipe observations, actual process exit behavior, broader platform
+path behavior and memory/resource measurements. Cancellation, queues, concurrent requests, persistent
 caches, SDK lifecycle, arbitrary native path encoding, performance tuning and
 ExifTool parity remain separate scope. This proposal enables no writer, RAW
 admission, profile or storage/recovery action.

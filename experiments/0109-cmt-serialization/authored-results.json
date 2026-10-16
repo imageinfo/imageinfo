@@ -1,0 +1,518 @@
+{
+  "schemaVersion": 1,
+  "ticket": 109,
+  "authoredOnly": true,
+  "independentByteAuditCompleted": true,
+  "auditorSha256": "43f0315a6ac38fa704bc92d61d4c2f220c196c8c33ea3e96ef54e80e7228edec",
+  "sourceSha256": {
+    "audit.py": "43f0315a6ac38fa704bc92d61d4c2f220c196c8c33ea3e96ef54e80e7228edec",
+    "runner.py": "c027098b7ec132119882a317b57fe0ce9f1f34691421c4b7adc1b8560ded37ec",
+    "test_audit.py": "1052a4b42c557cd17420d391eebf9afe622eea07a8d9949c8b2415df5a58d2be",
+    "test_runner.py": "e8e996927d80a9e53f00586b71af619d5fa01697fb6a549b8899f9ff96d046bb"
+  },
+  "toolManifestSha256": {
+    "exiftool-13.59.json": "b55345e4b02d221ffa4cc7c444858337329b433d2d4877ce7a6dc03cce2827ed",
+    "installed-perl.json": "6f4eb552f97a25039ba1c786765a61cd6a1419f5837e75e25da0191f9e91e691",
+    "json-pp.json": "dcb168d2cb67fe46d6de6c540e23b0f97ac3fa7b7a6d04b8f0c0f28d6ecb1fb2"
+  },
+  "cells": [
+    {
+      "id": "II-absent-same-default",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "no-unallocated-bytes",
+      "sourceCmt4Length": 26,
+      "outputCmt4Length": 26,
+      "sourceGaps": [],
+      "outputGaps": []
+    },
+    {
+      "id": "II-absent-same-pad",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "no-unallocated-bytes",
+      "sourceCmt4Length": 26,
+      "outputCmt4Length": 26,
+      "sourceGaps": [],
+      "outputGaps": []
+    },
+    {
+      "id": "II-absent-changed-default",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "no-unallocated-bytes",
+      "sourceCmt4Length": 26,
+      "outputCmt4Length": 26,
+      "sourceGaps": [],
+      "outputGaps": []
+    },
+    {
+      "id": "II-absent-changed-pad",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "no-unallocated-bytes",
+      "sourceCmt4Length": 26,
+      "outputCmt4Length": 26,
+      "sourceGaps": [],
+      "outputGaps": []
+    },
+    {
+      "id": "II-zero-same-default",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "source-unallocated-storage-removed",
+      "sourceCmt4Length": 50,
+      "outputCmt4Length": 26,
+      "sourceGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "outputGaps": []
+    },
+    {
+      "id": "II-zero-same-pad",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "identical-unallocated-bytes",
+      "sourceCmt4Length": 50,
+      "outputCmt4Length": 50,
+      "sourceGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "outputGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "000000000000000000000000000000000000000000000000"
+        }
+      ]
+    },
+    {
+      "id": "II-zero-changed-default",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "source-unallocated-storage-removed",
+      "sourceCmt4Length": 50,
+      "outputCmt4Length": 26,
+      "sourceGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "outputGaps": []
+    },
+    {
+      "id": "II-zero-changed-pad",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "identical-unallocated-bytes",
+      "sourceCmt4Length": 50,
+      "outputCmt4Length": 50,
+      "sourceGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "outputGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "000000000000000000000000000000000000000000000000"
+        }
+      ]
+    },
+    {
+      "id": "II-nonzero-same-default",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "source-unallocated-storage-removed",
+      "sourceCmt4Length": 50,
+      "outputCmt4Length": 26,
+      "sourceGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "0102030405060708090a0b0c0d0e0f101112131415161718"
+        }
+      ],
+      "outputGaps": []
+    },
+    {
+      "id": "II-nonzero-same-pad",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "equal-length-zero-generated-storage",
+      "sourceCmt4Length": 50,
+      "outputCmt4Length": 50,
+      "sourceGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "0102030405060708090a0b0c0d0e0f101112131415161718"
+        }
+      ],
+      "outputGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "000000000000000000000000000000000000000000000000"
+        }
+      ]
+    },
+    {
+      "id": "II-nonzero-changed-default",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "source-unallocated-storage-removed",
+      "sourceCmt4Length": 50,
+      "outputCmt4Length": 26,
+      "sourceGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "0102030405060708090a0b0c0d0e0f101112131415161718"
+        }
+      ],
+      "outputGaps": []
+    },
+    {
+      "id": "II-nonzero-changed-pad",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "equal-length-zero-generated-storage",
+      "sourceCmt4Length": 50,
+      "outputCmt4Length": 50,
+      "sourceGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "0102030405060708090a0b0c0d0e0f101112131415161718"
+        }
+      ],
+      "outputGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "000000000000000000000000000000000000000000000000"
+        }
+      ]
+    },
+    {
+      "id": "II-reachable-same-default",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "no-unallocated-bytes",
+      "sourceCmt4Length": 52,
+      "outputCmt4Length": 52,
+      "sourceGaps": [],
+      "outputGaps": []
+    },
+    {
+      "id": "II-reachable-same-pad",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "no-unallocated-bytes",
+      "sourceCmt4Length": 52,
+      "outputCmt4Length": 52,
+      "sourceGaps": [],
+      "outputGaps": []
+    },
+    {
+      "id": "II-reachable-changed-default",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "no-unallocated-bytes",
+      "sourceCmt4Length": 52,
+      "outputCmt4Length": 52,
+      "sourceGaps": [],
+      "outputGaps": []
+    },
+    {
+      "id": "II-reachable-changed-pad",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "no-unallocated-bytes",
+      "sourceCmt4Length": 52,
+      "outputCmt4Length": 52,
+      "sourceGaps": [],
+      "outputGaps": []
+    },
+    {
+      "id": "MM-absent-same-default",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "no-unallocated-bytes",
+      "sourceCmt4Length": 26,
+      "outputCmt4Length": 26,
+      "sourceGaps": [],
+      "outputGaps": []
+    },
+    {
+      "id": "MM-absent-same-pad",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "no-unallocated-bytes",
+      "sourceCmt4Length": 26,
+      "outputCmt4Length": 26,
+      "sourceGaps": [],
+      "outputGaps": []
+    },
+    {
+      "id": "MM-absent-changed-default",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "no-unallocated-bytes",
+      "sourceCmt4Length": 26,
+      "outputCmt4Length": 26,
+      "sourceGaps": [],
+      "outputGaps": []
+    },
+    {
+      "id": "MM-absent-changed-pad",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "no-unallocated-bytes",
+      "sourceCmt4Length": 26,
+      "outputCmt4Length": 26,
+      "sourceGaps": [],
+      "outputGaps": []
+    },
+    {
+      "id": "MM-zero-same-default",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "source-unallocated-storage-removed",
+      "sourceCmt4Length": 50,
+      "outputCmt4Length": 26,
+      "sourceGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "outputGaps": []
+    },
+    {
+      "id": "MM-zero-same-pad",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "identical-unallocated-bytes",
+      "sourceCmt4Length": 50,
+      "outputCmt4Length": 50,
+      "sourceGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "outputGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "000000000000000000000000000000000000000000000000"
+        }
+      ]
+    },
+    {
+      "id": "MM-zero-changed-default",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "source-unallocated-storage-removed",
+      "sourceCmt4Length": 50,
+      "outputCmt4Length": 26,
+      "sourceGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "outputGaps": []
+    },
+    {
+      "id": "MM-zero-changed-pad",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "identical-unallocated-bytes",
+      "sourceCmt4Length": 50,
+      "outputCmt4Length": 50,
+      "sourceGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "outputGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "000000000000000000000000000000000000000000000000"
+        }
+      ]
+    },
+    {
+      "id": "MM-nonzero-same-default",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "source-unallocated-storage-removed",
+      "sourceCmt4Length": 50,
+      "outputCmt4Length": 26,
+      "sourceGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "0102030405060708090a0b0c0d0e0f101112131415161718"
+        }
+      ],
+      "outputGaps": []
+    },
+    {
+      "id": "MM-nonzero-same-pad",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "equal-length-zero-generated-storage",
+      "sourceCmt4Length": 50,
+      "outputCmt4Length": 50,
+      "sourceGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "0102030405060708090a0b0c0d0e0f101112131415161718"
+        }
+      ],
+      "outputGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "000000000000000000000000000000000000000000000000"
+        }
+      ]
+    },
+    {
+      "id": "MM-nonzero-changed-default",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "source-unallocated-storage-removed",
+      "sourceCmt4Length": 50,
+      "outputCmt4Length": 26,
+      "sourceGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "0102030405060708090a0b0c0d0e0f101112131415161718"
+        }
+      ],
+      "outputGaps": []
+    },
+    {
+      "id": "MM-nonzero-changed-pad",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "equal-length-zero-generated-storage",
+      "sourceCmt4Length": 50,
+      "outputCmt4Length": 50,
+      "sourceGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "0102030405060708090a0b0c0d0e0f101112131415161718"
+        }
+      ],
+      "outputGaps": [
+        {
+          "offset": 162,
+          "length": 24,
+          "hex": "000000000000000000000000000000000000000000000000"
+        }
+      ]
+    },
+    {
+      "id": "MM-reachable-same-default",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "no-unallocated-bytes",
+      "sourceCmt4Length": 52,
+      "outputCmt4Length": 52,
+      "sourceGaps": [],
+      "outputGaps": []
+    },
+    {
+      "id": "MM-reachable-same-pad",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "no-unallocated-bytes",
+      "sourceCmt4Length": 52,
+      "outputCmt4Length": 52,
+      "sourceGaps": [],
+      "outputGaps": []
+    },
+    {
+      "id": "MM-reachable-changed-default",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "no-unallocated-bytes",
+      "sourceCmt4Length": 52,
+      "outputCmt4Length": 52,
+      "sourceGaps": [],
+      "outputGaps": []
+    },
+    {
+      "id": "MM-reachable-changed-pad",
+      "selectedDateVerified": true,
+      "reachableValuesVerified": true,
+      "unselectedLeafComplementsVerified": true,
+      "storageRelationship": "no-unallocated-bytes",
+      "sourceCmt4Length": 52,
+      "outputCmt4Length": 52,
+      "sourceGaps": [],
+      "outputGaps": []
+    }
+  ],
+  "productionMutationAllowed": false,
+  "formatAdmissionAttempted": false
+}

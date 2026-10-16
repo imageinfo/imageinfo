@@ -1,0 +1,170 @@
+{
+  "id": "turbojpeg-3.1.4.1-windows-warning-authored-2026-10-16.1",
+  "observed": "2026-10-16",
+  "runtime": {
+    "authoredRecipeSha256": "c260cfd8d44fa6a615585d4c360ba651940ab1de133181b26be45df090da3aac",
+    "loadedNonOsModules": {
+      "native/libheif/libheif/bin/turbojpeg.dll": {
+        "byteLength": 1027888,
+        "sha256": "fb734a4abb87c07eb78a7292facf0944d7331d55573cd9afd0f242dd0c573245"
+      },
+      "python/DLLs/_bz2.pyd": {
+        "byteLength": 88880,
+        "sha256": "e35113599dcb5518f68c0b753144218c1ec4ec9ce4bc84a1095d0905f178a536"
+      },
+      "python/DLLs/_ctypes.pyd": {
+        "byteLength": 131888,
+        "sha256": "4ce43ac75e6c061f3b20e8dcf4a9772a72d7c7d7408b2ae5881b379246651ebd"
+      },
+      "python/DLLs/_decimal.pyd": {
+        "byteLength": 263984,
+        "sha256": "a9608fff35f91a2342c486bd8fccf50dfc159d5514c5d126331248862efa84a5"
+      },
+      "python/DLLs/_hashlib.pyd": {
+        "byteLength": 70448,
+        "sha256": "b988077152a33c2d7579f453388abc742675b46f6a9ad65dfd443e96bfac330f"
+      },
+      "python/DLLs/_lzma.pyd": {
+        "byteLength": 168240,
+        "sha256": "e695959ee6df09b7f176e43cb7250e6f52662b9149bfc8920b2e749871f3db1f"
+      },
+      "python/DLLs/_socket.pyd": {
+        "byteLength": 87344,
+        "sha256": "a70f71d899e1050e05bd0b6946f11be08ea377e7a2ff555e9a5b0dfadb563136"
+      },
+      "python/DLLs/_wmi.pyd": {
+        "byteLength": 41264,
+        "sha256": "194cf959a3bfaffd25dafabace44a071316669a1f18056250343e60ed55bce2d"
+      },
+      "python/DLLs/libcrypto-3-x64.dll": {
+        "byteLength": 8003376,
+        "sha256": "57df468e551cc2579b73bfdf9cec5e80a8e5fdbbfde46ee6344d3fcd446f7e8a"
+      },
+      "python/DLLs/libffi-8.dll": {
+        "byteLength": 43824,
+        "sha256": "adf7d8e3413209755f75a7c69cec9e5eac84a1a6f1c8b60c22cd15e2f1732380"
+      },
+      "python/DLLs/select.pyd": {
+        "byteLength": 34608,
+        "sha256": "b8c10338202d5e3faa7168a48565a98b0dab31fde11e6a842d3dbc31d5193a05"
+      },
+      "python/Lib/site-packages/PIL/_imaging.cp312-win_amd64.pyd": {
+        "byteLength": 2648368,
+        "sha256": "f791f26ad9ee887309d59ffd8f1fa741ae43ece5bb5aaa5d4d0dc91f5e13b0ef"
+      },
+      "python/Lib/site-packages/PIL/_imagingmath.cp312-win_amd64.pyd": {
+        "byteLength": 37168,
+        "sha256": "9b0df6aed0119b06197f57b3de11ec9b1cf048ed021c0619bd3844c18d1af25d"
+      },
+      "python/python.exe": {
+        "byteLength": 107312,
+        "sha256": "b847bb9f4e48c19f585c8bf7d8b355f3f8c6d2125717ece9c9d7e16fb9f09de8"
+      },
+      "python/python3.dll": {
+        "byteLength": 71984,
+        "sha256": "fe6a4470d1f6bad6a2bfeb7258884b94538a21a508cf8a23e4ca3ec74962ce49"
+      },
+      "python/python312.dll": {
+        "byteLength": 6985520,
+        "sha256": "2b6fffde96cf24a57fca642aaefd5788816ab5ef8624ea63b722cbceb94d49b1"
+      },
+      "python/vcruntime140.dll": {
+        "byteLength": 124544,
+        "sha256": "d5e4d9a3e835fa679450145d6a7d94e36573a509317111904d9b3712c30d9066"
+      },
+      "python/vcruntime140_1.dll": {
+        "byteLength": 49792,
+        "sha256": "1f2d41c4aa5db0bc33ebf7b66d72943a817d7ce6cbe880502a9403823633093f"
+      }
+    },
+    "manifest": {
+      "package": {
+        "name": "libheif",
+        "packageSpecs": [
+          "libde265=1.1.1=h477610d_0",
+          "libjpeg-turbo=3.1.4.1=hfd05255_0",
+          "libpng=1.6.58=h7351971_0",
+          "zlib=1.3.2=hfd05255_2"
+        ],
+        "sourceSha256": "8bd5d41d19dc84536d118b04774709f244df6104ef66d623dad5fa4650143405",
+        "sourceUrl": "https://github.com/strukturag/libheif/releases/download/v1.23.2/libheif-1.23.2.tar.gz",
+        "targetArch": "x64",
+        "targetPlatform": "win32",
+        "version": "1.23.2"
+      },
+      "sha256": "eb9e6ab42754eb3b3faa0c28ba1507b74793bcca58141ce618e233177ce9dd41"
+    },
+    "pillowRuntime": {
+      "components": {
+        "pillow-image": {
+          "byteLength": 158171,
+          "sha256": "59f1b98ed7bfd7b516b9f13ffd9dd3bc0aa1a495042accdb5ae4609b41c329d5"
+        },
+        "pillow-image-file": {
+          "byteLength": 30828,
+          "sha256": "e972c9d8785ad1fd44f860a375d8719f3fdff8e46da1cc311950699f93e4f539"
+        },
+        "pillow-init": {
+          "byteLength": 2122,
+          "sha256": "3fffff8502f4b59ca61d39cce713d55ffef046954262fce1abac3e97f3803734"
+        },
+        "pillow-jpeg-plugin": {
+          "byteLength": 32223,
+          "sha256": "049fc12cf436b101a5622456a1b83ba8b28b54cf8106d3953aed751bb0c08f3f"
+        },
+        "pillow-metadata": {
+          "byteLength": 9273,
+          "sha256": "2c4378001803cfac65809a50722d46e0da4ce8061e717f103e5d52734bab30f5"
+        },
+        "pillow-native-decoder": {
+          "byteLength": 2648368,
+          "sha256": "f791f26ad9ee887309d59ffd8f1fa741ae43ece5bb5aaa5d4d0dc91f5e13b0ef"
+        },
+        "pillow-notices": {
+          "byteLength": 78016,
+          "sha256": "4f7866a74802c6326f81faff59a56546b6aec2b10b91973e0e9308de95e79857"
+        },
+        "pillow-sbom": {
+          "byteLength": 22279,
+          "sha256": "40fa909b0f23405a7b97a6d91671a639a40acea7671b04387da22ba3e9fca50a"
+        },
+        "python-executable": {
+          "byteLength": 107312,
+          "sha256": "b847bb9f4e48c19f585c8bf7d8b355f3f8c6d2125717ece9c9d7e16fb9f09de8"
+        },
+        "python-notices": {
+          "byteLength": 25066,
+          "sha256": "886a0ead2d89030ee62dbff52b04e47ab91998341295bb9c56fb952b4e081c7a"
+        },
+        "python-runtime": {
+          "byteLength": 6985520,
+          "sha256": "2b6fffde96cf24a57fca642aaefd5788816ab5ef8624ea63b722cbceb94d49b1"
+        }
+      },
+      "jpegApi": "8.0",
+      "libjpegTurbo": "3.1.4.1",
+      "licenseExpression": "MIT-CMU",
+      "machine": "AMD64",
+      "pillow": "12.3.0",
+      "platform": "Windows",
+      "python": "3.12.14"
+    },
+    "recipeSha256": "c8a94b64c84e672b3c970a0c3f1e99a7ab0dc3a83a5561b993b7e72060ba286d"
+  },
+  "settings": {
+    "api": "tjDecompress2",
+    "captureBytesPerStream": 8192,
+    "childDeadlineSeconds": 10,
+    "dimension": 128,
+    "extentPolicy": "single baseline 8-bit Huffman interleaved scan; no restart; suffix absent or exactly 32 zeros",
+    "flags": 8192,
+    "inputBytes": 65536,
+    "pixelFormat": "RGB"
+  },
+  "sources": [
+    "https://github.com/libjpeg-turbo/libjpeg-turbo/blob/3.1.4.1/src/turbojpeg.h",
+    "https://github.com/libjpeg-turbo/libjpeg-turbo/blob/3.1.4.1/src/turbojpeg.c",
+    "https://github.com/libjpeg-turbo/libjpeg-turbo/blob/3.1.4.1/LICENSE.md"
+  ],
+  "upstreamRevision": "3.1.4.1"
+}

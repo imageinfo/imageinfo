@@ -19,6 +19,9 @@ and [explicit RAW/XMP path pairing](docs/sidecars/pairing.md). The library can
 validate [saved preview intent](docs/legacy-compatibility/cr3-preview-plan.md) and
 [revalidate its source binding](docs/legacy-compatibility/cr3-preview-source-binding.md).
 These observations keep mutation and storage admission refused.
+The library also exposes an opt-in [read-session runtime](docs/legacy-compatibility/read-session-library.md)
+over caller-owned buffered input/output, with bounded JSONL frames and fresh
+metadata-read requests. It has no CLI entry point.
 
 ```console
 cargo run --locked -- help

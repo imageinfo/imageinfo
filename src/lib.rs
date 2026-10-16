@@ -9,6 +9,7 @@ pub mod pairing;
 pub mod plan;
 pub mod preview;
 pub mod read_request;
+pub mod read_session;
 pub mod reader;
 pub mod source_binding;
 

@@ -139,6 +139,14 @@ tool candidate are now selected, so the stale missing-scope Backlog reason is
 superseded; actual camera validation retains its separate prerequisites. Research
 or a rejected validator candidate does not close the broader parent requirements.
 
+On 2026-10-16, the next batch pairs five `6.1 Sol / Medium` agents and three
+`6.1 Sol / High` agents across #0109 authored CMT serialization, #0110 checked
+receipt-context emission, #0111 warning-aware JPEG qualification and #0112 an
+actual read-session library runtime. The last increment advances #0015 independently
+of writer admission. Its caller-owned buffered streams provide no CLI process or
+OS-pipe claim. The other children retain private camera rights and complete parent
+format/storage requirements; controlled VM-off remains the power-test ceiling.
+
 The split preserves [WS/SAF requirements](write-safety/README.md), accepted
 [OD-11 option A](write-safety/practical-output-policy.md) and independent RAW
 admission. #0027's accepted refusal research does not provide an admitted mutation

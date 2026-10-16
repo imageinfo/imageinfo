@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-16",
+  "data": "authored markers only",
+  "caseCount": 11,
+  "mode": "ordinary-receipt-checked-flush",
+  "workerSha256": "e378d436ed478cc4fe31ec84ff0ab91f27a459d8c6b636fcb55d0c700c11f941",
+  "inspectorSha256": "f86918a7fb3880cf8e09590fcc7d58155ef64d98c95cf9c2a6afc541c5b040fa",
+  "cases": [
+    {
+      "id": "normal",
+      "contextCount": 2,
+      "contextExportOrdinals": [
+        20,
+        23
+      ],
+      "actors": [],
+      "outcome": "observed-receipt-recovery-required",
+      "diagnostic": null,
+      "sourceOutputBytesRetained": true,
+      "ownedHandlesRemoved": 0
+    },
+    {
+      "id": "cancel-pre-context",
+      "contextCount": 0,
+      "contextExportOrdinals": [],
+      "actors": [],
+      "outcome": "recovery-required",
+      "diagnostic": "CONTROL_CANCEL",
+      "sourceOutputBytesRetained": true,
+      "ownedHandlesRemoved": 0
+    },
+    {
+      "id": "fail-pre-context",
+      "contextCount": 0,
+      "contextExportOrdinals": [],
+      "actors": [],
+      "outcome": "recovery-required",
+      "diagnostic": "INJECTED_PROTOCOL_FAILURE",
+      "sourceOutputBytesRetained": true,
+      "ownedHandlesRemoved": 0
+    },
+    {
+      "id": "terminate-pre-context",
+      "contextCount": 0,
+      "contextExportOrdinals": [],
+      "actors": [],
+      "outcome": "owned-process-terminated",
+      "diagnostic": null,
+      "sourceOutputBytesRetained": true,
+      "ownedHandlesRemoved": 0
+    },
+    {
+      "id": "receipt-mtime-pre-context",
+      "contextCount": 0,
+      "contextExportOrdinals": [],
+      "actors": [
+        {
+          "action": "mtime",
+          "role": "receipt.record",
+          "allowed": true
+        }
+      ],
+      "outcome": "recovery-required",
+      "diagnostic": "FILE_PROPERTIES_CHANGED",
+      "sourceOutputBytesRetained": true,
+      "ownedHandlesRemoved": 0
+    },
+    {
+      "id": "receipt-ads-pre-context",
+      "contextCount": 0,
+      "contextExportOrdinals": [],
+      "actors": [
+        {
+          "action": "ads",
+          "role": "receipt.record",
+          "allowed": true
+        }
+      ],
+      "outcome": "recovery-required",
+      "diagnostic": "NONDEFAULT_STREAM",
+      "sourceOutputBytesRetained": true,
+      "ownedHandlesRemoved": 0
+    },
+    {
+      "id": "held-default-write",
+      "contextCount": 2,
+      "contextExportOrdinals": [
+        20,
+        23
+      ],
+      "actors": [
+        {
+          "action": "write",
+          "role": "receipt.record",
+          "allowed": false
+        }
+      ],
+      "outcome": "observed-receipt-recovery-required",
+      "diagnostic": null,
+      "sourceOutputBytesRetained": true,
+      "ownedHandlesRemoved": 0
+    },
+    {
+      "id": "held-name-rename",
+      "contextCount": 2,
+      "contextExportOrdinals": [
+        20,
+        23
+      ],
+      "actors": [
+        {
+          "action": "rename",
+          "role": "receipt.record",
+          "allowed": false
+        }
+      ],
+      "outcome": "observed-receipt-recovery-required",
+      "diagnostic": null,
+      "sourceOutputBytesRetained": true,
+      "ownedHandlesRemoved": 0
+    },
+    {
+      "id": "later-stale-context",
+      "contextCount": 1,
+      "contextExportOrdinals": [
+        20
+      ],
+      "actors": [
+        {
+          "action": "mtime",
+          "role": "receipt.record",
+          "allowed": true
+        }
+      ],
+      "outcome": "recovery-required",
+      "diagnostic": "FILE_PROPERTIES_CHANGED",
+      "sourceOutputBytesRetained": true,
+      "ownedHandlesRemoved": 0
+    },
+    {
+      "id": "source-property-pre-context",
+      "contextCount": 0,
+      "contextExportOrdinals": [],
+      "actors": [
+        {
+          "action": "mtime",
+          "role": "source.marker",
+          "allowed": true
+        }
+      ],
+      "outcome": "recovery-required",
+      "diagnostic": "FILE_PROPERTIES_CHANGED",
+      "sourceOutputBytesRetained": true,
+      "ownedHandlesRemoved": 0
+    },
+    {
+      "id": "unchanged-inspector-stale-refusal",
+      "inspection": "receipt-inspection-refused",
+      "diagnostic": "FILE_PROPERTIES_CHANGED",
+      "unchangedInventory": true
+    }
+  ],
+  "enabledProfiles": 0,
+  "vmOffs": 0,
+  "timestampRebindingAllowed": false,
+  "driftCauseEstablished": false,
+  "committed": false,
+  "namespaceAcknowledged": false,
+  "repairAllowed": false,
+  "productionPublicationAllowed": false
+}

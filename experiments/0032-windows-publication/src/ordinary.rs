@@ -307,6 +307,7 @@ fn live(
     checkpoints: bool,
     receipt: bool,
 ) -> Result<()> {
+    let checked_receipt_context = source_fault == "receipt-checked-flush";
     if receipt {
         crate::staging::check_budget(
             &[65536, MAX_RECORD, MAX_RECORD, MAX_RECORD, MAX_RECORD],
@@ -521,16 +522,33 @@ fn live(
             });
             receipt_written = true;
             check_live(root, &dir, &dir_before, &security, &mut source, &mut owned)?;
-            export_receipt_context(&prior, owned.last().ok_or("RECEIPT_REQUIRED")?)?;
+            if !checked_receipt_context {
+                export_receipt_context(&prior, owned.last().ok_or("RECEIPT_REQUIRED")?)?;
+            }
             barrier("receipt-written")?;
             check_live(root, &dir, &dir_before, &security, &mut source, &mut owned)?;
             owned.last().ok_or("RECEIPT_REQUIRED")?.file.sync_all()?;
             receipt_file_flushed = true;
+            if checked_receipt_context {
+                // Preserve the original snapshots and creator handles: a flush
+                // return cannot authorize exporting a stale property binding.
+                // See docs/write-safety/checked-receipt-context.md (#0110).
+                check_live(root, &dir, &dir_before, &security, &mut source, &mut owned)?;
+                emit(
+                    json!({"checkedReceiptBoundary":"receipt-file-flushed","receiptFileFlushSucceeded":true,"originalPropertiesMatch":true}),
+                )?;
+            }
             export_receipt_context(&prior, owned.last().ok_or("RECEIPT_REQUIRED")?)?;
             barrier("receipt-file-flushed")?;
             check_live(root, &dir, &dir_before, &security, &mut source, &mut owned)?;
             dir.sync_all()?;
             receipt_parent_flushed = true;
+            if checked_receipt_context {
+                check_live(root, &dir, &dir_before, &security, &mut source, &mut owned)?;
+                emit(
+                    json!({"checkedReceiptBoundary":"receipt-parent-flushed","receiptFileFlushSucceeded":true,"originalPropertiesMatch":true}),
+                )?;
+            }
             export_receipt_context(&prior, owned.last().ok_or("RECEIPT_REQUIRED")?)?;
             barrier("receipt-parent-flushed")?;
             check_live(root, &dir, &dir_before, &security, &mut source, &mut owned)?;
@@ -1338,6 +1356,13 @@ pub fn run(root: &Path, mode: &str) -> Result<()> {
         "-flush-after-rename" => live(root, "", PersistenceMode::FlushAfterRename, true, false),
         "-write-through" => live(root, "", PersistenceMode::WriteThrough, true, false),
         "-receipt" => live(root, "", PersistenceMode::WriteThrough, true, true),
+        "-receipt-checked-flush" => live(
+            root,
+            "receipt-checked-flush",
+            PersistenceMode::WriteThrough,
+            true,
+            true,
+        ),
         "-receipt-short-record" => live(
             root,
             "receipt-short",

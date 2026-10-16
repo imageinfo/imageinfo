@@ -345,6 +345,28 @@ inventory has a separately recorded size disagreement. Two read-only operator
 continuations remain explicit. See `docs/write-safety/receipt-vmoff-properties.md`.
 No cause/fix, physical truncation, merged storage configuration, namespace/receipt
 acknowledgement, custody, production profile or RAW permission follows.
+#0109 qualifies pinned reference CMT serialization on 32 independently authored
+controls. Rebuilt storage and generated zero padding are distinguished from
+preserved nonzero bytes; private frozen-camera reconciliation stays private.
+See `docs/write-safety/authored-cmt-serialization.md`; this supplies no format
+standard, checksum/semantic-independence proof or #0078 admission.
+#0111 qualifies an installed warning-aware TurboJPEG API on seven authored
+controls. Complete/exact-zero-suffix controls succeed; incomplete entropy refuses,
+and separate syntax/extent policy handles unsupported inputs. See
+`docs/fixture-plan/warning-aware-jpeg-validator.md`; no camera phase, production
+validator or extraction prerequisite is enabled.
+#0112 adds the production opt-in `read_session::run` library API over caller-owned
+buffered input/output. Exact v1 framing, fresh native read execution, bounded
+output and actual faulting I/O tests remain distinct from the historical model.
+See `docs/legacy-compatibility/read-session-library.md`. No CLI/process entry,
+OS-pipe lifecycle, deadline, queue, cache or mutation capability follows.
+#0110 adds a separately selected research receipt mode that withholds context
+until explicit file flush and fresh full checks, retaining original snapshots
+and creator guards. Eleven native cells and two bounded VM-offs distinguish
+pre-context timestamp drift from a matching checked-context observation. One
+assisted sign-in introduces no read-only retry. See
+`docs/write-safety/checked-receipt-context.md`; this is neither timestamp rebasing
+nor a cause/fix, durable acknowledgement, custody, storage profile or RAW admission.
 
 ## Subagent authorization
 

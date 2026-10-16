@@ -1,0 +1,217 @@
+{
+  "cameraExecution": false,
+  "independentNativeReplay": [
+    {
+      "case": "complete",
+      "decode": {
+        "diagnosticRaw": "No error",
+        "returnCode": 0,
+        "severityMeaningful": false,
+        "severityRaw": 1
+      },
+      "dimensions": [
+        64,
+        64
+      ],
+      "header": {
+        "diagnosticRaw": "No error",
+        "returnCode": 0,
+        "severityMeaningful": false,
+        "severityRaw": 1
+      },
+      "inputBytes": 6388,
+      "inputSha256": "850a0cd5c6ddb456ea10c8f6b4b4fbe14d484b57d06f33b591150d3eb1d6b5cf",
+      "outputBufferBytes": 12288,
+      "outputBufferSha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+    },
+    {
+      "case": "entropy-truncated",
+      "decode": {
+        "diagnosticRaw": "Premature end of JPEG file",
+        "returnCode": -1,
+        "severityMeaningful": true,
+        "severityRaw": 0
+      },
+      "dimensions": [
+        64,
+        64
+      ],
+      "header": {
+        "diagnosticRaw": "No error",
+        "returnCode": 0,
+        "severityMeaningful": false,
+        "severityRaw": 1
+      },
+      "inputBytes": 3504,
+      "inputSha256": "c61acf016aadaeb30b69fcb0ecc01149106d04c7e7f982a3e079ee41f783711b",
+      "outputBufferBytes": 12288,
+      "outputBufferSha256": "1b675ae2a3c4d75bda462a2c5ab7ab84cea071e4dd43cfae82981f8258b51a54"
+    },
+    {
+      "case": "early-eoi",
+      "decode": {
+        "diagnosticRaw": "Corrupt JPEG data: premature end of data segment",
+        "returnCode": -1,
+        "severityMeaningful": true,
+        "severityRaw": 0
+      },
+      "dimensions": [
+        64,
+        64
+      ],
+      "header": {
+        "diagnosticRaw": "No error",
+        "returnCode": 0,
+        "severityMeaningful": false,
+        "severityRaw": 1
+      },
+      "inputBytes": 3506,
+      "inputSha256": "12ad4addefe26a8a2cf6fd69827d2f6014ca2233caac9075cb4bc95072db00d2",
+      "outputBufferBytes": 12288,
+      "outputBufferSha256": "1b675ae2a3c4d75bda462a2c5ab7ab84cea071e4dd43cfae82981f8258b51a54"
+    },
+    {
+      "case": "immediate-eoi",
+      "decode": {
+        "diagnosticRaw": "Corrupt JPEG data: premature end of data segment",
+        "returnCode": -1,
+        "severityMeaningful": true,
+        "severityRaw": 0
+      },
+      "dimensions": [
+        64,
+        64
+      ],
+      "header": {
+        "diagnosticRaw": "No error",
+        "returnCode": 0,
+        "severityMeaningful": false,
+        "severityRaw": 1
+      },
+      "inputBytes": 625,
+      "inputSha256": "510e58dbe3ef19c77861d17c3b2f5237cdcd663ba9a1753701e69e57e4bbc7e7",
+      "outputBufferBytes": 12288,
+      "outputBufferSha256": "f3cc103136423a57975750907ebc1d367e2985ac6338976d4d5a439f50323f4a"
+    },
+    {
+      "case": "trailing-zeros",
+      "decode": {
+        "diagnosticRaw": "No error",
+        "returnCode": 0,
+        "severityMeaningful": false,
+        "severityRaw": 1
+      },
+      "dimensions": [
+        64,
+        64
+      ],
+      "header": {
+        "diagnosticRaw": "No error",
+        "returnCode": 0,
+        "severityMeaningful": false,
+        "severityRaw": 1
+      },
+      "inputBytes": 6420,
+      "inputSha256": "32045fae0b6d0015aa156c8b184d524c1bf2dc813f77124dffb8c4b86f264397",
+      "outputBufferBytes": 12288,
+      "outputBufferSha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+    },
+    {
+      "case": "nonzero-suffix",
+      "decode": {
+        "diagnosticRaw": "No error",
+        "returnCode": 0,
+        "severityMeaningful": false,
+        "severityRaw": 1
+      },
+      "dimensions": [
+        64,
+        64
+      ],
+      "header": {
+        "diagnosticRaw": "No error",
+        "returnCode": 0,
+        "severityMeaningful": false,
+        "severityRaw": 1
+      },
+      "inputBytes": 6389,
+      "inputSha256": "c7afd20829a23b44ed5b288c90637755e888cfb3482da9cc65eabb490e25491e",
+      "outputBufferBytes": 12288,
+      "outputBufferSha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+    },
+    {
+      "case": "progressive",
+      "decode": {
+        "diagnosticRaw": "No error",
+        "returnCode": 0,
+        "severityMeaningful": false,
+        "severityRaw": 1
+      },
+      "dimensions": [
+        64,
+        64
+      ],
+      "header": {
+        "diagnosticRaw": "No error",
+        "returnCode": 0,
+        "severityMeaningful": false,
+        "severityRaw": 1
+      },
+      "inputBytes": 5743,
+      "inputSha256": "22512d6982febea2af8e93768d649fcd51f4ef36d99306139ffff71ab1f91fe2",
+      "outputBufferBytes": 12288,
+      "outputBufferSha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+    }
+  ],
+  "independentWrapperAudit": {
+    "auditSourceSha256": "088fbc31622a5bb953c6b58e0a4109465b2bb51d4cabbf882c597b993948bc01",
+    "candidateSourceSha256": "c8a94b64c84e672b3c970a0c3f1e99a7ab0dc3a83a5561b993b7e72060ba286d",
+    "checks": [
+      "seven-whole-extent-wrapper-decisions",
+      "independent-authored-bytes-match",
+      "curated-observations-match-fresh-native-results",
+      "input-bound",
+      "dimension-bound",
+      "marker-in-app-payload",
+      "stuffing-aware-extent",
+      "non32-zero-suffix-refused",
+      "settings-mismatch-refused",
+      "runtime-mismatch-refused"
+    ],
+    "processRefusals": {
+      "deadline": {
+        "captureOverflow": false,
+        "exitCode": 1,
+        "stderrBytes": 0,
+        "stdoutBytes": 0,
+        "timedOut": true
+      },
+      "nonzero-exit": {
+        "captureOverflow": false,
+        "exitCode": 7,
+        "stderrBytes": 0,
+        "stdoutBytes": 0,
+        "timedOut": false
+      },
+      "stderr-overflow": {
+        "captureOverflow": true,
+        "exitCode": 0,
+        "stderrBytes": 8192,
+        "stdoutBytes": 0,
+        "timedOut": false
+      },
+      "stdout-overflow": {
+        "captureOverflow": true,
+        "exitCode": 0,
+        "stderrBytes": 0,
+        "stdoutBytes": 8192,
+        "timedOut": false
+      }
+    },
+    "profileSha256": "c7e3b29dbffa37b3ea7802ee4900c1db90d54c21d52ebd2ccef1d0efbd27ed7f"
+  },
+  "nativeOnlySuffixAndProgressiveSuccessDoesNotAuthorizeWrapperAcceptance": true,
+  "productionCapability": false,
+  "schemaVersion": 1,
+  "ticket": 111
+}

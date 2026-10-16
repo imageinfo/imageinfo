@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-16",
+  "data": "authored markers only",
+  "caseCount": 2,
+  "vmOffs": 2,
+  "guestBuild": "26300",
+  "mode": "ordinary-receipt-checked-flush",
+  "actorSha256": "e378d436ed478cc4fe31ec84ff0ab91f27a459d8c6b636fcb55d0c700c11f941",
+  "observerSha256": "2a15627fd4a04c9efbb5eee93e3e8ee76fb0401cda362824a1a0cb34293a6bb7",
+  "inspectorSha256": "f86918a7fb3880cf8e09590fcc7d58155ef64d98c95cf9c2a6afc541c5b040fa",
+  "nativeBaselineCaseCount": 11,
+  "cases": [
+    {
+      "id": "pre-context",
+      "barrier": "receipt-written",
+      "contextExported": false,
+      "inspection": "not-requested-no-context",
+      "inspectionDiagnostic": null,
+      "nativeDifferences": [
+        {
+          "from": "pre-fault",
+          "to": "post-fault-first-native",
+          "changes": [
+            {
+              "object": "receipt.record",
+              "field": "lastWriteTime",
+              "deltaTicks": -55249
+            }
+          ]
+        },
+        {
+          "from": "post-fault-first-native",
+          "to": "final-native",
+          "changes": []
+        }
+      ],
+      "withinObserverDifferences": [],
+      "richPropertyDifferences": [],
+      "richMetadataContentDisagreements": [],
+      "richNativeTimeDisagreements": [],
+      "capturedBytesAndNamesUnchanged": true,
+      "reportedSizeInventoriesUnchanged": true,
+      "freshBoot": true,
+      "exactReadyChallengeBeforeMeasurements": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "operatorAssistedSignIn": true,
+      "readOnlyRequestRetried": false,
+      "bootstrapReplacedAfterFault": false,
+      "writerOrFaultReplayed": false
+    },
+    {
+      "id": "first-checked-context",
+      "barrier": "receipt-file-flushed",
+      "contextExported": true,
+      "inspection": "observed-receipt-recovery-required",
+      "inspectionDiagnostic": null,
+      "nativeDifferences": [
+        {
+          "from": "pre-fault",
+          "to": "post-fault-first-native",
+          "changes": []
+        },
+        {
+          "from": "post-fault-first-native",
+          "to": "final-native",
+          "changes": []
+        }
+      ],
+      "withinObserverDifferences": [],
+      "richPropertyDifferences": [],
+      "richMetadataContentDisagreements": [],
+      "richNativeTimeDisagreements": [],
+      "capturedBytesAndNamesUnchanged": true,
+      "reportedSizeInventoriesUnchanged": true,
+      "freshBoot": true,
+      "exactReadyChallengeBeforeMeasurements": true,
+      "committed": false,
+      "namespaceAcknowledged": false,
+      "repairAllowed": false,
+      "productionPublicationAllowed": false,
+      "operatorAssistedSignIn": false,
+      "readOnlyRequestRetried": false,
+      "bootstrapReplacedAfterFault": false,
+      "writerOrFaultReplayed": false
+    }
+  ],
+  "sameHostBoot": true,
+  "hostCachesAlive": true,
+  "normalGuestShutdownConfirmed": true,
+  "scopedHelpersStopped": true,
+  "operatorAssistedReadOnlyRetries": 0,
+  "enabledProfiles": 0,
+  "driftCauseEstablished": false,
+  "timestampRebindingAllowed": false,
+  "limits": "Finite checked-context marker observations. VM-off is QMP quit and may drain I/O; host caches remain alive. No cause/fix, durable acknowledgement/custody, complete profile, automatic repair or RAW admission. One postfault sign-in needed explicit login-only assistance before any artifact job was queued. No agent replacement, read-only request retry, extra artifact observer, writer replay or additional VM-off is inferred.",
+  "committed": false,
+  "namespaceAcknowledged": false,
+  "repairAllowed": false,
+  "productionPublicationAllowed": false,
+  "operatorAssistedSignIns": 1,
+  "unassistedExactSchedule": false,
+  "finalHostObservationAfterMeasurements": true,
+  "independentCompletionVerifierSha256": "1fbe821d145c426fe0a36ccfb1c04af25c5f37b120234ad215e89b8df24186b7"
+}
