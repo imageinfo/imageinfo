@@ -93,6 +93,7 @@ name = "imageinfo"
 version = "0.2.0-dev"
 dependencies = [
  "clap",
+ "roxmltree",
  "same-file",
  "serde",
  "serde_json",

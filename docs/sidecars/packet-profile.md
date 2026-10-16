@@ -157,6 +157,10 @@ MIT is selected for roxmltree and memchr; retain the existing memchr notice and
 [ego-tree ISC lineage attribution](../../licenses/dependencies/roxmltree-0.21.1-ego-tree-ISC.txt)
 for redistribution. #0081's missing original fork-revision limitation persists.
 The root lock adds only roxmltree; existing package versions remain unchanged.
+The standalone #0021/#0027/#0088/#0104 research lockfiles also record the new
+dependency edge of their path-dependent root library. Their locked builds must
+remain reproducible. This updates dependency resolution only; old source/lock
+qualification identities and media observations retain their historical scope.
 
 Focused authored tests, root fmt/Clippy/tests/release build, graph/notice inventory
 and documentation checks are the verification gates. This is finite authored
