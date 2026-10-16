@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 2,
+  "kind": "authored-collector-qualification-summary",
+  "ticket": 142,
+  "observedDate": "2026-10-16",
+  "collectorRevision": "read-telemetry-v2",
+  "system": "Windows",
+  "pythonVersion": "3.14.7",
+  "scope": "actual authored child attempts only; no private media or performance baseline",
+  "unitTestMethodsPassed": 13,
+  "elapsedV1RegressionMethodsPassed": 10,
+  "retainedAuthoredAttemptRecords": 12,
+  "independentSerializedRecordAuditsPassed": 12,
+  "independentFinalSerializedSchemaValidationsPassed": 12,
+  "cases": [
+    "activity",
+    "cancelled",
+    "counter-unavailable",
+    "descendant",
+    "launch-error",
+    "membership-unavailable",
+    "nonzero",
+    "overflow",
+    "sample-limit",
+    "setup-unavailable",
+    "short",
+    "timeout"
+  ],
+  "faultInjection": [
+    "counter-unavailable",
+    "membership-unavailable",
+    "setup-unavailable",
+    "sample-limit effective bound"
+  ],
+  "counterSemantics": "user/kernel FILETIME x100 ns; working set/current private commit and separate OS working-set high-water; logical process transfer counts; physical I/O null with reason",
+  "sampledMaximumClaim": "maximum of available observed samples only; not guaranteed RSS/allocation peak",
+  "membershipClaim": "sampled immediate-child snapshots detect authored descendant; not continuous exclusion or a tree sandbox",
+  "qualificationWrapper": "purpose=authored-child-qualification; synthetic fixture/oracle fields; no media correctness/eligibility claim",
+  "sourceSha256": {
+    "scripts/read_benchmark.py": "4a919eb267cd1a3cdd548ec44b0e433337abf5eab2a5cf98bf0c828df8d18cff",
+    "scripts/read_telemetry.py": "0af7eff3dbdbc7df96659be106db88d45788ccdc77494c469be402744c949f2b",
+    "scripts/audit_read_telemetry.py": "9c0836aad9813df941c3734f89fd9531ff587e06278f1323264cda80e9654a56",
+    "scripts/test_read_telemetry.py": "f646e17da494c153dca52f3441158bd6e44c2e32b37fc401508ce58215230da0"
+  },
+  "limits": [
+    "Windows only; other platforms explicitly unavailable",
+    "counter API failures tested by deliberate injection, not induced OS permission denial",
+    "no device traffic, OS quota, descendant containment or performance default",
+    "no source-media access or root Rust/SDK/dependency changes"
+  ]
+}

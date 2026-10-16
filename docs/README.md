@@ -15,6 +15,14 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | Document | Purpose |
 | --- | --- |
 | [Delivery increments](delivery-increments.md) | All-ticket scope audit, bounded child breakdown and unchanged acceptance/triage gates. |
+| [New-output completion contract](write-safety/new-output-contract.md) | #0165 exact best-effort Windows acknowledgement ordering, trusted explicit caller and noncircular restart decisions; implementation/profile gates remain. |
+| [Existing-target boundary review](write-safety/existing-target-boundary.md) | #0193 bounded negative audit of expected-target identity and strict property exclusion; no positive replacement permission. |
+| [Compatibility delivery matrix](legacy-compatibility/delivery-matrix.md) | #0120 all 32 MAP families, 39 API headings and retained gap obligations assigned to scoped evidence/work and explicit residuals. |
+| [Native token/API inventory](legacy-compatibility/native-token-inventory.md) | #0121 pinned reference denominators and exact current native grammar/API inventory; no parity or difference adoption. |
+| [Bounded production XMP packet profile](sidecars/packet-profile.md) | #0183 in-memory UTF-8 XML/XMP inspection, expanded identity, declaration/packet bounds and edit-constraint refusals; no publication. |
+| [One XMP OwnerName removal contract](privacy/xmp-owner-removal-contract.md) | #0188 exact catalog-bound singleton scope, artifact effects and use-specific rights; actual removal stays separate. |
+| [Direct-process resource telemetry](performance/read-telemetry.md) | #0142 versioned Windows CPU/memory/logical-I/O observations, bounded authored qualification and explicit unavailable/device/membership limits. |
+| [Literal date/TZ qualification](fixture-plan/date-timezone-literals.md) | #0162 authored native/CLI subprocess observations retain exact ambiguous date, offset and fraction without timezone conversion. |
 | [Native R5 read slice](reader/README.md) | Actual supported fields/resources, limits, source mapping and scoped differential/fuzz/CI evidence for #0020. |
 | [Executable foundation](foundation/README.md) | Implemented CLI subset, pinned build/checks, wire output, dependency notices and actual validation for #0019. |
 | [Implementation selection](implementation-selection/README.md) | ADR-0011: Rust recommendation, Go/C# alternatives, disposable probes, component choices and the first read milestone. |

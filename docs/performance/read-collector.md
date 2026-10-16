@@ -5,6 +5,12 @@ This is collector qualification for the current single-file EOS R5 full RAW
 metadata read. It does not complete the measurement workloads on #0061–0063,
 choose performance defaults, or establish a numerical speed or parity claim.
 
+[#0142's opt-in v2 telemetry](read-telemetry.md) extends the same direct-process
+collector with bounded Windows CPU, memory and logical-I/O observations and a
+separate record/auditor. Elapsed-only v1 remains the default; its original schema
+and evidence retain their historical meaning. The telemetry qualification uses
+authored child workloads and selects no camera performance baseline or defaults.
+
 [Collector source](../../scripts/read_benchmark.py),
 [record schema v1](read-collector/record.schema.json),
 [synthetic contract vector](read-collector/synthetic-record.v1.json), and

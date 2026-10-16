@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "kind": "foundation-dependency-admission-summary",
-  "reviewedOn": "2026-10-15",
-  "scope": "Exact root locked packages admitted for local/CI builds and tests under #0019, the #0082 read-only pairing boundary and the #0077 integrity-only source binding. #0082 adds same-file and its Windows-only winapi-util/windows-sys/windows-link graph. #0077 adds exact sha2 0.10.9 with std and its locked portable digest/CPU-detection closure. Only selected notices and identity records are published; no dependency implementations, images or compiled release assets are shipped by this admission.",
+  "reviewedOn": "2026-10-16",
+  "scope": "Exact root locked packages admitted for local/CI builds and tests under #0019, the #0082 read-only pairing boundary and the #0077 integrity-only source binding. #0082 adds same-file and its Windows-only winapi-util/windows-sys/windows-link graph. #0077 adds exact sha2 0.10.9 with std and its locked portable digest/CPU-detection closure. Only selected notices and identity records are published; no dependency implementations, images or compiled release assets are shipped by this admission. #0183 adds the pinned read-only roxmltree 0.21.1 std/positions component for bounded in-memory XML/XMP packet inspection; memchr 2.8.3 is already in the locked graph.",
   "noticeReview": "Selected copyright/license notice text is cleared for inclusion under its grant; original package declarations are preserved separately from the chosen MIT basis. Unicode-3.0 additionally applies to unicode-ident. Full package/privacy/security and assembled-release review remain separate.",
   "packages": [
     {
@@ -275,6 +275,29 @@
           "reviewRecordId": "PV-0019-NOTICE-quote-LICENSE-MIT"
         }
       ]
+    },
+    {
+      "name": "roxmltree",
+      "version": "0.21.1",
+      "packageSha256": "f1964b10c76125c36f8afe190065a4bf9a87bf324842c05701330bba9f1cacbb",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "selectedBasis": "MIT; retain inherited ego-tree ISC attribution",
+      "origin": "https://crates.io/crates/roxmltree/0.21.1",
+      "reviewRecordId": "PV-0183-roxmltree-0.21.1",
+      "reviewedSourceRevision": "67644e16f43c34cadc9e163163dd1aaf7ebe205e",
+      "publishedNotices": [
+        {
+          "path": "licenses/dependencies/roxmltree-0.21.1-LICENSE-MIT.txt",
+          "sha256": "fffe218c1e349e1d482a05677f2ce850502f88298174d77f6ac7c04821db7899",
+          "reviewRecordId": "PV-0183-NOTICE-roxmltree-0.21.1-LICENSE-MIT.txt"
+        },
+        {
+          "path": "licenses/dependencies/roxmltree-0.21.1-ego-tree-ISC.txt",
+          "sha256": "bd4080206e0d376d8944506590eba34ce65f298126f8852ae9936379a4674475",
+          "reviewRecordId": "PV-0183-NOTICE-roxmltree-0.21.1-ego-tree-ISC.txt"
+        }
+      ],
+      "buildScript": null
     },
     {
       "name": "same-file",
@@ -562,5 +585,20 @@
       "https://docs.rs/crate/cpufeatures/0.2.17/source/Cargo.toml",
       "https://docs.rs/crate/libc/0.2.190/source/build.rs"
     ]
+  },
+  "xmpReview": {
+    "reviewedOn": "2026-10-16",
+    "directRequirement": {
+      "version": "=0.21.1",
+      "defaultFeatures": false,
+      "features": [
+        "std",
+        "positions"
+      ]
+    },
+    "closure": "roxmltree 0.21.1 -> existing memchr 2.8.3 (std, alloc); no new native libraries, build scripts, network resolver or runtime framework. roxmltree forbids unsafe internally; memchr contains optimized unsafe implementation. Root unsafe_code remains forbid.",
+    "evidence": "docs/sidecars/packet-profile.md",
+    "historicalReview": "docs/sidecars/xmp-component.md",
+    "licenseBoundary": "MIT selected for both packages. Existing memchr MIT notice retained. roxmltree carries heavily modified ego-tree lineage; inherited ISC attribution retained from #0081, exact original fork revision remains unknown."
   }
 }

@@ -39,6 +39,13 @@ leaves the actual #0075 assertion unrun until technical profile/identity checks 
 **All six original Terry decisions are answered.** The counts below remain the
 historical decomposition baseline, not a live count of unanswered decisions.
 
+The first eight-card execution wave from this inventory delivers #0165, #0193,
+#0120, #0183, #0188, #0121, #0142 and #0162. Their bounded outcomes and evidence are
+linked in the [documentation map](README.md). They consume existing scoped work;
+no replacement child batch is created. #0193's negative boundary result leaves
+positive replacement work unsupported, and none of the other scoped results
+silently enables a writer, publication profile or broader parity/privacy claim.
+
 ## Count the queue consistently
 
 | Scope | Ready for Work | Needs Terry | Insufficient scope |

@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "kind": "authored-date-literal-observation",
+  "ticket": 162,
+  "assertion": "P0A-004",
+  "observedDate": "2026-10-16",
+  "provenance": "project-authored structural bytes only; no camera media",
+  "implementation": "tests/date_timezone_literals.rs",
+  "builder": "tests/support/mod.rs",
+  "input": {
+    "byteLength": 2331,
+    "baselineSha256": "7781896f985d5af5153e17b8959df04053fe8418262ca99a7ef2290d853992af",
+    "sha256": "a2f26feaf5a28c6ef42a85ea6fb213d59d0c01a944e29e013aebff82690dbbac",
+    "edits": [
+      {"offset": 383, "length": 20, "asciiWithTrailingNul": "2020:11:01 01:30:00\u0000"},
+      {"offset": 403, "length": 7, "asciiWithTrailingNul": "-04:00\u0000"},
+      {"offset": 331, "length": 4, "littleEndianUint32Before": 3, "littleEndianUint32After": 4},
+      {"offset": 335, "length": 4, "asciiWithTrailingNul": "050\u0000"}
+    ],
+    "complement": "all bytes outside declared edit ranges equal baseline"
+  },
+  "expectedOccurrences": [
+    {"namespace": "exif", "nativeId": "36867", "name": "DateTimeOriginal", "text": "2020:11:01 01:30:00", "offset": 383, "length": 20},
+    {"namespace": "exif", "nativeId": "36881", "name": "OffsetTimeOriginal", "text": "-04:00", "offset": 403, "length": 7},
+    {"namespace": "exif", "nativeId": "37521", "name": "SubSecTimeOriginal", "text": "050", "offset": 335, "length": 4}
+  ],
+  "processMatrix": {
+    "environmentVariable": "TZ",
+    "exactValues": ["UTC", "America/New_York"],
+    "entryPaths": ["native reader::read_file child", "ordinary metadata read CLI"],
+    "valueViews": ["raw", "normalized", "display"],
+    "fixtureCount": 1,
+    "processReadCount": 4,
+    "expectedLiteralOccurrenceChecks": 12,
+    "passedProcessReads": 4,
+    "observedPlatform": "Windows",
+    "toolchain": "Rust 1.99.0",
+    "interpretation": "Exact child environment settings only; no Windows OS timezone change or IANA runtime recognition asserted"
+  },
+  "comparisonExclusions": [
+    "CLI /requestId",
+    "CLI /request/requestId",
+    "CLI /files/0/requestId",
+    "CLI /summary/requestId",
+    "CLI /files/0/snapshot/id"
+  ],
+  "actualResults": {
+    "independentExpectedLiteralsMatch": true,
+    "completeNativeSnapshotsEqual": true,
+    "cliEnvelopesEqualAfterListedIdExclusions": true,
+    "nativeCliSnapshotsEqualAfterListedIdExclusions": true,
+    "sourceBytesUnchanged": true,
+    "physicalFileIdentityUnchanged": true,
+    "sourceModificationTimeUnchanged": true,
+    "directoryEntryCountAfterEachPair": 1,
+    "reportedArtifacts": [],
+    "coverage": "partial"
+  },
+  "limits": [
+    "No instant is constructed or timezone conversion performed",
+    "No global machine timezone is changed",
+    "No calendar, clock accuracy or zone database qualification",
+    "No QuickTime integer-time conversion",
+    "No new camera stratum or private-media result",
+    "No production writer or mutation admission"
+  ]
+}

@@ -19,6 +19,13 @@ session compatibility remains open.
 [#0059 native path qualification](native-paths.md) separately exercises a finite
 set of native argv and declared shell paths; it does not establish all-shell parity.
 
+[#0120's delivery matrix](delivery-matrix.md) reconciles all 32 MAP families,
+39 API headings and complete LG/GAP obligations to current evidence, existing
+bounded tickets and explicit residuals. [#0121's token/API inventory](native-token-inventory.md)
+freezes the actual current native surface and pinned upstream option denominators.
+Their coverage checkers preserve unmet requirements; neither inventory nor a
+documented difference establishes runtime parity or new mutation authority.
+
 Status: **proposal for review**, `2026-10-10.1`, card **#0007**. Source observation
 date: **2026-10-10**. Baseline: ExifTool source 13.59 at commit
 `2200871d9cef988051d2a99d67df3bda6cbb30a8`, not a claim about the latest release.

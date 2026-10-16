@@ -1,0 +1,2383 @@
+{
+  "schemaVersion": 1,
+  "matrixId": "raw-compatibility-delivery",
+  "revision": "2026-10-16.1",
+  "observedOn": "2026-10-16",
+  "ticket": 120,
+  "requirementSources": [
+    "docs/inventory/canon-eos-r5-cr3.v1.json",
+    "docs/legacy-compatibility/surface-ledger.md",
+    "docs/remaining-work.md"
+  ],
+  "referenceBaseline": {
+    "project": "ExifTool",
+    "sourceVersion": "13.59",
+    "commit": "2200871d9cef988051d2a99d67df3bda6cbb30a8",
+    "commitDate": "2026-05-27T16:44:48Z",
+    "executableVersion": "13.59",
+    "executableSha256": "a6b8018093845ac93011307bac4ab630d6604b2365fc7f66bb88c88d7dedb5ed",
+    "runtimeExperiments": true
+  },
+  "scope": "RAW-first; EOS R5 full RAW CR3 first, paired XMP and stored previews; eventual full ExifTool functional parity retained. Non-RAW work remains deferred under #0012.",
+  "authority": {
+    "parityEstablished": false,
+    "reducedRequirementsAccepted": false,
+    "productionMutationAllowed": false,
+    "storageProfileAdmitted": false
+  },
+  "assignmentPolicy": "nextTickets are existing finite work owners, not coverage/permission claims. residualOwner #0015 retains every unimplemented RAW requirement; #0012 retains eventual broader parity. Ordinary authorized engineering needs no renewed adoption approval. Scope/authority changes remain distinct.",
+  "engineeringOrder": [
+    "Freeze current inventory and qualify read/preview/query contracts (#0121-0125/#0134).",
+    "Specify reports, inert translation, exact result/session profiles (#0126-0130).",
+    "Refine pure/data, per-operation plans and advanced date boundaries (#0131-0133).",
+    "Qualify request isolation, shells, diagnostics, interruption and failing handles (#0135-0140).",
+    "Audit all finite delivery against retained residuals (#0141).",
+    "Integrate admitted new-CR3 output before broader write/copy/privacy/replacement; independent RAW and storage admission stay required."
+  ],
+  "maps": [
+    {
+      "id": "MAP-001",
+      "requirement": {
+        "id": "MAP-001",
+        "surface": "CLI",
+        "family": "Capability discovery",
+        "upstreamForms": [
+          "-list",
+          "-listw",
+          "-listf",
+          "-listr",
+          "-listwf",
+          "-listg",
+          "-listd",
+          "-listx",
+          "-ver"
+        ],
+        "disposition": "difference-proposed",
+        "target": "tags/formats list/show and version expose camera/variant/operation limits as well as names.",
+        "acceptance": "Global writable lists never imply a given EOS R5 occurrence is writable.",
+        "sourceRefs": [
+          "cli"
+        ],
+        "capabilityRefs": [
+          "CAP-001",
+          "CAP-002",
+          "CAP-026",
+          "CAP-049"
+        ],
+        "gapRefs": [
+          "GAP-006"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/foundation/README.md"
+      ],
+      "present": "Built-in version and finite discovery definitions only.",
+      "nextTickets": [
+        121,
+        134
+      ],
+      "residual": "Global tag/group/type inventories, per-occurrence writable/create discovery and reference option equivalence remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-002",
+      "requirement": {
+        "id": "MAP-002",
+        "surface": "CLI",
+        "family": "Tag inclusion, exclusion and groups",
+        "upstreamForms": [
+          "-TAG",
+          "--TAG",
+          "-x",
+          "-GROUP:TAG",
+          "wildcards"
+        ],
+        "disposition": "equivalent-proposed",
+        "target": "metadata read with explicit tag/group filters and canonical qualified identifiers.",
+        "acceptance": "Conflicting names and missing selections are deterministic; unsupported selection syntax is reported.",
+        "sourceRefs": [
+          "cli"
+        ],
+        "capabilityRefs": [
+          "CAP-003",
+          "CAP-004",
+          "CAP-013"
+        ],
+        "gapRefs": [
+          "GAP-006"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/read-argument-order.md"
+      ],
+      "present": "Finite native --tag selection and current selector behavior.",
+      "nextTickets": [
+        121,
+        122
+      ],
+      "residual": "Legacy aliases, exclusion, wildcard/group expansion and ordering combinations beyond enumerated vectors remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-003",
+      "requirement": {
+        "id": "MAP-003",
+        "surface": "CLI",
+        "family": "Duplicates, families and ordering",
+        "upstreamForms": [
+          "-a",
+          "-G",
+          "-g",
+          "-sort",
+          "-D",
+          "-H"
+        ],
+        "disposition": "difference-proposed",
+        "target": "Occurrence arrays retain identity by default; group/path presentation and numeric native IDs are explicit views.",
+        "acceptance": "Repeated CMT/CTMD values survive; family selection and ordering are mapped separately from legacy output spelling.",
+        "sourceRefs": [
+          "cli"
+        ],
+        "capabilityRefs": [
+          "CAP-008",
+          "CAP-013",
+          "CAP-039"
+        ],
+        "gapRefs": [
+          "GAP-006"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/native-read-json.md"
+      ],
+      "present": "Occurrence records retain source identity and finite native ordering.",
+      "nextTickets": [
+        122,
+        134
+      ],
+      "residual": "All duplicate/grouping/sort projections and upstream suppression/order equivalence remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-004",
+      "requirement": {
+        "id": "MAP-004",
+        "surface": "CLI",
+        "family": "Value layers and display conversion",
+        "upstreamForms": [
+          "-n",
+          "TAG#",
+          "-d",
+          "-c",
+          "-sep",
+          "-ec",
+          "-E",
+          "-lang"
+        ],
+        "disposition": "difference-proposed",
+        "target": "--values raw/normalized/display/all plus explicit presentation controls; exact rationals stay available.",
+        "acceptance": "Formatting never replaces stored values; escaping/locale/list delimiters do not corrupt machine schemas.",
+        "sourceRefs": [
+          "cli",
+          "values"
+        ],
+        "capabilityRefs": [
+          "CAP-009",
+          "CAP-010",
+          "CAP-039"
+        ],
+        "gapRefs": [
+          "GAP-005",
+          "GAP-006"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/native-read-json.md"
+      ],
+      "present": "Bounded raw/normalized/display JSON observations retain stored-value ranges.",
+      "nextTickets": [
+        122,
+        126
+      ],
+      "residual": "General print conversion, date/list separators, locale and TAG# equivalence remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-005",
+      "requirement": {
+        "id": "MAP-005",
+        "surface": "CLI",
+        "family": "Structured XMP",
+        "upstreamForms": [
+          "-struct",
+          "--struct",
+          "-j",
+          "-X"
+        ],
+        "disposition": "equivalent-proposed",
+        "target": "Preserve tree/list/language structure; flattening is a named view or mapping policy.",
+        "acceptance": "Structure versus flattened copy/update behavior and one-element arrays have explicit tests.",
+        "sourceRefs": [
+          "structures",
+          "cli"
+        ],
+        "capabilityRefs": [
+          "CAP-011",
+          "CAP-012",
+          "CAP-021"
+        ],
+        "gapRefs": [
+          "GAP-005",
+          "GAP-006"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/sidecars/packet-profile.md"
+      ],
+      "present": "Bounded production in-memory UTF-8 XML/XMP packet inspection with typed properties, source retention and edit-constraint checks; no CLI XML read or serializer.",
+      "nextTickets": [
+        184,
+        185,
+        186
+      ],
+      "residual": "General lists, structures, language alternatives, flattening, full XML/RDF/XMP conformance, qualified media admission, round-trip writing and publication remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-006",
+      "requirement": {
+        "id": "MAP-006",
+        "surface": "CLI",
+        "family": "Binary extraction and routing",
+        "upstreamForms": [
+          "-b",
+          "-w",
+          "-W",
+          "-Wext",
+          "-o"
+        ],
+        "disposition": "difference-proposed",
+        "target": "binary list/extract with occurrence selection and explicit output files or binary stdout.",
+        "acceptance": "Ambiguous preview names, existing destinations, binary framing and size limits have defined outcomes.",
+        "sourceRefs": [
+          "cli"
+        ],
+        "capabilityRefs": [
+          "CAP-015",
+          "CAP-016",
+          "CAP-017"
+        ],
+        "gapRefs": [
+          "GAP-007",
+          "GAP-012"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/reader/README.md"
+      ],
+      "present": "Finite stored-preview listing and exact no-clobber extraction; extraction is not JPEG decoding.",
+      "nextTickets": [
+        123,
+        124
+      ],
+      "residual": "All binary stdout/routing/template forms, variants and reference/native differences remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-007",
+      "requirement": {
+        "id": "MAP-007",
+        "surface": "CLI",
+        "family": "Human and machine reports",
+        "upstreamForms": [
+          "-s",
+          "-S",
+          "-s3",
+          "-t",
+          "-T",
+          "-h",
+          "-j",
+          "-csv",
+          "-X"
+        ],
+        "disposition": "difference-proposed",
+        "target": "metadata read/export emits versioned native schemas, JSONL, tables and reports; legacy output equality is separate.",
+        "acceptance": "Document output availability per operation, duplicates, CSV buffering/schema, missing values and error envelopes.",
+        "sourceRefs": [
+          "cli"
+        ],
+        "capabilityRefs": [
+          "CAP-039"
+        ],
+        "gapRefs": [
+          "GAP-005",
+          "GAP-006",
+          "GAP-012"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/native-read-json.md"
+      ],
+      "present": "Partial native read JSON contract and finite existing CLI envelopes.",
+      "nextTickets": [
+        126,
+        127
+      ],
+      "residual": "Exact legacy JSON/CSV/XML/text output, all operations and lossy-projection/adapter rules remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-008",
+      "requirement": {
+        "id": "MAP-008",
+        "surface": "CLI",
+        "family": "Advanced report and serialization forms",
+        "upstreamForms": [
+          "-p",
+          "-args",
+          "-php",
+          "-plot"
+        ],
+        "disposition": "open-gap",
+        "target": "Retain as RAW-relevant parity entries; template, replay and chart representations are not yet specified.",
+        "acceptance": "Card #0007 assigns an equivalent, accepted difference or deferred milestone for each form, without dropping the eventual goal.",
+        "sourceRefs": [
+          "cli"
+        ],
+        "capabilityRefs": [
+          "CAP-039"
+        ],
+        "gapRefs": [
+          "GAP-006"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/migration.md"
+      ],
+      "present": "Worked inert migration examples and proposed serializers only.",
+      "nextTickets": [
+        126,
+        129,
+        130
+      ],
+      "residual": "Print templates, escaping, -args/-php/-plot and exact replay/report serialization remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-009",
+      "requirement": {
+        "id": "MAP-009",
+        "surface": "CLI",
+        "family": "Assignment, lists and file-sourced values",
+        "upstreamForms": [
+          "-TAG=VALUE",
+          "-TAG+=",
+          "-TAG-=",
+          "-TAG<=FILE"
+        ],
+        "disposition": "difference-proposed",
+        "target": "metadata write uses explicit scalar/list/typed request operations and preview/apply.",
+        "acceptance": "Empty, absent, append, conditional remove, binary payload and date shift are never conflated.",
+        "sourceRefs": [
+          "cli"
+        ],
+        "capabilityRefs": [
+          "CAP-021",
+          "CAP-026",
+          "CAP-042"
+        ],
+        "gapRefs": [
+          "GAP-004",
+          "GAP-005",
+          "GAP-006"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/cr3-preview-plan.md"
+      ],
+      "present": "One nonexecuting existing fixed-width date intent and preview; mutation admission refuses.",
+      "nextTickets": [
+        132,
+        78
+      ],
+      "residual": "General set/delete/list/append/file-value intents and production apply remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-010",
+      "requirement": {
+        "id": "MAP-010",
+        "surface": "CLI",
+        "family": "Tag/group deletion",
+        "upstreamForms": [
+          "-TAG=",
+          "-GROUP:All=",
+          "-All=",
+          "--TAG"
+        ],
+        "disposition": "difference-proposed",
+        "target": "metadata delete/privacy scrub uses capability-gated selection; blanket RAW deletion is refused when preservation cannot be established.",
+        "acceptance": "Protected structures survive, exact removal scope is reported, and no claim of secure erasure follows from missing tags.",
+        "sourceRefs": [
+          "cli",
+          "support"
+        ],
+        "capabilityRefs": [
+          "CAP-022",
+          "CAP-028",
+          "CAP-031",
+          "CAP-034",
+          "CAP-045"
+        ],
+        "gapRefs": [
+          "GAP-004",
+          "GAP-009"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/privacy/read-coverage.md"
+      ],
+      "present": "Read-only catalog coverage; no production removal.",
+      "nextTickets": [
+        188,
+        189,
+        190,
+        89,
+        90
+      ],
+      "residual": "Group/all deletion, GPS/serial/owner residual accounting and independently qualified anonymity remain unmet; targeted XMP work is not blanket wipe.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-011",
+      "requirement": {
+        "id": "MAP-011",
+        "surface": "CLI",
+        "family": "Creation and update modes",
+        "upstreamForms": [
+          "-wm",
+          "WriteMode"
+        ],
+        "disposition": "equivalent-proposed",
+        "target": "Plan distinguishes updating existing fields, adding absent fields and adding blocks.",
+        "acceptance": "Creation is checked independently from write, and does not mean synthesizing a RAW image.",
+        "sourceRefs": [
+          "cli"
+        ],
+        "capabilityRefs": [
+          "CAP-020",
+          "CAP-026",
+          "CAP-027",
+          "CAP-030",
+          "CAP-033"
+        ],
+        "gapRefs": [
+          "GAP-003",
+          "GAP-004"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/write-safety/write-admission.md"
+      ],
+      "present": "Read-only bounded date admission/refusal checks; no writer.",
+      "nextTickets": [
+        117,
+        119,
+        78
+      ],
+      "residual": "General existing update, insertion/group creation and reference WriteMode equivalence remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-012",
+      "requirement": {
+        "id": "MAP-012",
+        "surface": "CLI",
+        "family": "Copy and redirection",
+        "upstreamForms": [
+          "-tagsFromFile",
+          "-addTagsFromFile",
+          "-DEST<SOURCE",
+          "-tagsFromFile @",
+          "-all:all",
+          "-unsafe"
+        ],
+        "disposition": "difference-proposed",
+        "target": "metadata copy exposes preserve-location versus explicit schema mapping and unsafe/protected exclusions.",
+        "acceptance": "Ordering, repeated destinations, structures, lists, missing sources and skipped fields are accounted for.",
+        "sourceRefs": [
+          "cli",
+          "structures"
+        ],
+        "capabilityRefs": [
+          "CAP-024",
+          "CAP-025",
+          "CAP-035"
+        ],
+        "gapRefs": [
+          "GAP-003",
+          "GAP-005",
+          "GAP-006"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/sidecars/date-mapping.md"
+      ],
+      "present": "One original-snapshot date mapping model and native adapter research.",
+      "nextTickets": [
+        132,
+        186,
+        85,
+        86
+      ],
+      "residual": "General copy/redirection, all:all location preservation, mappings and qualified publication remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-013",
+      "requirement": {
+        "id": "MAP-013",
+        "surface": "CLI",
+        "family": "JSON/CSV imports",
+        "upstreamForms": [
+          "-j=FILE",
+          "-csv=FILE",
+          "SourceFile",
+          "-f"
+        ],
+        "disposition": "difference-proposed",
+        "target": "metadata import accepts typed edit intent and deterministic input matching.",
+        "acceptance": "No silent overwrite from duplicate matches; null/empty/delete and unmatched records have separate results.",
+        "sourceRefs": [
+          "cli"
+        ],
+        "capabilityRefs": [
+          "CAP-040"
+        ],
+        "gapRefs": [
+          "GAP-005",
+          "GAP-006"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/migration.md"
+      ],
+      "present": "Inert import/translation proposals only.",
+      "nextTickets": [
+        126,
+        129,
+        130
+      ],
+      "residual": "JSON/CSV decoders, row/target matching, duplicates, empty/null semantics and loss accounting remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-014",
+      "requirement": {
+        "id": "MAP-014",
+        "surface": "CLI",
+        "family": "Sidecar association and metadata mapping",
+        "upstreamForms": [
+          "-o",
+          "-srcfile",
+          "-tagsFromFile",
+          "filename format codes"
+        ],
+        "disposition": "difference-proposed",
+        "target": "sidecar create/read/apply/diff and explicit --target sidecar operate on planned pairs.",
+        "acceptance": "Same basename in different directories, existing packets, stale sidecars and mapping losses cannot resolve silently.",
+        "sourceRefs": [
+          "sidecars",
+          "cli"
+        ],
+        "capabilityRefs": [
+          "CAP-020",
+          "CAP-024",
+          "CAP-025"
+        ],
+        "gapRefs": [
+          "GAP-009",
+          "GAP-012"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/sidecars/pairing.md"
+      ],
+      "present": "Explicit safe physical-file RAW/XMP pairing; no basename inference.",
+      "nextTickets": [
+        124,
+        182,
+        186
+      ],
+      "residual": "General srcfile/template substitution and mapping remain unmet; opt-in same-stem inference and guarded derivative binding have separate owners.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-015",
+      "requirement": {
+        "id": "MAP-015",
+        "surface": "CLI",
+        "family": "Input traversal and filtering",
+        "upstreamForms": [
+          "-r",
+          "-r.",
+          "-ext",
+          "--ext",
+          "-i",
+          "-if",
+          "-fileOrder",
+          "-fileOrderNUM"
+        ],
+        "disposition": "difference-proposed",
+        "target": "files/metadata selection uses bounded declarative predicates and explicit traversal rules.",
+        "acceptance": "Symlinks/hidden paths/order/duplicate inputs and unknown file types have deterministic inclusion; Perl expressions are a separate gap.",
+        "sourceRefs": [
+          "cli"
+        ],
+        "capabilityRefs": [
+          "CAP-001",
+          "CAP-039",
+          "CAP-044"
+        ],
+        "gapRefs": [
+          "GAP-006",
+          "GAP-012"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/executable-extension-boundary.md"
+      ],
+      "present": "Pure filter/data-definition boundary specified; no filter runtime.",
+      "nextTickets": [
+        131,
+        129
+      ],
+      "residual": "Traversal, hidden-file/order/empty-selection and pure filter implementation remain unmet; arbitrary expressions stay explicit future functional residuals.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-016",
+      "requirement": {
+        "id": "MAP-016",
+        "surface": "CLI",
+        "family": "Fast, unknown and embedded extraction",
+        "upstreamForms": [
+          "-fast",
+          "-fast2",
+          "-fast3",
+          "-fast4",
+          "-fast5",
+          "-ee",
+          "-ee2",
+          "-ee3",
+          "-u",
+          "-U",
+          "-scanForXMP"
+        ],
+        "disposition": "difference-proposed",
+        "target": "Explicit coverage levels and omission reporting; normal CR3 inspection includes its CTMD contract.",
+        "acceptance": "Compare shallow/complete scans and declare skipped samples or unknown blocks; no speed mode silently claims complete privacy inspection.",
+        "sourceRefs": [
+          "cli",
+          "canon",
+          "api"
+        ],
+        "capabilityRefs": [
+          "CAP-008",
+          "CAP-014",
+          "CAP-018",
+          "CAP-045"
+        ],
+        "gapRefs": [
+          "GAP-007",
+          "GAP-008",
+          "GAP-012"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/reader/README.md"
+      ],
+      "present": "Declared bounded R5 parser/coverage and stored-preview slice.",
+      "nextTickets": [
+        121,
+        122,
+        123
+      ],
+      "residual": "Each fast/unknown/embedded/scan mode and variant needs separate evidence; numeric level equivalence is unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-017",
+      "requirement": {
+        "id": "MAP-017",
+        "surface": "CLI",
+        "family": "Filesystem and date organization",
+        "upstreamForms": [
+          "FileName",
+          "Directory",
+          "TestName",
+          "FileModifyDate",
+          "FileCreateDate",
+          "-d"
+        ],
+        "disposition": "difference-proposed",
+        "target": "files rename/move/copy/set-times previews RAW and XMP effects together.",
+        "acceptance": "Collision, ordering, platform timestamp limits and paired rollback/recovery have named outcomes.",
+        "sourceRefs": [
+          "files",
+          "extra",
+          "cli"
+        ],
+        "capabilityRefs": [
+          "CAP-044"
+        ],
+        "gapRefs": [
+          "GAP-004",
+          "GAP-009",
+          "GAP-012"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/write-safety/fresh-name-restore.md"
+      ],
+      "present": "Authored-marker file/restore research only; no production rename/move.",
+      "nextTickets": [
+        132,
+        201,
+        202,
+        212,
+        213
+      ],
+      "residual": "General naming placeholders, directory/date organization, collision, recovery and actual RAW-XMP operations remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-018",
+      "requirement": {
+        "id": "MAP-018",
+        "surface": "CLI",
+        "family": "Date shifts",
+        "upstreamForms": [
+          "AllDates",
+          "-TAG+=SHIFT",
+          "-TAG-=SHIFT",
+          "-globalTimeShift"
+        ],
+        "disposition": "equivalent-proposed",
+        "target": "time inspect/set/shift distinguishes elapsed time, calendar changes and offsets.",
+        "acceptance": "No host timezone is invented for zone-less EXIF; RAW/sidecar targets and CTMD constraints are visible.",
+        "sourceRefs": [
+          "cli",
+          "api"
+        ],
+        "capabilityRefs": [
+          "CAP-009",
+          "CAP-042"
+        ],
+        "gapRefs": [
+          "GAP-004",
+          "GAP-005",
+          "GAP-006"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/r5-date-mapping.md"
+      ],
+      "present": "Four bounded date fields, observation/refusal matrix and one fixed-width preview.",
+      "nextTickets": [
+        133,
+        132,
+        78
+      ],
+      "residual": "AllDates field sets, calendar/duration/offset/zone semantics, inverse conversions and general date writes remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-019",
+      "requirement": {
+        "id": "MAP-019",
+        "surface": "CLI",
+        "family": "Geotagging and clock correction",
+        "upstreamForms": [
+          "-geotag",
+          "Geotime",
+          "Geosync",
+          "Geotag"
+        ],
+        "disposition": "equivalent-proposed",
+        "target": "geo tag previews track matching, interpolation, clock drift and destination.",
+        "acceptance": "Known samples, time gaps, UTC/offset differences and multiple synchronization points have expected results.",
+        "sourceRefs": [
+          "geo",
+          "cli"
+        ],
+        "capabilityRefs": [
+          "CAP-043"
+        ],
+        "gapRefs": [
+          "GAP-005",
+          "GAP-009"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/r5-date-mapping.md"
+      ],
+      "present": "No track interpolation/geotagging implementation; date lookup evidence is not geotagging.",
+      "nextTickets": [
+        133
+      ],
+      "residual": "Track ingestion, clock correction, interpolation, missing zones, mapping and target policy remain unmet scoped residuals under #0015/#0012.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-020",
+      "requirement": {
+        "id": "MAP-020",
+        "surface": "CLI",
+        "family": "Geolocation lookup and inverse export",
+        "upstreamForms": [
+          "Geolocation",
+          "-listgeo",
+          "-p track templates"
+        ],
+        "disposition": "open-gap",
+        "target": "Record geographic lookup separately from GPS track matching; auxiliary databases and exact outputs need a later specification.",
+        "acceptance": "Keep offline/default privacy and database provenance explicit; no bundled database or network service is selected here.",
+        "sourceRefs": [
+          "cli"
+        ],
+        "capabilityRefs": [
+          "CAP-043",
+          "CAP-039"
+        ],
+        "gapRefs": [
+          "GAP-006",
+          "GAP-011"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/r5-date-mapping.md"
+      ],
+      "present": "No lookup dataset or reverse-geolocation implementation.",
+      "nextTickets": [
+        133
+      ],
+      "residual": "Lawful datasets/licensing, offline lookup, inverse export and reference fidelity remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-021",
+      "requirement": {
+        "id": "MAP-021",
+        "surface": "CLI",
+        "family": "Backups, overwrite and output policy",
+        "upstreamForms": [
+          "-overwrite_original",
+          "-overwrite_original_in_place",
+          "-restore_original",
+          "-delete_original",
+          "-o",
+          "-P"
+        ],
+        "disposition": "difference-proposed",
+        "target": "Preview/apply, backup restore/prune and explicit output policy share a recovery contract.",
+        "acceptance": "Hardlinks, permissions, timestamps, stale inputs and failure between backup/replacement are tested; defaults need not mimic ExifTool.",
+        "sourceRefs": [
+          "cli"
+        ],
+        "capabilityRefs": [
+          "CAP-023",
+          "CAP-038",
+          "CAP-044"
+        ],
+        "gapRefs": [
+          "GAP-004",
+          "GAP-012"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/write-safety/original-retention.md"
+      ],
+      "present": "Marker retention/restore research; no qualified production replacement profile.",
+      "nextTickets": [
+        165,
+        176,
+        198,
+        199,
+        200,
+        206
+      ],
+      "residual": "Production original retention, no-backup recovery through success, overwrite/restore/prune and profile-specific persistence remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-022",
+      "requirement": {
+        "id": "MAP-022",
+        "surface": "CLI",
+        "family": "Diagnostics and repair controls",
+        "upstreamForms": [
+          "-v",
+          "-htmlDump",
+          "-validate",
+          "-warning",
+          "-error",
+          "-F",
+          "-m"
+        ],
+        "disposition": "difference-proposed",
+        "target": "validate and diagnostic views provide stable issue codes; repairs and ignored-errors policies require explicit requests.",
+        "acceptance": "No broad ignore-errors flag bypasses preservation gates; malformed inputs remain bounded and explainable.",
+        "sourceRefs": [
+          "cli",
+          "extra"
+        ],
+        "capabilityRefs": [
+          "CAP-045",
+          "CAP-038"
+        ],
+        "gapRefs": [
+          "GAP-004",
+          "GAP-006",
+          "GAP-012"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/write-safety/write-admission.md"
+      ],
+      "present": "Bounded parser/preview/admission diagnostics; no repair.",
+      "nextTickets": [
+        133,
+        132
+      ],
+      "residual": "General validation/repair and unusual flags remain unmet; suppression never bypasses preservation or admission.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-023",
+      "requirement": {
+        "id": "MAP-023",
+        "surface": "CLI",
+        "family": "Ordered and persistent execution",
+        "upstreamForms": [
+          "-stay_open",
+          "-execute",
+          "-common_args",
+          "-echo",
+          "-echo3",
+          "-echo4"
+        ],
+        "disposition": "difference-proposed",
+        "target": "batch and persistent requests use explicit IDs/framing and isolate queued mutations.",
+        "acceptance": "Completion and success are separate; stdout/stderr framing, EOF, cancellation and option lifetime have tests.",
+        "sourceRefs": [
+          "cli",
+          "api"
+        ],
+        "capabilityRefs": [
+          "CAP-046"
+        ],
+        "gapRefs": [
+          "GAP-006",
+          "GAP-012"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/read-session-process.md"
+      ],
+      "present": "Actual bounded v1 read/close JSONL process and caller-owned library runtime.",
+      "nextTickets": [
+        125,
+        128,
+        135,
+        139,
+        140
+      ],
+      "residual": "Legacy ready markers/common settings/order, concurrency, cancellation, non-Unicode wire paths and broader sessions remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-024",
+      "requirement": {
+        "id": "MAP-024",
+        "surface": "CLI",
+        "family": "Argument/request files and filenames",
+        "upstreamForms": [
+          "-@",
+          "--",
+          "-charset filename",
+          "-srcfile"
+        ],
+        "disposition": "difference-proposed",
+        "target": "Typed request/JSON manifests and NUL path lists avoid shell quoting ambiguities.",
+        "acceptance": "Paths with Unicode, newlines, leading hyphens and reserved help words reach the intended file exactly.",
+        "sourceRefs": [
+          "cli"
+        ],
+        "capabilityRefs": [
+          "CAP-001",
+          "CAP-046"
+        ],
+        "gapRefs": [
+          "GAP-006",
+          "GAP-012"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/native-paths.md"
+      ],
+      "present": "Finite native OsString argv, -- and declared-shell paths; in-process token-array API.",
+      "nextTickets": [
+        121,
+        125,
+        129,
+        136,
+        137
+      ],
+      "residual": "Request files, recursive argument files, encodings, manifests and exact legacy charset/expansion behavior remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-025",
+      "requirement": {
+        "id": "MAP-025",
+        "surface": "CLI",
+        "family": "Warnings, progress and status",
+        "upstreamForms": [
+          "-q",
+          "-progress",
+          "-efile",
+          "exit 0/1/2"
+        ],
+        "disposition": "difference-proposed",
+        "target": "Stable native issue and exit codes distinguish partial failure, invalid invocation, stale plan, verification and cancellation.",
+        "acceptance": "Machine stdout remains parseable; warnings and deliberate selection exclusions have documented status behavior.",
+        "sourceRefs": [
+          "cli"
+        ],
+        "capabilityRefs": [
+          "CAP-039",
+          "CAP-045",
+          "CAP-046"
+        ],
+        "gapRefs": [
+          "GAP-006",
+          "GAP-012"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/native-json-errors.md"
+      ],
+      "present": "Actual finite CLI status/error envelopes and read-session transport outcomes.",
+      "nextTickets": [
+        127,
+        128,
+        136,
+        138,
+        139,
+        140
+      ],
+      "residual": "General quiet/progress/error-file behavior, cancellation/precision/performance and narrow-terminal robustness remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-026",
+      "requirement": {
+        "id": "MAP-026",
+        "surface": "CLI",
+        "family": "Custom definitions and expressions",
+        "upstreamForms": [
+          "-config",
+          "-use",
+          "-userParam",
+          "Perl expressions in -if/-p/tag interpolation"
+        ],
+        "disposition": "open-gap",
+        "target": "Preserve RAW transformation/custom-tag use cases while choosing a deliberate execution/trust boundary later.",
+        "acceptance": "No implicit arbitrary-code execution; unsupported constructs get migration guidance and never silently change meaning.",
+        "sourceRefs": [
+          "config",
+          "cli"
+        ],
+        "capabilityRefs": [
+          "CAP-019",
+          "CAP-040",
+          "CAP-046"
+        ],
+        "gapRefs": [
+          "GAP-006",
+          "GAP-011"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/executable-extension-boundary.md"
+      ],
+      "present": "Accepted bounded pure/data direction does not implement a runtime.",
+      "nextTickets": [
+        131
+      ],
+      "residual": "Arbitrary modules/config/user code, custom calculations, execution trust/failure isolation and future equivalence remain unmet; no automatic execution.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-027",
+      "requirement": {
+        "id": "MAP-027",
+        "surface": "API",
+        "family": "Extraction lifecycle",
+        "upstreamForms": [
+          "ImageInfo",
+          "ExtractInfo",
+          "GetInfo"
+        ],
+        "disposition": "equivalent-proposed",
+        "target": "Independent read engine returns structured results reusable across selections without terminal dependency.",
+        "acceptance": "Repeated queries do not reparse unnecessarily or mutate source state; read limits and diagnostics remain attributable.",
+        "sourceRefs": [
+          "api"
+        ],
+        "capabilityRefs": [
+          "CAP-003",
+          "CAP-008",
+          "CAP-013"
+        ],
+        "gapRefs": [
+          "GAP-005",
+          "GAP-006"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/read-request-result.md"
+      ],
+      "present": "Native reader Metadata and bounded metadata-read request/result API.",
+      "nextTickets": [
+        134,
+        135
+      ],
+      "residual": "Full snapshot lifecycle, repeated query/project operations, requested/found distinctions and upstream call signatures remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-028",
+      "requirement": {
+        "id": "MAP-028",
+        "surface": "API",
+        "family": "Identity and values",
+        "upstreamForms": [
+          "GetTagList",
+          "GetValue",
+          "GetGroup",
+          "GetGroups",
+          "GetDescription",
+          "GetTagID"
+        ],
+        "disposition": "equivalent-proposed",
+        "target": "A language-independent occurrence model exposes identity, groups, raw/rational/normalized/display values and definitions.",
+        "acceptance": "Same-name occurrences and exact values survive across retrievals; public calling conventions remain undecided.",
+        "sourceRefs": [
+          "api"
+        ],
+        "capabilityRefs": [
+          "CAP-010",
+          "CAP-013"
+        ],
+        "gapRefs": [
+          "GAP-005",
+          "GAP-006"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/native-read-json.md"
+      ],
+      "present": "Bounded occurrence identity/value views in native Metadata and JSON.",
+      "nextTickets": [
+        134
+      ],
+      "residual": "Complete lookup/group/description APIs, all identities/value forms and return conventions remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-029",
+      "requirement": {
+        "id": "MAP-029",
+        "surface": "API",
+        "family": "Queued mutation lifetime",
+        "upstreamForms": [
+          "SetNewValue",
+          "GetNewValue",
+          "WriteInfo"
+        ],
+        "disposition": "difference-proposed",
+        "target": "Explicit edit plan/request state instead of accidentally retained writes across requests.",
+        "acceptance": "Define reset/copy/reuse and error outcomes; every apply rechecks content identity and preservation gates.",
+        "sourceRefs": [
+          "api"
+        ],
+        "capabilityRefs": [
+          "CAP-021",
+          "CAP-026",
+          "CAP-038",
+          "CAP-046"
+        ],
+        "gapRefs": [
+          "GAP-004",
+          "GAP-006"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/cr3-preview-plan.md"
+      ],
+      "present": "Reusable nonexecuting saved one-date intent; no ambient mutation queue.",
+      "nextTickets": [
+        132,
+        78
+      ],
+      "residual": "General intent construction/inspection/save/restore and qualified per-target write lifecycle remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-030",
+      "requirement": {
+        "id": "MAP-030",
+        "surface": "API",
+        "family": "Copy/mapping lifecycle",
+        "upstreamForms": [
+          "SetNewValuesFromFile",
+          "SetNewValue",
+          "WriteInfo"
+        ],
+        "disposition": "equivalent-proposed",
+        "target": "Build a typed transfer plan with occurrence/location mappings and source fingerprints.",
+        "acceptance": "Copied source changes invalidate a saved plan; missing and unsupported mappings are visible.",
+        "sourceRefs": [
+          "api"
+        ],
+        "capabilityRefs": [
+          "CAP-024",
+          "CAP-025"
+        ],
+        "gapRefs": [
+          "GAP-004",
+          "GAP-005",
+          "GAP-006"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/sidecars/native-date-adapter.md"
+      ],
+      "present": "Separate immutable native date to in-memory XMP derivative research.",
+      "nextTickets": [
+        132,
+        186,
+        85,
+        86
+      ],
+      "residual": "General copy/context/mapping intent lifetime, source binding and per-target publication remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-031",
+      "requirement": {
+        "id": "MAP-031",
+        "surface": "API",
+        "family": "Static discovery versus detection",
+        "upstreamForms": [
+          "GetAllTags",
+          "GetWritableTags",
+          "GetDeleteGroups",
+          "GetFileType"
+        ],
+        "disposition": "difference-proposed",
+        "target": "Registry discovery is distinct from content-based detection and per-file write eligibility.",
+        "acceptance": "A filename-derived type hint or global tag list cannot grant a write capability.",
+        "sourceRefs": [
+          "api"
+        ],
+        "capabilityRefs": [
+          "CAP-001",
+          "CAP-026",
+          "CAP-049"
+        ],
+        "gapRefs": [
+          "GAP-003",
+          "GAP-006"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/foundation/README.md"
+      ],
+      "present": "Finite built-in declarations and bounded actual format detection; admission remains separate.",
+      "nextTickets": [
+        134,
+        117
+      ],
+      "residual": "All static tag/group/shortcut/type and scoped writable/create questions remain unmet beyond current declarations.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "id": "MAP-032",
+      "requirement": {
+        "id": "MAP-032",
+        "surface": "API",
+        "family": "Option families",
+        "upstreamForms": [
+          "Options",
+          "PrintConv",
+          "Duplicates",
+          "Struct",
+          "Unknown",
+          "ExtractEmbedded",
+          "FastScan",
+          "QuickTimeUTC",
+          "QuickTimePad",
+          "RequestTags"
+        ],
+        "disposition": "open-gap",
+        "target": "Classify relevant option families as read coverage, presentation, typing, performance or mutation policy; exhaustive option audit remains open.",
+        "acceptance": "Every adopted option has scope/lifetime/default tests; CR3 UTC and padding behavior receive dedicated cases.",
+        "sourceRefs": [
+          "api",
+          "quicktime",
+          "quicktime-source"
+        ],
+        "capabilityRefs": [
+          "CAP-008",
+          "CAP-009",
+          "CAP-014",
+          "CAP-038",
+          "CAP-046"
+        ],
+        "gapRefs": [
+          "GAP-005",
+          "GAP-006",
+          "GAP-008"
+        ]
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/read-argument-order.md"
+      ],
+      "present": "Finite actual native grammar and read options only.",
+      "nextTickets": [
+        121,
+        134
+      ],
+      "residual": "Every upstream Options/RequestTags/FastScan value, overload, alias and interaction remains individually unqualified.",
+      "residualOwner": 15,
+      "complete": false
+    }
+  ],
+  "apiMethods": [
+    {
+      "name": "new",
+      "role": "Request settings",
+      "requiredNativeRole": "Difference: immutable explicit options; reusable settings do not leak edits.",
+      "mapRefs": [
+        "MAP-032"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/read-argument-order.md"
+      ],
+      "present": "Finite actual native grammar and read options only.",
+      "nextTickets": [
+        121,
+        134
+      ],
+      "residual": "Explicit construction, option defaults, input ownership and reusable-instance lifetime. Full option/overload and reference behavior coverage is unmet. Every upstream Options/RequestTags/FastScan value, overload, alias and interaction remains individually unqualified.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "Options",
+      "role": "Request settings",
+      "requiredNativeRole": "Difference: immutable explicit options; reusable settings do not leak edits.",
+      "mapRefs": [
+        "MAP-032"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/read-argument-order.md"
+      ],
+      "present": "Finite actual native grammar and read options only.",
+      "nextTickets": [
+        121,
+        134
+      ],
+      "residual": "Every option name/value, getter/setter interaction and request-local precedence. Full option/overload and reference behavior coverage is unmet. Every upstream Options/RequestTags/FastScan value, overload, alias and interaction remains individually unqualified.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "ClearOptions",
+      "role": "Request settings",
+      "requiredNativeRole": "Difference: immutable explicit options; reusable settings do not leak edits.",
+      "mapRefs": [
+        "MAP-032"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/read-argument-order.md"
+      ],
+      "present": "Finite actual native grammar and read options only.",
+      "nextTickets": [
+        121,
+        134
+      ],
+      "residual": "Exact reset/default behavior and isolation from other requests and intents. Full option/overload and reference behavior coverage is unmet. Every upstream Options/RequestTags/FastScan value, overload, alias and interaction remains individually unqualified.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "AvailableOptions",
+      "role": "Request settings",
+      "requiredNativeRole": "Difference: immutable explicit options; reusable settings do not leak edits.",
+      "mapRefs": [
+        "MAP-032"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/read-argument-order.md"
+      ],
+      "present": "Finite actual native grammar and read options only.",
+      "nextTickets": [
+        121,
+        134
+      ],
+      "residual": "Complete option discovery and valid value/capability distinctions. Full option/overload and reference behavior coverage is unmet. Every upstream Options/RequestTags/FastScan value, overload, alias and interaction remains individually unqualified.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "ImageInfo",
+      "role": "Extraction/query",
+      "requiredNativeRole": "Equivalent functional intent; preserve partial/requested/found distinctions in coverage and selectors.",
+      "mapRefs": [
+        "MAP-027"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/read-request-result.md"
+      ],
+      "present": "Native reader Metadata and bounded metadata-read request/result API.",
+      "nextTickets": [
+        134,
+        135
+      ],
+      "residual": "Combined extraction/query lifecycle, all input forms and partial/error results. Full option/overload and reference behavior coverage is unmet. Full snapshot lifecycle, repeated query/project operations, requested/found distinctions and upstream call signatures remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "ExtractInfo",
+      "role": "Extraction/query",
+      "requiredNativeRole": "Equivalent functional intent; preserve partial/requested/found distinctions in coverage and selectors.",
+      "mapRefs": [
+        "MAP-027"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/read-request-result.md"
+      ],
+      "present": "Native reader Metadata and bounded metadata-read request/result API.",
+      "nextTickets": [
+        134,
+        135
+      ],
+      "residual": "Read-once snapshot extraction, ownership and retained-data lifetime. Full option/overload and reference behavior coverage is unmet. Full snapshot lifecycle, repeated query/project operations, requested/found distinctions and upstream call signatures remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "GetInfo",
+      "role": "Extraction/query",
+      "requiredNativeRole": "Equivalent functional intent; preserve partial/requested/found distinctions in coverage and selectors.",
+      "mapRefs": [
+        "MAP-027"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/read-request-result.md"
+      ],
+      "present": "Native reader Metadata and bounded metadata-read request/result API.",
+      "nextTickets": [
+        134,
+        135
+      ],
+      "residual": "Repeated snapshot query/projection without rereading or hidden side effects. Full option/overload and reference behavior coverage is unmet. Full snapshot lifecycle, repeated query/project operations, requested/found distinctions and upstream call signatures remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "GetTagList",
+      "role": "Extraction/query",
+      "requiredNativeRole": "Equivalent functional intent; preserve partial/requested/found distinctions in coverage and selectors.",
+      "mapRefs": [
+        "MAP-027"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/read-request-result.md"
+      ],
+      "present": "Native reader Metadata and bounded metadata-read request/result API.",
+      "nextTickets": [
+        134,
+        135
+      ],
+      "residual": "Requested snapshot tag lists, duplicate occurrences and ordering. Full option/overload and reference behavior coverage is unmet. Full snapshot lifecycle, repeated query/project operations, requested/found distinctions and upstream call signatures remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "GetFoundTags",
+      "role": "Extraction/query",
+      "requiredNativeRole": "Equivalent functional intent; preserve partial/requested/found distinctions in coverage and selectors.",
+      "mapRefs": [
+        "MAP-027"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/read-request-result.md"
+      ],
+      "present": "Native reader Metadata and bounded metadata-read request/result API.",
+      "nextTickets": [
+        134,
+        135
+      ],
+      "residual": "Found-versus-requested sets with partial coverage and exact occurrences. Full option/overload and reference behavior coverage is unmet. Full snapshot lifecycle, repeated query/project operations, requested/found distinctions and upstream call signatures remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "GetRequestedTags",
+      "role": "Extraction/query",
+      "requiredNativeRole": "Equivalent functional intent; preserve partial/requested/found distinctions in coverage and selectors.",
+      "mapRefs": [
+        "MAP-027"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/read-request-result.md"
+      ],
+      "present": "Native reader Metadata and bounded metadata-read request/result API.",
+      "nextTickets": [
+        134,
+        135
+      ],
+      "residual": "Requested-versus-found sets including absent, unknown and refused selectors. Full option/overload and reference behavior coverage is unmet. Full snapshot lifecycle, repeated query/project operations, requested/found distinctions and upstream call signatures remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "GetValue",
+      "role": "Values/identity",
+      "requiredNativeRole": "Equivalent functional intent; exact occurrence and explicit view replace context-dependent return conventions.",
+      "mapRefs": [
+        "MAP-028"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/native-read-json.md"
+      ],
+      "present": "Bounded occurrence identity/value views in native Metadata and JSON.",
+      "nextTickets": [
+        134
+      ],
+      "residual": "Exact occurrence selection and raw/normalized/display forms for every supported type. Full option/overload and reference behavior coverage is unmet. Complete lookup/group/description APIs, all identities/value forms and return conventions remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "GetTagID",
+      "role": "Values/identity",
+      "requiredNativeRole": "Equivalent functional intent; exact occurrence and explicit view replace context-dependent return conventions.",
+      "mapRefs": [
+        "MAP-028"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/native-read-json.md"
+      ],
+      "present": "Bounded occurrence identity/value views in native Metadata and JSON.",
+      "nextTickets": [
+        134
+      ],
+      "residual": "Complete native identifiers, location/occurrence identity and unknown identifiers. Full option/overload and reference behavior coverage is unmet. Complete lookup/group/description APIs, all identities/value forms and return conventions remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "GetDescription",
+      "role": "Values/identity",
+      "requiredNativeRole": "Equivalent functional intent; exact occurrence and explicit view replace context-dependent return conventions.",
+      "mapRefs": [
+        "MAP-028"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/native-read-json.md"
+      ],
+      "present": "Bounded occurrence identity/value views in native Metadata and JSON.",
+      "nextTickets": [
+        134
+      ],
+      "residual": "Localized descriptions as presentation, without changing identity. Full option/overload and reference behavior coverage is unmet. Complete lookup/group/description APIs, all identities/value forms and return conventions remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "GetGroup",
+      "role": "Values/identity",
+      "requiredNativeRole": "Equivalent functional intent; exact occurrence and explicit view replace context-dependent return conventions.",
+      "mapRefs": [
+        "MAP-028"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/native-read-json.md"
+      ],
+      "present": "Bounded occurrence identity/value views in native Metadata and JSON.",
+      "nextTickets": [
+        134
+      ],
+      "residual": "Single-occurrence group-family lookup with explicit family selection. Full option/overload and reference behavior coverage is unmet. Complete lookup/group/description APIs, all identities/value forms and return conventions remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "GetGroups",
+      "role": "Values/identity",
+      "requiredNativeRole": "Equivalent functional intent; exact occurrence and explicit view replace context-dependent return conventions.",
+      "mapRefs": [
+        "MAP-028"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/native-read-json.md"
+      ],
+      "present": "Bounded occurrence identity/value views in native Metadata and JSON.",
+      "nextTickets": [
+        134
+      ],
+      "residual": "Complete observed group enumeration and deterministic grouping. Full option/overload and reference behavior coverage is unmet. Complete lookup/group/description APIs, all identities/value forms and return conventions remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "GetTagName",
+      "role": "Values/identity",
+      "requiredNativeRole": "Equivalent functional intent; exact occurrence and explicit view replace context-dependent return conventions.",
+      "mapRefs": [
+        "MAP-028"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/native-read-json.md"
+      ],
+      "present": "Bounded occurrence identity/value views in native Metadata and JSON.",
+      "nextTickets": [
+        134
+      ],
+      "residual": "Canonical name/alias lookup with exact native occurrence identity. Full option/overload and reference behavior coverage is unmet. Complete lookup/group/description APIs, all identities/value forms and return conventions remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "SetNewValue",
+      "role": "Intent lifetime",
+      "requiredNativeRole": "Difference: inspect/copy immutable intents, separately plan each target and apply with WS gates.",
+      "mapRefs": [
+        "MAP-029"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/cr3-preview-plan.md"
+      ],
+      "present": "Reusable nonexecuting saved one-date intent; no ambient mutation queue.",
+      "nextTickets": [
+        132,
+        78
+      ],
+      "residual": "General typed intent construction, delete/append distinctions and validation. Full option/overload and reference behavior coverage is unmet. General intent construction/inspection/save/restore and qualified per-target write lifecycle remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "GetNewValue",
+      "role": "Intent lifetime",
+      "requiredNativeRole": "Difference: inspect/copy immutable intents, separately plan each target and apply with WS gates.",
+      "mapRefs": [
+        "MAP-029"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/cr3-preview-plan.md"
+      ],
+      "present": "Reusable nonexecuting saved one-date intent; no ambient mutation queue.",
+      "nextTickets": [
+        132,
+        78
+      ],
+      "residual": "Inspect pending immutable intents without implying applied target state. Full option/overload and reference behavior coverage is unmet. General intent construction/inspection/save/restore and qualified per-target write lifecycle remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "CountNewValues",
+      "role": "Intent lifetime",
+      "requiredNativeRole": "Difference: inspect/copy immutable intents, separately plan each target and apply with WS gates.",
+      "mapRefs": [
+        "MAP-029"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/cr3-preview-plan.md"
+      ],
+      "present": "Reusable nonexecuting saved one-date intent; no ambient mutation queue.",
+      "nextTickets": [
+        132,
+        78
+      ],
+      "residual": "Exact intent counts, duplicate targets and rejected/removed intent behavior. Full option/overload and reference behavior coverage is unmet. General intent construction/inspection/save/restore and qualified per-target write lifecycle remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "SaveNewValues",
+      "role": "Intent lifetime",
+      "requiredNativeRole": "Difference: inspect/copy immutable intents, separately plan each target and apply with WS gates.",
+      "mapRefs": [
+        "MAP-029"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/cr3-preview-plan.md"
+      ],
+      "present": "Reusable nonexecuting saved one-date intent; no ambient mutation queue.",
+      "nextTickets": [
+        132,
+        78
+      ],
+      "residual": "Explicit immutable intent save semantics and reusable-value ownership. Full option/overload and reference behavior coverage is unmet. General intent construction/inspection/save/restore and qualified per-target write lifecycle remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "RestoreNewValues",
+      "role": "Intent lifetime",
+      "requiredNativeRole": "Difference: inspect/copy immutable intents, separately plan each target and apply with WS gates.",
+      "mapRefs": [
+        "MAP-029"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/cr3-preview-plan.md"
+      ],
+      "present": "Reusable nonexecuting saved one-date intent; no ambient mutation queue.",
+      "nextTickets": [
+        132,
+        78
+      ],
+      "residual": "Explicit intent restore semantics without ambient edits or transferred authority. Full option/overload and reference behavior coverage is unmet. General intent construction/inspection/save/restore and qualified per-target write lifecycle remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "WriteInfo",
+      "role": "Intent lifetime",
+      "requiredNativeRole": "Difference: inspect/copy immutable intents, separately plan each target and apply with WS gates.",
+      "mapRefs": [
+        "MAP-029"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/cr3-preview-plan.md"
+      ],
+      "present": "Reusable nonexecuting saved one-date intent; no ambient mutation queue.",
+      "nextTickets": [
+        132,
+        78
+      ],
+      "residual": "Actual per-target planning/apply with admitted format/storage and truthful outcomes. Full option/overload and reference behavior coverage is unmet. General intent construction/inspection/save/restore and qualified per-target write lifecycle remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "SetNewValuesFromFile",
+      "role": "Copy/context",
+      "requiredNativeRole": "Difference: explicitly bound sources/locations and visible mappings.",
+      "mapRefs": [
+        "MAP-030"
+      ],
+      "evidenceRefs": [
+        "docs/sidecars/native-date-adapter.md"
+      ],
+      "present": "Separate immutable native date to in-memory XMP derivative research.",
+      "nextTickets": [
+        132,
+        186,
+        85,
+        86
+      ],
+      "residual": "Frozen source snapshot, mapping/loss policy and destination-specific authority. Full option/overload and reference behavior coverage is unmet. General copy/context/mapping intent lifetime, source binding and per-target publication remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "SetAlternateFile",
+      "role": "Copy/context",
+      "requiredNativeRole": "Difference: explicitly bound sources/locations and visible mappings.",
+      "mapRefs": [
+        "MAP-030"
+      ],
+      "evidenceRefs": [
+        "docs/sidecars/native-date-adapter.md"
+      ],
+      "present": "Separate immutable native date to in-memory XMP derivative research.",
+      "nextTickets": [
+        132,
+        186,
+        85,
+        86
+      ],
+      "residual": "Explicit bound alternate source resolution, order and failure behavior. Full option/overload and reference behavior coverage is unmet. General copy/context/mapping intent lifetime, source binding and per-target publication remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "SetNewGroups",
+      "role": "Copy/context",
+      "requiredNativeRole": "Difference: explicitly bound sources/locations and visible mappings.",
+      "mapRefs": [
+        "MAP-030"
+      ],
+      "evidenceRefs": [
+        "docs/sidecars/native-date-adapter.md"
+      ],
+      "present": "Separate immutable native date to in-memory XMP derivative research.",
+      "nextTickets": [
+        132,
+        186,
+        85,
+        86
+      ],
+      "residual": "Explicit destination group intent and group-creation feasibility. Full option/overload and reference behavior coverage is unmet. General copy/context/mapping intent lifetime, source binding and per-target publication remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "GetNewGroups",
+      "role": "Copy/context",
+      "requiredNativeRole": "Difference: explicitly bound sources/locations and visible mappings.",
+      "mapRefs": [
+        "MAP-030"
+      ],
+      "evidenceRefs": [
+        "docs/sidecars/native-date-adapter.md"
+      ],
+      "present": "Separate immutable native date to in-memory XMP derivative research.",
+      "nextTickets": [
+        132,
+        186,
+        85,
+        86
+      ],
+      "residual": "Inspect intended destination groups separately from observed file groups. Full option/overload and reference behavior coverage is unmet. General copy/context/mapping intent lifetime, source binding and per-target publication remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "SetFileName",
+      "role": "Filesystem effects",
+      "requiredNativeRole": "Difference: planned file effects and property policy; no hidden setters during a read.",
+      "mapRefs": [
+        "MAP-017"
+      ],
+      "evidenceRefs": [
+        "docs/write-safety/fresh-name-restore.md"
+      ],
+      "present": "Authored-marker file/restore research only; no production rename/move.",
+      "nextTickets": [
+        132,
+        201,
+        202,
+        212,
+        213
+      ],
+      "residual": "Planned rename/move with collision, pairing, identity and recovery evidence. Full option/overload and reference behavior coverage is unmet. General naming placeholders, directory/date organization, collision, recovery and actual RAW-XMP operations remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "SetFileModifyDate",
+      "role": "Filesystem effects",
+      "requiredNativeRole": "Difference: planned file effects and property policy; no hidden setters during a read.",
+      "mapRefs": [
+        "MAP-017"
+      ],
+      "evidenceRefs": [
+        "docs/write-safety/fresh-name-restore.md"
+      ],
+      "present": "Authored-marker file/restore research only; no production rename/move.",
+      "nextTickets": [
+        132,
+        201,
+        202,
+        212,
+        213
+      ],
+      "residual": "Explicit filesystem timestamp plan, property preservation and precision. Full option/overload and reference behavior coverage is unmet. General naming placeholders, directory/date organization, collision, recovery and actual RAW-XMP operations remain unmet.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "GetShortcuts",
+      "role": "Discovery",
+      "requiredNativeRole": "Equivalent functional questions; return scoped definitions/evidence, not universal write permission.",
+      "mapRefs": [
+        "MAP-031"
+      ],
+      "evidenceRefs": [
+        "docs/foundation/README.md"
+      ],
+      "present": "Finite built-in declarations and bounded actual format detection; admission remains separate.",
+      "nextTickets": [
+        134,
+        117
+      ],
+      "residual": "Complete alias/shortcut discovery with expansion and namespace collisions. Full option/overload and reference behavior coverage is unmet. All static tag/group/shortcut/type and scoped writable/create questions remain unmet beyond current declarations.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "GetAllTags",
+      "role": "Discovery",
+      "requiredNativeRole": "Equivalent functional questions; return scoped definitions/evidence, not universal write permission.",
+      "mapRefs": [
+        "MAP-031"
+      ],
+      "evidenceRefs": [
+        "docs/foundation/README.md"
+      ],
+      "present": "Finite built-in declarations and bounded actual format detection; admission remains separate.",
+      "nextTickets": [
+        134,
+        117
+      ],
+      "residual": "Definition inventory separate from actual observed file presence. Full option/overload and reference behavior coverage is unmet. All static tag/group/shortcut/type and scoped writable/create questions remain unmet beyond current declarations.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "GetWritableTags",
+      "role": "Discovery",
+      "requiredNativeRole": "Equivalent functional questions; return scoped definitions/evidence, not universal write permission.",
+      "mapRefs": [
+        "MAP-031"
+      ],
+      "evidenceRefs": [
+        "docs/foundation/README.md"
+      ],
+      "present": "Finite built-in declarations and bounded actual format detection; admission remains separate.",
+      "nextTickets": [
+        134,
+        117
+      ],
+      "residual": "Scoped operation discovery distinct from per-target admission. Full option/overload and reference behavior coverage is unmet. All static tag/group/shortcut/type and scoped writable/create questions remain unmet beyond current declarations.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "GetAllGroups",
+      "role": "Discovery",
+      "requiredNativeRole": "Equivalent functional questions; return scoped definitions/evidence, not universal write permission.",
+      "mapRefs": [
+        "MAP-031"
+      ],
+      "evidenceRefs": [
+        "docs/foundation/README.md"
+      ],
+      "present": "Finite built-in declarations and bounded actual format detection; admission remains separate.",
+      "nextTickets": [
+        134,
+        117
+      ],
+      "residual": "Complete static group definitions separate from observed file structure. Full option/overload and reference behavior coverage is unmet. All static tag/group/shortcut/type and scoped writable/create questions remain unmet beyond current declarations.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "GetDeleteGroups",
+      "role": "Discovery",
+      "requiredNativeRole": "Equivalent functional questions; return scoped definitions/evidence, not universal write permission.",
+      "mapRefs": [
+        "MAP-031"
+      ],
+      "evidenceRefs": [
+        "docs/foundation/README.md"
+      ],
+      "present": "Finite built-in declarations and bounded actual format detection; admission remains separate.",
+      "nextTickets": [
+        134,
+        117
+      ],
+      "residual": "Scoped deletable-group discovery with protected-data and privacy residuals. Full option/overload and reference behavior coverage is unmet. All static tag/group/shortcut/type and scoped writable/create questions remain unmet beyond current declarations.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "GetFileType",
+      "role": "Discovery",
+      "requiredNativeRole": "Equivalent functional questions; return scoped definitions/evidence, not universal write permission.",
+      "mapRefs": [
+        "MAP-031"
+      ],
+      "evidenceRefs": [
+        "docs/foundation/README.md"
+      ],
+      "present": "Finite built-in declarations and bounded actual format detection; admission remains separate.",
+      "nextTickets": [
+        134,
+        117
+      ],
+      "residual": "Qualified variant/container detection beyond extension or mutable model names. Full option/overload and reference behavior coverage is unmet. All static tag/group/shortcut/type and scoped writable/create questions remain unmet beyond current declarations.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "CanWrite",
+      "role": "Discovery",
+      "requiredNativeRole": "Equivalent functional questions; return scoped definitions/evidence, not universal write permission.",
+      "mapRefs": [
+        "MAP-031"
+      ],
+      "evidenceRefs": [
+        "docs/foundation/README.md"
+      ],
+      "present": "Finite built-in declarations and bounded actual format detection; admission remains separate.",
+      "nextTickets": [
+        134,
+        117
+      ],
+      "residual": "Exact format/location/operation eligibility separate from a writable tag table. Full option/overload and reference behavior coverage is unmet. All static tag/group/shortcut/type and scoped writable/create questions remain unmet beyond current declarations.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "CanCreate",
+      "role": "Discovery",
+      "requiredNativeRole": "Equivalent functional questions; return scoped definitions/evidence, not universal write permission.",
+      "mapRefs": [
+        "MAP-031"
+      ],
+      "evidenceRefs": [
+        "docs/foundation/README.md"
+      ],
+      "present": "Finite built-in declarations and bounded actual format detection; admission remains separate.",
+      "nextTickets": [
+        134,
+        117
+      ],
+      "residual": "Absent-value/group creation eligibility, never generation of RAW sensor content. Full option/overload and reference behavior coverage is unmet. All static tag/group/shortcut/type and scoped writable/create questions remain unmet beyond current declarations.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "BuildCompositeTags",
+      "role": "Extension/ordering",
+      "requiredNativeRole": "Declarative dependency/order requirements proposed; arbitrary extension behavior remains LG-003.",
+      "mapRefs": [
+        "MAP-026"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/executable-extension-boundary.md"
+      ],
+      "present": "Accepted bounded pure/data direction does not implement a runtime.",
+      "nextTickets": [
+        131
+      ],
+      "residual": "Declarative dependencies, cycle/coverage handling and custom calculation residuals. Full option/overload and reference behavior coverage is unmet. Arbitrary modules/config/user code, custom calculations, execution trust/failure isolation and future equivalence remain unmet; no automatic execution.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "AddUserDefinedTags",
+      "role": "Extension/ordering",
+      "requiredNativeRole": "Declarative dependency/order requirements proposed; arbitrary extension behavior remains LG-003.",
+      "mapRefs": [
+        "MAP-026"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/executable-extension-boundary.md"
+      ],
+      "present": "Accepted bounded pure/data direction does not implement a runtime.",
+      "nextTickets": [
+        131
+      ],
+      "residual": "Explicit versioned definitions, provenance/collisions and executable-parser residuals. Full option/overload and reference behavior coverage is unmet. Arbitrary modules/config/user code, custom calculations, execution trust/failure isolation and future equivalence remain unmet; no automatic execution.",
+      "residualOwner": 15,
+      "complete": false
+    },
+    {
+      "name": "OrderedKeys",
+      "role": "Extension/ordering",
+      "requiredNativeRole": "Declarative dependency/order requirements proposed; arbitrary extension behavior remains LG-003.",
+      "mapRefs": [
+        "MAP-026"
+      ],
+      "evidenceRefs": [
+        "docs/legacy-compatibility/executable-extension-boundary.md"
+      ],
+      "present": "Accepted bounded pure/data direction does not implement a runtime.",
+      "nextTickets": [
+        131
+      ],
+      "residual": "Complete deterministic dependency/key ordering and caller-visible order semantics. Full option/overload and reference behavior coverage is unmet. Arbitrary modules/config/user code, custom calculations, execution trust/failure isolation and future equivalence remain unmet; no automatic execution.",
+      "residualOwner": 15,
+      "complete": false
+    }
+  ],
+  "gaps": [
+    {
+      "id": "LG-001",
+      "requirement": {
+        "unresolved": "Exhaustive grammar, abbreviations, aliases, API options and ordering interactions",
+        "requiredClosure": "Expand token/option-level cases against the pinned executable on lawful fixtures; record each difference. Compatibility evidence follow-up, with corpus #0013."
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/surface-ledger.md"
+      ],
+      "nextTickets": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        129,
+        134,
+        141
+      ],
+      "residualOwner": 15,
+      "residual": "Full clause retained; finite child evidence never closes untested grammar, API, functional or robustness coverage.",
+      "complete": false
+    },
+    {
+      "id": "LG-002",
+      "requirement": {
+        "unresolved": "Exact legacy reports/imports, templates, filename formatting and serialization adapters",
+        "requiredClosure": "Specify field/encoding/escaping/lookup rules with collision, newline, duplicate and round-trip cases. Compatibility follow-up; no exact serializer claimed here."
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/surface-ledger.md"
+      ],
+      "nextTickets": [
+        126,
+        127,
+        128,
+        129,
+        130
+      ],
+      "residualOwner": 15,
+      "residual": "Full clause retained; finite child evidence never closes untested grammar, API, functional or robustness coverage.",
+      "complete": false
+    },
+    {
+      "id": "LG-003",
+      "requirement": {
+        "unresolved": "Arbitrary executable expressions, modules and user-defined parsing/conversion",
+        "requiredClosure": "Choose an explicit trusted-code model later; document provenance, authority and failure isolation. No automatic execution or invented sandbox guarantee."
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/surface-ledger.md"
+      ],
+      "nextTickets": [
+        131
+      ],
+      "residualOwner": 15,
+      "residual": "Full clause retained; finite child evidence never closes untested grammar, API, functional or robustness coverage.",
+      "complete": false
+    },
+    {
+      "id": "LG-004",
+      "requirement": {
+        "unresolved": "Complete persisted plan grammar for all operations",
+        "requiredClosure": "The WS-002 field obligations remain binding. A complete per-operation wire schema needs actual planner effects, platform identities and recovery profiles; this card supplies request/result schemas, not a fake universal executable plan."
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/surface-ledger.md"
+      ],
+      "nextTickets": [
+        132
+      ],
+      "residualOwner": 15,
+      "residual": "Full clause retained; finite child evidence never closes untested grammar, API, functional or robustness coverage.",
+      "complete": false
+    },
+    {
+      "id": "LG-005",
+      "requirement": {
+        "unresolved": "Advanced lookup datasets, repair, unusual flags and mapping catalogs",
+        "requiredClosure": "Separate scoped requirements and lawful resources; preserve every unmet functional goal in the ledger."
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/surface-ledger.md"
+      ],
+      "nextTickets": [
+        133
+      ],
+      "residualOwner": 15,
+      "residual": "Full clause retained; finite child evidence never closes untested grammar, API, functional or robustness coverage.",
+      "complete": false
+    },
+    {
+      "id": "LG-006",
+      "requirement": {
+        "unresolved": "Actual CLI/API/process behavior, precision, performance and robustness",
+        "requiredClosure": "Real implementation, reference binaries, OS/stream tests and user review. Synthetic records do not close this gap; #0013/#0014/#0016 supply evidence under the #0008 measurement protocol."
+      },
+      "evidenceRefs": [
+        "docs/legacy-compatibility/surface-ledger.md"
+      ],
+      "nextTickets": [
+        122,
+        123,
+        124,
+        125,
+        127,
+        128,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152
+      ],
+      "residualOwner": 15,
+      "residual": "Full clause retained; finite child evidence never closes untested grammar, API, functional or robustness coverage.",
+      "complete": false
+    },
+    {
+      "id": "GAP-006",
+      "requirement": {
+        "id": "GAP-006",
+        "subject": "Legacy argument and API completeness",
+        "ownerCard": "compatibility-evidence",
+        "closesWhen": "The surveyed surface ledger and migration/trust recommendations are in docs/legacy-compatibility. Close LG-001/LG-002/LG-003/LG-005/LG-006 through exhaustive option/API/ordering cases, accepted differences and actual reference/native evidence before claiming full or drop-in parity.",
+        "blocks": "Drop-in CLI/API compatibility claims."
+      },
+      "evidenceRefs": [
+        "docs/inventory/canon-eos-r5-cr3.v1.json",
+        "docs/legacy-compatibility/surface-ledger.md"
+      ],
+      "nextTickets": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152
+      ],
+      "residualOwner": 15,
+      "residual": "All stated closure evidence remains required. Current native delivery is finite; broader RAW CLI/API functionality and measured limits remain unmet.",
+      "complete": false
+    },
+    {
+      "id": "GAP-012",
+      "requirement": {
+        "id": "GAP-012",
+        "subject": "CLI workflows and large-input boundaries",
+        "ownerCard": "compatibility-evidence",
+        "closesWhen": "CLI walkthroughs, request/result schemas, pure filter and persistent-session proposals are recorded. Complete saved-plan and session-output schemas, advanced mappings and remaining LG-001–006 specifications on #0015; use the #0008 performance protocol to establish measured limits on #0016 and later prove actual CLI/help/menu/transport behavior.",
+        "blocks": "Claiming the proposed CLI surface is finalized or implemented."
+      },
+      "evidenceRefs": [
+        "docs/inventory/canon-eos-r5-cr3.v1.json",
+        "docs/legacy-compatibility/surface-ledger.md"
+      ],
+      "nextTickets": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152
+      ],
+      "residualOwner": 15,
+      "residual": "All stated closure evidence remains required. Current native delivery is finite; broader RAW CLI/API functionality and measured limits remain unmet.",
+      "complete": false
+    }
+  ]
+}

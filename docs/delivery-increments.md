@@ -11,6 +11,22 @@ at least one verified, committed and pushed ticket to Ready for review. Terry
 alone accepts Completed. A proposal or counterexample can finish a research
 ticket; it cannot establish the operational capability being researched.
 
+## First wave from the decomposed queue — 2026-10-16
+
+The next eight dependency-ready scopes are #0165/#0193 (bounded output/replacement
+contracts), #0120/#0121 (complete compatibility disposition and token inventory),
+#0183 (production in-memory XMP packet inspection), #0188 (one privacy-removal
+contract), #0142 (direct-process resource telemetry) and #0162 (literal date/TZ
+qualification). They reuse existing cards rather than add another child batch.
+See the [documentation map](README.md) for their exact artifacts and limits.
+
+The replacement review's unsupported result completes its investigation only;
+positive replacement acceptance remains unmet. The output contract specializes
+the already permitted explicit-caller path without a new adoption gate. Parser
+inspection, authored telemetry/date evidence and a privacy contract grant no
+CR3 writer, storage-profile, privacy-removal or publication capability by implication.
+No private media or VM campaign is part of this wave.
+
 ## Open-work breakdown
 
 Ten broad cards now organize bounded children. Those fully scoped umbrellas remain

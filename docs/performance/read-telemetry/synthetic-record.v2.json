@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 2,
+  "collectorRevision": "read-telemetry-v2",
+  "purpose": "metadata-read",
+  "telemetryDriverSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "elapsedRecord": {
+    "schemaVersion": 2,
+    "collectorRevision": "read-collector-v2-elapsed-core",
+    "driverSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "pythonExecutableSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "pythonVersion": "synthetic",
+    "configuration": {
+      "binary": "SYNTHETIC-binary",
+      "input": "SYNTHETIC-input",
+      "oracle": "SYNTHETIC-oracle",
+      "fixtureId": "FX-R5-001",
+      "admissionEvidence": "SYNTHETIC-admissionEvidence",
+      "correctnessEvidence": "SYNTHETIC-correctnessEvidence",
+      "environment": {
+        "scope": "synthetic contract vector; no measurements"
+      },
+      "repeats": 1,
+      "warmups": 0,
+      "timeoutMs": 10000,
+      "captureBytes": 1048576,
+      "maxBytes": 8388608,
+      "binarySha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "inputSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "oracleSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "evidenceSha256": {
+      "admissionEvidence": "0000000000000000000000000000000000000000000000000000000000000000",
+      "correctnessEvidence": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "argv": [
+      "SYNTHETIC-binary",
+      "metadata",
+      "read",
+      "--values",
+      "all",
+      "--output",
+      "json",
+      "--max-bytes",
+      "8388608",
+      "--",
+      "SYNTHETIC-input"
+    ],
+    "cwd": "SYNTHETIC-cwd",
+    "processEnvironment": {
+      "LC_ALL": "C",
+      "LANG": "C",
+      "TZ": "UTC"
+    },
+    "host": {
+      "system": "synthetic",
+      "release": "synthetic",
+      "version": "synthetic",
+      "machine": "synthetic"
+    },
+    "inputBytes": 1,
+    "cache": {
+      "process": "fresh per attempt",
+      "application": "no persistent session",
+      "os": "uncontrolled; preflight SHA-256 reads may warm caches",
+      "device": "uncontrolled",
+      "server": "unknown/not established",
+      "conditioning": "none; sequential warmups then repeats, no eviction"
+    },
+    "consumer": "two bounded in-memory pipe drains; complete JSON validation after timed drain/exit",
+    "clock": {
+      "name": "time.perf_counter_ns",
+      "resolutionSeconds": 1e-09,
+      "unit": "nanoseconds",
+      "boundary": "before Popen through direct exit and pipe drains; validation excluded; overhead not subtracted"
+    },
+    "unavailableTelemetry": {
+      "cpuNs": null,
+      "peakMemoryBytes": null,
+      "logicalIoBytes": null,
+      "physicalIoBytes": null,
+      "firstResultNs": null,
+      "queueDepth": null,
+      "scratchBytes": null
+    },
+    "unavailableReason": "elapsed-only core; resource observations and reasons are in the v2 telemetry companion",
+    "attempts": [
+      {
+        "startedUtc": "2000-01-01T00:00:00+00:00",
+        "elapsedNs": 1000000,
+        "outcome": "exited",
+        "exitCode": 0,
+        "censored": false,
+        "errorClass": null,
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "stdoutSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "stderrSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "index": 0,
+        "phase": "sample",
+        "correctness": "pass",
+        "eligible": true,
+        "stdoutCapturedBytes": 0,
+        "stderrCapturedBytes": 0
+      }
+    ],
+    "sourceUnchanged": true,
+    "binaryUnchanged": true,
+    "status": "completed",
+    "aggregates": null
+  },
+  "scope": "direct Popen-owned process handle; no descendants included",
+  "method": "Windows stdlib ctypes; GetProcessTimes/GetProcessMemoryInfo/GetProcessIoCounters; Toolhelp process snapshots",
+  "alignment": "sample begin/end perf_counter_ns offsets from before Popen; counters read sequentially inside each bracket",
+  "overhead": "observerWallNs sums counter and membership snapshot wall time; polling/capture overhead also included in elapsed; none subtracted",
+  "membershipLimit": "sampled immediate-child detection only; short-lived/reparented processes and PID reuse may escape; no containment",
+  "metrics": {
+    "userCpuNs": {
+      "unit": "ns",
+      "method": "GetProcessTimes user FILETIME * 100"
+    },
+    "systemCpuNs": {
+      "unit": "ns",
+      "method": "GetProcessTimes kernel FILETIME * 100"
+    },
+    "workingSetBytes": {
+      "unit": "bytes",
+      "method": "GetProcessMemoryInfo WorkingSetSize"
+    },
+    "peakWorkingSetBytes": {
+      "unit": "bytes",
+      "method": "GetProcessMemoryInfo PeakWorkingSetSize; OS lifetime high-water"
+    },
+    "privateCommitBytes": {
+      "unit": "bytes",
+      "method": "GetProcessMemoryInfo PrivateUsage; committed private memory, not private RSS"
+    },
+    "readOperations": {
+      "unit": "operations",
+      "method": "GetProcessIoCounters ReadOperationCount"
+    },
+    "writeOperations": {
+      "unit": "operations",
+      "method": "GetProcessIoCounters WriteOperationCount"
+    },
+    "otherOperations": {
+      "unit": "operations",
+      "method": "GetProcessIoCounters OtherOperationCount"
+    },
+    "readTransferBytes": {
+      "unit": "bytes",
+      "method": "GetProcessIoCounters ReadTransferCount; logical process transfers"
+    },
+    "writeTransferBytes": {
+      "unit": "bytes",
+      "method": "GetProcessIoCounters WriteTransferCount; logical process transfers"
+    },
+    "otherTransferBytes": {
+      "unit": "bytes",
+      "method": "GetProcessIoCounters OtherTransferCount; logical process transfers"
+    },
+    "physicalIoBytes": {
+      "unit": "bytes",
+      "method": "unavailable: process transfer counters do not measure device traffic"
+    }
+  },
+  "telemetry": [
+    {
+      "pid": 123,
+      "requestedIntervalMs": 10,
+      "maxSamples": 2048,
+      "membership": "direct-only-observed",
+      "observedDescendantPids": [],
+      "valid": true,
+      "errors": [],
+      "stopReason": null,
+      "observerWallNs": 100,
+      "sampledMaxima": {
+        "workingSetBytes": 100,
+        "privateCommitBytes": 100
+      },
+      "samples": [
+        {
+          "beginOffsetNs": 100,
+          "endOffsetNs": 200,
+          "final": true,
+          "values": {
+            "userCpuNs": 100,
+            "systemCpuNs": 100,
+            "workingSetBytes": 100,
+            "peakWorkingSetBytes": 200,
+            "privateCommitBytes": 100,
+            "readOperations": 100,
+            "writeOperations": 100,
+            "otherOperations": 100,
+            "readTransferBytes": 100,
+            "writeTransferBytes": 100,
+            "otherTransferBytes": 100,
+            "physicalIoBytes": null
+          },
+          "errors": {
+            "physicalIoBytes": "not instrumented; logical transfers are not device traffic"
+          }
+        }
+      ]
+    }
+  ]
+}

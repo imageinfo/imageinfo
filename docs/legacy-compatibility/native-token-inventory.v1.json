@@ -1,0 +1,2524 @@
+{
+  "schemaVersion": 1,
+  "ticket": "#0121",
+  "observedOn": "2026-10-16",
+  "status": "finite-source-inventory-not-parity",
+  "upstream": {
+    "version": "13.59",
+    "revision": "2200871d9cef988051d2a99d67df3bda6cbb30a8",
+    "sources": {
+      "exiftool": {
+        "sha256": "a6b8018093845ac93011307bac4ab630d6604b2365fc7f66bb88c88d7dedb5ed",
+        "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/exiftool"
+      },
+      "lib/Image/ExifTool.pod": {
+        "sha256": "b270d5af165ae91d3e807e4e4a3290b06dcc8526eaf06c045be526085d6d5a96",
+        "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/lib/Image/ExifTool.pod"
+      },
+      "lib/Image/ExifTool.pm": {
+        "sha256": "95fa4ec3cc3603866dd6e37bfe52ad019ff50a23bbd5cc87ce40f949cf49a508",
+        "url": "https://github.com/exiftool/exiftool/blob/2200871d9cef988051d2a99d67df3bda6cbb30a8/lib/Image/ExifTool.pm"
+      }
+    },
+    "denominatorRule": "CLI Option Details item headings; API METHODS head2; Options item headings union AvailableOptions registry; SetNewValue option headings. Identifier syntax only, not every value, abbreviation, overload or undocumented CLI parser branch."
+  },
+  "nativeSourceRevision": "9dcbf2729bd99d0b0e6477e61bc34abde5b3f9dd",
+  "nativeSourceSha256": {
+    "src/cli.rs": "d891461f5f83b0e92fd5b81b43236aab408024dd5cf81033d321f775abbe749c",
+    "src/read_request.rs": "612f84defa717f481e34e7ebf18f662c2935ded67d1c20ce2238f1645bbe9ee1",
+    "src/read_session.rs": "4815a17dd4b21fe3d864177ab51060b97d278011bbb9413ac647d230ee6ad473",
+    "src/reader/mod.rs": "a1377465287cf87ac1d44698aeea5d4cb017d6ce9c74888ab9ce79ed5b3e84a3",
+    "src/reader/wire.rs": "c5c3c2adacec69a48d9a4a0586ce0f47f2023e065c83174a64602bccb9d13944",
+    "src/plan.rs": "2b577dde8b8df377606123abd6a69042374bec973f9aee0e4544d6693fcb9ccc",
+    "src/preview.rs": "4b6b7568621b8e7a6df27ea51a848d3614c23f0ae48b60ced67998feac15d745",
+    "src/source_binding.rs": "7a56fd81449825c12b6309f0342bf21330cef881067b9741cc6e42f83e7b9b68",
+    "src/pairing.rs": "a17564bdc53a41137bf04b3a59fbff50146683c6248ee382904e394bafd85530"
+  },
+  "families": [
+    {
+      "id": "MAP-001",
+      "family": "Capability discovery",
+      "surveyedForms": [
+        "-list",
+        "-listw",
+        "-listf",
+        "-listr",
+        "-listwf",
+        "-listg",
+        "-listd",
+        "-listx",
+        "-ver"
+      ],
+      "nativeObservation": "Version exists; scoped tag/format/operation discovery remains unresolved.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-002",
+      "family": "Tag inclusion, exclusion and groups",
+      "surveyedForms": [
+        "-TAG",
+        "--TAG",
+        "-x",
+        "-GROUP:TAG",
+        "wildcards"
+      ],
+      "nativeObservation": "Exact case-sensitive selectors, two name aliases, namespace filters and repeatable --tag; no wildcard/exclude syntax.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-003",
+      "family": "Duplicates, families and ordering",
+      "surveyedForms": [
+        "-a",
+        "-G",
+        "-g",
+        "-sort",
+        "-D",
+        "-H"
+      ],
+      "nativeObservation": "All matching occurrences retained in source order; no sort/group presentation switches.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-004",
+      "family": "Value layers and display conversion",
+      "surveyedForms": [
+        "-n",
+        "TAG#",
+        "-d",
+        "-c",
+        "-sep",
+        "-ec",
+        "-E",
+        "-lang"
+      ],
+      "nativeObservation": "Four native value views; no date/coordinate/list formatting options.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-005",
+      "family": "Structured XMP",
+      "surveyedForms": [
+        "-struct",
+        "--struct",
+        "-j",
+        "-X"
+      ],
+      "nativeObservation": "Native typed snapshot subset; general structure serialization/flattening unresolved.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-006",
+      "family": "Binary extraction and routing",
+      "surveyedForms": [
+        "-b",
+        "-w",
+        "-W",
+        "-Wext",
+        "-o"
+      ],
+      "nativeObservation": "Three named previews copied to an explicit new file; no binary stdout/templates.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-007",
+      "family": "Human and machine reports",
+      "surveyedForms": [
+        "-s",
+        "-S",
+        "-s3",
+        "-t",
+        "-T",
+        "-h",
+        "-j",
+        "-csv",
+        "-X"
+      ],
+      "nativeObservation": "Text or native JSON envelopes; no legacy CSV/XML serializers.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-008",
+      "family": "Advanced report and serialization forms",
+      "surveyedForms": [
+        "-p",
+        "-args",
+        "-php",
+        "-plot"
+      ],
+      "nativeObservation": "Legacy reports/templates/serializers absent.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-009",
+      "family": "Assignment, lists and file-sourced values",
+      "surveyedForms": [
+        "-TAG=VALUE",
+        "-TAG+=",
+        "-TAG-=",
+        "-TAG<=FILE"
+      ],
+      "nativeObservation": "One read-only DateTimeOriginal advisory intent; no executable assignment/delete/list mutation.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-010",
+      "family": "Tag/group deletion",
+      "surveyedForms": [
+        "-TAG=",
+        "-GROUP:All=",
+        "-All=",
+        "--TAG"
+      ],
+      "nativeObservation": "No metadata deletion/privacy removal.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-011",
+      "family": "Creation and update modes",
+      "surveyedForms": [
+        "-wm",
+        "WriteMode"
+      ],
+      "nativeObservation": "No insert/update writer or write-mode setting.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-012",
+      "family": "Copy and redirection",
+      "surveyedForms": [
+        "-tagsFromFile",
+        "-addTagsFromFile",
+        "-DEST<SOURCE",
+        "-tagsFromFile @",
+        "-all:all",
+        "-unsafe"
+      ],
+      "nativeObservation": "No metadata copy writer.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-013",
+      "family": "JSON/CSV imports",
+      "surveyedForms": [
+        "-j=FILE",
+        "-csv=FILE",
+        "SourceFile",
+        "-f"
+      ],
+      "nativeObservation": "No legacy JSON/CSV importer or executable intent import.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-014",
+      "family": "Sidecar association and metadata mapping",
+      "surveyedForms": [
+        "-o",
+        "-srcfile",
+        "-tagsFromFile",
+        "filename format codes"
+      ],
+      "nativeObservation": "Explicit path-only sidecar pairing; no source/output substitution templates.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-015",
+      "family": "Input traversal and filtering",
+      "surveyedForms": [
+        "-r",
+        "-r.",
+        "-ext",
+        "--ext",
+        "-i",
+        "-if",
+        "-fileOrder",
+        "-fileOrderNUM"
+      ],
+      "nativeObservation": "Explicit finite inputs only; no recursion/filter/order expressions.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-016",
+      "family": "Fast, unknown and embedded extraction",
+      "surveyedForms": [
+        "-fast",
+        "-fast2",
+        "-fast3",
+        "-fast4",
+        "-fast5",
+        "-ee",
+        "-ee2",
+        "-ee3",
+        "-u",
+        "-U",
+        "-scanForXMP"
+      ],
+      "nativeObservation": "Fixed bounded R5 full-RAW partial reader; no upstream scan-level equivalence.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-017",
+      "family": "Filesystem and date organization",
+      "surveyedForms": [
+        "FileName",
+        "Directory",
+        "TestName",
+        "FileModifyDate",
+        "FileCreateDate",
+        "-d"
+      ],
+      "nativeObservation": "No rename/move operations.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-018",
+      "family": "Date shifts",
+      "surveyedForms": [
+        "AllDates",
+        "-TAG+=SHIFT",
+        "-TAG-=SHIFT",
+        "-globalTimeShift"
+      ],
+      "nativeObservation": "One exact Gregorian ASCII20 date preview; no shifts/zone conversion writer.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-019",
+      "family": "Geotagging and clock correction",
+      "surveyedForms": [
+        "-geotag",
+        "Geotime",
+        "Geosync",
+        "Geotag"
+      ],
+      "nativeObservation": "No track interpolation or geotagging.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-020",
+      "family": "Geolocation lookup and inverse export",
+      "surveyedForms": [
+        "Geolocation",
+        "-listgeo",
+        "-p track templates"
+      ],
+      "nativeObservation": "No geographic lookup/dataset.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-021",
+      "family": "Backups, overwrite and output policy",
+      "surveyedForms": [
+        "-overwrite_original",
+        "-overwrite_original_in_place",
+        "-restore_original",
+        "-delete_original",
+        "-o",
+        "-P"
+      ],
+      "nativeObservation": "New preview extraction refuses existing destination; no RAW replacement/restore.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-022",
+      "family": "Diagnostics and repair controls",
+      "surveyedForms": [
+        "-v",
+        "-htmlDump",
+        "-validate",
+        "-warning",
+        "-error",
+        "-F",
+        "-m"
+      ],
+      "nativeObservation": "Parser refusals and advisory admission diagnostics; no general validator/repair.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-023",
+      "family": "Ordered and persistent execution",
+      "surveyedForms": [
+        "-stay_open",
+        "-execute",
+        "-common_args",
+        "-echo",
+        "-echo3",
+        "-echo4"
+      ],
+      "nativeObservation": "Fixed v1 read/close JSONL session with request-local tokens; no legacy ready-marker protocol.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-024",
+      "family": "Argument/request files and filenames",
+      "surveyedForms": [
+        "-@",
+        "--",
+        "-charset filename",
+        "-srcfile"
+      ],
+      "nativeObservation": "Native argv and explicit -- terminator; request API OsString tokens and session Unicode tokens; no argument files.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-025",
+      "family": "Warnings, progress and status",
+      "surveyedForms": [
+        "-q",
+        "-progress",
+        "-efile",
+        "exit 0/1/2"
+      ],
+      "nativeObservation": "Native envelopes/status/diagnostics; no quiet/progress/error-file controls.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-026",
+      "family": "Custom definitions and expressions",
+      "surveyedForms": [
+        "-config",
+        "-use",
+        "-userParam",
+        "Perl expressions in -if/-p/tag interpolation"
+      ],
+      "nativeObservation": "No executable config/module loading or user-parameter interface.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-027",
+      "family": "Extraction lifecycle",
+      "surveyedForms": [
+        "ImageInfo",
+        "ExtractInfo",
+        "GetInfo"
+      ],
+      "nativeObservation": "Bounded reader/read_file, Metadata snapshot and select; no ExifTool method signatures.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-028",
+      "family": "Identity and values",
+      "surveyedForms": [
+        "GetTagList",
+        "GetValue",
+        "GetGroup",
+        "GetGroups",
+        "GetDescription",
+        "GetTagID"
+      ],
+      "nativeObservation": "Occurrence fields, selector and text_value cover a finite subset; no generic tag dictionary API.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-029",
+      "family": "Queued mutation lifetime",
+      "surveyedForms": [
+        "SetNewValue",
+        "GetNewValue",
+        "WriteInfo"
+      ],
+      "nativeObservation": "Nonexecuting saved preview intent only; no queued writer/state API.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-030",
+      "family": "Copy/mapping lifecycle",
+      "surveyedForms": [
+        "SetNewValuesFromFile",
+        "SetNewValue",
+        "WriteInfo"
+      ],
+      "nativeObservation": "No copy-from-file mutation API.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-031",
+      "family": "Static discovery versus detection",
+      "surveyedForms": [
+        "GetAllTags",
+        "GetWritableTags",
+        "GetDeleteGroups",
+        "GetFileType"
+      ],
+      "nativeObservation": "NAMES constant and version/capability revision constants; no complete scoped discovery service.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    },
+    {
+      "id": "MAP-032",
+      "family": "Option families",
+      "surveyedForms": [
+        "Options",
+        "PrintConv",
+        "Duplicates",
+        "Struct",
+        "Unknown",
+        "ExtractEmbedded",
+        "FastScan",
+        "QuickTimeUTC",
+        "QuickTimePad",
+        "RequestTags"
+      ],
+      "nativeObservation": "Explicit typed Limits and finite native grammar; no arbitrary API option passthrough.",
+      "residual": "current-RAW-unresolved",
+      "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
+      "adoptedDifference": false
+    }
+  ],
+  "cliOptionHeadings": [
+    {
+      "id": "CLI-001",
+      "syntax": "-TAG",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-002",
+      "syntax": "--TAG",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-003",
+      "syntax": "-TAG[+-^]=[VALUE]",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-004",
+      "syntax": "-TAG<=DATFILE or -TAG<=FMT",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-005",
+      "syntax": "-tagsFromFile SRCFILE or FMT",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-006",
+      "syntax": "-x TAG (-exclude)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-007",
+      "syntax": "-args (-argFormat)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-008",
+      "syntax": "-b, --b (-binary, --binary)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-009",
+      "syntax": "-c FMT (-coordFormat)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-010",
+      "syntax": "-charset [[TYPE=]CHARSET]",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-011",
+      "syntax": "-csv[[+]=CSVFILE]",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-012",
+      "syntax": "-csvDelim STR",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-013",
+      "syntax": "-d FMT (-dateFormat)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-014",
+      "syntax": "-D (-decimal)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-015",
+      "syntax": "-E, -ex, -ec (-escapeHTML, -escapeXML, -escapeC)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-016",
+      "syntax": "-f (-forcePrint)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-017",
+      "syntax": "-g[NUM][:NUM...] (-groupHeadings)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-018",
+      "syntax": "-G[NUM][:NUM...] (-groupNames)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-019",
+      "syntax": "-h (-htmlFormat)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-020",
+      "syntax": "-H (-hex)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-021",
+      "syntax": "-htmlDump[OFFSET]",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-022",
+      "syntax": "-j[[+]=JSONFILE] (-json)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-023",
+      "syntax": "-l (-long)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-024",
+      "syntax": "-L (-latin)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-025",
+      "syntax": "-lang [LANG]",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-026",
+      "syntax": "-listItem INDEX",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-027",
+      "syntax": "-n (--printConv)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-028",
+      "syntax": "-p[-] STR or FMTFILE (-printFormat)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-029",
+      "syntax": "-php",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-030",
+      "syntax": "-plot",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-031",
+      "syntax": "-s[NUM] (-short)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-032",
+      "syntax": "-S (-veryShort)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-033",
+      "syntax": "-sep STR (-separator)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-034",
+      "syntax": "-sort, --sort",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-035",
+      "syntax": "-struct, --struct",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-036",
+      "syntax": "-t (-tab)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-037",
+      "syntax": "-T (-table)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-038",
+      "syntax": "-v[NUM] (-verbose)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-039",
+      "syntax": "-w[+][!] EXT or FMT (-textOut)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-040",
+      "syntax": "-W[+][!] FMT (-tagOut)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-041",
+      "syntax": "-Wext EXT, --Wext EXT (-tagOutExt)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-042",
+      "syntax": "-X (-xmlFormat)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-043",
+      "syntax": "-a, --a (-duplicates, --duplicates)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-044",
+      "syntax": "-e (--composite)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-045",
+      "syntax": "-ee[NUM] (-extractEmbedded)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-046",
+      "syntax": "-ext[+] EXT, --ext EXT (-extension)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-047",
+      "syntax": "-F[OFFSET] (-fixBase)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-048",
+      "syntax": "-fast[NUM]",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-049",
+      "syntax": "-fileOrder[NUM] [-]TAG",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-050",
+      "syntax": "-i DIR (-ignore)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-051",
+      "syntax": "-if[NUM] EXPR",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-052",
+      "syntax": "-m (-ignoreMinorErrors)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-053",
+      "syntax": "-o OUTFILE or FMT (-out)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-054",
+      "syntax": "-overwrite_original",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-055",
+      "syntax": "-overwrite_original_in_place",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-056",
+      "syntax": "-P (-preserve)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-057",
+      "syntax": "-password PASSWD",
+      "residual": "deferred-breadth",
+      "owner": "#0012",
+      "native": "Password-protected document use is deferred breadth; no native password interface."
+    },
+    {
+      "id": "CLI-058",
+      "syntax": "-progress[NUM][:[TITLE]]",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-059",
+      "syntax": "-q (-quiet)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-060",
+      "syntax": "-r[.] (-recurse)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-061",
+      "syntax": "-scanForXMP",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-062",
+      "syntax": "-u (-unknown)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-063",
+      "syntax": "-U (-unknown2)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-064",
+      "syntax": "-wm MODE (-writeMode)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-065",
+      "syntax": "-z (-zip)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-066",
+      "syntax": "-@ ARGFILE",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-067",
+      "syntax": "-k (-pause)",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-068",
+      "syntax": "-list, -listw, -listf, -listr, -listwf, -listg[NUM], -listd, -listx, -listgeo",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-069",
+      "syntax": "-ver",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-070",
+      "syntax": "--",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "The native -- terminator admits following literal operands. Shared spelling alone does not qualify every upstream/native argument interaction."
+    },
+    {
+      "id": "CLI-071",
+      "syntax": "-diff FILE2",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-072",
+      "syntax": "-geotag TRKFILE",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-073",
+      "syntax": "-globalTimeShift SHIFT",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-074",
+      "syntax": "-use MODULE",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-075",
+      "syntax": "-restore_original",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-076",
+      "syntax": "-delete_original[!]",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-077",
+      "syntax": "-api [OPT[[^]=[VAL]]]",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-078",
+      "syntax": "-common_args",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-079",
+      "syntax": "-config CFGFILE",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-080",
+      "syntax": "-echo[NUM] TEXT",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-081",
+      "syntax": "-efile[NUM][!] TXTFILE",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-082",
+      "syntax": "-execute[NUM]",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-083",
+      "syntax": "-fileNUM ALTFILE",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-084",
+      "syntax": "-list_dir",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-085",
+      "syntax": "-srcfile FMT",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-086",
+      "syntax": "-stay_open FLAG",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    },
+    {
+      "id": "CLI-087",
+      "syntax": "-userParam PARAM[[^]=[VAL]]",
+      "residual": "current-RAW-unresolved",
+      "owner": "#0015",
+      "native": "Legacy syntax is not admitted as a compatibility mode; native controls are separately enumerated."
+    }
+  ],
+  "apiMethods": [
+    {
+      "heading": "new",
+      "family": "MAP-032",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Explicit typed Limits and finite native grammar; no arbitrary API option passthrough."
+    },
+    {
+      "heading": "ImageInfo",
+      "family": "MAP-027",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Bounded reader/read_file, Metadata snapshot and select; no ExifTool method signatures."
+    },
+    {
+      "heading": "Options",
+      "family": "MAP-032",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Explicit typed Limits and finite native grammar; no arbitrary API option passthrough."
+    },
+    {
+      "heading": "ClearOptions",
+      "family": "MAP-032",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Explicit typed Limits and finite native grammar; no arbitrary API option passthrough."
+    },
+    {
+      "heading": "ExtractInfo",
+      "family": "MAP-027",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Bounded reader/read_file, Metadata snapshot and select; no ExifTool method signatures."
+    },
+    {
+      "heading": "GetInfo",
+      "family": "MAP-027",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Bounded reader/read_file, Metadata snapshot and select; no ExifTool method signatures."
+    },
+    {
+      "heading": "WriteInfo",
+      "family": "MAP-029",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Nonexecuting saved preview intent only; no queued writer/state API."
+    },
+    {
+      "heading": "GetTagList",
+      "family": "MAP-027",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Bounded reader/read_file, Metadata snapshot and select; no ExifTool method signatures."
+    },
+    {
+      "heading": "GetFoundTags",
+      "family": "MAP-027",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Bounded reader/read_file, Metadata snapshot and select; no ExifTool method signatures."
+    },
+    {
+      "heading": "GetRequestedTags",
+      "family": "MAP-027",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Bounded reader/read_file, Metadata snapshot and select; no ExifTool method signatures."
+    },
+    {
+      "heading": "GetValue",
+      "family": "MAP-028",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Occurrence fields, selector and text_value cover a finite subset; no generic tag dictionary API."
+    },
+    {
+      "heading": "SetNewValue",
+      "family": "MAP-029",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Nonexecuting saved preview intent only; no queued writer/state API."
+    },
+    {
+      "heading": "GetNewValue",
+      "family": "MAP-029",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Nonexecuting saved preview intent only; no queued writer/state API."
+    },
+    {
+      "heading": "SetNewValuesFromFile",
+      "family": "MAP-030",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "No copy-from-file mutation API."
+    },
+    {
+      "heading": "CountNewValues",
+      "family": "MAP-029",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Nonexecuting saved preview intent only; no queued writer/state API."
+    },
+    {
+      "heading": "SaveNewValues",
+      "family": "MAP-029",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Nonexecuting saved preview intent only; no queued writer/state API."
+    },
+    {
+      "heading": "RestoreNewValues",
+      "family": "MAP-029",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Nonexecuting saved preview intent only; no queued writer/state API."
+    },
+    {
+      "heading": "SetAlternateFile",
+      "family": "MAP-030",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "No copy-from-file mutation API."
+    },
+    {
+      "heading": "SetFileModifyDate",
+      "family": "MAP-017",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "No rename/move operations."
+    },
+    {
+      "heading": "SetFileName",
+      "family": "MAP-017",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "No rename/move operations."
+    },
+    {
+      "heading": "SetNewGroups",
+      "family": "MAP-030",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "No copy-from-file mutation API."
+    },
+    {
+      "heading": "GetNewGroups",
+      "family": "MAP-030",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "No copy-from-file mutation API."
+    },
+    {
+      "heading": "GetTagID",
+      "family": "MAP-028",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Occurrence fields, selector and text_value cover a finite subset; no generic tag dictionary API."
+    },
+    {
+      "heading": "GetDescription",
+      "family": "MAP-028",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Occurrence fields, selector and text_value cover a finite subset; no generic tag dictionary API."
+    },
+    {
+      "heading": "GetGroup",
+      "family": "MAP-028",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Occurrence fields, selector and text_value cover a finite subset; no generic tag dictionary API."
+    },
+    {
+      "heading": "GetGroups",
+      "family": "MAP-028",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Occurrence fields, selector and text_value cover a finite subset; no generic tag dictionary API."
+    },
+    {
+      "heading": "BuildCompositeTags",
+      "family": "MAP-026",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "No executable config/module loading or user-parameter interface."
+    },
+    {
+      "heading": "AvailableOptions [static]",
+      "family": "MAP-032",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Explicit typed Limits and finite native grammar; no arbitrary API option passthrough."
+    },
+    {
+      "heading": "GetTagName [static]",
+      "family": "MAP-028",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "Occurrence fields, selector and text_value cover a finite subset; no generic tag dictionary API."
+    },
+    {
+      "heading": "GetShortcuts [static]",
+      "family": "MAP-031",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "NAMES constant and version/capability revision constants; no complete scoped discovery service."
+    },
+    {
+      "heading": "GetAllTags [static]",
+      "family": "MAP-031",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "NAMES constant and version/capability revision constants; no complete scoped discovery service."
+    },
+    {
+      "heading": "GetWritableTags [static]",
+      "family": "MAP-031",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "NAMES constant and version/capability revision constants; no complete scoped discovery service."
+    },
+    {
+      "heading": "GetAllGroups [static]",
+      "family": "MAP-031",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "NAMES constant and version/capability revision constants; no complete scoped discovery service."
+    },
+    {
+      "heading": "GetDeleteGroups [static]",
+      "family": "MAP-031",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "NAMES constant and version/capability revision constants; no complete scoped discovery service."
+    },
+    {
+      "heading": "GetFileType [static]",
+      "family": "MAP-031",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "NAMES constant and version/capability revision constants; no complete scoped discovery service."
+    },
+    {
+      "heading": "CanWrite [static]",
+      "family": "MAP-031",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "NAMES constant and version/capability revision constants; no complete scoped discovery service."
+    },
+    {
+      "heading": "CanCreate [static]",
+      "family": "MAP-031",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "NAMES constant and version/capability revision constants; no complete scoped discovery service."
+    },
+    {
+      "heading": "AddUserDefinedTags [static]",
+      "family": "MAP-026",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "No executable config/module loading or user-parameter interface."
+    },
+    {
+      "heading": "OrderedKeys [static]",
+      "family": "MAP-026",
+      "residual": "current-RAW-unresolved",
+      "nativeObservation": "No executable config/module loading or user-parameter interface."
+    }
+  ],
+  "apiOptions": [
+    {
+      "name": "Binary",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Three named previews copied to an explicit new file; no binary stdout/templates. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-006"
+    },
+    {
+      "name": "BlockExtract",
+      "documentedHeading": true,
+      "registryEntry": false,
+      "residual": "current-RAW-unresolved",
+      "native": "Three named previews copied to an explicit new file; no binary stdout/templates. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-006"
+    },
+    {
+      "name": "ByteOrder",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No insert/update writer or write-mode setting. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-011"
+    },
+    {
+      "name": "ByteUnit",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Four native value views; no date/coordinate/list formatting options. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-004"
+    },
+    {
+      "name": "Charset",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Native argv and explicit -- terminator; request API OsString tokens and session Unicode tokens; no argument files. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-024"
+    },
+    {
+      "name": "CharsetEXIF",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Native argv and explicit -- terminator; request API OsString tokens and session Unicode tokens; no argument files. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-024"
+    },
+    {
+      "name": "CharsetFileName",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Native argv and explicit -- terminator; request API OsString tokens and session Unicode tokens; no argument files. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-024"
+    },
+    {
+      "name": "CharsetID3",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "deferred-breadth",
+      "native": "Native argv and explicit -- terminator; request API OsString tokens and session Unicode tokens; no argument files. Same-named option is not admitted.",
+      "owner": "#0012",
+      "family": "MAP-024"
+    },
+    {
+      "name": "CharsetIPTC",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Native argv and explicit -- terminator; request API OsString tokens and session Unicode tokens; no argument files. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-024"
+    },
+    {
+      "name": "CharsetPhotoshop",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Native argv and explicit -- terminator; request API OsString tokens and session Unicode tokens; no argument files. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-024"
+    },
+    {
+      "name": "CharsetQuickTime",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Native argv and explicit -- terminator; request API OsString tokens and session Unicode tokens; no argument files. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-024"
+    },
+    {
+      "name": "CharsetRIFF",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "deferred-breadth",
+      "native": "Native argv and explicit -- terminator; request API OsString tokens and session Unicode tokens; no argument files. Same-named option is not admitted.",
+      "owner": "#0012",
+      "family": "MAP-024"
+    },
+    {
+      "name": "Compact",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Explicit typed Limits and finite native grammar; no arbitrary API option passthrough. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-032"
+    },
+    {
+      "name": "Composite",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Fixed bounded R5 full-RAW partial reader; no upstream scan-level equivalence. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-016"
+    },
+    {
+      "name": "Compress",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No insert/update writer or write-mode setting. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-011"
+    },
+    {
+      "name": "CoordFormat",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Four native value views; no date/coordinate/list formatting options. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-004"
+    },
+    {
+      "name": "DateFormat",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Four native value views; no date/coordinate/list formatting options. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-004"
+    },
+    {
+      "name": "Debug",
+      "documentedHeading": false,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Native envelopes/status/diagnostics; no quiet/progress/error-file controls. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-025"
+    },
+    {
+      "name": "Duplicates",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "All matching occurrences retained in source order; no sort/group presentation switches. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-003"
+    },
+    {
+      "name": "EncodeHangs",
+      "documentedHeading": false,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Native argv and explicit -- terminator; request API OsString tokens and session Unicode tokens; no argument files. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-024"
+    },
+    {
+      "name": "Escape",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Four native value views; no date/coordinate/list formatting options. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-004"
+    },
+    {
+      "name": "Exclude",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Exact case-sensitive selectors, two name aliases, namespace filters and repeatable --tag; no wildcard/exclude syntax. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-002"
+    },
+    {
+      "name": "ExtendedXMP",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Fixed bounded R5 full-RAW partial reader; no upstream scan-level equivalence. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-016"
+    },
+    {
+      "name": "ExtractEmbedded",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Fixed bounded R5 full-RAW partial reader; no upstream scan-level equivalence. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-016"
+    },
+    {
+      "name": "FastScan",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Fixed bounded R5 full-RAW partial reader; no upstream scan-level equivalence. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-016"
+    },
+    {
+      "name": "Filter",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No executable config/module loading or user-parameter interface. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-026"
+    },
+    {
+      "name": "FilterW",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No executable config/module loading or user-parameter interface. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-026"
+    },
+    {
+      "name": "FixBase",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Parser refusals and advisory admission diagnostics; no general validator/repair. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-022"
+    },
+    {
+      "name": "GPSQuadrant",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Four native value views; no date/coordinate/list formatting options. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-004"
+    },
+    {
+      "name": "GeoDir",
+      "documentedHeading": true,
+      "registryEntry": false,
+      "residual": "current-RAW-unresolved",
+      "native": "One exact Gregorian ASCII20 date preview; no shifts/zone conversion writer. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-018"
+    },
+    {
+      "name": "GeoHPosErr",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No track interpolation or geotagging. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-019"
+    },
+    {
+      "name": "GeoMaxExtSecs",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No track interpolation or geotagging. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-019"
+    },
+    {
+      "name": "GeoMaxHDOP",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No track interpolation or geotagging. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-019"
+    },
+    {
+      "name": "GeoMaxIntSecs",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No track interpolation or geotagging. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-019"
+    },
+    {
+      "name": "GeoMaxPDOP",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No track interpolation or geotagging. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-019"
+    },
+    {
+      "name": "GeoMinSats",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No track interpolation or geotagging. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-019"
+    },
+    {
+      "name": "GeoSpeedRef",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No track interpolation or geotagging. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-019"
+    },
+    {
+      "name": "GeoUserTag",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No track interpolation or geotagging. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-019"
+    },
+    {
+      "name": "GeolocAltNames",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No geographic lookup/dataset. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-020"
+    },
+    {
+      "name": "GeolocFeature",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No geographic lookup/dataset. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-020"
+    },
+    {
+      "name": "GeolocMaxDist",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No geographic lookup/dataset. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-020"
+    },
+    {
+      "name": "GeolocMinPop",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No geographic lookup/dataset. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-020"
+    },
+    {
+      "name": "Geolocation",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No geographic lookup/dataset. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-020"
+    },
+    {
+      "name": "GlobalTimeShift",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Four native value views; no date/coordinate/list formatting options. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-004"
+    },
+    {
+      "name": "Group#",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "All matching occurrences retained in source order; no sort/group presentation switches. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-003"
+    },
+    {
+      "name": "HexTagIDs",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "All matching occurrences retained in source order; no sort/group presentation switches. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-003"
+    },
+    {
+      "name": "HtmlDump",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Legacy reports/templates/serializers absent. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-008"
+    },
+    {
+      "name": "HtmlDumpBase",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Legacy reports/templates/serializers absent. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-008"
+    },
+    {
+      "name": "IgnoreGroups",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Exact case-sensitive selectors, two name aliases, namespace filters and repeatable --tag; no wildcard/exclude syntax. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-002"
+    },
+    {
+      "name": "IgnoreMinorErrors",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Parser refusals and advisory admission diagnostics; no general validator/repair. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-022"
+    },
+    {
+      "name": "IgnoreTags",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Exact case-sensitive selectors, two name aliases, namespace filters and repeatable --tag; no wildcard/exclude syntax. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-002"
+    },
+    {
+      "name": "ImageHashType",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Explicit typed Limits and finite native grammar; no arbitrary API option passthrough. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-032"
+    },
+    {
+      "name": "KeepUTCTime",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Four native value views; no date/coordinate/list formatting options. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-004"
+    },
+    {
+      "name": "Lang",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Four native value views; no date/coordinate/list formatting options. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-004"
+    },
+    {
+      "name": "LargeFileSupport",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Explicit typed Limits and finite native grammar; no arbitrary API option passthrough. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-032"
+    },
+    {
+      "name": "LimitLongValues",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Four native value views; no date/coordinate/list formatting options. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-004"
+    },
+    {
+      "name": "List",
+      "documentedHeading": false,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Four native value views; no date/coordinate/list formatting options. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-004"
+    },
+    {
+      "name": "ListItem",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Four native value views; no date/coordinate/list formatting options. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-004"
+    },
+    {
+      "name": "ListJoin",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Four native value views; no date/coordinate/list formatting options. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-004"
+    },
+    {
+      "name": "ListSep",
+      "documentedHeading": false,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Four native value views; no date/coordinate/list formatting options. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-004"
+    },
+    {
+      "name": "ListSplit",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Four native value views; no date/coordinate/list formatting options. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-004"
+    },
+    {
+      "name": "MDItemTags",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Explicit typed Limits and finite native grammar; no arbitrary API option passthrough. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-032"
+    },
+    {
+      "name": "MakerNotes",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Fixed bounded R5 full-RAW partial reader; no upstream scan-level equivalence. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-016"
+    },
+    {
+      "name": "MissingTagValue",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No executable config/module loading or user-parameter interface. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-026"
+    },
+    {
+      "name": "NoDups",
+      "documentedHeading": true,
+      "registryEntry": false,
+      "residual": "current-RAW-unresolved",
+      "native": "All matching occurrences retained in source order; no sort/group presentation switches. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-003"
+    },
+    {
+      "name": "NoMandatory",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No insert/update writer or write-mode setting. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-011"
+    },
+    {
+      "name": "NoMultiExif",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No insert/update writer or write-mode setting. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-011"
+    },
+    {
+      "name": "NoPDFList",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "deferred-breadth",
+      "native": "Explicit typed Limits and finite native grammar; no arbitrary API option passthrough. Same-named option is not admitted.",
+      "owner": "#0012",
+      "family": "MAP-032"
+    },
+    {
+      "name": "NoWarning",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Native envelopes/status/diagnostics; no quiet/progress/error-file controls. Same-named option is not admitted.",
+      "owner": "#0015",
+      "documentedSyntax": "NoWarning[+]",
+      "family": "MAP-025"
+    },
+    {
+      "name": "Password",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "deferred-breadth",
+      "native": "Explicit typed Limits and finite native grammar; no arbitrary API option passthrough. Same-named option is not admitted.",
+      "owner": "#0012",
+      "family": "MAP-032"
+    },
+    {
+      "name": "Plot",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Legacy reports/templates/serializers absent. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-008"
+    },
+    {
+      "name": "PrintCSV",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Text or native JSON envelopes; no legacy CSV/XML serializers. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-007"
+    },
+    {
+      "name": "PrintConv",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Four native value views; no date/coordinate/list formatting options. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-004"
+    },
+    {
+      "name": "QuickTimeHandler",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Explicit typed Limits and finite native grammar; no arbitrary API option passthrough. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-032"
+    },
+    {
+      "name": "QuickTimePad",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Explicit typed Limits and finite native grammar; no arbitrary API option passthrough. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-032"
+    },
+    {
+      "name": "QuickTimeUTC",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Explicit typed Limits and finite native grammar; no arbitrary API option passthrough. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-032"
+    },
+    {
+      "name": "RequestAll",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Fixed bounded R5 full-RAW partial reader; no upstream scan-level equivalence. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-016"
+    },
+    {
+      "name": "RequestTags",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Exact case-sensitive selectors, two name aliases, namespace filters and repeatable --tag; no wildcard/exclude syntax. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-002"
+    },
+    {
+      "name": "SaveBin",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Three named previews copied to an explicit new file; no binary stdout/templates. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-006"
+    },
+    {
+      "name": "SaveFormat",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "NAMES constant and version/capability revision constants; no complete scoped discovery service. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-031"
+    },
+    {
+      "name": "SavePath",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "NAMES constant and version/capability revision constants; no complete scoped discovery service. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-031"
+    },
+    {
+      "name": "ScanForXMP",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Fixed bounded R5 full-RAW partial reader; no upstream scan-level equivalence. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-016"
+    },
+    {
+      "name": "Sort",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "All matching occurrences retained in source order; no sort/group presentation switches. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-003"
+    },
+    {
+      "name": "Sort2",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "All matching occurrences retained in source order; no sort/group presentation switches. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-003"
+    },
+    {
+      "name": "StrictDate",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Four native value views; no date/coordinate/list formatting options. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-004"
+    },
+    {
+      "name": "Struct",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Native typed snapshot subset; general structure serialization/flattening unresolved. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-005"
+    },
+    {
+      "name": "StructFormat",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Native typed snapshot subset; general structure serialization/flattening unresolved. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-005"
+    },
+    {
+      "name": "SystemTags",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Explicit typed Limits and finite native grammar; no arbitrary API option passthrough. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-032"
+    },
+    {
+      "name": "SystemTimeRes",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Explicit typed Limits and finite native grammar; no arbitrary API option passthrough. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-032"
+    },
+    {
+      "name": "TextOut",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Legacy reports/templates/serializers absent. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-008"
+    },
+    {
+      "name": "TimeZone",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Four native value views; no date/coordinate/list formatting options. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-004"
+    },
+    {
+      "name": "UndefTags",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No executable config/module loading or user-parameter interface. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-026"
+    },
+    {
+      "name": "Unknown",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Fixed bounded R5 full-RAW partial reader; no upstream scan-level equivalence. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-016"
+    },
+    {
+      "name": "UserParam",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No executable config/module loading or user-parameter interface. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-026"
+    },
+    {
+      "name": "Validate",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Parser refusals and advisory admission diagnostics; no general validator/repair. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-022"
+    },
+    {
+      "name": "Verbose",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Native envelopes/status/diagnostics; no quiet/progress/error-file controls. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-025"
+    },
+    {
+      "name": "WindowsLongPath",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Native argv and explicit -- terminator; request API OsString tokens and session Unicode tokens; no argument files. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-024"
+    },
+    {
+      "name": "WindowsWideFile",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Native argv and explicit -- terminator; request API OsString tokens and session Unicode tokens; no argument files. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-024"
+    },
+    {
+      "name": "WriteMode",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "No insert/update writer or write-mode setting. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-011"
+    },
+    {
+      "name": "XAttrTags",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Explicit typed Limits and finite native grammar; no arbitrary API option passthrough. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-032"
+    },
+    {
+      "name": "XMPAutoConv",
+      "documentedHeading": true,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Explicit typed Limits and finite native grammar; no arbitrary API option passthrough. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-032"
+    },
+    {
+      "name": "XMPShorthand",
+      "documentedHeading": false,
+      "registryEntry": true,
+      "residual": "current-RAW-unresolved",
+      "native": "Explicit typed Limits and finite native grammar; no arbitrary API option passthrough. Same-named option is not admitted.",
+      "owner": "#0015",
+      "family": "MAP-032"
+    }
+  ],
+  "setNewValueOptions": [
+    {
+      "name": "AddValue",
+      "alsoUsedBy": "SetNewValuesFromFile (documented inherited options, defaults differ)",
+      "residual": "current-RAW-unresolved",
+      "native": "No mutation queue or writer API."
+    },
+    {
+      "name": "DelValue",
+      "alsoUsedBy": "SetNewValuesFromFile (documented inherited options, defaults differ)",
+      "residual": "current-RAW-unresolved",
+      "native": "No mutation queue or writer API."
+    },
+    {
+      "name": "EditGroup",
+      "alsoUsedBy": "SetNewValuesFromFile (documented inherited options, defaults differ)",
+      "residual": "current-RAW-unresolved",
+      "native": "No mutation queue or writer API."
+    },
+    {
+      "name": "EditOnly",
+      "alsoUsedBy": "SetNewValuesFromFile (documented inherited options, defaults differ)",
+      "residual": "current-RAW-unresolved",
+      "native": "No mutation queue or writer API."
+    },
+    {
+      "name": "Group",
+      "alsoUsedBy": "SetNewValuesFromFile (documented inherited options, defaults differ)",
+      "residual": "current-RAW-unresolved",
+      "native": "No mutation queue or writer API."
+    },
+    {
+      "name": "NoFlat",
+      "alsoUsedBy": "SetNewValuesFromFile (documented inherited options, defaults differ)",
+      "residual": "current-RAW-unresolved",
+      "native": "No mutation queue or writer API."
+    },
+    {
+      "name": "NoShortcut",
+      "alsoUsedBy": "SetNewValuesFromFile (documented inherited options, defaults differ)",
+      "residual": "current-RAW-unresolved",
+      "native": "No mutation queue or writer API."
+    },
+    {
+      "name": "Protected",
+      "alsoUsedBy": "SetNewValuesFromFile (documented inherited options, defaults differ)",
+      "residual": "current-RAW-unresolved",
+      "native": "No mutation queue or writer API."
+    },
+    {
+      "name": "ProtectSaved",
+      "alsoUsedBy": "SetNewValuesFromFile (documented inherited options, defaults differ)",
+      "residual": "current-RAW-unresolved",
+      "native": "No mutation queue or writer API."
+    },
+    {
+      "name": "Replace",
+      "alsoUsedBy": "SetNewValuesFromFile (documented inherited options, defaults differ)",
+      "residual": "current-RAW-unresolved",
+      "native": "No mutation queue or writer API."
+    },
+    {
+      "name": "Shift",
+      "alsoUsedBy": "SetNewValuesFromFile (documented inherited options, defaults differ)",
+      "residual": "current-RAW-unresolved",
+      "native": "No mutation queue or writer API."
+    },
+    {
+      "name": "Type",
+      "alsoUsedBy": "SetNewValuesFromFile (documented inherited options, defaults differ)",
+      "residual": "current-RAW-unresolved",
+      "native": "No mutation queue or writer API."
+    }
+  ],
+  "counts": {
+    "families": 32,
+    "cliOptionHeadings": 87,
+    "apiMethods": 39,
+    "apiOptions": 102,
+    "setNewValueOptions": 12,
+    "apiDocumentedOptionHeadings": 97,
+    "apiRegistryEntries": 99
+  },
+  "native": {
+    "commands": [
+      "help [COMMAND...]",
+      "version",
+      "metadata read INPUT...",
+      "binary list INPUT...",
+      "binary extract INPUT",
+      "preview date-time-original INPUT",
+      "sidecar pair INPUT",
+      "session read"
+    ],
+    "commonOptions": {
+      "--help": [],
+      "--version": [],
+      "--output": [
+        "text",
+        "json"
+      ],
+      "--color": [
+        "auto",
+        "always",
+        "never"
+      ],
+      "--no-interactive": [],
+      "--interactive": [
+        "admitted grammar; refuses INTERACTION_UNAVAILABLE"
+      ]
+    },
+    "leafOptions": {
+      "metadata read": {
+        "--tag": "repeat exact selector",
+        "--values": [
+          "raw",
+          "normalized",
+          "display",
+          "all"
+        ],
+        "--max-bytes": "1..268435456; default8388608",
+        "--max-preview-bytes": "1..1073741824; default67108864"
+      },
+      "binary list": {
+        "--max-bytes": "same read limits",
+        "--max-preview-bytes": "same read limits"
+      },
+      "binary extract": {
+        "--tag": [
+          "ThumbnailImage",
+          "PreviewImage",
+          "JpgFromRaw"
+        ],
+        "--output-file": "required explicit fresh destination",
+        "--dry-run": "boolean",
+        "--max-bytes": "same read limits",
+        "--max-preview-bytes": "same read limits"
+      },
+      "preview date-time-original": {
+        "--value": "required Gregorian YYYY:MM:DD HH:MM:SS",
+        "--offset": "optional u64 allocation assertion"
+      },
+      "sidecar pair": {
+        "--sidecar": "explicit existing path; missing path refuses"
+      },
+      "session read": {
+        "--output": "forbidden; fixed v1 JSONL"
+      }
+    },
+    "terminator": "-- makes following operands literal; =attached values supported by clap; no short flag aliases declared",
+    "selectors": [
+      "ThumbnailImage",
+      "PreviewImage",
+      "JpgFromRaw",
+      "Make",
+      "Model",
+      "ImageWidth",
+      "ImageHeight",
+      "ExposureTime",
+      "FNumber",
+      "ISO",
+      "FocalLength",
+      "DateTimeOriginal",
+      "OffsetTimeOriginal",
+      "SubSecTimeOriginal",
+      "PixelXDimension",
+      "PixelYDimension",
+      "CanonFirmwareVersion",
+      "CanonModelID",
+      "Quality",
+      "DualPixelRaw"
+    ],
+    "selectorAliases": {
+      "ExifImageWidth": "PixelXDimension",
+      "ExifImageHeight": "PixelYDimension"
+    },
+    "namespaceAliases": {
+      "EXIF": "exif",
+      "exif": "exif",
+      "Canon": "canon",
+      "canon": "canon",
+      "CTMD": "canon:ctmd",
+      "canon:ctmd": "canon:ctmd",
+      "Binary": "canon:binary",
+      "canon:binary": "canon:binary"
+    },
+    "requestAPI": {
+      "execute": "read_request::execute(id, &[OsString]) -> ResultEnvelope; metadata read only, no argv[0]",
+      "write_result": "caller-owned Write, bounded JSON plus LF and flush",
+      "limits": {
+        "idBytes": 128,
+        "tokens": 128,
+        "tokenBytes": 32768,
+        "totalTokenBytes": 65536,
+        "inputs": 4,
+        "metadataBytes": 8388608,
+        "resultBytesIncludingLF": 16777216
+      },
+      "outputSelector": "forbidden before --, including attached form",
+      "nonReadOperations": "help/version/preview/binary/pair/session refused; --interactive refuses in parser",
+      "paths": "relative paths use caller cwd; no argument files/config/shell expansion"
+    },
+    "sessionAPI": {
+      "entry": "read_session::run(caller BufRead, caller Write); CLI session read uses locked stdin/stdout",
+      "inputMembers": {
+        "read": [
+          "protocolVersion",
+          "kind",
+          "id",
+          "tokens"
+        ],
+        "close": [
+          "protocolVersion",
+          "kind",
+          "id"
+        ]
+      },
+      "transport": "Unicode token strings, request-local read_request admission; exact version1, LF/CRLF input and LF output",
+      "limits": {
+        "inputFrameBytes": 524288,
+        "outputFrameBytes": 16777728,
+        "frames": 256,
+        "depth": 8
+      },
+      "unimplemented": "no queue, cancellation, deadline, non-Unicode wire paths or broader operations"
+    }
+  }
+}

@@ -1,0 +1,306 @@
+{
+  "contractRevision": "xmp-owner-removal-2026-10-16.1",
+  "evidenceKind": "authored-abstract-contract-only",
+  "vectors": [
+    {
+      "id": "singleton-element",
+      "rights": "authored",
+      "inventory": "complete",
+      "occurrences": [
+        {
+          "uri": "http://ns.adobe.com/exif/1.0/aux/",
+          "name": "OwnerName",
+          "form": "simple-element"
+        }
+      ],
+      "checks": "pass",
+      "expected": {
+        "state": "removed",
+        "requestedRemovals": 1,
+        "actualRemovals": 1,
+        "originalRetained": true,
+        "otherTemplatesRemoved": 0,
+        "productionMutationAllowed": false,
+        "anonymityEstablished": false
+      }
+    },
+    {
+      "id": "singleton-attribute",
+      "rights": "authored",
+      "inventory": "complete",
+      "occurrences": [
+        {
+          "uri": "http://ns.adobe.com/exif/1.0/aux/",
+          "name": "OwnerName",
+          "form": "attribute"
+        }
+      ],
+      "checks": "pass",
+      "expected": {
+        "state": "removed",
+        "requestedRemovals": 1,
+        "actualRemovals": 1,
+        "originalRetained": true,
+        "otherTemplatesRemoved": 0,
+        "productionMutationAllowed": false,
+        "anonymityEstablished": false
+      }
+    },
+    {
+      "id": "absent",
+      "rights": "authored",
+      "inventory": "complete",
+      "occurrences": [],
+      "checks": "pass",
+      "expected": {
+        "state": "unchanged_absent",
+        "requestedRemovals": 1,
+        "actualRemovals": 0,
+        "originalRetained": true,
+        "otherTemplatesRemoved": 0,
+        "productionMutationAllowed": false,
+        "anonymityEstablished": false
+      }
+    },
+    {
+      "id": "wrong-uri",
+      "rights": "authored",
+      "inventory": "complete",
+      "occurrences": [
+        {
+          "uri": "HTTP://NS.ADOBE.COM/EXIF/1.0/AUX/",
+          "name": "OwnerName",
+          "form": "simple-element"
+        }
+      ],
+      "checks": "pass",
+      "expected": {
+        "state": "unchanged_absent",
+        "requestedRemovals": 1,
+        "actualRemovals": 0,
+        "originalRetained": true,
+        "otherTemplatesRemoved": 0,
+        "productionMutationAllowed": false,
+        "anonymityEstablished": false
+      }
+    },
+    {
+      "id": "wrong-local-case",
+      "rights": "authored",
+      "inventory": "complete",
+      "occurrences": [
+        {
+          "uri": "http://ns.adobe.com/exif/1.0/aux/",
+          "name": "ownername",
+          "form": "simple-element"
+        }
+      ],
+      "checks": "pass",
+      "expected": {
+        "state": "unchanged_absent",
+        "requestedRemovals": 1,
+        "actualRemovals": 0,
+        "originalRetained": true,
+        "otherTemplatesRemoved": 0,
+        "productionMutationAllowed": false,
+        "anonymityEstablished": false
+      }
+    },
+    {
+      "id": "equal-duplicates",
+      "rights": "authored",
+      "inventory": "complete",
+      "occurrences": [
+        {
+          "uri": "http://ns.adobe.com/exif/1.0/aux/",
+          "name": "OwnerName",
+          "form": "simple-element"
+        },
+        {
+          "uri": "http://ns.adobe.com/exif/1.0/aux/",
+          "name": "OwnerName",
+          "form": "simple-element"
+        }
+      ],
+      "checks": "pass",
+      "expected": {
+        "state": "refused_duplicate",
+        "requestedRemovals": 1,
+        "actualRemovals": 0,
+        "originalRetained": true,
+        "otherTemplatesRemoved": 0,
+        "productionMutationAllowed": false,
+        "anonymityEstablished": false
+      }
+    },
+    {
+      "id": "mixed-form-duplicates",
+      "rights": "authored",
+      "inventory": "complete",
+      "occurrences": [
+        {
+          "uri": "http://ns.adobe.com/exif/1.0/aux/",
+          "name": "OwnerName",
+          "form": "simple-element"
+        },
+        {
+          "uri": "http://ns.adobe.com/exif/1.0/aux/",
+          "name": "OwnerName",
+          "form": "attribute"
+        }
+      ],
+      "checks": "pass",
+      "expected": {
+        "state": "refused_duplicate",
+        "requestedRemovals": 1,
+        "actualRemovals": 0,
+        "originalRetained": true,
+        "otherTemplatesRemoved": 0,
+        "productionMutationAllowed": false,
+        "anonymityEstablished": false
+      }
+    },
+    {
+      "id": "unsupported-list-target",
+      "rights": "authored",
+      "inventory": "complete",
+      "occurrences": [
+        {
+          "uri": "http://ns.adobe.com/exif/1.0/aux/",
+          "name": "OwnerName",
+          "form": "list"
+        }
+      ],
+      "checks": "pass",
+      "expected": {
+        "state": "refused_shape",
+        "requestedRemovals": 1,
+        "actualRemovals": 0,
+        "originalRetained": true,
+        "otherTemplatesRemoved": 0,
+        "productionMutationAllowed": false,
+        "anonymityEstablished": false
+      }
+    },
+    {
+      "id": "unsupported-inventory",
+      "rights": "authored",
+      "inventory": "unsupported",
+      "occurrences": [],
+      "checks": "pass",
+      "expected": {
+        "state": "refused_uninspectable",
+        "requestedRemovals": 1,
+        "actualRemovals": 0,
+        "originalRetained": true,
+        "otherTemplatesRemoved": 0,
+        "productionMutationAllowed": false,
+        "anonymityEstablished": false
+      }
+    },
+    {
+      "id": "unknown-inventory",
+      "rights": "authored",
+      "inventory": "unknown",
+      "occurrences": [],
+      "checks": "pass",
+      "expected": {
+        "state": "refused_uninspectable",
+        "requestedRemovals": 1,
+        "actualRemovals": 0,
+        "originalRetained": true,
+        "otherTemplatesRemoved": 0,
+        "productionMutationAllowed": false,
+        "anonymityEstablished": false
+      }
+    },
+    {
+      "id": "preservation-check-failed",
+      "rights": "authored",
+      "inventory": "complete",
+      "occurrences": [
+        {
+          "uri": "http://ns.adobe.com/exif/1.0/aux/",
+          "name": "OwnerName",
+          "form": "simple-element"
+        }
+      ],
+      "checks": "fail",
+      "expected": {
+        "state": "refused_preservation",
+        "requestedRemovals": 1,
+        "actualRemovals": 0,
+        "originalRetained": true,
+        "otherTemplatesRemoved": 0,
+        "productionMutationAllowed": false,
+        "anonymityEstablished": false
+      }
+    },
+    {
+      "id": "mechanism-not-executed",
+      "rights": "authored",
+      "inventory": "complete",
+      "occurrences": [
+        {
+          "uri": "http://ns.adobe.com/exif/1.0/aux/",
+          "name": "OwnerName",
+          "form": "simple-element"
+        }
+      ],
+      "checks": "unrun",
+      "expected": {
+        "state": "unrun",
+        "requestedRemovals": 1,
+        "actualRemovals": 0,
+        "originalRetained": true,
+        "otherTemplatesRemoved": 0,
+        "productionMutationAllowed": false,
+        "anonymityEstablished": false
+      }
+    },
+    {
+      "id": "missing-private-rights",
+      "rights": "missing",
+      "inventory": "complete",
+      "occurrences": [
+        {
+          "uri": "http://ns.adobe.com/exif/1.0/aux/",
+          "name": "OwnerName",
+          "form": "simple-element"
+        }
+      ],
+      "checks": "pass",
+      "expected": {
+        "state": "refused_rights",
+        "requestedRemovals": 1,
+        "actualRemovals": 0,
+        "originalRetained": true,
+        "otherTemplatesRemoved": 0,
+        "productionMutationAllowed": false,
+        "anonymityEstablished": false
+      }
+    },
+    {
+      "id": "preview-grant-not-privacy",
+      "rights": "preview-only",
+      "inventory": "complete",
+      "occurrences": [
+        {
+          "uri": "http://ns.adobe.com/exif/1.0/aux/",
+          "name": "OwnerName",
+          "form": "simple-element"
+        }
+      ],
+      "checks": "pass",
+      "expected": {
+        "state": "refused_rights",
+        "requestedRemovals": 1,
+        "actualRemovals": 0,
+        "originalRetained": true,
+        "otherTemplatesRemoved": 0,
+        "productionMutationAllowed": false,
+        "anonymityEstablished": false
+      }
+    }
+  ]
+}

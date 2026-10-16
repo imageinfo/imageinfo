@@ -1,5 +1,13 @@
 # imageinfo project guidance
 
+## Ticket priority default — corrected 2026-10-16
+
+Terry clarified that **P3 is Normal**, superseding the earlier P2 default.
+Use P3 for normal new tickets. Elevate above P3 only for concrete urgency,
+impact, deadline or explicit owner direction; dependency depth or number of
+dependents is not an urgency reason. Preserve dependency relationships and use
+the configured triage order to sequence normal work.
+
 ## Current power-test scope — Terry's decision, 2026-10-15
 
 This FOSS project uses best-effort testing. No physical power-drop testing or
@@ -383,8 +391,39 @@ with bounded actual process/pipe tests. See
 `docs/legacy-compatibility/read-session-process.md`; cancellation, failing native
 input handles, non-Unicode wire paths and broader compatibility remain separate.
 
-## Subagent authorization
+## Bounded queue wave — 2026-10-16
 
+#0165 specifies exact best-effort Windows new-output acknowledgements and
+noncircular restart rules using the already permitted trusted explicit caller.
+No new product approval, automatic custody or production profile follows. See
+`docs/write-safety/new-output-contract.md`. #0193's static boundary audit retains
+unsupported existing-target replacement: expected-old identity and strict
+property/stream/link exclusion remain independent gaps. Its negative result
+does not complete positive replacement scopes; see
+`docs/write-safety/existing-target-boundary.md`.
+
+#0120/#0121 reconcile all 32 MAP families and 39 API headings, full LG/GAP
+obligations, pinned reference option denominators and the exact current native
+surface. All unmet residuals remain; inventory is not parity acceptance. See
+`docs/legacy-compatibility/delivery-matrix.md` and `native-token-inventory.md`
+in that same directory. #0183 adds bounded production in-memory UTF-8 XML/XMP
+packet inspection with immutable identity observations, exact lexical/shape
+limits and concrete edit-constraint refusals; no file publication or semantic
+clearance of arbitrary unknown namespaces. See `docs/sidecars/packet-profile.md`.
+
+#0188 specifies one catalog-bound singleton sidecar OwnerName removal and its
+per-artifact effects/rights; authored contract vectors are not actual removal
+or privacy certification. See `docs/privacy/xmp-owner-removal-contract.md`.
+#0142 adds opt-in v2 Windows direct-process CPU/memory/logical-I/O telemetry,
+bounded samples, explicit counter errors and retained failure/cancellation
+records. Sampled membership is not containment; logical I/O is not device I/O,
+and authored qualification selects no camera performance policy. See
+`docs/performance/read-telemetry.md`. #0162's authored native/CLI subprocess
+checks preserve literal date/offset/fraction strings under two TZ settings;
+no instant conversion or host timezone change is claimed. See
+`docs/fixture-plan/date-timezone-literals.md`.
+
+## Subagent authorization
 
 Terry authorized parallel subagent work on all tickets authorized to work,
 2026-10-14. Use parallel subagents where practical: separate independent

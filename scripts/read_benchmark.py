@@ -92,7 +92,7 @@ def successful(value):
             and all(x["state"] == "partial" for x in value["files"][0]["snapshot"]["coverage"]))
 
 
-def run_process(argv, cwd, env, timeout_ms, capture_bytes):
+def run_process(argv, cwd, env, timeout_ms, capture_bytes, observer=None, cancel_event=None):
     """Drain both pipes with fixed retained bounds; stop on deadline/overflow.
 
     Scope is the current direct imageinfo executable, which spawns no helpers.
@@ -125,27 +125,53 @@ def run_process(argv, cwd, env, timeout_ms, capture_bytes):
         p = subprocess.Popen(argv, cwd=cwd, env=env, stdin=subprocess.DEVNULL,
                              stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=False)
     except OSError as error:
+        if observer is not None:
+            observer.launch_failed(start)
         return {"startedUtc": started_utc, "elapsedNs": time.perf_counter_ns() - start,
                 "outcome": "launch-error", "exitCode": None, "censored": False,
                 "errorClass": type(error).__name__, "stdoutBytes": 0, "stderrBytes": 0,
                 "stdoutCapturedBytes": 0, "stderrCapturedBytes": 0,
                 "stdoutSha256": None, "stderrSha256": None}, b"", b""
+    if observer is not None:
+        observer.attach(p, start)
     threads = [threading.Thread(target=drain, args=(s, i), daemon=True)
                for i, s in enumerate((p.stdout, p.stderr))]
     for thread in threads:
         thread.start()
     outcome = "exited"
-    while p.poll() is None:
-        if overflow.is_set():
-            outcome = "output-limit"
+    try:
+        while True:
+            if observer is not None:
+                observer.sample()
+            if p.poll() is not None:
+                break
+            if cancel_event is not None and cancel_event.is_set():
+                outcome = "cancelled"
+                p.kill()
+                break
+            if observer is not None and observer.stop_reason:
+                outcome = observer.stop_reason
+                p.kill()
+                break
+            if overflow.is_set():
+                outcome = "output-limit"
+                p.kill()
+                break
+            if time.perf_counter_ns() - start >= timeout_ms * 1_000_000:
+                outcome = "timeout"
+                p.kill()
+                break
+            time.sleep(0.001)
+    except KeyboardInterrupt:
+        if observer is None:
             p.kill()
-            break
-        if time.perf_counter_ns() - start >= timeout_ms * 1_000_000:
-            outcome = "timeout"
-            p.kill()
-            break
-        time.sleep(0.001)
+            p.wait()
+            raise
+        outcome = "cancelled"
+        p.kill()
     p.wait()
+    if observer is not None:
+        observer.sample(final=True)
     for thread in threads:
         thread.join(1)
     if any(t.is_alive() for t in threads) or consumer_error.is_set():
@@ -154,7 +180,7 @@ def run_process(argv, cwd, env, timeout_ms, capture_bytes):
         outcome = "output-limit"
     elapsed = time.perf_counter_ns() - start
     record = {"startedUtc": started_utc, "elapsedNs": elapsed, "outcome": outcome,
-              "exitCode": p.returncode, "censored": outcome in ("timeout", "output-limit", "consumer-error"),
+              "exitCode": p.returncode, "censored": outcome in ("timeout", "output-limit", "consumer-error", "cancelled", "telemetry-limit"),
               "errorClass": None, "stdoutBytes": totals[0], "stderrBytes": totals[1],
               "stdoutCapturedBytes": len(data[0]), "stderrCapturedBytes": len(data[1]),
               "stdoutSha256": hashlib.sha256(data[0]).hexdigest(),
@@ -162,8 +188,12 @@ def run_process(argv, cwd, env, timeout_ms, capture_bytes):
     return record, bytes(data[0]), bytes(data[1])
 
 
-def collect(c, output):
+def collect(c, output, telemetry_interval_ms=None):
     check_config(c)
+    telemetry = []
+    if telemetry_interval_ms is not None:
+        integer(telemetry_interval_ms, 1, 1000)
+        from read_telemetry import Observer, extension
     if Path(output).exists() or Path(output).is_symlink():
         raise ValueError("derived record destination must be fresh")
     for field in ("binary", "input", "oracle"):
@@ -211,7 +241,8 @@ def collect(c, output):
               "attempts": [], "sourceUnchanged": False, "binaryUnchanged": False,
               "status": "completed", "aggregates": None}
     for index in range(c["warmups"] + c["repeats"]):
-        attempt, stdout, stderr = run_process(argv, cwd, env, c["timeoutMs"], c["captureBytes"])
+        observer = None if telemetry_interval_ms is None else Observer(telemetry_interval_ms)
+        attempt, stdout, stderr = run_process(argv, cwd, env, c["timeoutMs"], c["captureBytes"], observer)
         attempt.update({"index": index, "phase": "warmup" if index < c["warmups"] else "sample",
                         "correctness": "not-checked", "eligible": False})
         if attempt["outcome"] == "exited":
@@ -223,7 +254,14 @@ def collect(c, output):
                 valid = False
             attempt["correctness"] = "pass" if valid else "fail"
             attempt["eligible"] = valid and attempt["phase"] == "sample"
+        if observer is not None:
+            telemetry.append(observer.report())
+            if not telemetry[-1]["valid"]:
+                attempt["eligible"] = False
         record["attempts"].append(attempt)
+        if attempt["outcome"] == "cancelled":
+            record["status"] = "cancelled"
+            break
     after = Path(c["input"]).stat()
     record["sourceUnchanged"] = (digest(c["input"]) == c["inputSha256"]
                                   and (before.st_size, before.st_mtime_ns) == (after.st_size, after.st_mtime_ns))
@@ -234,6 +272,8 @@ def collect(c, output):
             attempt["eligible"] = False
     # Exclusive creation also rejects a name inserted after preflight, including
     # an alias of corpus media. Never overwrite a caller-selected existing file.
+    if telemetry_interval_ms is not None:
+        record = extension(record, telemetry)
     with Path(output).open("x", encoding="utf-8") as stream:
         stream.write(json.dumps(record, indent=2) + "\n")
     return record
@@ -243,10 +283,16 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", required=True, help="private JSON configuration")
     parser.add_argument("--output", required=True, help="private derived record; never stdout/media")
+    parser.add_argument("--telemetry-interval-ms", type=int, help="opt in to Windows direct-child telemetry v2 (1..1000 ms)")
     args = parser.parse_args()
-    record = collect(load(args.config), args.output)
+    record = collect(load(args.config), args.output, args.telemetry_interval_ms)
+    if record["schemaVersion"] == 2:
+        valid_telemetry = all(t["valid"] for t in record["telemetry"])
+        record = record["elapsedRecord"]
+    else:
+        valid_telemetry = True
     print(f"Retained {len(record['attempts'])} attempts; {record['status']}; private record written")
-    return 0 if record["status"] == "completed" and all(
+    return 0 if valid_telemetry and record["status"] == "completed" and all(
         x["correctness"] == "pass" for x in record["attempts"]) else 1
 
 

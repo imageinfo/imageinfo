@@ -21,6 +21,7 @@ This collection identifies the exact Cargo.lock graph admitted for local/CI foun
 | memchr 2.8.3 | MIT | [memchr-2.8.3-LICENSE-MIT.txt](licenses/dependencies/memchr-2.8.3-LICENSE-MIT.txt) |
 | proc-macro2 1.0.107 | MIT | [proc-macro2-1.0.107-LICENSE-MIT.txt](licenses/dependencies/proc-macro2-1.0.107-LICENSE-MIT.txt) |
 | quote 1.0.47 | MIT | [quote-1.0.47-LICENSE-MIT.txt](licenses/dependencies/quote-1.0.47-LICENSE-MIT.txt) |
+| roxmltree 0.21.1 | MIT; inherited ego-tree ISC attribution | [roxmltree MIT](licenses/dependencies/roxmltree-0.21.1-LICENSE-MIT.txt), [ego-tree ISC](licenses/dependencies/roxmltree-0.21.1-ego-tree-ISC.txt) |
 | same-file 1.0.6 | MIT | [same-file-1.0.6-LICENSE-MIT.txt](licenses/dependencies/same-file-1.0.6-LICENSE-MIT.txt) |
 | serde 1.0.229 | MIT | [serde-1.0.229-LICENSE-MIT.txt](licenses/dependencies/serde-1.0.229-LICENSE-MIT.txt) |
 | serde_core 1.0.229 | MIT | [serde_core-1.0.229-LICENSE-MIT.txt](licenses/dependencies/serde_core-1.0.229-LICENSE-MIT.txt) |
@@ -57,6 +58,15 @@ disabled. `generic-array` has a compiler-version cfg build script; target-only
 `libc` has its upstream ABI/configuration build script. Their reviewed behavior
 and target limits are recorded in the admission record. No new SDK wrapper or
 root unsafe code is introduced.
+
+The #0183 bounded in-memory XML/XMP packet profile adopts exact `roxmltree`
+0.21.1 with default features disabled and `std`/`positions` enabled. Its only
+linked dependency is existing `memchr` 2.8.3. MIT is selected for both; the
+heavily modified ego-tree lineage additionally retains the ISC attribution
+reviewed in #0081, with the original fork revision still unidentified. The
+[packet profile](docs/sidecars/packet-profile.md) and root admission record name
+this production boundary. Research XML crates remain separate; no serializer,
+network resolver, file publication or cryptographic validation is adopted.
 
 The separate #0028 research package has its own
 [exact dependency admission](docs/write-safety/recovery-dependencies.json) and
