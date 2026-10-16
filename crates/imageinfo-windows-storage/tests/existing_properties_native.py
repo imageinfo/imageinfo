@@ -40,6 +40,11 @@ get_basic = api(k, "GetFileInformationByHandleEx", [c.c_void_p, c.c_int, c.c_voi
 get_security = api(s, "GetKernelObjectSecurity", [c.c_void_p, w.DWORD, c.c_void_p, w.DWORD, c.POINTER(w.DWORD)])
 to_sddl = api(s, "ConvertSecurityDescriptorToStringSecurityDescriptorW", [c.c_void_p, w.DWORD, w.DWORD, c.POINTER(c.c_void_p), c.POINTER(w.DWORD)])
 from_sddl = api(s, "ConvertStringSecurityDescriptorToSecurityDescriptorW", [w.LPCWSTR, w.DWORD, c.POINTER(c.c_void_p), c.POINTER(w.DWORD)])
+get_owner = api(s, "GetSecurityDescriptorOwner", [c.c_void_p, c.POINTER(c.c_void_p), c.POINTER(w.BOOL)])
+valid_sid = api(s, "IsValidSid", [c.c_void_p])
+sid_length = api(s, "GetLengthSid", [c.c_void_p], w.DWORD)
+sid_to_text = api(s, "ConvertSidToStringSidW", [c.c_void_p, c.POINTER(c.c_void_p)])
+local_size = api(k, "LocalSize", [c.c_void_p], c.c_size_t)
 set_security = api(s, "SetFileSecurityW", [w.LPCWSTR, w.DWORD, c.c_void_p])
 set_kernel_security = api(s, "SetKernelObjectSecurity", [c.c_void_p, w.DWORD, c.c_void_p])
 set_time = api(k, "SetFileTime", [c.c_void_p, c.c_void_p, c.c_void_p, c.c_void_p])
@@ -77,8 +82,67 @@ def opened(path, access, flags=0x02200000):
 
 def descriptor(text):
     result = c.c_void_p()
-    checked(from_sddl(text, 1, c.byref(result), None))
-    return result
+    length = w.DWORD()
+    checked(from_sddl(text, 1, c.byref(result), c.byref(length)))
+    try:
+        assert result.value and 20 <= length.value <= 65536
+        return result
+    except BaseException:
+        local_free(result)
+        raise
+
+def bounded_local_text(pointer):
+    # Both conversion APIs allocate LocalFree-owned, NUL-terminated UTF-16.
+    # LocalSize bounds reads even when the SID converter supplies no length.
+    assert pointer.value
+    allocated = local_size(pointer)
+    assert 2 <= allocated <= 131072 and allocated % 2 == 0
+    text = c.wstring_at(pointer, allocated // 2)
+    end = text.find("\0")
+    assert end >= 0
+    return text[:end]
+
+def descriptor_owner(buf, length):
+    """Read the actual owner SID; SDDL aliases and process identity are irrelevant."""
+    assert 20 <= length <= 65536
+    owner, defaulted = c.c_void_p(), w.BOOL()
+    checked(get_owner(buf, c.byref(owner), c.byref(defaulted)))
+    start = c.addressof(buf) if isinstance(buf, c.Array) else buf.value
+    assert start and owner.value and start <= owner.value <= start + length - 8
+    # SID header length is fixed; validate the encoded count before APIs read it.
+    header = c.string_at(owner, 8)
+    expected = 8 + 4 * header[1]
+    assert header[1] <= 15 and owner.value + expected <= start + length
+    checked(valid_sid(owner))
+    actual = sid_length(owner)
+    assert actual == expected
+    text = c.c_void_p()
+    checked(sid_to_text(owner, c.byref(text)))
+    try:
+        canonical = bounded_local_text(text)
+        assert canonical.startswith("S-1-") and len(canonical) <= 256
+        return {"sid": canonical, "bytes": c.string_at(owner, actual).hex()}
+    finally:
+        local_free(text)
+
+def owner_from_sddl(text):
+    sd, length = c.c_void_p(), w.DWORD()
+    checked(from_sddl(text, 1, c.byref(sd), c.byref(length)))
+    try:
+        return descriptor_owner(sd, length.value)
+    finally:
+        local_free(sd)
+
+def owner_identity_controls():
+    # Pure authored descriptors exercise hosted-runner group ownership and the
+    # textual alias that broke the old O:<current-user-SID> substring assertion.
+    administrators = owner_from_sddl("O:BA")
+    assert administrators == owner_from_sddl("O:S-1-5-32-544")
+    system = owner_from_sddl("O:SY")
+    assert system == owner_from_sddl("O:S-1-5-18")
+    assert administrators != system
+    return {"administratorAliasMatchesNumericSid": True,
+            "systemAliasMatchesNumericSid": True, "differentOwnersRemainDistinct": True}
 
 def security(handle, flags):
     n = w.DWORD()
@@ -87,15 +151,29 @@ def security(handle, flags):
     if not n.value:
         return {"unavailableError": err}
     assert n.value <= 65536
-    buf = c.create_string_buffer(n.value)
-    if not get_security(handle, flags, buf, n.value, c.byref(n)):
+    capacity = n.value
+    buf = c.create_string_buffer(capacity)
+    if not get_security(handle, flags, buf, capacity, c.byref(n)):
         return {"unavailableError": c.get_last_error()}
+    assert 20 <= n.value <= capacity
     text = c.c_void_p()
     checked(to_sddl(buf, 1, flags, c.byref(text), None))
     try:
-        return {"bytes": bytes(buf[:n.value]).hex(), "sddl": c.wstring_at(text)}
+        result = {"bytes": bytes(buf[:n.value]).hex(), "sddl": bounded_local_text(text)}
+        if flags & 1:
+            result["ownerIdentity"] = descriptor_owner(buf, n.value)
+        return result
     finally:
         local_free(text)
+
+def actual_owner(path):
+    h = opened(path, READ_CONTROL)
+    try:
+        result = security(h, 1)
+        assert "unavailableError" not in result
+        return result["ownerIdentity"]
+    finally:
+        checked(close(h))
 
 def exact_bytes(path):
     # Python's ordinary open omits delete sharing and would conflict with the
@@ -162,6 +240,7 @@ sid_csv = subprocess.run(["whoami.exe", "/user", "/fo", "csv", "/nh"], capture_o
 sid = list(csv.reader(sid_csv.stdout.splitlines()))[0][1]
 assert sid.startswith("S-1-")
 records = []
+owner_controls = owner_identity_controls()
 
 def run(label, setup=None, policy="update", expected_mtime=None):
     root = output / label
@@ -177,7 +256,7 @@ def run(label, setup=None, policy="update", expected_mtime=None):
         before = inventory(root)
         if label == "03-noncanonical-acl-owner":
             acl = before["target.bin"]["ownerGroupDacl"]["sddl"]
-            assert f"O:{sid}" in acl
+            assert before["target.bin"]["ownerGroupDacl"]["ownerIdentity"] == actor["ownerBeforeSetup"]
             assert acl.index("(A;") < acl.index("(D;")
         if label == "08-mandatory-label":
             assert "(ML;;NW;;;LW)" in before["target.bin"]["label"]["sddl"]
@@ -204,7 +283,8 @@ def set_mtime(root, handles, actor):
     actor.update(access="FILE_WRITE_ATTRIBUTES", preopened=True, actualSetter="SetFileTime")
 
 def noncanonical(root, handles, actor):
-    text = f"O:{sid}D:P(A;;FA;;;{sid})(D;;SD;;;WD)"
+    initial_owner = actual_owner(root / "target.bin")
+    text = f"D:P(A;;FA;;;{sid})(D;;SD;;;WD)"
     sd = descriptor(text)
     try:
         # Owner is observed and retained, never reassigned. Ordinary ownership
@@ -212,7 +292,10 @@ def noncanonical(root, handles, actor):
         checked(set_security(str(root / "target.bin"), 4 | 0x80000000, sd))
     finally:
         local_free(sd)
-    actor.update(noncanonicalDacl="explicit allow before explicit deny", owner="actual creator SID retained")
+    setup_owner = actual_owner(root / "target.bin")
+    assert setup_owner == initial_owner
+    actor.update(noncanonicalDacl="explicit allow before explicit deny", owner="actual initial owner retained",
+                 ownerBeforeSetup=initial_owner, ownerAfterSetup=setup_owner)
 
 def stream_data(root, handles, actor):
     Path(str(root / "target.bin") + ":authored").write_bytes(b"stream A: exact private authored bytes\x00\xff")
@@ -293,6 +376,7 @@ run("10-preopened-security", security_actor)
 run("11-preopened-stream-writer", stream_actor)
 run("12-preopened-link-actor", link_actor)
 report = {"schema": "imageinfo-existing-target-refusal-native-v1", "cases": records,
+          "ownerIdentityControls": owner_controls,
           "scope": "actual production refusal; no positive preservation/exclusion/recovery qualification",
           "accessAndChangeTimes": "observed; not a preservation promise; omitted from equality predicate",
           "sacl": "access errors remain explicit; no complete SACL observation or recovery claim",

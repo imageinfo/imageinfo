@@ -61,7 +61,7 @@ Each actual request must return the exact typed refusal.
 | --- | --- |
 | Ordinary changed mtime | Preopened `FILE_WRITE_ATTRIBUTES` handle actually sets last-write time; ordinary content-edit time request refuses. |
 | Explicit preserve mtime | Same actual actor/time setter with explicit original-time request; refuses. |
-| Noncanonical ACL and owner | Actual creator owner is retained with an explicit allow ACE before a deny ACE; exact descriptor bytes and SDDL order are inventoried. No foreign-owner or privilege capability is claimed. |
+| Noncanonical ACL and owner | Actual initial owner is captured before DACL-only setup and verified unchanged through setup and refusal, with an explicit allow ACE before a deny ACE. Binary owner SID identity is compared independently of SDDL aliases and the process user; exact descriptor bytes and SDDL order are also inventoried. No ownership reassignment or privilege capability is claimed. |
 | Stream content | An authored named stream contains exact nontext bytes; default and all enumerated stream content are compared, not lengths alone. |
 | Readonly | Actual readonly target refuses without an attribute reset. |
 | Extra hardlink | Actual second name/identity/link count remains retained. |
@@ -78,6 +78,14 @@ bytes and SDDL, observed label and SACL availability, reparse tags, and every
 enumerated stream's exact content and SHA-256. Access/change times remain visible
 but are excluded from the preservation assertion. The independent audit can
 recompute equality directly from these retained records and fixtures.
+
+Windows may assign the creator's default group as owner and render well-known
+SIDs using SDDL aliases. The harness therefore observes the descriptor's actual
+owner SID; it does not assume that owner equals the current process user. Pure
+authored descriptor controls verify that `BA`/`S-1-5-32-544` and
+`SY`/`S-1-5-18` identify the same respective owners while distinct owner SIDs
+remain distinct. No owner setter or privilege change is used to make fixtures
+match the process account.
 
 Passing this finite matrix establishes that this refusal performs no observed
 target/candidate/property/namespace mutation for those authored schedules. It
