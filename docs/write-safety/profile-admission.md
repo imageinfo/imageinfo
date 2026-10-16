@@ -16,6 +16,13 @@ revision. Future profile enablement requires new implementation evidence and rev
 not a JSON status change. #0051 can finish this bounded deliverable while #0022 and
 its capability gates remain open.
 
+Binding maintenance, **2026-10-16**: #0118's accepted option-A disposition changed
+the public `write-admission.md` document. The ledger's single hash for that input
+was refreshed; all cells, findings, statuses, requirements and refusal outcomes
+remain identical. All 209 portable model cases were rerun successfully against
+the refreshed ledger, with no worker, VM or media operation. The original
+versioned model report remains historical at its recorded ledger identity.
+
 Terry's accepted [power-test policy](power-test-policy.md), 2026-10-15, removes
 physical-power and dedicated-hardware qualification from admission. This FOSS
 project makes a bounded best-effort claim, with future power testing limited to
