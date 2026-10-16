@@ -105,6 +105,7 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Second-environment reference method](corpus-baseline/second-environment.md) | #0073 pinned-reference reproduction method and authored controls; new camera-derived reports remain private under their grants. |
 | [Known-provenance policy proposal](privacy/known-provenance-policy.md) | #0091 one existing Canon indicator, explicit refusal/invalidation alternatives and authored policy vectors; no signature validation or adopted mutation permission. |
 | [Two-name cycle specification](write-safety/two-name-cycle.md) | #0097 bounded proposed moves, foreign winners and partial states; model checks do not qualify a native rename mechanism. |
+| [Remaining-work inventory](remaining-work.md) | Bounded executable scopes, exact human decisions, tracking umbrellas and explicit unresolved branches from the full RFW decomposition. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |

@@ -556,6 +556,27 @@ Preserve full safety gates when splitting; a completed research child never enab
 its parent's production capability by implication. Review oversized open cards
 for independent outcomes and clear one-handoff finish lines before starting them.
 
+Terry requested a complete Ready for Work decomposition on 2026-10-16 after
+several batches closed new children while the original queue stayed at twenty.
+Use `docs/remaining-work.md` and the linked bounded cards as the remaining-work
+inventory. Tracking umbrellas retain their full acceptance and stay Ready for
+Work under the lane rule, but are labeled `Tracking:` and excluded from executable
+work counts. Traverse their existing children instead of creating another batch
+merely to fill subagents. Reuse the scoped queue before inventing new cards.
+
+Each executable scope should finish in one turn once its explicit prerequisites
+are met: one concrete outcome, bounded verification and a pushed review handoff.
+This is a sizing estimate, not a guarantee about unresolved platform or format
+feasibility. Preserve insufficiently specified areas and unselected alternatives
+as explicit scope gaps; do not present them as fixed executable work or omit them
+from the parent trace. Record any genuinely new scope delta before adding work.
+A negative feasibility result does not satisfy its dependent positive capability;
+rescope or seek the exact product decision rather than starting endless probes.
+Ordinary engineering choices and inherited safe defaults do not need renewed
+product-adoption gates. Use Needs Terry only for a genuine remaining human input,
+consent/authority or explicit guarantee/policy change after independent Codex work
+is complete. Do not turn proposal wording into an extra approval requirement.
+
 Terry reiterated the lane rule on 2026-10-14: **Backlog is only for Terry's explicit
 hold or insufficient detail to perform the work.** Move sufficiently scoped cards
 to Ready for Work even when they depend on other Ready for Work tickets. Record
@@ -577,6 +598,18 @@ the shared monitor using the procedure in `docs/local-board.md`; use imageinfo's
 own status, target and lock paths so another board's monitor is never displaced.
 Verify its running state, live process and current thread target before continuing
 board work. Keep it running for the service's lifetime, including between tasks.
+All project board services, CLI operations and monitors delegate to the shared
+implementation in `C:\Projects\localswim`. Do not maintain local server, CLI,
+monitor or actor-filtering copies/forks. Thin launchers may supply project paths,
+ports and targets; common fixes belong in the shared package.
+Use the official `localswim-monitor` command and optional `monitor` extra from
+`C:\Projects\localswim`; do not keep project-local copies. Preserve the original
+thread target during upgrades. Use cooperative `--reload` only for a monitor
+reporting support; migrate legacy watchers through graceful board stop/restart,
+without PID termination. For a queued alert, read sanitized activity metadata
+first and stop when a nonempty result is entirely automation-authored. Never
+compare activity-event counts with filesystem write counts. Human, mixed,
+unknown, empty, malformed and failed results still require attention.
 This monitor is local operational tooling, not an imageinfo implementation choice.
 
 Write card descriptions and comments for easy human scanning. Terry explicitly

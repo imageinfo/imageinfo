@@ -38,9 +38,11 @@ confirmed on **2026-10-14**. The workspace gateway proxies requests to each boar
 individual service. The CLI still targets the imageinfo JSON path and resolves
 that service's descriptor; the active snapshot and sole writer do not change.
 
-Imageinfo's individual service currently uses **8795**. Verify its actual port on
-each resume; **8810** is the workspace gateway port. Keep the imageinfo monitor on
-its individual service port. Proxy status is available at
+Imageinfo's individual service port can change when the shared gateway launches
+it with an automatically assigned port. Resolve the current live service port on
+each resume from its runtime descriptor or its owned process listener; keep runtime
+credentials private. **8810** is the workspace gateway port. Pass the verified
+individual service port to the monitor. Port-independent proxy status is available at
 `http://localhost:8810/api/v001/workspace/boards/imageinfo%2Fimageinfo/status`.
 These addresses work only on this machine. Keep board data and credentials out of
 the public repository.
@@ -95,25 +97,26 @@ targeted at the active Codex thread (Terry's instruction, 2026-10-10). Verify bo
 on startup/resume and before board work. Keep the monitor alive between tasks for
 the service's lifetime. This is a filesystem watcher, not a scheduled poll.
 
-### Start or retarget the monitor
+### Start, retarget or upgrade the monitor
 
-On Terry's current machine, reuse the shared monitor and its locked tooling
-environment in `C:\Projects\FGA\architecture-design`. It watches writes without
-reading board content, coalesces them behind a 15-second quiet window, suppresses
-proven bot-only activity, and queues a bounded next-turn alert to the target chat.
-After an alert, inspect activity through `localswim-cli`; never edit the JSON directly.
-Queued alerts do not establish delivery to a currently active turn.
+Use the shared `localswim-monitor` command from the official
+`C:\Projects\localswim` package, with its optional `monitor` extra. Do not copy
+filtering code into this project or launch the retired FGA-local watcher.
+The package uses one owner and imageinfo-specific status, target and lock files.
+Keep these private runtime paths separate from every other board.
 
-Use imageinfo-specific paths. Reinvoking the helper safely retargets its existing
-monitor through the shared lock; never use the FGA defaults or another board's paths.
-Launch hidden, inherit UTF-8 output, and pass the board's actual current port:
+For an existing monitor, preserve its original `threadId` during an upgrade.
+Normal explicit retargeting to the active chat is a separate operation. Inspect
+status and actual process/listener health; status alone is not liveness proof.
 
 ```powershell
 if (-not $env:CODEX_THREAD_ID) { throw 'An active Codex thread ID is required.' }
 $env:PYTHONIOENCODING = 'utf-8'
-$imageinfoPort = 8795 # Verify against this board's current configuration.
+$env:UV_CACHE_DIR = 'C:\Temp\localswim-uv-cache'
+if (-not $env:LOCALSWIM_BOARD_PORT) { throw 'Set LOCALSWIM_BOARD_PORT from the current verified service endpoint.' }
+$imageinfoPort = [int]$env:LOCALSWIM_BOARD_PORT
 $imageinfoMonitorArgs = @(
-    'run', '--frozen', 'python', 'scripts/watch_localswim.py',
+    'run', '--isolated', '--frozen', '--extra', 'monitor', 'localswim-monitor',
     '--board-path', 'C:\Projects\localswim-state-store\imageinfo\imageinfo.json',
     '--board-label', 'imageinfo',
     '--thread-id', $env:CODEX_THREAD_ID,
@@ -122,23 +125,38 @@ $imageinfoMonitorArgs = @(
     '--target-path', 'C:\Temp\imageinfo-localswim-monitor-target.json',
     '--lock-path', 'C:\Temp\imageinfo-localswim-monitor.lock'
 )
-Start-Process -FilePath (Get-Command uv).Source -ArgumentList $imageinfoMonitorArgs -WorkingDirectory 'C:\Projects\FGA\architecture-design' -WindowStyle Hidden -RedirectStandardOutput 'C:\Temp\imageinfo-localswim-monitor.out.log' -RedirectStandardError 'C:\Temp\imageinfo-localswim-monitor.err.log'
+Start-Process -FilePath (Get-Command uv).Source -ArgumentList $imageinfoMonitorArgs -WorkingDirectory 'C:\Projects\localswim' -WindowStyle Hidden -RedirectStandardOutput 'C:\Temp\imageinfo-localswim-monitor.out.log' -RedirectStandardError 'C:\Temp\imageinfo-localswim-monitor.err.log'
 ```
 
-Verify `/api/v001/status` is healthy, the monitor status JSON says `running`, its
-recorded PID is alive, and the target JSON's `threadId` equals the active thread.
-If startup fails, inspect the local error log and restore monitoring before
-continuing board work. Stop/restart the service and monitor together; do not leave
-the service running unmonitored. A machine reboot requires restarting both.
+The isolated frozen runtime avoids resynchronizing an executable held by another
+running board. An installed package with the `monitor` extra can invoke
+`localswim-monitor` directly with the same explicit arguments.
 
-Monitor status/target/lock/log files are transient private machine state under
-`C:\Temp`; do not commit them. Service logs remain under ignored `boards/`.
-This shared operational Python tooling does not choose imageinfo's product language.
+Use cooperative `--reload` only when the existing status reports
+`reloadSupported: true`. Preserve the same board, thread target, port and runtime
+paths. The old owner drains its quiet window and releases its lock before the
+replacement owns it. For a legacy watcher without reload support, use its
+documented graceful board-stop/restart boundary once; never terminate its PID to
+force migration. A schema-1 target-file `stopPid` request names the exact owner
+and waits until that board service stops. Keep the gateway and unrelated boards
+running. Keep the lock file persistent.
 
-Card mutations go through the supported CLI and the live service, preserving
-authorization, revision checks, and history. Never edit a running board's JSON.
-Public requirements and roadmap documents provide the portable project plan;
-private board comments and snapshots are synchronized only to the private state store.
+After startup/reload, verify the board's `/api/v001/status`, live monitor process,
+`state: running`, `actorFilterVersion: 2`, supported reload status and exact thread
+target. Restore monitoring before continuing board work if startup fails.
+
+After a 15-second quiet window, the monitor queries sanitized activity metadata
+through `localswim-cli`. Suppress a nonempty result only when every event is by
+`bot` (or the explicitly configured automation actor). Human, mixed, unknown,
+empty, malformed and failed queries still alert. Filesystem write counts and
+activity counts are not equivalent and must never be compared for suppression.
+For an already queued alert, inspect only its bounded activity metadata first;
+proven bot-only activity needs no card inspection, work resumption or further action.
+Queued alerts do not establish delivery to a turn that was already active.
+
+Runtime status/target/lock/log files stay private under `C:\Temp`; never commit
+card prose, runtime credentials, board snapshots or monitor logs. The monitor
+remains running for the service's lifetime, including between tasks.
 
 ## Creating another local board
 

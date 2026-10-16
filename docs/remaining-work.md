@@ -1,0 +1,229 @@
+# Remaining work for the RAW milestone
+
+Planning revision `2026-10-16.1`. This is the decomposition of the twenty Ready for Work cards reviewed on 2026-10-16, after the #0113–0116 implementation batch. It changes delivery scopes and relationships; it implements no new capability and adopts no product policy.
+
+The original twenty cards hid ten tracking umbrellas and ten executable outcomes. Their full acceptance remains in the tracking map. The final human-lane review removed nine self-imposed approval gates and a duplicate of completed #0064. Ordinary engineering/preparation uses existing authorization; explicit guarantee changes and real external consent remain human decisions. The board now separates **99 bounded Ready for Work outcomes**, **six explicit Terry decisions**, and **four insufficient-scope items**. Ten tracking umbrellas remain Ready for Work under the standing lane rule and are excluded from executable counts. Eleven existing identities were reused, including the existing insufficient-scope #0092; 99 cards were created; one redundant approval card was archived after review, leaving 98 active new scopes.
+
+These are defined work packets, not a promise that 99 successful turns finish the entire project. Each executable estimate assumes its named prerequisites, actual permissions and selected profile. Some mechanisms may prove unsupported. Unselected alternatives, undefined operation families and human exercises without operators are disclosed below rather than assigned invented ticket counts. Future full ExifTool parity remains on the explicitly held #0012.
+
+## Count the queue consistently
+
+| Scope | Ready for Work | Needs Terry | Insufficient scope |
+| --- | ---: | ---: | ---: |
+| RAW format admission | 2 | 1 | 1 |
+| New-output storage | 13 | 0 | 0 |
+| New-CR3 workflow | 3 | 0 | 0 |
+| Shared two-member execution | 3 | 0 | 0 |
+| XMP and RAW-XMP synchronization | 8 | 0 | 0 |
+| Privacy and provenance | 5 | 0 | 3 |
+| Replacement and same-volume file operations | 25 | 0 | 0 |
+| Native compatibility and integration | 22 | 0 | 0 |
+| R5 assertion evidence | 3 | 1 | 0 |
+| Measured resource policy | 11 | 0 | 0 |
+| Operational readiness | 4 | 4 | 0 |
+| **Defined queue** | **99** | **6** | **4** |
+
+The physical board has 109 Ready for Work cards: 99 executable outcomes plus ten `Tracking:` parents. Its seven Backlog cards include the four scope gaps above and the unchanged #0012 broader-parity hold, #0074 unnamed acquisition target and #0098 unselected cross-volume operation. Dependency-blocked but scoped work remains Ready for Work. No implementation was started by this decomposition.
+
+A work card finishes its own concrete implementation/evidence outcome, relevant checks and a committed/pushed handoff where source changes. Codex moves it to Ready for Review; Terry accepts Completed. A human decision records the exact adopted choice, not an inferred approval from accepting a proposal. Negative feasibility evidence never satisfies a dependent positive capability.
+
+## Original acceptance is retained
+
+| Original cards | Remaining acceptance owner |
+| --- | --- |
+| #0014, #0078 | Format decisions, exact admitted date operation and apply adapter; broader WS/SAF/scenario families remain explicit until exact operations are selected. |
+| #0022 | Actual production guards/protocol, acknowledgement and restart authority, inspection/actions, resources, native errors, VM-off evidence and executable exact-profile admission; Linux scope stays explicit. |
+| #0023, #0079, #0080 | Saved-intent/apply contract in #0078, cooperative results, separate actual process-outcome audit, and exact admitted-media/source CI release evidence. |
+| #0024, #0085, #0086 | XML/packet and lawful derivative admission, source/candidate binding, functional new-sidecar integration, expanded fault evidence and actual pair integration. Shared group mechanics are implemented once. |
+| #0025, #0089, #0090 | Selected one-field operation/policy, in-memory removal, actual admitted integration and all-artifact residual audit; missing independent GPS/serial/provenance scopes remain visible. |
+| #0026, #0095, #0096 | Expected-target primitive/properties, retained originals/current custody, replacement-specific finalization, finite restore/prune/rename/group adapters and qualification of the actual final runtime. |
+| #0015 | All LG-001–006/GAP-006/012 clauses retain fixed current-surface work, exact decisions, conditional alternatives and unscoped planner contracts; eventual parity is not counted as current implementation. |
+| #0018, #0075 | All six corpus clauses and 29 family dispositions remain; literal-TZ and aggregate-preview deltas, exact decoder permission decision and one actual private assertion are separate outcomes. |
+| #0016 | PERF-001–012 and BW-001–015 retain completed observations, new resource/consumer/current-session work, exact policy choice and explicit unsupported/unselected workload groups. |
+| #0017 | All GOV-OPEN-01–06 retain actual human consent/authority, separately approved settings/actions, conditional exercises and the distinct unscoped personal-account recovery remainder. |
+
+## Executable scopes and decisions
+
+Prerequisites name exact cards. Historical accepted research is evidence of its own scoped result, not admission or action authority. Additional conditional permission/profile requirements remain on the individual cards. Tables describe planned delivery scopes, not their later live completion status.
+
+### RAW format admission
+
+| Card | Planned outcome | Queue | Prerequisites |
+| --- | --- | --- | --- |
+| #0117 | Prepare the finite RAW/XMP operation matrix under the authorized RAW-write scope | Work | None newly queued |
+| #0118 | Choose the CR3 opaque-dependency admission path without inventing format semantics | Terry decision | #0113, #0109, #0099, #0102, #0105, #0027 |
+| #0119 | Implement and qualify the selected exact fixed-width CR3 date admission | Scope gap | #0118 |
+| #0078 | Integrate explicit apply for one actually admitted CR3 date profile | Work | #0132, #0076, #0119, #0077, #0176 |
+
+### New-output storage
+
+| Card | Planned outcome | Queue | Prerequisites |
+| --- | --- | --- | --- |
+| #0165 | Choose the bounded new-output acknowledgement and restart-authority contract | Work | None newly queued |
+| #0166 | Implement the reviewed Windows held-object new-output OS boundary | Work | #0165 |
+| #0167 | Implement the bounded single-unit production publication protocol and result types | Work | #0165 |
+| #0168 | Connect the actual Windows protocol to phase-bound live acknowledgements | Work | #0167, #0166 |
+| #0169 | Implement the selected current caller authorization for production restart actions | Work | #0165, #0167, #0166 |
+| #0170 | Implement bounded production restart inspection with the selected survivor rule | Work | #0168, #0169 |
+| #0171 | Finalize an authorized installed new output without republishing | Work | #0170 |
+| #0172 | Implement exact-owned production prune and eligible postcommit cleanup | Work | #0171, #0170 |
+| #0173 | Enforce production cumulative retained-work admission across repeated attempts | Work | #0167, #0169 |
+| #0174 | Exercise actual production native read and device-flush errors in a disposable guest | Work | #0168 |
+| #0175 | Qualify production single-output interruption behavior with bounded VM-off cells | Work | #0168, #0172, #0173, #0171, #0170 |
+| #0176 | Admit the exact implemented Windows new-output profile from actual evidence | Work | #0165, #0168, #0174, #0172, #0167, #0166, #0173, #0169, #0171, #0170, #0175 |
+| #0177 | Resolve the retained WSL-native Linux new-output support boundary | Work | #0165 |
+
+### New-CR3 workflow
+
+| Card | Planned outcome | Queue | Prerequisites |
+| --- | --- | --- | --- |
+| #0079 | Integrate cooperative cancellation and truthful results for the admitted one-date adapter | Work | #0078, #0167, #0176 |
+| #0178 | Qualify actual process interruption and broken-output outcomes for one-date apply | Work | #0079, #0078, #0176 |
+| #0080 | Publish exact one-date apply preservation and declared-platform CI evidence | Work | #0079, #0178, #0078, #0119, #0176 |
+
+### Shared two-member execution
+
+| Card | Planned outcome | Queue | Prerequisites |
+| --- | --- | --- | --- |
+| #0179 | Implement one typed two-unit executor and receipt-bound resume selector | Work | #0168, #0167, #0169 |
+| #0180 | Qualify the actual two-new-output unit adapter and resume path | Work | #0179, #0172, #0176, #0171, #0170 |
+| #0181 | Qualify the exact shared between-members restart boundary once | Work | #0180, #0175 |
+
+### XMP and RAW-XMP synchronization
+
+| Card | Planned outcome | Queue | Prerequisites |
+| --- | --- | --- | --- |
+| #0182 | Implement one explicit opt-in same-stem RAW-XMP inference mode | Work | #0082 |
+| #0183 | Adopt and enforce one bounded UTF-8 XML-XMP packet profile | Work | #0084, #0081 |
+| #0184 | Admit one exact retained RAW-XMP pair for date derivative testing | Work | #0082, #0183 |
+| #0185 | Qualify the actual admitted one-date XMP derivative independently | Work | #0104, #0184 |
+| #0186 | Bind actual selected RAW-XMP observations to a guarded date candidate | Work | #0104, #0082, #0183, #0167, #0166 |
+| #0085 | Publish one explicitly selected new-name admitted XMP date derivative | Work | #0185, #0186, #0176 |
+| #0187 | Qualify sidecar-specific cancellation, storage failure and restart outcomes | Work | #0172, #0166, #0169, #0171, #0085 |
+| #0086 | Qualify actual admitted RAW-XMP date synchronization with partial receipts | Work | #0080, #0078, #0180, #0179, #0181, #0187, #0085 |
+
+### Privacy and provenance
+
+| Card | Planned outcome | Queue | Prerequisites |
+| --- | --- | --- | --- |
+| #0188 | Bind one XMP removal to the named privacy catalog and lawful operation scope | Work | #0087, #0088 |
+| #0189 | Implement inherited known-provenance refusal for the selected privacy path | Work | #0091, #0188 |
+| #0190 | Implement a bounded in-memory exact XMP OwnerName removal | Work | #0188, #0183 |
+| #0089 | Qualify actual admitted one-field XMP removal and refusal outcomes | Work | #0189, #0085, #0190 |
+| #0090 | Audit all retained artifacts and stored previews of the selected actual privacy operation | Work | #0088, #0089 |
+| #0092 | Qualify one targeted independent privacy assertion | Scope gap | #0018, #0188, #0071, #0087 |
+| #0191 | Independently qualify targeted GPS and serial residual assertions | Scope gap | #0092, #0090 |
+| #0192 | Independently test the chosen known-provenance refusal on lawful targeted inputs | Scope gap | #0189, #0089 |
+
+### Replacement and same-volume file operations
+
+| Card | Planned outcome | Queue | Prerequisites |
+| --- | --- | --- | --- |
+| #0193 | Review one guarded existing-target replacement boundary on local Windows NTFS | Work | None newly queued |
+| #0194 | Implement one reviewed expected-target marker replacement sequence | Work | #0193 |
+| #0195 | Qualify held-existing-object no-replace rename without releasing its guards | Work | #0193 |
+| #0196 | Qualify one existing-target property preservation and refusal policy | Work | #0193, #0166 |
+| #0197 | Bound replacement, restore and two-member retained-original resources | Work | #0173 |
+| #0198 | Extend original retention to the admitted property-complete replacement sequence | Work | #0196, #0197 |
+| #0199 | Bridge actual retained-original custody into fresh restore authorization | Work | #0198, #0169 |
+| #0200 | Bind replacement and original retention to the shared outcome receipt protocol | Work | #0199, #0168 |
+| #0095 | Qualify occupied-name fresh restore while preserving the later current marker | Work | #0194, #0196, #0200, #0199 |
+| #0096 | Qualify one two-existing-target marker replacement order and partial result protocol | Work | #0207, #0200, #0208, #0198, #0179 |
+| #0201 | Qualify one ordinary and one case-only same-parent marker rename plan | Work | #0195, #0196, #0200 |
+| #0202 | Implement the accepted two-name three-move same-volume marker cycle | Work | #0195, #0196, #0200 |
+| #0203 | Qualify explicit pruning of finalized unneeded replacement backups | Work | #0200, #0172, #0169 |
+| #0204 | Audit replacement-specific native failures and cancellation at fixed phase boundaries | Work | #0215, #0208, #0174 |
+| #0205 | Observe one exact replacement profile across bounded disposable-VM interruptions | Work | #0204, #0208 |
+| #0206 | Enable only exact independently qualified production replacement operation/profile entries | Work | #0204, #0215, #0197, #0205, #0181 |
+| #0207 | Implement one disabled production existing-target replacement and retained-original operation | Work | #0194, #0196, #0200, #0197, #0199, #0167, #0166 |
+| #0208 | Implement replacement-specific recognition/finalization without replay | Work | #0207, #0168, #0169 |
+| #0209 | Implement one real CR3 date replacement adapter on one exact existing-target profile | Work | #0078, #0207 |
+| #0210 | Implement one occupied-name restore adapter preserving the later current CR3 version | Work | #0095, #0207, #0208, #0209 |
+| #0211 | Implement explicit selected-backup prune for one finalized replacement profile | Work | #0203, #0209 |
+| #0212 | Implement one explicitly paired ordinary/case-only RAW-XMP rename adapter | Work | #0201, #0179, #0167 |
+| #0213 | Implement one actual two-name three-move exchange adapter | Work | #0202, #0167 |
+| #0214 | Implement one receipt-bound real RAW-XMP two-member replacement resume | Work | #0086, #0208, #0209, #0096, #0179 |
+| #0215 | Freeze and qualify the final production replacement operation adapters | Work | #0213, #0214, #0212, #0211, #0208, #0210, #0209 |
+
+### Native compatibility and integration
+
+| Card | Planned outcome | Queue | Prerequisites |
+| --- | --- | --- | --- |
+| #0120 | Maintain complete RAW compatibility requirements and finite delivery matrix | Work | None newly queued |
+| #0121 | Freeze token/API-option inventory for the existing native RAW slice | Work | None newly queued |
+| #0122 | Qualify pinned-reference read selection and view differences | Work | #0121, #0052, #0053 |
+| #0123 | Qualify stored-preview reference/native differences | Work | #0121, #0052 |
+| #0124 | Qualify current preview and explicit-pair argument additions | Work | #0052 |
+| #0125 | Reconcile session startup and token admission with option inventory | Work | #0121, #0116 |
+| #0126 | Specify finite native report and inert import profile boundaries | Work | #0120 |
+| #0127 | Validate existing five CLI operation result profiles exactly | Work | #0124, #0053 |
+| #0128 | Validate actual session v1 result schemas | Work | #0116 |
+| #0129 | Specify inert translation reports for MIG-001–012 | Work | #0121 |
+| #0130 | Implement the frozen finite inert translation operation | Work | #0129 |
+| #0131 | Refine the accepted pure-filter and explicit-definition boundary | Work | #0054 |
+| #0132 | Map exact per-operation WS-002 wire contracts to authorized planner owners | Work | #0120, #0055 |
+| #0133 | Specify finite R5 advanced date lookup and repair boundaries | Work | #0120, #0056 |
+| #0134 | Qualify current immutable snapshot/query/discovery API cells | Work | #0121, #0057 |
+| #0135 | Qualify independent read-request and resource isolation | Work | #0057, #0112 |
+| #0136 | Maintain the declared-shell and plain-terminal qualification baseline | Work | #0120, #0059 |
+| #0137 | Qualify uncovered current commands in declared shells | Work | #0124, #0116, #0059 |
+| #0138 | Qualify plain narrow-terminal help and diagnostics | Work | #0116 |
+| #0139 | Specify finite read interruption and cancellation contracts | Work | #0120, #0116 |
+| #0140 | Qualify native failing-input handles separately from EOF | Work | #0116 |
+| #0141 | Audit current compatibility coverage and preserve every residual owner | Work | #0135, #0134, #0123, #0130, #0129, #0140, #0121, #0124, #0122, #0127, #0125, #0128, #0137, #0138 |
+
+### R5 assertion evidence
+
+| Card | Planned outcome | Queue | Prerequisites |
+| --- | --- | --- | --- |
+| #0162 | Qualify literal R5 date strings across two process TZ settings | Work | #0071 |
+| #0163 | Qualify the aggregate marker limit across three authored previews | Work | #0071 |
+| #0164 | Decide the exact existing private PreviewImage decoder use and derivative phase | Terry decision | #0111; explicit condition on card |
+| #0075 | Qualify one actual private R5 PreviewImage entropy assertion | Work | #0164, #0111; explicit condition on card |
+
+### Measured resource policy
+
+| Card | Planned outcome | Queue | Prerequisites |
+| --- | --- | --- | --- |
+| #0142 | Qualify direct-process CPU, memory and logical-I/O read telemetry | Work | #0060 |
+| #0143 | Measure current offline help and version startup boundaries | Work | #0142 |
+| #0144 | Measure current single and batch R5 read CPU, memory and logical I/O | Work | #0142, #0063, #0061 |
+| #0145 | Measure actual R5 stored-preview listing and extraction resources | Work | #0142, #0062, #0020 |
+| #0146 | Measure bounded sequential read-session latency and retained state | Work | #0142, #0116, #0112 |
+| #0147 | Measure JSON and session JSONL with bounded fast and slow consumers | Work | #0142, #0116 |
+| #0148 | Qualify native metadata and block byte-budget boundaries | Work | #0142, #0064 |
+| #0149 | Qualify native box, depth, entry and timed-record boundaries | Work | #0142, #0064 |
+| #0150 | Characterize collector overhead and repeatability for one current read stratum | Work | #0142, #0144 |
+| #0151 | Measure one declared native and pinned-reference comparable read subset | Work | #0142, #0020, #0073 |
+| #0152 | Review measured current-read resource evidence against the existing limit proposal | Work | #0148, #0149, #0145, #0144, #0147, #0146, #0150 |
+
+### Operational readiness
+
+| Card | Planned outcome | Queue | Prerequisites |
+| --- | --- | --- | --- |
+| #0154 | Choose initial operator coverage and consented escalation contacts | Terry decision | None newly queued |
+| #0155 | Approve the exact security-intake route and consenting responder coverage | Terry decision | #0154 |
+| #0156 | Configure and verify the specifically approved security-intake route | Work | #0155 |
+| #0157 | Choose the exact initial review-routing and enforcement policy | Terry decision | #0154 |
+| #0158 | Apply and test the specifically approved review-routing policy | Work | #0157 |
+| #0159 | Choose the first reader release authority and support boundary | Terry decision | None newly queued |
+| #0160 | Prepare one exact adopted source-reader release candidate | Work | #0159 |
+| #0161 | Publish and verify the exact authorized source-reader alpha | Work | #0159, #0160 |
+
+## Unselected and unresolved branches
+
+These residuals are not silently complete, and their future ticket counts are not yet known:
+
+- Broader #0014 transformation families still need exact tag/layout/operation selection. Current CR3 opaque semantic dependence has no positive admission merely because reference rewrites or authored controls pass. The format decision preserves refusal by default.
+- A positive WSL-native Linux guard/backend scope requires a viable selected mechanism or an explicit Terry scope decision. New-output success does not supply replacement semantics.
+- The six unknown saved-plan profiles and unselected import/report/template/filter/alias/definition/manifest/cancellation alternatives remain conditional. No speculative implementation cards were created for mutually exclusive choices.
+- Technical inspection/profile extension for the selected decoder cell remains separately scoped after the exact permitted use is recorded. The completed readiness review used existing text records, not media or a decoder; restricted observations stay private.
+- #0074 still has no concrete new photo acquisition target. Existing P1/P2 fixture and secondary variant dispositions are retained; no new acquisition is requested.
+- #0092 and targeted GPS/serial/provenance qualification need exact lawful inputs, assertions and genuinely appropriate independent observers. Unknown inventories never count as absent or anonymized.
+- #0098 still lacks a selected cross-volume operation/storage pair and source-deletion authority. Four possible follow-ups and actual append integration remain unselected.
+- Conditional performance groups for unavailable writes, filters, queues, renamed/moved pairs, secondary variants and unselected storage/cache profiles remain open. Existing warm observations are not cold-device measurements or resource-policy adoption.
+- Three proposed human governance exercises and the terminal user review need real prepared packets, consenting operators and their own authority. They are not currently presented as completed or runnable Codex work. Personal-account recovery additionally lacks its exact provider/action/authority scope; the read-only owner inventory drill does not cover it.
+
+The current power ceiling is [best-effort disposable VM-off testing](write-safety/power-test-policy.md). No physical power fixture, host crash, new NMI/bugcheck campaign, hardware qualification or automatic crypto/key service is added. No release, repository enforcement, external message, access change or source-media use is authorized by a planning card.
+
+Use the [delivery guidance](delivery-increments.md), [WS/SAF requirements](write-safety/README.md), [RAW scope](raw-scope.md) and [local board procedure](local-board.md) with this inventory. Preserve actual scope changes in the parent trace before adding work; do not return to arbitrary child batches merely to keep agents occupied.

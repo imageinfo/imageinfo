@@ -161,3 +161,9 @@ ISO disagreement and #0116 read-session CLI/actual pipes. Five Sol / Medium and
 three Sol / High agents pair implementation with independent review. Format and
 storage research remain prerequisites rather than production writer admission;
 ISO evidence uses authored bytes, and the session adapter adds no mutation protocol.
+
+The 2026-10-16 [remaining-work decomposition](remaining-work.md) replaces repeated
+ad hoc child batches with a visible bounded queue. Original umbrella acceptance
+and all unselected or insufficiently scoped residuals remain explicit. Tracking
+cards are excluded from executable counts; completed research does not close an
+original positive requirement. No implementation began during that planning pass.
