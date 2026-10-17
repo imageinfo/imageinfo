@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:imageinfo:contract:pure-data:v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "registryRevision",
+    "expression",
+    "aliases",
+    "parameters",
+    "definitions"
+  ],
+  "properties": {
+    "version": {
+      "const": "pure-data-v1"
+    },
+    "registryRevision": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$"
+    },
+    "expression": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "aliases": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "selector"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]{0,63}$"
+          },
+          "selector": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          }
+        }
+      }
+    },
+    "parameters": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "type",
+          "value"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]{0,63}$"
+          },
+          "type": {
+            "enum": [
+              "string",
+              "number",
+              "boolean",
+              "null",
+              "integer"
+            ]
+          },
+          "value": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "definitions": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "namespace",
+          "localName",
+          "type",
+          "provenance",
+          "revision"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]{0,63}$"
+          },
+          "namespace": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          },
+          "localName": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]{0,63}$"
+          },
+          "type": {
+            "enum": [
+              "string",
+              "number",
+              "boolean",
+              "null",
+              "integer"
+            ]
+          },
+          "provenance": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          },
+          "revision": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,11 @@
 # RAW expression and module boundary (#0054)
 
-Status: **proposal for Terry's review**, revision `2026-10-15.1`. This completes
+Status: **historical #0054 proposal**, revision `2026-10-15.1`. The accepted
+#0007 pure/data direction is now refined by the [#0131 contract](pure-data-boundary.md)
+without another adoption gate. That contract supersedes the pending-decision
+wording below for bounded filters and explicit definitions; arbitrary executable
+support remains unmet. The remaining text records the original recommendation.
+This completes
 the bounded #0054 recommendation for **LG-003 / OD-02**; it does not close the
 long-term executable compatibility gap. The existing #0007 recommendation was
 accepted with that card. The more precise milestone choice below has not been

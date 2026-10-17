@@ -22,9 +22,9 @@
     },
     "denominatorRule": "CLI Option Details item headings; API METHODS head2; Options item headings union AvailableOptions registry; SetNewValue option headings. Identifier syntax only, not every value, abbreviation, overload or undocumented CLI parser branch."
   },
-  "nativeSourceRevision": "dc5628c3422704899febff7462d03becae6a239c",
+  "nativeSourceRevision": "622e39c22e7d6f1cca9d761e3597e149f5007afb",
   "nativeSourceSha256": {
-    "src/cli.rs": "334109d3903df8528fa4daeec72340137dcf177bc82440b0db46e7b3e695adb4",
+    "src/cli.rs": "63f24bcb379ea911386e0b18d1022238ce10570326232611d0c56c312e70a488",
     "src/read_request.rs": "612f84defa717f481e34e7ebf18f662c2935ded67d1c20ce2238f1645bbe9ee1",
     "src/read_session.rs": "4815a17dd4b21fe3d864177ab51060b97d278011bbb9413ac647d230ee6ad473",
     "src/reader/mod.rs": "a1377465287cf87ac1d44698aeea5d4cb017d6ce9c74888ab9ce79ed5b3e84a3",
@@ -32,9 +32,9 @@
     "src/plan.rs": "2b577dde8b8df377606123abd6a69042374bec973f9aee0e4544d6693fcb9ccc",
     "src/preview.rs": "4b6b7568621b8e7a6df27ea51a848d3614c23f0ae48b60ced67998feac15d745",
     "src/source_binding.rs": "7a56fd81449825c12b6309f0342bf21330cef881067b9741cc6e42f83e7b9b68",
-    "src/pairing.rs": "a17564bdc53a41137bf04b3a59fbff50146683c6248ee382904e394bafd85530",
+    "src/pairing.rs": "065961ab95b03f56c90a7ef22a17ec7322df267fec93f7b08acf99cc44ef0050",
     "src/lib.rs": "c097ca4da0f4ba5a3a381c42230d86b0964a4a480dfa8b97f347da9b72fc52ad",
-    "src/main.rs": "b2877196c69acac9014062be0bcd458a81f86f7136a173c48076e87590f79214",
+    "src/main.rs": "f05de49f98cae9c1e51babc6d1d1bc4bd351c3652aaad602f8a4c3696ace266b",
     "src/inert_translation.rs": "e4289ccfca646aabb8625cfbaf0bcf4d522da461fb4c35865d9e8078eff90164",
     "src/inert_translation_templates.json": "a803dfea7ec1be9ad9f23d20b06754a9e6230f5f679de9686ff5e204b5782386"
   },
@@ -248,7 +248,7 @@
         "-tagsFromFile",
         "filename format codes"
       ],
-      "nativeObservation": "Explicit path-only sidecar pairing; no source/output substitution templates.",
+      "nativeObservation": "Explicit path pairing or separately selected bounded same-stem inference; no source/output substitution templates.",
       "residual": "current-RAW-unresolved",
       "residualOwner": "#0015 (delivery-matrix.v1.json for bounded owners)",
       "adoptedDifference": false
@@ -2442,7 +2442,8 @@
         "--offset": "optional u64 allocation assertion"
       },
       "sidecar pair": {
-        "--sidecar": "explicit existing path; missing path refuses"
+        "--sidecar": "explicit existing path; missing path refuses",
+        "--infer-same-stem": "opt-in bounded read-only same-stem inference; mutually exclusive with --sidecar"
       },
       "session read": {
         "--output": "forbidden; fixed v1 JSONL"

@@ -1,0 +1,1936 @@
+{
+  "schemaVersion": 1,
+  "platform": "nt",
+  "binarySha256": "f2e84c45e2cfce3878958f1df3535f761fdaff07375f4fc4fb283ddd27b94352",
+  "ledgerSha256": "fe35be4660ca211990ddd1a7f5cd7b9263e95979f02dae99f43acf2cc9846480",
+  "sourceSha256": {
+    "src/cli.rs": "334109d3903df8528fa4daeec72340137dcf177bc82440b0db46e7b3e695adb4",
+    "src/main.rs": "b2877196c69acac9014062be0bcd458a81f86f7136a173c48076e87590f79214",
+    "src/app.rs": "824655b6f49fa3dac92c599ac88a7d52787726db851740d2acf8c3aa7af4e28d",
+    "src/read_request.rs": "612f84defa717f481e34e7ebf18f662c2935ded67d1c20ce2238f1645bbe9ee1",
+    "src/output.rs": "fe19962fb81f01d4be1fc501153ad345864ff2fba669182870d42f6d6daaaacc",
+    "src/inert_translation.rs": "e4289ccfca646aabb8625cfbaf0bcf4d522da461fb4c35865d9e8078eff90164",
+    "Cargo.lock": "28e48ee1d73a3f1160157fe206a860406c428a9918e52ac4103850b2441272ab",
+    "scripts/check_plain_terminals.py": "0cf63e6d5d8814ddb0e9aaafca893c4f77390fa33def7f02d080a461380185a1",
+    "scripts/plain_terminal_pty.py": "5e8ac8c00c895b533dbb1d76cfe111f80b942de8996c39e5fb41c493401a524a"
+  },
+  "cases": [
+    {
+      "id": "help-root",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 1349,
+          "hostControls": [
+            "CSI-22;1H",
+            "CSI-2J",
+            "CSI-38;1H",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 1349,
+          "hostControls": [
+            "CSI-15;1H",
+            "CSI-25;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 1349,
+          "hostControls": [
+            "CSI-22;1H",
+            "CSI-2J",
+            "CSI-38;1H",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 1349,
+          "hostControls": [
+            "CSI-15;1H",
+            "CSI-25;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "help-version",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 684,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-4;1H",
+            "CSI-6;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 684,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 684,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-4;1H",
+            "CSI-6;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 684,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "help-session",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 823,
+          "hostControls": [
+            "CSI-12;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-6;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 822,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-9;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 823,
+          "hostControls": [
+            "CSI-12;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-6;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 822,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-9;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "help-session-read",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 891,
+          "hostControls": [
+            "CSI-22;1H",
+            "CSI-2J",
+            "CSI-4;1H",
+            "CSI-6;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 891,
+          "hostControls": [
+            "CSI-15;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 891,
+          "hostControls": [
+            "CSI-22;1H",
+            "CSI-2J",
+            "CSI-4;1H",
+            "CSI-6;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 891,
+          "hostControls": [
+            "CSI-15;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "help-metadata",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 792,
+          "hostControls": [
+            "CSI-12;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-6;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 791,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-9;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 792,
+          "hostControls": [
+            "CSI-12;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-6;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 791,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-9;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "help-metadata-read",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 1328,
+          "hostControls": [
+            "CSI-11;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-46;1H",
+            "CSI-6;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 1327,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-34;1H",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-9;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 1328,
+          "hostControls": [
+            "CSI-11;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-46;1H",
+            "CSI-6;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 1327,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-34;1H",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-9;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "help-binary",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 853,
+          "hostControls": [
+            "CSI-13;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-6;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 853,
+          "hostControls": [
+            "CSI-10;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 853,
+          "hostControls": [
+            "CSI-13;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-6;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 853,
+          "hostControls": [
+            "CSI-10;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "help-binary-list",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 935,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-6;1H",
+            "CSI-9;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 935,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-8;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 935,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-6;1H",
+            "CSI-9;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 935,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-8;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "help-binary-extract",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 1253,
+          "hostControls": [
+            "CSI-10;1H",
+            "CSI-2J",
+            "CSI-4;1H",
+            "CSI-7;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 1252,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-8;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 1253,
+          "hostControls": [
+            "CSI-10;1H",
+            "CSI-2J",
+            "CSI-4;1H",
+            "CSI-7;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 1252,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-8;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "help-preview",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 848,
+          "hostControls": [
+            "CSI-12;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-6;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 847,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-9;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 848,
+          "hostControls": [
+            "CSI-12;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-6;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 847,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-9;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "help-preview-date-time-original",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 1075,
+          "hostControls": [
+            "CSI-10;1H",
+            "CSI-2J",
+            "CSI-31;1H",
+            "CSI-4;1H",
+            "CSI-7;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 1074,
+          "hostControls": [
+            "CSI-21;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-8;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 1075,
+          "hostControls": [
+            "CSI-10;1H",
+            "CSI-2J",
+            "CSI-31;1H",
+            "CSI-4;1H",
+            "CSI-7;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 1074,
+          "hostControls": [
+            "CSI-21;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-8;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "help-sidecar",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 831,
+          "hostControls": [
+            "CSI-13;1H",
+            "CSI-2J",
+            "CSI-4;1H",
+            "CSI-7;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 830,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-9;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 831,
+          "hostControls": [
+            "CSI-13;1H",
+            "CSI-2J",
+            "CSI-4;1H",
+            "CSI-7;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 830,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-9;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "help-sidecar-pair",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 976,
+          "hostControls": [
+            "CSI-10;1H",
+            "CSI-29;1H",
+            "CSI-2J",
+            "CSI-4;1H",
+            "CSI-7;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 975,
+          "hostControls": [
+            "CSI-19;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-8;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 976,
+          "hostControls": [
+            "CSI-10;1H",
+            "CSI-29;1H",
+            "CSI-2J",
+            "CSI-4;1H",
+            "CSI-7;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 975,
+          "hostControls": [
+            "CSI-19;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-8;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "help-compat",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 830,
+          "hostControls": [
+            "CSI-13;1H",
+            "CSI-2J",
+            "CSI-4;1H",
+            "CSI-7;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 829,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-9;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 830,
+          "hostControls": [
+            "CSI-13;1H",
+            "CSI-2J",
+            "CSI-4;1H",
+            "CSI-7;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 829,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-9;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "help-compat-translate",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 871,
+          "hostControls": [
+            "CSI-23;1H",
+            "CSI-2J",
+            "CSI-4;1H",
+            "CSI-7;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 871,
+          "hostControls": [
+            "CSI-15;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 871,
+          "hostControls": [
+            "CSI-23;1H",
+            "CSI-2J",
+            "CSI-4;1H",
+            "CSI-7;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 1,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 871,
+          "hostControls": [
+            "CSI-15;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "guided-text",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 2,
+          "ptyBytes": 219,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 2,
+          "ptyBytes": 219,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "guided-json",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 2,
+          "ptyBytes": 888,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 2,
+          "ptyBytes": 888,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "syntax-text",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 2,
+          "ptyBytes": 370,
+          "hostControls": [
+            "CSI-10;1H",
+            "CSI-2J",
+            "CSI-4;1H",
+            "CSI-7;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 2,
+          "ptyBytes": 369,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-7;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "syntax-json",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 2,
+          "ptyBytes": 1173,
+          "hostControls": [
+            "CSI-24;1H",
+            "CSI-27;1H",
+            "CSI-2J",
+            "CSI-30;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 2,
+          "ptyBytes": 1173,
+          "hostControls": [
+            "CSI-13;1H",
+            "CSI-15;1H",
+            "CSI-17;1H",
+            "CSI-2J",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "control-path-text",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 1,
+          "ptyBytes": 190,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 1,
+          "ptyBytes": 190,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "control-path-json",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 1,
+          "ptyBytes": 1138,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 1,
+          "ptyBytes": 1138,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "forced-color-help",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 1349,
+          "hostControls": [
+            "CSI-22;1H",
+            "CSI-2J",
+            "CSI-38;1H",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 0,
+          "ptyBytes": 1349,
+          "hostControls": [
+            "CSI-15;1H",
+            "CSI-25;1H",
+            "CSI-2J",
+            "CSI-3;1H",
+            "CSI-5;1H",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "extract-missing",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 2,
+          "ptyBytes": 198,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 2,
+          "ptyBytes": 198,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    },
+    {
+      "id": "translate-selector-refusal",
+      "passed": true,
+      "observations": [
+        {
+          "spelling": 0,
+          "columns": 40,
+          "backend": "windows-conpty",
+          "status": 2,
+          "ptyBytes": 902,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        },
+        {
+          "spelling": 0,
+          "columns": 80,
+          "backend": "windows-conpty",
+          "status": 2,
+          "ptyBytes": 902,
+          "hostControls": [
+            "CSI-2J",
+            "CSI-?1004h",
+            "CSI-?1004l",
+            "CSI-?25h",
+            "CSI-?25l",
+            "CSI-?9001h",
+            "CSI-?9001l",
+            "CSI-H",
+            "CSI-m",
+            "OSC-title"
+          ],
+          "exactVisibleNonWhitespace": true
+        }
+      ]
+    }
+  ],
+  "helpInventoryComplete": true
+}

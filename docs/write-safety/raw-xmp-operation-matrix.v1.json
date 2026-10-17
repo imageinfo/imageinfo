@@ -1,0 +1,3473 @@
+{
+  "schema": "imageinfo.raw-xmp-operation-matrix.v1",
+  "revision": "2026-10-17.1",
+  "kind": "inert-requirements-inventory",
+  "productionMutationAllowed": false,
+  "parentAcceptanceComplete": false,
+  "gap004Complete": false,
+  "gap009Complete": false,
+  "firstOperation": "cr3-date-new",
+  "firstOperationAdmission": "refused",
+  "familyCardinality": "unknown-outside-exact-selected-rows",
+  "operations": [
+    {
+      "id": "cr3-date-new",
+      "operation": "Replace one existing ASCII20 value into a new absent CR3 output",
+      "identity": "Exif 0x9003 DateTimeOriginal; unique original occurrence; no inferred alias",
+      "location": "EOS R5 full RAW / CMT2 / Exif IFD / original allocation",
+      "inputView": "raw ASCII20; normalized calendar validation only, no timezone transform",
+      "preservationBasis": "Exact 20-byte target plus full complement, all allocations and independent interpretation/dependency proof; complement or RAW unpack alone is insufficient",
+      "owners": [
+        23,
+        78,
+        119,
+        22,
+        176,
+        80
+      ],
+      "prerequisites": [
+        118,
+        119,
+        77,
+        132,
+        176
+      ],
+      "nextFinishLine": "#0119 must name independent positive dependency evidence under the unchanged contract; absent that evidence refuse. #0078 then binds the actual admitted adapter and #0080 qualifies it.",
+      "evidence": [
+        "docs/write-safety/write-admission.md",
+        "docs/write-safety/new-output-preservation.md",
+        "docs/write-safety/cmt-opaque-dependencies.md",
+        "docs/write-safety/new-output-contract.md"
+      ],
+      "outcome": "refused",
+      "productionMutationAllowed": false,
+      "criteria": [
+        "REC-001",
+        "REC-002",
+        "REC-003",
+        "REC-004",
+        "REC-005",
+        "REC-006",
+        "REC-007",
+        "REC-008",
+        "SAF-003",
+        "SAF-004",
+        "SAF-005",
+        "SAF-006",
+        "SAF-007",
+        "SAF-008",
+        "SAF-009",
+        "SAF-014",
+        "SAF-015",
+        "SAF-016",
+        "TX-001",
+        "TX-002",
+        "TX-003",
+        "TX-004",
+        "TX-005",
+        "TX-006",
+        "TX-007",
+        "TX-008",
+        "TX-009",
+        "TX-010",
+        "TX-011",
+        "TX-012",
+        "TX-013",
+        "TX-014",
+        "TX-015",
+        "TX-016",
+        "TX-017",
+        "TX-018",
+        "TX-019",
+        "TX-020",
+        "TX-021",
+        "TX-022",
+        "TX-023",
+        "TX-024",
+        "TX-025",
+        "TX-026",
+        "TX-027",
+        "TX-028",
+        "TX-029",
+        "TX-030",
+        "TX-031",
+        "TX-032",
+        "TX-033",
+        "TX-034"
+      ]
+    },
+    {
+      "id": "xmp-date-new",
+      "operation": "Replace an existing singleton date value in a new XMP derivative",
+      "identity": "{http://ns.adobe.com/exif/1.0/}DateTimeOriginal; explicit RAW primary/fraction/offset occurrences",
+      "location": "Explicit existing sidecar packet and property lexical range; separate absent output",
+      "inputView": "raw original date strings mapped by #0083; exact fractions/offsets",
+      "preservationBasis": "Borrow original on no-op; exact XML complements and target-only semantic reparse; opaque/cross-IFD RAW source dependencies refuse",
+      "owners": [
+        24,
+        85,
+        185,
+        186
+      ],
+      "prerequisites": [
+        184,
+        185,
+        186,
+        176
+      ],
+      "nextFinishLine": "#0185 independently checks actual admitted pair; #0186 binds exact observations/candidate; #0085 publishes only that new-name adapter.",
+      "evidence": [
+        "docs/sidecars/date-mapping.md",
+        "docs/sidecars/date-preservation.md",
+        "docs/sidecars/native-date-adapter.md",
+        "docs/sidecars/packet-profile.md"
+      ],
+      "outcome": "unverified",
+      "productionMutationAllowed": false,
+      "criteria": [
+        "REC-001",
+        "REC-002",
+        "REC-003",
+        "REC-004",
+        "REC-005",
+        "REC-006",
+        "REC-007",
+        "REC-008",
+        "SAF-005",
+        "SAF-006",
+        "SAF-007",
+        "SAF-008",
+        "SAF-009",
+        "SAF-015",
+        "TX-001",
+        "TX-002",
+        "TX-003",
+        "TX-004",
+        "TX-005",
+        "TX-006",
+        "TX-007",
+        "TX-008",
+        "TX-009",
+        "TX-010",
+        "TX-011",
+        "TX-012",
+        "TX-013",
+        "TX-014",
+        "TX-015",
+        "TX-016",
+        "TX-017",
+        "TX-018",
+        "TX-019",
+        "TX-020",
+        "TX-021",
+        "TX-022",
+        "TX-023",
+        "TX-024",
+        "TX-025",
+        "TX-026",
+        "TX-027",
+        "TX-028",
+        "TX-029",
+        "TX-030",
+        "TX-031",
+        "TX-032",
+        "TX-033",
+        "TX-034"
+      ]
+    },
+    {
+      "id": "pair-date",
+      "operation": "Synchronize the selected date through two declared ordered units",
+      "identity": "Exact identities from cr3-date-new and xmp-date-new; explicit pair membership",
+      "location": "One full RAW and one selected existing XMP, two outputs",
+      "inputView": "original snapshots only; direction/conflict policy explicit",
+      "preservationBasis": "Both candidates validated before first publication; per-member receipts and partial outcomes, no pair atomicity",
+      "owners": [
+        24,
+        86,
+        179,
+        180,
+        181
+      ],
+      "prerequisites": [
+        80,
+        85,
+        179,
+        180,
+        181,
+        187
+      ],
+      "nextFinishLine": "#0086 exercises one actual admitted pair, between-member failure and matching-receipt resume without replay.",
+      "evidence": [
+        "docs/sidecars/pairing.md",
+        "docs/write-safety/namespace-receipt-protocol.md"
+      ],
+      "outcome": "unverified",
+      "productionMutationAllowed": false,
+      "criteria": [
+        "GRP-001",
+        "GRP-002",
+        "GRP-003",
+        "GRP-004",
+        "GRP-005",
+        "GRP-006",
+        "SAF-010"
+      ]
+    },
+    {
+      "id": "xmp-owner-delete",
+      "operation": "Remove exactly one supported OwnerName property",
+      "identity": "R5P-026 / {http://ns.adobe.com/exif/1.0/aux/}OwnerName",
+      "location": "Selected sidecar.xmp document/ordinal/form and whole-property range",
+      "inputView": "raw property identity, not display name",
+      "preservationBasis": "Exact lexical complement and semantic sibling retention; provenance refusal; retained-artifact residual reporting",
+      "owners": [
+        25,
+        89,
+        90,
+        188,
+        189,
+        190
+      ],
+      "prerequisites": [
+        188,
+        189,
+        190,
+        85
+      ],
+      "nextFinishLine": "#0089 qualifies actual one-field removal; #0090 audits RAW, previews, originals and recovery residuals.",
+      "evidence": [
+        "docs/privacy/xmp-owner-removal-contract.md",
+        "docs/privacy/read-coverage.md"
+      ],
+      "outcome": "unverified",
+      "productionMutationAllowed": false,
+      "criteria": [
+        "SAF-013",
+        "SAF-014"
+      ]
+    },
+    {
+      "id": "xmp-label",
+      "operation": "Set an existing singleton label; separately create missing property",
+      "identity": "{http://ns.adobe.com/xap/1.0/}Label",
+      "location": "Explicit XMP packet/occurrence; creation location must be separately bound",
+      "inputView": "raw Unicode text; normalized copy only under named reversible mapping",
+      "preservationBasis": "Retain all unselected XML bytes/semantics; equal value means no rewrite/backup; absence differs from unread",
+      "owners": [
+        24
+      ],
+      "prerequisites": [
+        183
+      ],
+      "nextFinishLine": "Within #0024: freeze one singleton existing-label authored candidate contract before implementation; test changed/equal/absent/duplicate, escaping and unknown siblings. Missing-property insertion stays separate.",
+      "evidence": [
+        "docs/metadata-model/examples/snapshot.synthetic.json",
+        "docs/sidecars/packet-profile.md"
+      ],
+      "outcome": "unverified",
+      "productionMutationAllowed": false,
+      "criteria": [
+        "SAF-002"
+      ]
+    },
+    {
+      "id": "caption",
+      "operation": "Set exactly one x-default caption entry",
+      "identity": "{http://purl.org/dc/elements/1.1/}description / language x-default",
+      "location": "Explicit XMP rdf:Alt entry; no implicit native CR3 caption alias",
+      "inputView": "raw Unicode text; preserve original spelling/order of other language keys",
+      "preservationBasis": "Exact selected-entry lexical range plus semantic sibling/qualifier verification; no implicit repair or unknown-data stripping",
+      "owners": [
+        24,
+        23
+      ],
+      "prerequisites": [
+        183
+      ],
+      "nextFinishLine": "Within #0024: specify one existing plain-text x-default entry and reject duplicate/unsupported qualified forms; authored changed/equal/empty/escape vectors. Embedded CR3 caption tag/layout remains unknown and unsupported.",
+      "evidence": [
+        "docs/metadata-model/README.md",
+        "docs/write-safety/acceptance-scenarios.md"
+      ],
+      "outcome": "unverified",
+      "productionMutationAllowed": false,
+      "criteria": [
+        "SAF-001"
+      ]
+    },
+    {
+      "id": "list",
+      "operation": "Replace/append/remove-index/remove-all on one subject bag; deduplicate separately",
+      "identity": "{http://purl.org/dc/elements/1.1/}subject / rdf:Bag; exact item ordinal",
+      "location": "Selected XMP packet/property/container/item; unknown qualifiers refuse this slice",
+      "inputView": "raw ordered strings with multiplicity; explicit equality level",
+      "preservationBasis": "Append retains duplicates; index removes one; remove-all explicit; whole replacement declares losses; preserve unselected lexical/semantic siblings",
+      "owners": [
+        24
+      ],
+      "prerequisites": [
+        183
+      ],
+      "nextFinishLine": "Within #0024: freeze a one-property plain-string bag contract with bounded items and exact ordinal operations; independently execute VAL-001..004. Deduplicate must first specify equality, survivor/order and loss policy; no semantics invented here.",
+      "evidence": [
+        "docs/metadata-model/README.md",
+        "docs/write-safety/scenarios.v1.json"
+      ],
+      "outcome": "unverified",
+      "productionMutationAllowed": false,
+      "criteria": [
+        "VAL-001",
+        "VAL-002",
+        "VAL-003",
+        "VAL-004"
+      ]
+    },
+    {
+      "id": "language",
+      "operation": "Set x-default or delete only fr in an existing rights language alternative",
+      "identity": "{http://purl.org/dc/elements/1.1/}rights / language x-default or fr",
+      "location": "Explicit existing XMP rdf:Alt entry and original lexical ordinal",
+      "inputView": "raw language spelling/text; case-insensitive key identity",
+      "preservationBasis": "Preserve other languages, order, spelling and qualifiers; no fabricated x-default",
+      "owners": [
+        24
+      ],
+      "prerequisites": [
+        183
+      ],
+      "nextFinishLine": "Within #0024: freeze exactly two existing-entry operations with duplicate case-key refusal and authored VAL-005/006 plus missing-entry and unknown-sibling controls.",
+      "evidence": [
+        "docs/metadata-model/examples/snapshot.synthetic.json",
+        "docs/write-safety/scenarios.v1.json"
+      ],
+      "outcome": "unverified",
+      "productionMutationAllowed": false,
+      "criteria": [
+        "VAL-005",
+        "VAL-006"
+      ]
+    },
+    {
+      "id": "structure",
+      "operation": "Merge named fields or explicitly replace a whole structure",
+      "identity": "No production property selected; authored known/unknown field names only",
+      "location": "Synthetic structure; actual XMP expanded property/path/qualifiers unresolved",
+      "inputView": "raw typed structure; no flattening",
+      "preservationBasis": "Merge preserves unknown siblings; replacement names each lost sibling; duplicated expanded fields refuse",
+      "owners": [
+        24
+      ],
+      "prerequisites": [
+        183
+      ],
+      "nextFinishLine": "Within #0024: record exact expanded property and representation before an executable slice; then compare merge versus replacement on VAL-007/008 and unknown/duplicate/qualified controls. Production family cardinality remains unknown.",
+      "evidence": [
+        "docs/metadata-model/README.md",
+        "docs/write-safety/scenarios.v1.json"
+      ],
+      "outcome": "unverified",
+      "productionMutationAllowed": false,
+      "criteria": [
+        "VAL-007",
+        "VAL-008"
+      ]
+    },
+    {
+      "id": "snapshot-copy",
+      "operation": "Copy Artist to creator under the existing synthetic mapping; retain two-way original-copy control",
+      "identity": "proposal:exif/Artist@1 to proposal:xmp-dc/creator@1; exact occurrence IDs required",
+      "location": "Original RAW occurrence and explicit XMP creator sequence insertion; actual admitted representation unresolved",
+      "inputView": "normalized string under proposal:string-to-creator-sequence-v1, never display",
+      "preservationBasis": "Freeze every source before effects; no earlier write feeds later copy; named mapping/loss policy, unknown dependency refusals",
+      "owners": [
+        24,
+        23
+      ],
+      "prerequisites": [
+        183,
+        132
+      ],
+      "nextFinishLine": "Within #0024: bound one Artist-to-creator intent and its insertion mapping first; independent VAL-009 swap oracle must distinguish snapshot from sequential evaluation. This does not admit Canon writes or creator serialization.",
+      "evidence": [
+        "docs/metadata-model/examples/copy-intent.synthetic.json",
+        "docs/write-safety/scenarios.v1.json"
+      ],
+      "outcome": "unverified",
+      "productionMutationAllowed": false,
+      "criteria": [
+        "VAL-009"
+      ]
+    },
+    {
+      "id": "rational",
+      "operation": "Normalized rational no-op versus explicit raw-pair set",
+      "identity": "proposal:exif/ExposureTime@1 / Exif 0x829a; exact physical occurrence required",
+      "location": "CMT/IFD allocation is not fixed by the synthetic identity; production layout unresolved",
+      "inputView": "normalized exact fraction versus raw numerator/denominator pair",
+      "preservationBasis": "Numeric equality retains original unreduced pair/bytes; raw equal-number pair change is a real edit; zero denominator invalid with bytes retained",
+      "owners": [
+        23
+      ],
+      "prerequisites": [
+        119
+      ],
+      "nextFinishLine": "Within #0023: freeze one actual allocation/type/byte-order/dependency map before implementation; authored VAL-010/011, denominator sign/zero/overflow and exact complement controls do not grant positive format admission.",
+      "evidence": [
+        "docs/metadata-model/examples/snapshot.synthetic.json",
+        "docs/write-safety/scenarios.v1.json"
+      ],
+      "outcome": "unverified",
+      "productionMutationAllowed": false,
+      "criteria": [
+        "VAL-010",
+        "VAL-011"
+      ]
+    },
+    {
+      "id": "null",
+      "operation": "Set typed null only for a destination definition explicitly allowing it",
+      "identity": "No eligible production definition selected; null is never delete",
+      "location": "Synthetic value only; actual destination/container/layout unresolved",
+      "inputView": "raw tagged null, distinct from absent/empty/invalid/unavailable",
+      "preservationBasis": "No deletion/insertion/reinterpretation inferred; unsupported destination refuses",
+      "owners": [
+        23,
+        24
+      ],
+      "prerequisites": [],
+      "nextFinishLine": "Within #0023/#0024: select one explicitly null-capable definition and retained encoding before an executable slice; VAL-012 must distinguish set-null, delete, empty and absent. Family size stays unknown.",
+      "evidence": [
+        "docs/metadata-model/README.md",
+        "docs/write-safety/scenarios.v1.json"
+      ],
+      "outcome": "unverified",
+      "productionMutationAllowed": false,
+      "criteria": [
+        "VAL-012"
+      ]
+    },
+    {
+      "id": "growth-shrink",
+      "operation": "Grow/shrink embedded metadata allocations without changing photograph interpretation",
+      "identity": "No additional CR3 tag/layout selected; caption/EXIF/GPS/embedded XMP are residual families",
+      "location": "CMT, container gaps, maker notes, references, previews and opaque regions as actually discovered",
+      "inputView": "raw encoded values plus named normalized transforms only",
+      "preservationBasis": "Every changed length/count/offset/padding/checksum/dependency must be justified; equal sensor bytes do not clear opaque relocation",
+      "owners": [
+        23,
+        119
+      ],
+      "prerequisites": [
+        118,
+        119
+      ],
+      "nextFinishLine": "Within #0023: select one concrete field/allocation and exact before/after layout map before coding; independent grow/shrink/relocation refusal evidence and RAW usability checks under grants. Number of undefined layouts is unknown.",
+      "evidence": [
+        "docs/write-safety/authored-cmt-serialization.md",
+        "docs/write-safety/cr3-rewrite-attribution.md",
+        "docs/write-safety/write-admission.md"
+      ],
+      "outcome": "refused",
+      "productionMutationAllowed": false,
+      "criteria": [
+        "SAF-003"
+      ]
+    },
+    {
+      "id": "insert-delete-block",
+      "operation": "Create or delete one field/block with explicit allocation/defaults/losses",
+      "identity": "No extra CR3 field/block selected; native privacy selectors retain catalog identity",
+      "location": "Exact insertion/deletion region and all moved references unresolved",
+      "inputView": "raw typed values; explicit deletion intent",
+      "preservationBasis": "No inferred defaults; all dependent fields, offsets and removed bytes disclosed; protected/unknown data unchanged",
+      "owners": [
+        23,
+        24,
+        25
+      ],
+      "prerequisites": [
+        119,
+        183
+      ],
+      "nextFinishLine": "Within existing owners: bind one exact region/definition and absence proof, required defaults and losses; unknown family stays unknown. Do not treat missing XMP date or an empty sidecar as supported creation.",
+      "evidence": [
+        "docs/write-safety/README.md",
+        "docs/privacy/r5-catalog.md"
+      ],
+      "outcome": "unverified",
+      "productionMutationAllowed": false,
+      "criteria": []
+    },
+    {
+      "id": "date-transform",
+      "operation": "Date shift/calendar/zone repair or geotag transform",
+      "identity": "Exact extra field/location and transformation not selected here; #0133 owns finite lookup/repair contract",
+      "location": "Native/sidecar destinations and dependent companions remain operation-specific",
+      "inputView": "raw literal versus normalized instant/calendar must be explicit",
+      "preservationBasis": "No host timezone, leap normalization, calendar carry or companion update inferred",
+      "owners": [
+        23,
+        24,
+        133
+      ],
+      "prerequisites": [
+        133
+      ],
+      "nextFinishLine": "#0133 supplies its bounded contract; each later mutation requires exact writable destinations, dependency map and independent transform vectors before implementation.",
+      "evidence": [
+        "docs/legacy-compatibility/r5-date-mapping.md",
+        "docs/metadata-model/README.md"
+      ],
+      "outcome": "unverified",
+      "productionMutationAllowed": false,
+      "criteria": []
+    },
+    {
+      "id": "preview-variant",
+      "operation": "Direct CTMD edit, stored-preview replacement, C-RAW or DPRAW mutation",
+      "identity": "Explicit requested native location/variant; derived/read-only values are not writable aliases",
+      "location": "Unsupported CTMD, preview payload or unqualified capture variant",
+      "inputView": "raw encoded values/payloads only",
+      "preservationBasis": "Sensor/extra planes/CFA/calibration/previews and opaque dependencies independently preserved; no silent sidecar fallback",
+      "owners": [
+        23,
+        25
+      ],
+      "prerequisites": [
+        119
+      ],
+      "nextFinishLine": "Record specific refusal and zero publication; a future exact variant/preview operation needs separately named representation, grant and independent preservation proof.",
+      "evidence": [
+        "docs/write-safety/acceptance-scenarios.md",
+        "docs/write-safety/write-admission.md"
+      ],
+      "outcome": "refused",
+      "productionMutationAllowed": false,
+      "criteria": [
+        "SAF-004"
+      ]
+    },
+    {
+      "id": "file-rename",
+      "operation": "Ordinary/case-only paired rename, two-name cycle, cross-volume move separately",
+      "identity": "Actual RAW/XMP object identities and explicit source/destination parents",
+      "location": "Same-volume no-replace names; cross-volume copy/verify/publish/delete remains separate",
+      "inputView": "Exact retained file bytes; no metadata conversion",
+      "preservationBasis": "Byte identity, collision/alias guards, properties and recoverable names; never delete unsafe source or claim cross-volume atomicity",
+      "owners": [
+        26,
+        212,
+        213,
+        201,
+        202
+      ],
+      "prerequisites": [
+        195,
+        196,
+        200,
+        201,
+        202,
+        179
+      ],
+      "nextFinishLine": "#0212 binds one actual pair rename; #0213 one two-name exchange. Cross-volume positive operation is unselected residual within #0026, not satisfied by same-volume tests.",
+      "evidence": [
+        "docs/write-safety/held-existing-move.md",
+        "docs/write-safety/README.md"
+      ],
+      "outcome": "unverified",
+      "productionMutationAllowed": false,
+      "criteria": [
+        "SAF-011"
+      ]
+    },
+    {
+      "id": "replacement-restore-prune",
+      "operation": "Replace existing target, restore current version safely, prune exact unneeded backup",
+      "identity": "Exact current/expected-old/candidate/retained-original identities; no filename-pattern authority",
+      "location": "Occupied target versus fresh restore name are separate operations",
+      "inputView": "exact retained original bytes/properties; no reinterpretation",
+      "preservationBasis": "Strict expected-old exclusion and complete retained properties; current later edit preserved; prune only verified owned no-longer-needed artifacts",
+      "owners": [
+        26,
+        209,
+        210,
+        211,
+        95,
+        199,
+        200
+      ],
+      "prerequisites": [
+        194,
+        196,
+        198,
+        199,
+        200,
+        206
+      ],
+      "nextFinishLine": "#0209 actual CR3 replacement adapter, #0210 occupied restore, #0211 selected backup prune. Failed replacement boundary does not complete any positive scope.",
+      "evidence": [
+        "docs/write-safety/existing-target-boundary.md",
+        "docs/write-safety/original-retention.md",
+        "docs/write-safety/fresh-name-restore.md"
+      ],
+      "outcome": "refused",
+      "productionMutationAllowed": false,
+      "criteria": [
+        "BKP-001",
+        "BKP-002",
+        "BKP-003",
+        "BKP-004",
+        "REC-001",
+        "REC-002",
+        "REC-003",
+        "REC-004",
+        "REC-005",
+        "REC-006",
+        "REC-007",
+        "REC-008",
+        "SAF-005",
+        "SAF-006",
+        "SAF-007",
+        "SAF-008",
+        "SAF-009",
+        "SAF-012",
+        "SAF-015",
+        "SAF-016",
+        "TX-001",
+        "TX-002",
+        "TX-003",
+        "TX-004",
+        "TX-005",
+        "TX-006",
+        "TX-007",
+        "TX-008",
+        "TX-009",
+        "TX-010",
+        "TX-011",
+        "TX-012",
+        "TX-013",
+        "TX-014",
+        "TX-015",
+        "TX-016",
+        "TX-017",
+        "TX-018",
+        "TX-019",
+        "TX-020",
+        "TX-021",
+        "TX-022",
+        "TX-023",
+        "TX-024",
+        "TX-025",
+        "TX-026",
+        "TX-027",
+        "TX-028",
+        "TX-029",
+        "TX-030",
+        "TX-031",
+        "TX-032",
+        "TX-033",
+        "TX-034"
+      ]
+    },
+    {
+      "id": "group",
+      "operation": "Two-member replacement/resume and independently ordered batch outcomes",
+      "identity": "Exact operation IDs/member identities/receipts; no free-form graph",
+      "location": "Per-file units, paired names and original read sets",
+      "inputView": "frozen original copy inputs",
+      "preservationBasis": "No multi-file atomicity; report partial/uncertain; matching current receipt skips committed unit without duplicate append",
+      "owners": [
+        26,
+        96,
+        179,
+        214
+      ],
+      "prerequisites": [
+        179,
+        180,
+        181,
+        206,
+        208,
+        209
+      ],
+      "nextFinishLine": "#0214 binds one actual replacement pair and receipt resume; #0096 supplies marker evidence only. General batch/group graph remains undefined within #0026.",
+      "evidence": [
+        "docs/write-safety/README.md",
+        "docs/legacy-compatibility/operation-plan-map.md"
+      ],
+      "outcome": "unverified",
+      "productionMutationAllowed": false,
+      "criteria": [
+        "GRP-001",
+        "GRP-002",
+        "GRP-003",
+        "GRP-004",
+        "GRP-005",
+        "GRP-006",
+        "REC-001",
+        "REC-002",
+        "REC-003",
+        "REC-004",
+        "REC-005",
+        "REC-006",
+        "REC-007",
+        "REC-008",
+        "SAF-005",
+        "SAF-006",
+        "SAF-007",
+        "SAF-008",
+        "SAF-009",
+        "SAF-010",
+        "SAF-015",
+        "TX-001",
+        "TX-002",
+        "TX-003",
+        "TX-004",
+        "TX-005",
+        "TX-006",
+        "TX-007",
+        "TX-008",
+        "TX-009",
+        "TX-010",
+        "TX-011",
+        "TX-012",
+        "TX-013",
+        "TX-014",
+        "TX-015",
+        "TX-016",
+        "TX-017",
+        "TX-018",
+        "TX-019",
+        "TX-020",
+        "TX-021",
+        "TX-022",
+        "TX-023",
+        "TX-024",
+        "TX-025",
+        "TX-026",
+        "TX-027",
+        "TX-028",
+        "TX-029",
+        "TX-030",
+        "TX-031",
+        "TX-032",
+        "TX-033",
+        "TX-034"
+      ]
+    },
+    {
+      "id": "privacy-other",
+      "operation": "Other native GPS/serial removals and provenance invalidation",
+      "identity": "31 exact R5 catalog selectors are coverage identities, not 31 admitted operations; current positive selection remains xmp-owner-delete",
+      "location": "RAW/XMP/previews/backups and opaque residuals explicitly separate",
+      "inputView": "raw selected occurrences and complete/uninspectable coverage",
+      "preservationBasis": "Protect rendering data; no anonymity/secure erasure, silent signature strip or unsupported unknown-region claim",
+      "owners": [
+        25,
+        91,
+        92,
+        191,
+        192
+      ],
+      "prerequisites": [
+        89,
+        90
+      ],
+      "nextFinishLine": "#0091/#0192 retain exact known-provenance refusal. #0092/#0191 require lawful actual targeted assertions; new native removal needs exact bytes/dependencies and independent residual evidence.",
+      "evidence": [
+        "docs/privacy/r5-catalog.md",
+        "docs/privacy/read-coverage.md",
+        "docs/write-safety/write-admission.md"
+      ],
+      "outcome": "unverified",
+      "productionMutationAllowed": false,
+      "criteria": [
+        "SAF-013",
+        "SAF-014"
+      ]
+    }
+  ],
+  "criteria": [
+    {
+      "id": "BKP-001",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "retentionCases",
+      "title": "retain-for-recovery",
+      "rules": [
+        "WS-012",
+        "WS-015",
+        "WS-019"
+      ],
+      "operations": [
+        "replacement-restore-prune"
+      ],
+      "owners": [
+        26,
+        198,
+        203,
+        211
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": "retain-for-recovery",
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "BKP-002",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "retentionCases",
+      "title": "retain-user-backup",
+      "rules": [
+        "WS-012",
+        "WS-015",
+        "WS-019"
+      ],
+      "operations": [
+        "replacement-restore-prune"
+      ],
+      "owners": [
+        26,
+        198,
+        203,
+        211
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": "retain-user-backup",
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "BKP-003",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "retentionCases",
+      "title": "discard-after-success",
+      "rules": [
+        "WS-012",
+        "WS-015",
+        "WS-019"
+      ],
+      "operations": [
+        "replacement-restore-prune"
+      ],
+      "owners": [
+        26,
+        198,
+        203,
+        211
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": "discard-after-success",
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "BKP-004",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "retentionCases",
+      "title": "retain-cleanup-pending",
+      "rules": [
+        "WS-012",
+        "WS-015",
+        "WS-019"
+      ],
+      "operations": [
+        "replacement-restore-prune"
+      ],
+      "owners": [
+        26,
+        198,
+        203,
+        211
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": "retain-cleanup-pending",
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "GRP-001",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "groups",
+      "title": "Second member fails after first commits",
+      "rules": [
+        "WS-017"
+      ],
+      "operations": [
+        "pair-date",
+        "group"
+      ],
+      "owners": [
+        24,
+        26,
+        179,
+        180,
+        181,
+        214
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": "partial",
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "GRP-002",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "groups",
+      "title": "A conflict does not make a pair synchronized",
+      "rules": [
+        "WS-017"
+      ],
+      "operations": [
+        "pair-date",
+        "group"
+      ],
+      "owners": [
+        24,
+        26,
+        179,
+        180,
+        181,
+        214
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": "partial",
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "GRP-003",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "groups",
+      "title": "Cancellation can follow a committed member",
+      "rules": [
+        "WS-016",
+        "WS-017"
+      ],
+      "operations": [
+        "pair-date",
+        "group"
+      ],
+      "owners": [
+        24,
+        26,
+        179,
+        180,
+        181,
+        214
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": "partial",
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "GRP-004",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "groups",
+      "title": "A committed and unchanged pair is complete",
+      "rules": [
+        "WS-005",
+        "WS-017"
+      ],
+      "operations": [
+        "pair-date",
+        "group"
+      ],
+      "owners": [
+        24,
+        26,
+        179,
+        180,
+        181,
+        214
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": "complete",
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "GRP-005",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "groups",
+      "title": "Uncertain member prevents group success",
+      "rules": [
+        "WS-015",
+        "WS-017"
+      ],
+      "operations": [
+        "pair-date",
+        "group"
+      ],
+      "owners": [
+        24,
+        26,
+        179,
+        180,
+        181,
+        214
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": "recovery-required",
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "GRP-006",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "groups",
+      "title": "No member committed when preflight refuses",
+      "rules": [
+        "WS-003",
+        "WS-017"
+      ],
+      "operations": [
+        "pair-date",
+        "group"
+      ],
+      "owners": [
+        24,
+        26,
+        179,
+        180,
+        181,
+        214
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": "not-applied",
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "REC-001",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "recoveryCases",
+      "title": "Original identity established",
+      "rules": [
+        "WS-015"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        26,
+        169,
+        170,
+        171,
+        172
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": "recovered-original",
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "REC-002",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "recoveryCases",
+      "title": "Expected absent destination still absent",
+      "rules": [
+        "WS-015"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        26,
+        169,
+        170,
+        171,
+        172
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": "recovered-original",
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "REC-003",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "recoveryCases",
+      "title": "Owned candidate and final checks established",
+      "rules": [
+        "WS-015"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        26,
+        169,
+        170,
+        171,
+        172
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": "committed",
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "REC-004",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "recoveryCases",
+      "title": "Foreign target must not be overwritten",
+      "rules": [
+        "WS-015"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        26,
+        169,
+        170,
+        171,
+        172
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": "recovery-required",
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "REC-005",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "recoveryCases",
+      "title": "Unexpected missing existing target",
+      "rules": [
+        "WS-015"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        26,
+        169,
+        170,
+        171,
+        172
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": "recovery-required",
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "REC-006",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "recoveryCases",
+      "title": "Untrusted record never drives repair",
+      "rules": [
+        "WS-015"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        26,
+        169,
+        170,
+        171,
+        172
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": "recovery-required",
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "REC-007",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "recoveryCases",
+      "title": "Candidate lacks original recovery",
+      "rules": [
+        "WS-015"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        26,
+        169,
+        170,
+        171,
+        172
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": "recovery-required",
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "REC-008",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "recoveryCases",
+      "title": "Candidate finalization checks fail",
+      "rules": [
+        "WS-015"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        26,
+        169,
+        170,
+        171,
+        172
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": "recovery-required",
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "SAF-001",
+      "source": "docs/write-safety/acceptance-scenarios.md",
+      "sourceSection": "SAF",
+      "title": "Preview an EOS R5 full RAW caption change; save a plan if requested. Try an imported plan with fabricated capability/authorization fields.",
+      "required": "No target mutation. The requested plan is the only new artifact. Application recomputes trust/capability checks; imported fields do not authorize a write.",
+      "rules": [
+        "WS-001",
+        "WS-002",
+        "WS-003",
+        "WS-006"
+      ],
+      "fixtureFamilies": [
+        "FXP-018",
+        "FXP-023"
+      ],
+      "operations": [
+        "caption"
+      ],
+      "owners": [
+        23,
+        24
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "evidenceBoundary": "Scoped child evidence is not completion of this full SAF scenario."
+    },
+    {
+      "id": "SAF-002",
+      "source": "docs/write-safety/acceptance-scenarios.md",
+      "sourceSection": "SAF",
+      "title": "Edit/create a paired XMP label, including an absent value and an already equal value.",
+      "required": "RAW bytes remain identical. Existing XMP retains unselected data; creation uses an explicit path and property policy. A valid no-op creates no backup and does not rewrite XMP.",
+      "rules": [
+        "WS-004",
+        "WS-005",
+        "WS-011"
+      ],
+      "fixtureFamilies": [
+        "FXP-016"
+      ],
+      "operations": [
+        "xmp-label"
+      ],
+      "owners": [
+        24
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "evidenceBoundary": "Scoped child evidence is not completion of this full SAF scenario."
+    },
+    {
+      "id": "SAF-003",
+      "source": "docs/write-safety/acceptance-scenarios.md",
+      "sourceSection": "SAF",
+      "title": "Change eligible CR3 EXIF/GPS/XMP with growth and shrinkage around maker notes, padding, previews and opaque blocks.",
+      "required": "Sensor samples, additional required planes, calibration/CFA interpretation and unselected previews remain intact. All moved references remain valid. Unprovable opaque relocation refuses before publication.",
+      "rules": [
+        "WS-006",
+        "WS-007",
+        "WS-008"
+      ],
+      "fixtureFamilies": [
+        "FXP-018",
+        "FXP-019",
+        "FXP-020",
+        "FXP-021",
+        "FXP-022"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "growth-shrink"
+      ],
+      "owners": [
+        22,
+        23,
+        78,
+        80,
+        119,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "evidenceBoundary": "Scoped child evidence is not completion of this full SAF scenario."
+    },
+    {
+      "id": "SAF-004",
+      "source": "docs/write-safety/acceptance-scenarios.md",
+      "sourceSection": "SAF",
+      "title": "Request a direct read-only CTMD edit, unsupported preview replacement, or an unverified C-RAW/DPRAW layout.",
+      "required": "Specific unsupported outcome, no embedded change, and no silent sidecar fallback. Full RAW evidence does not enable secondary variants.",
+      "rules": [
+        "WS-006",
+        "WS-007"
+      ],
+      "fixtureFamilies": [
+        "FXP-021",
+        "FXP-022",
+        "FXP-027",
+        "FXP-028"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "preview-variant"
+      ],
+      "owners": [
+        22,
+        23,
+        25,
+        78,
+        80,
+        119,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "evidenceBoundary": "Scoped child evidence is not completion of this full SAF scenario."
+    },
+    {
+      "id": "SAF-005",
+      "source": "docs/write-safety/acceptance-scenarios.md",
+      "sourceSection": "SAF",
+      "title": "Replace an input/copy source, stage or destination parent between planning, validation and publication; run an unrelated competing editor. Also change a relevant new-output filesystem property at each OD-11 check boundary.",
+      "required": "Byte/object/path substitution must not publish an unvalidated object or overwrite a winner; refuse/conflict before publication or report recovery-required when publication may have occurred. Detected OD-11 property changes follow the same before/after outcome boundary; undetected same-owner property edits between observations are outside its continuous-exclusion promise. No stale overwrite or automatic recovery over an external version.",
+      "rules": [
+        "WS-002",
+        "WS-009",
+        "WS-014",
+        "WS-015"
+      ],
+      "fixtureFamilies": [
+        "FXP-023"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        24,
+        26,
+        78,
+        80,
+        85,
+        95,
+        96,
+        119,
+        176,
+        179,
+        185,
+        186,
+        199,
+        200,
+        209,
+        210,
+        211,
+        214
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "evidenceBoundary": "Scoped child evidence is not completion of this full SAF scenario."
+    },
+    {
+      "id": "SAF-006",
+      "source": "docs/write-safety/acceptance-scenarios.md",
+      "sourceSection": "SAF",
+      "title": "Use a symlink/reparse target, multi-link file, case-folding collision or destination created after preview. For OD-11 new outputs, observe unexpected link topology at each required check.",
+      "required": "Default link-policy refusal or evidenced explicit policy; conditional new-name collision refusal. No existence-check-only overwrite. Observed unexpected topology refuses/becomes uncertain at the publication boundary; continuous same-owner link exclusion is not inferred. Required byte/object/path guards remain effective.",
+      "rules": [
+        "WS-009",
+        "WS-010"
+      ],
+      "fixtureFamilies": [
+        "FXP-013",
+        "FXP-023",
+        "FXP-025"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        24,
+        26,
+        78,
+        80,
+        85,
+        95,
+        96,
+        119,
+        176,
+        179,
+        185,
+        186,
+        199,
+        200,
+        209,
+        210,
+        211,
+        214
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "evidenceBoundary": "Scoped child evidence is not completion of this full SAF scenario."
+    },
+    {
+      "id": "SAF-007",
+      "source": "docs/write-safety/acceptance-scenarios.md",
+      "sourceSection": "SAF",
+      "title": "Edit read-only media or a file whose ACL/owner/streams cannot be preserved; compare ordinary and explicit preserve-mtime requests. Verify an OD-11 new output's declared private policy and ordinary owner editing after exit.",
+      "required": "Required property failure refuses. Real edits update mtime by default; capture dates remain unaltered unless planned. Source properties stay unchanged; do not silently clone ACL/owner/streams. Unsupported explicit carry-through refuses. New output must be private and ordinarily owner-editable, with declared boundary checks rather than continuous same-owner property exclusion.",
+      "rules": [
+        "WS-009",
+        "WS-011",
+        "WS-023"
+      ],
+      "fixtureFamilies": [
+        "FXP-013",
+        "FXP-023"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        24,
+        26,
+        78,
+        80,
+        85,
+        95,
+        96,
+        119,
+        176,
+        179,
+        185,
+        186,
+        199,
+        200,
+        209,
+        210,
+        211,
+        214
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "evidenceBoundary": "Scoped child evidence is not completion of this full SAF scenario."
+    },
+    {
+      "id": "SAF-008",
+      "source": "docs/write-safety/acceptance-scenarios.md",
+      "sourceSection": "SAF",
+      "title": "Exhaust space, corrupt a candidate, fail a recovery copy or fail each prepublication flush. Repeat with no-backup selected.",
+      "required": "No target publication; retain required recovery artifacts. No-backup never skips temporary original recovery or scratch-space checks.",
+      "rules": [
+        "WS-008",
+        "WS-012",
+        "WS-013",
+        "WS-023"
+      ],
+      "fixtureFamilies": [
+        "FXP-022",
+        "FXP-023"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        24,
+        26,
+        78,
+        80,
+        85,
+        95,
+        96,
+        119,
+        176,
+        179,
+        185,
+        186,
+        199,
+        200,
+        209,
+        210,
+        211,
+        214
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "evidenceBoundary": "Scoped child evidence is not completion of this full SAF scenario."
+    },
+    {
+      "id": "SAF-009",
+      "source": "docs/write-safety/acceptance-scenarios.md",
+      "sourceSection": "SAF",
+      "title": "Kill/cancel or turn a disposable VM off before, during and after publication; fail installed checks, namespace persistence and receipt persistence separately.",
+      "required": "Earlier cancellation does not publish. Ambiguous later states need recovery. Recovery inspects actual identities and makes a best-effort classification; it never guesses a rollback or promises physical-power survival.",
+      "rules": [
+        "WS-013",
+        "WS-014",
+        "WS-015",
+        "WS-016",
+        "WS-024"
+      ],
+      "fixtureFamilies": [
+        "FXP-023"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        24,
+        26,
+        78,
+        80,
+        85,
+        95,
+        96,
+        119,
+        176,
+        179,
+        185,
+        186,
+        199,
+        200,
+        209,
+        210,
+        211,
+        214
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "evidenceBoundary": "Scoped child evidence is not completion of this full SAF scenario."
+    },
+    {
+      "id": "SAF-010",
+      "source": "docs/write-safety/acceptance-scenarios.md",
+      "sourceSection": "SAF",
+      "title": "Commit the RAW member, then fail the paired XMP member; resume an append after an interrupted batch.",
+      "required": "Report partial pairing and each member's actual outcome. Do not continue broken dependencies. Skip a matching committed receipt; never append twice or reuse a receipt after an external edit.",
+      "rules": [
+        "WS-004",
+        "WS-017",
+        "WS-022"
+      ],
+      "fixtureFamilies": [
+        "FXP-016",
+        "FXP-017",
+        "FXP-023"
+      ],
+      "operations": [
+        "pair-date",
+        "group"
+      ],
+      "owners": [
+        24,
+        26,
+        86,
+        96,
+        179,
+        180,
+        181,
+        214
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "evidenceBoundary": "Scoped child evidence is not completion of this full SAF scenario."
+    },
+    {
+      "id": "SAF-011",
+      "source": "docs/write-safety/acceptance-scenarios.md",
+      "sourceSection": "SAF",
+      "title": "Rename a RAW/XMP pair, a case-only name, a rename cycle, and a cross-volume move; fail destination publication or source removal.",
+      "required": "Explicit collision-safe plan. Cross-volume workflow is not advertised as atomic. Unsafe source removal leaves verified destination plus source and reports partial work.",
+      "rules": [
+        "WS-010",
+        "WS-017",
+        "WS-018",
+        "WS-022"
+      ],
+      "fixtureFamilies": [
+        "FXP-025"
+      ],
+      "operations": [
+        "file-rename"
+      ],
+      "owners": [
+        26,
+        201,
+        202,
+        212,
+        213
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "evidenceBoundary": "Scoped child evidence is not completion of this full SAF scenario."
+    },
+    {
+      "id": "SAF-012",
+      "source": "docs/write-safety/acceptance-scenarios.md",
+      "sourceSection": "SAF",
+      "title": "Restore over a later edited target; prune a backup still needed for recovery or a path injected into an untrusted record.",
+      "required": "Restore needs a fresh plan and preserves the current version by default. Refuse in-use/unowned prune targets and arbitrary recovery paths.",
+      "rules": [
+        "WS-012",
+        "WS-015",
+        "WS-019"
+      ],
+      "fixtureFamilies": [
+        "FXP-023",
+        "FXP-025"
+      ],
+      "operations": [
+        "replacement-restore-prune"
+      ],
+      "owners": [
+        26,
+        95,
+        199,
+        200,
+        209,
+        210,
+        211
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "evidenceBoundary": "Scoped child evidence is not completion of this full SAF scenario."
+    },
+    {
+      "id": "SAF-013",
+      "source": "docs/write-safety/acceptance-scenarios.md",
+      "sourceSection": "SAF",
+      "title": "Scrub sidecar location while RAW duplicates, embedded previews or opaque blocks may retain it; keep an original backup.",
+      "required": "Report exact checked/removed/residual/unknown coverage and retained copies. Never certify whole-photo anonymization or secure erasure.",
+      "rules": [
+        "WS-007",
+        "WS-020",
+        "WS-022"
+      ],
+      "fixtureFamilies": [
+        "FXP-024"
+      ],
+      "operations": [
+        "xmp-owner-delete",
+        "privacy-other"
+      ],
+      "owners": [
+        25,
+        89,
+        90,
+        91,
+        92,
+        188,
+        189,
+        190,
+        191,
+        192
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "evidenceBoundary": "Scoped child evidence is not completion of this full SAF scenario."
+    },
+    {
+      "id": "SAF-014",
+      "source": "docs/write-safety/acceptance-scenarios.md",
+      "sourceSection": "SAF",
+      "title": "Encounter a known signature/provenance structure affected by the proposed change.",
+      "required": "Refuse until a verified preservation or explicit invalidation workflow exists. Do not silently strip the structure or claim signature validity.",
+      "rules": [
+        "WS-006",
+        "WS-021"
+      ],
+      "fixtureFamilies": [
+        "FXP-022",
+        "FXP-024"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-owner-delete",
+        "privacy-other"
+      ],
+      "owners": [
+        22,
+        23,
+        25,
+        78,
+        80,
+        89,
+        90,
+        91,
+        92,
+        119,
+        176,
+        188,
+        189,
+        190,
+        191,
+        192
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "evidenceBoundary": "Scoped child evidence is not completion of this full SAF scenario."
+    },
+    {
+      "id": "SAF-015",
+      "source": "docs/write-safety/acceptance-scenarios.md",
+      "sourceSection": "SAF",
+      "title": "Fail cleanup after a fully verified commit; restart with incomplete, foreign or inaccessible recovery records.",
+      "required": "Report committed plus pending cleanup when justified; otherwise preserve uncertainty. Do not repeat the edit or delete artifacts by filename pattern.",
+      "rules": [
+        "WS-015",
+        "WS-022",
+        "WS-023"
+      ],
+      "fixtureFamilies": [
+        "FXP-023"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        24,
+        26,
+        78,
+        80,
+        85,
+        95,
+        96,
+        119,
+        176,
+        179,
+        185,
+        186,
+        199,
+        200,
+        209,
+        210,
+        211,
+        214
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "evidenceBoundary": "Scoped child evidence is not completion of this full SAF scenario."
+    },
+    {
+      "id": "SAF-016",
+      "source": "docs/write-safety/acceptance-scenarios.md",
+      "sourceSection": "SAF",
+      "title": "Attempt replacement on an unverified storage profile, including a network/cloud/removable location.",
+      "required": "Refuse before publication or offer an explicit independently supported output workflow. Simulation or one successful write never enables a profile.",
+      "rules": [
+        "WS-006",
+        "WS-009",
+        "WS-024"
+      ],
+      "fixtureFamilies": [
+        "FXP-013",
+        "FXP-023"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "replacement-restore-prune"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        78,
+        80,
+        95,
+        119,
+        176,
+        199,
+        200,
+        209,
+        210,
+        211
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "evidenceBoundary": "Scoped child evidence is not completion of this full SAF scenario."
+    },
+    {
+      "id": "TX-001",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Existing RAW replacement completes all boundaries",
+      "rules": [
+        "WS-007",
+        "WS-012",
+        "WS-014"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "committed",
+        "publicationMayHaveOccurred": true
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-002",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "New XMP publication records prior absence",
+      "rules": [
+        "WS-012",
+        "WS-014"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "committed",
+        "publicationMayHaveOccurred": true
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-003",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Known supported operation has no effective change",
+      "rules": [
+        "WS-005"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "unchanged",
+        "publicationMayHaveOccurred": false
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-004",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Invalid or unsupported request is refused",
+      "rules": [
+        "WS-003",
+        "WS-006"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "refused",
+        "publicationMayHaveOccurred": false
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-005",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Input changed before staging",
+      "rules": [
+        "WS-002",
+        "WS-009"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "conflict",
+        "publicationMayHaveOccurred": false
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-006",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Destination appears after planning but before publication",
+      "rules": [
+        "WS-009",
+        "WS-010"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "conflict",
+        "publicationMayHaveOccurred": false
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-007",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Disk fills while staging",
+      "rules": [
+        "WS-008",
+        "WS-023"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "failed-before-publish",
+        "publicationMayHaveOccurred": false
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-008",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Staged intended-value verification fails",
+      "rules": [
+        "WS-004",
+        "WS-008"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "failed-before-publish",
+        "publicationMayHaveOccurred": false
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-009",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Protected payload or reference verification fails",
+      "rules": [
+        "WS-007",
+        "WS-008"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "failed-before-publish",
+        "publicationMayHaveOccurred": false
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-010",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Property preservation cannot be satisfied",
+      "rules": [
+        "WS-011"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "failed-before-publish",
+        "publicationMayHaveOccurred": false
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-011",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Backup, flush, or recovery-record preparation fails",
+      "rules": [
+        "WS-012",
+        "WS-013"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "failed-before-publish",
+        "publicationMayHaveOccurred": false
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-012",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Publication call returns an ambiguous error",
+      "rules": [
+        "WS-014",
+        "WS-015"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "recovery-required",
+        "publicationMayHaveOccurred": true
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-013",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Installed target verification fails after publication",
+      "rules": [
+        "WS-014"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "recovery-required",
+        "publicationMayHaveOccurred": true
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-014",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Namespace flush or final receipt fails",
+      "rules": [
+        "WS-013",
+        "WS-014"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "recovery-required",
+        "publicationMayHaveOccurred": true
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-015",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Cancellation before publication",
+      "rules": [
+        "WS-016"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "cancelled-before-publish",
+        "publicationMayHaveOccurred": false
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-016",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Forced interruption during publication",
+      "rules": [
+        "WS-015",
+        "WS-016"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "recovery-required",
+        "publicationMayHaveOccurred": true
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-017",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Cooperative cancellation lets the current published unit finalize",
+      "rules": [
+        "WS-016",
+        "WS-017"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "committed",
+        "publicationMayHaveOccurred": true
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-018",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Recovery proves original state after an uncertain boundary",
+      "rules": [
+        "WS-015"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "recovered-original",
+        "publicationMayHaveOccurred": true
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-019",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Recovery finalizes an already installed owned candidate",
+      "rules": [
+        "WS-015"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "committed",
+        "publicationMayHaveOccurred": true
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-020",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Foreign target after interruption remains untouched",
+      "rules": [
+        "WS-009",
+        "WS-015"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "recovery-required",
+        "publicationMayHaveOccurred": true
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-021",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Cleanup failure leaves a committed output and reported pending cleanup",
+      "rules": [
+        "WS-015",
+        "WS-019"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": true,
+        "finalState": "committed",
+        "publicationMayHaveOccurred": true
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-022",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Reject application without explicit apply",
+      "rules": [
+        "WS-001"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-023",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Reject a no-op bypass of an unsupported capability",
+      "rules": [
+        "WS-005",
+        "WS-006"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-024",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Reject a backend without evidenced guarantees",
+      "rules": [
+        "WS-009",
+        "WS-024"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-025",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Reject publication without verified original recovery",
+      "rules": [
+        "WS-012"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-026",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Reject publication with an ineffective concurrency guard",
+      "rules": [
+        "WS-009"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-027",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Reject a stale candidate after validation",
+      "rules": [
+        "WS-008",
+        "WS-014"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-028",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Reject success before namespace persistence acknowledgement",
+      "rules": [
+        "WS-014"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-029",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Reject skipping validation and staging",
+      "rules": [
+        "WS-008",
+        "WS-014"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-030",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Reject blind rollback after uncertain publication",
+      "rules": [
+        "WS-015"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-031",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Reject replaying a committed unit as a fresh mutation",
+      "rules": [
+        "WS-017"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-032",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Reject recovery from an untrusted ownership record",
+      "rules": [
+        "WS-015"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-033",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Reject finalization after the publication guard is lost",
+      "rules": [
+        "WS-009",
+        "WS-015"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "TX-034",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "traces",
+      "title": "Reject recovery classification without a current publication guard",
+      "rules": [
+        "WS-009",
+        "WS-015"
+      ],
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "owners": [
+        22,
+        23,
+        26,
+        167,
+        168,
+        176
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "accepted": false,
+        "finalState": null,
+        "publicationMayHaveOccurred": null
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "VAL-001",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "valueCases",
+      "title": "Appending preserves duplicate keywords",
+      "rules": [
+        "WS-004",
+        "WS-005"
+      ],
+      "operations": [
+        "list"
+      ],
+      "owners": [
+        24
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": [
+        "travel",
+        "travel"
+      ],
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "VAL-002",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "valueCases",
+      "title": "Remove the selected duplicate only",
+      "rules": [
+        "WS-004",
+        "WS-005"
+      ],
+      "operations": [
+        "list"
+      ],
+      "owners": [
+        24
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": [
+        "a",
+        "b"
+      ],
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "VAL-003",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "valueCases",
+      "title": "Removing all matching values is explicit",
+      "rules": [
+        "WS-004",
+        "WS-005"
+      ],
+      "operations": [
+        "list"
+      ],
+      "owners": [
+        24
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": [
+        "b"
+      ],
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "VAL-004",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "valueCases",
+      "title": "Whole-list replacement is distinct",
+      "rules": [
+        "WS-004",
+        "WS-005"
+      ],
+      "operations": [
+        "list"
+      ],
+      "owners": [
+        24
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": [],
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "VAL-005",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "valueCases",
+      "title": "Changing x-default retains other languages",
+      "rules": [
+        "WS-004",
+        "WS-005"
+      ],
+      "operations": [
+        "language"
+      ],
+      "owners": [
+        24
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "x-default": "new",
+        "fr": "ancien"
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "VAL-006",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "valueCases",
+      "title": "Delete only the named language",
+      "rules": [
+        "WS-004",
+        "WS-005"
+      ],
+      "operations": [
+        "language"
+      ],
+      "owners": [
+        24
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "x-default": "default"
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "VAL-007",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "valueCases",
+      "title": "Named field updates preserve unknown siblings",
+      "rules": [
+        "WS-004",
+        "WS-005"
+      ],
+      "operations": [
+        "structure"
+      ],
+      "owners": [
+        24
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "known": "new",
+        "unknown": "retain"
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "VAL-008",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "valueCases",
+      "title": "Whole structure replacement must be explicit",
+      "rules": [
+        "WS-004",
+        "WS-005"
+      ],
+      "operations": [
+        "structure"
+      ],
+      "owners": [
+        24
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "known": "new"
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "VAL-009",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "valueCases",
+      "title": "Two copies use original values, not earlier edits",
+      "rules": [
+        "WS-004",
+        "WS-005"
+      ],
+      "operations": [
+        "snapshot-copy"
+      ],
+      "owners": [
+        24
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "a": "B",
+        "b": "A"
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "VAL-010",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "valueCases",
+      "title": "Numeric equality does not canonicalize stored bytes",
+      "rules": [
+        "WS-004",
+        "WS-005"
+      ],
+      "operations": [
+        "rational"
+      ],
+      "owners": [
+        23
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "changed": false,
+        "raw": [
+          "2",
+          "500"
+        ]
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "VAL-011",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "valueCases",
+      "title": "A raw pair change is a change even when numerically equal",
+      "rules": [
+        "WS-004",
+        "WS-005"
+      ],
+      "operations": [
+        "rational"
+      ],
+      "owners": [
+        23
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "changed": true,
+        "raw": [
+          "2",
+          "500"
+        ]
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    },
+    {
+      "id": "VAL-012",
+      "source": "docs/write-safety/scenarios.v1.json",
+      "sourceSection": "valueCases",
+      "title": "Typed null remains a set value, not delete",
+      "rules": [
+        "WS-004",
+        "WS-005"
+      ],
+      "operations": [
+        "null"
+      ],
+      "owners": [
+        23
+      ],
+      "status": "unverified-for-full-parent-acceptance",
+      "required": {
+        "operation": "set",
+        "value": null
+      },
+      "evidenceBoundary": "Synthetic contract result only; actual operation/profile evidence and current guarded checks remain required."
+    }
+  ],
+  "parentAcceptance": [
+    {
+      "id": "A14-01",
+      "original": "Exercise docs/write-safety/acceptance-scenarios.md and the transaction/value cases against actual implementations and admitted media.",
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "pair-date",
+        "xmp-owner-delete",
+        "xmp-label",
+        "caption",
+        "list",
+        "language",
+        "structure",
+        "snapshot-copy",
+        "rational",
+        "null",
+        "growth-shrink",
+        "insert-delete-block",
+        "date-transform",
+        "preview-variant",
+        "file-rename",
+        "replacement-restore-prune",
+        "group",
+        "privacy-other"
+      ],
+      "status": "unmet",
+      "currentRefinement": "Original guarantee retained; no completion inferred from this inventory."
+    },
+    {
+      "id": "A14-02",
+      "original": "Declare each OS/filesystem/storage profile and exclusions. Prove publication, collision/concurrency, properties, persistence, cancellation and recovery.",
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "status": "unmet",
+      "currentRefinement": "Original guarantee retained; no completion inferred from this inventory."
+    },
+    {
+      "id": "A14-03",
+      "original": "Validate sensor samples, references, calibration/CFA interpretation, opaque data, previews and known signatures for each supported CR3 operation/layout.",
+      "operations": [
+        "cr3-date-new",
+        "growth-shrink",
+        "preview-variant",
+        "privacy-other"
+      ],
+      "status": "unmet",
+      "currentRefinement": "Original guarantee retained; no completion inferred from this inventory."
+    },
+    {
+      "id": "A14-04",
+      "original": "Finish exact pairing/mappings and named privacy field catalogs; measure removed/residual/uninspectable data and retained copies.",
+      "operations": [
+        "pair-date",
+        "xmp-owner-delete",
+        "privacy-other"
+      ],
+      "status": "unmet",
+      "currentRefinement": "Original guarantee retained; no completion inferred from this inventory."
+    },
+    {
+      "id": "A14-05",
+      "original": "Record independent validators, RAW usability checks and bounded failure injection through the fixture-plan records.",
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "status": "unmet",
+      "currentRefinement": "Original guarantee retained; no completion inferred from this inventory."
+    },
+    {
+      "id": "A14-06",
+      "original": "Separate process kill, OS crash and power loss. Separate supported/refused/failed/unverified combinations. Full RAW does not enable C-RAW/DPRAW.",
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "replacement-restore-prune",
+        "group"
+      ],
+      "status": "unmet",
+      "currentRefinement": "Power-related testing stops at disposable VM-off; separate process/VM-off outcomes and host-cache limits; no physical-power or new NMI requirement."
+    },
+    {
+      "id": "A14-07",
+      "original": "Close GAP-004/GAP-009 only when their specified evidence exists. Logical deletion never establishes secure erasure.",
+      "operations": [
+        "cr3-date-new",
+        "xmp-date-new",
+        "pair-date",
+        "xmp-owner-delete",
+        "xmp-label",
+        "caption",
+        "list",
+        "language",
+        "structure",
+        "snapshot-copy",
+        "rational",
+        "null",
+        "growth-shrink",
+        "insert-delete-block",
+        "date-transform",
+        "preview-variant",
+        "file-rename",
+        "replacement-restore-prune",
+        "group",
+        "privacy-other"
+      ],
+      "status": "unmet",
+      "currentRefinement": "Original guarantee retained; no completion inferred from this inventory."
+    }
+  ],
+  "proposalKeys": [
+    {
+      "key": "proposal:canon:ctmd/ISO@1",
+      "sources": [
+        "docs/metadata-model/examples/snapshot.synthetic.json"
+      ],
+      "operation": "preview-variant",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:canon:opaque/UnknownRecord@1",
+      "sources": [
+        "docs/metadata-model/examples/snapshot.synthetic.json"
+      ],
+      "operation": "growth-shrink",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:cr3-container-utc-v1",
+      "sources": [
+        "docs/metadata-model/examples/snapshot.synthetic.json"
+      ],
+      "operation": "date-transform",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:exif-capture-time-v1",
+      "sources": [
+        "docs/metadata-model/examples/snapshot.synthetic.json"
+      ],
+      "operation": "date-transform",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:exif/Artist@1",
+      "sources": [
+        "docs/metadata-model/examples/snapshot.synthetic.json"
+      ],
+      "operation": "snapshot-copy",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:exif/DateTimeOriginal@1",
+      "sources": [
+        "docs/metadata-model/examples/snapshot.synthetic.json"
+      ],
+      "operation": "cr3-date-new",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:exif/ExposureTime@1",
+      "sources": [
+        "docs/metadata-model/examples/snapshot.synthetic.json"
+      ],
+      "operation": "rational",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:exif/ISO@1",
+      "sources": [
+        "docs/metadata-model/examples/snapshot.synthetic.json"
+      ],
+      "operation": "preview-variant",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:exif/SubSecTimeOriginal@1",
+      "sources": [
+        "docs/metadata-model/examples/snapshot.synthetic.json"
+      ],
+      "operation": "date-transform",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:exposure-display-v1",
+      "sources": [
+        "docs/metadata-model/examples/snapshot.synthetic.json"
+      ],
+      "operation": "rational",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:http://ns.adobe.com/xap/1.0//Label@1",
+      "sources": [
+        "docs/metadata-model/examples/snapshot.synthetic.json"
+      ],
+      "operation": "xmp-label",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:http://purl.org/dc/elements/1.1//Rights@1",
+      "sources": [
+        "docs/metadata-model/examples/snapshot.synthetic.json"
+      ],
+      "operation": "language",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:http://purl.org/dc/elements/1.1//Subject@1",
+      "sources": [
+        "docs/metadata-model/examples/snapshot.synthetic.json"
+      ],
+      "operation": "list",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:imageinfo:derived/ShutterSpeed@1",
+      "sources": [
+        "docs/metadata-model/examples/snapshot.synthetic.json"
+      ],
+      "operation": "rational",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:iso-bmff/CreateDate@1",
+      "sources": [
+        "docs/metadata-model/examples/snapshot.synthetic.json"
+      ],
+      "operation": "date-transform",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:iso-bmff:canon/PreviewImage@1",
+      "sources": [
+        "docs/metadata-model/examples/snapshot.synthetic.json"
+      ],
+      "operation": "preview-variant",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:local-date-display-v1",
+      "sources": [
+        "docs/metadata-model/examples/snapshot.synthetic.json"
+      ],
+      "operation": "date-transform",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:reduce-rational-v1",
+      "sources": [
+        "docs/metadata-model/examples/snapshot.synthetic.json"
+      ],
+      "operation": "rational",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:shutter-from-exposure-v1",
+      "sources": [
+        "docs/metadata-model/examples/snapshot.synthetic.json"
+      ],
+      "operation": "rational",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:string-to-creator-sequence-v1",
+      "sources": [
+        "docs/metadata-model/examples/copy-intent.synthetic.json"
+      ],
+      "operation": "snapshot-copy",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:synthetic-decoder-not-executable",
+      "sources": [
+        "docs/metadata-model/examples/snapshot.synthetic.json"
+      ],
+      "operation": "growth-shrink",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    },
+    {
+      "key": "proposal:xmp-dc/creator@1",
+      "sources": [
+        "docs/metadata-model/examples/copy-intent.synthetic.json"
+      ],
+      "operation": "snapshot-copy",
+      "meaning": "Existing synthetic definition/rule/formatter/transform identity only; not an executable or admitted writer registry key."
+    }
+  ],
+  "nextContract": {
+    "kind": "inert-operation-specific-selection-record-not-runtime-wire",
+    "requiredFields": [
+      "operationId",
+      "documentIdentity",
+      "occurrenceOrInsertionIdentity",
+      "containerPath",
+      "rawTypeAndEncoding",
+      "inputView",
+      "originalReadSet",
+      "exactProposedValue",
+      "allocationAndDependencyMap",
+      "preservedComplements",
+      "expectedEffectsAndLosses",
+      "equalityAndNoopRule",
+      "refusalCases",
+      "independentOracle",
+      "owner",
+      "evidenceRefs"
+    ],
+    "bounds": "One named property/representation per selected engineering slice; all occurrences/entries finite and bounded explicitly before implementation. No extension bag or guessed family count.",
+    "invariants": [
+      "No unresolved field can be treated as admitted.",
+      "All eleven P-* duties from operation-plan-map.v1.json apply before effects.",
+      "Mutation/runtime wire requires actual typed adapter/profile fields; this selection record grants no apply/recovery authority.",
+      "Inherited guarantees may change only through an actual Terry format_contract_decision; no new adoption gate for ordinary engineering selection."
+    ]
+  },
+  "sharedEvidence": [
+    "docs/write-safety/README.md",
+    "docs/write-safety/acceptance-scenarios.md",
+    "docs/write-safety/scenarios.v1.json",
+    "docs/write-safety/power-test-policy.md",
+    "docs/write-safety/practical-output-policy.md",
+    "docs/write-safety/existing-target-boundary.md",
+    "docs/legacy-compatibility/operation-plan-map.v1.json",
+    "docs/legacy-compatibility/delivery-matrix.md",
+    "docs/remaining-work.md"
+  ]
+}

@@ -94,8 +94,8 @@ mod native;
 pub(crate) mod windows;
 #[cfg(windows)]
 pub use windows::{
-    ExistingRoot, FinalizationFile, FinalizationRoot, GuardedSource, HeldArtifact, PrivateRoot,
-    available_bytes,
+    CleanupError, CleanupFile, ExistingRoot, FinalizationFile, FinalizationRoot, GuardedSource,
+    HeldArtifact, PrivateRoot, available_bytes,
 };
 #[cfg(windows)]
 mod existing_move;

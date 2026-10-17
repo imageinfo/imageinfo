@@ -225,3 +225,38 @@ foreign receipt winner. Writer attempts against held source/output/prior records
 fail through both context exports. Injected before/after return failures are
 controller observations, not physical-device failure evidence. No configuration,
 persistence profile, public mutation or RAW admission is established.
+
+## #0172 exact-held-object cleanup
+
+Separate safe `CleanupFile` handles open existing bounded regular local NTFS
+files with GENERIC_READ, READ_CONTROL and DELETE access, `OPEN_EXISTING`,
+open-reparse-point semantics and only read sharing. The type retains complete
+checked ancestry, exact original bytes and properties, stream/link exclusions
+and sticky conflict state. Opening/dropping alone changes no file. No `File`,
+byte writer, rename, security setter or recursive directory API escapes.
+
+One new helper in the existing isolated native module calls
+`SetFileInformationByHandle(FileDispositionInfo)` with an initialized SDK
+`FILE_DISPOSITION_INFO { DeleteFile: true }`, its exact SDK size and a borrowed
+live file handle. The synchronous call receives no path, returned allocation or
+pointer. Zero return preserves the OS error. It sets ordinary disposition only;
+there are no POSIX flags or pathname fallback. The safe consuming method freshly
+checks the held file before the call and distinguishes failed prechecks from
+an issued disposition with an error return. Compatible readers can defer actual
+unlink, so API success alone is never reported as observed removal.
+
+The production adapter independently validates exact current authority and all
+held source/root/file/namespace bindings before every effect, selects only owned
+unpublished objects or individually released unnecessary terminal records, and
+checks exact names afterward. Source, installed output and directories cannot be
+selected. Foreign/reinserted names and unrelated entries are retained. Actual
+terminal proof plus a trusted current per-record retention decision is required
+for postcommit cleanup. No new dependency, privilege or unsafe module is added.
+
+Microsoft's [SetFileInformationByHandle contract](https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-setfileinformationbyhandle)
+and [FILE_DISPOSITION_INFO layout](https://learn.microsoft.com/en-us/windows/win32/api/winbase/ns-winbase-file_disposition_info)
+were checked on 2026-10-17. The former requires DELETE access for deletion and
+returns nonzero/zero success/failure; the latter defines the single DeleteFile
+boolean. Their documented behavior supports the boundary review, not a storage
+persistence or production profile claim. Independent High review remains required
+before handoff.

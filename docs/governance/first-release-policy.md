@@ -54,10 +54,11 @@ This table describes today's implemented boundaries, not a new qualification.
 | Camera/mode | EOS R5 full RAW CR3 only within recognized structural declarations; private evidence is finite and does not cover every firmware, lens or setting; C-RAW, DPRAW, burst, other cameras and unknown profiles retain refusals |
 | Stored preview list/extract | Copy exact bounded stored preview bytes to a new named file; no JPEG decode/render/certification or sensor recompression. Extraction has a real destination effect and is not described as wholly read-only |
 | Date preview | [Advisory fixed-width DateTimeOriginal preview](../reader/date-preview.md), with no apply/output command; current RAW dependency and production storage refusals remain |
-| Explicit pairing | [Selected RAW/XMP path observation](../sidecars/pairing.md), no inferred same-stem association, content validation, sidecar creation, continuing guard or synchronization |
+| Pairing | [Selected RAW/XMP path observation](../sidecars/pairing.md), including only separately documented opt-in association rules; no content validation, sidecar creation, continuing guard or synchronization |
 | Library | Current bounded [in-process read request/result API](../legacy-compatibility/read-request-result.md) and implemented modules; no stable ABI or mature library compatibility promise |
 | Sequential read session | Bounded [session read CLI](../legacy-compatibility/read-session-process.md); exact framing, request isolation, limits and actual pipe evidence, without cancellation, queue/server or persistent cross-process recovery promises |
 | Saved intent | Implemented [validation](../legacy-compatibility/cr3-preview-plan.md) and [source-content revalidation](../legacy-compatibility/cr3-preview-source-binding.md) remain nonexecuting observations; matching bytes never authorize mutation |
+| In-memory XML/XMP | [Bounded UTF-8 packet inspection](../sidecars/packet-profile.md) is a library surface; it does not publish files or semantically clear arbitrary unknown namespaces |
 
 Preview extraction retains the reader's actual scope: trusted local output
 directory, no-clobber publication requiring hard links, no overwrite fallback,
@@ -67,7 +68,7 @@ occur during reading. A killed extraction may leave a temporary file; persistent
 recovery, hostile namespace races, directory durability and remote filesystem
 guarantees are not certified by this package.
 
-Metadata/RAW writes, privacy removal, XMP parsing/publication, research workers,
+Metadata/RAW writes, privacy-removal certification, XMP filesystem publication, research workers,
 automatic repair/recovery, menus, persistent cross-process sessions, executable extensions,
 broader RAW support and full ExifTool parity remain outside this release claim.
 Research crates in `experiments/` may be present in repository source archives;
@@ -172,8 +173,9 @@ undisclosed staffing prerequisite for this explicitly solo alpha.
 
 ## Finite future rehearsal acceptance
 
-**FR-06 — Rehearse locally before seeking publication approval.** This is a
-future acceptance recipe, **unrun**. It requires a frozen
+**FR-06 — Rehearse locally before seeking publication approval.** This is the
+acceptance recipe used by [candidate preparation](source-reader-candidate.md).
+Actual results must be recorded separately; this policy does not assert a pass. It requires a frozen
 candidate but performs no tag push, GitHub draft/release creation, upload,
 notification, settings change or source-media mutation. Use the
 [blank rehearsal record](first-release-rehearsal.template.md).
@@ -205,7 +207,8 @@ prevents claiming an operationally qualified first release.
 
 ## Delivery evidence and open actions
 
-The root [Cargo manifest](../../Cargo.toml) is currently `0.2.0-dev`, MIT,
+The root [Cargo manifest](../../Cargo.toml) is prepared as `0.2.0-alpha.1` under
+#0160, MIT,
 `publish = false`; pinned Rust/build/dependency evidence exists. The existing
 workflow builds a release-profile executable but is not a publication pipeline.
 The [dependency review](../foundation/dependencies.json) admits specific local/CI
@@ -217,9 +220,10 @@ expand through this proposal.
 | Status | Evidence / remaining action |
 | --- | --- |
 | Accepted | #0159 option A, 2026-10-16: source-only unsigned alpha, latest-alpha best-effort support, Terry's release authority, automated/agent checks without independent human verification claim; FR-01–06 and solo-adapted FRR-01–07 |
-| Implemented | Root native package and scoped capabilities linked above; no changes by this handoff |
+| Implemented | Root native package and scoped capabilities linked above; #0160 adds the adopted package version, candidate notes and local source-assembly recipe |
 | Previously verified | Frozen reader/contributor/contract evidence at their stated revisions; not a release-candidate rehearsal |
-| Unrun | Candidate version/assembly, solo rehearsal, release publication and postpublication verification; shared operator continuity remains a future goal |
+| Exact results recorded separately | [Candidate preparation](source-reader-candidate.md) requires a frozen source, exact-source three-OS CI, local archive/build and agent review; this policy supplies no assumed pass |
+| Unrun by policy adoption | Release publication and postpublication verification; shared operator continuity remains a future goal |
 | Remaining decisions/evidence | Terry's exact candidate approval; separately chosen security route and actual access/security readiness disposition |
 | Outside this delivery | New signing/registry infrastructure, permission changes, uploads, new production capabilities and broad support guarantees |
 

@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 1,
+  "ticket": "#0126",
+  "revision": "report-import-2026-10-17.1",
+  "evidenceKind": "specification-and-authored-model-only",
+  "authority": {
+    "runtimeImporter": false,
+    "newRenderer": false,
+    "legacyParity": false,
+    "mutationAllowed": false,
+    "storageAdmission": false,
+    "losslessStandaloneExport": false
+  },
+  "ruleSets": {
+    "native-exact": {
+      "duplicates": "Distinct occurrence IDs/paths/ordinals survive; duplicate JSON members reject in profile QA.",
+      "groups": "Namespace/nativeId/path define identity; metadata-family labels never collapse occurrences.",
+      "lists": "Occurrence arrays are tables; list-valued/structured metadata is outside current R5 subset.",
+      "language": "No lang-alt values; display locale en and timezone null, with exact layers retained.",
+      "binary": "Resource references and unchanged-source ranges only; no inline/base64 bytes.",
+      "encoding": "UTF-8 JSON, valid Unicode scalars, canonical unsigned decimal strings; no nonfinite/trailing JSON.",
+      "omission": "Partial coverage and filtered omissions never prove absence; optional members follow linked schemas.",
+      "empty": "Empty occurrence table differs from empty string and unavailable display; exact schema states remain.",
+      "null": "Only exact schema nullable fields accept null (including unavailable hashes); null is not deletion.",
+      "missing": "Missing required members reject; missing observed occurrences have no inferred stored value.",
+      "matching": "Report labels and local snapshot IDs are not target authority; no importer.",
+      "loss": "Decoded exact values retain origin ranges, but no standalone byte round trip; display/path loss explicit."
+    },
+    "native-display": {
+      "duplicates": "Each selected occurrence prints separately with source ordinal; no suppress-by-name rule.",
+      "groups": "Printed namespace/name and ordinal are a human projection, not complete path identity.",
+      "lists": "No list metadata renderer or machine list grammar.",
+      "language": "Existing reader display only; no language-choice or locale-switch contract.",
+      "binary": "Printed stored length/offset description; no binary payload or reversible grammar.",
+      "encoding": "Human text with quoted path heading and checked ASCII metadata strings; terminal evidence is finite.",
+      "omission": "Unprinted selected/unsupported occurrences do not prove absence under partial coverage.",
+      "empty": "Empty printed value has no machine empty/null/delete interpretation.",
+      "null": "No machine null sentinel or intent interpretation.",
+      "missing": "Missing line is not an absence or deletion assertion.",
+      "matching": "Printed paths/names never match import targets.",
+      "loss": "Display is a human projection; full exact states/path/coverage must use native JSON."
+    },
+    "legacy-open": {
+      "duplicates": "Unimplemented; before implementation specify preserve/suppress/collision behavior per profile; ambiguous flattening refuses in the proposed adapter.",
+      "groups": "Unimplemented; explicit group projection/lookup grammar required; names alone cannot choose occurrences.",
+      "lists": "Unimplemented; list shape/order/separator/escaping require exact schema and comparison vectors.",
+      "language": "Unimplemented; language selection/default/fallback and identity need an explicit schema.",
+      "binary": "Unimplemented; inline/reference/base64/omission must be named; no implicit byte-to-string coercion.",
+      "encoding": "Unimplemented; charset, escaping, newlines, numeric quoting and invalid input require profile-specific grammar.",
+      "omission": "Unimplemented; omission must be distinguished from unsupported, absent and unrequested values.",
+      "empty": "Unimplemented; empty field/string/list rules must be explicit; no silent delete.",
+      "null": "Unimplemented; null/sentinel meaning cannot be inferred from syntax or mapped to delete.",
+      "missing": "Unimplemented; missing row/column/member and missing occurrence need distinct diagnostics.",
+      "matching": "Unimplemented; templates/filename lookup and SourceFile matching require explicit collision/alias rules; no fallback.",
+      "loss": "Unimplemented; adapters must enumerate/report projected losses; unexplained lossy conversion refuses."
+    },
+    "inert-scalar": {
+      "duplicates": "Duplicate JSON members or repeated sourceKey/snapshotId/occurrenceId edits refuse, including equal values.",
+      "groups": "Exact sourceKey/snapshotId/occurrenceId plus namespace/nativeId match an immutable caller table retaining full path/ordinal; labels never select.",
+      "lists": "List/structure values and append operations refuse; only existing scalar set.",
+      "language": "Language alternative/display-only values refuse; string literals receive no language interpretation.",
+      "binary": "Binary/base64/resource and file-indirect values refuse.",
+      "encoding": "Strict UTF-8 without BOM; Unicode scalars; JSON escaping or strict comma/double-quote/CRLF CSV; canonical decimal strings.",
+      "omission": "No edit omits a required field or represents implicit action; omitted occurrences remain untouched intent-wise.",
+      "empty": "String text empty is explicit set-to-empty; empty numeric/identity values refuse; empty batch refuses.",
+      "null": "JSON null and null value-state refuse; CSV has no null sentinel.",
+      "missing": "Missing JSON member, CSV cell/header, source binding or occurrence refuses entire batch.",
+      "matching": "Exact case-sensitive observation-table keys; no paths, basename, glob, SourceFile, trimming, Unicode normalization or positional fallback.",
+      "loss": "No silent loss or acknowledgement bypass; retain exact typed strings/rational pair/order, with no executable authority."
+    }
+  },
+  "profiles": [
+    {
+      "id": "native-json",
+      "status": "supported",
+      "ruleSet": "native-exact",
+      "contract": "Bounded R5 metadata snapshot and result envelope.",
+      "nextOutcome": "Actual emitted schema/semantic qualification in existing #0053/#0127 evidence.",
+      "residual": "General metadata shapes and all legacy report equivalence remain unmet.",
+      "residualOwner": "#0015",
+      "evidence": [
+        "docs/legacy-compatibility/native-read-json.md",
+        "docs/legacy-compatibility/result-profiles/read.schema.v1.json"
+      ]
+    },
+    {
+      "id": "native-plain",
+      "status": "supported",
+      "ruleSet": "native-display",
+      "contract": "Human namespace/name/ordinal/value lines with quoted path heading.",
+      "nextOutcome": "Exact authored escaping/value-projection records plus existing terminal evidence.",
+      "residual": "No machine text grammar or legacy plain/short parity.",
+      "residualOwner": "#0015",
+      "evidence": [
+        "src/read_request.rs",
+        "docs/legacy-compatibility/plain-terminals.md"
+      ]
+    },
+    {
+      "id": "legacy-json",
+      "status": "unimplemented",
+      "ruleSet": "legacy-open",
+      "contract": "No compatibility renderer; native JSON is a distinct protocol.",
+      "nextOutcome": "Closed duplicate/group/number/binary projection schema and actual authored reference/native output pairs.",
+      "residual": "Complete JSON report option combinations remain.",
+      "residualOwner": "#0015",
+      "evidence": [
+        "docs/legacy-compatibility/native-read-json.md"
+      ]
+    },
+    {
+      "id": "legacy-csv",
+      "status": "unimplemented",
+      "ruleSet": "legacy-open",
+      "contract": "No compatibility CSV serializer.",
+      "nextOutcome": "Header/row/list/quote/newline/charset schema and actual authored comparison.",
+      "residual": "Complete CSV projection and reversible-value evidence remain.",
+      "residualOwner": "#0015",
+      "evidence": [
+        "docs/legacy-compatibility/surface-ledger.md",
+        "docs/legacy-compatibility/delivery-matrix.md"
+      ]
+    },
+    {
+      "id": "legacy-xml",
+      "status": "unimplemented",
+      "ruleSet": "legacy-open",
+      "contract": "No compatibility XML serializer; XMP packet inspection is separate.",
+      "nextOutcome": "Expanded-name element/attribute schema and duplicate/list/escaping output comparisons.",
+      "residual": "Complete XML report option behavior remains.",
+      "residualOwner": "#0015",
+      "evidence": [
+        "docs/legacy-compatibility/surface-ledger.md",
+        "docs/legacy-compatibility/delivery-matrix.md"
+      ]
+    },
+    {
+      "id": "legacy-short",
+      "status": "unimplemented",
+      "ruleSet": "legacy-open",
+      "contract": "No legacy short-level serializer.",
+      "nextOutcome": "Per-level label/value/order grammar and ambiguous-label comparison vectors.",
+      "residual": "Short-level and group/duplicate combinations remain.",
+      "residualOwner": "#0015",
+      "evidence": [
+        "docs/legacy-compatibility/surface-ledger.md",
+        "docs/legacy-compatibility/delivery-matrix.md"
+      ]
+    },
+    {
+      "id": "legacy-plain",
+      "status": "unimplemented",
+      "ruleSet": "legacy-open",
+      "contract": "No legacy presentation equivalence.",
+      "nextOutcome": "Aligned-label, escaped-value and repeated-row transcript grammar and comparisons.",
+      "residual": "Legacy plain labels/order/layout remain.",
+      "residualOwner": "#0015",
+      "evidence": [
+        "docs/legacy-compatibility/surface-ledger.md",
+        "docs/legacy-compatibility/delivery-matrix.md"
+      ]
+    },
+    {
+      "id": "legacy-args",
+      "status": "unimplemented",
+      "ruleSet": "legacy-open",
+      "contract": "No report/replay serializer; output must not be automatically executed.",
+      "nextOutcome": "Inert token-record bytes/newline/quote schema and option-looking-data comparisons.",
+      "residual": "Legacy args/replay representation remains; execution has no authority.",
+      "residualOwner": "#0015",
+      "evidence": [
+        "docs/legacy-compatibility/surface-ledger.md",
+        "docs/legacy-compatibility/delivery-matrix.md"
+      ]
+    },
+    {
+      "id": "legacy-php",
+      "status": "unimplemented",
+      "ruleSet": "legacy-open",
+      "contract": "No PHP-shaped data serializer or evaluator.",
+      "nextOutcome": "Typed data-only PHP representation grammar, escaping/collision vectors without evaluation.",
+      "residual": "Full PHP report parity remains.",
+      "residualOwner": "#0015",
+      "evidence": [
+        "docs/legacy-compatibility/surface-ledger.md",
+        "docs/legacy-compatibility/delivery-matrix.md"
+      ]
+    },
+    {
+      "id": "legacy-plot",
+      "status": "unimplemented",
+      "ruleSet": "legacy-open",
+      "contract": "No plotting data/asset serializer.",
+      "nextOutcome": "Data-domain/order/missing-sample and asset schema with deterministic authored comparisons.",
+      "residual": "Plot report formats/options/rendering parity remain.",
+      "residualOwner": "#0015",
+      "evidence": [
+        "docs/legacy-compatibility/surface-ledger.md",
+        "docs/legacy-compatibility/delivery-matrix.md"
+      ]
+    },
+    {
+      "id": "templates",
+      "status": "unimplemented",
+      "ruleSet": "legacy-open",
+      "contract": "No template renderer, expression or callback runtime.",
+      "nextOutcome": "Nonexecuting placeholder AST, escaped-value and missing/ambiguous-lookup vectors.",
+      "residual": "Complete template formatting/expression behavior remains.",
+      "residualOwner": "#0015",
+      "evidence": [
+        "docs/legacy-compatibility/surface-ledger.md",
+        "docs/legacy-compatibility/delivery-matrix.md"
+      ]
+    },
+    {
+      "id": "filename-placeholders",
+      "status": "unimplemented",
+      "ruleSet": "legacy-open",
+      "contract": "No pure filename formatter; source pairing is not formatting.",
+      "nextOutcome": "Pure component-result schema for width/extension/counter and path-separator/collision cases.",
+      "residual": "Filename placeholder grammar and actual filesystem operation evidence remain.",
+      "residualOwner": "#0015",
+      "evidence": [
+        "docs/legacy-compatibility/surface-ledger.md",
+        "docs/legacy-compatibility/delivery-matrix.md"
+      ]
+    },
+    {
+      "id": "inert-json",
+      "status": "unimplemented",
+      "ruleSet": "inert-scalar",
+      "contract": "Proposed closed existing-scalar-set data model only.",
+      "nextOutcome": "Future decoder against intent.schema.v1.json and exact model vectors, with per-row refusal diagnostics.",
+      "residual": "Runtime import decoder, actual destination feasibility and all apply/storage gates remain.",
+      "residualOwner": "#0015",
+      "evidence": [
+        "docs/legacy-compatibility/report-import/intent.schema.v1.json"
+      ]
+    },
+    {
+      "id": "inert-csv",
+      "status": "unimplemented",
+      "ruleSet": "inert-scalar",
+      "contract": "Proposed strict ten-column rectangular projection into the same scalar model.",
+      "nextOutcome": "Future strict CSV decoder against JSON-equivalence and lexical/matching cases.",
+      "residual": "Runtime CSV importer, measured bounds and all apply/storage gates remain.",
+      "residualOwner": "#0015",
+      "evidence": [
+        "docs/legacy-compatibility/report-import/intent.schema.v1.json"
+      ]
+    },
+    {
+      "id": "legacy-json-import",
+      "status": "unimplemented",
+      "ruleSet": "legacy-open",
+      "contract": "No -j=/SourceFile decoder; report snapshots are not intent files.",
+      "nextOutcome": "Exact SourceFile/duplicate/wildcard matching schema and explicit-loss inert adapter vectors.",
+      "residual": "Complete legacy import semantics and independent destination admission remain.",
+      "residualOwner": "#0015",
+      "evidence": [
+        "docs/legacy-compatibility/surface-ledger.md",
+        "docs/legacy-compatibility/delivery-matrix.md"
+      ]
+    },
+    {
+      "id": "legacy-csv-import",
+      "status": "unimplemented",
+      "ruleSet": "legacy-open",
+      "contract": "No -csv=/SourceFile decoder; empty cells never imply deletion.",
+      "nextOutcome": "Exact header/missing/empty/encoding/matching schema and explicit-loss inert adapter vectors.",
+      "residual": "Complete legacy CSV import semantics and independent destination admission remain.",
+      "residualOwner": "#0015",
+      "evidence": [
+        "docs/legacy-compatibility/surface-ledger.md",
+        "docs/legacy-compatibility/delivery-matrix.md"
+      ]
+    }
+  ]
+}

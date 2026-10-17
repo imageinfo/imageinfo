@@ -489,6 +489,19 @@ qualify public snapshot/query ownership and twelve overlapping session lifetimes
 #0137/#0138 qualify direct shells and plain 40/80-column terminals, with actual
 platform evidence separate from authored controls. See the documentation map.
 
+The next sixteen-card wave adds #0172 exact-owned unpublished and eligible
+postcompletion cleanup, retaining current caller authority, per-effect checks,
+explicit retention and precise partial/pending residuals. No profile is admitted.
+#0182 adds separately selected bounded same-stem pairing inference with provenance
+and explicit identity revalidation; existing explicit pairing remains available.
+#0117/#0126/#0131/#0133/#0136/#0139 retain finite requirement, report/import,
+pure-data, date, historical terminal and cancellation contracts without claiming
+their proposed runtimes. #0140 distinguishes native input faults from normalized
+EOF and censored watchdog observations. #0145–0150 separate authored controls
+from actual serialized frozen-build resource campaigns; camera reports stay
+private. #0160 prepares the adopted source-only unsigned alpha, with exact-source
+CI and archive evidence separate from Terry's later publication approval.
+
 ## Linux new-output scope — Terry's decision, 2026-10-16
 
 Terry selected #0177 option A: defer positive Linux new-output support from the

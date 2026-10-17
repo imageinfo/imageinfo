@@ -1,0 +1,879 @@
+{
+  "schemaVersion": 1,
+  "id": "r5-advanced-date-contract/1",
+  "requirements": [
+    "MAP-018",
+    "MAP-019",
+    "MAP-020",
+    "MAP-022"
+  ],
+  "authority": {
+    "runtimeEnabled": false,
+    "productionMutationAllowed": false,
+    "repairEnabled": false,
+    "datasetQualified": false,
+    "parityComplete": false
+  },
+  "baseline": {
+    "catalog": "r5-date-family-bounded",
+    "fields": 4,
+    "cells": 20,
+    "supported": 5,
+    "refused": 11,
+    "unverified": 4
+  },
+  "sources": [
+    "docs/legacy-compatibility/r5-date-mapping.v1.json",
+    "docs/legacy-compatibility/delivery-matrix.v1.json",
+    "docs/sidecars/date-mapping.md",
+    "docs/sidecars/native-date-adapter.md",
+    "docs/privacy/r5-catalog.v1.json",
+    "docs/privacy/read-coverage.md",
+    "docs/write-safety/write-admission.md"
+  ],
+  "operations": [
+    {
+      "operation": "calendar-months",
+      "requirement": "MAP-018",
+      "destination": "One selected DTO civil value; intent only",
+      "data": "Gregorian years 1..9999; no timezone needed",
+      "coverage": "Integral month delta -120000..120000, same day/time; invalid end-day refuses",
+      "refusal": "No clamping, AllDates expansion, implicit companion or CTMD edits",
+      "nextCell": "Year/month/day and negative rollover authored vectors, then exact field-target model",
+      "runtime": "unavailable"
+    },
+    {
+      "operation": "elapsed-seconds",
+      "requirement": "MAP-018",
+      "destination": "One selected DTO and explicitly supplied fixed-offset context; intent only",
+      "data": "Explicit +/-HH:MM offset; no host timezone",
+      "coverage": "Integer seconds -86400..86400, preserve fixed-offset context",
+      "refusal": "Zone-less input, leap second, range overflow or named-zone rules refuse",
+      "nextCell": "Actual read-bound instant proposal with explicit offset occurrence and companion coverage",
+      "runtime": "unavailable"
+    },
+    {
+      "operation": "offset-convert",
+      "requirement": "MAP-018",
+      "destination": "One DTO plus named target offset proposal; intent only",
+      "data": "Explicit source and target fixed offsets",
+      "coverage": "Same instant: target civil = source civil + target offset - source offset",
+      "refusal": "Unknown offset -00:00, missing offset and +/-14 beyond 14:00 refuse",
+      "nextCell": "DTO/fraction/offset joint target contract with exact unchanged fraction",
+      "runtime": "unavailable"
+    },
+    {
+      "operation": "named-zone",
+      "requirement": "MAP-018",
+      "destination": "No destination proposal",
+      "data": "No timezone database selected",
+      "coverage": "No geographic zone, DST fold/gap or historical rule coverage",
+      "refusal": "All named-zone conversion refuses; no host zone inference",
+      "nextCell": "Pin lawful timezone data/version and gap/fold vectors before implementation",
+      "runtime": "unavailable"
+    },
+    {
+      "operation": "clock-correction",
+      "requirement": "MAP-019",
+      "destination": "UTC track-query time only; never change capture date",
+      "data": "One or two caller-explicit camera/UTC integer-second anchors",
+      "coverage": "One anchor constant correction within 86400 seconds; two anchors monotonic affine map inside <=86400-second span",
+      "refusal": "No extrapolation with two anchors, fractional-second rounding, inferred zone or unsorted anchors",
+      "nextCell": "Read-bound camera UTC plus exact rational correction and observed anchor provenance",
+      "runtime": "unavailable"
+    },
+    {
+      "operation": "track-interpolate",
+      "requirement": "MAP-019",
+      "destination": "Invented coordinate proposal only; no RAW or XMP write",
+      "data": "Exactly two authored UTC/latitude/longitude samples; integer microdegrees",
+      "coverage": "Ordered distinct UTC times, <=300-second gap, inclusive endpoints, linear coordinates",
+      "refusal": "No extrapolation, antimeridian crossing, rounded fraction, speed/HDOP/altitude assumption",
+      "nextCell": "Bounded track parser with rights, sample-quality and missing-zone/error vectors",
+      "runtime": "unavailable"
+    },
+    {
+      "operation": "geolocation",
+      "requirement": "MAP-020",
+      "destination": "Invented location label only; no GPS insertion",
+      "data": "authored-rectangle-v1 offline only",
+      "coverage": "Half-open rectangle [0,1000000) microdegrees on each axis => authored-cell-A",
+      "refusal": "Unknown/missing database, outside coverage, online fallback or unsupported coordinate refuses",
+      "nextCell": "Dataset manifest and lawful offline candidate with tie/distance/coverage fixtures",
+      "runtime": "unavailable"
+    },
+    {
+      "operation": "inverse-export",
+      "requirement": "MAP-020",
+      "destination": "No output/export file",
+      "data": "No real data or track template selected",
+      "coverage": "Neither location-label inverse lookup nor GPS-to-track export is specified as native behavior",
+      "refusal": "No invented coordinate from label; no template/network fallback",
+      "nextCell": "Separate exact named-location inverse ambiguity and GPS track export schema/escaping/rights vectors",
+      "runtime": "unavailable"
+    },
+    {
+      "operation": "validate",
+      "requirement": "MAP-022",
+      "destination": "Diagnostic only",
+      "data": "One authored Gregorian DTO string",
+      "coverage": "Shape/calendar only, not camera semantic consistency, checksum validity or repair",
+      "refusal": "Suppression changes no validation outcome; unknown dependencies stay unknown",
+      "nextCell": "Actual bounded native report classification against existing diagnostics",
+      "runtime": "unavailable"
+    },
+    {
+      "operation": "repair",
+      "requirement": "MAP-022",
+      "destination": "No destination or effects",
+      "data": "No repair mapping, dependencies or storage profile qualified",
+      "coverage": "Every repair/force/minor-error bypass request refuses",
+      "refusal": "No guessed opaque/checksum repair, deletion, storage effects or diagnostic-to-authority conversion",
+      "nextCell": "Exact named defect, old/new bytes, affected fields, independent semantic/preservation proof and qualified publication",
+      "runtime": "unavailable"
+    }
+  ],
+  "dataRights": {
+    "authored-rectangle-v1": "Invented public test coordinates and label; no real geographic coverage.",
+    "realGeography": "unselected",
+    "timeZoneDatabase": "unselected",
+    "network": "disabled",
+    "paidServices": "not-authorized",
+    "requiredManifest": [
+      "provider",
+      "version",
+      "digest",
+      "license",
+      "attribution",
+      "redistribution",
+      "derivative-export",
+      "coverage",
+      "accuracy",
+      "privacy"
+    ]
+  },
+  "vectors": [
+    {
+      "id": "month-leap",
+      "request": {
+        "operation": "calendar-months",
+        "arguments": {
+          "date": "2024:01:29 12:00:00",
+          "months": 1
+        }
+      },
+      "expected": {
+        "status": "proposed",
+        "value": "2024:02:29 12:00:00"
+      }
+    },
+    {
+      "id": "month-no-clamp",
+      "request": {
+        "operation": "calendar-months",
+        "arguments": {
+          "date": "2023:01:31 12:00:00",
+          "months": 1
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "month-negative-rollover",
+      "request": {
+        "operation": "calendar-months",
+        "arguments": {
+          "date": "2024:01:01 00:00:00",
+          "months": -1
+        }
+      },
+      "expected": {
+        "status": "proposed",
+        "value": "2023:12:01 00:00:00"
+      }
+    },
+    {
+      "id": "month-underflow",
+      "request": {
+        "operation": "calendar-months",
+        "arguments": {
+          "date": "0001:01:01 00:00:00",
+          "months": -1
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "month-bool",
+      "request": {
+        "operation": "calendar-months",
+        "arguments": {
+          "date": "2024:01:01 00:00:00",
+          "months": true
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "elapsed-leap-day",
+      "request": {
+        "operation": "elapsed-seconds",
+        "arguments": {
+          "date": "2024:02:28 23:59:59",
+          "offset": "+00:00",
+          "seconds": 1
+        }
+      },
+      "expected": {
+        "status": "proposed",
+        "value": "2024:02:29 00:00:00"
+      }
+    },
+    {
+      "id": "elapsed-zone-required",
+      "request": {
+        "operation": "elapsed-seconds",
+        "arguments": {
+          "date": "2024:01:01 00:00:00",
+          "offset": "",
+          "seconds": 1
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "elapsed-leap-second",
+      "request": {
+        "operation": "elapsed-seconds",
+        "arguments": {
+          "date": "2024:01:01 00:00:60",
+          "offset": "+00:00",
+          "seconds": 1
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "elapsed-bound",
+      "request": {
+        "operation": "elapsed-seconds",
+        "arguments": {
+          "date": "2024:01:01 00:00:00",
+          "offset": "+00:00",
+          "seconds": 86401
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "offset-new-day",
+      "request": {
+        "operation": "offset-convert",
+        "arguments": {
+          "date": "2024:01:01 23:00:00",
+          "sourceOffset": "-02:00",
+          "targetOffset": "+03:00"
+        }
+      },
+      "expected": {
+        "status": "proposed",
+        "value": "2024:01:02 04:00:00"
+      }
+    },
+    {
+      "id": "offset-negative-rollover",
+      "request": {
+        "operation": "offset-convert",
+        "arguments": {
+          "date": "2024:01:01 01:00:00",
+          "sourceOffset": "+03:00",
+          "targetOffset": "-02:00"
+        }
+      },
+      "expected": {
+        "status": "proposed",
+        "value": "2023:12:31 20:00:00"
+      }
+    },
+    {
+      "id": "offset-unknown",
+      "request": {
+        "operation": "offset-convert",
+        "arguments": {
+          "date": "2024:01:01 00:00:00",
+          "sourceOffset": "-00:00",
+          "targetOffset": "+00:00"
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "offset-out-of-range",
+      "request": {
+        "operation": "offset-convert",
+        "arguments": {
+          "date": "2024:01:01 00:00:00",
+          "sourceOffset": "+14:01",
+          "targetOffset": "+00:00"
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "offset-missing",
+      "request": {
+        "operation": "offset-convert",
+        "arguments": {
+          "date": "2024:01:01 00:00:00",
+          "sourceOffset": "",
+          "targetOffset": "+00:00"
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "named-zone-gap",
+      "request": {
+        "operation": "named-zone",
+        "arguments": {
+          "date": "2024:03:10 02:30:00",
+          "zone": "America/New_York"
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "named-zone-fold",
+      "request": {
+        "operation": "named-zone",
+        "arguments": {
+          "date": "2024:11:03 01:30:00",
+          "zone": "America/New_York"
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "clock-one-anchor",
+      "request": {
+        "operation": "clock-correction",
+        "arguments": {
+          "camera": 110,
+          "anchors": [
+            [
+              100,
+              120
+            ]
+          ]
+        }
+      },
+      "expected": {
+        "status": "proposed",
+        "value": 130
+      }
+    },
+    {
+      "id": "clock-two-anchor",
+      "request": {
+        "operation": "clock-correction",
+        "arguments": {
+          "camera": 150,
+          "anchors": [
+            [
+              100,
+              120
+            ],
+            [
+              200,
+              240
+            ]
+          ]
+        }
+      },
+      "expected": {
+        "status": "proposed",
+        "value": 180
+      }
+    },
+    {
+      "id": "clock-extrapolation",
+      "request": {
+        "operation": "clock-correction",
+        "arguments": {
+          "camera": 201,
+          "anchors": [
+            [
+              100,
+              120
+            ],
+            [
+              200,
+              240
+            ]
+          ]
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "clock-duplicate",
+      "request": {
+        "operation": "clock-correction",
+        "arguments": {
+          "camera": 100,
+          "anchors": [
+            [
+              100,
+              120
+            ],
+            [
+              100,
+              120
+            ]
+          ]
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "clock-rounding",
+      "request": {
+        "operation": "clock-correction",
+        "arguments": {
+          "camera": 101,
+          "anchors": [
+            [
+              100,
+              120
+            ],
+            [
+              103,
+              124
+            ]
+          ]
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "clock-nonmonotonic",
+      "request": {
+        "operation": "clock-correction",
+        "arguments": {
+          "camera": 100,
+          "anchors": [
+            [
+              100,
+              120
+            ],
+            [
+              200,
+              110
+            ]
+          ]
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "clock-horizon",
+      "request": {
+        "operation": "clock-correction",
+        "arguments": {
+          "camera": 86501,
+          "anchors": [
+            [
+              100,
+              120
+            ]
+          ]
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "track-midpoint",
+      "request": {
+        "operation": "track-interpolate",
+        "arguments": {
+          "time": 150,
+          "samples": [
+            [
+              100,
+              0,
+              0
+            ],
+            [
+              200,
+              100,
+              200
+            ]
+          ]
+        }
+      },
+      "expected": {
+        "status": "proposed",
+        "value": [
+          50,
+          100
+        ]
+      }
+    },
+    {
+      "id": "track-endpoint",
+      "request": {
+        "operation": "track-interpolate",
+        "arguments": {
+          "time": 200,
+          "samples": [
+            [
+              100,
+              0,
+              0
+            ],
+            [
+              200,
+              100,
+              200
+            ]
+          ]
+        }
+      },
+      "expected": {
+        "status": "proposed",
+        "value": [
+          100,
+          200
+        ]
+      }
+    },
+    {
+      "id": "track-gap",
+      "request": {
+        "operation": "track-interpolate",
+        "arguments": {
+          "time": 200,
+          "samples": [
+            [
+              100,
+              0,
+              0
+            ],
+            [
+              401,
+              100,
+              200
+            ]
+          ]
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "track-extrapolation",
+      "request": {
+        "operation": "track-interpolate",
+        "arguments": {
+          "time": 99,
+          "samples": [
+            [
+              100,
+              0,
+              0
+            ],
+            [
+              200,
+              100,
+              200
+            ]
+          ]
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "track-antimeridian",
+      "request": {
+        "operation": "track-interpolate",
+        "arguments": {
+          "time": 150,
+          "samples": [
+            [
+              100,
+              0,
+              179000000
+            ],
+            [
+              200,
+              100,
+              -179000000
+            ]
+          ]
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "track-rounding",
+      "request": {
+        "operation": "track-interpolate",
+        "arguments": {
+          "time": 101,
+          "samples": [
+            [
+              100,
+              0,
+              0
+            ],
+            [
+              103,
+              1,
+              1
+            ]
+          ]
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "track-duplicate-time",
+      "request": {
+        "operation": "track-interpolate",
+        "arguments": {
+          "time": 100,
+          "samples": [
+            [
+              100,
+              0,
+              0
+            ],
+            [
+              100,
+              1,
+              1
+            ]
+          ]
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "geo-authored",
+      "request": {
+        "operation": "geolocation",
+        "arguments": {
+          "dataset": "authored-rectangle-v1",
+          "latitude": 500000,
+          "longitude": 500000,
+          "offline": true
+        }
+      },
+      "expected": {
+        "status": "proposed",
+        "value": "authored-cell-A"
+      }
+    },
+    {
+      "id": "geo-boundary-excluded",
+      "request": {
+        "operation": "geolocation",
+        "arguments": {
+          "dataset": "authored-rectangle-v1",
+          "latitude": 1000000,
+          "longitude": 500000,
+          "offline": true
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "geo-boundary-included",
+      "request": {
+        "operation": "geolocation",
+        "arguments": {
+          "dataset": "authored-rectangle-v1",
+          "latitude": 0,
+          "longitude": 0,
+          "offline": true
+        }
+      },
+      "expected": {
+        "status": "proposed",
+        "value": "authored-cell-A"
+      }
+    },
+    {
+      "id": "geo-unknown-dataset",
+      "request": {
+        "operation": "geolocation",
+        "arguments": {
+          "dataset": "unknown",
+          "latitude": 0,
+          "longitude": 0,
+          "offline": true
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "geo-network",
+      "request": {
+        "operation": "geolocation",
+        "arguments": {
+          "dataset": "authored-rectangle-v1",
+          "latitude": 0,
+          "longitude": 0,
+          "offline": false
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "inverse-unknown",
+      "request": {
+        "operation": "inverse-export",
+        "arguments": {
+          "label": "authored-cell-A"
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "validation-valid-false",
+      "request": {
+        "operation": "validate",
+        "arguments": {
+          "date": "2024:02:29 12:00:00",
+          "suppressWarnings": false
+        }
+      },
+      "expected": {
+        "status": "proposed",
+        "value": "calendar-shape-only"
+      }
+    },
+    {
+      "id": "validation-invalid-false",
+      "request": {
+        "operation": "validate",
+        "arguments": {
+          "date": "2023:02:29 12:00:00",
+          "suppressWarnings": false
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "validation-valid-true",
+      "request": {
+        "operation": "validate",
+        "arguments": {
+          "date": "2024:02:29 12:00:00",
+          "suppressWarnings": true
+        }
+      },
+      "expected": {
+        "status": "proposed",
+        "value": "calendar-shape-only"
+      }
+    },
+    {
+      "id": "validation-invalid-true",
+      "request": {
+        "operation": "validate",
+        "arguments": {
+          "date": "2023:02:29 12:00:00",
+          "suppressWarnings": true
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "repair-minor-suppressed",
+      "request": {
+        "operation": "repair",
+        "arguments": {
+          "force": true,
+          "suppressWarnings": true,
+          "defect": "opaque-checksum"
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    },
+    {
+      "id": "repair-calendar",
+      "request": {
+        "operation": "repair",
+        "arguments": {
+          "date": "2023:02:29 12:00:00",
+          "desired": "2023:02:28 12:00:00"
+        }
+      },
+      "expected": {
+        "status": "refused"
+      }
+    }
+  ],
+  "residuals": [
+    "MAP-018 AllDates field expansion, inverse lexical conversions, named-zone DST/history, fractions and actual date writes remain unmet.",
+    "MAP-019 track ingestion, observed anchor authority, sample quality, altitude, spherical/antimeridian behavior and native destination mapping remain unmet.",
+    "MAP-020 lawful real datasets, distance/tie/accuracy policy, alternate names, list/export fidelity and offline implementation remain unmet.",
+    "MAP-022 general format validation, repair, unusual flags, opaque/checksum dependencies and preservation admission remain unmet."
+  ]
+}

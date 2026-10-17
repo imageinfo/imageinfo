@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "ticket": 136,
+  "kind": "finite-historical-baseline",
+  "sourceCommit": "622e39c22e7d6f1cca9d761e3597e149f5007afb",
+  "ciRun": 39043877139,
+  "ciUrl": "https://github.com/imageinfo/imageinfo/actions/runs/39043877139",
+  "helpMandatory": true,
+  "cascadingMenusOptional": true,
+  "reports": [
+    {
+      "ticket": 137,
+      "platform": "windows",
+      "runner": "windows-2025",
+      "path": "docs/legacy-compatibility/shell-terminal-baseline/windows-command-shells.json",
+      "sha256": "b61baff3758b5932faef90a52758f5235ad618d8372a28bada5e02755513fdfa",
+      "passed": 28,
+      "notApplicable": 4,
+      "shellVersion": "7.6.6",
+      "binarySha256": "f2e84c45e2cfce3878958f1df3535f761fdaff07375f4fc4fb283ddd27b94352"
+    },
+    {
+      "ticket": 138,
+      "platform": "windows",
+      "runner": "windows-2025",
+      "path": "docs/legacy-compatibility/shell-terminal-baseline/windows-plain-terminals.json",
+      "sha256": "e857c693cf31436357c0a4acfa93f9a29bdea055599e72ca82464e1248fce56b",
+      "passed": 24,
+      "notApplicable": 0,
+      "shellVersion": null,
+      "binarySha256": "f2e84c45e2cfce3878958f1df3535f761fdaff07375f4fc4fb283ddd27b94352"
+    },
+    {
+      "ticket": 137,
+      "platform": "linux",
+      "runner": "ubuntu-24.04",
+      "path": "docs/legacy-compatibility/shell-terminal-baseline/linux-command-shells.json",
+      "sha256": "59c13a3eb80f2bf84cc192a88ca633e07daa289b5c002474bb3f556295fd07ef",
+      "passed": 32,
+      "notApplicable": 0,
+      "shellVersion": "GNU bash, version 5.2.21(1)-release (x86_64-pc-linux-gnu)",
+      "binarySha256": "6e5792483a2380ca749f38dd7cf51a165799cdf7826f1032db17d731f51d843e"
+    },
+    {
+      "ticket": 138,
+      "platform": "linux",
+      "runner": "ubuntu-24.04",
+      "path": "docs/legacy-compatibility/shell-terminal-baseline/linux-plain-terminals.json",
+      "sha256": "09a50c57d2d5001585c3b3c7166601095a723b01ad289b0d28919985077b95cc",
+      "passed": 24,
+      "notApplicable": 0,
+      "shellVersion": null,
+      "binarySha256": "6e5792483a2380ca749f38dd7cf51a165799cdf7826f1032db17d731f51d843e"
+    },
+    {
+      "ticket": 137,
+      "platform": "macos",
+      "runner": "macos-15",
+      "path": "docs/legacy-compatibility/shell-terminal-baseline/macos-command-shells.json",
+      "sha256": "d33eadb77833c66a8e48940cc6f25a956fce21ebcae386891f27f17a776fdf33",
+      "passed": 32,
+      "notApplicable": 0,
+      "shellVersion": "GNU bash, version 3.2.57(1)-release (arm64-apple-darwin24)",
+      "binarySha256": "2a2c5ed961d7eccf4a3049166c4ff2692c6d07cb829ecca759f085e32e9085d9"
+    },
+    {
+      "ticket": 138,
+      "platform": "macos",
+      "runner": "macos-15",
+      "path": "docs/legacy-compatibility/shell-terminal-baseline/macos-plain-terminals.json",
+      "sha256": "bff4b6c6f063003b4bb6378e9c9b7044e2d16f9955fc75d8d5ff959408a58e88",
+      "passed": 24,
+      "notApplicable": 0,
+      "shellVersion": null,
+      "binarySha256": "2a2c5ed961d7eccf4a3049166c4ff2692c6d07cb829ecca759f085e32e9085d9"
+    },
+    {
+      "ticket": 59,
+      "platform": "windows",
+      "path": "docs/legacy-compatibility/native-paths/windows.results.json",
+      "sha256": "428a685eef630fbae5a2c0006df658b01aead99bcc63c7b4387d743f156b5df0",
+      "passed": 70,
+      "notApplicable": 24,
+      "shellVersion": "7.6.6",
+      "binarySha256": "478769e284ba34298dca8f2fcd6622db33a305046b29a49e1337bf5b547dde0c"
+    },
+    {
+      "ticket": 59,
+      "platform": "linux",
+      "path": "docs/legacy-compatibility/native-paths/linux.results.json",
+      "sha256": "3b3b60e59095e96b5e99c1f7a4c53a19ae34d4a8a2bbde1982aca40019ddbf45",
+      "passed": 88,
+      "notApplicable": 6,
+      "shellVersion": "GNU bash, version 5.2.21(1)-release (x86_64-pc-linux-gnu)",
+      "binarySha256": "d73ba20b50698ba54b40aff33432f70025c125882e89f42811191ca6d1b4be7e"
+    },
+    {
+      "ticket": 59,
+      "platform": "macos",
+      "path": "docs/legacy-compatibility/native-paths/macos.results.json",
+      "sha256": "65187f34ae14c978632a0af8e65d0f2ddb2832650e886821d87a0db27d00f3f7",
+      "passed": 88,
+      "notApplicable": 6,
+      "shellVersion": "GNU bash, version 3.2.57(1)-release (arm64-apple-darwin24)",
+      "binarySha256": "8741f41201ef72bdd288054c7587211cb81e89495b9458013470305fbf800a74"
+    }
+  ],
+  "sessionEvidence": {
+    "ticket": 116,
+    "kind": "actual-process-pipe-tests",
+    "source": "tests/cli_read_session.rs",
+    "startup": "tests/cli_session_startup.rs",
+    "ciRun": 39043877139,
+    "platforms": [
+      "windows-2025",
+      "ubuntu-24.04",
+      "macos-15"
+    ],
+    "scope": "incremental ready/result flush, isolation, EOF/close, malformed/oversized framing, broken stdout; no cancellation or native failing-stdin claim"
+  },
+  "unrun": [
+    "Windows PowerShell 5.1 and cmd.exe",
+    "zsh, fish, sh and arbitrary shells",
+    "interactive shell profiles, editing and completion",
+    "guided/cascading menus (optional; guided requests currently refuse)",
+    "non-Unicode UTF-8 JSONL wire paths",
+    "arbitrary Unicode terminal cell rendering and screen-reader certification",
+    "session cancellation/signal and native failing-stdin-handle behavior",
+    "all other terminal widths, emulators and platform configurations"
+  ],
+  "nextSlices": [
+    {
+      "id": "ST-REFRESH",
+      "state": "unrun-on-next-source",
+      "environments": [
+        "windows-2025",
+        "ubuntu-24.04",
+        "macos-15"
+      ],
+      "commands": [
+        "cargo build --locked --release",
+        "python scripts/check_native_paths.py --binary <binary> --public-results <fresh-report>",
+        "python scripts/check_command_shells.py --binary <binary> --public-results <fresh-report>",
+        "python scripts/check_plain_terminals.py --binary <binary> --public-results <fresh-report>",
+        "cargo test --locked --test cli_read_session --test cli_session_startup"
+      ],
+      "bounds": "94 native-path rows; 32 shell rows; 24 terminal cases at 40/80 columns; exact existing session tests",
+      "oracle": "Existing checkers require exact applicable IDs, statuses, channels, native argv/input, fixture bytes and effects. Preserve failures and hashes; refresh only after all applicable observations pass."
+    },
+    {
+      "id": "ST-NEW-COMMAND",
+      "state": "unrun",
+      "environments": [
+        "Windows PowerShell 7",
+        "Linux Bash",
+        "macOS Bash"
+      ],
+      "commands": [
+        "Extend authored ledgers for the exact newly advertised command before qualification"
+      ],
+      "bounds": "One new command; simple, spaces, Unicode and literal-metacharacter operands; two help spellings and 40/80 columns",
+      "oracle": "Bind actual shell witness argv/stdin separately from native effects; assert contextual help inventory, complete visible output, producer plainness and exact status/channel. Record unsupported operation refusals separately."
+    }
+  ]
+}

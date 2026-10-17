@@ -32,6 +32,9 @@ impl PriorProof {
     pub(crate) fn bindings(&self) -> &CurrentBindings {
         &self.expected
     }
+    pub(super) fn terminal(&self) -> bool {
+        self.evidence.complete(self.expected.object_bindings())
+    }
 }
 
 #[cfg(windows)]
@@ -59,7 +62,7 @@ mod native {
         pub(crate) fn bindings(&self) -> &CurrentBindings {
             &self.current
         }
-        fn complete(&self) -> bool {
+        pub(in crate::storage) fn complete(&self) -> bool {
             let missing = self.prior.expected.object_bindings().len() == 6;
             let expected: Vec<_> = [
                 Phase::Installed,

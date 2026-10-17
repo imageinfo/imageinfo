@@ -1,4 +1,4 @@
-//! Explicit, read-only path association. A result is an observation, not a lease.
+//! Explicit and opt-in inferred read-only path associations. Results are observations, not leases.
 use serde::Serialize;
 use std::{
     fmt, fs,
@@ -13,6 +13,164 @@ pub struct ResolvedPair {
     pub raw_path: PathBuf,
     pub sidecar_path: PathBuf,
     pub association: &'static str,
+}
+
+/// A proposed path association under the finite `ascii-cr3-xmp-v1` rule.
+/// Retained read handles permit explicit stale-observation checks only; they
+/// neither lock the namespace nor authorize mutation or attest file contents.
+#[derive(Debug, Serialize)]
+pub struct InferredPair {
+    pub pair: ResolvedPair,
+    pub raw_origin: PathBuf,
+    pub sidecar_origin: PathBuf,
+    pub selected_parent: PathBuf,
+    pub rule: &'static str,
+    #[serde(skip)]
+    raw_identity: same_file::Handle,
+    #[serde(skip)]
+    sidecar_identity: same_file::Handle,
+}
+
+/// Infer one existing `.xmp` beside an explicitly selected `.cr3` (ASCII case
+/// insensitive stems/extensions). Scan only that parent, at most 4096 entries.
+/// Same-stem other extensions, nonfiles and case duplicates refuse. Symlinks
+/// cannot redirect this mode outside the selected parent. No content is read.
+pub fn infer_same_stem(raw: &Path) -> Result<InferredPair, PairingError> {
+    canonical_file(raw, false)?;
+    let name = raw
+        .file_name()
+        .and_then(|n| n.to_str())
+        .filter(|n| n.is_ascii())
+        .ok_or_else(|| {
+            PairingError::new(
+                "PAIRING_NAME_UNSUPPORTED",
+                "Inference requires an ASCII RAW leaf.",
+            )
+        })?;
+    let (stem, extension) = name
+        .rsplit_once('.')
+        .filter(|(s, _)| !s.is_empty())
+        .ok_or_else(|| {
+            PairingError::new(
+                "PAIRING_NAME_UNSUPPORTED",
+                "Inference requires a nonempty stem and .cr3 extension.",
+            )
+        })?;
+    if !extension.eq_ignore_ascii_case("cr3")
+        || stem.ends_with(['.', ' '])
+        || name
+            .bytes()
+            .any(|b| b.is_ascii_control() || b"<>:\"/\\|?*".contains(&b))
+    {
+        return Err(PairingError::new(
+            "PAIRING_NAME_UNSUPPORTED",
+            "Inference supports ordinary ASCII .cr3 names only.",
+        ));
+    }
+    let parent = raw
+        .parent()
+        .filter(|p| !p.as_os_str().is_empty())
+        .unwrap_or_else(|| Path::new("."));
+    let mut sidecars = Vec::new();
+    let mut raws = 0;
+    let mut conflicting = false;
+    for (index, entry) in fs::read_dir(parent).map_err(io_error)?.enumerate() {
+        if index >= MAX_DIRECTORY_ENTRIES {
+            return Err(PairingError::new(
+                "PAIRING_DIRECTORY_LIMIT",
+                "Selected RAW parent exceeds the bounded entry scan.",
+            ));
+        }
+        let entry = entry.map_err(io_error)?;
+        let leaf = entry.file_name();
+        let leaf = leaf.to_str().filter(|n| n.is_ascii()).ok_or_else(|| {
+            PairingError::new(
+                "PAIRING_NAME_UNSUPPORTED",
+                "Inference cannot classify non-ASCII directory entries.",
+            )
+        })?;
+        let Some((other_stem, extension)) = leaf.rsplit_once('.') else {
+            if leaf.eq_ignore_ascii_case(stem) {
+                conflicting = true;
+            }
+            continue;
+        };
+        if !other_stem.eq_ignore_ascii_case(stem) {
+            continue;
+        }
+        if !entry.file_type().map_err(io_error)?.is_file() {
+            conflicting = true;
+        } else if extension.eq_ignore_ascii_case("xmp") {
+            sidecars.push(entry.path());
+        } else if extension.eq_ignore_ascii_case("cr3") {
+            raws += 1;
+        } else {
+            conflicting = true;
+        }
+    }
+    if raws != 1 || sidecars.len() > 1 || conflicting {
+        return Err(PairingError::new(
+            "PAIRING_INFERENCE_AMBIGUOUS",
+            "Same-stem names do not identify exactly one ordinary RAW and at most one XMP; no candidate was selected.",
+        ));
+    }
+    let sidecar_origin = sidecars.pop().ok_or_else(|| {
+        PairingError::new(
+            "SIDECAR_MISSING",
+            "No admissible same-stem sidecar exists; inference never creates one.",
+        )
+    })?;
+    let mut pair = resolve_pair(raw, Some(&sidecar_origin))?;
+    pair.association = "inferred_same_stem";
+    let raw_identity =
+        same_file::Handle::from_file(fs::File::open(&pair.raw_path).map_err(io_error)?)
+            .map_err(io_error)?;
+    let sidecar_identity =
+        same_file::Handle::from_file(fs::File::open(&pair.sidecar_path).map_err(io_error)?)
+            .map_err(io_error)?;
+    if raw_identity == sidecar_identity {
+        return Err(PairingError::new(
+            "PAIRING_SAME_FILE",
+            "Inferred paths alias the same held file.",
+        ));
+    }
+    Ok(InferredPair {
+        pair,
+        raw_origin: raw.to_path_buf(),
+        sidecar_origin,
+        selected_parent: fs::canonicalize(parent).map_err(io_error)?,
+        rule: "ascii-cr3-xmp-v1",
+        raw_identity,
+        sidecar_identity,
+    })
+}
+
+impl InferredPair {
+    /// Re-observe names and physical identities. Success is another bounded
+    /// observation, not continuing exclusion or a content freshness assertion.
+    pub fn revalidate(&self) -> Result<(), PairingError> {
+        let fresh = infer_same_stem(&self.raw_origin).map_err(|error| {
+            if matches!(error.code, "SIDECAR_MISSING" | "RAW_MISSING") {
+                PairingError::new(
+                    "PAIRING_INFERENCE_STALE",
+                    "An inferred origin is missing; select and preview again.",
+                )
+            } else {
+                error
+            }
+        })?;
+        if self.pair != fresh.pair
+            || self.selected_parent != fresh.selected_parent
+            || self.raw_identity != fresh.raw_identity
+            || self.sidecar_identity != fresh.sidecar_identity
+        {
+            return Err(PairingError::new(
+                "PAIRING_INFERENCE_STALE",
+                "An inferred origin or file identity changed; select and preview again.",
+            ));
+        }
+        Ok(())
+    }
 }
 
 #[derive(Clone, Debug, PartialEq, Eq)]

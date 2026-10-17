@@ -179,6 +179,8 @@ pub enum Phase {
 // Disabled internal implementation is compiled before a format/profile caller
 // exists. Keep the unsafe/native boundary in the separate reviewed crate.
 #[allow(dead_code)]
+pub(crate) mod cleanup;
+#[allow(dead_code)]
 pub(crate) mod custody;
 #[allow(dead_code)]
 pub(crate) mod finalization;

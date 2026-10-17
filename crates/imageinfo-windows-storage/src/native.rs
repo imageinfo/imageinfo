@@ -46,6 +46,28 @@ fn wide(path: &Path) -> io::Result<Vec<u16>> {
     Ok(v)
 }
 
+/// One ordinary handle disposition; no POSIX flags, path deletion or fallback.
+pub(crate) fn remove_owned(file: &File) -> io::Result<()> {
+    let info = FILE_DISPOSITION_INFO { DeleteFile: true };
+    // SAFETY: the safe cleanup capability retains an OPEN_EXISTING regular-file
+    // handle with DELETE access, verifies its exact bytes/properties/name, and
+    // supplies a live SDK-layout value for this synchronous call. The kernel
+    // targets the borrowed handle only. Failure retains the OS error; no retry,
+    // path interpretation, directory recursion or allocation is performed.
+    if unsafe {
+        SetFileInformationByHandle(
+            file.as_raw_handle(),
+            FileDispositionInfo,
+            ptr::from_ref(&info).cast(),
+            size_of::<FILE_DISPOSITION_INFO>() as u32,
+        )
+    } == 0
+    {
+        return Err(io::Error::last_os_error());
+    }
+    Ok(())
+}
+
 /// One read-only advisory query. The safe caller retains and checks the complete
 /// local NTFS directory ancestry; this value reserves no capacity or authority.
 pub(crate) fn available_bytes(path: &Path) -> io::Result<u64> {

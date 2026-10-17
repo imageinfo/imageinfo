@@ -103,6 +103,25 @@ pub fn pair(request: PairRequest, id: String) -> Report {
     finish_observation(report)
 }
 
+pub fn infer_pair(request: PairRequest, id: String) -> Report {
+    let mut report =
+        observation_report(request.output, id, "sidecar pair", "preview", &request.raw);
+    match imageinfo::pairing::infer_same_stem(&request.raw) {
+        Ok(proposal) => {
+            report.record.files[0].state = "previewed";
+            report.text = format!(
+                "Proposed same-stem RAW/sidecar association: {:?} -> {:?}\nRule: {}; both origins retained in JSON preview.\nPath observation only; no files created or modified.\n",
+                proposal.raw_origin, proposal.sidecar_origin, proposal.rule
+            );
+            report.record.files[0].snapshot = Some(
+                serde_json::json!({"schemaVersion": 1, "kind": "inferred-pair-preview", "proposal": proposal, "mutationAllowed": false}),
+            );
+        }
+        Err(error) => observation_error(&mut report, error.code, error.message),
+    }
+    finish_observation(report)
+}
+
 fn observation_report(
     format: OutputFormat,
     id: String,

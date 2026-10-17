@@ -1,0 +1,1485 @@
+{
+  "version": "pure-data-v1",
+  "evidence": "authored specification envelope checks only; expressions not parsed",
+  "registry": {
+    "revision": "authored-v1",
+    "selectors": [
+      "EXIF:ISO"
+    ],
+    "builtinNames": [
+      "ISO"
+    ],
+    "builtinExpandedNames": [
+      [
+        "http://ns.adobe.com/exif/1.0/",
+        "ISOSpeedRatings"
+      ]
+    ]
+  },
+  "extTrace": [
+    {
+      "id": "EXT-001",
+      "disposition": "planned-filter"
+    },
+    {
+      "id": "EXT-002",
+      "disposition": "planned-bindings"
+    },
+    {
+      "id": "EXT-003",
+      "disposition": "planned-definition"
+    },
+    {
+      "id": "EXT-004",
+      "disposition": "refuse-calculation"
+    },
+    {
+      "id": "EXT-005",
+      "disposition": "independent-date-mapping"
+    },
+    {
+      "id": "EXT-006",
+      "disposition": "refuse-formatting"
+    },
+    {
+      "id": "EXT-007",
+      "disposition": "refuse-module"
+    },
+    {
+      "id": "EXT-008",
+      "disposition": "refuse-lookup"
+    },
+    {
+      "id": "EXT-009",
+      "disposition": "refuse-hook"
+    }
+  ],
+  "futureEvidence": [
+    "parser-and-limits",
+    "three-valued-evaluation",
+    "native-request-isolation",
+    "actual-authority-refusal"
+  ],
+  "cases": [
+    {
+      "id": "literal-bindings",
+      "expected": "accept",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "empty-declarations",
+      "expected": "accept",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [],
+        "parameters": [],
+        "definitions": []
+      }
+    },
+    {
+      "id": "version",
+      "expected": "refuse",
+      "request": {
+        "version": "pure-data-v2",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "code-key",
+      "expected": "refuse",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ],
+        "hook": "shell"
+      }
+    },
+    {
+      "id": "unknown-field",
+      "expected": "refuse",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1",
+            "parser": "module"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bool-number",
+      "expected": "refuse",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": true
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "shared-name",
+      "expected": "refuse",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "capture_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "duplicate-expanded",
+      "expected": "refuse",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          },
+          {
+            "name": "other",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "relative-uri",
+      "expected": "refuse",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "file.txt",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "builtin-selector",
+      "expected": "refuse",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:Unknown"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "builtin-name",
+      "expected": "refuse",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "ISO",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "byte-bound",
+      "expected": "refuse",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "count-bound",
+      "expected": "refuse",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "a0",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a1",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a2",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a3",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a4",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a5",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a6",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a7",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a8",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a9",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a10",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a11",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a12",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a13",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a14",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a15",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a16",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a17",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a18",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a19",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a20",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a21",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a22",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a23",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a24",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a25",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a26",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a27",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a28",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a29",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a30",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a31",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a32",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a33",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a34",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a35",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a36",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a37",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a38",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a39",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a40",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a41",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a42",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a43",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a44",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a45",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a46",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a47",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a48",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a49",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a50",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a51",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a52",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a53",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a54",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a55",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a56",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a57",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a58",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a59",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a60",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a61",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a62",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a63",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a64",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "count-at-limit",
+      "expected": "accept",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "a0",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a1",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a2",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a3",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a4",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a5",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a6",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a7",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a8",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a9",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a10",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a11",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a12",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a13",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a14",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a15",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a16",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a17",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a18",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a19",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a20",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a21",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a22",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a23",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a24",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a25",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a26",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a27",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a28",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a29",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a30",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a31",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a32",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a33",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a34",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a35",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a36",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a37",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a38",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a39",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a40",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a41",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a42",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a43",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a44",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a45",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a46",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a47",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a48",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a49",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a50",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a51",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a52",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a53",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a54",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a55",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a56",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a57",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a58",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a59",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a60",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a61",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a62",
+            "selector": "EXIF:ISO"
+          },
+          {
+            "name": "a63",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "expression-at-byte-limit",
+      "expected": "accept",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "expression-over-byte-limit",
+      "expected": "refuse",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "surrogate",
+      "expected": "refuse",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "\ud800",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "parameter-literal-code",
+      "expected": "accept",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "string",
+            "value": "$(shell); module(\"x\")"
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unknown-registry",
+      "expected": "refuse",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "other",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "alias-chain",
+      "expected": "refuse",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "capture_iso"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "builtin-expanded",
+      "expected": "refuse",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "http://ns.adobe.com/exif/1.0/",
+            "localName": "ISOSpeedRatings",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "declaration-byte-limit",
+      "expected": "accept",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "null-parameter",
+      "expected": "accept",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "null",
+            "value": null
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "missing-field",
+      "expected": "refuse",
+      "request": {
+        "version": "pure-data-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bad-uri-space",
+      "expected": "refuse",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:with space",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bad-uri-escape",
+      "expected": "refuse",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "number",
+            "value": 400
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:bad%QX",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "integer-parameter",
+      "expected": "accept",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "integer",
+            "value": 3
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fraction-not-integer",
+      "expected": "refuse",
+      "request": {
+        "version": "pure-data-v1",
+        "registryRevision": "authored-v1",
+        "expression": "exists(\"EXIF:ISO\") and value(alias(\"capture_iso\"),\"normalized\") >= param(\"minimum_iso\")",
+        "aliases": [
+          {
+            "name": "capture_iso",
+            "selector": "EXIF:ISO"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "minimum_iso",
+            "type": "integer",
+            "value": 3.5
+          }
+        ],
+        "definitions": [
+          {
+            "name": "reviewRating",
+            "namespace": "urn:authored:review",
+            "localName": "reviewRating",
+            "type": "integer",
+            "provenance": "public authored contract only",
+            "revision": "v1"
+          }
+        ]
+      }
+    }
+  ],
+  "rawCases": [
+    {
+      "id": "duplicate-member",
+      "input": "{\"version\":\"pure-data-v1\",\"version\":\"pure-data-v1\"}",
+      "expected": "refuse"
+    },
+    {
+      "id": "bom",
+      "input": "\ufeff{}",
+      "expected": "refuse"
+    },
+    {
+      "id": "excess-exponent",
+      "input": "{\"version\": \"pure-data-v1\", \"registryRevision\": \"authored-v1\", \"expression\": \"exists(\\\"EXIF:ISO\\\") and value(alias(\\\"capture_iso\\\"),\\\"normalized\\\") >= param(\\\"minimum_iso\\\")\", \"aliases\": [{\"name\": \"capture_iso\", \"selector\": \"EXIF:ISO\"}], \"parameters\": [{\"name\": \"minimum_iso\", \"type\": \"number\", \"value\": 1e309}], \"definitions\": [{\"name\": \"reviewRating\", \"namespace\": \"urn:authored:review\", \"localName\": \"reviewRating\", \"type\": \"number\", \"provenance\": \"public authored contract only\", \"revision\": \"v1\"}]}",
+      "expected": "refuse"
+    },
+    {
+      "id": "long-numeric-token",
+      "input": "{\"version\": \"pure-data-v1\", \"registryRevision\": \"authored-v1\", \"expression\": \"exists(\\\"EXIF:ISO\\\") and value(alias(\\\"capture_iso\\\"),\\\"normalized\\\") >= param(\\\"minimum_iso\\\")\", \"aliases\": [{\"name\": \"capture_iso\", \"selector\": \"EXIF:ISO\"}], \"parameters\": [{\"name\": \"minimum_iso\", \"type\": \"number\", \"value\": 111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111}], \"definitions\": [{\"name\": \"reviewRating\", \"namespace\": \"urn:authored:review\", \"localName\": \"reviewRating\", \"type\": \"number\", \"provenance\": \"public authored contract only\", \"revision\": \"v1\"}]}",
+      "expected": "refuse"
+    },
+    {
+      "id": "non-json-constant",
+      "input": "{\"version\": \"pure-data-v1\", \"registryRevision\": \"authored-v1\", \"expression\": \"exists(\\\"EXIF:ISO\\\") and value(alias(\\\"capture_iso\\\"),\\\"normalized\\\") >= param(\\\"minimum_iso\\\")\", \"aliases\": [{\"name\": \"capture_iso\", \"selector\": \"EXIF:ISO\"}], \"parameters\": [{\"name\": \"minimum_iso\", \"type\": \"number\", \"value\": NaN}], \"definitions\": [{\"name\": \"reviewRating\", \"namespace\": \"urn:authored:review\", \"localName\": \"reviewRating\", \"type\": \"number\", \"provenance\": \"public authored contract only\", \"revision\": \"v1\"}]}",
+      "expected": "refuse"
+    }
+  ]
+}

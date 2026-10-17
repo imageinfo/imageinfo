@@ -63,6 +63,7 @@ pub enum Invocation {
     Extract(ExtractRequest),
     DatePreview(DatePreviewRequest),
     Pair(PairRequest),
+    InferPair(PairRequest),
     ReadSession,
     InertTranslation,
 }
@@ -133,6 +134,7 @@ pub fn command() -> Command {
                 .subcommand(help_command()).subcommand_precedence_over_arg(true)
                 .arg(input_argument())
                 .arg(Arg::new("sidecar").long("sidecar").value_parser(OsStringValueParser::new()).help("Explicit existing sidecar path; no basename selection"))
+                .arg(Arg::new("infer-same-stem").long("infer-same-stem").action(ArgAction::SetTrue).conflicts_with("sidecar").help("Preview a unique same-stem existing XMP beside one CR3 (bounded ASCII rule)"))
                 .after_help("Missing sidecars, aliases and ambiguous names are refused. Contents are not interpreted. No sidecar is created or synchronized.")))
 }
 
@@ -390,11 +392,16 @@ where
                 output,
             ));
         }
-        return Ok(Invocation::Pair(PairRequest {
+        let request = PairRequest {
             raw: inputs[0].clone(),
             sidecar: sidecar.map(PathBuf::from),
             output,
-        }));
+        };
+        return Ok(if current.get_flag("infer-same-stem") {
+            Invocation::InferPair(request)
+        } else {
+            Invocation::Pair(request)
+        });
     }
     let tags: Vec<String> = current
         .try_get_many::<String>("tag")

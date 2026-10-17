@@ -1,0 +1,483 @@
+{
+  "revision": "2026-10-17.1",
+  "evidence": "authored-specification-only",
+  "cases": [
+    {
+      "id": "v1-token-ignored",
+      "version": 1,
+      "events": [
+        "cancel",
+        "checkpoint",
+        "eof",
+        "flush-terminal"
+      ],
+      "expected": {
+        "outcome": "eof",
+        "exitStatus": 0,
+        "complete": true,
+        "frames": 0,
+        "results": 0,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v1-interrupted-retries",
+      "version": 1,
+      "events": [
+        "partial-input",
+        "interrupted-input"
+      ],
+      "expected": {
+        "outcome": "waiting",
+        "exitStatus": null,
+        "complete": false,
+        "frames": 1,
+        "results": 0,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v1-cancel-frame",
+      "version": 1,
+      "events": [
+        "cancel-frame",
+        "flush-terminal"
+      ],
+      "expected": {
+        "outcome": "protocol-error",
+        "exitStatus": 2,
+        "complete": true,
+        "frames": 1,
+        "results": 0,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v2-before-input",
+      "version": 2,
+      "events": [
+        "cancel",
+        "checkpoint",
+        "flush-terminal"
+      ],
+      "expected": {
+        "outcome": "cancelled",
+        "exitStatus": 130,
+        "complete": true,
+        "frames": 0,
+        "results": 0,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v2-partial-input",
+      "version": 2,
+      "events": [
+        "partial-input",
+        "cancel",
+        "checkpoint",
+        "flush-terminal"
+      ],
+      "expected": {
+        "outcome": "cancelled",
+        "exitStatus": 130,
+        "complete": true,
+        "frames": 1,
+        "results": 0,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v2-active-read",
+      "version": 2,
+      "events": [
+        "admit-read",
+        "cancel",
+        "checkpoint",
+        "flush-terminal"
+      ],
+      "expected": {
+        "outcome": "cancelled",
+        "exitStatus": 130,
+        "complete": true,
+        "frames": 1,
+        "results": 0,
+        "activeId": "read-1",
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v2-prepared-result",
+      "version": 2,
+      "events": [
+        "admit-read",
+        "prepare-result",
+        "cancel",
+        "checkpoint",
+        "flush-terminal"
+      ],
+      "expected": {
+        "outcome": "cancelled",
+        "exitStatus": 130,
+        "complete": true,
+        "frames": 1,
+        "results": 0,
+        "activeId": "read-1",
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v2-started-result",
+      "version": 2,
+      "events": [
+        "admit-read",
+        "prepare-result",
+        "start-result",
+        "cancel",
+        "checkpoint",
+        "flush-result",
+        "checkpoint",
+        "flush-terminal"
+      ],
+      "expected": {
+        "outcome": "cancelled",
+        "exitStatus": 130,
+        "complete": true,
+        "frames": 1,
+        "results": 1,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v2-blocked-read",
+      "version": 2,
+      "events": [
+        "admit-read",
+        "blocked-read",
+        "cancel"
+      ],
+      "expected": {
+        "outcome": "waiting",
+        "exitStatus": null,
+        "complete": false,
+        "frames": 1,
+        "results": 0,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v2-blocked-input",
+      "version": 2,
+      "events": [
+        "blocked-input",
+        "cancel"
+      ],
+      "expected": {
+        "outcome": "waiting",
+        "exitStatus": null,
+        "complete": false,
+        "frames": 0,
+        "results": 0,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v2-blocked-output",
+      "version": 2,
+      "events": [
+        "admit-read",
+        "prepare-result",
+        "start-result",
+        "blocked-output",
+        "cancel"
+      ],
+      "expected": {
+        "outcome": "waiting",
+        "exitStatus": null,
+        "complete": false,
+        "frames": 1,
+        "results": 0,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v2-unblocked-read",
+      "version": 2,
+      "events": [
+        "admit-read",
+        "blocked-read",
+        "cancel",
+        "call-returned",
+        "checkpoint",
+        "flush-terminal"
+      ],
+      "expected": {
+        "outcome": "cancelled",
+        "exitStatus": 130,
+        "complete": true,
+        "frames": 1,
+        "results": 0,
+        "activeId": "read-1",
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v2-input-error-wins",
+      "version": 2,
+      "events": [
+        "partial-input",
+        "cancel",
+        "input-error",
+        "checkpoint",
+        "flush-terminal"
+      ],
+      "expected": {
+        "outcome": "input-error",
+        "exitStatus": 1,
+        "complete": true,
+        "frames": 1,
+        "results": 0,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v2-output-error-wins",
+      "version": 2,
+      "events": [
+        "admit-read",
+        "prepare-result",
+        "start-result",
+        "cancel",
+        "output-error"
+      ],
+      "expected": {
+        "outcome": "output-error",
+        "exitStatus": 1,
+        "complete": false,
+        "frames": 1,
+        "results": 0,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v2-interrupted-checkpoint",
+      "version": 2,
+      "events": [
+        "partial-input",
+        "cancel",
+        "interrupted-input",
+        "flush-terminal"
+      ],
+      "expected": {
+        "outcome": "cancelled",
+        "exitStatus": 130,
+        "complete": true,
+        "frames": 1,
+        "results": 0,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v2-terminal-flush-error",
+      "version": 2,
+      "events": [
+        "cancel",
+        "checkpoint",
+        "output-error"
+      ],
+      "expected": {
+        "outcome": "output-error",
+        "exitStatus": 1,
+        "complete": false,
+        "frames": 0,
+        "results": 0,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v2-cancel-frame",
+      "version": 2,
+      "events": [
+        "cancel-frame",
+        "flush-terminal"
+      ],
+      "expected": {
+        "outcome": "protocol-error",
+        "exitStatus": 2,
+        "complete": true,
+        "frames": 1,
+        "results": 0,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "forced-exit",
+      "version": 2,
+      "events": [
+        "admit-read",
+        "cancel",
+        "forced-exit"
+      ],
+      "expected": {
+        "outcome": "forced-exit",
+        "exitStatus": null,
+        "complete": false,
+        "frames": 1,
+        "results": 0,
+        "activeId": null,
+        "owner": "invoker-process"
+      }
+    },
+    {
+      "id": "completed-before-cancel",
+      "version": 2,
+      "events": [
+        "eof",
+        "flush-terminal",
+        "cancel"
+      ],
+      "expected": {
+        "outcome": "eof",
+        "exitStatus": 0,
+        "complete": true,
+        "frames": 0,
+        "results": 0,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v2-blocked-terminal",
+      "version": 2,
+      "events": [
+        "cancel",
+        "checkpoint",
+        "blocked-output"
+      ],
+      "expected": {
+        "outcome": "waiting",
+        "exitStatus": null,
+        "complete": false,
+        "frames": 0,
+        "results": 0,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v2-unblocked-terminal",
+      "version": 2,
+      "events": [
+        "cancel",
+        "checkpoint",
+        "blocked-output",
+        "call-returned",
+        "flush-terminal"
+      ],
+      "expected": {
+        "outcome": "cancelled",
+        "exitStatus": 130,
+        "complete": true,
+        "frames": 0,
+        "results": 0,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v2-unblocked-output",
+      "version": 2,
+      "events": [
+        "admit-read",
+        "prepare-result",
+        "start-result",
+        "blocked-output",
+        "cancel",
+        "call-returned",
+        "flush-result",
+        "checkpoint",
+        "flush-terminal"
+      ],
+      "expected": {
+        "outcome": "cancelled",
+        "exitStatus": 130,
+        "complete": true,
+        "frames": 1,
+        "results": 1,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v2-blocked-input-interrupted",
+      "version": 2,
+      "events": [
+        "blocked-input",
+        "cancel",
+        "interrupted-input",
+        "flush-terminal"
+      ],
+      "expected": {
+        "outcome": "cancelled",
+        "exitStatus": 130,
+        "complete": true,
+        "frames": 0,
+        "results": 0,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v1-blocked-input-interrupted",
+      "version": 1,
+      "events": [
+        "blocked-input",
+        "interrupted-input",
+        "eof",
+        "flush-terminal"
+      ],
+      "expected": {
+        "outcome": "eof",
+        "exitStatus": 0,
+        "complete": true,
+        "frames": 0,
+        "results": 0,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    },
+    {
+      "id": "v2-blocked-output-error",
+      "version": 2,
+      "events": [
+        "cancel",
+        "checkpoint",
+        "blocked-output",
+        "output-error"
+      ],
+      "expected": {
+        "outcome": "output-error",
+        "exitStatus": 1,
+        "complete": false,
+        "frames": 0,
+        "results": 0,
+        "activeId": null,
+        "owner": "caller-streams"
+      }
+    }
+  ]
+}

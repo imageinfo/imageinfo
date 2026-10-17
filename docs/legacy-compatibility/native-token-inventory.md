@@ -58,8 +58,9 @@ establish accepted equivalence or a measured reference difference.
 
 ## Actual native surface
 
-The #0130 amendment on 2026-10-17 adds the bounded inert translator and refreshes
-current native source hashes. `nativeSourceRevision` identifies its pre-amendment
+The #0130 and #0182 amendments on 2026-10-17 add the bounded inert translator
+and separately selected same-stem pairing inference, and refresh current native
+source hashes. `nativeSourceRevision` identifies the pre-amendment
 baseline; `nativeSourceSha256` binds the amended files. The pinned upstream
 denominators and unresolved parity obligations are unchanged.
 
@@ -75,7 +76,7 @@ spellings, request limits and session fields. The implemented commands are:
 | `binary list INPUT...` | Stored preview resource descriptions; same read limits. |
 | `binary extract INPUT` | One of three stored preview names to a required fresh output path, or dry-run; no JPEG decode. |
 | `preview date-time-original INPUT` | Exact Gregorian ASCII20 advisory intent with optional allocation offset assertion; no apply. |
-| `sidecar pair INPUT` | Explicit existing sidecar path association; no content parsing or creation. |
+| `sidecar pair INPUT` | Explicit existing paths or opt-in bounded same-stem inference; no content parsing or creation. |
 | `session read` | Fixed v1 read/close JSONL over stdin/stdout; no CLI output selector. |
 | `compat translate` | One bounded stdin invocation and fixed inert JSON report for twelve frozen forms; no referenced-path access or suggestion execution. |
 

@@ -14,6 +14,21 @@ The first camera/format target is **Canon EOS R5 CR3**.
 
 | Document | Purpose |
 | --- | --- |
+| [Exact-owned production cleanup](write-safety/production-cleanup.md) | #0172 explicit retained-handle prune and eligible per-record postcompletion cleanup, with partial/pending residuals and no profile admission. |
+| [RAW/XMP operation matrix](write-safety/raw-xmp-operation-matrix.md) | #0117 finite operation, requirement and proposal identities with explicit unsupported mutation scopes. |
+| [Report/import boundaries](legacy-compatibility/report-import-boundaries.md) | #0126 exact report and inert JSON/CSV contract distinctions; new renderers and importers remain unimplemented. |
+| [Pure data boundary](legacy-compatibility/pure-data-boundary.md) | #0131 bounded filter and explicit-definition grammar, authority and all EXT residuals; no runtime. |
+| [Advanced date contracts](legacy-compatibility/advanced-date-contract.md) | #0133 separate calendar, clock, lookup and repair semantics with rights and implementation gaps retained. |
+| [Shell/terminal baseline](legacy-compatibility/shell-terminal-baseline.md) | #0136 exact historical source, shell and terminal evidence with explicit refresh and unrun scopes. |
+| [Read cancellation](legacy-compatibility/read-cancellation.md) | #0139 current synchronous v1 behavior and a separately proposed cooperative protocol. |
+| [Native session handles](legacy-compatibility/native-session-handles.md) | #0140 actual native handle faults, normalized EOF and censored watchdog observations. |
+| [Stored-preview resources](performance/stored-preview-resources.md) | #0145 finite private extraction resource method and independent audit; camera observations remain private. |
+| [Session resources](performance/read-session-resources.md) | #0146 bounded sequential lifetime, framing and retained-state resource method. |
+| [Output consumers](performance/output-consumers.md) | #0147 ordinary JSON and session JSONL under explicitly controlled consumers. |
+| [Reader byte boundaries](performance/reader-byte-boundaries.md) | #0148 actual default metadata/block boundaries, independent request accounting and separate configuration ceilings. |
+| [Reader structural boundaries](performance/reader-structural-boundaries.md) | #0149 actual default count/depth cells with distinct BMFF and TIFF denominators. |
+| [Collector overhead](performance/collector-overhead.md) | #0150 paired fixed-stop instrumentation comparison and retained failure denominators. |
+| [Source-reader candidate](governance/source-reader-candidate.md) | #0160 source-only alpha preparation, exact archive/CI bindings and separate publication approval. |
 | [Guarded production finalization](write-safety/production-finalization.md) | #0171 current-caller completion of supported installed-output obligations, expected-absent receipt creation and completion recognition without republishing; profile admission remains closed. |
 | [Retained-original resource bounds](write-safety/retained-original-resources.md) | #0197 shared precharges for replacement/restore/two-member work and an actual bounded full-volume refusal; cumulative logical history is not allocation or reservation. |
 | [Actual session result profiles](legacy-compatibility/session-result-profiles.md) | #0128 closed emitted frames, authored-input and cross-frame invariants, actual lifecycle cases and separately labeled trait faults. |

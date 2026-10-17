@@ -84,6 +84,15 @@ created. The seven Backlog cards remain genuinely unscoped or explicitly held;
 their 2026-10-17 board comments name concrete RFW eligibility work and exit
 criteria. Ordinary dependencies remain Ready for Work.
 
+The sixth execution wave starts sixteen existing scopes: #0172, #0140,
+#0145–0150, #0160, #0182, #0117, #0126, #0131, #0133, #0136 and #0139.
+All move to In Progress before delegation. This leaves 52 Ready for Work
+cards (42 executable scopes and ten tracking umbrellas); no successor cards
+are created. #0198, #0185 and #0194 retain their unmet positive mechanism or
+pair-admission prerequisites. Their completed negative boundary work does not
+establish those positive prerequisites. Resource campaigns use a frozen build
+and run serially after implementation, rather than concurrently with one another.
+
 | Scope | Ready for Work | Needs Terry | Insufficient scope |
 | --- | ---: | ---: | ---: |
 | RAW format admission | 2 | 1 | 1 |

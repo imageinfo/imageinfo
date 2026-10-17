@@ -50,6 +50,16 @@ pub(crate) struct CurrentBindings {
     published: bool,
 }
 
+type CleanupParts<'a> = (
+    &'a str,
+    &'a str,
+    &'a str,
+    &'a str,
+    &'a Binding,
+    &'a [(Artifact, Vec<u8>)],
+    bool,
+);
+
 impl CurrentBindings {
     /// Called by the native adapter after actual fresh held-object checks. The
     /// source/root/candidate prefix and each actual owned record are mandatory.
@@ -228,6 +238,18 @@ impl CurrentBindings {
         &self.bindings
     }
 
+    pub(super) fn cleanup_parts(&self) -> CleanupParts<'_> {
+        (
+            &self.operation,
+            &self.profile,
+            &self.implementation,
+            &self.output,
+            &self.parent,
+            &self.records,
+            self.published,
+        )
+    }
+
     /// External caller saves are bounded observations, never a decoder/authority
     /// format. Exact opaque fields are length-prefixed, not debug text or paths.
     fn save_bytes(&self, kind: SaveKind) -> Vec<u8> {
@@ -263,6 +285,7 @@ pub(crate) enum RestartAction {
     RecognizeCompletion,
     FinalizeExisting,
     PruneUnpublished,
+    CleanupCompleted,
 }
 
 /// A statement made by the selected trusted *current* caller, independently of
@@ -333,7 +356,7 @@ impl TrustedCurrentCaller {
             RestartAction::PruneUnpublished => {
                 history == CurrentCallerHistory::StoppedBeforeRelease && !expected.published
             }
-            RestartAction::RecognizeCompletion => {
+            RestartAction::RecognizeCompletion | RestartAction::CleanupCompleted => {
                 history == CurrentCallerHistory::TerminalCompletionAndStopped && expected.published
             }
             RestartAction::FinalizeExisting => {

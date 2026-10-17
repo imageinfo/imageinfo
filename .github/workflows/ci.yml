@@ -42,6 +42,16 @@ jobs:
           python crates/imageinfo-windows-storage/tests/existing_properties_native.py --probe crates/imageinfo-windows-storage/target/debug/examples/existing_properties_probe.exe --output .local/existing-properties-ci
       - name: Check operation planner and wire ownership
         run: python scripts/check_operation_plan_map.py
+      - name: Check finite operation and compatibility contracts
+        shell: bash
+        run: |
+          python scripts/check_raw_xmp_operation_matrix.py
+          python scripts/check_report_import_boundaries.py
+          python scripts/check_pure_data_boundary.py
+          python scripts/check_advanced_date_contract.py
+          python scripts/check_shell_terminal_baseline.py
+          python scripts/check_read_cancellation.py
+          python scripts/test_prepare_reader_release.py
       - name: Check bounded XMP component research
         run: |
           cargo fmt --manifest-path experiments/0081-xmp-model/Cargo.toml --check
@@ -352,6 +362,25 @@ jobs:
           retention-days: 7
       - name: Build release executable
         run: cargo build --locked --release
+      - name: Qualify actual native session handles
+        run: python -c "import os,pathlib,subprocess,sys; binary=pathlib.Path('target/release/imageinfo'+('.exe' if os.name=='nt' else '')).resolve(); subprocess.run([sys.executable,'scripts/check_native_session_handles.py','--binary',str(binary),'--output','.local/native-session-handles-ci'],check=True)"
+      - name: Retain native session handle observations
+        uses: actions/upload-artifact@95fe7274e8f033c0a14258ed0dc250532a479d7789f # v6
+        with:
+          name: native-session-handles-${{ matrix.os }}
+          path: .local/native-session-handles-ci/report.json
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
+      - name: Check authored resource qualification tools
+        shell: bash
+        run: |
+          python scripts/test_preview_resources_145.py
+          python -c "import os,pathlib,subprocess,sys; os.environ['IMAGEINFO_SESSION_BINARY']=str(pathlib.Path('target/release/imageinfo'+('.exe' if os.name=='nt' else '')).resolve()); subprocess.run([sys.executable,'scripts/test_session_resources.py'],check=True)"
+          python scripts/test_output_consumers.py
+          python scripts/test_collector_overhead_150.py
+          python scripts/check_reader_byte_boundary_tools.py
+          python scripts/test_audit_structural_boundaries.py
       - name: Qualify authored preview and pair arguments
         run: python scripts/check_preview_pair_arguments.py
       - name: Check current operation result profiles

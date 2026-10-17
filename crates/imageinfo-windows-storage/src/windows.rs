@@ -725,3 +725,73 @@ impl FinalizationFile {
         self.0.file.sync_all()
     }
 }
+
+/// Separate exact-held-file deletion capability. Opening changes no bytes or
+/// properties; dropping without `remove` only releases guards. No File escapes.
+pub struct CleanupFile(GuardedSource);
+/// Preserve whether a failed fresh check prevented the kernel disposition call.
+#[derive(Debug)]
+pub struct CleanupError {
+    pub disposition_attempted: bool,
+    pub error: io::Error,
+}
+impl CleanupFile {
+    pub fn open(path: &Path, max_bytes: u64) -> io::Result<Self> {
+        validate_path(path)?;
+        if max_bytes > MAX_ARTIFACT_BYTES {
+            return Err(io::Error::new(io::ErrorKind::Unsupported, "SOURCE_BOUND"));
+        }
+        let ancestry = hold_ancestors(
+            path.parent()
+                .ok_or_else(|| io::Error::other("PARENT_REQUIRED"))?,
+            false,
+        )?;
+        native::check_local_ntfs(&ancestry.last().unwrap().1, path)?;
+        // DELETE + GENERIC_READ + READ_CONTROL, OPEN_EXISTING, no write/delete
+        // sharing: retain continuous byte/name exclusion for this fresh interval.
+        let mut file = OpenOptions::new()
+            .access_mode(0x80030000)
+            .share_mode(FILE_SHARE_READ)
+            .custom_flags(FILE_FLAG_OPEN_REPARSE_POINT)
+            .open(path)?;
+        let before = observe(&file)?;
+        if before.size > max_bytes {
+            return Err(io::Error::new(io::ErrorKind::Unsupported, "SOURCE_BOUND"));
+        }
+        check_plain(&file, &before)?;
+        check_binding(path, &file)?;
+        let bytes = bounded_read(&mut file, before.size)?;
+        let mut result = Self(GuardedSource {
+            file,
+            path: path.into(),
+            before,
+            bytes,
+            ancestry,
+            failed: false,
+        });
+        result.check()?;
+        Ok(result)
+    }
+    pub fn snapshot(&self) -> &FileSnapshot {
+        self.0.snapshot()
+    }
+    pub fn bytes(&self) -> &[u8] {
+        &self.0.bytes
+    }
+    pub fn check(&mut self) -> io::Result<()> {
+        self.0.check()
+    }
+    /// Revalidate and mark this exact retained object for ordinary deletion.
+    /// Closing our handle does not assert last-reader closure or persistence.
+    /// Readers may defer unlink; even an error consumes this attempt.
+    pub fn remove(mut self) -> Result<(), CleanupError> {
+        self.check().map_err(|error| CleanupError {
+            disposition_attempted: false,
+            error,
+        })?;
+        native::remove_owned(&self.0.file).map_err(|error| CleanupError {
+            disposition_attempted: true,
+            error,
+        })
+    }
+}

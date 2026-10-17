@@ -99,3 +99,67 @@ generated local logs are committed.
 
 See [RAW scope](../raw-scope.md) and the separate
 [write-admission boundary](../write-safety/write-admission.md).
+
+## Opt-in same-stem inference (#0182)
+
+`imageinfo sidecar pair RAW --infer-same-stem` previews one inferred association.
+The flag conflicts with `--sidecar`; omitting both retains the explicit resolver's
+`EXPLICIT_SIDECAR_REQUIRED` refusal. `PairRequest` and `resolve_pair` retain their
+existing shape and behavior. The separate library entry is
+`pairing::infer_same_stem(raw)`.
+
+The exact `ascii-cr3-xmp-v1` rule is deliberately finite:
+
+- Select one existing ordinary ASCII `.cr3` leaf. The stem must be nonempty,
+  cannot end in a space or dot, and the leaf cannot contain controls or the
+  Windows-reserved punctuation `<>:"/\|?*`.
+- Examine only its selected parent, with at most 4,096 entries. There is no
+  recursive search, other-directory search, metadata matching or creation path.
+  Non-ASCII entries refuse because their stem equivalence is unqualified.
+- Compare stems and `.cr3`/`.xmp` extensions using ASCII case-insensitive
+  equality. Require exactly one same-stem ordinary CR3 entry and one ordinary
+  XMP entry. Two distinct case-equivalent CR3 or XMP entries refuse.
+- Any other same-stem extension, a bare same-stem leaf, same-stem directory or
+  same-stem symlink refuses as ambiguous. Unrelated entries and subdirectories
+  do not supply candidates. A symlink RAW also refuses. Ancestor resolution
+  remains ordinary filesystem resolution; no ancestor security claim follows.
+- Apply the explicit resolver's regular-file, case-entry and held physical
+  identity checks to the selected pair. Hard-link aliases refuse, while
+  identical bytes in two distinct objects are allowed. No file content is
+  interpreted, including RAW or XML format validation.
+
+Success returns `association: "inferred_same_stem"`, the exact rule identifier,
+caller-selected `raw_origin`, enumerated `sidecar_origin`, canonical selected
+parent and canonical resolved pair. CLI JSON stores these in an
+`inferred-pair-preview` snapshot with `mutationAllowed: false` and `previewed`
+state. Both origins remain explicit in the proposal; the normal explicit mode
+retains its `explicit-pair` snapshot.
+
+Missing sidecars return `SIDECAR_MISSING`; competing names return
+`PAIRING_INFERENCE_AMBIGUOUS`. Unsupported names and directory overflow return
+`PAIRING_NAME_UNSUPPORTED` and `PAIRING_DIRECTORY_LIMIT`. None selects a first
+candidate or creates any file. The returned library observation retains two
+read-only identity handles, excluded from JSON, so its explicit `revalidate()`
+can repeat the rule and compare actual physical identities. Missing origins or
+replacement at an origin return `PAIRING_INFERENCE_STALE`; newly competing
+names return the ambiguity refusal. A serialized preview cannot reconstruct
+these private handles or confer revalidation authority.
+
+Revalidation observes path/object association only, not file-content freshness.
+In-place edits do not prove a stale association. The retained handles are not
+namespace or property guards. Enumeration, canonicalization and opens remain
+separate observations of a quiescent filesystem, and inference supplies no
+association authenticity, continuing exclusion or later mutation permission.
+OS access-time accounting remains outside the no-requested-effects claim.
+
+On 2026-10-17, nine actual Windows authored inference tests and all eight
+existing explicit-pair tests passed on the local NTFS test volume. Native
+hard-link setup required running outside the filesystem sandbox after its
+access-denied setup failure. The inference cases cover unique case-varied names,
+equal-byte distinct objects, complete recursive input/neighbor byte and name
+inventories, other-directory refusal, conflicting extensions and directories,
+replacement/missing stale observations, hard-link aliases, case behavior,
+unsupported names, the exact directory bound and actual CLI opt-in/conflict/JSON
+preview behavior. The Unix symlink test and Unix case-sensitive branch remain
+unrun here; ordinary Windows case-insensitive behavior was executed. Windows
+case-sensitive directories and privileged symlink configurations remain unrun.

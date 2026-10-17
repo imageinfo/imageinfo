@@ -90,7 +90,7 @@ dependencies = [
 
 [[package]]
 name = "imageinfo"
-version = "0.2.0-dev"
+version = "0.2.0-alpha.1"
 dependencies = [
  "clap",
  "imageinfo-windows-storage",
