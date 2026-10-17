@@ -303,12 +303,52 @@ def _snapshot(snapshot, source, source_hash, source_bytes):
             "source snapshot bytes/bound mismatch")
     stats = [snapshot.get(key) for key in ("path_before", "handle_before", "handle_after", "path_after")]
     require(all(type(value) is dict and set(value) == {
-        "device", "inode", "mode", "size", "mtime_ns", "ctime_ns"} for value in stats),
+        "device", "inode", "mode", "size", "mtime_ns", "ctime_ns", "birthtime_ns"} for value in stats),
         "snapshot stat schema")
-    require(all(value == stats[0] for value in stats) and stats[0]["size"] == source_bytes,
-            "source snapshot identity/stat mismatch")
-    require(all(_integer(value) for value in stats[0].values()), "source stat field type")
+    for observed in stats:
+        require(all(_integer(value) for key, value in observed.items() if key != "birthtime_ns")
+                and (observed["birthtime_ns"] is None or _integer(observed["birthtime_ns"])), "source stat field type")
+    profile = snapshot.get("stat_profile")
+    if profile == "same-fields-v1":
+        require(all(_exact(value, stats[0]) for value in stats), "source snapshot identity/stat mismatch")
+    elif profile == "cpython-3.14.7-windows-path-creation-handle-change-v1":
+        # This exact interpreter exposes creation time through path-stat ctime,
+        # while fstat exposes change time. Preserve both raw fields and compare
+        # each API with itself; explicit birthtime is the shared creation field.
+        require(_exact(stats[0], stats[3]) and _exact(stats[1], stats[2]),
+                "source snapshot identity/stat mismatch within API")
+        require(all(_integer(value["birthtime_ns"]) for value in stats)
+                and all(stats[index]["ctime_ns"] == stats[index]["birthtime_ns"] for index in (0, 3)),
+                "pinned Windows path creation-time fields mismatch")
+        shared = ("device", "inode", "mode", "size", "mtime_ns", "birthtime_ns")
+        require(all(all(value[key] == stats[0][key] for key in shared) for value in stats),
+                "source snapshot identity/stat mismatch across shared fields")
+    else:
+        raise AuditError("unknown snapshot stat profile")
+    require(stats[0]["size"] == source_bytes, "source snapshot identity/stat mismatch")
     return stats[0]
+
+
+def _same_snapshot_properties(left, right):
+    return left["stat_profile"] == right["stat_profile"] and all(
+        _exact(left[key], right[key]) for key in ("path_before", "handle_before", "handle_after", "path_after"))
+
+
+def _observer_profile(plan, native):
+    expected = plan.get("observer_python")
+    require(type(expected) is dict and set(expected) == {"implementation", "version", "platform", "stat_profile"}
+            and expected["implementation"] == "cpython" and expected["platform"] == "win32"
+            and type(expected["version"]) is str and expected["version"].startswith("3.14.7 ")
+            and len(expected["version"]) <= 1024
+            and expected["stat_profile"] == "cpython-3.14.7-windows-path-creation-handle-change-v1",
+            "exact reviewed observer interpreter/profile missing")
+    require(_exact(native.get("observer_python"), expected), "actual observer interpreter/profile differs from plan")
+    return expected["stat_profile"]
+
+
+def _require_profile(snapshot, profile):
+    require(type(snapshot) is dict and snapshot.get("stat_profile") == profile,
+            "snapshot stat profile differs from reviewed observer")
 
 
 def _probe(probe, expected_access, source, source_hash, source_bytes):
@@ -316,7 +356,7 @@ def _probe(probe, expected_access, source, source_hash, source_bytes):
             and probe.get("expected_access") is expected_access, "probe target/expectation mismatch")
     before = _snapshot(probe.get("before"), source, source_hash, source_bytes)
     after = _snapshot(probe.get("after"), source, source_hash, source_bytes)
-    require(before == after and probe.get("source_unchanged") is True
+    require(_same_snapshot_properties(probe["before"], probe["after"]) and probe.get("source_unchanged") is True
             and probe.get("expectation_met") is True and probe.get("close_error") is None,
             "probe changed source or failed expectation")
     flags = probe.get("flags")
@@ -324,7 +364,8 @@ def _probe(probe, expected_access, source, source_hash, source_bytes):
     require(type(flags) is int and flags == 32769, "probe is not the reviewed nonwriting open")
     if expected_access:
         require(probe.get("status") == "opened" and probe.get("error") is None
-                and probe.get("opened_stat") == before and probe.get("denial_observation") is None,
+                and _exact(probe.get("opened_stat"), probe["before"]["handle_before"])
+                and probe.get("denial_observation") is None,
                 "access-open evidence missing")
     else:
         error = probe.get("error")
@@ -362,6 +403,8 @@ def _probe_timeline(transport, candidate, fixture):
             <= 15_000_000_000, "candidate-result release exceeded worker gate deadline")
     require(transport["exit"]["seq"] < starts[2]["seq"], "after-exit probe before actual exit")
     require(all(value == stats[0] for value in stats), "source identity/properties changed across probes")
+    require(all(_same_snapshot_properties(probe["before"], probes[0]["before"]) for probe in probes),
+            "source raw properties changed across probes")
     require({"device": stats[0]["device"], "inode": stats[0]["inode"]}
             == fixture["sourceIdentity"], "probes differ from original source identity")
     return probes
@@ -449,6 +492,7 @@ def _input_bindings(native, plan_path, freeze_path, review_path, transport):
             and 0 < len(review["reviewer"]) <= 128, "missing explicit current caller review record")
     require(review["plan_sha256"] == native["plan_sha256"]
             and review["freeze_sha256"] == native["freeze_sha256"], "review targets different inputs")
+    _observer_profile(plan, native)
     return frozen, plan
 
 
@@ -645,10 +689,16 @@ def _audit(attempt_dir, plan_path=None, freeze_path=None, review_path=None):
     require(runtime == expected_runtime, "runtime outcome differs from predeclared finite control")
     fixture, files = _artifacts(native, transport)
     probes = _probe_timeline(transport, candidate, fixture)
+    profile = _observer_profile(plan, native)
+    for probe in probes:
+        _require_profile(probe["before"], profile)
+        _require_profile(probe["after"], profile)
+    for name in ("source", "candidate", "output"):
+        _require_profile(native["fixture_after"][name], profile)
     baseline_end = next(row for row in transport["transcript"] if row["kind"] == "probe_end"
                         and row["value"]["phase"] == "baseline")
     require(baseline_end["seq"] < spawned[0]["seq"], "baseline probe after actual child spawn")
-    require(native["fixture_after"]["source"]["path_before"] == probes[-1]["after"]["path_before"],
+    require(_same_snapshot_properties(native["fixture_after"]["source"], probes[-1]["after"]),
             "final source snapshot changed after postexit probe")
     require(native["observations"] == [{"phase": phase, "probe": probe} for phase, probe in zip(
         ("baseline", "held", "after_exit"), probes)], "native/transcript probe mismatch")
@@ -664,6 +714,7 @@ def _audit(attempt_dir, plan_path=None, freeze_path=None, review_path=None):
             and candidate["receive_seq"] < held_artifacts[0]["seq"] < candidate["release_seq"]
             and held_artifacts[0]["child_alive"], "held artifact observation outside candidate gate")
     held_candidate = native["held_candidate"]
+    _require_profile(held_candidate, profile)
     require(type(held_candidate) is dict and held_candidate.get("path") == fixture["candidate"],
             "held artifact target differs")
     if held_candidate.get("status") == "ok":

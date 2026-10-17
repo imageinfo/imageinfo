@@ -13,6 +13,7 @@ from pathlib import Path
 import queue
 import re
 import subprocess
+import sys
 import threading
 import time
 from typing import Callable
@@ -343,9 +344,16 @@ def run_reviewed(plan_path, freeze_path, review_path, *, case, fixture_root,
                        "child_started": False, "replayed": False}, handle, indent=2)
             handle.write("\n")
 
+    def observer_runtime():
+        return {"implementation": sys.implementation.name, "version": sys.version,
+                "platform": sys.platform, "stat_profile": probe._stat_profile()}
+
     try:
         verified = freeze.verify_reviewed(plan_path, freeze_path, review_path)
         plan = verified["plan"]
+        observer_python = observer_runtime()
+        if observer_python != plan.get("observer_python"):
+            raise ValueError("observer Python runtime differs from reviewed plan")
         if case not in plan["cases"] or case not in fixtures.CASES:
             raise ValueError("cell outside exact reviewed plan")
         bounds = Bounds(**plan["bounds"])
@@ -367,6 +375,7 @@ def run_reviewed(plan_path, freeze_path, review_path, *, case, fixture_root,
     pending_command = None
     candidate_seen = False
     native = {"schema": "imageinfo-0218-native-v1", "cell": case,
+              "observer_python": observer_python,
               "request": {"unit": unit, "fixture_root": str(fixture_root)},
               "plan_sha256": verified["plan_sha256"],
               "plan_path": str(Path(plan_path).absolute()),
@@ -396,6 +405,8 @@ def run_reviewed(plan_path, freeze_path, review_path, *, case, fixture_root,
         recorder = record
         # Revalidate after preparation and immediately before child launch.
         freeze.verify_reviewed(plan_path, freeze_path, review_path)
+        if observer_runtime() != plan["observer_python"]:
+            raise ValueError("observer Python runtime changed before child launch")
         observe("baseline", True)
 
     def after_exit(record):

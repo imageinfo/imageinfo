@@ -190,9 +190,9 @@ class DiagnosticOrderControls(unittest.TestCase):
 def probe_timeline_fixture():
     fixture = dict(source="authored-source-placeholder", sourceSha256="1" * 64, sourceBytes=19,
                    sourceIdentity=dict(device=1, inode=2))
-    stat = dict(device=1, inode=2, mode=32768, size=19, mtime_ns=3, ctime_ns=4)
+    stat = dict(device=1, inode=2, mode=32768, size=19, mtime_ns=3, ctime_ns=4, birthtime_ns=None)
     snapshot = dict(path=fixture["source"], status="ok", error=None, reason=None,
-                    observations_match=True, sha256=fixture["sourceSha256"], bytes_read=19,
+                    stat_profile="same-fields-v1", observations_match=True, sha256=fixture["sourceSha256"], bytes_read=19,
                     max_bytes=19, **{key: copy.deepcopy(stat) for key in
                                     ("path_before", "handle_before", "handle_after", "path_after")})
     rows = []
@@ -305,6 +305,87 @@ class HeldObjectBindingControls(unittest.TestCase):
             audit._held_binding(dict(binding, facts="00"), identity, 24, digest)
 
 
+def windows_profile_fixture():
+    transport, candidate, fixture = probe_timeline_fixture()
+    for row in transport["transcript"]:
+        if row["kind"] != "probe_end":
+            continue
+        probe = row["value"]["probe"]
+        for snapshot in (probe["before"], probe["after"]):
+            snapshot["stat_profile"] = "cpython-3.14.7-windows-path-creation-handle-change-v1"
+            for key in ("path_before", "handle_before", "handle_after", "path_after"):
+                snapshot[key]["birthtime_ns"] = 4
+                snapshot[key]["ctime_ns"] = 8 if key.startswith("handle") else 4
+        if probe["opened_stat"] is not None:
+            probe["opened_stat"] = copy.deepcopy(probe["before"]["handle_before"])
+    return transport, candidate, fixture
+
+
+class SnapshotStatProfileControls(unittest.TestCase):
+    def test_windows_api_semantics_preserve_different_raw_ctimes(self):
+        transport, candidate, fixture = windows_profile_fixture()
+        probes = audit._probe_timeline(transport, candidate, fixture)
+        self.assertEqual(probes[0]["before"]["path_before"]["ctime_ns"], 4)
+        self.assertEqual(probes[0]["before"]["handle_before"]["ctime_ns"], 8)
+        self.assertEqual(probes[0]["opened_stat"], probes[0]["before"]["handle_before"])
+
+    def test_within_api_shared_and_unknown_profile_drift_refuse(self):
+        mutations = {
+            "handle_change_time": lambda s: s["handle_after"].update(ctime_ns=9),
+            "path_creation_time": lambda s: s["path_after"].update(ctime_ns=9),
+            "explicit_birthtime": lambda s: [s[key].update(birthtime_ns=9) for key in ("handle_before", "handle_after")],
+            "shared_identity": lambda s: [s[key].update(inode=9) for key in ("handle_before", "handle_after")],
+            "missing_birthtime": lambda s: [s[key].pop("birthtime_ns") for key in ("path_before", "path_after")],
+            "nullable_birthtime": lambda s: [s[key].update(birthtime_ns=None) for key in ("path_before", "handle_before", "handle_after", "path_after")],
+            "unknown_profile": lambda s: s.update(stat_profile="unknown-python-version"),
+            "fallback_cannot_ignore_ctime": lambda s: s.update(stat_profile="same-fields-v1"),
+            "legacy_schema": lambda s: s.pop("stat_profile"),
+        }
+        for name, mutate in mutations.items():
+            transport, candidate, fixture = windows_profile_fixture()
+            audit._probe_timeline(transport, candidate, fixture)
+            snapshot = next(row["value"]["probe"]["before"] for row in transport["transcript"] if row["kind"] == "probe_end")
+            mutate(snapshot)
+            with self.subTest(name=name), self.assertRaises(audit.AuditError):
+                audit._probe_timeline(transport, candidate, fixture)
+
+    def test_cross_probe_handle_change_time_and_opened_stat_are_checked(self):
+        for mutation in ("across_probes", "within_probe", "opened_stat"):
+            transport, candidate, fixture = windows_profile_fixture()
+            audit._probe_timeline(transport, candidate, fixture)
+            probe = next(row["value"]["probe"] for row in transport["transcript"]
+                         if row["kind"] == "probe_end" and row["value"]["phase"] == ("baseline" if mutation == "opened_stat" else "held"))
+            if mutation == "opened_stat":
+                probe["opened_stat"] = copy.deepcopy(probe["before"]["path_before"])
+            else:
+                for snapshot in ((probe["before"], probe["after"]) if mutation == "across_probes" else (probe["after"],)):
+                    for key in ("handle_before", "handle_after"):
+                        snapshot[key]["ctime_ns"] = 9
+            with self.subTest(mutation=mutation), self.assertRaises(audit.AuditError):
+                audit._probe_timeline(transport, candidate, fixture)
+
+    def test_exact_runtime_profile_and_downgrade_refusals(self):
+        observer = dict(implementation="cpython", version="3.14.7 (authored exact runtime)", platform="win32",
+                        stat_profile="cpython-3.14.7-windows-path-creation-handle-change-v1")
+        plan, native = dict(observer_python=observer), dict(observer_python=copy.deepcopy(observer))
+        profile = audit._observer_profile(plan, native)
+        for field, value in (("implementation", "pypy"), ("version", "3.14.8 different"),
+                             ("platform", "linux"), ("stat_profile", "same-fields-v1")):
+            changed = copy.deepcopy(native)
+            changed["observer_python"][field] = value
+            with self.subTest(field=field), self.assertRaisesRegex(audit.AuditError, "differs from plan"):
+                audit._observer_profile(plan, changed)
+        for field, value in (("implementation", "pypy"), ("version", "3.14.8 different"),
+                             ("platform", "linux"), ("stat_profile", "same-fields-v1")):
+            changed = copy.deepcopy(plan)
+            changed["observer_python"][field] = value
+            with self.subTest(plan_field=field), self.assertRaisesRegex(audit.AuditError, "reviewed observer"):
+                audit._observer_profile(changed, dict(observer_python=copy.deepcopy(changed["observer_python"])))
+        audit._require_profile(dict(stat_profile=profile), profile)
+        with self.assertRaisesRegex(audit.AuditError, "differs from reviewed observer"):
+            audit._require_profile(dict(stat_profile="same-fields-v1"), profile)
+
+
 def binding_fixture(root):
     """Tiny identity evidence authored without invoking freeze or collector."""
     source_root = root / "checkout"
@@ -340,8 +421,10 @@ def binding_fixture(root):
     bounds = dict(deadline_seconds=30, stdout_bytes=4096, stderr_bytes=4096,
                   line_bytes=4096, events=16, command_bytes=4096, commands=16)
     plan_path, freeze_path, review_path = [root / name for name in ("plan.json", "freeze.json", "review.json")]
+    observer_python = dict(implementation="cpython", version="3.14.7 (authored runtime control)", platform="win32",
+                           stat_profile="cpython-3.14.7-windows-path-creation-handle-change-v1")
     plan = dict(schema="namespace-observer-plan-v1", executable=str(worker), argv=[str(worker)],
-                cases=["normal", "candidate-collision"], bounds=bounds)
+                cases=["normal", "candidate-collision"], bounds=bounds, observer_python=observer_python)
     plan_path.write_bytes(encoded(plan))
     def binding(path, name=None):
         raw = path.read_bytes()
@@ -351,7 +434,8 @@ def binding_fixture(root):
                   sources=[binding(source_root / name, name) for name in sorted(contents)])
     freeze_path.write_bytes(encoded(frozen))
     native = dict(worker_path=str(worker), worker_sha256=binding(worker)["sha256"],
-                  plan_sha256=binding(plan_path)["sha256"], freeze_sha256=binding(freeze_path)["sha256"])
+                  plan_sha256=binding(plan_path)["sha256"], freeze_sha256=binding(freeze_path)["sha256"],
+                  observer_python=copy.deepcopy(observer_python))
     review = dict(schema="namespace-observer-review-v1", decision="approved", scope="two-native-controls-only",
                   reviewer="authored-control-only", plan_sha256=native["plan_sha256"], freeze_sha256=native["freeze_sha256"])
     review_path.write_bytes(encoded(review))

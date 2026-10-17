@@ -10,6 +10,9 @@ import unittest
 from unittest import mock
 
 import run
+import fixtures
+import freeze
+import probe
 
 
 CHILD = Path(__file__).with_name("authored_child.py").resolve()
@@ -181,6 +184,40 @@ class OwnedProcessTests(unittest.TestCase):
                               attempt, run.Bounds(), lambda line: None)
         self.assertEqual(list(attempt.iterdir()), [marker])
         self.assertEqual(marker.read_bytes(), b"prior retained attempt")
+
+    def runtime_gate(self, runtime, fixture_failure):
+        plan = {"observer_python": runtime, "cases": ["normal", "candidate-collision"],
+                "bounds": {}}
+        attempt = self.root / "runtime-attempt"
+        with mock.patch.object(freeze, "verify_reviewed", return_value={"plan": plan}), \
+                mock.patch.object(fixtures, "prepare_fixture", side_effect=fixture_failure) as prepare, \
+                mock.patch.object(run.subprocess, "Popen") as launch, \
+                mock.patch.object(probe, "write_open_probe") as native_probe:
+            with self.assertRaises(ValueError):
+                run.run_reviewed("plan", "freeze", "review", case="normal",
+                                 fixture_root=self.root / "fixture", attempt_dir=attempt)
+            launch.assert_not_called()
+            native_probe.assert_not_called()
+            record = json.loads((attempt / "preparation_failure.json").read_text())
+            self.assertFalse(record["child_started"])
+            self.assertFalse(record["replayed"])
+            return prepare.call_count, record
+
+    def test_wrong_observer_runtime_refuses_before_fixture_or_child(self):
+        runtime = {"implementation": sys.implementation.name, "version": "wrong-runtime",
+                   "platform": sys.platform, "stat_profile": probe._stat_profile()}
+        count, record = self.runtime_gate(runtime, ValueError("fixture must not run"))
+        self.assertEqual(count, 0)
+        self.assertEqual(record["stage"], "review_or_plan")
+        self.assertIn("runtime differs", record["reason"])
+
+    def test_exact_observer_runtime_passes_gate_before_fixture_refusal(self):
+        runtime = {"implementation": sys.implementation.name, "version": sys.version,
+                   "platform": sys.platform, "stat_profile": probe._stat_profile()}
+        count, record = self.runtime_gate(runtime, ValueError("authored fixture boundary"))
+        self.assertEqual(count, 1)
+        self.assertEqual(record["stage"], "fixture_preparation")
+        self.assertEqual(record["reason"], "authored fixture boundary")
 
 
 if __name__ == "__main__":

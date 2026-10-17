@@ -94,6 +94,16 @@ Bounded read snapshots and artifact inventories reconcile source identity,
 length and hash across these observations. The source, partial artifacts and
 foreign collision bytes must survive the attempt and audit.
 
+The first declared normal attempt stopped during its baseline snapshot, before
+launching a worker or requesting write access; its collision cell stayed unstarted.
+CPython 3.14.7 on Windows exposes creation time through path-stat `ctime` and
+change time through handle-stat `ctime`. The original equality check refused
+those different fields. Both raw values remain retained. The revised observer
+compares complete snapshots within each API and across probes, and compares
+shared identity, mode, length, modification time and explicit birth time across
+APIs under an exact interpreter profile. A changed property still refuses.
+The failed declaration is retained separately from any freshly reviewed run.
+
 The independent retained-evidence audit must reconcile the exact source and
 worker bindings, request/plan, event sequence, explicit release, runtime result,
 backend drop, process exit, hold observations and final artifacts. Matching

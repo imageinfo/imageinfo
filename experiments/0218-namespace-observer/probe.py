@@ -13,10 +13,15 @@ import errno
 import os
 from pathlib import Path
 import stat
+import sys
 
 
 DEFAULT_SOURCE_BYTES = 65_536
 MAX_SOURCE_BYTES = 16 * 1024 * 1024
+SAME_FIELDS = "same-fields-v1"
+WINDOWS_3147 = "cpython-3.14.7-windows-path-creation-handle-change-v1"
+STAT_NAMES = ("path_before", "handle_before", "handle_after", "path_after")
+SHARED_FIELDS = ("device", "inode", "mode", "size", "mtime_ns", "birthtime_ns")
 
 
 def _error(error: OSError) -> dict:
@@ -35,7 +40,43 @@ def _stat(value: os.stat_result) -> dict:
         "size": value.st_size,
         "mtime_ns": value.st_mtime_ns,
         "ctime_ns": value.st_ctime_ns,
+        "birthtime_ns": getattr(value, "st_birthtime_ns", None),
     }
+
+
+def _stat_profile() -> str:
+    # Exact inspected interpreter, not a general claim about Windows Python.
+    return WINDOWS_3147 if (
+        os.name == "nt" and sys.implementation.name == "cpython"
+        and sys.version_info[:3] == (3, 14, 7)
+    ) else SAME_FIELDS
+
+
+def _observations_match(result: dict) -> bool:
+    observations = [result[key] for key in STAT_NAMES]
+    if any(item is None for item in observations):
+        return False
+    path_before, handle_before, handle_after, path_after = observations
+    if result["stat_profile"] == SAME_FIELDS:
+        return all(item == path_before for item in observations)
+    if result["stat_profile"] != WINDOWS_3147:
+        return False
+    # CPython v3.14.7 Modules/posixmodule.c win32_xstat copies birthtime into
+    # path-stat ctime (lines2152-2154), whereas Python/fileutils.c's fstat leaves
+    # FILE_BASIC_INFO.ChangeTime in ctime (lines1038-1040,1195). Preserve both
+    # raw fields and require complete stability within each API. Creation time
+    # is compared across APIs through the explicit st_birthtime_ns field.
+    # https://github.com/python/cpython/blob/v3.14.7/Modules/posixmodule.c#L2152
+    # https://github.com/python/cpython/blob/v3.14.7/Python/fileutils.c#L1038
+    return (
+        path_before == path_after and handle_before == handle_after
+        and all(type(item["birthtime_ns"]) is int for item in observations)
+        and all(item["ctime_ns"] == item["birthtime_ns"] for item in (path_before, path_after))
+        and all(
+            all(item[field] == path_before[field] for field in SHARED_FIELDS)
+            for item in observations
+        )
+    )
 
 
 def _bound(max_bytes: int) -> None:
@@ -57,6 +98,7 @@ def read_snapshot(path: str | Path, *, max_bytes: int = DEFAULT_SOURCE_BYTES) ->
         "status": "error",
         "error": None,
         "reason": None,
+        "stat_profile": _stat_profile(),
         "path_before": None,
         "handle_before": None,
         "handle_after": None,
@@ -88,10 +130,7 @@ def read_snapshot(path: str | Path, *, max_bytes: int = DEFAULT_SOURCE_BYTES) ->
             result.update(status="refused", reason="source_grew_beyond_bound")
             return result
         result["sha256"] = hashlib.sha256(content).hexdigest()
-        observations = [result[key] for key in (
-            "path_before", "handle_before", "handle_after", "path_after"
-        )]
-        result["observations_match"] = all(item == observations[0] for item in observations)
+        result["observations_match"] = _observations_match(result)
         result["status"] = "ok"
     except OSError as error:
         result["error"] = _error(error)
@@ -153,13 +192,14 @@ def write_open_probe(
         after["status"] == "ok"
         and after["observations_match"]
         and before["sha256"] == after["sha256"]
-        and before["path_before"] == after["path_before"]
+        and before["stat_profile"] == after["stat_profile"]
+        and all(before[key] == after[key] for key in STAT_NAMES)
     )
     access_matches = result["status"] == "opened" if expected_access else (
         result["status"] == "open_error" and result["denial_observation"] is not None
     )
     result["expectation_met"] = bool(
         access_matches and result["close_error"] is None and result["source_unchanged"]
-        and (result["opened_stat"] is None or result["opened_stat"] == before["path_before"])
+        and (result["opened_stat"] is None or result["opened_stat"] == before["handle_before"])
     )
     return result
