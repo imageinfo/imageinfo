@@ -108,6 +108,7 @@ jobs:
           python experiments/0075-preview-entropy/test_process_controls.py
           python experiments/0075-preview-entropy/test_decoder.py
           python experiments/0075-preview-entropy/test_qualify.py
+          python experiments/0075-preview-entropy/test_runner_reports.py
       - name: Check finite interruption and measurement controls
         shell: bash
         run: |

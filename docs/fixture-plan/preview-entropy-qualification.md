@@ -169,6 +169,10 @@ redistribution requires its own applicable notice/license review.
 
 The profile gives each child a 120-second deadline and independently drained
 stdout/stderr capped at 16,384 bytes per stream. Only the direct child is supervised.
+The worker retains its full report separately under a fixed name and emits a
+small byte-length/hash binding on stdout. The supervisor and independent auditor
+require that exact report; its 64 KiB record bound does not raise the pipe capture,
+input, pixel or diagnostic limits.
 Deadline, cancellation, capture overflow, launch failure, native fault, unexpected
 exit or incomplete record cannot become a passing assertion. Fresh attempt roots
 retain partial captures and failures. Actual authored child controls must exercise

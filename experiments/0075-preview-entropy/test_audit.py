@@ -251,6 +251,81 @@ class IndependentReconstructionTests(unittest.TestCase):
                         audit.audit_encoder_closure(altered, manifest)
 
 
+class RetainedWorkerReportTests(unittest.TestCase):
+    """Raw captures bind a separate report; no child or codec is invoked."""
+
+    def setUp(self):
+        self.temporary = temporary_directory()
+        self.addCleanup(self.temporary.cleanup)
+        self.root = Path(self.temporary.name)
+        (self.root / "process").mkdir()
+        self.report = {"schema": "imageinfo-0075-worker-v1", "syntheticPayload": "x" * 18000}
+        self.save_report()
+
+    def save_report(self):
+        raw = (json.dumps(self.report) + "\n").encode()
+        (self.root / "worker-report.json").write_bytes(raw)
+        self.reference = {"path": "worker-report.json",
+                          "byteLength": len(raw), "sha256": audit.sha(raw)}
+        self.save_reference()
+        self.terminal = {"worker": copy.deepcopy(self.report), "workerReportBinding": copy.deepcopy(self.reference)}
+
+    def save_reference(self):
+        (self.root / "process/stdout.bin").write_text(json.dumps(self.reference) + "\n", encoding="utf-8")
+
+    def test_report_larger_than_capture_has_a_small_independently_bound_reference(self):
+        self.assertGreater(self.reference["byteLength"], 16384)
+        self.assertLess((self.root / "process/stdout.bin").stat().st_size, 16384)
+        self.assertEqual(audit.rebind_worker_report(self.root, self.terminal), self.report)
+
+    def test_report_path_substitution_refuses_before_opening_the_target(self):
+        for path in (self.root / "other.json", self.root.parent / "other.json", self.root / "worker-report.json",
+                     Path("other.json"), Path("../worker-report.json")):
+            with self.subTest(path=path):
+                self.reference["path"] = str(path)
+                self.save_reference()
+                with self.assertRaisesRegex(audit.InvalidEvidence, "worker-report-fixed-path"):
+                    audit.rebind_worker_report(self.root)
+
+    def test_wrong_report_hash_or_length_refuses(self):
+        for field, value in (("sha256", "0" * 64), ("byteLength", self.reference["byteLength"] + 1)):
+            with self.subTest(field=field):
+                self.save_report()
+                self.reference[field] = value
+                self.save_reference()
+                with self.assertRaises(audit.InvalidEvidence):
+                    audit.rebind_worker_report(self.root)
+
+    def test_terminal_copy_or_binding_cannot_replace_raw_captured_evidence(self):
+        for field in ("worker", "workerReportBinding"):
+            with self.subTest(field=field):
+                terminal = copy.deepcopy(self.terminal)
+                terminal[field] = {}
+                with self.assertRaisesRegex(audit.InvalidEvidence, "worker-capture-binding"):
+                    audit.rebind_worker_report(self.root, terminal)
+
+    def test_retained_report_tampering_and_report_limit_refuse(self):
+        (self.root / "worker-report.json").write_bytes(b"changed")
+        with self.assertRaises(audit.InvalidEvidence):
+            audit.rebind_worker_report(self.root)
+        self.report["syntheticPayload"] = "x" * audit.WORKER_REPORT_LIMIT
+        self.save_report()
+        with self.assertRaisesRegex(audit.InvalidEvidence, "artifact-bound"):
+            audit.rebind_worker_report(self.root)
+
+    def test_wrong_report_schema_refuses_even_with_matching_content_binding(self):
+        self.report["schema"] = "wrong"
+        self.save_report()
+        with self.assertRaisesRegex(audit.InvalidEvidence, "worker-report-schema"):
+            audit.rebind_worker_report(self.root)
+
+    def test_list_report_refuses_as_invalid_evidence(self):
+        self.report = ["synthetic malformed worker report"]
+        self.save_report()
+        with self.assertRaisesRegex(audit.InvalidEvidence, "worker-report-schema"):
+            audit.rebind_worker_report(self.root)
+
+
 class SyntheticPositivePlanTests(unittest.TestCase):
     """Exercise actual audit_run -> audit_plan return propagation, without native I/O.
 
@@ -330,7 +405,8 @@ class SyntheticPositivePlanTests(unittest.TestCase):
                 worker = {"schema": "imageinfo-0075-worker-v1", "decoder": decoder,
                           "sourceBefore": before, "sourceAfter": before, "pixelArtifact": "pixels.rgb"}
                 (run_root / "pixels.rgb").write_bytes(b"abc")
-                stdout = (json.dumps(worker) + "\n").encode()
+                worker_reference = dict(write(run_root / "worker-report.json", worker), path="worker-report.json")
+                stdout = (json.dumps(worker_reference) + "\n").encode()
                 (process_root / "stdout.bin").write_bytes(stdout)
                 (process_root / "stderr.bin").write_bytes(b"")
                 streams = {name: {"capturedBytes": len(content), "observedBytes": len(content),
@@ -342,7 +418,8 @@ class SyntheticPositivePlanTests(unittest.TestCase):
                 write(process_root / "process.json", process)
                 write(run_root / "cell-result.json", {"schema": "imageinfo-0075-cell-result-v1",
                     "outcome": "warning-free-pixels", "processInvocationAttempted": True, "process": process,
-                    "worker": worker, "sourceBefore": before, "sourceAfter": before, "immutableObservation": True})
+                    "worker": worker, "workerReportBinding": worker_reference,
+                    "sourceBefore": before, "sourceAfter": before, "immutableObservation": True})
                 cells.append({"id": identifier, "runRoot": str(run_root), "request": prepared,
                               "expectations": expected, "expectedAssertionOutcome": "pass"})
                 proposals.append({"id": identifier, "core": core, "reviewedRequestSha256": audit.canonical_sha(core),

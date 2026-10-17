@@ -19,6 +19,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 
 SCHEMA = "imageinfo-0075-process-v1"
+WORKER_REPORT_LIMIT = 65536
 
 
 def digest(data: bytes) -> str:
@@ -211,6 +212,28 @@ def _json_bound(binding: dict) -> dict:
     return value
 
 
+def retain_worker_report(report: dict, root: Path) -> dict:
+    """Retain full diagnostics separately from the fixed subprocess capture."""
+    raw = (json.dumps(report, sort_keys=True, indent=2, allow_nan=False) + "\n").encode("utf-8")
+    if len(raw) > WORKER_REPORT_LIMIT:
+        raise ValueError("worker report exceeds logical report bound")
+    path = root.resolve() / "worker-report.json"
+    with path.open("xb") as stream:
+        if stream.write(raw) != len(raw):
+            raise OSError("short worker report write")
+    return {"path": "worker-report.json", "sha256": digest(raw), "byteLength": len(raw)}
+
+
+def read_worker_report(binding: dict, root: Path) -> dict:
+    if not isinstance(binding, dict) or binding.get("path") != "worker-report.json":
+        raise ValueError("worker report must be the exact retained cell artifact")
+    absolute_binding = dict(binding, path=str(root.resolve() / "worker-report.json"))
+    report = json.loads(read_bound(absolute_binding, limit=WORKER_REPORT_LIMIT))
+    if not isinstance(report, dict) or report.get("schema") != "imageinfo-0075-worker-v1":
+        raise ValueError("invalid worker result schema")
+    return report
+
+
 def admit_request(request: dict, *, inspect_input: bool) -> dict:
     """Check trusted parent review and exact frozen artifacts before media read.
 
@@ -309,10 +332,10 @@ def run_cell(request: dict, attempt_root, *, cancel=None) -> dict:
                               cancel=cancel, binding={"cellRequestSha256": digest((root / "cell-request.json").read_bytes())})
         terminal.update(outcome="invalid-experiment", process=process)
         if process["outcome"] == "exited" and process["returncode"] == 0 and all(row["eof"] and not row["overflow"] and not row["error"] for row in process["streams"].values()):
-            worker = json.loads((root / "process/stdout.bin").read_bytes())
-            if worker.get("schema") != "imageinfo-0075-worker-v1":
-                raise ValueError("invalid worker result schema")
-            terminal.update(outcome=worker["decoder"]["outcome"], worker=worker)
+            report_binding = json.loads((root / "process/stdout.bin").read_bytes())
+            worker = read_worker_report(report_binding, root)
+            terminal.update(outcome=worker["decoder"]["outcome"], worker=worker,
+                            workerReportBinding=report_binding)
         after = _stat(Path(request["input"]["path"]))
         read_bound(request["input"], limit=32 * 1024 * 1024)
         terminal.update(sourceBefore=admitted["before"], sourceAfter=after,
@@ -328,7 +351,7 @@ def run_cell(request: dict, attempt_root, *, cancel=None) -> dict:
             # These are available artifact observations only, not proof of EOF
             # or termination when the supervisor could not return a record.
             evidence = []
-            for name in ("process-invocation.json", "process/request.json", "process/process.json",
+            for name in ("process-invocation.json", "worker-report.json", "process/request.json", "process/process.json",
                          "process/stdout.bin", "process/stderr.bin"):
                 path = root / name
                 if path.is_file():
@@ -383,5 +406,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--worker", nargs=2, metavar=("REQUEST", "SHA256"), required=True)
     args = parser.parse_args()
-    result = worker(Path(args.worker[0]), args.worker[1])
-    print(json.dumps(result, sort_keys=True, allow_nan=False))
+    request_path = Path(args.worker[0])
+    result = worker(request_path, args.worker[1])
+    report_binding = retain_worker_report(result, request_path.parent)
+    print(json.dumps(report_binding, sort_keys=True, separators=(",", ":"), allow_nan=False))

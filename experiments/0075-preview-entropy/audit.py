@@ -16,6 +16,7 @@ INPUT_LIMIT = 32 * 1024 * 1024
 DIMENSION_LIMIT = 8192
 PIXEL_LIMIT = 256 * 1024 * 1024
 JSON_LIMIT = 16 * 1024 * 1024
+WORKER_REPORT_LIMIT = 65536
 POSITIVE_BASES = {
     "formula-64-444": (64, 64, 0), "odd-19x17-420": (19, 17, 2),
     "formula-256-422": (256, 256, 1), "wide-8192x1-444": (8192, 1, 0),
@@ -500,6 +501,22 @@ def rebind_runtime_files(request, manifest):
             "encoderSourcesRebound": True, "noticesRebound": True}
 
 
+def rebind_worker_report(root, terminal=None):
+    """Bind the compact raw capture to its full, fixed-root retained report."""
+    reference = read_json(root / "process/stdout.bin")
+    require(type(reference) is dict and set(reference) == {"path", "sha256", "byteLength"},
+            "worker-report-reference-schema")
+    path = local_path(root, "worker-report.json")
+    require(reference["path"] == "worker-report.json", "worker-report-fixed-path")
+    file_binding(path, reference, limit=WORKER_REPORT_LIMIT)
+    report = read_json(path)
+    require(type(report) is dict and report.get("schema") == "imageinfo-0075-worker-v1", "worker-report-schema")
+    if terminal is not None:
+        require(terminal.get("workerReportBinding") == reference and
+                terminal.get("worker") == report, "worker-capture-binding")
+    return report
+
+
 def audit_run(run_root, expectations_path):
     """Audit exactly one externally pinned retained cell without replay."""
     root = Path(run_root).resolve()
@@ -559,9 +576,7 @@ def audit_run(run_root, expectations_path):
                 "assertionOutcome": "invalid-experiment", "cameraAcceptanceSatisfied": False,
                 "processOutcome": process["processOutcome"]}
     require(process["streams"]["stderr"]["byteLength"] == 0, "unexpected-worker-stderr")
-    worker = read_json(root / "process/stdout.bin")
-    require(worker.get("schema") == "imageinfo-0075-worker-v1" and
-            worker == result.get("worker"), "worker-capture-binding")
+    worker = rebind_worker_report(root, result)
     runtime = audit_runtime(request, worker)
     input_path = absolute_binding(request["input"], limit=INPUT_LIMIT)
     before = stat_identity(input_path)
@@ -852,7 +867,7 @@ def audit_plan(plan_binding):
             base_id = cell["id"].split("-zero", 1)[0]
             width, height, sampling = POSITIVE_BASES[base_id]
             extent = independent_extent(inputs[cell["id"]].read_bytes())
-            worker = read_json(Path(cell["runRoot"]) / "process/stdout.bin")
+            worker = rebind_worker_report(Path(cell["runRoot"]))
             require((extent["width"], extent["height"]) == (width, height) and
                     worker["decoder"].get("subsamplingRaw") == sampling,
                     "authored-control-dimensions-or-sampling")
