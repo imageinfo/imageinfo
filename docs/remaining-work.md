@@ -76,6 +76,14 @@ retains its original historical baseline.
 
 ## Count the queue consistently
 
+#0218 is the next separately scoped corrective increment from accepted #0217:
+implement and rehearse the post-candidate observer on two fresh authored local
+controls. Its worker, controller and audit have separate source identities;
+the historical storage-fault contrast remains unrun by this increment. The
+43 existing Ready for Work cards retain their positive prerequisites. Observer
+qualification cannot supply a storage profile, correction or RAW admission.
+See the [observer method](write-safety/post-operation-namespace-observer.md).
+
 After Terry accepted #0176/#0075, all 33 remaining executable Ready for Work
 scopes still had unmet positive prerequisites; the other ten cards are tracking
 umbrellas. A bounded #0217 diagnostic was added under #0022 for the concrete

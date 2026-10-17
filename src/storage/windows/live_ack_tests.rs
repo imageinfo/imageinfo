@@ -110,18 +110,25 @@ impl Backend for Joined<'_> {
 }
 
 fn fixture<'a>(label: &str) -> (PathBuf, Joined<'a>) {
-    let path = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-        .join(".local")
-        .join("work-wave-20261016e")
-        .join(format!(
-            "168-native-{}-{}-{}-{label}",
-            std::process::id(),
-            SystemTime::now()
-                .duration_since(UNIX_EPOCH)
-                .unwrap()
-                .as_nanos(),
-            NEXT.fetch_add(1, Ordering::Relaxed)
-        ));
+    // Retain cases within a fresh session, below the native directory bound.
+    static SESSION: std::sync::OnceLock<PathBuf> = std::sync::OnceLock::new();
+    let parent = SESSION.get_or_init(|| {
+        let now = SystemTime::now().duration_since(UNIX_EPOCH).unwrap();
+        PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+            .join(".local")
+            .join("test-runs")
+            .join((now.as_secs() / 86_400).to_string())
+            .join(format!("168-{}-{}", std::process::id(), now.as_nanos()))
+    });
+    let path = parent.join(format!(
+        "168-native-{}-{}-{}-{label}",
+        std::process::id(),
+        SystemTime::now()
+            .duration_since(UNIX_EPOCH)
+            .unwrap()
+            .as_nanos(),
+        NEXT.fetch_add(1, Ordering::Relaxed)
+    ));
     fs::create_dir_all(&path).unwrap();
     fs::write(path.join("source.bin"), ORIGINAL).unwrap();
     let backend = Joined {

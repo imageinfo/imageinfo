@@ -194,6 +194,8 @@ pub(crate) mod group;
 #[allow(dead_code)]
 pub(crate) mod inspection;
 #[cfg(all(test, windows))]
+mod namespace_diagnostic;
+#[cfg(all(test, windows))]
 mod native_errors;
 #[cfg(all(test, windows))]
 mod qualification;

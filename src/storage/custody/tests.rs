@@ -285,17 +285,24 @@ mod native {
     const PREFIX: &str = "CUSTODY169 ";
 
     fn path(label: &str) -> PathBuf {
-        let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-            .join(".local")
-            .join("work-wave-20261016e")
-            .join(format!(
-                "169-{label}-{}-{}",
-                std::process::id(),
-                SystemTime::now()
-                    .duration_since(UNIX_EPOCH)
-                    .unwrap()
-                    .as_nanos()
-            ));
+        // Keep retained cases in a fresh session instead of a growing flat wave.
+        static SESSION: std::sync::OnceLock<PathBuf> = std::sync::OnceLock::new();
+        let parent = SESSION.get_or_init(|| {
+            let now = SystemTime::now().duration_since(UNIX_EPOCH).unwrap();
+            PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+                .join(".local")
+                .join("test-runs")
+                .join((now.as_secs() / 86_400).to_string())
+                .join(format!("169-{}-{}", std::process::id(), now.as_nanos()))
+        });
+        let root = parent.join(format!(
+            "169-{label}-{}-{}",
+            std::process::id(),
+            SystemTime::now()
+                .duration_since(UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
         fs::create_dir_all(&root).unwrap();
         root
     }

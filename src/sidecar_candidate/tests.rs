@@ -17,16 +17,24 @@ struct FixtureDir {
 impl FixtureDir {
     fn new() -> Self {
         static NEXT: AtomicU64 = AtomicU64::new(0);
-        let path = std::env::current_dir()
-            .unwrap()
-            .join(".local")
-            .join("work-wave-20261016e")
-            .join("186-fixtures")
-            .join(format!(
-                "{}-{}",
-                std::process::id(),
-                NEXT.fetch_add(1, Ordering::Relaxed)
-            ));
+        // Preserve old fixtures while bounding each new session's directory.
+        static SESSION: std::sync::OnceLock<PathBuf> = std::sync::OnceLock::new();
+        let parent = SESSION.get_or_init(|| {
+            let now = std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap();
+            std::env::current_dir()
+                .unwrap()
+                .join(".local")
+                .join("test-runs")
+                .join((now.as_secs() / 86_400).to_string())
+                .join(format!("186-{}-{}", std::process::id(), now.as_nanos()))
+        });
+        let path = parent.join(format!(
+            "{}-{}",
+            std::process::id(),
+            NEXT.fetch_add(1, Ordering::Relaxed)
+        ));
         fs::create_dir_all(path.parent().unwrap()).unwrap();
         fs::create_dir(&path).unwrap();
         Self { path }
