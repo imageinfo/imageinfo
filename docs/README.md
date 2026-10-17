@@ -16,8 +16,8 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | --- | --- |
 | [Production interruption qualification](write-safety/production-vmoff-qualification.md) | #0175 fixed production-runtime process/VM-off cells, separate retained-artifact reconciliation and explicit unqualified profile boundaries. |
 | [Compatibility coverage audit](legacy-compatibility/coverage-audit.md) | #0141 source-exact LG/GAP requirements, current native denominators and individually owned residuals; no parity acceptance. |
-| [Offline startup](performance/offline-startup.md) | #0143 fixed help/version process measurements with distinct first-byte, output and exit endpoints. |
-| [Comparable private reads](performance/comparable-read.md) | #0151 finite native/reference correspondence and measurement method; camera results stay private. |
+| [Offline startup observations](performance/offline-startup-observations.md) | #0143 actual fixed help/version process measurements, separate frozen protocol and distinct first-byte, output and exit endpoints. |
+| [Private comparable-read execution](performance/comparable-read-execution.md) | #0151 source-bound execution record and finite native/reference method; camera results stay private. |
 | [Read-limit evidence supplement](performance/read-limits-evidence-supplement.md) | #0152 unit-specific retained evidence, contrary observations and unknowns; six proposed constants remain unadopted. |
 | [Retained review policy](governance/retained-review-policy.md) | #0158 actual solo direct-push route and repository observations, distinguishing project procedure from technical enforcement. |
 | [Release cadence](governance/release-cadence.md) | #0161 explicit owner hold after reviewed preparation; avoid releases solely for hosting rehearsal. |

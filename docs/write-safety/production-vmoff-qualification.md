@@ -1,12 +1,14 @@
 # Production single-output interruption method
 
-**#0175 prepared method, 2026-10-17.** This is the finite execution and retained-
+**#0175 method and bounded observations, 2026-10-17.** This is the finite execution and retained-
 evidence plan for the actual internal production Windows adapter/runtime. The
 [fixed machine ledger](production-vmoff-cells.json) starts with twelve prepared
 cells and sixteen NR obligations. Its source/test links identify complementary
-software controls; source presence does not establish that a test ran. Nothing in
-this method reports an actual guest run, a qualified profile, `Committed`, RAW
-permission or a public apply capability.
+software controls; source presence does not establish that a test ran. The ledger
+preserves those original preparation states; the separate
+[actual results](production-vmoff-results.v1.json) and dated section below record
+execution. Neither the method nor those observations admit a profile, `Committed`,
+RAW permission or public apply.
 
 The implementation under test is [the production runtime](publication-runtime.md),
 [phase-bound live acknowledgements](live-acknowledgements.md), and its existing
@@ -186,3 +188,46 @@ justifies deleting/relabeling failed cells or silently running another attempt.
 The final handoff records all twelve outcomes, native/software complements,
 remaining unproven predicates, independent review and VM-off/cache limits. Actual
 qualification and later exact profile admission remain separate decisions.
+
+## Actual bounded run — 2026-10-17
+
+The frozen working-source package exactly matches published source
+`4d47da31423d6ac9b50bc399665c85fd71809753`: 81 source/tool inputs and the tested
+static worker are retained with their independent freeze review. The worker is
+SHA-256 `c8d23c874a16cf1ed99adbec9d3b44bb6e0b0bac2e48b931ef4b518f12ed0097`.
+The sanitized [machine summary](production-vmoff-results.v1.json) binds the
+retained manifest, profile and separate audits.
+
+- All twelve declared cells ran once: one normal control, eight owned-process
+  kills and three QMP-quit VM-offs. No adaptive retry or extra fault cell ran.
+- Independent retained-artifact reconciliation found zero discrepancies. The
+  source survived every cell, all three VM-offs produced fresh guest boots,
+  and the original Windows host boot remained unchanged.
+- Read-only inspection deliberately refuses `Namespace` at candidate-ready and
+  after the one-record partial cleanup. Every recreated process retains
+  `MissingAuthority`; matching artifacts grant no recovery action.
+- Ten read-only inspectors collect successfully; the other two retain those
+  expected namespace refusals. Exact comparisons cover the declared properties,
+  excluding last-access times and declared mutable directory metadata.
+- Interrupted finalization is a guard restart under the original surviving
+  current caller before that caller is killed. It is not imported process/OS
+  restart authority. Partial cleanup removes the selected prepared record and
+  preserves the other three records, output, source and root.
+- The measured guest is Windows 11 Enterprise Evaluation build 26300.9457,
+  64-bit, local NTFS on a virtual SATA AHCI/QCOW2 disk with QEMU writeback cache.
+  Actual device-cache, controller/driver, filesystem and executable details
+  are frozen privately. These are one fixture's observations, not platform-wide
+  support or a newly admitted storage profile.
+- QMP quit permits emulator cleanup/flush and leaves host caches alive. The
+  guest was normally shut down afterward; its backing disk, firmware variables
+  and evaluation manifest remained unchanged. No physical power, NMI, host
+  crash or abrupt-emulator qualification is claimed.
+
+The native/software complements remain typed evidence, including the actual
+baseline controls. #0174's separate fixture produced native source-read error
+1117 and compound candidate-create error 433; the latter contradicts
+prepared-source namespace preservation. Its candidate/namespace/receipt native
+flush-error classes remain unproduced. This contrary/unqualified evidence is
+retained. Historical research name/timestamp counterexamples are unchanged;
+this run neither rebases them nor proves their cause or a general fix.
+All production-profile, RAW and public-apply admission flags remain false.

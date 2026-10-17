@@ -121,6 +121,21 @@ def main():
             controls.append(True)
         else:
             raise ValueError("corruption accepted")
+    # A Git LF blob and a CRLF working copy parse identically, but their exact
+    # source identities differ. Never canonicalize JSON or newlines in validate.
+    proposal_path = ledger["evidence"]["64"]["path"]
+    exact_bytes = (ROOT / proposal_path).read_bytes()
+    altered_bytes = exact_bytes.replace(b"\r\n", b"\n").replace(b"\n", b"\r\n")
+    if altered_bytes == exact_bytes:
+        altered_bytes = exact_bytes.replace(b"\r\n", b"\n")
+    require(altered_bytes != exact_bytes and json.loads(altered_bytes) == json.loads(exact_bytes), "byte-only control setup")
+    try:
+        validate(ledger, lambda path: altered_bytes if path == proposal_path else (ROOT / path).read_bytes())
+    except ValueError as error:
+        require(str(error) == "source identity 64", "byte-only control reason")
+        controls.append(True)
+    else:
+        raise ValueError("semantically identical changed bytes accepted")
     print(f"read-limits supplement: 6 bound sources, {len(DIMENSIONS)} unit/scope rows, denominator arithmetic and {len(controls)} rejection controls passed")
 
 

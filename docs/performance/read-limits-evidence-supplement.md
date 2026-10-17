@@ -97,3 +97,6 @@ six unchanged proposal constants and failed #0149 audit. Its corruption controls
 check rejection of altered sources, populations, units, metrics and adoption.
 It reads JSON only; it executes no media, reader or benchmark. Independent
 requirement-to-evidence review remains separate from this author's checks.
+Source SHA-256 identities bind committed Git blob bytes, including LF line
+endings. The checker does not normalize inputs; a byte-only LF/CRLF change must
+fail even when parsed JSON is identical.

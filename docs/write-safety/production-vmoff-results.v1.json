@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 1,
+  "ticket": 175,
+  "sourceCommit": "4d47da31423d6ac9b50bc399665c85fd71809753",
+  "sourceManifestSha256": "9dcc7c3d9f5f27bcea8c74f7cb66059d5372add99c2c1eea24d895005a238023",
+  "workerSha256": "c8d23c874a16cf1ed99adbec9d3b44bb6e0b0bac2e48b931ef4b518f12ed0097",
+  "retainedManifestSha256": "690f7612a2b0dbc66906aa7823ed228fbd08d501c07b80c861351f984b45ff72",
+  "independentAuditSha256": "f41d7c7f8db2596e62ef172b4037aad3e13b45bfbc87c46dfe9621108f7de46e",
+  "supplementalAuditSha256": "aee45ae8ffc630e9f7cad8e14161b1d5a7f73116b33dd93c11f7b78f25c26411",
+  "profile": {
+    "os": "Microsoft Windows 11 Enterprise Evaluation",
+    "version": "10.0.26300",
+    "build": "26300",
+    "servicingRevision": 9457,
+    "architecture": "64-bit",
+    "filesystem": "NTFS",
+    "controllerNames": [
+      "Standard SATA AHCI Controller"
+    ],
+    "virtualDiskFormat": "qcow2",
+    "emulatorCache": "writeback",
+    "guestCachePolicy": "Actual read-only device descriptor queried and frozen in retained profile.",
+    "hostCachesSurvive": true,
+    "physicalPowerTested": false
+  },
+  "denominators": {
+    "actualCells": 12,
+    "normalControls": 1,
+    "processKills": 8,
+    "vmOffs": 3,
+    "guestBootIdentities": 4,
+    "hostBootChanged": false,
+    "discrepancies": 0
+  },
+  "vmOffMechanism": "One QMP quit per selected cell; graceful emulator exit may perform cleanup/flush; host caches survive.",
+  "cells": [
+    {
+      "id": "normal",
+      "status": "actual",
+      "requested_checkpoint": "none",
+      "observed_checkpoint": null,
+      "guest_restarted": false,
+      "source_preserved": true,
+      "discrepancies": [],
+      "refusals": [],
+      "inspection": {
+        "exit_code": 0,
+        "collected": true,
+        "refusal": null,
+        "authority": "MissingAuthority"
+      },
+      "mode": "run",
+      "fault": "none"
+    },
+    {
+      "id": "kill-candidate-ready",
+      "status": "actual",
+      "requested_checkpoint": "candidate-ready",
+      "observed_checkpoint": "candidate-ready",
+      "guest_restarted": false,
+      "source_preserved": true,
+      "discrepancies": [],
+      "refusals": [
+        "read-only inspection refused; no imported authority"
+      ],
+      "inspection": {
+        "exit_code": 0,
+        "collected": false,
+        "refusal": "Namespace",
+        "authority": "MissingAuthority"
+      },
+      "mode": "run",
+      "fault": "process-kill"
+    },
+    {
+      "id": "kill-intent-ready",
+      "status": "actual",
+      "requested_checkpoint": "intent-ready",
+      "observed_checkpoint": "intent-ready",
+      "guest_restarted": false,
+      "source_preserved": true,
+      "discrepancies": [],
+      "refusals": [],
+      "inspection": {
+        "exit_code": 0,
+        "collected": true,
+        "refusal": null,
+        "authority": "MissingAuthority"
+      },
+      "mode": "run",
+      "fault": "process-kill"
+    },
+    {
+      "id": "kill-possible-publication",
+      "status": "actual",
+      "requested_checkpoint": "possible-publication",
+      "observed_checkpoint": "possible-publication",
+      "guest_restarted": false,
+      "source_preserved": true,
+      "discrepancies": [],
+      "refusals": [],
+      "inspection": {
+        "exit_code": 0,
+        "collected": true,
+        "refusal": null,
+        "authority": "MissingAuthority"
+      },
+      "mode": "run",
+      "fault": "process-kill"
+    },
+    {
+      "id": "kill-installed-ack",
+      "status": "actual",
+      "requested_checkpoint": "installed-ack",
+      "observed_checkpoint": "installed-ack",
+      "guest_restarted": false,
+      "source_preserved": true,
+      "discrepancies": [],
+      "refusals": [],
+      "inspection": {
+        "exit_code": 0,
+        "collected": true,
+        "refusal": null,
+        "authority": "MissingAuthority"
+      },
+      "mode": "run",
+      "fault": "process-kill"
+    },
+    {
+      "id": "kill-receipt-before-ack",
+      "status": "actual",
+      "requested_checkpoint": "receipt-before-ack",
+      "observed_checkpoint": "receipt-before-ack",
+      "guest_restarted": false,
+      "source_preserved": true,
+      "discrepancies": [],
+      "refusals": [],
+      "inspection": {
+        "exit_code": 0,
+        "collected": true,
+        "refusal": null,
+        "authority": "MissingAuthority"
+      },
+      "mode": "run",
+      "fault": "process-kill"
+    },
+    {
+      "id": "kill-final-success-response",
+      "status": "actual",
+      "requested_checkpoint": "final-success-response",
+      "observed_checkpoint": "final-success-response",
+      "guest_restarted": false,
+      "source_preserved": true,
+      "discrepancies": [],
+      "refusals": [],
+      "inspection": {
+        "exit_code": 0,
+        "collected": true,
+        "refusal": null,
+        "authority": "MissingAuthority"
+      },
+      "mode": "run",
+      "fault": "process-kill"
+    },
+    {
+      "id": "vmoff-possible-publication",
+      "status": "actual",
+      "requested_checkpoint": "possible-publication",
+      "observed_checkpoint": "possible-publication",
+      "guest_restarted": true,
+      "source_preserved": true,
+      "discrepancies": [],
+      "refusals": [],
+      "inspection": {
+        "exit_code": 0,
+        "collected": true,
+        "refusal": null,
+        "authority": "MissingAuthority"
+      },
+      "mode": "run",
+      "fault": "vm-off"
+    },
+    {
+      "id": "vmoff-receipt-before-ack",
+      "status": "actual",
+      "requested_checkpoint": "receipt-before-ack",
+      "observed_checkpoint": "receipt-before-ack",
+      "guest_restarted": true,
+      "source_preserved": true,
+      "discrepancies": [],
+      "refusals": [],
+      "inspection": {
+        "exit_code": 0,
+        "collected": true,
+        "refusal": null,
+        "authority": "MissingAuthority"
+      },
+      "mode": "run",
+      "fault": "vm-off"
+    },
+    {
+      "id": "vmoff-completed-predicate",
+      "status": "actual",
+      "requested_checkpoint": "completed-predicate",
+      "observed_checkpoint": "completed-predicate",
+      "guest_restarted": true,
+      "source_preserved": true,
+      "discrepancies": [],
+      "refusals": [],
+      "inspection": {
+        "exit_code": 0,
+        "collected": true,
+        "refusal": null,
+        "authority": "MissingAuthority"
+      },
+      "mode": "run",
+      "fault": "vm-off"
+    },
+    {
+      "id": "kill-restart-finalize",
+      "status": "actual",
+      "requested_checkpoint": "finalize-receipt-created",
+      "observed_checkpoint": "finalize-receipt-created",
+      "guest_restarted": false,
+      "source_preserved": true,
+      "discrepancies": [],
+      "refusals": [],
+      "inspection": {
+        "exit_code": 0,
+        "collected": true,
+        "refusal": null,
+        "authority": "MissingAuthority"
+      },
+      "mode": "finalize",
+      "fault": "process-kill"
+    },
+    {
+      "id": "kill-partial-cleanup",
+      "status": "actual",
+      "requested_checkpoint": "cleanup-one-removed",
+      "observed_checkpoint": "cleanup-one-removed",
+      "guest_restarted": false,
+      "source_preserved": true,
+      "discrepancies": [],
+      "refusals": [
+        "read-only inspection refused; no imported authority"
+      ],
+      "inspection": {
+        "exit_code": 0,
+        "collected": false,
+        "refusal": "Namespace",
+        "authority": "MissingAuthority"
+      },
+      "mode": "cleanup",
+      "fault": "process-kill"
+    }
+  ],
+  "limits": [
+    "Fixed authored markers and one frozen production adapter/runtime/profile only.",
+    "Pre-API conservative possible-publication gate, not arbitrary interruption inside an OS call.",
+    "Finalization/cleanup retain an explicit surviving current caller before interruption; a new process imports no authority.",
+    "Expected Namespace inspection refusals and MissingAuthority remain explicit.",
+    "Ten inspectors collect; two retain expected Namespace refusals. Last-access times and declared mutable directory metadata are outside exact property comparisons.",
+    "Software/model complements do not qualify the unproduced native candidate/namespace/receipt flush-error classes; #0174 actual source-read1117 and compound candidate-create433/namespace counterexample remain separate.",
+    "Historical research name/timestamp counterexamples remain unchanged; no causal explanation or rebasing.",
+    "No physical power, abrupt-emulator SIGKILL, NMI, host-crash or universal schedule qualification."
+  ],
+  "productionProfileAdmitted": false,
+  "rawAdmitted": false,
+  "publicApplyEnabled": false
+}

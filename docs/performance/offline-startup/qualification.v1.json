@@ -1,0 +1,623 @@
+{
+  "schemaVersion": 1,
+  "ticket": 143,
+  "sourceCommit": "4d47da31423d6ac9b50bc399665c85fd71809753",
+  "binarySha256": "6a8641443dd90832d37d9c7f018d432dad1575623ebfff3e26232be641527478",
+  "protocolSha256": "3beae5a8007a5edf156943411799d488aa32684412ea9e27d2764f67924f01c6",
+  "retainedRecordSha256": "5211bdf5caa63d56bd8b414e960f5540e287c3264762caa9789d960d30b6cf89",
+  "independentAuditSha256": "70a644b1442c8aea66930e819f0e3317d50b26ebb4038793c6e6e5c865d4f97e",
+  "host": "Windows-11-10.0.26200-SP0",
+  "pythonVersion": "3.14.7",
+  "denominators": {
+    "attempts": 65,
+    "requiredAttempts": 65,
+    "missingAttempts": 0,
+    "measuredAttempts": 50,
+    "outputCorrect": 65,
+    "resourceValid": 65,
+    "censored": 0
+  },
+  "cases": {
+    "root-help": {
+      "warmups": 3,
+      "samples": 10,
+      "correctSamples": 10,
+      "resourceSamples": 10
+    },
+    "metadata-read-help": {
+      "warmups": 3,
+      "samples": 10,
+      "correctSamples": 10,
+      "resourceSamples": 10
+    },
+    "session-read-help": {
+      "warmups": 3,
+      "samples": 10,
+      "correctSamples": 10,
+      "resourceSamples": 10
+    },
+    "version-text": {
+      "warmups": 3,
+      "samples": 10,
+      "correctSamples": 10,
+      "resourceSamples": 10
+    },
+    "version-json": {
+      "warmups": 3,
+      "samples": 10,
+      "correctSamples": 10,
+      "resourceSamples": 10
+    }
+  },
+  "descriptive": {
+    "root-help": {
+      "planned": 10,
+      "retained": 10,
+      "missing": 0,
+      "failedOutput": 0,
+      "censored": 0,
+      "resourceUnavailableOrInvalid": 0,
+      "outputCorrectTimingsNs": {
+        "firstByteNs": {
+          "count": 10,
+          "min": 11563100,
+          "median": 15112000.0,
+          "max": 20888000
+        },
+        "completeOutputNs": {
+          "count": 10,
+          "min": 11637000,
+          "median": 15296300.0,
+          "max": 21115700
+        },
+        "exitObservedNs": {
+          "count": 10,
+          "min": 11645200,
+          "median": 25419700.0,
+          "max": 37279100
+        },
+        "completeOutputExitNs": {
+          "count": 10,
+          "min": 11645200,
+          "median": 25419700.0,
+          "max": 37279100
+        },
+        "elapsedNs": {
+          "count": 10,
+          "min": 20685600,
+          "median": 40285100.0,
+          "max": 54699800
+        }
+      },
+      "outputCorrectAndResourceValidCounters": {
+        "otherOperations": {
+          "count": 10,
+          "min": 18,
+          "median": 18.0,
+          "max": 18
+        },
+        "otherTransferBytes": {
+          "count": 10,
+          "min": 100,
+          "median": 100.0,
+          "max": 100
+        },
+        "peakWorkingSetBytes": {
+          "count": 10,
+          "min": 5046272,
+          "median": 5064704.0,
+          "max": 5070848
+        },
+        "readOperations": {
+          "count": 10,
+          "min": 0,
+          "median": 0.0,
+          "max": 0
+        },
+        "readTransferBytes": {
+          "count": 10,
+          "min": 0,
+          "median": 0.0,
+          "max": 0
+        },
+        "systemCpuNs": {
+          "count": 10,
+          "min": 0,
+          "median": 0.0,
+          "max": 15625000
+        },
+        "userCpuNs": {
+          "count": 10,
+          "min": 0,
+          "median": 0.0,
+          "max": 15625000
+        },
+        "writeOperations": {
+          "count": 10,
+          "min": 1,
+          "median": 1.0,
+          "max": 1
+        },
+        "writeTransferBytes": {
+          "count": 10,
+          "min": 1204,
+          "median": 1204.0,
+          "max": 1204
+        },
+        "sampledMax-workingSetBytes": {
+          "count": 10,
+          "min": 2105344,
+          "median": 2125824.0,
+          "max": 2211840
+        },
+        "sampledMax-privateCommitBytes": {
+          "count": 10,
+          "min": 290816,
+          "median": 409600.0,
+          "max": 413696
+        }
+      }
+    },
+    "metadata-read-help": {
+      "planned": 10,
+      "retained": 10,
+      "missing": 0,
+      "failedOutput": 0,
+      "censored": 0,
+      "resourceUnavailableOrInvalid": 0,
+      "outputCorrectTimingsNs": {
+        "firstByteNs": {
+          "count": 10,
+          "min": 15778300,
+          "median": 19036300.0,
+          "max": 23772500
+        },
+        "completeOutputNs": {
+          "count": 10,
+          "min": 15966800,
+          "median": 19467450.0,
+          "max": 23992200
+        },
+        "exitObservedNs": {
+          "count": 10,
+          "min": 28746300,
+          "median": 33943650.0,
+          "max": 38461000
+        },
+        "completeOutputExitNs": {
+          "count": 10,
+          "min": 28746300,
+          "median": 33943650.0,
+          "max": 38461000
+        },
+        "elapsedNs": {
+          "count": 10,
+          "min": 38657200,
+          "median": 50187500.0,
+          "max": 54689300
+        }
+      },
+      "outputCorrectAndResourceValidCounters": {
+        "otherOperations": {
+          "count": 10,
+          "min": 18,
+          "median": 18.0,
+          "max": 18
+        },
+        "otherTransferBytes": {
+          "count": 10,
+          "min": 100,
+          "median": 100.0,
+          "max": 100
+        },
+        "peakWorkingSetBytes": {
+          "count": 10,
+          "min": 5046272,
+          "median": 5062656.0,
+          "max": 5111808
+        },
+        "readOperations": {
+          "count": 10,
+          "min": 0,
+          "median": 0.0,
+          "max": 0
+        },
+        "readTransferBytes": {
+          "count": 10,
+          "min": 0,
+          "median": 0.0,
+          "max": 0
+        },
+        "systemCpuNs": {
+          "count": 10,
+          "min": 0,
+          "median": 0.0,
+          "max": 15625000
+        },
+        "userCpuNs": {
+          "count": 10,
+          "min": 0,
+          "median": 0.0,
+          "max": 15625000
+        },
+        "writeOperations": {
+          "count": 10,
+          "min": 1,
+          "median": 1.0,
+          "max": 1
+        },
+        "writeTransferBytes": {
+          "count": 10,
+          "min": 1176,
+          "median": 1176.0,
+          "max": 1176
+        },
+        "sampledMax-workingSetBytes": {
+          "count": 10,
+          "min": 2105344,
+          "median": 2117632.0,
+          "max": 2203648
+        },
+        "sampledMax-privateCommitBytes": {
+          "count": 10,
+          "min": 393216,
+          "median": 405504.0,
+          "max": 421888
+        }
+      }
+    },
+    "session-read-help": {
+      "planned": 10,
+      "retained": 10,
+      "missing": 0,
+      "failedOutput": 0,
+      "censored": 0,
+      "resourceUnavailableOrInvalid": 0,
+      "outputCorrectTimingsNs": {
+        "firstByteNs": {
+          "count": 10,
+          "min": 14668400,
+          "median": 16269500.0,
+          "max": 19869300
+        },
+        "completeOutputNs": {
+          "count": 10,
+          "min": 14844100,
+          "median": 16403150.0,
+          "max": 20094900
+        },
+        "exitObservedNs": {
+          "count": 10,
+          "min": 26627100,
+          "median": 28347250.0,
+          "max": 33338200
+        },
+        "completeOutputExitNs": {
+          "count": 10,
+          "min": 26627100,
+          "median": 28347250.0,
+          "max": 33338200
+        },
+        "elapsedNs": {
+          "count": 10,
+          "min": 37069100,
+          "median": 40860250.0,
+          "max": 46770200
+        }
+      },
+      "outputCorrectAndResourceValidCounters": {
+        "otherOperations": {
+          "count": 10,
+          "min": 18,
+          "median": 18.0,
+          "max": 18
+        },
+        "otherTransferBytes": {
+          "count": 10,
+          "min": 100,
+          "median": 100.0,
+          "max": 100
+        },
+        "peakWorkingSetBytes": {
+          "count": 10,
+          "min": 5025792,
+          "median": 5054464.0,
+          "max": 5074944
+        },
+        "readOperations": {
+          "count": 10,
+          "min": 0,
+          "median": 0.0,
+          "max": 0
+        },
+        "readTransferBytes": {
+          "count": 10,
+          "min": 0,
+          "median": 0.0,
+          "max": 0
+        },
+        "systemCpuNs": {
+          "count": 10,
+          "min": 0,
+          "median": 0.0,
+          "max": 15625000
+        },
+        "userCpuNs": {
+          "count": 10,
+          "min": 0,
+          "median": 0.0,
+          "max": 15625000
+        },
+        "writeOperations": {
+          "count": 10,
+          "min": 1,
+          "median": 1.0,
+          "max": 1
+        },
+        "writeTransferBytes": {
+          "count": 10,
+          "min": 759,
+          "median": 759.0,
+          "max": 759
+        },
+        "sampledMax-workingSetBytes": {
+          "count": 10,
+          "min": 2105344,
+          "median": 2109440.0,
+          "max": 2207744
+        },
+        "sampledMax-privateCommitBytes": {
+          "count": 10,
+          "min": 290816,
+          "median": 397312.0,
+          "max": 409600
+        }
+      }
+    },
+    "version-text": {
+      "planned": 10,
+      "retained": 10,
+      "missing": 0,
+      "failedOutput": 0,
+      "censored": 0,
+      "resourceUnavailableOrInvalid": 0,
+      "outputCorrectTimingsNs": {
+        "firstByteNs": {
+          "count": 10,
+          "min": 11854300,
+          "median": 12693600.0,
+          "max": 13828400
+        },
+        "completeOutputNs": {
+          "count": 10,
+          "min": 11935800,
+          "median": 12818000.0,
+          "max": 13961400
+        },
+        "exitObservedNs": {
+          "count": 10,
+          "min": 11946500,
+          "median": 18031250.0,
+          "max": 23486100
+        },
+        "completeOutputExitNs": {
+          "count": 10,
+          "min": 11946500,
+          "median": 18049950.0,
+          "max": 23486100
+        },
+        "elapsedNs": {
+          "count": 10,
+          "min": 21513900,
+          "median": 27419650.0,
+          "max": 34104600
+        }
+      },
+      "outputCorrectAndResourceValidCounters": {
+        "otherOperations": {
+          "count": 10,
+          "min": 18,
+          "median": 18.0,
+          "max": 18
+        },
+        "otherTransferBytes": {
+          "count": 10,
+          "min": 100,
+          "median": 100.0,
+          "max": 100
+        },
+        "peakWorkingSetBytes": {
+          "count": 10,
+          "min": 4890624,
+          "median": 4915200.0,
+          "max": 4968448
+        },
+        "readOperations": {
+          "count": 10,
+          "min": 0,
+          "median": 0.0,
+          "max": 0
+        },
+        "readTransferBytes": {
+          "count": 10,
+          "min": 0,
+          "median": 0.0,
+          "max": 0
+        },
+        "systemCpuNs": {
+          "count": 10,
+          "min": 0,
+          "median": 0.0,
+          "max": 15625000
+        },
+        "userCpuNs": {
+          "count": 10,
+          "min": 0,
+          "median": 0.0,
+          "max": 15625000
+        },
+        "writeOperations": {
+          "count": 10,
+          "min": 1,
+          "median": 1.0,
+          "max": 1
+        },
+        "writeTransferBytes": {
+          "count": 10,
+          "min": 91,
+          "median": 91.0,
+          "max": 91
+        },
+        "sampledMax-workingSetBytes": {
+          "count": 10,
+          "min": 2117632,
+          "median": 2138112.0,
+          "max": 2240512
+        },
+        "sampledMax-privateCommitBytes": {
+          "count": 10,
+          "min": 319488,
+          "median": 409600.0,
+          "max": 417792
+        }
+      }
+    },
+    "version-json": {
+      "planned": 10,
+      "retained": 10,
+      "missing": 0,
+      "failedOutput": 0,
+      "censored": 0,
+      "resourceUnavailableOrInvalid": 0,
+      "outputCorrectTimingsNs": {
+        "firstByteNs": {
+          "count": 10,
+          "min": 11507000,
+          "median": 12074500.0,
+          "max": 13354500
+        },
+        "completeOutputNs": {
+          "count": 10,
+          "min": 11584200,
+          "median": 12180700.0,
+          "max": 13521600
+        },
+        "exitObservedNs": {
+          "count": 10,
+          "min": 11564200,
+          "median": 12187600.0,
+          "max": 23216800
+        },
+        "completeOutputExitNs": {
+          "count": 10,
+          "min": 11597900,
+          "median": 12203350.0,
+          "max": 23216800
+        },
+        "elapsedNs": {
+          "count": 10,
+          "min": 20219300,
+          "median": 21365200.0,
+          "max": 32132900
+        }
+      },
+      "outputCorrectAndResourceValidCounters": {
+        "otherOperations": {
+          "count": 10,
+          "min": 18,
+          "median": 18.0,
+          "max": 18
+        },
+        "otherTransferBytes": {
+          "count": 10,
+          "min": 100,
+          "median": 100.0,
+          "max": 100
+        },
+        "peakWorkingSetBytes": {
+          "count": 10,
+          "min": 4923392,
+          "median": 4931584.0,
+          "max": 4993024
+        },
+        "readOperations": {
+          "count": 10,
+          "min": 0,
+          "median": 0.0,
+          "max": 0
+        },
+        "readTransferBytes": {
+          "count": 10,
+          "min": 0,
+          "median": 0.0,
+          "max": 0
+        },
+        "systemCpuNs": {
+          "count": 10,
+          "min": 0,
+          "median": 0.0,
+          "max": 0
+        },
+        "userCpuNs": {
+          "count": 10,
+          "min": 0,
+          "median": 0.0,
+          "max": 15625000
+        },
+        "writeOperations": {
+          "count": 10,
+          "min": 1,
+          "median": 1.0,
+          "max": 1
+        },
+        "writeTransferBytes": {
+          "count": 10,
+          "min": 134,
+          "median": 134.0,
+          "max": 134
+        },
+        "sampledMax-workingSetBytes": {
+          "count": 10,
+          "min": 2109440,
+          "median": 2138112.0,
+          "max": 2199552
+        },
+        "sampledMax-privateCommitBytes": {
+          "count": 10,
+          "min": 397312,
+          "median": 409600.0,
+          "max": 413696
+        }
+      }
+    }
+  },
+  "unsupported": [
+    {
+      "id": "format-discovery",
+      "status": "unsupported-unrun"
+    },
+    {
+      "id": "tag-discovery",
+      "status": "unsupported-unrun"
+    }
+  ],
+  "conditions": {
+    "cache": "fresh process; hashes warm OS cache; OS/device caches uncontrolled",
+    "background": "shared developer workstation; uncontrolled",
+    "power": "unchanged inherited host",
+    "storage": "local volume; physical topology unknown",
+    "host": "Windows-11-10.0.26200-SP0",
+    "consumer": "shared concurrent bounded 4096-byte pipe drains with read1 available-byte adapter",
+    "counterScope": "Windows direct Popen-owned process handle; sampled descendants, no containment",
+    "timing": "perf_counter_ns before Popen; first received byte, two EOFs, exit observed before final counters; no overhead subtraction"
+  },
+  "limits": [
+    "Five tiny offline help/version invocations, not media/network/session-start workloads.",
+    "Each case retains three warmups and ten measured fresh processes; no retries or trimming.",
+    "First-byte receipt, two-stream output completion, observed exit and collector elapsed remain separate endpoints.",
+    "Source-reviewed exact snapshots share implementation provenance; they are not an independent CLI specification.",
+    "Direct-process Windows counters and sampled membership are not containment or device I/O.",
+    "Hashing exposes warm OS caches; background load, OS/device caches and physical topology are uncontrolled.",
+    "Descriptive values establish no cold-start bound, cross-host claim, regression threshold, default or release budget."
+  ]
+}
