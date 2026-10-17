@@ -1,0 +1,757 @@
+{
+  "schemaVersion": 1,
+  "ticket": 176,
+  "purpose": "SAF trace accompanying the production exact-profile selector; this document is evidence review, never an admission input or authority constructor.",
+  "scope": "One caller-validated generic byte candidate, new expected-absent name, Windows-only initial milestone, trusted explicit current caller.",
+  "contract": "docs/write-safety/acceptance-scenarios.md",
+  "policies": [
+    "docs/write-safety/new-output-contract.md",
+    "docs/write-safety/practical-output-policy.md",
+    "docs/write-safety/power-test-policy.md",
+    "docs/write-safety/linux-new-output-boundary.md"
+  ],
+  "interpretation": {
+    "scenarioCompletion": "No complete RAW/XMP SAF scenario is certified by this generic storage trace.",
+    "optionA": "Continuous default-stream byte/object/name guards plus relevant filesystem-property checks at declared boundaries; ordinary private-owner editable output. Same-owner property or link changes between checks are outside continuous exclusion.",
+    "power": "Best-effort disposable-VM-off observations only. QMP quit may flush; host caches survive. Physical-power, hardware, host-crash and new NMI evidence are not admission prerequisites.",
+    "currentCaller": "Explicit trusted application attestation is accepted; no new product approval, key-management service, automatic durable custody or malicious same-process authentication requirement is introduced.",
+    "formats": "Format validation, preserved unselected semantics and explicit caller apply remain independent necessary decisions. Storage results, copied bytes, imported plans and receipt/status fields cannot supply them.",
+    "exactness": "Host primitive tests, primary SATA/QCOW2 VM-off observations and secondary USB/raw native-error observations retain separate source/build/configuration identities. Evidence is not transferred between them by matching NTFS labels.",
+    "historicalEvidence": "Earlier research-worker name/timestamp counterexamples remain historical, with their original workers/configurations; no claim that the production campaign explains or repairs them."
+  },
+  "evidenceKinds": {
+    "implementation": "Production code exists; source presence alone is not execution or persistence qualification.",
+    "model": "Deterministic authored backend/parser/authority control; no native storage failure follows.",
+    "native-software": "Actual native calls/artifacts with authored controller error/lost-response schedules; not actual device read/flush failure.",
+    "native-observation": "Actual held-object Windows operation and independently inspected authored artifacts, bounded to its observed configuration.",
+    "vmoff-observation": "Actual frozen production actor and retained-artifact reconciliation across the twelve declared #0175 cells, including three QMP-quit VM-offs; no admitted profile follows.",
+    "contrary": "Actual observation contradicts a necessary preservation predicate; successful unrelated cells cannot erase it.",
+    "missing": "Required actual native error class was not produced; emulator backend/drain errors or success returns cannot substitute."
+  },
+  "evidence": {
+    "guards": {
+      "kind": "native-observation",
+      "report": "docs/write-safety/windows-production-guards.md",
+      "code": [
+        "crates/imageinfo-windows-storage/src/windows.rs",
+        "crates/imageinfo-windows-storage/src/native.rs",
+        "src/storage/windows.rs"
+      ]
+    },
+    "runtime": {
+      "kind": "implementation",
+      "report": "docs/write-safety/publication-runtime.md",
+      "code": [
+        "src/storage/runtime.rs",
+        "src/storage/mod.rs"
+      ]
+    },
+    "runtimeControls": {
+      "kind": "model",
+      "code": [
+        "src/storage/runtime/tests.rs"
+      ]
+    },
+    "live": {
+      "kind": "native-software",
+      "report": "docs/write-safety/live-acknowledgements.md",
+      "code": [
+        "src/storage/windows/live_ack_tests.rs"
+      ]
+    },
+    "custody": {
+      "kind": "native-observation",
+      "report": "docs/write-safety/caller-custody.md",
+      "code": [
+        "src/storage/custody.rs",
+        "src/storage/custody/tests.rs"
+      ]
+    },
+    "inspection": {
+      "kind": "native-observation",
+      "report": "docs/write-safety/production-restart-inspection.md",
+      "code": [
+        "src/storage/inspection.rs",
+        "src/storage/inspection/tests.rs"
+      ]
+    },
+    "finalization": {
+      "kind": "native-software",
+      "report": "docs/write-safety/production-finalization.md",
+      "code": [
+        "src/storage/finalization.rs",
+        "src/storage/finalization/native/tests.rs"
+      ]
+    },
+    "cleanup": {
+      "kind": "native-observation",
+      "report": "docs/write-safety/production-cleanup.md",
+      "code": [
+        "src/storage/cleanup.rs",
+        "src/storage/cleanup/native/tests.rs"
+      ]
+    },
+    "resources": {
+      "kind": "native-observation",
+      "report": "docs/write-safety/production-resource-retention.md",
+      "code": [
+        "src/storage/resources.rs",
+        "src/storage/resources/tests/native.rs"
+      ]
+    },
+    "nativeErrors": {
+      "kind": "native-observation",
+      "report": "docs/write-safety/production-native-errors.md",
+      "code": [
+        "src/storage/native_errors.rs"
+      ],
+      "limits": "Native source read 1117 and compound candidate create/write/check 433 observed on separate USB/raw fixture. Candidate, installed-root and receipt native flush-error classes unproduced."
+    },
+    "sourceNamespace": {
+      "kind": "contrary",
+      "report": "docs/write-safety/production-native-errors.md",
+      "limits": "Staged-error cell loses prepared source name and transaction namespace. Exact source bytes survive at earlier fixture name; prepared source name/properties are not qualified as preserved. Does not isolate WriteFile or establish Windows disk-full 112."
+    },
+    "nativeFlushErrors": {
+      "kind": "missing",
+      "report": "docs/write-safety/production-native-errors.md",
+      "limits": "Actual Windows candidate-file, installed-root and receipt-file flushes returned success. Separate QEMU filter-removal drain EIOs are not runtime native flush errors. Candidate-flush cell retains an explicit partial execution with no invented terminal result."
+    },
+    "vmoff": {
+      "kind": "vmoff-observation",
+      "report": "docs/write-safety/production-vmoff-qualification.md",
+      "results": "docs/write-safety/production-vmoff-results.v1.json",
+      "code": [
+        "src/storage/qualification.rs"
+      ],
+      "limits": "Frozen source 4d47da31423d6ac9b50bc399665c85fd71809753, exact retained worker/profile; twelve actual cells: one normal, eight process kills, three QMP-quit VM-offs. All recreated callers retain MissingAuthority. No positive admission."
+    },
+    "selector": {
+      "kind": "implementation",
+      "code": [
+        "src/storage/admission.rs"
+      ],
+      "limits": "Pure code-defined helper: compares requested labels without I/O and refuses on compiled missing/contrary predicates. No positive grant constructor. JSON reports never participate. Caller integration is separate evidence."
+    },
+    "liveConfiguration": {
+      "kind": "missing",
+      "code": [
+        "src/storage/admission.rs"
+      ],
+      "limits": "No implemented reviewed current OS/servicing/filesystem/volume/controller/cache/executable and held-operation verifier binds an actually qualified exact profile. Fixture manifests and caller request labels are not live facts."
+    },
+    "caller": {
+      "kind": "implementation",
+      "code": [
+        "src/storage/new_output.rs"
+      ],
+      "limits": "Actual crate-private prepare calls select_profile before deferred format/backend/candidate construction or accounting. PreparedNewOutput retains the unavailable move-only admission capability; no execute method or public apply is enabled. Qualification runtimes remain explicitly unqualified and separate."
+    },
+    "callerControls": {
+      "kind": "native-software",
+      "code": [
+        "src/storage/new_output/tests.rs"
+      ],
+      "limits": "Four actual-caller tests use retained authored source/foreign sentinel fixtures and a real precharged RetainedSession. Exact/mismatch/imported-claim/invalid-path requests refuse with zero deferred constructor calls, unchanged charges/prior ledger, unchanged fixture snapshots and absent transaction/output. Tests establish refusal ordering, not positive storage qualification."
+    }
+  },
+  "necessaryUnresolvedPredicates": [
+    {
+      "id": "PreparedSourceNamespacePreservedOnNativeError",
+      "state": "contrary",
+      "evidence": [
+        "sourceNamespace"
+      ],
+      "affects": [
+        "SAF-005",
+        "SAF-007",
+        "SAF-008",
+        "SAF-009",
+        "SAF-016"
+      ],
+      "requiredOutcome": "Resolve the actual prepared-source/transaction namespace loss before claiming positive preservation for the proposed exact profile; retained bytes at another fixture name do not meet name/property preservation.",
+      "correctiveOwner": "#0176 production storage adapter/runtime and exact-profile qualification integration owner; diagnose the bounded #0174 observation and implement any necessary correction before new positive qualification."
+    },
+    {
+      "id": "NativeCandidateFileFlushError",
+      "state": "missing",
+      "evidence": [
+        "nativeFlushErrors"
+      ],
+      "affects": [
+        "SAF-008",
+        "SAF-009",
+        "SAF-016"
+      ],
+      "requiredOutcome": "Supply actual candidate-file native flush-error outcome evidence under the exact proposed supported configuration, preserving phase-specific uncertainty and retained-artifact checks.",
+      "correctiveOwner": "#0176 production native-error qualification integration owner; the completed finite #0174 fixture is negative evidence, not permission to relabel successful calls or repeat/expand a campaign silently."
+    },
+    {
+      "id": "NativeInstalledNamespaceFlushError",
+      "state": "missing",
+      "evidence": [
+        "nativeFlushErrors"
+      ],
+      "affects": [
+        "SAF-008",
+        "SAF-009",
+        "SAF-016"
+      ],
+      "requiredOutcome": "Supply actual post-publication installed-root namespace native flush-error outcome evidence under the exact proposed supported configuration, preserving phase-specific uncertainty and retained-artifact checks.",
+      "correctiveOwner": "#0176 production native-error qualification integration owner; the completed finite #0174 fixture is negative evidence, not permission to relabel successful calls or repeat/expand a campaign silently."
+    },
+    {
+      "id": "NativeReceiptFileFlushError",
+      "state": "missing",
+      "evidence": [
+        "nativeFlushErrors"
+      ],
+      "affects": [
+        "SAF-008",
+        "SAF-009",
+        "SAF-016"
+      ],
+      "requiredOutcome": "Supply actual receipt-file native flush-error outcome evidence under the exact proposed supported configuration, preserving phase-specific uncertainty and retained-artifact checks.",
+      "correctiveOwner": "#0176 production native-error qualification integration owner; the completed finite #0174 fixture is negative evidence, not permission to relabel successful calls or repeat/expand a campaign silently."
+    },
+    {
+      "id": "ExactLiveConfigurationAndImplementationBinding",
+      "state": "missing",
+      "evidence": [
+        "liveConfiguration"
+      ],
+      "affects": [
+        "SAF-016"
+      ],
+      "requiredOutcome": "Before a positive grant, implement reviewed live binding of actual OS/servicing/filesystem/volume/controller/cache/executable facts and held operation identities to the actually qualified exact profile.",
+      "correctiveOwner": "#0176 admission implementation owner; no new product decision or approval is needed to retain refusal."
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "SAF-001",
+      "applicability": "Independent preview/plan/apply obligation; storage authority non-forgery is relevant.",
+      "evidence": [
+        "runtime",
+        "custody",
+        "caller",
+        "callerControls"
+      ],
+      "coverage": "Crate-private validated candidate and nonserializable current authority are distinct from imported plans, record fields and status booleans. No public apply or plan importer is enabled here. Actual new-output prepare checks storage selection before invoking its deferred builder; imported receipt/status/profile claims never release construction.",
+      "remaining": "Actual caption/plan behavior remains with the independent format/apply owner; generic storage evidence completes no RAW preview scenario.",
+      "normativeSource": "docs/write-safety/acceptance-scenarios.md",
+      "normativeClause": {
+        "setup": "Preview an EOS R5 full RAW caption change; save a plan if requested. Try an imported plan with fabricated capability/authorization fields.",
+        "requiredOutcome": "No target mutation. The requested plan is the only new artifact. Application recomputes trust/capability checks; imported fields do not authorize a write.",
+        "rules": [
+          "WS-001",
+          "WS-002",
+          "WS-003",
+          "WS-006"
+        ]
+      },
+      "codeRefs": [
+        "src/storage/custody.rs",
+        "src/storage/custody/tests.rs",
+        "src/storage/mod.rs",
+        "src/storage/new_output.rs",
+        "src/storage/new_output/tests.rs",
+        "src/storage/runtime.rs"
+      ],
+      "disposition": "scoped-mechanism-evidence; full-scenario-not-certified"
+    },
+    {
+      "id": "SAF-002",
+      "applicability": "Independent XMP semantic/no-op obligation; new-name storage policy is relevant.",
+      "evidence": [
+        "runtime",
+        "live",
+        "guards"
+      ],
+      "coverage": "Explicit caller no-op bypass has no executor/budget/target effects. New output has declared private ordinary-owner policy.",
+      "remaining": "#0085's independent XMP candidate/preservation/apply admission and actual publication remain unfulfilled by this trace. No existing-XMP replacement is admitted.",
+      "normativeSource": "docs/write-safety/acceptance-scenarios.md",
+      "normativeClause": {
+        "setup": "Edit/create a paired XMP label, including an absent value and an already equal value.",
+        "requiredOutcome": "RAW bytes remain identical. Existing XMP retains unselected data; creation uses an explicit path and property policy. A valid no-op creates no backup and does not rewrite XMP.",
+        "rules": [
+          "WS-004",
+          "WS-005",
+          "WS-011"
+        ]
+      },
+      "codeRefs": [
+        "crates/imageinfo-windows-storage/src/native.rs",
+        "crates/imageinfo-windows-storage/src/windows.rs",
+        "src/storage/mod.rs",
+        "src/storage/runtime.rs",
+        "src/storage/windows.rs",
+        "src/storage/windows/live_ack_tests.rs"
+      ],
+      "disposition": "scoped-mechanism-evidence; full-scenario-not-certified"
+    },
+    {
+      "id": "SAF-003",
+      "applicability": "Independent RAW format/preservation obligation.",
+      "evidence": [
+        "runtime",
+        "runtimeControls",
+        "caller",
+        "callerControls"
+      ],
+      "coverage": "Runtime copies exact caller-planned bytes with finite maximum, short/overlong/read-error refusal before root creation. Held source is separate from the supplied candidate reader; format adapter must bind validation to actual held facts.",
+      "remaining": "#0023/#0078 independent format owners retain all semantic, opaque relocation, sensor/calibration/preview and source-binding proofs. Exact byte copying is not semantic admission.",
+      "normativeSource": "docs/write-safety/acceptance-scenarios.md",
+      "normativeClause": {
+        "setup": "Change eligible CR3 EXIF/GPS/XMP with growth and shrinkage around maker notes, padding, previews and opaque blocks.",
+        "requiredOutcome": "Sensor samples, additional required planes, calibration/CFA interpretation and unselected previews remain intact. All moved references remain valid. Unprovable opaque relocation refuses before publication.",
+        "rules": [
+          "WS-006",
+          "WS-007",
+          "WS-008"
+        ]
+      },
+      "codeRefs": [
+        "src/storage/mod.rs",
+        "src/storage/new_output.rs",
+        "src/storage/new_output/tests.rs",
+        "src/storage/runtime.rs",
+        "src/storage/runtime/tests.rs"
+      ],
+      "disposition": "scoped-mechanism-evidence; full-scenario-not-certified"
+    },
+    {
+      "id": "SAF-004",
+      "applicability": "Independent format/operation support obligation.",
+      "evidence": [
+        "runtime"
+      ],
+      "coverage": "No public mutation, fallback sidecar behavior or C-RAW/DPRAW support follows from generic internal execution.",
+      "remaining": "Format/apply owner must retain explicit unsupported variants and specific refusal outcomes.",
+      "normativeSource": "docs/write-safety/acceptance-scenarios.md",
+      "normativeClause": {
+        "setup": "Request a direct read-only CTMD edit, unsupported preview replacement, or an unverified C-RAW/DPRAW layout.",
+        "requiredOutcome": "Specific unsupported outcome, no embedded change, and no silent sidecar fallback. Full RAW evidence does not enable secondary variants.",
+        "rules": [
+          "WS-006",
+          "WS-007"
+        ]
+      },
+      "codeRefs": [
+        "src/storage/mod.rs",
+        "src/storage/runtime.rs"
+      ],
+      "disposition": "scoped-mechanism-evidence; full-scenario-not-certified"
+    },
+    {
+      "id": "SAF-005",
+      "applicability": "Applicable new-output byte/object/name guards, property checkpoints and terminal conflict semantics.",
+      "evidence": [
+        "guards",
+        "runtime",
+        "runtimeControls",
+        "live",
+        "sourceNamespace",
+        "vmoff"
+      ],
+      "coverage": "Source writer/delete exclusion, held candidate publication, ancestor movement guards, immutable bindings, exact namespace and property rechecks. Publication possibility is permanent before native rename; later conflict/error/lost response yields recovery-required with no replay/rebase.",
+      "remaining": "Prepared-source namespace preservation is contrary in #0174; finite host guard controls do not erase it. Same-owner property edits between observations remain outside option A, not a missing continuous-property gate.",
+      "normativeSource": "docs/write-safety/acceptance-scenarios.md",
+      "normativeClause": {
+        "setup": "Replace an input/copy source, stage or destination parent between planning, validation and publication; run an unrelated competing editor. Also change a relevant new-output filesystem property at each OD-11 check boundary.",
+        "requiredOutcome": "Byte/object/path substitution must not publish an unvalidated object or overwrite a winner; refuse/conflict before publication or report recovery-required when publication may have occurred. Detected OD-11 property changes follow the same before/after outcome boundary; undetected same-owner property edits between observations are outside its continuous-exclusion promise. No stale overwrite or automatic recovery over an external version.",
+        "rules": [
+          "WS-002",
+          "WS-009",
+          "WS-014",
+          "WS-015"
+        ]
+      },
+      "codeRefs": [
+        "crates/imageinfo-windows-storage/src/native.rs",
+        "crates/imageinfo-windows-storage/src/windows.rs",
+        "src/storage/mod.rs",
+        "src/storage/qualification.rs",
+        "src/storage/runtime.rs",
+        "src/storage/runtime/tests.rs",
+        "src/storage/windows.rs",
+        "src/storage/windows/live_ack_tests.rs"
+      ],
+      "disposition": "scoped-mechanism-evidence; full-scenario-not-certified"
+    },
+    {
+      "id": "SAF-006",
+      "applicability": "Applicable expected-absent name, topology and alias policy.",
+      "evidence": [
+        "guards",
+        "live",
+        "inspection",
+        "cleanup"
+      ],
+      "coverage": "Reparse/alias/multilink/extra-stream/case-sensitive and unsupported volume conditions refuse; same-held-object no-replace rename preserves a foreign collision winner. Observed topology conflicts terminate; no existence-check-only overwrite.",
+      "remaining": "Finite native controls substantiate mechanisms only for observed configurations. No existing-target replacement, move or continuous same-owner link exclusion is inferred.",
+      "normativeSource": "docs/write-safety/acceptance-scenarios.md",
+      "normativeClause": {
+        "setup": "Use a symlink/reparse target, multi-link file, case-folding collision or destination created after preview. For OD-11 new outputs, observe unexpected link topology at each required check.",
+        "requiredOutcome": "Default link-policy refusal or evidenced explicit policy; conditional new-name collision refusal. No existence-check-only overwrite. Observed unexpected topology refuses/becomes uncertain at the publication boundary; continuous same-owner link exclusion is not inferred. Required byte/object/path guards remain effective.",
+        "rules": [
+          "WS-009",
+          "WS-010"
+        ]
+      },
+      "codeRefs": [
+        "crates/imageinfo-windows-storage/src/native.rs",
+        "crates/imageinfo-windows-storage/src/windows.rs",
+        "src/storage/cleanup.rs",
+        "src/storage/cleanup/native/tests.rs",
+        "src/storage/inspection.rs",
+        "src/storage/inspection/tests.rs",
+        "src/storage/windows.rs",
+        "src/storage/windows/live_ack_tests.rs"
+      ],
+      "disposition": "scoped-mechanism-evidence; full-scenario-not-certified"
+    },
+    {
+      "id": "SAF-007",
+      "applicability": "Applicable source property preservation and private ordinary-owner editable new-output policy.",
+      "evidence": [
+        "guards",
+        "live",
+        "inspection",
+        "sourceNamespace"
+      ],
+      "coverage": "Original source ACL is observed, never rewritten. Complete file snapshots compare owner/DACL, attributes, creation/write time, streams and links at boundaries; ordinary owner editing works after guard release. Unsupported carry-through is not silently invented.",
+      "remaining": "Prepared source name/properties in #0174 staged-error cell remain unqualified. Metadata date/mtime semantics belong to the format/property request owner. No implicit source ACL/owner/stream clone or preserve-mtime support.",
+      "normativeSource": "docs/write-safety/acceptance-scenarios.md",
+      "normativeClause": {
+        "setup": "Edit read-only media or a file whose ACL/owner/streams cannot be preserved; compare ordinary and explicit preserve-mtime requests. Verify an OD-11 new output's declared private policy and ordinary owner editing after exit.",
+        "requiredOutcome": "Required property failure refuses. Real edits update mtime by default; capture dates remain unaltered unless planned. Source properties stay unchanged; do not silently clone ACL/owner/streams. Unsupported explicit carry-through refuses. New output must be private and ordinarily owner-editable, with declared boundary checks rather than continuous same-owner property exclusion.",
+        "rules": [
+          "WS-009",
+          "WS-011",
+          "WS-023"
+        ]
+      },
+      "codeRefs": [
+        "crates/imageinfo-windows-storage/src/native.rs",
+        "crates/imageinfo-windows-storage/src/windows.rs",
+        "src/storage/inspection.rs",
+        "src/storage/inspection/tests.rs",
+        "src/storage/windows.rs",
+        "src/storage/windows/live_ack_tests.rs"
+      ],
+      "disposition": "scoped-mechanism-evidence; full-scenario-not-certified"
+    },
+    {
+      "id": "SAF-008",
+      "applicability": "Applicable bounded copy, prepublication failures, retained artifacts and resource admission; replacement recovery-copy/no-backup portions remain separate.",
+      "evidence": [
+        "runtime",
+        "runtimeControls",
+        "live",
+        "resources",
+        "nativeErrors",
+        "sourceNamespace",
+        "nativeFlushErrors",
+        "caller",
+        "callerControls"
+      ],
+      "coverage": "Logical charge precedes allocations/effects; short/overlong/failing candidate input refuses before root creation. Candidate checks precede file/root flushes and publication. Failed/uncertain construction stays retained and charged. Advisory free space is explicitly not reservation or quota.",
+      "remaining": "Actual native candidate flush error remains missing; namespace preservation counterexample prevents positive qualification. Current-caller resource scope refuses unknown/nonempty state lacking original accounting. Retained originals for existing-target replacement are independent, not silently waived by no-backup.",
+      "normativeSource": "docs/write-safety/acceptance-scenarios.md",
+      "normativeClause": {
+        "setup": "Exhaust space, corrupt a candidate, fail a recovery copy or fail each prepublication flush. Repeat with no-backup selected.",
+        "requiredOutcome": "No target publication; retain required recovery artifacts. No-backup never skips temporary original recovery or scratch-space checks.",
+        "rules": [
+          "WS-008",
+          "WS-012",
+          "WS-013",
+          "WS-023"
+        ]
+      },
+      "codeRefs": [
+        "src/storage/mod.rs",
+        "src/storage/native_errors.rs",
+        "src/storage/new_output.rs",
+        "src/storage/new_output/tests.rs",
+        "src/storage/resources.rs",
+        "src/storage/resources/tests/native.rs",
+        "src/storage/runtime.rs",
+        "src/storage/runtime/tests.rs",
+        "src/storage/windows/live_ack_tests.rs"
+      ],
+      "disposition": "scoped-mechanism-evidence; full-scenario-not-certified"
+    },
+    {
+      "id": "SAF-009",
+      "applicability": "Applicable interruption, cancellation, installed/namespace/receipt checks and best-effort restart classification.",
+      "evidence": [
+        "runtime",
+        "runtimeControls",
+        "live",
+        "custody",
+        "inspection",
+        "finalization",
+        "nativeFlushErrors",
+        "sourceNamespace",
+        "vmoff"
+      ],
+      "coverage": "Cooperative cancellation between calls; possible publication produces recovery-required. Exact ordered actual phase/target/binding-prefix acknowledgements separate file/root/receipt checks and flushes. Twelve #0175 observations retain expected inspection refusals and lost authority; matching records cannot restore caller authority. Explicit fresh finalization never republishes.",
+      "remaining": "Actual native namespace/receipt flush-error classes remain missing and #0174 preservation contrary remains. Controller return/lost-response controls are software evidence; QMP quit observations may flush and are not abrupt power proof. No hardware or physical-power qualification gate is added.",
+      "normativeSource": "docs/write-safety/acceptance-scenarios.md",
+      "normativeClause": {
+        "setup": "Kill/cancel or turn a disposable VM off before, during and after publication; fail installed checks, namespace persistence and receipt persistence separately.",
+        "requiredOutcome": "Earlier cancellation does not publish. Ambiguous later states need recovery. Recovery inspects actual identities and makes a best-effort classification; it never guesses a rollback or promises physical-power survival.",
+        "rules": [
+          "WS-013",
+          "WS-014",
+          "WS-015",
+          "WS-016",
+          "WS-024"
+        ]
+      },
+      "codeRefs": [
+        "src/storage/custody.rs",
+        "src/storage/custody/tests.rs",
+        "src/storage/finalization.rs",
+        "src/storage/finalization/native/tests.rs",
+        "src/storage/inspection.rs",
+        "src/storage/inspection/tests.rs",
+        "src/storage/mod.rs",
+        "src/storage/qualification.rs",
+        "src/storage/runtime.rs",
+        "src/storage/runtime/tests.rs",
+        "src/storage/windows/live_ack_tests.rs"
+      ],
+      "disposition": "scoped-mechanism-evidence; full-scenario-not-certified"
+    },
+    {
+      "id": "SAF-010",
+      "applicability": "Independent pair/group/append operation obligation.",
+      "evidence": [
+        "custody",
+        "inspection"
+      ],
+      "coverage": "Single-unit recognition needs independently retained terminal knowledge plus fresh exact bindings; receipt alone cannot authorize replay/skip.",
+      "remaining": "#0180 group adapter and #0079 apply integration retain actual partial-member/dependency/append behavior; this single-output trace grants none.",
+      "normativeSource": "docs/write-safety/acceptance-scenarios.md",
+      "normativeClause": {
+        "setup": "Commit the RAW member, then fail the paired XMP member; resume an append after an interrupted batch.",
+        "requiredOutcome": "Report partial pairing and each member's actual outcome. Do not continue broken dependencies. Skip a matching committed receipt; never append twice or reuse a receipt after an external edit.",
+        "rules": [
+          "WS-004",
+          "WS-017",
+          "WS-022"
+        ]
+      },
+      "codeRefs": [
+        "src/storage/custody.rs",
+        "src/storage/custody/tests.rs",
+        "src/storage/inspection.rs",
+        "src/storage/inspection/tests.rs"
+      ],
+      "disposition": "scoped-mechanism-evidence; full-scenario-not-certified"
+    },
+    {
+      "id": "SAF-011",
+      "applicability": "Independent file-operation/replacement/move obligation.",
+      "evidence": [
+        "guards"
+      ],
+      "coverage": "One internal same-root candidate no-replace publication is the selected operation.",
+      "remaining": "RAW/XMP pair rename, case-only rename, cycles, cross-volume copying and source removal are outside this positive selector. #0193 negative boundary/#0195 held move evidence cannot supply positive replacement admission.",
+      "normativeSource": "docs/write-safety/acceptance-scenarios.md",
+      "normativeClause": {
+        "setup": "Rename a RAW/XMP pair, a case-only name, a rename cycle, and a cross-volume move; fail destination publication or source removal.",
+        "requiredOutcome": "Explicit collision-safe plan. Cross-volume workflow is not advertised as atomic. Unsafe source removal leaves verified destination plus source and reports partial work.",
+        "rules": [
+          "WS-010",
+          "WS-017",
+          "WS-018",
+          "WS-022"
+        ]
+      },
+      "codeRefs": [
+        "crates/imageinfo-windows-storage/src/native.rs",
+        "crates/imageinfo-windows-storage/src/windows.rs",
+        "src/storage/windows.rs"
+      ],
+      "disposition": "scoped-mechanism-evidence; full-scenario-not-certified"
+    },
+    {
+      "id": "SAF-012",
+      "applicability": "Applicable exact-owned unpublished prune and eligible-record cleanup; restore remains independent.",
+      "evidence": [
+        "custody",
+        "inspection",
+        "cleanup"
+      ],
+      "coverage": "Explicit action-specific single-use authority, fresh held identity/content/property/namespace checks and handle disposition only. Source/output/root/foreign or reinserted names remain protected. No record-imported paths, recursive sweep or filename deletion fallback; stale partial cleanup cannot resume itself.",
+      "remaining": "No occupied-target restoration, arbitrary backup prune or automatic restart authority is enabled. Independent replacement/restore owner retains fresh-plan/current-version preservation obligations.",
+      "normativeSource": "docs/write-safety/acceptance-scenarios.md",
+      "normativeClause": {
+        "setup": "Restore over a later edited target; prune a backup still needed for recovery or a path injected into an untrusted record.",
+        "requiredOutcome": "Restore needs a fresh plan and preserves the current version by default. Refuse in-use/unowned prune targets and arbitrary recovery paths.",
+        "rules": [
+          "WS-012",
+          "WS-015",
+          "WS-019"
+        ]
+      },
+      "codeRefs": [
+        "src/storage/cleanup.rs",
+        "src/storage/cleanup/native/tests.rs",
+        "src/storage/custody.rs",
+        "src/storage/custody/tests.rs",
+        "src/storage/inspection.rs",
+        "src/storage/inspection/tests.rs"
+      ],
+      "disposition": "scoped-mechanism-evidence; full-scenario-not-certified"
+    },
+    {
+      "id": "SAF-013",
+      "applicability": "Independent privacy coverage/removal obligation; retained-artifact reporting is relevant.",
+      "evidence": [
+        "runtime",
+        "cleanup"
+      ],
+      "coverage": "Retained and pending-cleanup objects remain explicit; cleanup reports per-object physical identities/dispositions without claiming an old name still resolves after conflict.",
+      "remaining": "Privacy catalog/format owner must report removed/residual/unknown copies and cannot infer anonymity or secure erasure from new-output publication.",
+      "normativeSource": "docs/write-safety/acceptance-scenarios.md",
+      "normativeClause": {
+        "setup": "Scrub sidecar location while RAW duplicates, embedded previews or opaque blocks may retain it; keep an original backup.",
+        "requiredOutcome": "Report exact checked/removed/residual/unknown coverage and retained copies. Never certify whole-photo anonymization or secure erasure.",
+        "rules": [
+          "WS-007",
+          "WS-020",
+          "WS-022"
+        ]
+      },
+      "codeRefs": [
+        "src/storage/cleanup.rs",
+        "src/storage/cleanup/native/tests.rs",
+        "src/storage/mod.rs",
+        "src/storage/runtime.rs"
+      ],
+      "disposition": "scoped-mechanism-evidence; full-scenario-not-certified"
+    },
+    {
+      "id": "SAF-014",
+      "applicability": "Independent signature/provenance format obligation.",
+      "evidence": [
+        "runtime"
+      ],
+      "coverage": "Caller-validated candidate is a separate crate-private decision; storage profile cannot admit unknown signature effects.",
+      "remaining": "Format owner retains refusal until verified preservation or explicit invalidation workflow. No signature validation/stripping capability follows.",
+      "normativeSource": "docs/write-safety/acceptance-scenarios.md",
+      "normativeClause": {
+        "setup": "Encounter a known signature/provenance structure affected by the proposed change.",
+        "requiredOutcome": "Refuse until a verified preservation or explicit invalidation workflow exists. Do not silently strip the structure or claim signature validity.",
+        "rules": [
+          "WS-006",
+          "WS-021"
+        ]
+      },
+      "codeRefs": [
+        "src/storage/mod.rs",
+        "src/storage/runtime.rs"
+      ],
+      "disposition": "scoped-mechanism-evidence; full-scenario-not-certified"
+    },
+    {
+      "id": "SAF-015",
+      "applicability": "Applicable truthful completion/uncertainty, pending cleanup and read-only restart.",
+      "evidence": [
+        "runtime",
+        "custody",
+        "inspection",
+        "finalization",
+        "cleanup",
+        "resources",
+        "vmoff",
+        "caller",
+        "callerControls"
+      ],
+      "coverage": "Only complete exact live predicate plus admission can justify commitment. Cleanup is separate, selective and single-use; partial removal retains exact residuals and all logical charges. Inspection rejects incomplete/foreign/inaccessible sets and grants no mutation. #0175 partial cleanup loses no authority rule: recreated callers still lack authority.",
+      "remaining": "Current production completed unqualified execution is Refused, never a manufactured committed result. No admitted positive profile currently justifies committed-plus-pending public apply; independent current attestation and exact qualification remain required.",
+      "normativeSource": "docs/write-safety/acceptance-scenarios.md",
+      "normativeClause": {
+        "setup": "Fail cleanup after a fully verified commit; restart with incomplete, foreign or inaccessible recovery records.",
+        "requiredOutcome": "Report committed plus pending cleanup when justified; otherwise preserve uncertainty. Do not repeat the edit or delete artifacts by filename pattern.",
+        "rules": [
+          "WS-015",
+          "WS-022",
+          "WS-023"
+        ]
+      },
+      "codeRefs": [
+        "src/storage/cleanup.rs",
+        "src/storage/cleanup/native/tests.rs",
+        "src/storage/custody.rs",
+        "src/storage/custody/tests.rs",
+        "src/storage/finalization.rs",
+        "src/storage/finalization/native/tests.rs",
+        "src/storage/inspection.rs",
+        "src/storage/inspection/tests.rs",
+        "src/storage/mod.rs",
+        "src/storage/new_output.rs",
+        "src/storage/new_output/tests.rs",
+        "src/storage/qualification.rs",
+        "src/storage/resources.rs",
+        "src/storage/resources/tests/native.rs",
+        "src/storage/runtime.rs"
+      ],
+      "disposition": "scoped-mechanism-evidence; full-scenario-not-certified"
+    },
+    {
+      "id": "SAF-016",
+      "applicability": "Applicable exact storage configuration and operation refusal boundary; replacement remains unsupported independently.",
+      "evidence": [
+        "guards",
+        "runtime",
+        "nativeErrors",
+        "sourceNamespace",
+        "nativeFlushErrors",
+        "vmoff",
+        "selector",
+        "liveConfiguration",
+        "caller",
+        "callerControls"
+      ],
+      "coverage": "Actual production prepare calls the pure code-defined selector before deferred construction or accounting. Exact requested labels and all mismatch/forged claim forms refuse before target effects; owned fixture/accounting controls verify this through the caller. Fixed-drive NTFS classification alone does not qualify controller/bus/filter/cache behavior; simulation, test admission and completed unqualified protocol never grant admission.",
+      "remaining": "Current candidate must remain unsupported for contrary prepared-source namespace preservation and missing actual native flush-error outcomes. These require concrete production/qualification correction owners above, not editable statuses, another ledger-only ticket, new product approval or a physical-hardware gate. Actual live exact-configuration/implementation binding is also not implemented; request labels are not verified machine facts.",
+      "normativeSource": "docs/write-safety/acceptance-scenarios.md",
+      "normativeClause": {
+        "setup": "Attempt replacement on an unverified storage profile, including a network/cloud/removable location.",
+        "requiredOutcome": "Refuse before publication or offer an explicit independently supported output workflow. Simulation or one successful write never enables a profile.",
+        "rules": [
+          "WS-006",
+          "WS-009",
+          "WS-024"
+        ]
+      },
+      "codeRefs": [
+        "crates/imageinfo-windows-storage/src/native.rs",
+        "crates/imageinfo-windows-storage/src/windows.rs",
+        "src/storage/admission.rs",
+        "src/storage/mod.rs",
+        "src/storage/native_errors.rs",
+        "src/storage/new_output.rs",
+        "src/storage/new_output/tests.rs",
+        "src/storage/qualification.rs",
+        "src/storage/runtime.rs",
+        "src/storage/windows.rs"
+      ],
+      "disposition": "scoped-mechanism-evidence; full-scenario-not-certified"
+    }
+  ],
+  "authority": false,
+  "selector": "src/storage/admission.rs",
+  "exactCandidate": {
+    "profile": "windows-ntfs-single-new-output-26300.9457-v1",
+    "configurationSource": "src/storage/admission.rs::CANDIDATE_CONFIGURATION",
+    "fixtureResults": "docs/write-safety/production-vmoff-results.v1.json",
+    "qualification": "unsupported; requested labels never establish actual live configuration"
+  },
+  "callerBoundary": "src/storage/new_output.rs::prepare"
+}

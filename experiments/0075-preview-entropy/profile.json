@@ -1,0 +1,16 @@
+{
+  "componentProfileCanonicalSha256": "04e8673816a10605df35cf9a631cdce59b79d8e77e01216b199a3dcc6ef3626a",
+  "id": "0075-baseline-interleaved-rgb-zero-padding-v2",
+  "schemaVersion": 1,
+  "settings": {
+    "api": "tjDecompress2",
+    "captureBytesPerStream": 16384,
+    "childDeadlineSeconds": 120,
+    "dimension": 8192,
+    "extentPolicy": "single baseline 8-bit Huffman interleaved scan; no restart; all-zero suffix length 0 through 32 bytes inclusive",
+    "flags": 8192,
+    "inputBytes": 33554432,
+    "packedRgbBytes": 268435456,
+    "pixelFormat": "RGB"
+  }
+}

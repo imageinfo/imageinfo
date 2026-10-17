@@ -1,0 +1,145 @@
+{
+  "abi": "Windows-x64-LLP64-CPython-3.12.14",
+  "binaryReproducibilityProven": false,
+  "components": {
+    "pillow-image": {
+      "byteLength": 158171,
+      "sha256": "59f1b98ed7bfd7b516b9f13ffd9dd3bc0aa1a495042accdb5ae4609b41c329d5"
+    },
+    "pillow-image-file": {
+      "byteLength": 30828,
+      "sha256": "e972c9d8785ad1fd44f860a375d8719f3fdff8e46da1cc311950699f93e4f539"
+    },
+    "pillow-init": {
+      "byteLength": 2122,
+      "sha256": "3fffff8502f4b59ca61d39cce713d55ffef046954262fce1abac3e97f3803734"
+    },
+    "pillow-jpeg-plugin": {
+      "byteLength": 32223,
+      "sha256": "049fc12cf436b101a5622456a1b83ba8b28b54cf8106d3953aed751bb0c08f3f"
+    },
+    "pillow-metadata": {
+      "byteLength": 9273,
+      "sha256": "2c4378001803cfac65809a50722d46e0da4ce8061e717f103e5d52734bab30f5"
+    },
+    "pillow-native-decoder": {
+      "byteLength": 2648368,
+      "sha256": "36445b8d5d07c2dc8263b4008f06fe94d24b9d0f8d0130025a07a14a22af90d6"
+    },
+    "pillow-notices": {
+      "byteLength": 78016,
+      "sha256": "4f7866a74802c6326f81faff59a56546b6aec2b10b91973e0e9308de95e79857"
+    },
+    "pillow-sbom": {
+      "byteLength": 22279,
+      "sha256": "40fa909b0f23405a7b97a6d91671a639a40acea7671b04387da22ba3e9fca50a"
+    },
+    "python-executable": {
+      "byteLength": 107312,
+      "sha256": "7d938c92a08d6495421f2f1076ccd7198aec0b288471abc0a55e90b1150d96a1"
+    },
+    "python-notices": {
+      "byteLength": 25066,
+      "sha256": "886a0ead2d89030ee62dbff52b04e47ab91998341295bb9c56fb952b4e081c7a"
+    },
+    "python-runtime": {
+      "byteLength": 6985520,
+      "sha256": "70e319bca85e7c776bfb2501361b03c0ed5714adcada4105bd5efa779d5e63d6"
+    }
+  },
+  "installedPackageDeclaration": {
+    "jpegApi": "8.0",
+    "libjpegTurbo": "3.1.4.1",
+    "licenseExpression": "MIT-CMU",
+    "pillow": "12.3.0",
+    "python": "3.12.14"
+  },
+  "loadedNonOsModules": {
+    "native/libheif/libheif/bin/turbojpeg.dll": {
+      "byteLength": 1027888,
+      "sha256": "e9337d11822c369d516af1c17f65c6200080ec119996ed353c891a0f7b326631"
+    },
+    "python/DLLs/_bz2.pyd": {
+      "byteLength": 88880,
+      "sha256": "86aba3f32102e218946eff789d921195a64ab7c122eaa55ceab3de4ffb69b2b5"
+    },
+    "python/DLLs/_ctypes.pyd": {
+      "byteLength": 131888,
+      "sha256": "b739ab763f9e4a1820b9de653567d04c7467087f3a89c00e4b3f93df72dabb13"
+    },
+    "python/DLLs/_hashlib.pyd": {
+      "byteLength": 70448,
+      "sha256": "0477fbbd7a3425331a5f4de89e840d024ff4b7c6c662d7b68061b5850305e00a"
+    },
+    "python/DLLs/_lzma.pyd": {
+      "byteLength": 168240,
+      "sha256": "5912bc75f3d49efd57d857787da0890696e50fae02c30469989766adb516bef4"
+    },
+    "python/DLLs/_socket.pyd": {
+      "byteLength": 87344,
+      "sha256": "a6cd5a1070b62cdd3b8b91cac60200bff4a400a54daf7d4e9ca6b50a4854c8ce"
+    },
+    "python/DLLs/_wmi.pyd": {
+      "byteLength": 41264,
+      "sha256": "9755d0a51bd15aff76b82bd8d2528775b3797b0dce090f49ff4a876612eb5232"
+    },
+    "python/DLLs/libcrypto-3-x64.dll": {
+      "byteLength": 8003376,
+      "sha256": "d38dcde789d3e3854caa68ae9273d48d0ee2dc4f143cfcf7cfe83b59d224dff8"
+    },
+    "python/DLLs/libffi-8.dll": {
+      "byteLength": 43824,
+      "sha256": "e49daa31bad9b9c1094ba25a40579e5d3f0a4adbd727341e1c0acea0bc167787"
+    },
+    "python/DLLs/select.pyd": {
+      "byteLength": 34608,
+      "sha256": "529d8e5b4dcdc853792a699595508e982a161828de4f53ade3bf365ffc46948f"
+    },
+    "python/Lib/site-packages/PIL/_imaging.cp312-win_amd64.pyd": {
+      "byteLength": 2648368,
+      "sha256": "36445b8d5d07c2dc8263b4008f06fe94d24b9d0f8d0130025a07a14a22af90d6"
+    },
+    "python/Lib/site-packages/PIL/_imagingmath.cp312-win_amd64.pyd": {
+      "byteLength": 37168,
+      "sha256": "fd94eb9f01895bada7a312c3dced932e1754a7070797759959557430dee19993"
+    },
+    "python/python.exe": {
+      "byteLength": 107312,
+      "sha256": "7d938c92a08d6495421f2f1076ccd7198aec0b288471abc0a55e90b1150d96a1"
+    },
+    "python/python3.dll": {
+      "byteLength": 71984,
+      "sha256": "e588188088c15e2f08d2b114e842cff7f6a9efd73dd8d759534a97ce7e6a6727"
+    },
+    "python/python312.dll": {
+      "byteLength": 6985520,
+      "sha256": "70e319bca85e7c776bfb2501361b03c0ed5714adcada4105bd5efa779d5e63d6"
+    },
+    "python/vcruntime140.dll": {
+      "byteLength": 124544,
+      "sha256": "d5e4d9a3e835fa679450145d6a7d94e36573a509317111904d9b3712c30d9066"
+    },
+    "python/vcruntime140_1.dll": {
+      "byteLength": 49792,
+      "sha256": "1f2d41c4aa5db0bc33ebf7b66d72943a817d7ce6cbe880502a9403823633093f"
+    }
+  },
+  "manifest": {
+    "package": {
+      "name": "libheif",
+      "packageSpecs": [
+        "libde265=1.1.1=h477610d_0",
+        "libjpeg-turbo=3.1.4.1=hfd05255_0",
+        "libpng=1.6.58=h7351971_0",
+        "zlib=1.3.2=hfd05255_2"
+      ],
+      "sourceSha256": "8bd5d41d19dc84536d118b04774709f244df6104ef66d623dad5fa4650143405",
+      "sourceUrl": "https://github.com/strukturag/libheif/releases/download/v1.23.2/libheif-1.23.2.tar.gz",
+      "targetArch": "x64",
+      "targetPlatform": "win32",
+      "version": "1.23.2"
+    },
+    "sha256": "eb9e6ab42754eb3b3faa0c28ba1507b74793bcca58141ce618e233177ce9dd41"
+  },
+  "schemaVersion": 1
+}

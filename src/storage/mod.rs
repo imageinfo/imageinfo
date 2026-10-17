@@ -5,6 +5,11 @@
 
 use std::sync::atomic::{AtomicBool, Ordering};
 
+#[allow(dead_code)]
+pub(crate) mod admission;
+#[allow(dead_code)]
+pub(crate) mod new_output;
+
 /// Each of the four records and at most four caller captures has this limit.
 pub const MAX_RECORD_BYTES: u64 = 65_536;
 

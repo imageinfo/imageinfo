@@ -1,0 +1,709 @@
+{
+  "schema_version": 1,
+  "ticket": 176,
+  "scope": "Exact single-new-output Windows storage admission WS trace; documentation accompaniment to actual production selector",
+  "authority": false,
+  "disposition": "unsupported",
+  "normative_source": {
+    "path": "docs/write-safety/README.md",
+    "sha256": "b90a7e04e0d7616d9a192736318db58a61be931fd4802e6c0f59165adc2b2dd4",
+    "text_policy": "Normative text below is verbatim; explanations do not alter accepted requirements."
+  },
+  "contract_sources": [
+    {
+      "path": "docs/write-safety/new-output-contract.md",
+      "selector": "NO-01 through NO-14"
+    },
+    {
+      "path": "docs/write-safety/practical-output-policy.md"
+    },
+    {
+      "path": "docs/write-safety/power-test-policy.md"
+    },
+    {
+      "path": "docs/write-safety/linux-new-output-boundary.md"
+    }
+  ],
+  "selector": {
+    "path": "src/storage/admission.rs",
+    "selector": "select_profile; UNMET_PREDICATES"
+  },
+  "exact_candidate": {
+    "requested_profile": "windows-ntfs-single-new-output-26300.9457-v1",
+    "configuration_source": {
+      "path": "src/storage/admission.rs",
+      "selector": "CANDIDATE_CONFIGURATION"
+    },
+    "qualification_source": {
+      "path": "docs/write-safety/production-vmoff-results.v1.json",
+      "selector": "profile"
+    },
+    "binding_limit": "Named candidate is not a qualified or observed current configuration; live exact bindings are a compiled unmet predicate."
+  },
+  "evidence_catalog": {
+    "native-software": {
+      "kind": "actual-authored-native-software-controls",
+      "sources": [
+        {
+          "path": "src/storage/windows/live_ack_tests.rs"
+        },
+        {
+          "path": "docs/write-safety/live-acknowledgements.md"
+        },
+        {
+          "path": "docs/write-safety/production-finalization.md"
+        },
+        {
+          "path": "docs/write-safety/production-cleanup.md"
+        },
+        {
+          "path": "docs/write-safety/production-resource-retention.md"
+        }
+      ],
+      "limit": "Actual filesystem/control execution on declared native environment; before/after errors and lost responses supplied by controller are not produced device-flush failures and do not qualify the guest configuration."
+    },
+    "model-controls": {
+      "kind": "portable-model-and-authored-tests",
+      "sources": [
+        {
+          "path": "src/storage/runtime/tests.rs"
+        },
+        {
+          "path": "src/storage/custody/tests.rs"
+        },
+        {
+          "path": "src/storage/resources/tests.rs"
+        }
+      ],
+      "limit": "Ordering/binding/error/refusal controls; no actual device failure or guest persistence inference."
+    },
+    "actual-vmoff": {
+      "kind": "actual-production-guest-observations",
+      "sources": [
+        {
+          "path": "docs/write-safety/production-vmoff-qualification.md"
+        },
+        {
+          "path": "docs/write-safety/production-vmoff-results.v1.json"
+        },
+        {
+          "path": "docs/write-safety/production-vmoff-cells.json"
+        }
+      ],
+      "source_commit": "4d47da31423d6ac9b50bc399665c85fd71809753",
+      "denominator": {
+        "normal": 1,
+        "process_kill": 8,
+        "qmp_quit_vmoff": 3
+      },
+      "limit": "Windows26300.9457 x64 NTFS system SATA AHCI/QCOW2 writeback exact retained fixture; QMP quit may cleanup/flush and host caches survive. Frozen source has not retroactively tested this selector. Read-only inspectors:10 success and2 retained Namespace refusals; every recreated caller MissingAuthority. All profile/admission flags false."
+    },
+    "actual-native-errors": {
+      "kind": "actual-production-native-error-and-partial-observations",
+      "sources": [
+        {
+          "path": "docs/write-safety/production-native-errors.md"
+        },
+        {
+          "path": "src/storage/native_errors.rs"
+        }
+      ],
+      "limit": "Separate secondary USB/raw NTFS error fixture, never substituted for primary SATA/QCOW2. Native source-read1117 and compound candidate create/write/check433 are distinct;433 is not isolated WriteFile or native112. Prepared source/transaction namespace loss contrary; exact old-name source bytes do not repair preservation. Candidate/root/receipt file native flush failures unproduced; QEMU drain EIO belongs to emulator. Candidate flush cell has no captured terminal."
+    },
+    "historical-ledger": {
+      "kind": "historical-research-ledger-and-model",
+      "sources": [
+        {
+          "path": "docs/write-safety/profile-admission.md"
+        },
+        {
+          "path": "docs/write-safety/profile-admission-ledger.json"
+        }
+      ],
+      "limit": "Preserve original source text, evidence kinds, original workers/configurations and nonqualifying dispositions. This new production trace accompanies the real selector; it neither promotes nor rewrites research ledger statuses."
+    },
+    "selector-helper-controls": {
+      "kind": "actual-authored-selector-helper-tests",
+      "sources": [
+        {
+          "path": "src/storage/admission/tests.rs",
+          "selector": "storage::admission::tests"
+        }
+      ],
+      "actual_host_result": "6 targeted tests passed in parent-reviewed execution.",
+      "limit": "Pure selector/helper request/refusal evidence only; fixture invariance around a helper that receives no paths is not evidence of intended caller ordering or deferred-constructor suppression."
+    },
+    "intended-caller-controls": {
+      "kind": "actual-authored-intended-caller-tests",
+      "sources": [
+        {
+          "path": "src/storage/new_output/tests.rs",
+          "selector": "storage::new_output::tests"
+        },
+        {
+          "path": "src/storage/new_output.rs",
+          "selector": "prepare"
+        }
+      ],
+      "actual_host_result": "4 targeted tests passed in parent-reviewed execution.",
+      "assertions": [
+        "Exact normal request, every descriptor/operation mismatch and optimistic imported profile/receipt/status claims refuse through prepare.",
+        "Deferred constructor invocation count remains zero; actual source/foreign-file snapshots and transaction/output absence remain unchanged.",
+        "Prior retained cumulative/per-operation charges remain unchanged; new operation is not charged or entered.",
+        "Missing source, maximal length, exhausted budget and existing cancellation do not precede admission or trigger deferred construction."
+      ],
+      "limit": "Actual intended refusal seam and constructor/accounting/effect ordering only. These tests neither execute an admitted backend nor produce native device errors, new guest evidence, positive format/apply authority or a supported profile."
+    }
+  },
+  "unmet_predicates": [
+    {
+      "predicate": "PreparedSourceNamespacePreservedOnNativeError",
+      "disposition": "ContraryObservation",
+      "corrective_owner": "#0022 storage integration; #0176 admission",
+      "required_work": "Resolve the prepared-source/transaction namespace-loss counterexample and substantiate exact configuration source name/property preservation; identify cause before claiming a fix. Preserve old observation."
+    },
+    {
+      "predicate": "NativeCandidateFileFlushError",
+      "disposition": "NotProduced",
+      "corrective_owner": "#0022 storage integration; #0176 admission",
+      "required_work": "Supply actual candidate-file returned native flush failure and retained-artifact outcomes for the exact proposed profile; do not substitute controller errors or successful guest calls."
+    },
+    {
+      "predicate": "NativeInstalledNamespaceFlushError",
+      "disposition": "NotProduced",
+      "corrective_owner": "#0022 storage integration; #0176 admission",
+      "required_work": "Supply actual postpublication installed-root returned native flush failure with truthful recovery uncertainty and retained-artifact outcomes for the exact proposed profile."
+    },
+    {
+      "predicate": "NativeReceiptFileFlushError",
+      "disposition": "NotProduced",
+      "corrective_owner": "#0022 storage integration; #0176 admission",
+      "required_work": "Supply actual receipt-file returned native flush failure with truthful recovery uncertainty and retained-artifact outcomes for the exact proposed profile."
+    },
+    {
+      "predicate": "ExactLiveConfigurationAndImplementationBinding",
+      "disposition": "NotImplemented",
+      "corrective_owner": "#0176 admission implementation",
+      "required_work": "Implement reviewed live exact OS/servicing/filesystem/volume/controller/cache/executable and held-operation binding before a future positive grant; requested labels and fixture summaries are insufficient."
+    }
+  ],
+  "requirements": [
+    {
+      "id": "WS-009",
+      "normative_source": {
+        "path": "docs/write-safety/README.md",
+        "selector": "WS-009"
+      },
+      "normative_text": "**WS-009 — Bind object identity through publication.** Serialize cooperating writers\nby physical file identity and destination/parent identity, including path aliases\nand not-yet-existing destinations. Acquire multi-file guards in a deterministic order.\nRecheck content, relevant properties, parent/path bindings, copy sources and staging\nidentity before publication. No two units may unknowingly edit the same physical file.\n\nA final hash check followed by rename is not a conditional compare-and-swap.\nAdvisory locks do not exclude unrelated writers. A profile must demonstrate the\nexclusion/conditional-publication guarantee it claims across the operation, not\njust at preflight. Where strict replacement cannot be guaranteed, refuse replacement\nor use an explicitly selected new output with no-clobber publication. Do not silently\ndowngrade to an overwrite that can lose a concurrent external edit.\n\nFor new outputs, OD-11 option A requires continuous protection of required default-\nstream bytes, object/path bindings and conditional no-clobber publication through\nthe profile's publication/final-verification interval. Relevant filesystem properties\nare checked at preflight, immediately before publication and during installed-output\nverification. A detected change is a conflict before publication or recovery-required\nafterward. Same-owner timestamp, ACL, alternate-stream and link-topology changes are\nnot continuously excluded; checks do not promise detection of an edit/reversion\nbetween observations or prevent later owner changes. The profile must state this\nboundary and refuse when its required byte/name guards cannot be established.\n\nExisting-target replacement retains its strict independent concurrency requirements.\nNo ordinary filesystem is presumed to provide a required guard. Further weakening\nwould require another explicit product decision and clearly different guarantees.",
+      "applicability": "Continuous source/candidate default-stream, object/name and ancestor guards with option A property observations; single unit only.",
+      "code_refs": [
+        {
+          "path": "src/storage/windows.rs",
+          "selector": "WindowsBackend::preflight/check/publish"
+        },
+        {
+          "path": "crates/imageinfo-windows-storage/src/windows.rs",
+          "selector": "GuardedSource; PrivateRoot; HeldArtifact::publish_no_replace"
+        },
+        {
+          "path": "src/storage/new_output.rs",
+          "selector": "prepare; NewOutputBuilder; PreparedNewOutput"
+        }
+      ],
+      "evidence_refs": [
+        "native-software",
+        "actual-vmoff",
+        "actual-native-errors",
+        "intended-caller-controls"
+      ],
+      "disposition": "unsupported-profile-with-bounded-evidence",
+      "missing_or_contradicted_predicates": [
+        "PreparedSourceNamespacePreservedOnNativeError",
+        "ExactLiveConfigurationAndImplementationBinding"
+      ],
+      "finding": "Production mechanisms and bounded controls exist; full exact-profile preservation remains unsupported. Multi-file deterministic guards are outside this single-unit profile."
+    },
+    {
+      "id": "WS-010",
+      "normative_source": {
+        "path": "docs/write-safety/README.md",
+        "selector": "WS-010"
+      },
+      "normative_text": "**WS-010 — Paths and aliases.** Bind resolved parents and object identities; reject\ndestination races, case-folding collisions, incompatible aliases and unexpected\nreparse/symlink changes. Mutating through a symlink needs an explicit supported\npolicy; default refusal is preferable to editing an unintended referent. Existing\nmulti-link files refuse ordinary replacement until link-preserving semantics are\nexplicitly supported. Reading an alias does not grant mutation permission.\n\nFor OD-11 new outputs, unexpected link topology observed at a required property\ncheck refuses before publication or becomes recovery-required afterward. This\nobservation does not claim continuous exclusion of same-owner link creation; the\nrequired default-stream/object/path guards remain independently mandatory.\n\nNew outputs must be published conditionally on continued absence. A prior existence\ncheck is not sufficient. Never use a cross-filesystem copy/delete fallback while\nclaiming an atomic rename. Unverified network, removable, cloud-synchronized or\nunusual filesystems do not inherit a local storage profile's guarantees.",
+      "applicability": "Expected-absent same-volume same-parent held-object no-replace publication; unsupported aliases/reparse/network/removable/cloud refuse.",
+      "code_refs": [
+        {
+          "path": "crates/imageinfo-windows-storage/src/windows.rs",
+          "selector": "validate_path; check_binding; HeldArtifact::publish_no_replace"
+        },
+        {
+          "path": "src/storage/windows.rs",
+          "selector": "WindowsBackend::check/publish"
+        },
+        {
+          "path": "src/storage/new_output.rs",
+          "selector": "prepare; NewOutputBuilder; PreparedNewOutput"
+        }
+      ],
+      "evidence_refs": [
+        "native-software",
+        "actual-vmoff",
+        "actual-native-errors",
+        "intended-caller-controls"
+      ],
+      "disposition": "unsupported-profile-with-bounded-evidence",
+      "missing_or_contradicted_predicates": [
+        "PreparedSourceNamespacePreservedOnNativeError",
+        "ExactLiveConfigurationAndImplementationBinding"
+      ],
+      "finding": "Live no-clobber/path guards do not resolve prepared namespace loss in the separate error fixture or establish exact current configuration."
+    },
+    {
+      "id": "WS-011",
+      "normative_source": {
+        "path": "docs/write-safety/README.md",
+        "selector": "WS-011"
+      },
+      "normative_text": "**WS-011 — Properties are part of the plan.** Existing-target edits preserve access\ncontrols, ownership/mode and applicable user metadata/streams when the profile can\ndo so; otherwise refuse or offer an explicit output with a different stated policy.\nDo not silently ignore ACL/attribute merge errors. Respect read-only flags rather\nthan clearing them as an editing shortcut.\n\nThe ordinary default updates filesystem modification time for a real content change.\nPreserving that time is explicit. Capture dates and application metadata dates do\nnot change unless requested or required by a stated format rule. Creation time is\npreserved where the profile promises it; access time, change time and object IDs\nhave platform semantics and are not universally preservable. Record relevant changes.\n\nNew staging/recovery artifacts use restrictive access. New sidecars/outputs default\nto a documented private-owner policy unless a different policy is explicitly selected;\nthey must not silently expose private metadata through broader inherited permissions.\nThis deliberate default protects metadata that may contain owner/location information.\nIt does not prescribe a cross-platform ACL implementation.\n\nUnder OD-11 option A, a new output must be ordinarily owner-editable after the\noperation; the sealed research descriptor is not the product policy. Sources remain\nuntouched. Do not silently clone source ACLs, ownership or filesystem streams; state\nthe supported new-output property set and refuse explicit unsupported carry-through.\nOrdinary private-owner permissions are not a security boundary against same-owner\nproperty edits. Boundary checks follow WS-009; default-stream/name protection and\nrequired persistence remain mandatory before committed can be reported.",
+      "applicability": "Fresh ordinary owner-editable private output; no copied source streams/ACLs or source-property mutation; boundary property checks.",
+      "code_refs": [
+        {
+          "path": "crates/imageinfo-windows-storage/src/windows.rs",
+          "selector": "check_plain; PrivateRoot::create; HeldArtifact::check"
+        },
+        {
+          "path": "src/storage/windows.rs",
+          "selector": "WindowsBackend::check"
+        },
+        {
+          "path": "src/storage/new_output.rs",
+          "selector": "prepare; NewOutputBuilder; PreparedNewOutput"
+        }
+      ],
+      "evidence_refs": [
+        "native-software",
+        "actual-vmoff",
+        "actual-native-errors",
+        "intended-caller-controls"
+      ],
+      "disposition": "unsupported-profile-with-bounded-evidence",
+      "missing_or_contradicted_predicates": [
+        "PreparedSourceNamespacePreservedOnNativeError",
+        "ExactLiveConfigurationAndImplementationBinding"
+      ],
+      "finding": "Option A does not continuously exclude same-owner property edits or detect edit/reversion. Native433 retained old-name bytes do not qualify prepared-name/property preservation."
+    },
+    {
+      "id": "WS-012",
+      "normative_source": {
+        "path": "docs/write-safety/README.md",
+        "selector": "WS-012"
+      },
+      "normative_text": "**WS-012 — Original before replacement.** Before replacing an existing target,\nestablish a verified, recoverable original including its required properties.\nDo not rely on a mutable hard link as the sole immutable recovery copy. New-target\ncreation records expected absence and retains any source inputs it needs; it has\nno previous destination to back up.\n\nDefault success retains a user-restorable original. An explicit `--no-backup` policy\nmeans discard the temporary original recovery copy only after successful finalization;\nit does not disable recovery during the transaction. It cannot be inherited silently\nfrom global configuration. Peak scratch space is still required. Failure retains\nneeded recovery material regardless of successful-cleanup policy.",
+      "applicability": "New destination has no prior destination backup. Expected absence and source retention remain necessary. Existing-target original/--no-backup policy is independent.",
+      "code_refs": [
+        {
+          "path": "src/storage/runtime.rs",
+          "selector": "ExpectedAbsent; execute_inner"
+        },
+        {
+          "path": "src/storage/windows.rs",
+          "selector": "WindowsBackend::preflight"
+        },
+        {
+          "path": "src/storage/new_output.rs",
+          "selector": "prepare; NewOutputBuilder; PreparedNewOutput"
+        }
+      ],
+      "evidence_refs": [
+        "actual-vmoff",
+        "actual-native-errors",
+        "intended-caller-controls"
+      ],
+      "disposition": "unsupported-profile-with-bounded-evidence",
+      "missing_or_contradicted_predicates": [
+        "PreparedSourceNamespacePreservedOnNativeError"
+      ],
+      "finding": "New-target applicability is explicit; no original recovery or replacement capability is granted."
+    },
+    {
+      "id": "WS-013",
+      "normative_source": {
+        "path": "docs/write-safety/README.md",
+        "selector": "WS-013"
+      },
+      "normative_text": "**WS-013 — Record and flush the boundary.** Record transaction/plan identity, owned\npaths, expected original/absence, candidate/recovery identities, relevant properties,\ngroup membership, phase, and retention policy. Use integrity-checked, access-restricted\nrecords with a supported persistence protocol. Guard acknowledgements are specific to\nthe current artifact and phase; an earlier flush is not a reusable Boolean.\n\nRequired candidate, recovery, and record flushes must succeed before publication.\nRecord publication intent before issuing the namespace operation. No new database,\nevent-sourcing framework, or exact journal format is selected here: a conventional\nsmall record can satisfy the contract if its behavior is demonstrated.",
+      "applicability": "Actual immutable B bindings, bounded records and ordered held-file/root/parent flushes NO-01 through NO-04; no reusable acknowledgement Boolean.",
+      "code_refs": [
+        {
+          "path": "src/storage/runtime.rs",
+          "selector": "LiveEvidence::complete/valid_prefix; record; execute_inner"
+        },
+        {
+          "path": "src/storage/windows.rs",
+          "selector": "WindowsBackend::flush_file/flush_root/flush_parent/caller_release"
+        },
+        {
+          "path": "src/storage/new_output.rs",
+          "selector": "prepare; NewOutputBuilder; PreparedNewOutput"
+        }
+      ],
+      "evidence_refs": [
+        "native-software",
+        "model-controls",
+        "actual-vmoff",
+        "actual-native-errors",
+        "intended-caller-controls"
+      ],
+      "disposition": "unsupported-profile-with-bounded-evidence",
+      "missing_or_contradicted_predicates": [
+        "NativeCandidateFileFlushError",
+        "NativeInstalledNamespaceFlushError",
+        "NativeReceiptFileFlushError",
+        "ExactLiveConfigurationAndImplementationBinding"
+      ],
+      "finding": "Ordered production implementation exists; all three actual native flush-error classes remain unproduced; successful calls and emulator drain EIO cannot fill them."
+    },
+    {
+      "id": "WS-014",
+      "normative_source": {
+        "path": "docs/write-safety/README.md",
+        "selector": "WS-014"
+      },
+      "normative_text": "**WS-014 — Publish one file at a time.** Publish the validated candidate using the\nprofile's guarded atomic visibility operation. Never expose a partially written\ncandidate under the final target name. Atomic visibility is a single-file namespace\nproperty, not multi-file atomicity or proof of power-loss durability.\n\nAfter publication, verify installed identity/content and required properties, obtain\nrequired namespace/metadata persistence acknowledgements, and persist the outcome\nreceipt before reporting committed. A successful low-level call alone is insufficient.\nOn an ambiguous error, interruption, failed post-check or flush failure after the\npublication boundary, report recovery-required and retain all relevant artifacts.",
+      "applicability": "Single complete candidate atomic visibility followed by NO-05 through NO-10 installed/file/root/receipt/final acknowledgements.",
+      "code_refs": [
+        {
+          "path": "src/storage/runtime.rs",
+          "selector": "execute_inner; Attempt"
+        },
+        {
+          "path": "src/storage/windows.rs",
+          "selector": "WindowsBackend::publish/check/checked_context/export_terminal"
+        },
+        {
+          "path": "src/storage/new_output.rs",
+          "selector": "prepare; NewOutputBuilder; PreparedNewOutput"
+        }
+      ],
+      "evidence_refs": [
+        "native-software",
+        "model-controls",
+        "actual-vmoff",
+        "actual-native-errors",
+        "intended-caller-controls"
+      ],
+      "disposition": "unsupported-profile-with-bounded-evidence",
+      "missing_or_contradicted_predicates": [
+        "PreparedSourceNamespacePreservedOnNativeError",
+        "NativeCandidateFileFlushError",
+        "NativeInstalledNamespaceFlushError",
+        "NativeReceiptFileFlushError",
+        "ExactLiveConfigurationAndImplementationBinding"
+      ],
+      "finding": "Normal unqualified protocol completion remains Refused, never Committed. A complete receipt cannot attest its own future flush. All actual missing/contrary predicates remain."
+    },
+    {
+      "id": "WS-015",
+      "normative_source": {
+        "path": "docs/write-safety/README.md",
+        "selector": "WS-015"
+      },
+      "normative_text": "**WS-015 — Recover by evidence.** On restart, inspect owned records and actual\nidentities rather than trusting the last recorded phase alone. Do not automatically\nrestore a backup over a target that may contain a later external edit.\n\n| Observed state under valid guards | Recovery action |\n| --- | --- |\n| Original identity/content/properties or expected absence is established | Record recovered-original. A retry needs fresh preflight; do not silently replay the mutation. |\n| Installed target matches the owned candidate, recovery material is valid, and final checks/flushes can complete | Finish finalization without republishing and record committed. |\n| Target is foreign, missing unexpectedly, mixed, uninspectable, or not attributable | Keep recovery-required; preserve artifacts and report the exact uncertainty. |\n| Record/artifact identity or ownership is invalid | Refuse automated repair or cleanup; do not follow arbitrary paths from an untrusted record. |\n\nCleanup removes only verified owned staging artifacts no longer needed for recovery.\nDo not delete by filename pattern alone. Cleanup failure after an otherwise committed\nwrite is a separate reported warning/pending task; it does not justify reapplying\nthe edit. This also matters for privacy when an old copy remains.",
+      "applicability": "Read-only bounded fresh inspection; explicit current trusted caller authority; fresh finalization without re-publication; no automatic repair from surviving receipt.",
+      "code_refs": [
+        {
+          "path": "src/storage/inspection.rs",
+          "selector": "Inspection; parse"
+        },
+        {
+          "path": "src/storage/custody.rs",
+          "selector": "TrustedCurrentCaller::authorize; ActionAuthority"
+        },
+        {
+          "path": "src/storage/finalization.rs",
+          "selector": "finalize; recognize; recognize_finalized"
+        },
+        {
+          "path": "src/storage/cleanup.rs",
+          "selector": "cleanup"
+        },
+        {
+          "path": "src/storage/new_output.rs",
+          "selector": "prepare; NewOutputBuilder; PreparedNewOutput"
+        }
+      ],
+      "evidence_refs": [
+        "native-software",
+        "model-controls",
+        "actual-vmoff",
+        "intended-caller-controls"
+      ],
+      "disposition": "unsupported-profile-with-bounded-evidence",
+      "missing_or_contradicted_predicates": [
+        "NativeInstalledNamespaceFlushError",
+        "NativeReceiptFileFlushError",
+        "ExactLiveConfigurationAndImplementationBinding"
+      ],
+      "finding": "Recreated175 processes retain MissingAuthority; two Namespace inspection refusals stay explicit. Surviving original-caller finalization is not authority imported after process/OS restart. Exact qualification and actual native flush failures remain missing."
+    },
+    {
+      "id": "WS-016",
+      "normative_source": {
+        "path": "docs/write-safety/README.md",
+        "selector": "WS-016"
+      },
+      "normative_text": "**WS-016 — Cancellation.** Honor cooperative cancellation before publication with\nno target publication. Once publication is in flight, complete the short safe\nfinalization or classify it recovery-required; do not interrupt into a knowingly\nambiguous rollback. After a forced process kill or VM-off interruption, recovery\ninspection makes a best-effort classification of the retained state. This is not\na physical-power survival or recovery guarantee. A cancelled batch may already\ncontain committed units and must say so.",
+      "applicability": "Cooperative cancellation before publication; once possible, finish short safe sequence or retain recovery uncertainty; forced-process/VM-off best-effort inspection.",
+      "code_refs": [
+        {
+          "path": "src/storage/mod.rs",
+          "selector": "Cancellation; UnitResult"
+        },
+        {
+          "path": "src/storage/runtime.rs",
+          "selector": "Attempt::step; execute_inner"
+        },
+        {
+          "path": "src/storage/qualification.rs",
+          "selector": "run_cell"
+        },
+        {
+          "path": "src/storage/new_output.rs",
+          "selector": "prepare; NewOutputBuilder; PreparedNewOutput"
+        }
+      ],
+      "evidence_refs": [
+        "native-software",
+        "model-controls",
+        "actual-vmoff",
+        "intended-caller-controls"
+      ],
+      "disposition": "unsupported-profile-with-bounded-evidence",
+      "missing_or_contradicted_predicates": [
+        "ExactLiveConfigurationAndImplementationBinding"
+      ],
+      "finding": "Eight process kills and three QMP quits are bounded actual evidence. QMP quit may drain/flush; it is not abrupt emulator termination or physical-power proof. No physical-power gate."
+    },
+    {
+      "id": "WS-019",
+      "normative_source": {
+        "path": "docs/write-safety/README.md",
+        "selector": "WS-019"
+      },
+      "normative_text": "**WS-019 — Restore and prune.** Restore is a new planned mutation: verify the backup,\nbind the current destination and preserve its current version by default. A later\nuser edit is not permission to overwrite it using an old receipt. Prune selects\nspecific verified backup IDs/paths, requires explicit application, and refuses\noriginal media or material needed by an unresolved transaction. Neither operation\nfollows arbitrary recovery paths or deletes unrelated files.",
+      "applicability": "Explicit unpublished prune and separately authorized selective completed-record cleanup. Restore is an independent planned mutation, outside new-output scope.",
+      "code_refs": [
+        {
+          "path": "src/storage/cleanup.rs",
+          "selector": "CleanupRequest; UnneededRecords; cleanup"
+        },
+        {
+          "path": "src/storage/custody.rs",
+          "selector": "RestartAction; TrustedCurrentCaller::authorize"
+        },
+        {
+          "path": "src/storage/new_output.rs",
+          "selector": "prepare; NewOutputBuilder; PreparedNewOutput"
+        }
+      ],
+      "evidence_refs": [
+        "native-software",
+        "actual-vmoff",
+        "intended-caller-controls"
+      ],
+      "disposition": "unsupported-profile-with-bounded-evidence",
+      "missing_or_contradicted_predicates": [
+        "ExactLiveConfigurationAndImplementationBinding"
+      ],
+      "finding": "Only exact selected freshly guarded owned handles; source/output/root/foreign material retained. Partial cleanup invalidates stale full context. No backup restore or pattern cleanup is admitted."
+    },
+    {
+      "id": "WS-022",
+      "normative_source": {
+        "path": "docs/write-safety/README.md",
+        "selector": "WS-022"
+      },
+      "normative_text": "**WS-022 — Report what happened.** Each unit reports target/source identity, requested\nand actual effects, current observed state, recovery artifacts, outstanding checks,\nand whether cleanup remains. Distinguish unchanged, refused, conflict, failed-before-\npublish, cancelled-before-publish, committed, recovered-original and recovery-required.\nPublication may have happened in the latter case; never summarize it as “no changes.”\n\nThe CLI's proposed exit codes remain: 0 for successful/unchanged work, 1 for total\noperation or output/warning-policy failure, 2 for invalid whole-request preflight,\n3 for partial batch failure,\n4 for a stale/conflicting plan, 5 for post-publication verification/durability or\nrecovery uncertainty, and 130 for interruption. Per-file results are authoritative;\ninterrupt/partial results can include committed files. The\n[CLI result contract](../cli-walkthroughs/results.md) now proposes mixed-error\nprecedence, giving recovery uncertainty priority without retrying committed effects.",
+      "applicability": "Per-unit internal status/phase/failure/possible-publication/retention/cleanup/charge facts, with current observed identities and typed residuals.",
+      "code_refs": [
+        {
+          "path": "src/storage/mod.rs",
+          "selector": "Status; UnitResult; Phase; Failure"
+        },
+        {
+          "path": "src/storage/cleanup.rs",
+          "selector": "CleanupResult; Residual"
+        },
+        {
+          "path": "src/storage/inspection.rs",
+          "selector": "Inspection; Survivor"
+        },
+        {
+          "path": "src/storage/new_output.rs",
+          "selector": "prepare; NewOutputBuilder; PreparedNewOutput"
+        }
+      ],
+      "evidence_refs": [
+        "native-software",
+        "model-controls",
+        "actual-vmoff",
+        "actual-native-errors",
+        "intended-caller-controls"
+      ],
+      "disposition": "unsupported-profile-with-bounded-evidence",
+      "missing_or_contradicted_predicates": [],
+      "finding": "Internal typed results cover the bounded protocol. Native candidate-flush cell retains no captured terminal; never fabricate one. Full public apply/CLI wire integration and batch exit policy remain independent, unimplemented here."
+    },
+    {
+      "id": "WS-023",
+      "normative_source": {
+        "path": "docs/write-safety/README.md",
+        "selector": "WS-023"
+      },
+      "normative_text": "**WS-023 — Keep recovery private and bounded.** Restrict staging, backups, records,\nand diagnostic output appropriately; saved plans can contain sensitive metadata.\nCheck storage availability and enforce resource limits. A full disk, inability to\npreserve required security properties, or failure to record recoverability stops\npublication. No hidden upload, unreviewed extension, or broad cleanup operation is\npart of recovery.",
+      "applicability": "Private ordinary owner output/recovery records; bounded construction and cumulative retention; advisory availability; retained uncertainty never refunded.",
+      "code_refs": [
+        {
+          "path": "src/storage/resources.rs",
+          "selector": "RetainedSession::start/run_windows/construct/capture_custody/adopt"
+        },
+        {
+          "path": "src/storage/mod.rs",
+          "selector": "LogicalBudget; MAX_RECORD_BYTES"
+        },
+        {
+          "path": "crates/imageinfo-windows-storage/src/windows.rs",
+          "selector": "PrivateRoot::create"
+        },
+        {
+          "path": "src/storage/new_output.rs",
+          "selector": "prepare; NewOutputBuilder; PreparedNewOutput"
+        }
+      ],
+      "evidence_refs": [
+        "native-software",
+        "model-controls",
+        "actual-native-errors",
+        "intended-caller-controls"
+      ],
+      "disposition": "unsupported-profile-with-bounded-evidence",
+      "missing_or_contradicted_predicates": [
+        "PreparedSourceNamespacePreservedOnNativeError",
+        "ExactLiveConfigurationAndImplementationBinding"
+      ],
+      "finding": "Actual resource owner charges candidate+9*65536 plus separately bounded constructions before effects; max256 operations. Logical accounting is not physical allocation quota, free-space reservation or automatic durable accounting. Actual staged native error retains contrary namespace observation."
+    },
+    {
+      "id": "WS-024",
+      "normative_source": {
+        "path": "docs/write-safety/README.md",
+        "selector": "WS-024"
+      },
+      "normative_text": "**WS-024 — Verify the backend, then enable it.** A supported profile must demonstrate\npublication visibility, concurrency/collision guarantees, property handling, flush\nsemantics, interrupted-operation recovery and bounded errors on its declared\nOS/filesystem/configuration under the accepted best-effort test scope. Power-related\nvalidation stops at VM-off tests; dedicated hardware, physical cuts and new NMI\ncampaigns are not required. Missing physical-power evidence is not a refusal gate.\nNo profile is marked verified by this proposal, and no API/library is selected.\nDocument the storage assumptions: software cannot promise survival of lying hardware,\nmedia failure or loss of every recovery copy.",
+      "applicability": "Code-defined exact configuration/operation admission from actual evidence and independent review before effects; current result unsupported.",
+      "code_refs": [
+        {
+          "path": "src/storage/admission.rs",
+          "selector": "select_profile; UNMET_PREDICATES; AdmittedByteSink"
+        },
+        {
+          "path": "src/storage/new_output.rs",
+          "selector": "prepare; NewOutputBuilder; PreparedNewOutput"
+        },
+        {
+          "path": "src/storage/admission/tests.rs",
+          "selector": "storage::admission::tests"
+        },
+        {
+          "path": "src/storage/new_output/tests.rs",
+          "selector": "storage::new_output::tests"
+        }
+      ],
+      "evidence_refs": [
+        "native-software",
+        "model-controls",
+        "actual-vmoff",
+        "actual-native-errors",
+        "historical-ledger",
+        "intended-caller-controls",
+        "selector-helper-controls"
+      ],
+      "disposition": "unsupported-profile-with-bounded-evidence",
+      "missing_or_contradicted_predicates": [
+        "PreparedSourceNamespacePreservedOnNativeError",
+        "NativeCandidateFileFlushError",
+        "NativeInstalledNamespaceFlushError",
+        "NativeReceiptFileFlushError",
+        "ExactLiveConfigurationAndImplementationBinding"
+      ],
+      "finding": "Matching caller labels cannot establish observed current OS/volume/controller/cache/executable or held operation bindings. No predicate closes from a Completed card, JSON status, success-return count or finite VM survival. No physical-power predicate is required. The integrated intended prepare caller owns refusal before deferred construction/accounting; helper-only checks are separately identified and do not establish this ordering. Existing unqualified native/protocol qualification remains available without any positive production grant."
+    }
+  ],
+  "retained_full_acceptance": {
+    "source": "#0022 retained original scope/acceptance, specialized only by accepted OD-11, Windows-only initial milestone and VM-off best-effort decisions",
+    "original_purpose": "Prove publication of a complete new CR3 output without replacing an existing name, before enabling the native writer.",
+    "original_acceptance": "Exercise applicable WS-001–024/SAF-005–009/015/016 against the actual backend. Document unsupported profiles and operation/property exclusions. New output success does not enable replacement, moves or secure erasure.",
+    "applicable_storage_clauses": [
+      "WS-009",
+      "WS-010",
+      "WS-011",
+      "WS-012",
+      "WS-013",
+      "WS-014",
+      "WS-015",
+      "WS-016",
+      "WS-019",
+      "WS-022",
+      "WS-023",
+      "WS-024"
+    ],
+    "other_ws_dispositions": [
+      {
+        "ids": [
+          "WS-001",
+          "WS-002",
+          "WS-003",
+          "WS-004",
+          "WS-005"
+        ],
+        "disposition": "Independent real format operation, explicit apply and no-op/preview semantics remain mandatory; this selector grants no operation or apply authority."
+      },
+      {
+        "ids": [
+          "WS-006",
+          "WS-007",
+          "WS-008"
+        ],
+        "disposition": "Independent metadata/opaque-data/sensor preservation and exact variant admission; current storage refusal cannot satisfy them."
+      },
+      {
+        "ids": [
+          "WS-017",
+          "WS-018"
+        ],
+        "disposition": "Pair/group/rename/cross-volume/source-delete remain outside this exact single-new-output operation; no positive capability inherited."
+      },
+      {
+        "ids": [
+          "WS-020",
+          "WS-021"
+        ],
+        "disposition": "Independent privacy residual and authenticity-bearing structure admission; generic byte sink does not authorize metadata removal or signature changes."
+      }
+    ],
+    "saf_trace": {
+      "path": "docs/write-safety/new-output-admission-saf.json"
+    },
+    "initial_platform": "Windows-only per accepted #0177; positive native Linux separately deferred, Windows-mounted WSL unsupported. No weakening of future positive guarantees.",
+    "power_scope": "VM-off best-effort only; physical-power absence is never a refusal gate. Historical NMI/power text stays historical, not a new campaign requirement.",
+    "restart_scope": "Trusted explicit current caller; no automatic durable custody, encryption/key/service gate invented. Receipt/history parsing is never authority.",
+    "completion_limit": "Unsupported exact selector is the concrete #0176 result; it is not positive #0022 integration, RAW/XMP admission or downstream byte-sink grant."
+  },
+  "intended_caller": {
+    "path": "src/storage/new_output.rs",
+    "selector": "prepare; NewOutputIntent; NewOutputBuilder; PreparedNewOutput",
+    "ordering": "prepare invokes select_profile before deferred construct, source/target opens, backend/candidate construction or retained-budget charge. Builder construction must be inert; effectful work belongs only in construct.",
+    "capability_limit": "No positive preparation/execution path exists. PreparedNewOutput privately retains the uninhabited storage capability. Qualification runtime paths remain separately unqualified; this seam is intended integration, not an existing RAW/XMP/public apply implementation."
+  }
+}

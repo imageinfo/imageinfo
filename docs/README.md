@@ -14,6 +14,8 @@ The first camera/format target is **Canon EOS R5 CR3**.
 
 | Document | Purpose |
 | --- | --- |
+| [Exact new-output admission](write-safety/new-output-admission.md) | #0176 integrated selector/caller refusal with five concrete unresolved predicates; positive backend admission remains unfulfilled. |
+| [Preview entropy qualification](fixture-plan/preview-entropy-qualification.md) | #0075 versioned authored warning-aware validator method and separately gated private assertion; no root decoder capability. |
 | [Production interruption qualification](write-safety/production-vmoff-qualification.md) | #0175 fixed production-runtime process/VM-off cells, separate retained-artifact reconciliation and explicit unqualified profile boundaries. |
 | [Compatibility coverage audit](legacy-compatibility/coverage-audit.md) | #0141 source-exact LG/GAP requirements, current native denominators and individually owned residuals; no parity acceptance. |
 | [Offline startup observations](performance/offline-startup-observations.md) | #0143 actual fixed help/version process measurements, separate frozen protocol and distinct first-byte, output and exit endpoints. |

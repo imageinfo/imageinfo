@@ -98,6 +98,15 @@ jobs:
           python scripts/check_compatibility_coverage.py --schema --self-test
           python scripts/check_read_limits_supplement.py
           python scripts/check_retained_review_policy.py
+          python scripts/check_new_output_admission.py
+      - name: Check finite preview-validator pure controls
+        shell: bash
+        run: |
+          python experiments/0075-preview-entropy/test_syntax.py
+          python experiments/0075-preview-entropy/test_corruption.py
+          python experiments/0075-preview-entropy/test_audit.py
+          python experiments/0075-preview-entropy/test_process_controls.py
+          python experiments/0075-preview-entropy/test_decoder.py
       - name: Check finite interruption and measurement controls
         shell: bash
         run: |

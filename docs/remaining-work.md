@@ -76,6 +76,18 @@ retains its original historical baseline.
 
 ## Count the queue consistently
 
+The eighth execution wave selects #0176 and #0075 from the existing queue after
+Terry accepts all six seventh-wave handoffs. Both move In Progress before work;
+this leaves 43 Ready for Work cards (33 executable scopes and ten umbrellas).
+Sixteen implementation components are followed by fresh independent review.
+#0176's acceptance explicitly permits a concrete unsupported selector/caller
+result when actual necessary predicates remain contrary or missing; that branch
+does not satisfy the positive #0022/backend or downstream format acceptance.
+#0075 uses its already answered permission while separately qualifying a bounded
+technical validator profile before the exact private cell. No camera not-run or
+profile mismatch completes that actual assertion. No replacement implementation
+batch, release or new product permission is introduced.
+
 The seventh execution wave selects seven existing scopes: #0175, #0141,
 #0143, #0151, #0152, #0158 and the exact publication preparation for #0161.
 All move In Progress before work or delegation. This leaves 45 Ready for Work
