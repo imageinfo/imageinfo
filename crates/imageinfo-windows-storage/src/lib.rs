@@ -93,7 +93,7 @@ mod native;
 #[cfg(windows)]
 pub(crate) mod windows;
 #[cfg(windows)]
-pub use windows::{GuardedSource, HeldArtifact, PrivateRoot};
+pub use windows::{ExistingRoot, GuardedSource, HeldArtifact, PrivateRoot, available_bytes};
 #[cfg(windows)]
 mod existing_move;
 #[cfg(windows)]

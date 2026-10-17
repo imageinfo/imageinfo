@@ -1,0 +1,731 @@
+{
+  "schemaVersion": 1,
+  "ticket": "#0122",
+  "referenceVersion": "13.59",
+  "referenceRevision": "2200871d9cef988051d2a99d67df3bda6cbb30a8",
+  "binarySha256": "382759c18bfc521b4959c80a5e4431b190e597368800f3c739e2e4ebc49cf4d1",
+  "checkerSha256": "3fe41b3ca282f0b4b82bccb0cc1099336041d62226fe4025d67c409fdd02370c",
+  "ledgerSha256": "c7494cda6ce8811d73c7871e56f2cd20ef299852ca870a4ca8984fe732b9d04b",
+  "fixtureSupportSha256": "c8354d2609aa664d1b86ceca75a7d9500973fcf222cdd267ce9b3c7bafe34104",
+  "fixtureSha256": "7781896f985d5af5153e17b8959df04053fe8418262ca99a7ef2290d853992af",
+  "tools": {
+    "exiftool-13.59": {
+      "manifestSha256": "b55345e4b02d221ffa4cc7c444858337329b433d2d4877ce7a6dc03cce2827ed",
+      "files": 249
+    },
+    "installed-perl": {
+      "manifestSha256": "6f4eb552f97a25039ba1c786765a61cd6a1419f5837e75e25da0191f9e91e691",
+      "files": 462
+    },
+    "json-pp": {
+      "manifestSha256": "dcb168d2cb67fe46d6de6c540e23b0f97ac3fa7b7a6d04b8f0c0f28d6ecb1fb2",
+      "files": 4
+    }
+  },
+  "oracleRejectionControls": 43,
+  "oracleRejectionControlIds": [
+    "RR-001:wrong-input",
+    "RR-001:false-complete",
+    "RR-001:false-effect",
+    "RR-001:wrong-raw-value",
+    "RR-001:raw-invalid-state",
+    "RR-001:raw-wrong-type",
+    "RR-001:normalized-invalid-state",
+    "RR-001:normalized-wrong-type",
+    "RR-001:wrong-normalized-value",
+    "RR-001:both-invalid-states",
+    "RR-001:unrequested-display",
+    "RR-001:reference-wrong-input",
+    "RR-004:ctmd-as-exif",
+    "RR-004:wrong-group",
+    "RR-004:wrong-native-id",
+    "RR-004:wrong-definition",
+    "RR-004:wrong-ordinal",
+    "RR-004:wrong-occurrence-id",
+    "RR-004:duplicated-exif-occurrence",
+    "RR-015:display-0-text-str",
+    "RR-015:display-0-text-int",
+    "RR-015:display-0-locale-int",
+    "RR-015:display-0-timeZone-str",
+    "RR-015:display-0-formatterRef-str",
+    "RR-015:display-0-state-str",
+    "RR-015:display-1-text-str",
+    "RR-015:display-1-text-int",
+    "RR-015:display-1-locale-int",
+    "RR-015:display-1-timeZone-str",
+    "RR-015:display-1-formatterRef-str",
+    "RR-015:display-1-state-str",
+    "RR-025:display-0-text-str",
+    "RR-025:display-0-text-int",
+    "RR-025:display-0-locale-int",
+    "RR-025:display-0-timeZone-str",
+    "RR-025:display-0-formatterRef-str",
+    "RR-025:display-0-state-str",
+    "RR-025:display-1-text-str",
+    "RR-025:display-1-text-int",
+    "RR-025:display-1-locale-int",
+    "RR-025:display-1-timeZone-str",
+    "RR-025:display-1-formatterRef-str",
+    "RR-025:display-1-state-str"
+  ],
+  "sourceSha256": {
+    "Cargo.lock": "28e48ee1d73a3f1160157fe206a860406c428a9918e52ac4103850b2441272ab",
+    "src/cli.rs": "d891461f5f83b0e92fd5b81b43236aab408024dd5cf81033d321f775abbe749c",
+    "src/app.rs": "824655b6f49fa3dac92c599ac88a7d52787726db851740d2acf8c3aa7af4e28d",
+    "src/reader/mod.rs": "a1377465287cf87ac1d44698aeea5d4cb017d6ce9c74888ab9ce79ed5b3e84a3",
+    "src/reader/wire.rs": "c5c3c2adacec69a48d9a4a0586ce0f47f2023e065c83174a64602bccb9d13944",
+    "src/reader/bmff.rs": "4c7eb8bee983af5d52f3ae20b9259a1aef5b832b5508e56c717e84c63fee29b7",
+    "src/reader/tiff.rs": "7d595889277ae3b326e53864da921d4f471bfcc40312fa5ee5df908ef78ee0fb",
+    "src/reader/tracks.rs": "50599aedea1ad5c9976130f4b933701def645df76bf8f3b3243cd954712d17e3"
+  },
+  "cases": [
+    {
+      "id": "RR-001",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json",
+      "classification": "finite-native-difference",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 150,
+          "stderrBytes": 0,
+          "stdoutSha256": "8fe26fff82b9750dee697bcd5e33d4e13d1e2cf00e85f9414b07135a23241dff",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 9962,
+          "stderrBytes": 0,
+          "stdoutSha256": "dfd6c700949fa7caefa3c505daf896ce2f52cd79c1c09b59965fb41a7ad397e9",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "RR-002",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json",
+      "classification": "finite-native-difference",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 137,
+          "stderrBytes": 0,
+          "stdoutSha256": "a03a0cf256dfca48474f95b73256678969e27f0b49f146d6d566306c5fc2ecda",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 9955,
+          "stderrBytes": 0,
+          "stdoutSha256": "113becd4aabf06060afa9e47505353fe4bd6749a487ed3eafe1cbab87b95403b",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "RR-003",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 2,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json+stderr",
+      "classification": "native-refusal",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 150,
+          "stderrBytes": 0,
+          "stdoutSha256": "dc1925bf710be4ad30926ac95d52ae3bc41800a1ac2600c809f791369a3982de",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 624,
+          "stderrBytes": 46,
+          "stdoutSha256": "1be6a88f923dc5e5e227751fa618328927a47d684157104f055831d4aecc26f3",
+          "stderrSha256": "ecdeb04fb9dd98994d66cbaf16c451c025b6c6cd86605235b34426a26ef66b96"
+        }
+      }
+    },
+    {
+      "id": "RR-004",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json",
+      "classification": "finite-native-difference",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 137,
+          "stderrBytes": 0,
+          "stdoutSha256": "bffe63bac30db29a88cece7baba896a31a02597777194c73fe626b7cee74641c",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 11009,
+          "stderrBytes": 0,
+          "stdoutSha256": "5c246e22a3c49b26be715d6283fccb4ce6ce17d7c7e4e0956176531eb57cdc70",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "RR-005",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json",
+      "classification": "finite-native-difference",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 137,
+          "stderrBytes": 0,
+          "stdoutSha256": "d22347a9b0f67b7eadcab7cbd67551dfac45d55a22be75b7aacaaf997c9e261d",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 11014,
+          "stderrBytes": 0,
+          "stdoutSha256": "2bea7a922f26a325ca850b7dd49d6065392643eccb58c12cc42519744b750b65",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "RR-006",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json",
+      "classification": "finite-native-difference",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 165,
+          "stderrBytes": 0,
+          "stdoutSha256": "d0bc2113cdce77007633119da94fd4ba8090298003071320c90d735a911a98e0",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 12091,
+          "stderrBytes": 0,
+          "stdoutSha256": "f008969860f53788f280f8fda9c90040eabef994c17a5a29424d3f3d03e4a34b",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "RR-007",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json",
+      "classification": "finite-native-difference",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 165,
+          "stderrBytes": 0,
+          "stdoutSha256": "b0f457795b49c3fb72b12d2fe9b041a50140eaaa5083c23da2400ca7bc5cbd40",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 12086,
+          "stderrBytes": 0,
+          "stdoutSha256": "5bc8a49305f4339748c89354aeb56573f7f09a922fac81133e95132bdf9d8900",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "RR-008",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json",
+      "classification": "finite-native-difference",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 137,
+          "stderrBytes": 0,
+          "stdoutSha256": "cbb13f031b1782bffd5c6433d7a33d3a31f4c9c56bfdad1fc8e481f154c082b9",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 11014,
+          "stderrBytes": 0,
+          "stdoutSha256": "be0fba6b5bd5e7832f7a2a517f0108ed83e54e94dde0bf96bb1f9c65ced50c27",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "RR-009",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 2,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json+stderr",
+      "classification": "native-refusal",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 150,
+          "stderrBytes": 0,
+          "stdoutSha256": "f0ec52a057dc1af0aa873dd9c0fbd35ba0053cffa1885caff4dc8a08acd518aa",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 782,
+          "stderrBytes": 211,
+          "stdoutSha256": "32c986581d554ab40f3c1fbada883665d39c06d4102950082368344d353ce052",
+          "stderrSha256": "80ee528aa47abe65f65133eaeb1f943ee2782dd5381618ae2556567961f3f083"
+        }
+      }
+    },
+    {
+      "id": "RR-010",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json",
+      "classification": "finite-native-difference",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 119,
+          "stderrBytes": 0,
+          "stdoutSha256": "b24b5a1a50b0c6afdacab97e093263fdbd7ea8b29faf4837b8f30c29b5ff9923",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 12086,
+          "stderrBytes": 0,
+          "stdoutSha256": "893c4e192f531fec40d8dbb44a959f7a490612eb98dbbbc8b62a398def14ce6f",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "RR-011",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 2,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json+stderr",
+      "classification": "native-refusal",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 122,
+          "stderrBytes": 0,
+          "stdoutSha256": "092a35ff5df9beadeaf8f0d675d4ed110f0aed7e7ac49dd3ec80ac36369e1480",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 782,
+          "stderrBytes": 211,
+          "stdoutSha256": "b7499f02a551a2ff40e5c5eb1ddfb3ceda63952f41e36d5d75d325e3db028066",
+          "stderrSha256": "fd364481769d1b26957171d3dad4e98d04407645f4bd3b4dbf19d6b15f2b20ae"
+        }
+      }
+    },
+    {
+      "id": "RR-012",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 2,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json+stderr",
+      "classification": "native-refusal",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 165,
+          "stderrBytes": 0,
+          "stdoutSha256": "5c717cd7e0045628eaade2472ad20f4d5586e6cbe37c2e72a4e290f395ad77c1",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 782,
+          "stderrBytes": 211,
+          "stdoutSha256": "f76261951aa3232bd2b5201ed721a6cef33924cdbb07796b3e561d237b1150cc",
+          "stderrSha256": "8833f91ea2451228e82ad005ac968c511ca50758d368415bc0ce958186913ffa"
+        }
+      }
+    },
+    {
+      "id": "RR-013",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json",
+      "classification": "finite-native-difference",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 148,
+          "stderrBytes": 0,
+          "stdoutSha256": "7be65b52ffa2cf1395ec56ead1db655c2475a48d4a25c7c2f03a200aefeed19f",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 11145,
+          "stderrBytes": 0,
+          "stdoutSha256": "0e55347603f2c7e105f4a30c3f17dcfe385fafeff629be04687f0816f7629d9a",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "RR-014",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json",
+      "classification": "finite-native-difference",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 148,
+          "stderrBytes": 0,
+          "stdoutSha256": "57453127829e328bda1a523d9999db9313c03f7ed86411e371e673d6272eaf5b",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 11145,
+          "stderrBytes": 0,
+          "stdoutSha256": "91e5f718a3af08d87c13ed3d4faa1c004533d14295f4244412c8ae63dd0a45bd",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "RR-015",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json",
+      "classification": "finite-native-difference",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 150,
+          "stderrBytes": 0,
+          "stdoutSha256": "ffc00adcbd650d5b8b50271a3ee5dc36c1e4fbc92068a8444ed2c0b6880a8a7e",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 11248,
+          "stderrBytes": 0,
+          "stdoutSha256": "8960b42117c5f8c3b723424681aac9f95f88bcf284fee467981bc060d8a30fec",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "RR-016",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 2,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json+stderr",
+      "classification": "native-refusal",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 159,
+          "stderrBytes": 0,
+          "stdoutSha256": "405cf004d3a1fc269a2f3c6bfe33fd0e4a2224976d7a60c012fd73965132dc24",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 782,
+          "stderrBytes": 211,
+          "stdoutSha256": "2cf67691d0f4dc9c531f1bef307217e154429ed496400e9c10a75c3a3e7cd48e",
+          "stderrSha256": "161156711043db9e4ece009300d7bda4b78b83822a4fb585532b03f6ce54a6be"
+        }
+      }
+    },
+    {
+      "id": "RR-017",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 2,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json+stderr",
+      "classification": "native-refusal",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 150,
+          "stderrBytes": 0,
+          "stdoutSha256": "c3dd9c8af2f03f21fcf7c1414e109049f878ee3995119c697bd713fd418dd9b1",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 782,
+          "stderrBytes": 211,
+          "stdoutSha256": "afeb932c7a9726ff8504166267c55d99dcdd36c9b8cbb1f2e40cf28bda9cf0c7",
+          "stderrSha256": "8833f91ea2451228e82ad005ac968c511ca50758d368415bc0ce958186913ffa"
+        }
+      }
+    },
+    {
+      "id": "RR-018",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 2,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json+stderr",
+      "classification": "native-refusal",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 150,
+          "stderrBytes": 0,
+          "stdoutSha256": "842acb446ca88ba1a8de2bfae4cfdd578a8f0b9ade72e444a7a0851040867792",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 782,
+          "stderrBytes": 211,
+          "stdoutSha256": "7343dc4f3ae2a6c5c88edd6027ec3517456c095546329f046aab280e165701cd",
+          "stderrSha256": "8833f91ea2451228e82ad005ac968c511ca50758d368415bc0ce958186913ffa"
+        }
+      }
+    },
+    {
+      "id": "RR-019",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 2,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json+stderr",
+      "classification": "native-refusal",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 150,
+          "stderrBytes": 0,
+          "stdoutSha256": "3d5256cbbc0bcd88ffe201ebef156b1f27993804af0c0fe3d4eff1e801003225",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 782,
+          "stderrBytes": 211,
+          "stdoutSha256": "9b36fd799cd5459fd146b2ce9afc1209cba132b147bc9d37249b5e2d665d5603",
+          "stderrSha256": "5e2f599fabc61f66805b717378526831c303fd0f602a57ce6510fe2fde1f6f0d"
+        }
+      }
+    },
+    {
+      "id": "RR-020",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 2,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json+stderr",
+      "classification": "native-refusal",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 137,
+          "stderrBytes": 0,
+          "stdoutSha256": "09e57c1e0feeab2af07868a8a53a0251000b19566212329bef565e985d2de9b1",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 782,
+          "stderrBytes": 211,
+          "stdoutSha256": "7ebf33268b0c57d08e0ea88b49d503c6cf14a8081e8985ac15c34156e48d280f",
+          "stderrSha256": "4a3057a2b4dea2bdfcc111b8ddc77df64d6347d909b9cabf3b5b10f9c3f468a3"
+        }
+      }
+    },
+    {
+      "id": "RR-021",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 2,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json+stderr",
+      "classification": "native-refusal",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 155,
+          "stderrBytes": 0,
+          "stdoutSha256": "d85bb4415bd62244bbd4eaa3b02bfe266fc921df46a639bef148df682c6ccecb",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 782,
+          "stderrBytes": 211,
+          "stdoutSha256": "4993423bcc7221d49873dc7a83959723c90631edc5b41f7a20578c8961a74e7f",
+          "stderrSha256": "e2b59e15ce0296368efc971c69bf9d11963816460baa0f5c4f2de066f15d8b99"
+        }
+      }
+    },
+    {
+      "id": "RR-022",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 2,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json+stderr",
+      "classification": "native-refusal",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 170,
+          "stderrBytes": 0,
+          "stdoutSha256": "f28514ddfa7e036d18d63249e819182b0905d2c4e0eda7e9098fa2783b28ed5d",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 782,
+          "stderrBytes": 211,
+          "stdoutSha256": "40f6da753bd9b2a55a9e370ef975b942ceca80b1f198d8d8f2da3d3ee6dd3f48",
+          "stderrSha256": "fd364481769d1b26957171d3dad4e98d04407645f4bd3b4dbf19d6b15f2b20ae"
+        }
+      }
+    },
+    {
+      "id": "RR-023",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 2,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json+stderr",
+      "classification": "native-refusal",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 148,
+          "stderrBytes": 0,
+          "stdoutSha256": "0bebed7eb630d2e32ddc9822be7bd8907c136b30a08613c2d85341adf6d949a2",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 782,
+          "stderrBytes": 211,
+          "stdoutSha256": "f51cbb6c2eabe6a0e60e1d03cbe6479a9415b822a318ab6dc669220be9476be4",
+          "stderrSha256": "f4da142d0031494a1fc33aa3d6cfa843779b131546e5f0c951292feeb7b507a9"
+        }
+      }
+    },
+    {
+      "id": "RR-024",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json",
+      "classification": "finite-native-difference",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 148,
+          "stderrBytes": 0,
+          "stdoutSha256": "03fadecc5a5f58ca1ee4a168002512e0a9a19a9f499ff5b790af793a5968f986",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 11145,
+          "stderrBytes": 0,
+          "stdoutSha256": "b447ae95eeb4d2952c7b3e798634cd561dfad744ccd0035fba15ba35c634c894",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "RR-025",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json",
+      "classification": "finite-native-difference",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 150,
+          "stderrBytes": 0,
+          "stdoutSha256": "2e2fc8b5ad7dd26a5de5abe87aa54bb233ed5fae9f2a8c9a3c1ff282b423a2d5",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 11253,
+          "stderrBytes": 0,
+          "stdoutSha256": "1657de0279d30e7acff95cbc98ef5905bed882e02be083d33cde5d2e7fcfeca3",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "RR-026",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json",
+      "classification": "finite-native-difference",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 122,
+          "stderrBytes": 0,
+          "stdoutSha256": "0898a7ea75184fb0abb78d34e84a376679de675517ae6db3d4e8d85f68dc2311",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 9100,
+          "stderrBytes": 0,
+          "stdoutSha256": "23c06d973f6d1eea6abf3c459a54fa46ac7cc8f244fdb1a108c01f3da22c606f",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "RR-027",
+      "passed": true,
+      "referenceStatus": 0,
+      "nativeStatus": 2,
+      "referenceChannel": "stdout",
+      "nativeChannel": "json+stderr",
+      "classification": "native-refusal",
+      "effects": "unchanged-authored-inventory-and-measured-properties",
+      "captures": {
+        "reference": {
+          "stdoutBytes": 150,
+          "stderrBytes": 0,
+          "stdoutSha256": "6e1d9d6cc54925802a4189d359ab9d5d8597c55e1ac9c71856dc196158294503",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native": {
+          "stdoutBytes": 658,
+          "stderrBytes": 83,
+          "stdoutSha256": "06cc065b312c1ccdd02e8b85b8e8f55f1f77aa743e7d20279c9a41f9b9ef1e6a",
+          "stderrSha256": "296ac49667421ef8122b99756819d563ac7a7c5818711960d70e22000eddb812"
+        }
+      }
+    }
+  ]
+}

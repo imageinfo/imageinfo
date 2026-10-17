@@ -354,6 +354,10 @@ jobs:
         run: cargo build --locked --release
       - name: Qualify authored preview and pair arguments
         run: python scripts/check_preview_pair_arguments.py
+      - name: Check current operation result profiles
+        run: python -c "import os,pathlib,subprocess,sys; binary=pathlib.Path('target/release/imageinfo'+('.exe' if os.name=='nt' else '')).resolve(); subprocess.run([sys.executable,'scripts/check_result_profiles.py','--binary',str(binary),'--check-current'],check=True)"
+      - name: Check authored difference and native-error tooling syntax
+        run: python -m compileall -q scripts/check_read_reference.py scripts/check_stored_preview_differences.py experiments/0174-native-errors
       - name: Check authored read-resource grid
         run: python -c "import os,pathlib,subprocess,sys; os.environ['IMAGEINFO_144_BINARY']=str(pathlib.Path('target/release/imageinfo'+('.exe' if os.name=='nt' else '')).resolve()); subprocess.run([sys.executable,'scripts/test_read_resources_144.py'],check=True)"
       - name: Check Linux scope refusal tooling syntax

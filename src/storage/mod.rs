@@ -39,10 +39,14 @@ impl LogicalBudget {
         self.charged
     }
 
-    fn reserve_unit(&mut self, candidate_len: u64) -> Result<u64, Failure> {
-        let amount = candidate_len
+    pub(crate) fn unit_charge(candidate_len: u64) -> Result<u64, Failure> {
+        candidate_len
             .checked_add(8 * MAX_RECORD_BYTES)
-            .ok_or(Failure::LengthOverflow)?;
+            .ok_or(Failure::LengthOverflow)
+    }
+
+    /// Charge before invoking any constructor. Failures never roll charges back.
+    pub(crate) fn reserve_construction(&mut self, amount: u64) -> Result<(), Failure> {
         let next = self
             .charged
             .checked_add(amount)
@@ -51,7 +55,36 @@ impl LogicalBudget {
             return Err(Failure::BudgetExhausted);
         }
         self.charged = next;
+        Ok(())
+    }
+
+    fn reserve_unit(&mut self, candidate_len: u64) -> Result<u64, Failure> {
+        let amount = Self::unit_charge(candidate_len)?;
+        self.reserve_construction(amount)?;
         Ok(amount)
+    }
+
+    /// Both unit allowances and the bounded manifest are charged atomically.
+    /// Returned helpers limit bytes; the group caller owns their one-time use.
+    /// Creating them cannot reset the cumulative owner retaining the full sum.
+    pub(crate) fn reserve_group(
+        &mut self,
+        candidate_lengths: [u64; 2],
+        manifest_len: u64,
+    ) -> Result<[Self; 2], Failure> {
+        if manifest_len > MAX_RECORD_BYTES {
+            return Err(Failure::RecordTooLarge);
+        }
+        let amounts = [
+            Self::unit_charge(candidate_lengths[0])?,
+            Self::unit_charge(candidate_lengths[1])?,
+        ];
+        let total = amounts[0]
+            .checked_add(amounts[1])
+            .and_then(|n| n.checked_add(manifest_len))
+            .ok_or(Failure::LengthOverflow)?;
+        self.reserve_construction(total)?;
+        Ok([Self::new(amounts[0]), Self::new(amounts[1])])
     }
 }
 
@@ -72,6 +105,7 @@ pub enum Failure {
     LengthOverflow,
     CandidateTooLarge,
     BudgetExhausted,
+    StorageUnavailable,
     ShortSource,
     OverlongSource,
     SourceIo,
@@ -146,6 +180,14 @@ pub enum Phase {
 // exists. Keep the unsafe/native boundary in the separate reviewed crate.
 #[allow(dead_code)]
 pub(crate) mod custody;
+#[allow(dead_code)]
+pub(crate) mod group;
+#[allow(dead_code)]
+pub(crate) mod inspection;
+#[cfg(all(test, windows))]
+mod native_errors;
+#[allow(dead_code)]
+pub(crate) mod resources;
 #[allow(dead_code)]
 pub(crate) mod runtime;
 #[cfg(windows)]

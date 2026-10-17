@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/imageinfo/imageinfo/raw/main/docs/legacy-compatibility/result-profiles/pair.schema.v1.json",
+  "title": "Current bounded native pair result envelope v1",
+  "description": "Exact current emitted operation subset; cross-record and observed-object semantics require the companion checker.",
+  "allOf": [
+    {
+      "$ref": "https://github.com/imageinfo/imageinfo/raw/main/docs/legacy-compatibility/result.schema.json#/$defs/envelope"
+    },
+    {
+      "properties": {
+        "request": {
+          "properties": {
+            "operation": {
+              "const": "sidecar pair"
+            },
+            "mode": {
+              "const": "read"
+            },
+            "issues": {
+              "const": []
+            }
+          }
+        },
+        "files": {
+          "maxItems": 1,
+          "minItems": 1,
+          "items": {
+            "properties": {
+              "state": {
+                "enum": [
+                  "read",
+                  "refused"
+                ]
+              },
+              "snapshot": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "https://github.com/imageinfo/imageinfo/raw/main/docs/legacy-compatibility/result.schema.json#/$defs/explicitPairSnapshot"
+                  }
+                ]
+              },
+              "transactionId": {
+                "type": "null"
+              },
+              "effects": {
+                "const": {
+                  "publicationMayHaveOccurred": false,
+                  "changed": false,
+                  "cleanupPending": false,
+                  "recoveryIds": [],
+                  "notes": []
+                }
+              }
+            }
+          }
+        },
+        "summary": {
+          "properties": {
+            "exitStatus": {
+              "enum": [
+                0,
+                1
+              ]
+            },
+            "selectionComplete": {
+              "const": true
+            },
+            "interrupted": {
+              "const": false
+            },
+            "outputComplete": {
+              "const": true
+            },
+            "issues": {
+              "const": []
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "discovered": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 1
+                },
+                "excluded": {
+                  "const": 0
+                },
+                "deduplicated": {
+                  "const": 0
+                },
+                "byState": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "read": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 1
+                    },
+                    "refused": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 1
+                    }
+                  },
+                  "required": []
+                }
+              },
+              "required": [
+                "discovered",
+                "excluded",
+                "deduplicated",
+                "byState"
+              ]
+            },
+            "artifacts": {
+              "const": []
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -12,7 +12,22 @@ use std::{
     path::{Path, PathBuf},
 };
 
+#[cfg(test)]
+thread_local! {
+    static LAST_NATIVE_ERROR: std::cell::RefCell<Option<(io::ErrorKind, Option<i32>)>> =
+        const { std::cell::RefCell::new(None) };
+}
+
+#[cfg(test)]
+pub(crate) fn take_native_error() -> Option<(io::ErrorKind, Option<i32>)> {
+    LAST_NATIVE_ERROR.with(|slot| slot.borrow_mut().take())
+}
+
 fn classify(error: io::Error) -> Failure {
+    #[cfg(test)]
+    LAST_NATIVE_ERROR.with(|slot| {
+        *slot.borrow_mut() = Some((error.kind(), error.raw_os_error()));
+    });
     match error.kind() {
         io::ErrorKind::Unsupported => Failure::Unsupported,
         io::ErrorKind::AlreadyExists => Failure::Conflict,
@@ -72,6 +87,13 @@ pub(crate) struct WindowsBackend {
 }
 
 impl WindowsBackend {
+    /// Read-only advisory for the actual selected output parent. This neither
+    /// reserves storage nor replaces the runtime's later native parent guards.
+    pub(crate) fn available_bytes(&self) -> Result<u64, Failure> {
+        let parent = self.root_path.parent().ok_or(Failure::InvalidBinding)?;
+        imageinfo_windows_storage::available_bytes(parent).map_err(classify)
+    }
+
     pub(crate) fn new(source: &Path, root: &Path) -> Self {
         Self {
             source_path: source.into(),

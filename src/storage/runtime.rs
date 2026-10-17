@@ -318,7 +318,7 @@ impl Attempt {
     }
 }
 
-fn field(out: &mut Vec<u8>, value: &[u8]) -> Result<(), Failure> {
+pub(super) fn field(out: &mut Vec<u8>, value: &[u8]) -> Result<(), Failure> {
     let len = u32::try_from(value.len()).map_err(|_| Failure::RecordTooLarge)?;
     let total = out
         .len()

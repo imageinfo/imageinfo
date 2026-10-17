@@ -14,6 +14,14 @@ The first camera/format target is **Canon EOS R5 CR3**.
 
 | Document | Purpose |
 | --- | --- |
+| [Production restart inspection](write-safety/production-restart-inspection.md) | #0170 bounded read-only held-object collection, exact record parsing and current-caller survivor classification; failed rechecks permanently close that inspection, with no restart mutation. |
+| [Retained resource accounting](write-safety/production-resource-retention.md) | #0173 cumulative logical charges across retained work, failures and cleanup, exact adoption and advisory Windows availability; no physical quota or durable global ledger. |
+| [Production guest native errors](write-safety/production-native-errors.md) | #0174 actual read/construction errors, negative staged-source namespace evidence and unproduced native flush-error classes; exact-profile admission remains refused. |
+| [Fixed two-unit runtime](write-safety/two-unit-runtime.md) | #0179 both-stage-before-publication orchestration and explicit receipt-bound resume, retaining failed-finalizer evidence and cancelled contexts; no pair adapter or group atomicity. |
+| [Authored read/reference differences](legacy-compatibility/read-reference.md) | #0122 pinned actual native/reference metadata comparisons with occurrence, group, typed-value and effect oracles; finite authored inputs without parity adoption. |
+| [Stored-preview differences](legacy-compatibility/stored-preview-differences.md) | #0123 exact padded-byte and output-count comparisons across three authored resources, with explicit native/reference argument differences. |
+| [Session token admission](legacy-compatibility/session-token-admission.md) | #0125 actual startup/request reconciliation, independently bound paths and values, and explicit unsupported legacy/session forms. |
+| [Operation result profiles](legacy-compatibility/result-profiles.md) | #0127 five exact composed native operation envelopes, actual CLI examples and schema/semantic rejection controls; no importer or mutation authority. |
 | [Live publication acknowledgements](write-safety/live-acknowledgements.md) | #0168 joined native protocol with phase/object/revision-bound completion evidence; positive admission is test-only and public apply remains gated. |
 | [Current caller custody](write-safety/caller-custody.md) | #0169 exact bounded current authority and actual owned-child stop/release history; no transaction importer or restart mutation. |
 | [Existing-target property refusal](write-safety/existing-target-properties.md) | #0196 mandatory pre-effect unsupported boundary with twelve authored native property inventories; no positive strict replacement guarantee. |

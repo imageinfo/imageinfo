@@ -1,0 +1,565 @@
+{
+  "schemaVersion": 1,
+  "ticket": "#0123",
+  "cases": [
+    {
+      "id": "SP-001",
+      "name": "stdout ThumbnailImage",
+      "reference": [
+        "-b",
+        "-ThumbnailImage",
+        "source.cr3"
+      ],
+      "native": [
+        "binary",
+        "extract",
+        "--output",
+        "json",
+        "--tag",
+        "ThumbnailImage",
+        "--output-file",
+        "out.jpg",
+        "--",
+        "source.cr3"
+      ],
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceOutputs": {},
+      "nativeOutputs": {
+        "out.jpg": "ThumbnailImage"
+      },
+      "referenceStdoutPreview": "ThumbnailImage",
+      "kind": "extract"
+    },
+    {
+      "id": "SP-002",
+      "name": "stdout PreviewImage",
+      "reference": [
+        "-b",
+        "-PreviewImage",
+        "source.cr3"
+      ],
+      "native": [
+        "binary",
+        "extract",
+        "--output",
+        "json",
+        "--tag",
+        "PreviewImage",
+        "--output-file",
+        "out.jpg",
+        "--",
+        "source.cr3"
+      ],
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceOutputs": {},
+      "nativeOutputs": {
+        "out.jpg": "PreviewImage"
+      },
+      "referenceStdoutPreview": "PreviewImage",
+      "kind": "extract"
+    },
+    {
+      "id": "SP-003",
+      "name": "stdout JpgFromRaw",
+      "reference": [
+        "-b",
+        "-JpgFromRaw",
+        "source.cr3"
+      ],
+      "native": [
+        "binary",
+        "extract",
+        "--output",
+        "json",
+        "--tag",
+        "JpgFromRaw",
+        "--output-file",
+        "out.jpg",
+        "--",
+        "source.cr3"
+      ],
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceOutputs": {},
+      "nativeOutputs": {
+        "out.jpg": "JpgFromRaw"
+      },
+      "referenceStdoutPreview": "JpgFromRaw",
+      "kind": "extract"
+    },
+    {
+      "id": "SP-004",
+      "name": "write ThumbnailImage",
+      "reference": [
+        "-b",
+        "-ThumbnailImage",
+        "-w",
+        ".jpg",
+        "source.cr3"
+      ],
+      "native": [
+        "binary",
+        "extract",
+        "--output",
+        "json",
+        "--tag",
+        "ThumbnailImage",
+        "--output-file",
+        "source.jpg",
+        "--",
+        "source.cr3"
+      ],
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceOutputs": {
+        "source.jpg": "ThumbnailImage"
+      },
+      "nativeOutputs": {
+        "source.jpg": "ThumbnailImage"
+      },
+      "referenceStdoutPreview": null,
+      "kind": "extract"
+    },
+    {
+      "id": "SP-005",
+      "name": "write PreviewImage",
+      "reference": [
+        "-b",
+        "-PreviewImage",
+        "-w",
+        ".jpg",
+        "source.cr3"
+      ],
+      "native": [
+        "binary",
+        "extract",
+        "--output",
+        "json",
+        "--tag",
+        "PreviewImage",
+        "--output-file",
+        "source.jpg",
+        "--",
+        "source.cr3"
+      ],
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceOutputs": {
+        "source.jpg": "PreviewImage"
+      },
+      "nativeOutputs": {
+        "source.jpg": "PreviewImage"
+      },
+      "referenceStdoutPreview": null,
+      "kind": "extract"
+    },
+    {
+      "id": "SP-006",
+      "name": "write JpgFromRaw",
+      "reference": [
+        "-b",
+        "-JpgFromRaw",
+        "-w",
+        ".jpg",
+        "source.cr3"
+      ],
+      "native": [
+        "binary",
+        "extract",
+        "--output",
+        "json",
+        "--tag",
+        "JpgFromRaw",
+        "--output-file",
+        "source.jpg",
+        "--",
+        "source.cr3"
+      ],
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceOutputs": {
+        "source.jpg": "JpgFromRaw"
+      },
+      "nativeOutputs": {
+        "source.jpg": "JpgFromRaw"
+      },
+      "referenceStdoutPreview": null,
+      "kind": "extract"
+    },
+    {
+      "id": "SP-007",
+      "name": "tag filename ThumbnailImage",
+      "reference": [
+        "-b",
+        "-ThumbnailImage",
+        "-W",
+        "%t.jpg",
+        "source.cr3"
+      ],
+      "native": [
+        "binary",
+        "extract",
+        "--output",
+        "json",
+        "--tag",
+        "ThumbnailImage",
+        "--output-file",
+        "ThumbnailImage.jpg",
+        "--",
+        "source.cr3"
+      ],
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceOutputs": {
+        "ThumbnailImage.jpg": "ThumbnailImage"
+      },
+      "nativeOutputs": {
+        "ThumbnailImage.jpg": "ThumbnailImage"
+      },
+      "referenceStdoutPreview": null,
+      "kind": "extract"
+    },
+    {
+      "id": "SP-008",
+      "name": "tag filename PreviewImage",
+      "reference": [
+        "-b",
+        "-PreviewImage",
+        "-W",
+        "%t.jpg",
+        "source.cr3"
+      ],
+      "native": [
+        "binary",
+        "extract",
+        "--output",
+        "json",
+        "--tag",
+        "PreviewImage",
+        "--output-file",
+        "PreviewImage.jpg",
+        "--",
+        "source.cr3"
+      ],
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceOutputs": {
+        "PreviewImage.jpg": "PreviewImage"
+      },
+      "nativeOutputs": {
+        "PreviewImage.jpg": "PreviewImage"
+      },
+      "referenceStdoutPreview": null,
+      "kind": "extract"
+    },
+    {
+      "id": "SP-009",
+      "name": "tag filename JpgFromRaw",
+      "reference": [
+        "-b",
+        "-JpgFromRaw",
+        "-W",
+        "%t.jpg",
+        "source.cr3"
+      ],
+      "native": [
+        "binary",
+        "extract",
+        "--output",
+        "json",
+        "--tag",
+        "JpgFromRaw",
+        "--output-file",
+        "JpgFromRaw.jpg",
+        "--",
+        "source.cr3"
+      ],
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceOutputs": {
+        "JpgFromRaw.jpg": "JpgFromRaw"
+      },
+      "nativeOutputs": {
+        "JpgFromRaw.jpg": "JpgFromRaw"
+      },
+      "referenceStdoutPreview": null,
+      "kind": "extract"
+    },
+    {
+      "id": "SP-010",
+      "name": "duplicate selector",
+      "reference": [
+        "-b",
+        "-PreviewImage",
+        "-PreviewImage",
+        "source.cr3"
+      ],
+      "native": [
+        "binary",
+        "extract",
+        "--output",
+        "json",
+        "--tag",
+        "PreviewImage",
+        "--output-file",
+        "out.jpg",
+        "--tag",
+        "PreviewImage",
+        "--",
+        "source.cr3"
+      ],
+      "referenceStatus": 0,
+      "nativeStatus": 2,
+      "referenceOutputs": {},
+      "nativeOutputs": {},
+      "referenceStdoutPreview": "PreviewImage",
+      "kind": "duplicate",
+      "referenceStdoutCopies": 2
+    },
+    {
+      "id": "SP-011",
+      "name": "occupied -w",
+      "reference": [
+        "-b",
+        "-PreviewImage",
+        "-w",
+        ".jpg",
+        "source.cr3"
+      ],
+      "native": [
+        "binary",
+        "extract",
+        "--output",
+        "json",
+        "--tag",
+        "PreviewImage",
+        "--output-file",
+        "source.jpg",
+        "--",
+        "source.cr3"
+      ],
+      "referenceStatus": 1,
+      "nativeStatus": 1,
+      "referenceOutputs": {},
+      "nativeOutputs": {},
+      "referenceStdoutPreview": null,
+      "kind": "occupied-w"
+    },
+    {
+      "id": "SP-012",
+      "name": "occupied -W",
+      "reference": [
+        "-b",
+        "-PreviewImage",
+        "-W",
+        "%t.jpg",
+        "source.cr3"
+      ],
+      "native": [
+        "binary",
+        "extract",
+        "--output",
+        "json",
+        "--tag",
+        "PreviewImage",
+        "--output-file",
+        "PreviewImage.jpg",
+        "--",
+        "source.cr3"
+      ],
+      "referenceStatus": 1,
+      "nativeStatus": 1,
+      "referenceOutputs": {},
+      "nativeOutputs": {},
+      "referenceStdoutPreview": null,
+      "kind": "occupied-W"
+    },
+    {
+      "id": "SP-013",
+      "name": "literal hyphen input",
+      "reference": [
+        "-b",
+        "-PreviewImage",
+        "--",
+        "-photo.cr3"
+      ],
+      "native": [
+        "binary",
+        "extract",
+        "--output",
+        "json",
+        "--tag",
+        "PreviewImage",
+        "--output-file",
+        "out.jpg",
+        "--",
+        "-photo.cr3"
+      ],
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceOutputs": {},
+      "nativeOutputs": {
+        "out.jpg": "PreviewImage"
+      },
+      "referenceStdoutPreview": "PreviewImage",
+      "kind": "extract"
+    },
+    {
+      "id": "SP-014",
+      "name": "space input",
+      "reference": [
+        "-b",
+        "-PreviewImage",
+        "-W",
+        "%t.jpg",
+        "space name.cr3"
+      ],
+      "native": [
+        "binary",
+        "extract",
+        "--output",
+        "json",
+        "--tag",
+        "PreviewImage",
+        "--output-file",
+        "PreviewImage.jpg",
+        "--",
+        "space name.cr3"
+      ],
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceOutputs": {
+        "PreviewImage.jpg": "PreviewImage"
+      },
+      "nativeOutputs": {
+        "PreviewImage.jpg": "PreviewImage"
+      },
+      "referenceStdoutPreview": null,
+      "kind": "extract"
+    },
+    {
+      "id": "SP-015",
+      "name": "preview listing",
+      "reference": [
+        "-s",
+        "-ThumbnailImage",
+        "-PreviewImage",
+        "-JpgFromRaw",
+        "source.cr3"
+      ],
+      "native": [
+        "binary",
+        "list",
+        "--output",
+        "json",
+        "--",
+        "source.cr3"
+      ],
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceOutputs": {},
+      "nativeOutputs": {},
+      "referenceStdoutPreview": null,
+      "kind": "list"
+    },
+    {
+      "id": "SP-016",
+      "name": "native dry run versus reference stdout",
+      "reference": [
+        "-b",
+        "-PreviewImage",
+        "source.cr3"
+      ],
+      "native": [
+        "binary",
+        "extract",
+        "--output",
+        "json",
+        "--tag",
+        "PreviewImage",
+        "--output-file",
+        "out.jpg",
+        "--dry-run",
+        "--",
+        "source.cr3"
+      ],
+      "referenceStatus": 0,
+      "nativeStatus": 0,
+      "referenceOutputs": {},
+      "nativeOutputs": {},
+      "referenceStdoutPreview": "PreviewImage",
+      "kind": "dry-run"
+    },
+    {
+      "id": "SP-017",
+      "name": "occupied native dry run",
+      "reference": [
+        "-b",
+        "-PreviewImage",
+        "-w",
+        ".jpg",
+        "source.cr3"
+      ],
+      "native": [
+        "binary",
+        "extract",
+        "--output",
+        "json",
+        "--tag",
+        "PreviewImage",
+        "--output-file",
+        "source.jpg",
+        "--dry-run",
+        "--",
+        "source.cr3"
+      ],
+      "referenceStatus": 1,
+      "nativeStatus": 1,
+      "referenceOutputs": {},
+      "nativeOutputs": {},
+      "referenceStdoutPreview": null,
+      "kind": "occupied-w"
+    },
+    {
+      "id": "SP-018",
+      "name": "three preview selection",
+      "reference": [
+        "-b",
+        "-ThumbnailImage",
+        "-PreviewImage",
+        "-JpgFromRaw",
+        "-W",
+        "%t.jpg",
+        "source.cr3"
+      ],
+      "native": [
+        "binary",
+        "extract",
+        "--output",
+        "json",
+        "--tag",
+        "PreviewImage",
+        "--output-file",
+        "out.jpg",
+        "--tag",
+        "ThumbnailImage",
+        "--tag",
+        "JpgFromRaw",
+        "--",
+        "source.cr3"
+      ],
+      "referenceStatus": 0,
+      "nativeStatus": 2,
+      "referenceOutputs": {
+        "ThumbnailImage.jpg": "ThumbnailImage",
+        "PreviewImage.jpg": "PreviewImage",
+        "JpgFromRaw.jpg": "JpgFromRaw"
+      },
+      "nativeOutputs": {},
+      "referenceStdoutPreview": null,
+      "kind": "duplicate"
+    }
+  ]
+}

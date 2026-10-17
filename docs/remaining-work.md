@@ -60,6 +60,20 @@ qualification methods and accepted Linux deferral are linked in the
 pre-effect refusal is not positive replacement preservation; #0185/#0194 still
 need their unmet positive pair/mechanism prerequisites.
 
+The fourth execution wave resumes the eight cards parked In Progress for
+2026-10-17: #0170, #0173, #0174, #0179, #0122, #0123, #0125 and #0127.
+It consumes existing scopes and creates no successor cards. Restart inspection,
+cumulative resources, fixed two-unit orchestration and finite native compatibility
+qualification remain distinct from profile admission and actual pair/RAW apply.
+#0174's staged-error prepared-source namespace loss and unproduced native flush
+errors remain negative/unqualified evidence for #0176; the bounded fixture outcome
+does not satisfy positive preservation or flush qualification.
+See the [documentation map](README.md) for scoped outcomes and limitations.
+At this wave's start the board has 76 Ready for Work cards (66 executable scopes
+and ten tracking umbrellas), eight parked In Progress and no Needs Terry cards.
+These dated counts do not replace the live board; the decomposition table below
+retains its original historical baseline.
+
 ## Count the queue consistently
 
 | Scope | Ready for Work | Needs Terry | Insufficient scope |

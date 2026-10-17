@@ -1,0 +1,2942 @@
+[
+  {
+    "case": "all-profiles",
+    "name": "duplicate-member",
+    "layer": "lexical",
+    "input": "{\"x\":1,\"x\":2}",
+    "rejected": true
+  },
+  {
+    "case": "all-profiles",
+    "name": "nonfinite",
+    "layer": "lexical",
+    "input": "{\"x\":NaN}",
+    "rejected": true
+  },
+  {
+    "case": "all-profiles",
+    "name": "trailing-document",
+    "layer": "lexical",
+    "input": "{} {}",
+    "rejected": true
+  },
+  {
+    "case": "all-profiles",
+    "name": "unpaired-surrogate",
+    "layer": "lexical",
+    "input": "{\"x\":\"\\ud800\"}",
+    "rejected": true
+  },
+  {
+    "case": "read-success",
+    "name": "unknown-member",
+    "layer": "schema",
+    "path": [
+      "unexpected"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "read-success",
+    "name": "wrong-type-mode",
+    "layer": "schema",
+    "path": [
+      "request",
+      "mode"
+    ],
+    "replacement": false,
+    "rejected": true
+  },
+  {
+    "case": "read-success",
+    "name": "wrong-type-discovered",
+    "layer": "schema",
+    "path": [
+      "summary",
+      "counts",
+      "discovered"
+    ],
+    "replacement": "1",
+    "rejected": true
+  },
+  {
+    "case": "read-success",
+    "name": "wrong-type-files",
+    "layer": "schema",
+    "path": [
+      "files"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "read-success",
+    "name": "wrong-operation",
+    "layer": "schema",
+    "path": [
+      "request",
+      "operation"
+    ],
+    "replacement": "metadata apply",
+    "rejected": true
+  },
+  {
+    "case": "read-success",
+    "name": "transaction-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "transactionId"
+    ],
+    "replacement": "txn-forged",
+    "rejected": true
+  },
+  {
+    "case": "read-success",
+    "name": "count-mismatch",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "counts",
+      "byState"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "read-success",
+    "name": "request-mismatch",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "requestId"
+    ],
+    "replacement": "wrong-id",
+    "rejected": true
+  },
+  {
+    "case": "read-success",
+    "name": "wrong-input-label",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "path"
+    ],
+    "replacement": "chosen.xmp",
+    "rejected": true
+  },
+  {
+    "case": "read-success",
+    "name": "wrong-exit-status",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "exitStatus"
+    ],
+    "replacement": 1,
+    "rejected": true
+  },
+  {
+    "case": "read-success",
+    "name": "mutation-effect",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "effects",
+      "changed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "read-success",
+    "name": "wrong-issue-code",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "issues",
+      0,
+      "code"
+    ],
+    "replacement": "FORGED_ERROR",
+    "rejected": true
+  },
+  {
+    "case": "read-success",
+    "name": "missing-observation",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "snapshot"
+    ],
+    "replacement": null,
+    "rejected": true
+  },
+  {
+    "case": "read-success",
+    "name": "complete-coverage",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "snapshot",
+      "coverage",
+      0,
+      "state"
+    ],
+    "replacement": "complete",
+    "rejected": true
+  },
+  {
+    "case": "read-refusal",
+    "name": "unknown-member",
+    "layer": "schema",
+    "path": [
+      "unexpected"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "read-refusal",
+    "name": "wrong-type-mode",
+    "layer": "schema",
+    "path": [
+      "request",
+      "mode"
+    ],
+    "replacement": false,
+    "rejected": true
+  },
+  {
+    "case": "read-refusal",
+    "name": "wrong-type-discovered",
+    "layer": "schema",
+    "path": [
+      "summary",
+      "counts",
+      "discovered"
+    ],
+    "replacement": "1",
+    "rejected": true
+  },
+  {
+    "case": "read-refusal",
+    "name": "wrong-type-files",
+    "layer": "schema",
+    "path": [
+      "files"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "read-refusal",
+    "name": "wrong-operation",
+    "layer": "schema",
+    "path": [
+      "request",
+      "operation"
+    ],
+    "replacement": "metadata apply",
+    "rejected": true
+  },
+  {
+    "case": "read-refusal",
+    "name": "transaction-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "transactionId"
+    ],
+    "replacement": "txn-forged",
+    "rejected": true
+  },
+  {
+    "case": "read-refusal",
+    "name": "count-mismatch",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "counts",
+      "byState"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "read-refusal",
+    "name": "request-mismatch",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "requestId"
+    ],
+    "replacement": "wrong-id",
+    "rejected": true
+  },
+  {
+    "case": "read-refusal",
+    "name": "wrong-input-label",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "path"
+    ],
+    "replacement": "chosen.xmp",
+    "rejected": true
+  },
+  {
+    "case": "read-refusal",
+    "name": "wrong-exit-status",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "exitStatus"
+    ],
+    "replacement": 0,
+    "rejected": true
+  },
+  {
+    "case": "read-refusal",
+    "name": "mutation-effect",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "effects",
+      "changed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "read-refusal",
+    "name": "wrong-issue-code",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "issues",
+      0,
+      "code"
+    ],
+    "replacement": "FORGED_ERROR",
+    "rejected": true
+  },
+  {
+    "case": "read-partial",
+    "name": "unknown-member",
+    "layer": "schema",
+    "path": [
+      "unexpected"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "read-partial",
+    "name": "wrong-type-mode",
+    "layer": "schema",
+    "path": [
+      "request",
+      "mode"
+    ],
+    "replacement": false,
+    "rejected": true
+  },
+  {
+    "case": "read-partial",
+    "name": "wrong-type-discovered",
+    "layer": "schema",
+    "path": [
+      "summary",
+      "counts",
+      "discovered"
+    ],
+    "replacement": "1",
+    "rejected": true
+  },
+  {
+    "case": "read-partial",
+    "name": "wrong-type-files",
+    "layer": "schema",
+    "path": [
+      "files"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "read-partial",
+    "name": "wrong-operation",
+    "layer": "schema",
+    "path": [
+      "request",
+      "operation"
+    ],
+    "replacement": "metadata apply",
+    "rejected": true
+  },
+  {
+    "case": "read-partial",
+    "name": "transaction-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "transactionId"
+    ],
+    "replacement": "txn-forged",
+    "rejected": true
+  },
+  {
+    "case": "read-partial",
+    "name": "count-mismatch",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "counts",
+      "byState"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "read-partial",
+    "name": "request-mismatch",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "requestId"
+    ],
+    "replacement": "wrong-id",
+    "rejected": true
+  },
+  {
+    "case": "read-partial",
+    "name": "wrong-input-label",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "path"
+    ],
+    "replacement": "chosen.xmp",
+    "rejected": true
+  },
+  {
+    "case": "read-partial",
+    "name": "wrong-exit-status",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "exitStatus"
+    ],
+    "replacement": 0,
+    "rejected": true
+  },
+  {
+    "case": "read-partial",
+    "name": "mutation-effect",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "effects",
+      "changed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "read-partial",
+    "name": "wrong-issue-code",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "issues",
+      0,
+      "code"
+    ],
+    "replacement": "FORGED_ERROR",
+    "rejected": true
+  },
+  {
+    "case": "read-partial",
+    "name": "missing-observation",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "snapshot"
+    ],
+    "replacement": null,
+    "rejected": true
+  },
+  {
+    "case": "read-partial",
+    "name": "complete-coverage",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "snapshot",
+      "coverage",
+      0,
+      "state"
+    ],
+    "replacement": "complete",
+    "rejected": true
+  },
+  {
+    "case": "read-deduplicated",
+    "name": "unknown-member",
+    "layer": "schema",
+    "path": [
+      "unexpected"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "read-deduplicated",
+    "name": "wrong-type-mode",
+    "layer": "schema",
+    "path": [
+      "request",
+      "mode"
+    ],
+    "replacement": false,
+    "rejected": true
+  },
+  {
+    "case": "read-deduplicated",
+    "name": "wrong-type-discovered",
+    "layer": "schema",
+    "path": [
+      "summary",
+      "counts",
+      "discovered"
+    ],
+    "replacement": "1",
+    "rejected": true
+  },
+  {
+    "case": "read-deduplicated",
+    "name": "wrong-type-files",
+    "layer": "schema",
+    "path": [
+      "files"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "read-deduplicated",
+    "name": "wrong-operation",
+    "layer": "schema",
+    "path": [
+      "request",
+      "operation"
+    ],
+    "replacement": "metadata apply",
+    "rejected": true
+  },
+  {
+    "case": "read-deduplicated",
+    "name": "transaction-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "transactionId"
+    ],
+    "replacement": "txn-forged",
+    "rejected": true
+  },
+  {
+    "case": "read-deduplicated",
+    "name": "count-mismatch",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "counts",
+      "byState"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "read-deduplicated",
+    "name": "request-mismatch",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "requestId"
+    ],
+    "replacement": "wrong-id",
+    "rejected": true
+  },
+  {
+    "case": "read-deduplicated",
+    "name": "wrong-input-label",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "path"
+    ],
+    "replacement": "chosen.xmp",
+    "rejected": true
+  },
+  {
+    "case": "read-deduplicated",
+    "name": "wrong-exit-status",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "exitStatus"
+    ],
+    "replacement": 1,
+    "rejected": true
+  },
+  {
+    "case": "read-deduplicated",
+    "name": "mutation-effect",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "effects",
+      "changed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "read-deduplicated",
+    "name": "wrong-issue-code",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "issues",
+      0,
+      "code"
+    ],
+    "replacement": "FORGED_ERROR",
+    "rejected": true
+  },
+  {
+    "case": "read-deduplicated",
+    "name": "missing-observation",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "snapshot"
+    ],
+    "replacement": null,
+    "rejected": true
+  },
+  {
+    "case": "read-deduplicated",
+    "name": "complete-coverage",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "snapshot",
+      "coverage",
+      0,
+      "state"
+    ],
+    "replacement": "complete",
+    "rejected": true
+  },
+  {
+    "case": "list-success",
+    "name": "unknown-member",
+    "layer": "schema",
+    "path": [
+      "unexpected"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "list-success",
+    "name": "wrong-type-mode",
+    "layer": "schema",
+    "path": [
+      "request",
+      "mode"
+    ],
+    "replacement": false,
+    "rejected": true
+  },
+  {
+    "case": "list-success",
+    "name": "wrong-type-discovered",
+    "layer": "schema",
+    "path": [
+      "summary",
+      "counts",
+      "discovered"
+    ],
+    "replacement": "1",
+    "rejected": true
+  },
+  {
+    "case": "list-success",
+    "name": "wrong-type-files",
+    "layer": "schema",
+    "path": [
+      "files"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "list-success",
+    "name": "wrong-operation",
+    "layer": "schema",
+    "path": [
+      "request",
+      "operation"
+    ],
+    "replacement": "metadata apply",
+    "rejected": true
+  },
+  {
+    "case": "list-success",
+    "name": "transaction-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "transactionId"
+    ],
+    "replacement": "txn-forged",
+    "rejected": true
+  },
+  {
+    "case": "list-success",
+    "name": "count-mismatch",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "counts",
+      "byState"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "list-success",
+    "name": "request-mismatch",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "requestId"
+    ],
+    "replacement": "wrong-id",
+    "rejected": true
+  },
+  {
+    "case": "list-success",
+    "name": "wrong-input-label",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "path"
+    ],
+    "replacement": "chosen.xmp",
+    "rejected": true
+  },
+  {
+    "case": "list-success",
+    "name": "wrong-exit-status",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "exitStatus"
+    ],
+    "replacement": 1,
+    "rejected": true
+  },
+  {
+    "case": "list-success",
+    "name": "mutation-effect",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "effects",
+      "changed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "list-success",
+    "name": "wrong-issue-code",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "issues",
+      0,
+      "code"
+    ],
+    "replacement": "FORGED_ERROR",
+    "rejected": true
+  },
+  {
+    "case": "list-success",
+    "name": "missing-observation",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "snapshot"
+    ],
+    "replacement": null,
+    "rejected": true
+  },
+  {
+    "case": "list-success",
+    "name": "complete-coverage",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "snapshot",
+      "coverage",
+      0,
+      "state"
+    ],
+    "replacement": "complete",
+    "rejected": true
+  },
+  {
+    "case": "list-refusal",
+    "name": "unknown-member",
+    "layer": "schema",
+    "path": [
+      "unexpected"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "list-refusal",
+    "name": "wrong-type-mode",
+    "layer": "schema",
+    "path": [
+      "request",
+      "mode"
+    ],
+    "replacement": false,
+    "rejected": true
+  },
+  {
+    "case": "list-refusal",
+    "name": "wrong-type-discovered",
+    "layer": "schema",
+    "path": [
+      "summary",
+      "counts",
+      "discovered"
+    ],
+    "replacement": "1",
+    "rejected": true
+  },
+  {
+    "case": "list-refusal",
+    "name": "wrong-type-files",
+    "layer": "schema",
+    "path": [
+      "files"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "list-refusal",
+    "name": "wrong-operation",
+    "layer": "schema",
+    "path": [
+      "request",
+      "operation"
+    ],
+    "replacement": "metadata apply",
+    "rejected": true
+  },
+  {
+    "case": "list-refusal",
+    "name": "transaction-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "transactionId"
+    ],
+    "replacement": "txn-forged",
+    "rejected": true
+  },
+  {
+    "case": "list-refusal",
+    "name": "count-mismatch",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "counts",
+      "byState"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "list-refusal",
+    "name": "request-mismatch",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "requestId"
+    ],
+    "replacement": "wrong-id",
+    "rejected": true
+  },
+  {
+    "case": "list-refusal",
+    "name": "wrong-input-label",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "path"
+    ],
+    "replacement": "chosen.xmp",
+    "rejected": true
+  },
+  {
+    "case": "list-refusal",
+    "name": "wrong-exit-status",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "exitStatus"
+    ],
+    "replacement": 0,
+    "rejected": true
+  },
+  {
+    "case": "list-refusal",
+    "name": "mutation-effect",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "effects",
+      "changed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "list-refusal",
+    "name": "wrong-issue-code",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "issues",
+      0,
+      "code"
+    ],
+    "replacement": "FORGED_ERROR",
+    "rejected": true
+  },
+  {
+    "case": "list-partial",
+    "name": "unknown-member",
+    "layer": "schema",
+    "path": [
+      "unexpected"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "list-partial",
+    "name": "wrong-type-mode",
+    "layer": "schema",
+    "path": [
+      "request",
+      "mode"
+    ],
+    "replacement": false,
+    "rejected": true
+  },
+  {
+    "case": "list-partial",
+    "name": "wrong-type-discovered",
+    "layer": "schema",
+    "path": [
+      "summary",
+      "counts",
+      "discovered"
+    ],
+    "replacement": "1",
+    "rejected": true
+  },
+  {
+    "case": "list-partial",
+    "name": "wrong-type-files",
+    "layer": "schema",
+    "path": [
+      "files"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "list-partial",
+    "name": "wrong-operation",
+    "layer": "schema",
+    "path": [
+      "request",
+      "operation"
+    ],
+    "replacement": "metadata apply",
+    "rejected": true
+  },
+  {
+    "case": "list-partial",
+    "name": "transaction-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "transactionId"
+    ],
+    "replacement": "txn-forged",
+    "rejected": true
+  },
+  {
+    "case": "list-partial",
+    "name": "count-mismatch",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "counts",
+      "byState"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "list-partial",
+    "name": "request-mismatch",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "requestId"
+    ],
+    "replacement": "wrong-id",
+    "rejected": true
+  },
+  {
+    "case": "list-partial",
+    "name": "wrong-input-label",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "path"
+    ],
+    "replacement": "chosen.xmp",
+    "rejected": true
+  },
+  {
+    "case": "list-partial",
+    "name": "wrong-exit-status",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "exitStatus"
+    ],
+    "replacement": 0,
+    "rejected": true
+  },
+  {
+    "case": "list-partial",
+    "name": "mutation-effect",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "effects",
+      "changed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "list-partial",
+    "name": "wrong-issue-code",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "issues",
+      0,
+      "code"
+    ],
+    "replacement": "FORGED_ERROR",
+    "rejected": true
+  },
+  {
+    "case": "list-partial",
+    "name": "missing-observation",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "snapshot"
+    ],
+    "replacement": null,
+    "rejected": true
+  },
+  {
+    "case": "list-partial",
+    "name": "complete-coverage",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "snapshot",
+      "coverage",
+      0,
+      "state"
+    ],
+    "replacement": "complete",
+    "rejected": true
+  },
+  {
+    "case": "list-deduplicated",
+    "name": "unknown-member",
+    "layer": "schema",
+    "path": [
+      "unexpected"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "list-deduplicated",
+    "name": "wrong-type-mode",
+    "layer": "schema",
+    "path": [
+      "request",
+      "mode"
+    ],
+    "replacement": false,
+    "rejected": true
+  },
+  {
+    "case": "list-deduplicated",
+    "name": "wrong-type-discovered",
+    "layer": "schema",
+    "path": [
+      "summary",
+      "counts",
+      "discovered"
+    ],
+    "replacement": "1",
+    "rejected": true
+  },
+  {
+    "case": "list-deduplicated",
+    "name": "wrong-type-files",
+    "layer": "schema",
+    "path": [
+      "files"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "list-deduplicated",
+    "name": "wrong-operation",
+    "layer": "schema",
+    "path": [
+      "request",
+      "operation"
+    ],
+    "replacement": "metadata apply",
+    "rejected": true
+  },
+  {
+    "case": "list-deduplicated",
+    "name": "transaction-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "transactionId"
+    ],
+    "replacement": "txn-forged",
+    "rejected": true
+  },
+  {
+    "case": "list-deduplicated",
+    "name": "count-mismatch",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "counts",
+      "byState"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "list-deduplicated",
+    "name": "request-mismatch",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "requestId"
+    ],
+    "replacement": "wrong-id",
+    "rejected": true
+  },
+  {
+    "case": "list-deduplicated",
+    "name": "wrong-input-label",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "path"
+    ],
+    "replacement": "chosen.xmp",
+    "rejected": true
+  },
+  {
+    "case": "list-deduplicated",
+    "name": "wrong-exit-status",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "exitStatus"
+    ],
+    "replacement": 1,
+    "rejected": true
+  },
+  {
+    "case": "list-deduplicated",
+    "name": "mutation-effect",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "effects",
+      "changed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "list-deduplicated",
+    "name": "wrong-issue-code",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "issues",
+      0,
+      "code"
+    ],
+    "replacement": "FORGED_ERROR",
+    "rejected": true
+  },
+  {
+    "case": "list-deduplicated",
+    "name": "missing-observation",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "snapshot"
+    ],
+    "replacement": null,
+    "rejected": true
+  },
+  {
+    "case": "list-deduplicated",
+    "name": "complete-coverage",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "snapshot",
+      "coverage",
+      0,
+      "state"
+    ],
+    "replacement": "complete",
+    "rejected": true
+  },
+  {
+    "case": "read-invalid-value",
+    "name": "unknown-member",
+    "layer": "schema",
+    "path": [
+      "unexpected"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "read-invalid-value",
+    "name": "wrong-type-mode",
+    "layer": "schema",
+    "path": [
+      "request",
+      "mode"
+    ],
+    "replacement": false,
+    "rejected": true
+  },
+  {
+    "case": "read-invalid-value",
+    "name": "wrong-type-discovered",
+    "layer": "schema",
+    "path": [
+      "summary",
+      "counts",
+      "discovered"
+    ],
+    "replacement": "1",
+    "rejected": true
+  },
+  {
+    "case": "read-invalid-value",
+    "name": "wrong-type-files",
+    "layer": "schema",
+    "path": [
+      "files"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "read-invalid-value",
+    "name": "wrong-operation",
+    "layer": "schema",
+    "path": [
+      "request",
+      "operation"
+    ],
+    "replacement": "metadata apply",
+    "rejected": true
+  },
+  {
+    "case": "read-invalid-value",
+    "name": "transaction-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "transactionId"
+    ],
+    "replacement": "txn-forged",
+    "rejected": true
+  },
+  {
+    "case": "read-invalid-value",
+    "name": "count-mismatch",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "counts",
+      "byState"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "read-invalid-value",
+    "name": "request-mismatch",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "requestId"
+    ],
+    "replacement": "wrong-id",
+    "rejected": true
+  },
+  {
+    "case": "read-invalid-value",
+    "name": "wrong-input-label",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "path"
+    ],
+    "replacement": "chosen.xmp",
+    "rejected": true
+  },
+  {
+    "case": "read-invalid-value",
+    "name": "wrong-exit-status",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "exitStatus"
+    ],
+    "replacement": 0,
+    "rejected": true
+  },
+  {
+    "case": "read-invalid-value",
+    "name": "mutation-effect",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "effects",
+      "changed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "read-invalid-value",
+    "name": "wrong-issue-code",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "issues",
+      0,
+      "code"
+    ],
+    "replacement": "FORGED_ERROR",
+    "rejected": true
+  },
+  {
+    "case": "read-invalid-value",
+    "name": "missing-observation",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "snapshot"
+    ],
+    "replacement": null,
+    "rejected": true
+  },
+  {
+    "case": "read-invalid-value",
+    "name": "complete-coverage",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "snapshot",
+      "coverage",
+      0,
+      "state"
+    ],
+    "replacement": "complete",
+    "rejected": true
+  },
+  {
+    "case": "extract-success",
+    "name": "unknown-member",
+    "layer": "schema",
+    "path": [
+      "unexpected"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "extract-success",
+    "name": "wrong-type-mode",
+    "layer": "schema",
+    "path": [
+      "request",
+      "mode"
+    ],
+    "replacement": false,
+    "rejected": true
+  },
+  {
+    "case": "extract-success",
+    "name": "wrong-type-discovered",
+    "layer": "schema",
+    "path": [
+      "summary",
+      "counts",
+      "discovered"
+    ],
+    "replacement": "1",
+    "rejected": true
+  },
+  {
+    "case": "extract-success",
+    "name": "wrong-type-files",
+    "layer": "schema",
+    "path": [
+      "files"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "extract-success",
+    "name": "wrong-operation",
+    "layer": "schema",
+    "path": [
+      "request",
+      "operation"
+    ],
+    "replacement": "metadata apply",
+    "rejected": true
+  },
+  {
+    "case": "extract-success",
+    "name": "transaction-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "transactionId"
+    ],
+    "replacement": "txn-forged",
+    "rejected": true
+  },
+  {
+    "case": "extract-success",
+    "name": "count-mismatch",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "counts",
+      "byState"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "extract-success",
+    "name": "request-mismatch",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "requestId"
+    ],
+    "replacement": "wrong-id",
+    "rejected": true
+  },
+  {
+    "case": "extract-success",
+    "name": "wrong-input-label",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "path"
+    ],
+    "replacement": "chosen.xmp",
+    "rejected": true
+  },
+  {
+    "case": "extract-success",
+    "name": "wrong-exit-status",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "exitStatus"
+    ],
+    "replacement": 1,
+    "rejected": true
+  },
+  {
+    "case": "extract-success",
+    "name": "mutation-effect",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "effects",
+      "changed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "extract-success",
+    "name": "wrong-artifact-label",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "artifacts",
+      0,
+      "path"
+    ],
+    "replacement": "chosen.xmp",
+    "rejected": true
+  },
+  {
+    "case": "extract-dry-run",
+    "name": "unknown-member",
+    "layer": "schema",
+    "path": [
+      "unexpected"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "extract-dry-run",
+    "name": "wrong-type-mode",
+    "layer": "schema",
+    "path": [
+      "request",
+      "mode"
+    ],
+    "replacement": false,
+    "rejected": true
+  },
+  {
+    "case": "extract-dry-run",
+    "name": "wrong-type-discovered",
+    "layer": "schema",
+    "path": [
+      "summary",
+      "counts",
+      "discovered"
+    ],
+    "replacement": "1",
+    "rejected": true
+  },
+  {
+    "case": "extract-dry-run",
+    "name": "wrong-type-files",
+    "layer": "schema",
+    "path": [
+      "files"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "extract-dry-run",
+    "name": "wrong-operation",
+    "layer": "schema",
+    "path": [
+      "request",
+      "operation"
+    ],
+    "replacement": "metadata apply",
+    "rejected": true
+  },
+  {
+    "case": "extract-dry-run",
+    "name": "transaction-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "transactionId"
+    ],
+    "replacement": "txn-forged",
+    "rejected": true
+  },
+  {
+    "case": "extract-dry-run",
+    "name": "count-mismatch",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "counts",
+      "byState"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "extract-dry-run",
+    "name": "request-mismatch",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "requestId"
+    ],
+    "replacement": "wrong-id",
+    "rejected": true
+  },
+  {
+    "case": "extract-dry-run",
+    "name": "wrong-input-label",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "path"
+    ],
+    "replacement": "chosen.xmp",
+    "rejected": true
+  },
+  {
+    "case": "extract-dry-run",
+    "name": "wrong-exit-status",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "exitStatus"
+    ],
+    "replacement": 1,
+    "rejected": true
+  },
+  {
+    "case": "extract-dry-run",
+    "name": "mutation-effect",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "effects",
+      "changed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "extract-refusal",
+    "name": "unknown-member",
+    "layer": "schema",
+    "path": [
+      "unexpected"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "extract-refusal",
+    "name": "wrong-type-mode",
+    "layer": "schema",
+    "path": [
+      "request",
+      "mode"
+    ],
+    "replacement": false,
+    "rejected": true
+  },
+  {
+    "case": "extract-refusal",
+    "name": "wrong-type-discovered",
+    "layer": "schema",
+    "path": [
+      "summary",
+      "counts",
+      "discovered"
+    ],
+    "replacement": "1",
+    "rejected": true
+  },
+  {
+    "case": "extract-refusal",
+    "name": "wrong-type-files",
+    "layer": "schema",
+    "path": [
+      "files"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "extract-refusal",
+    "name": "wrong-operation",
+    "layer": "schema",
+    "path": [
+      "request",
+      "operation"
+    ],
+    "replacement": "metadata apply",
+    "rejected": true
+  },
+  {
+    "case": "extract-refusal",
+    "name": "transaction-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "transactionId"
+    ],
+    "replacement": "txn-forged",
+    "rejected": true
+  },
+  {
+    "case": "extract-refusal",
+    "name": "count-mismatch",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "counts",
+      "byState"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "extract-refusal",
+    "name": "request-mismatch",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "requestId"
+    ],
+    "replacement": "wrong-id",
+    "rejected": true
+  },
+  {
+    "case": "extract-refusal",
+    "name": "wrong-input-label",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "path"
+    ],
+    "replacement": "chosen.xmp",
+    "rejected": true
+  },
+  {
+    "case": "extract-refusal",
+    "name": "wrong-exit-status",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "exitStatus"
+    ],
+    "replacement": 0,
+    "rejected": true
+  },
+  {
+    "case": "extract-refusal",
+    "name": "mutation-effect",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "effects",
+      "changed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "extract-refusal",
+    "name": "wrong-issue-code",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "issues",
+      0,
+      "code"
+    ],
+    "replacement": "FORGED_ERROR",
+    "rejected": true
+  },
+  {
+    "case": "extract-occupied",
+    "name": "unknown-member",
+    "layer": "schema",
+    "path": [
+      "unexpected"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "extract-occupied",
+    "name": "wrong-type-mode",
+    "layer": "schema",
+    "path": [
+      "request",
+      "mode"
+    ],
+    "replacement": false,
+    "rejected": true
+  },
+  {
+    "case": "extract-occupied",
+    "name": "wrong-type-discovered",
+    "layer": "schema",
+    "path": [
+      "summary",
+      "counts",
+      "discovered"
+    ],
+    "replacement": "1",
+    "rejected": true
+  },
+  {
+    "case": "extract-occupied",
+    "name": "wrong-type-files",
+    "layer": "schema",
+    "path": [
+      "files"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "extract-occupied",
+    "name": "wrong-operation",
+    "layer": "schema",
+    "path": [
+      "request",
+      "operation"
+    ],
+    "replacement": "metadata apply",
+    "rejected": true
+  },
+  {
+    "case": "extract-occupied",
+    "name": "transaction-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "transactionId"
+    ],
+    "replacement": "txn-forged",
+    "rejected": true
+  },
+  {
+    "case": "extract-occupied",
+    "name": "count-mismatch",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "counts",
+      "byState"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "extract-occupied",
+    "name": "request-mismatch",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "requestId"
+    ],
+    "replacement": "wrong-id",
+    "rejected": true
+  },
+  {
+    "case": "extract-occupied",
+    "name": "wrong-input-label",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "path"
+    ],
+    "replacement": "chosen.xmp",
+    "rejected": true
+  },
+  {
+    "case": "extract-occupied",
+    "name": "wrong-exit-status",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "exitStatus"
+    ],
+    "replacement": 0,
+    "rejected": true
+  },
+  {
+    "case": "extract-occupied",
+    "name": "mutation-effect",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "effects",
+      "changed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "extract-occupied",
+    "name": "wrong-issue-code",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "issues",
+      0,
+      "code"
+    ],
+    "replacement": "FORGED_ERROR",
+    "rejected": true
+  },
+  {
+    "case": "date-preview-advisory",
+    "name": "unknown-member",
+    "layer": "schema",
+    "path": [
+      "unexpected"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "date-preview-advisory",
+    "name": "wrong-type-mode",
+    "layer": "schema",
+    "path": [
+      "request",
+      "mode"
+    ],
+    "replacement": false,
+    "rejected": true
+  },
+  {
+    "case": "date-preview-advisory",
+    "name": "wrong-type-discovered",
+    "layer": "schema",
+    "path": [
+      "summary",
+      "counts",
+      "discovered"
+    ],
+    "replacement": "1",
+    "rejected": true
+  },
+  {
+    "case": "date-preview-advisory",
+    "name": "wrong-type-files",
+    "layer": "schema",
+    "path": [
+      "files"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "date-preview-advisory",
+    "name": "wrong-operation",
+    "layer": "schema",
+    "path": [
+      "request",
+      "operation"
+    ],
+    "replacement": "metadata apply",
+    "rejected": true
+  },
+  {
+    "case": "date-preview-advisory",
+    "name": "transaction-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "transactionId"
+    ],
+    "replacement": "txn-forged",
+    "rejected": true
+  },
+  {
+    "case": "date-preview-advisory",
+    "name": "count-mismatch",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "counts",
+      "byState"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "date-preview-advisory",
+    "name": "request-mismatch",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "requestId"
+    ],
+    "replacement": "wrong-id",
+    "rejected": true
+  },
+  {
+    "case": "date-preview-advisory",
+    "name": "wrong-input-label",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "path"
+    ],
+    "replacement": "chosen.xmp",
+    "rejected": true
+  },
+  {
+    "case": "date-preview-advisory",
+    "name": "wrong-exit-status",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "exitStatus"
+    ],
+    "replacement": 0,
+    "rejected": true
+  },
+  {
+    "case": "date-preview-advisory",
+    "name": "mutation-effect",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "effects",
+      "changed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "date-preview-advisory",
+    "name": "wrong-issue-code",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "issues",
+      0,
+      "code"
+    ],
+    "replacement": "FORGED_ERROR",
+    "rejected": true
+  },
+  {
+    "case": "date-preview-advisory",
+    "name": "missing-observation",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "snapshot"
+    ],
+    "replacement": null,
+    "rejected": true
+  },
+  {
+    "case": "date-preview-advisory",
+    "name": "mutation-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "snapshot",
+      "preview",
+      "production_mutation_allowed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "date-preview-advisory",
+    "name": "wrong-difference-count",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "snapshot",
+      "preview",
+      "changed_bytes"
+    ],
+    "replacement": 0,
+    "rejected": true
+  },
+  {
+    "case": "date-preview-stale",
+    "name": "unknown-member",
+    "layer": "schema",
+    "path": [
+      "unexpected"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "date-preview-stale",
+    "name": "wrong-type-mode",
+    "layer": "schema",
+    "path": [
+      "request",
+      "mode"
+    ],
+    "replacement": false,
+    "rejected": true
+  },
+  {
+    "case": "date-preview-stale",
+    "name": "wrong-type-discovered",
+    "layer": "schema",
+    "path": [
+      "summary",
+      "counts",
+      "discovered"
+    ],
+    "replacement": "1",
+    "rejected": true
+  },
+  {
+    "case": "date-preview-stale",
+    "name": "wrong-type-files",
+    "layer": "schema",
+    "path": [
+      "files"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "date-preview-stale",
+    "name": "wrong-operation",
+    "layer": "schema",
+    "path": [
+      "request",
+      "operation"
+    ],
+    "replacement": "metadata apply",
+    "rejected": true
+  },
+  {
+    "case": "date-preview-stale",
+    "name": "transaction-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "transactionId"
+    ],
+    "replacement": "txn-forged",
+    "rejected": true
+  },
+  {
+    "case": "date-preview-stale",
+    "name": "count-mismatch",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "counts",
+      "byState"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "date-preview-stale",
+    "name": "request-mismatch",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "requestId"
+    ],
+    "replacement": "wrong-id",
+    "rejected": true
+  },
+  {
+    "case": "date-preview-stale",
+    "name": "wrong-input-label",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "path"
+    ],
+    "replacement": "chosen.xmp",
+    "rejected": true
+  },
+  {
+    "case": "date-preview-stale",
+    "name": "wrong-exit-status",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "exitStatus"
+    ],
+    "replacement": 0,
+    "rejected": true
+  },
+  {
+    "case": "date-preview-stale",
+    "name": "mutation-effect",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "effects",
+      "changed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "date-preview-stale",
+    "name": "wrong-issue-code",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "issues",
+      0,
+      "code"
+    ],
+    "replacement": "FORGED_ERROR",
+    "rejected": true
+  },
+  {
+    "case": "date-preview-stale",
+    "name": "missing-observation",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "snapshot"
+    ],
+    "replacement": null,
+    "rejected": true
+  },
+  {
+    "case": "date-preview-stale",
+    "name": "mutation-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "snapshot",
+      "preview",
+      "production_mutation_allowed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "date-preview-missing",
+    "name": "unknown-member",
+    "layer": "schema",
+    "path": [
+      "unexpected"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "date-preview-missing",
+    "name": "wrong-type-mode",
+    "layer": "schema",
+    "path": [
+      "request",
+      "mode"
+    ],
+    "replacement": false,
+    "rejected": true
+  },
+  {
+    "case": "date-preview-missing",
+    "name": "wrong-type-discovered",
+    "layer": "schema",
+    "path": [
+      "summary",
+      "counts",
+      "discovered"
+    ],
+    "replacement": "1",
+    "rejected": true
+  },
+  {
+    "case": "date-preview-missing",
+    "name": "wrong-type-files",
+    "layer": "schema",
+    "path": [
+      "files"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "date-preview-missing",
+    "name": "wrong-operation",
+    "layer": "schema",
+    "path": [
+      "request",
+      "operation"
+    ],
+    "replacement": "metadata apply",
+    "rejected": true
+  },
+  {
+    "case": "date-preview-missing",
+    "name": "transaction-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "transactionId"
+    ],
+    "replacement": "txn-forged",
+    "rejected": true
+  },
+  {
+    "case": "date-preview-missing",
+    "name": "count-mismatch",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "counts",
+      "byState"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "date-preview-missing",
+    "name": "request-mismatch",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "requestId"
+    ],
+    "replacement": "wrong-id",
+    "rejected": true
+  },
+  {
+    "case": "date-preview-missing",
+    "name": "wrong-input-label",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "path"
+    ],
+    "replacement": "chosen.xmp",
+    "rejected": true
+  },
+  {
+    "case": "date-preview-missing",
+    "name": "wrong-exit-status",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "exitStatus"
+    ],
+    "replacement": 0,
+    "rejected": true
+  },
+  {
+    "case": "date-preview-missing",
+    "name": "mutation-effect",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "effects",
+      "changed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "date-preview-missing",
+    "name": "wrong-issue-code",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "issues",
+      0,
+      "code"
+    ],
+    "replacement": "FORGED_ERROR",
+    "rejected": true
+  },
+  {
+    "case": "pair-success",
+    "name": "unknown-member",
+    "layer": "schema",
+    "path": [
+      "unexpected"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "pair-success",
+    "name": "wrong-type-mode",
+    "layer": "schema",
+    "path": [
+      "request",
+      "mode"
+    ],
+    "replacement": false,
+    "rejected": true
+  },
+  {
+    "case": "pair-success",
+    "name": "wrong-type-discovered",
+    "layer": "schema",
+    "path": [
+      "summary",
+      "counts",
+      "discovered"
+    ],
+    "replacement": "1",
+    "rejected": true
+  },
+  {
+    "case": "pair-success",
+    "name": "wrong-type-files",
+    "layer": "schema",
+    "path": [
+      "files"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "pair-success",
+    "name": "wrong-operation",
+    "layer": "schema",
+    "path": [
+      "request",
+      "operation"
+    ],
+    "replacement": "metadata apply",
+    "rejected": true
+  },
+  {
+    "case": "pair-success",
+    "name": "transaction-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "transactionId"
+    ],
+    "replacement": "txn-forged",
+    "rejected": true
+  },
+  {
+    "case": "pair-success",
+    "name": "count-mismatch",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "counts",
+      "byState"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "pair-success",
+    "name": "request-mismatch",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "requestId"
+    ],
+    "replacement": "wrong-id",
+    "rejected": true
+  },
+  {
+    "case": "pair-success",
+    "name": "wrong-input-label",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "path"
+    ],
+    "replacement": "chosen.xmp",
+    "rejected": true
+  },
+  {
+    "case": "pair-success",
+    "name": "wrong-exit-status",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "exitStatus"
+    ],
+    "replacement": 1,
+    "rejected": true
+  },
+  {
+    "case": "pair-success",
+    "name": "mutation-effect",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "effects",
+      "changed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "pair-success",
+    "name": "missing-observation",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "snapshot"
+    ],
+    "replacement": null,
+    "rejected": true
+  },
+  {
+    "case": "pair-success",
+    "name": "wrong-sidecar-object",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "snapshot",
+      "pair",
+      "sidecar_path"
+    ],
+    "replacement": "{work}\\opaque.raw",
+    "rejected": true
+  },
+  {
+    "case": "pair-omitted",
+    "name": "unknown-member",
+    "layer": "schema",
+    "path": [
+      "unexpected"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "pair-omitted",
+    "name": "wrong-type-mode",
+    "layer": "schema",
+    "path": [
+      "request",
+      "mode"
+    ],
+    "replacement": false,
+    "rejected": true
+  },
+  {
+    "case": "pair-omitted",
+    "name": "wrong-type-discovered",
+    "layer": "schema",
+    "path": [
+      "summary",
+      "counts",
+      "discovered"
+    ],
+    "replacement": "1",
+    "rejected": true
+  },
+  {
+    "case": "pair-omitted",
+    "name": "wrong-type-files",
+    "layer": "schema",
+    "path": [
+      "files"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "pair-omitted",
+    "name": "wrong-operation",
+    "layer": "schema",
+    "path": [
+      "request",
+      "operation"
+    ],
+    "replacement": "metadata apply",
+    "rejected": true
+  },
+  {
+    "case": "pair-omitted",
+    "name": "transaction-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "transactionId"
+    ],
+    "replacement": "txn-forged",
+    "rejected": true
+  },
+  {
+    "case": "pair-omitted",
+    "name": "count-mismatch",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "counts",
+      "byState"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "pair-omitted",
+    "name": "request-mismatch",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "requestId"
+    ],
+    "replacement": "wrong-id",
+    "rejected": true
+  },
+  {
+    "case": "pair-omitted",
+    "name": "wrong-input-label",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "path"
+    ],
+    "replacement": "chosen.xmp",
+    "rejected": true
+  },
+  {
+    "case": "pair-omitted",
+    "name": "wrong-exit-status",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "exitStatus"
+    ],
+    "replacement": 0,
+    "rejected": true
+  },
+  {
+    "case": "pair-omitted",
+    "name": "mutation-effect",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "effects",
+      "changed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "pair-omitted",
+    "name": "wrong-issue-code",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "issues",
+      0,
+      "code"
+    ],
+    "replacement": "FORGED_ERROR",
+    "rejected": true
+  },
+  {
+    "case": "pair-same-object",
+    "name": "unknown-member",
+    "layer": "schema",
+    "path": [
+      "unexpected"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "pair-same-object",
+    "name": "wrong-type-mode",
+    "layer": "schema",
+    "path": [
+      "request",
+      "mode"
+    ],
+    "replacement": false,
+    "rejected": true
+  },
+  {
+    "case": "pair-same-object",
+    "name": "wrong-type-discovered",
+    "layer": "schema",
+    "path": [
+      "summary",
+      "counts",
+      "discovered"
+    ],
+    "replacement": "1",
+    "rejected": true
+  },
+  {
+    "case": "pair-same-object",
+    "name": "wrong-type-files",
+    "layer": "schema",
+    "path": [
+      "files"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "pair-same-object",
+    "name": "wrong-operation",
+    "layer": "schema",
+    "path": [
+      "request",
+      "operation"
+    ],
+    "replacement": "metadata apply",
+    "rejected": true
+  },
+  {
+    "case": "pair-same-object",
+    "name": "transaction-authority",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "transactionId"
+    ],
+    "replacement": "txn-forged",
+    "rejected": true
+  },
+  {
+    "case": "pair-same-object",
+    "name": "count-mismatch",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "counts",
+      "byState"
+    ],
+    "replacement": {},
+    "rejected": true
+  },
+  {
+    "case": "pair-same-object",
+    "name": "request-mismatch",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "requestId"
+    ],
+    "replacement": "wrong-id",
+    "rejected": true
+  },
+  {
+    "case": "pair-same-object",
+    "name": "wrong-input-label",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "path"
+    ],
+    "replacement": "chosen.xmp",
+    "rejected": true
+  },
+  {
+    "case": "pair-same-object",
+    "name": "wrong-exit-status",
+    "layer": "semantic",
+    "path": [
+      "summary",
+      "exitStatus"
+    ],
+    "replacement": 0,
+    "rejected": true
+  },
+  {
+    "case": "pair-same-object",
+    "name": "mutation-effect",
+    "layer": "schema",
+    "path": [
+      "files",
+      0,
+      "effects",
+      "changed"
+    ],
+    "replacement": true,
+    "rejected": true
+  },
+  {
+    "case": "pair-same-object",
+    "name": "wrong-issue-code",
+    "layer": "semantic",
+    "path": [
+      "files",
+      0,
+      "issues",
+      0,
+      "code"
+    ],
+    "replacement": "FORGED_ERROR",
+    "rejected": true
+  }
+]

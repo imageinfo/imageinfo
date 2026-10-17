@@ -1,0 +1,2181 @@
+{
+  "schemaVersion": 1,
+  "ticket": "#0123",
+  "referenceVersion": "13.59",
+  "referenceRevision": "2200871d9cef988051d2a99d67df3bda6cbb30a8",
+  "tools": {
+    "exiftool-13.59": {
+      "manifestSha256": "b55345e4b02d221ffa4cc7c444858337329b433d2d4877ce7a6dc03cce2827ed",
+      "checkedFiles": 249
+    },
+    "installed-perl": {
+      "manifestSha256": "6f4eb552f97a25039ba1c786765a61cd6a1419f5837e75e25da0191f9e91e691",
+      "checkedFiles": 462
+    },
+    "json-pp": {
+      "manifestSha256": "dcb168d2cb67fe46d6de6c540e23b0f97ac3fa7b7a6d04b8f0c0f28d6ecb1fb2",
+      "checkedFiles": 4
+    }
+  },
+  "referenceConfig": "explicit empty -config; isolated Perl environment; C locale; UTC0",
+  "binarySha256": "382759c18bfc521b4959c80a5e4431b190e597368800f3c739e2e4ebc49cf4d1",
+  "sourceSha256": {
+    "Cargo.lock": "28e48ee1d73a3f1160157fe206a860406c428a9918e52ac4103850b2441272ab",
+    "Cargo.toml": "0fb2a109c53af64a97139f2c88d9d715d9d577e77282f9367a8886d68b602d66",
+    "crates/imageinfo-windows-storage/Cargo.toml": "4c32f58f516ea7b6e9d9fed350b2a638aa6e2e9faafb13f468d15465d71cba71",
+    "crates/imageinfo-windows-storage/examples/existing_properties_probe.rs": "c4f488ea353beb6e686632715659f385df18d09361c3358db5b07d2d0f2bafa0",
+    "crates/imageinfo-windows-storage/examples/guard_probe.rs": "d8e53a22504ac28dbc57d2f56aefbbcc2a62bae8b0370c415eacc74b3c4e1bb0",
+    "crates/imageinfo-windows-storage/src/existing_move.rs": "9522d9366cbcee36c343e48810c27943b551d3727fee21b38ffa96205ed1d523",
+    "crates/imageinfo-windows-storage/src/existing_properties.rs": "6ae4f746bc673bb714a4cdc4817b8106437f9e654b7b52de9a639b59da7cc4c8",
+    "crates/imageinfo-windows-storage/src/lib.rs": "af78dfd5b0844e5aa8f959349cca31f2acb7c3e93e60b3102939193092d4e79b",
+    "crates/imageinfo-windows-storage/src/native.rs": "068457f5dbc99e372d90357ddb8dc79b9bf156d8ee773c23dc9279cbc4f26932",
+    "crates/imageinfo-windows-storage/src/windows.rs": "e3d080a2ed3e04a2f8895d6a9c7434628971a3b5259c146ad6d19a5758a3953e",
+    "crates/imageinfo-windows-storage/tests/existing_move.rs": "13db89b82ad2e0df871529a2524a8593568364abe4c453ece05dc08fd08f7f64",
+    "crates/imageinfo-windows-storage/tests/native_guards.rs": "521d7cd3029ef9cc006d420657603340a3198ecba8aee113751c4206f546c03e",
+    "rust-toolchain.toml": "b2c19d86958ed6810741488db5cd352856f303c53bcf0ea774e72f94ee4d201e",
+    "src/app.rs": "824655b6f49fa3dac92c599ac88a7d52787726db851740d2acf8c3aa7af4e28d",
+    "src/cli.rs": "d891461f5f83b0e92fd5b81b43236aab408024dd5cf81033d321f775abbe749c",
+    "src/lib.rs": "8510d35f963e6a1c8da9bf4a9bb488b2af145f0659983432891d0c87769aa821",
+    "src/main.rs": "15d94e58407c8efed48e5dbf611551c9d19f7056887d043ad7281df1fb4488b8",
+    "src/output.rs": "fe19962fb81f01d4be1fc501153ad345864ff2fba669182870d42f6d6daaaacc",
+    "src/pairing.rs": "a17564bdc53a41137bf04b3a59fbff50146683c6248ee382904e394bafd85530",
+    "src/plan.rs": "2b577dde8b8df377606123abd6a69042374bec973f9aee0e4544d6693fcb9ccc",
+    "src/preview.rs": "4b6b7568621b8e7a6df27ea51a848d3614c23f0ae48b60ced67998feac15d745",
+    "src/privacy.rs": "6d0fc7895ef9054bb9d1037c2bef4ec20e9d657383cbdf9a00bbe4c36174dd6d",
+    "src/privacy/provenance.rs": "e40e0ef4bcf441bd8cc0a798ce443e4705442c2f723c5436166440cfb3c3f3f7",
+    "src/read_request.rs": "612f84defa717f481e34e7ebf18f662c2935ded67d1c20ce2238f1645bbe9ee1",
+    "src/read_session.rs": "4815a17dd4b21fe3d864177ab51060b97d278011bbb9413ac647d230ee6ad473",
+    "src/reader/admission.rs": "4b55957144b096092628bb4b7d5070ecc9ceb4e1046739768dd24bf6e61e8a41",
+    "src/reader/bmff.rs": "4c7eb8bee983af5d52f3ae20b9259a1aef5b832b5508e56c717e84c63fee29b7",
+    "src/reader/bounded.rs": "9f1c63430fc4a4bfa08375215be83afa2e91284a727cd4fb4055af774215030c",
+    "src/reader/extract.rs": "55421d72372117c88fff30d2e8d7a81dbd44c583e03cbb33dd67f79c21871f4e",
+    "src/reader/mod.rs": "a1377465287cf87ac1d44698aeea5d4cb017d6ce9c74888ab9ce79ed5b3e84a3",
+    "src/reader/tiff.rs": "7d595889277ae3b326e53864da921d4f471bfcc40312fa5ee5df908ef78ee0fb",
+    "src/reader/tracks.rs": "50599aedea1ad5c9976130f4b933701def645df76bf8f3b3243cd954712d17e3",
+    "src/reader/wire.rs": "c5c3c2adacec69a48d9a4a0586ce0f47f2023e065c83174a64602bccb9d13944",
+    "src/sidecar_candidate.rs": "f1bbbd0d3025bedea892970e961983c8baeea624f37e605c4af5bce7038718aa",
+    "src/sidecar_candidate/adapter.rs": "f4fbc3b445b1a1e1c8c0ae13252345ba78a04a9f8d2699cceff0d2c8feb9303c",
+    "src/sidecar_candidate/mapping.rs": "bd1c27455e85b0387df449a289699d6a05093637227d1337dc5e823bfabecc43",
+    "src/sidecar_candidate/preservation.rs": "6dc4d495039e81113262edc3204b9c96c86970036ef24135f1341b457352d4ce",
+    "src/sidecar_candidate/tests.rs": "a39a198105202281f31e51df91656f057fee20317d97d6a3b80700b9238d295e",
+    "src/source_binding.rs": "7a56fd81449825c12b6309f0342bf21330cef881067b9741cc6e42f83e7b9b68",
+    "src/storage/custody.rs": "651d44681bd0ccf458b7057c1b40d5f8d5358edb28c7fb0666492cc52e4c7de4",
+    "src/storage/custody/tests.rs": "ea4bf07d92c9e7f026d4613d4c395669a60fded8a4bb0ce64699da1fd3743ab2",
+    "src/storage/group.rs": "1108e68c695775188331b2dee09b7b3ed4ce1a698c7c887a390846e72b38bf86",
+    "src/storage/group/tests.rs": "ef9e3fc1386d66249c188bee0d6af34d4de9b821cb24c50b18184b103b27d806",
+    "src/storage/inspection.rs": "4b93f35093c726e17fc55abf26571bcc3ec7019f1756e75ae4c3252de9e111f3",
+    "src/storage/inspection/tests.rs": "886c934a41e31be14ab3ddb0d67bac99910abfc1f57dd33c368a8ad1f77a22f3",
+    "src/storage/mod.rs": "6bbc24362ff880b0be07f91c8bd032f6312ac44d0af9c420ca1f1e3fc97db24c",
+    "src/storage/native_errors.rs": "abe3e3a1f3ca7e4c351c72bc7a69d8aa7d0bceb33a09d352845edaf902a94a33",
+    "src/storage/resources.rs": "7ddb8db5064220692ed6730db85e60b5338bb4dabfc8abedfb9377950abe8569",
+    "src/storage/resources/tests.rs": "c24615a32ac5d564294ecd6726fbe0226be27e477e52cea9f8bdca9e7a25baad",
+    "src/storage/resources/tests/native.rs": "a15cb0e1591726640ab481a5f538c717d3649173a27253f2b57cc50e6133d41f",
+    "src/storage/runtime.rs": "560bab59815483b25f6eafe2968bc8a73b93f6246ce9abe4b629e3ca04a4f69d",
+    "src/storage/runtime/tests.rs": "e0d3d044cd09a67f449fbe948aa05337352863650443992c79caa36ce7aa1000",
+    "src/storage/windows.rs": "0418f001b016f78eed37a3d192468d1d9c78e46aff5da9e293592cb0a5044fa0",
+    "src/storage/windows/live_ack_tests.rs": "3345e8d7595bb563432b3eb6085c3d865b2d5dcac6d670cc7e3a3768fe78261b",
+    "src/xmp.rs": "100ecb7221e779f4f0de9ccccf92bc85e9613ff2f9583f0b057f7d985b1b7186",
+    "tests/support/mod.rs": "c8354d2609aa664d1b86ceca75a7d9500973fcf222cdd267ce9b3c7bafe34104"
+  },
+  "checkerSha256": "87ab24e12f569785427eebf995110a7ab02b85a826bcc48157b3ef756ba249ba",
+  "ledgerSha256": "d793a9e05815faed9a50af1acdd8567a7460f43840f52ee485a4efbf4720eac1",
+  "fixture": {
+    "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+    "byteLength": 2469,
+    "previews": {
+      "ThumbnailImage": {
+        "byteLength": 10,
+        "sha256": "5ea980e3c60503f5bfc42d514c4dce4873234c0a79e23d7ac6ed50db2db498e8",
+        "sourceOffset": 726
+      },
+      "PreviewImage": {
+        "byteLength": 11,
+        "sha256": "964f00609b7e8e2e91835fc83e68566eb5a32ead4c3afec074b860ced4df6251",
+        "sourceOffset": 2390
+      },
+      "JpgFromRaw": {
+        "byteLength": 12,
+        "sha256": "26dad17b666767b757076a9bd46972028c3af70154dbcf3ef123fcf820f97c53",
+        "sourceOffset": 2409
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "SP-001",
+      "passed": true,
+      "observations": {
+        "reference": {
+          "status": 0,
+          "stdoutBytes": 10,
+          "stdoutSha256": "5ea980e3c60503f5bfc42d514c4dce4873234c0a79e23d7ac6ed50db2db498e8",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 6192449489341764,
+            "mode": 33206,
+            "mtimeNs": 1792245395239376000,
+            "ctimeNs": 1792245395238375200,
+            "birthtimeNs": 1792245395238375200,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 6192449489341764,
+            "mode": 33206,
+            "mtimeNs": 1792245395239376000,
+            "ctimeNs": 1792245395238375200,
+            "birthtimeNs": 1792245395238375200,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 0,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "source.cr3"
+          ],
+          "outputFiles": {}
+        },
+        "native": {
+          "status": 0,
+          "stdoutBytes": 909,
+          "stdoutSha256": "98cce6fbe304116ad6b816d5384bab201701ca2e4fe6570afc1b9057973f006f",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128720,
+            "mode": 33206,
+            "mtimeNs": 1792245395682092000,
+            "ctimeNs": 1792245395682092000,
+            "birthtimeNs": 1792245395682092000,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128720,
+            "mode": 33206,
+            "mtimeNs": 1792245395682092000,
+            "ctimeNs": 1792245395682092000,
+            "birthtimeNs": 1792245395682092000,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 1,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "out.jpg",
+            "source.cr3"
+          ],
+          "outputFiles": {
+            "out.jpg": {
+              "sha256": "5ea980e3c60503f5bfc42d514c4dce4873234c0a79e23d7ac6ed50db2db498e8",
+              "byteLength": 10,
+              "device": 10008163935479661397,
+              "fileId": 562949955128725,
+              "mode": 33206,
+              "mtimeNs": 1792245395706702600,
+              "ctimeNs": 1792245395706702600,
+              "birthtimeNs": 1792245395706702600,
+              "links": 1,
+              "fileAttributes": 32
+            }
+          },
+          "summaryArtifactCount": 1
+        }
+      }
+    },
+    {
+      "id": "SP-002",
+      "passed": true,
+      "observations": {
+        "reference": {
+          "status": 0,
+          "stdoutBytes": 11,
+          "stdoutSha256": "964f00609b7e8e2e91835fc83e68566eb5a32ead4c3afec074b860ced4df6251",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128736,
+            "mode": 33206,
+            "mtimeNs": 1792245395734370800,
+            "ctimeNs": 1792245395734370800,
+            "birthtimeNs": 1792245395734370800,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128736,
+            "mode": 33206,
+            "mtimeNs": 1792245395734370800,
+            "ctimeNs": 1792245395734370800,
+            "birthtimeNs": 1792245395734370800,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 0,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "source.cr3"
+          ],
+          "outputFiles": {}
+        },
+        "native": {
+          "status": 0,
+          "stdoutBytes": 909,
+          "stdoutSha256": "babe9f93ed6754889313628254b1cad6d5b8adc94aa2d5ced51ef94c9c57c581",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128765,
+            "mode": 33206,
+            "mtimeNs": 1792245396187957600,
+            "ctimeNs": 1792245396187957600,
+            "birthtimeNs": 1792245396187957600,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128765,
+            "mode": 33206,
+            "mtimeNs": 1792245396187957600,
+            "ctimeNs": 1792245396187957600,
+            "birthtimeNs": 1792245396187957600,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 1,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "out.jpg",
+            "source.cr3"
+          ],
+          "outputFiles": {
+            "out.jpg": {
+              "sha256": "964f00609b7e8e2e91835fc83e68566eb5a32ead4c3afec074b860ced4df6251",
+              "byteLength": 11,
+              "device": 10008163935479661397,
+              "fileId": 562949955128768,
+              "mode": 33206,
+              "mtimeNs": 1792245396208053700,
+              "ctimeNs": 1792245396207052700,
+              "birthtimeNs": 1792245396207052700,
+              "links": 1,
+              "fileAttributes": 32
+            }
+          },
+          "summaryArtifactCount": 1
+        }
+      }
+    },
+    {
+      "id": "SP-003",
+      "passed": true,
+      "observations": {
+        "reference": {
+          "status": 0,
+          "stdoutBytes": 12,
+          "stdoutSha256": "26dad17b666767b757076a9bd46972028c3af70154dbcf3ef123fcf820f97c53",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128771,
+            "mode": 33206,
+            "mtimeNs": 1792245396233726300,
+            "ctimeNs": 1792245396233216500,
+            "birthtimeNs": 1792245396233216500,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128771,
+            "mode": 33206,
+            "mtimeNs": 1792245396233726300,
+            "ctimeNs": 1792245396233216500,
+            "birthtimeNs": 1792245396233216500,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 0,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "source.cr3"
+          ],
+          "outputFiles": {}
+        },
+        "native": {
+          "status": 0,
+          "stdoutBytes": 909,
+          "stdoutSha256": "458e57a74213848a075ba8d7ed46541906795acaae60f9f3f7317d9c0b14e438",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128786,
+            "mode": 33206,
+            "mtimeNs": 1792245396663367600,
+            "ctimeNs": 1792245396663367600,
+            "birthtimeNs": 1792245396663367600,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128786,
+            "mode": 33206,
+            "mtimeNs": 1792245396663367600,
+            "ctimeNs": 1792245396663367600,
+            "birthtimeNs": 1792245396663367600,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 1,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "out.jpg",
+            "source.cr3"
+          ],
+          "outputFiles": {
+            "out.jpg": {
+              "sha256": "26dad17b666767b757076a9bd46972028c3af70154dbcf3ef123fcf820f97c53",
+              "byteLength": 12,
+              "device": 10008163935479661397,
+              "fileId": 562949955128789,
+              "mode": 33206,
+              "mtimeNs": 1792245396689553400,
+              "ctimeNs": 1792245396689553400,
+              "birthtimeNs": 1792245396689553400,
+              "links": 1,
+              "fileAttributes": 32
+            }
+          },
+          "summaryArtifactCount": 1
+        }
+      }
+    },
+    {
+      "id": "SP-004",
+      "passed": true,
+      "observations": {
+        "reference": {
+          "status": 0,
+          "stdoutBytes": 28,
+          "stdoutSha256": "021037431a7938c96a8f38e9aa727f4b0fa7ca05ea293d44310efa438b64383d",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128792,
+            "mode": 33206,
+            "mtimeNs": 1792245396720973600,
+            "ctimeNs": 1792245396720973600,
+            "birthtimeNs": 1792245396720973600,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128792,
+            "mode": 33206,
+            "mtimeNs": 1792245396720973600,
+            "ctimeNs": 1792245396720973600,
+            "birthtimeNs": 1792245396720973600,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 1,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "source.cr3",
+            "source.jpg"
+          ],
+          "outputFiles": {
+            "source.jpg": {
+              "sha256": "5ea980e3c60503f5bfc42d514c4dce4873234c0a79e23d7ac6ed50db2db498e8",
+              "byteLength": 10,
+              "device": 10008163935479661397,
+              "fileId": 562949955128805,
+              "mode": 33206,
+              "mtimeNs": 1792245397150672700,
+              "ctimeNs": 1792245397149664000,
+              "birthtimeNs": 1792245397149664000,
+              "links": 1,
+              "fileAttributes": 32
+            }
+          }
+        },
+        "native": {
+          "status": 0,
+          "stdoutBytes": 912,
+          "stdoutSha256": "d2db8764a9c41de4963093b520536b98a88175e203bc6c1ec2e4ea6778e0327d",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128808,
+            "mode": 33206,
+            "mtimeNs": 1792245397190220700,
+            "ctimeNs": 1792245397190220700,
+            "birthtimeNs": 1792245397190220700,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128808,
+            "mode": 33206,
+            "mtimeNs": 1792245397190220700,
+            "ctimeNs": 1792245397190220700,
+            "birthtimeNs": 1792245397190220700,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 1,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "source.cr3",
+            "source.jpg"
+          ],
+          "outputFiles": {
+            "source.jpg": {
+              "sha256": "5ea980e3c60503f5bfc42d514c4dce4873234c0a79e23d7ac6ed50db2db498e8",
+              "byteLength": 10,
+              "device": 10008163935479661397,
+              "fileId": 562949955128811,
+              "mode": 33206,
+              "mtimeNs": 1792245397216550600,
+              "ctimeNs": 1792245397216550600,
+              "birthtimeNs": 1792245397216550600,
+              "links": 1,
+              "fileAttributes": 32
+            }
+          },
+          "summaryArtifactCount": 1
+        }
+      }
+    },
+    {
+      "id": "SP-005",
+      "passed": true,
+      "observations": {
+        "reference": {
+          "status": 0,
+          "stdoutBytes": 28,
+          "stdoutSha256": "021037431a7938c96a8f38e9aa727f4b0fa7ca05ea293d44310efa438b64383d",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128814,
+            "mode": 33206,
+            "mtimeNs": 1792245397240187300,
+            "ctimeNs": 1792245397240187300,
+            "birthtimeNs": 1792245397240187300,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128814,
+            "mode": 33206,
+            "mtimeNs": 1792245397240187300,
+            "ctimeNs": 1792245397240187300,
+            "birthtimeNs": 1792245397240187300,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 1,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "source.cr3",
+            "source.jpg"
+          ],
+          "outputFiles": {
+            "source.jpg": {
+              "sha256": "964f00609b7e8e2e91835fc83e68566eb5a32ead4c3afec074b860ced4df6251",
+              "byteLength": 11,
+              "device": 10008163935479661397,
+              "fileId": 562949955128834,
+              "mode": 33206,
+              "mtimeNs": 1792245397686041600,
+              "ctimeNs": 1792245397684526200,
+              "birthtimeNs": 1792245397684526200,
+              "links": 1,
+              "fileAttributes": 32
+            }
+          }
+        },
+        "native": {
+          "status": 0,
+          "stdoutBytes": 912,
+          "stdoutSha256": "30311dc9151c63ecc7b0df9842f2d7d04685463af0cf8f1ccad51cc1f286494b",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128839,
+            "mode": 33206,
+            "mtimeNs": 1792245397721755400,
+            "ctimeNs": 1792245397720248100,
+            "birthtimeNs": 1792245397720248100,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128839,
+            "mode": 33206,
+            "mtimeNs": 1792245397721755400,
+            "ctimeNs": 1792245397720248100,
+            "birthtimeNs": 1792245397720248100,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 1,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "source.cr3",
+            "source.jpg"
+          ],
+          "outputFiles": {
+            "source.jpg": {
+              "sha256": "964f00609b7e8e2e91835fc83e68566eb5a32ead4c3afec074b860ced4df6251",
+              "byteLength": 11,
+              "device": 10008163935479661397,
+              "fileId": 562949955128842,
+              "mode": 33206,
+              "mtimeNs": 1792245397744840600,
+              "ctimeNs": 1792245397744335100,
+              "birthtimeNs": 1792245397744335100,
+              "links": 1,
+              "fileAttributes": 32
+            }
+          },
+          "summaryArtifactCount": 1
+        }
+      }
+    },
+    {
+      "id": "SP-006",
+      "passed": true,
+      "observations": {
+        "reference": {
+          "status": 0,
+          "stdoutBytes": 28,
+          "stdoutSha256": "021037431a7938c96a8f38e9aa727f4b0fa7ca05ea293d44310efa438b64383d",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128847,
+            "mode": 33206,
+            "mtimeNs": 1792245397770131400,
+            "ctimeNs": 1792245397769119100,
+            "birthtimeNs": 1792245397769119100,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128847,
+            "mode": 33206,
+            "mtimeNs": 1792245397770131400,
+            "ctimeNs": 1792245397769119100,
+            "birthtimeNs": 1792245397769119100,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 1,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "source.cr3",
+            "source.jpg"
+          ],
+          "outputFiles": {
+            "source.jpg": {
+              "sha256": "26dad17b666767b757076a9bd46972028c3af70154dbcf3ef123fcf820f97c53",
+              "byteLength": 12,
+              "device": 10008163935479661397,
+              "fileId": 562949955128858,
+              "mode": 33206,
+              "mtimeNs": 1792245398216649200,
+              "ctimeNs": 1792245398216649200,
+              "birthtimeNs": 1792245398216649200,
+              "links": 1,
+              "fileAttributes": 32
+            }
+          }
+        },
+        "native": {
+          "status": 0,
+          "stdoutBytes": 912,
+          "stdoutSha256": "77c8739291b16948b5d660cdd83f6e6de4855469cb4a1a8f41b275114e11fc77",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128869,
+            "mode": 33206,
+            "mtimeNs": 1792245398247408400,
+            "ctimeNs": 1792245398246410100,
+            "birthtimeNs": 1792245398246410100,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128869,
+            "mode": 33206,
+            "mtimeNs": 1792245398247408400,
+            "ctimeNs": 1792245398246410100,
+            "birthtimeNs": 1792245398246410100,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 1,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "source.cr3",
+            "source.jpg"
+          ],
+          "outputFiles": {
+            "source.jpg": {
+              "sha256": "26dad17b666767b757076a9bd46972028c3af70154dbcf3ef123fcf820f97c53",
+              "byteLength": 12,
+              "device": 10008163935479661397,
+              "fileId": 562949955128872,
+              "mode": 33206,
+              "mtimeNs": 1792245398270003900,
+              "ctimeNs": 1792245398270003900,
+              "birthtimeNs": 1792245398270003900,
+              "links": 1,
+              "fileAttributes": 32
+            }
+          },
+          "summaryArtifactCount": 1
+        }
+      }
+    },
+    {
+      "id": "SP-007",
+      "passed": true,
+      "observations": {
+        "reference": {
+          "status": 0,
+          "stdoutBytes": 28,
+          "stdoutSha256": "021037431a7938c96a8f38e9aa727f4b0fa7ca05ea293d44310efa438b64383d",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128875,
+            "mode": 33206,
+            "mtimeNs": 1792245398299099500,
+            "ctimeNs": 1792245398299099500,
+            "birthtimeNs": 1792245398299099500,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128875,
+            "mode": 33206,
+            "mtimeNs": 1792245398299099500,
+            "ctimeNs": 1792245398299099500,
+            "birthtimeNs": 1792245398299099500,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 1,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "ThumbnailImage.jpg",
+            "source.cr3"
+          ],
+          "outputFiles": {
+            "ThumbnailImage.jpg": {
+              "sha256": "5ea980e3c60503f5bfc42d514c4dce4873234c0a79e23d7ac6ed50db2db498e8",
+              "byteLength": 10,
+              "device": 10008163935479661397,
+              "fileId": 562949955128888,
+              "mode": 33206,
+              "mtimeNs": 1792245398689511500,
+              "ctimeNs": 1792245398689511500,
+              "birthtimeNs": 1792245398689511500,
+              "links": 1,
+              "fileAttributes": 32
+            }
+          }
+        },
+        "native": {
+          "status": 0,
+          "stdoutBytes": 920,
+          "stdoutSha256": "4cc4984c36b3ef9ae592dd54ff741b69937e02a5c5f682305ce4bc0c9b9a003a",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128891,
+            "mode": 33206,
+            "mtimeNs": 1792245398723857600,
+            "ctimeNs": 1792245398723857600,
+            "birthtimeNs": 1792245398723857600,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128891,
+            "mode": 33206,
+            "mtimeNs": 1792245398723857600,
+            "ctimeNs": 1792245398723857600,
+            "birthtimeNs": 1792245398723857600,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 1,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "ThumbnailImage.jpg",
+            "source.cr3"
+          ],
+          "outputFiles": {
+            "ThumbnailImage.jpg": {
+              "sha256": "5ea980e3c60503f5bfc42d514c4dce4873234c0a79e23d7ac6ed50db2db498e8",
+              "byteLength": 10,
+              "device": 10008163935479661397,
+              "fileId": 562949955128894,
+              "mode": 33206,
+              "mtimeNs": 1792245398746016200,
+              "ctimeNs": 1792245398744507800,
+              "birthtimeNs": 1792245398744507800,
+              "links": 1,
+              "fileAttributes": 32
+            }
+          },
+          "summaryArtifactCount": 1
+        }
+      }
+    },
+    {
+      "id": "SP-008",
+      "passed": true,
+      "observations": {
+        "reference": {
+          "status": 0,
+          "stdoutBytes": 28,
+          "stdoutSha256": "021037431a7938c96a8f38e9aa727f4b0fa7ca05ea293d44310efa438b64383d",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128897,
+            "mode": 33206,
+            "mtimeNs": 1792245398777198800,
+            "ctimeNs": 1792245398777198800,
+            "birthtimeNs": 1792245398777198800,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128897,
+            "mode": 33206,
+            "mtimeNs": 1792245398777198800,
+            "ctimeNs": 1792245398777198800,
+            "birthtimeNs": 1792245398777198800,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 1,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "PreviewImage.jpg",
+            "source.cr3"
+          ],
+          "outputFiles": {
+            "PreviewImage.jpg": {
+              "sha256": "964f00609b7e8e2e91835fc83e68566eb5a32ead4c3afec074b860ced4df6251",
+              "byteLength": 11,
+              "device": 10008163935479661397,
+              "fileId": 562949955128917,
+              "mode": 33206,
+              "mtimeNs": 1792245399211902500,
+              "ctimeNs": 1792245399211902500,
+              "birthtimeNs": 1792245399211902500,
+              "links": 1,
+              "fileAttributes": 32
+            }
+          }
+        },
+        "native": {
+          "status": 0,
+          "stdoutBytes": 918,
+          "stdoutSha256": "1c638bbbc5d51909473d22a8a14baa265a2f874f5aa967966df15291f5baef08",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128920,
+            "mode": 33206,
+            "mtimeNs": 1792245399245164700,
+            "ctimeNs": 1792245399244164800,
+            "birthtimeNs": 1792245399244164800,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128920,
+            "mode": 33206,
+            "mtimeNs": 1792245399245164700,
+            "ctimeNs": 1792245399244164800,
+            "birthtimeNs": 1792245399244164800,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 1,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "PreviewImage.jpg",
+            "source.cr3"
+          ],
+          "outputFiles": {
+            "PreviewImage.jpg": {
+              "sha256": "964f00609b7e8e2e91835fc83e68566eb5a32ead4c3afec074b860ced4df6251",
+              "byteLength": 11,
+              "device": 10008163935479661397,
+              "fileId": 562949955128923,
+              "mode": 33206,
+              "mtimeNs": 1792245399262848200,
+              "ctimeNs": 1792245399262848200,
+              "birthtimeNs": 1792245399262848200,
+              "links": 1,
+              "fileAttributes": 32
+            }
+          },
+          "summaryArtifactCount": 1
+        }
+      }
+    },
+    {
+      "id": "SP-009",
+      "passed": true,
+      "observations": {
+        "reference": {
+          "status": 0,
+          "stdoutBytes": 28,
+          "stdoutSha256": "021037431a7938c96a8f38e9aa727f4b0fa7ca05ea293d44310efa438b64383d",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128926,
+            "mode": 33206,
+            "mtimeNs": 1792245399291637100,
+            "ctimeNs": 1792245399291637100,
+            "birthtimeNs": 1792245399291637100,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128926,
+            "mode": 33206,
+            "mtimeNs": 1792245399291637100,
+            "ctimeNs": 1792245399291637100,
+            "birthtimeNs": 1792245399291637100,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 1,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "JpgFromRaw.jpg",
+            "source.cr3"
+          ],
+          "outputFiles": {
+            "JpgFromRaw.jpg": {
+              "sha256": "26dad17b666767b757076a9bd46972028c3af70154dbcf3ef123fcf820f97c53",
+              "byteLength": 12,
+              "device": 10008163935479661397,
+              "fileId": 562949955128946,
+              "mode": 33206,
+              "mtimeNs": 1792245399720252700,
+              "ctimeNs": 1792245399720252700,
+              "birthtimeNs": 1792245399720252700,
+              "links": 1,
+              "fileAttributes": 32
+            }
+          }
+        },
+        "native": {
+          "status": 0,
+          "stdoutBytes": 916,
+          "stdoutSha256": "7c738c2502225bab4baf8854af977961d0a66dba0d9b26293c70045118fbe290",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128954,
+            "mode": 33206,
+            "mtimeNs": 1792245399754367100,
+            "ctimeNs": 1792245399754367100,
+            "birthtimeNs": 1792245399754367100,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128954,
+            "mode": 33206,
+            "mtimeNs": 1792245399754367100,
+            "ctimeNs": 1792245399754367100,
+            "birthtimeNs": 1792245399754367100,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 1,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "JpgFromRaw.jpg",
+            "source.cr3"
+          ],
+          "outputFiles": {
+            "JpgFromRaw.jpg": {
+              "sha256": "26dad17b666767b757076a9bd46972028c3af70154dbcf3ef123fcf820f97c53",
+              "byteLength": 12,
+              "device": 10008163935479661397,
+              "fileId": 562949955128961,
+              "mode": 33206,
+              "mtimeNs": 1792245399779982700,
+              "ctimeNs": 1792245399779475500,
+              "birthtimeNs": 1792245399779475500,
+              "links": 1,
+              "fileAttributes": 32
+            }
+          },
+          "summaryArtifactCount": 1
+        }
+      }
+    },
+    {
+      "id": "SP-010",
+      "passed": true,
+      "observations": {
+        "reference": {
+          "status": 0,
+          "stdoutBytes": 22,
+          "stdoutSha256": "a4c7d335251e96d926d2dd9e453d9852093f2ce2c2bacb5474d399586b1bec55",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128965,
+            "mode": 33206,
+            "mtimeNs": 1792245399808793100,
+            "ctimeNs": 1792245399808793100,
+            "birthtimeNs": 1792245399808793100,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128965,
+            "mode": 33206,
+            "mtimeNs": 1792245399808793100,
+            "ctimeNs": 1792245399808793100,
+            "birthtimeNs": 1792245399808793100,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 0,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "source.cr3"
+          ],
+          "outputFiles": {}
+        },
+        "native": {
+          "status": 2,
+          "stdoutBytes": 762,
+          "stdoutSha256": "817940f70d7423f688e647164ca5bec085c58641f3915fc65fc112d26400d2a1",
+          "stderrBytes": 193,
+          "stderrSha256": "820deb3ecf5c5a4973a0fcefdde17bd0881b1ab1ac1ac1a11384cd4d8841f883",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128987,
+            "mode": 33206,
+            "mtimeNs": 1792245400241508900,
+            "ctimeNs": 1792245400241508900,
+            "birthtimeNs": 1792245400241508900,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128987,
+            "mode": 33206,
+            "mtimeNs": 1792245400241508900,
+            "ctimeNs": 1792245400241508900,
+            "birthtimeNs": 1792245400241508900,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 0,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "source.cr3"
+          ],
+          "outputFiles": {},
+          "summaryArtifactCount": 0
+        }
+      }
+    },
+    {
+      "id": "SP-011",
+      "passed": true,
+      "observations": {
+        "reference": {
+          "status": 1,
+          "stdoutBytes": 59,
+          "stdoutSha256": "dba3aa522a7db6a4e1faba2a84aefa911988afb3cfbd893cb2894ad33692701c",
+          "stderrBytes": 54,
+          "stderrSha256": "52eeb4fa03fb14746952d5e13da64dcf857cb731186d96d67670a1e1d95b0884",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128999,
+            "mode": 33206,
+            "mtimeNs": 1792245400299809500,
+            "ctimeNs": 1792245400299809500,
+            "birthtimeNs": 1792245400299809500,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955128999,
+            "mode": 33206,
+            "mtimeNs": 1792245400299809500,
+            "ctimeNs": 1792245400299809500,
+            "birthtimeNs": 1792245400299809500,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": {
+            "sha256": "822d8f23728b836cbf3c7b908aeb9e30c2bb5977f70dd20319516764d03f3403",
+            "byteLength": 39,
+            "device": 10008163935479661397,
+            "fileId": 562949955129000,
+            "mode": 33206,
+            "mtimeNs": 1792245400299809500,
+            "ctimeNs": 1792245400299809500,
+            "birthtimeNs": 1792245400299809500,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedAfter": {
+            "sha256": "822d8f23728b836cbf3c7b908aeb9e30c2bb5977f70dd20319516764d03f3403",
+            "byteLength": 39,
+            "device": 10008163935479661397,
+            "fileId": 562949955129000,
+            "mode": 33206,
+            "mtimeNs": 1792245400299809500,
+            "ctimeNs": 1792245400299809500,
+            "birthtimeNs": 1792245400299809500,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "newFileCount": 0,
+          "namespaceBefore": [
+            "source.cr3",
+            "source.jpg"
+          ],
+          "namespaceAfter": [
+            "source.cr3",
+            "source.jpg"
+          ],
+          "outputFiles": {}
+        },
+        "native": {
+          "status": 1,
+          "stdoutBytes": 953,
+          "stdoutSha256": "b86e2870153c5162e56354a4a47254f75c8fd0783230fcec9952abdb6a742f2e",
+          "stderrBytes": 63,
+          "stderrSha256": "d265fbec53646f13b96b01932c31fda17d780eed2b93399e71efbfa5feb793c0",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129015,
+            "mode": 33206,
+            "mtimeNs": 1792245400747329900,
+            "ctimeNs": 1792245400747329900,
+            "birthtimeNs": 1792245400747329900,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129015,
+            "mode": 33206,
+            "mtimeNs": 1792245400747329900,
+            "ctimeNs": 1792245400747329900,
+            "birthtimeNs": 1792245400747329900,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": {
+            "sha256": "822d8f23728b836cbf3c7b908aeb9e30c2bb5977f70dd20319516764d03f3403",
+            "byteLength": 39,
+            "device": 10008163935479661397,
+            "fileId": 562949955129016,
+            "mode": 33206,
+            "mtimeNs": 1792245400748330400,
+            "ctimeNs": 1792245400748330400,
+            "birthtimeNs": 1792245400748330400,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedAfter": {
+            "sha256": "822d8f23728b836cbf3c7b908aeb9e30c2bb5977f70dd20319516764d03f3403",
+            "byteLength": 39,
+            "device": 10008163935479661397,
+            "fileId": 562949955129016,
+            "mode": 33206,
+            "mtimeNs": 1792245400748330400,
+            "ctimeNs": 1792245400748330400,
+            "birthtimeNs": 1792245400748330400,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "newFileCount": 0,
+          "namespaceBefore": [
+            "source.cr3",
+            "source.jpg"
+          ],
+          "namespaceAfter": [
+            "source.cr3",
+            "source.jpg"
+          ],
+          "outputFiles": {},
+          "summaryArtifactCount": 0
+        }
+      }
+    },
+    {
+      "id": "SP-012",
+      "passed": true,
+      "observations": {
+        "reference": {
+          "status": 1,
+          "stdoutBytes": 83,
+          "stdoutSha256": "3fa04ca06317593c4f5d8d4152b61170a53c596581cb3e23abeed46f157dae5f",
+          "stderrBytes": 60,
+          "stderrSha256": "ee4b4e6fe19372ceb99d85358e39e73b1cc007d2fcbc69b8ae305b6d7c0e828f",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129021,
+            "mode": 33206,
+            "mtimeNs": 1792245400799039500,
+            "ctimeNs": 1792245400798033000,
+            "birthtimeNs": 1792245400798033000,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129021,
+            "mode": 33206,
+            "mtimeNs": 1792245400799039500,
+            "ctimeNs": 1792245400798033000,
+            "birthtimeNs": 1792245400798033000,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": {
+            "sha256": "822d8f23728b836cbf3c7b908aeb9e30c2bb5977f70dd20319516764d03f3403",
+            "byteLength": 39,
+            "device": 10008163935479661397,
+            "fileId": 562949955129022,
+            "mode": 33206,
+            "mtimeNs": 1792245400799039500,
+            "ctimeNs": 1792245400799039500,
+            "birthtimeNs": 1792245400799039500,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedAfter": {
+            "sha256": "822d8f23728b836cbf3c7b908aeb9e30c2bb5977f70dd20319516764d03f3403",
+            "byteLength": 39,
+            "device": 10008163935479661397,
+            "fileId": 562949955129022,
+            "mode": 33206,
+            "mtimeNs": 1792245400799039500,
+            "ctimeNs": 1792245400799039500,
+            "birthtimeNs": 1792245400799039500,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "newFileCount": 0,
+          "namespaceBefore": [
+            "PreviewImage.jpg",
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "PreviewImage.jpg",
+            "source.cr3"
+          ],
+          "outputFiles": {}
+        },
+        "native": {
+          "status": 1,
+          "stdoutBytes": 953,
+          "stdoutSha256": "7430a333b79f3c6f2b9af06029c8de189866bf3c45d39b05a49247ab1fd5dd79",
+          "stderrBytes": 63,
+          "stderrSha256": "d265fbec53646f13b96b01932c31fda17d780eed2b93399e71efbfa5feb793c0",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129044,
+            "mode": 33206,
+            "mtimeNs": 1792245401236033900,
+            "ctimeNs": 1792245401236033900,
+            "birthtimeNs": 1792245401236033900,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129044,
+            "mode": 33206,
+            "mtimeNs": 1792245401236033900,
+            "ctimeNs": 1792245401236033900,
+            "birthtimeNs": 1792245401236033900,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": {
+            "sha256": "822d8f23728b836cbf3c7b908aeb9e30c2bb5977f70dd20319516764d03f3403",
+            "byteLength": 39,
+            "device": 10008163935479661397,
+            "fileId": 562949955129045,
+            "mode": 33206,
+            "mtimeNs": 1792245401236033900,
+            "ctimeNs": 1792245401236033900,
+            "birthtimeNs": 1792245401236033900,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedAfter": {
+            "sha256": "822d8f23728b836cbf3c7b908aeb9e30c2bb5977f70dd20319516764d03f3403",
+            "byteLength": 39,
+            "device": 10008163935479661397,
+            "fileId": 562949955129045,
+            "mode": 33206,
+            "mtimeNs": 1792245401236033900,
+            "ctimeNs": 1792245401236033900,
+            "birthtimeNs": 1792245401236033900,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "newFileCount": 0,
+          "namespaceBefore": [
+            "PreviewImage.jpg",
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "PreviewImage.jpg",
+            "source.cr3"
+          ],
+          "outputFiles": {},
+          "summaryArtifactCount": 0
+        }
+      }
+    },
+    {
+      "id": "SP-013",
+      "passed": true,
+      "observations": {
+        "reference": {
+          "status": 0,
+          "stdoutBytes": 11,
+          "stdoutSha256": "964f00609b7e8e2e91835fc83e68566eb5a32ead4c3afec074b860ced4df6251",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "-photo.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129050,
+            "mode": 33206,
+            "mtimeNs": 1792245401288739400,
+            "ctimeNs": 1792245401288739400,
+            "birthtimeNs": 1792245401288739400,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129050,
+            "mode": 33206,
+            "mtimeNs": 1792245401288739400,
+            "ctimeNs": 1792245401288739400,
+            "birthtimeNs": 1792245401288739400,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 0,
+          "namespaceBefore": [
+            "-photo.cr3"
+          ],
+          "namespaceAfter": [
+            "-photo.cr3"
+          ],
+          "outputFiles": {}
+        },
+        "native": {
+          "status": 0,
+          "stdoutBytes": 909,
+          "stdoutSha256": "bd0b55692857ea59a6beb7bca461231ec5f773ddeb50d9c6bbfd70693eab3610",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "-photo.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129065,
+            "mode": 33206,
+            "mtimeNs": 1792245401760678600,
+            "ctimeNs": 1792245401759173800,
+            "birthtimeNs": 1792245401759173800,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129065,
+            "mode": 33206,
+            "mtimeNs": 1792245401760678600,
+            "ctimeNs": 1792245401759173800,
+            "birthtimeNs": 1792245401759173800,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 1,
+          "namespaceBefore": [
+            "-photo.cr3"
+          ],
+          "namespaceAfter": [
+            "-photo.cr3",
+            "out.jpg"
+          ],
+          "outputFiles": {
+            "out.jpg": {
+              "sha256": "964f00609b7e8e2e91835fc83e68566eb5a32ead4c3afec074b860ced4df6251",
+              "byteLength": 11,
+              "device": 10008163935479661397,
+              "fileId": 562949955129068,
+              "mode": 33206,
+              "mtimeNs": 1792245401785291800,
+              "ctimeNs": 1792245401785291800,
+              "birthtimeNs": 1792245401785291800,
+              "links": 1,
+              "fileAttributes": 32
+            }
+          },
+          "summaryArtifactCount": 1
+        }
+      }
+    },
+    {
+      "id": "SP-014",
+      "passed": true,
+      "observations": {
+        "reference": {
+          "status": 0,
+          "stdoutBytes": 28,
+          "stdoutSha256": "021037431a7938c96a8f38e9aa727f4b0fa7ca05ea293d44310efa438b64383d",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "space name.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129073,
+            "mode": 33206,
+            "mtimeNs": 1792245401812343100,
+            "ctimeNs": 1792245401811344600,
+            "birthtimeNs": 1792245401811344600,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129073,
+            "mode": 33206,
+            "mtimeNs": 1792245401812343100,
+            "ctimeNs": 1792245401811344600,
+            "birthtimeNs": 1792245401811344600,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 1,
+          "namespaceBefore": [
+            "space name.cr3"
+          ],
+          "namespaceAfter": [
+            "PreviewImage.jpg",
+            "space name.cr3"
+          ],
+          "outputFiles": {
+            "PreviewImage.jpg": {
+              "sha256": "964f00609b7e8e2e91835fc83e68566eb5a32ead4c3afec074b860ced4df6251",
+              "byteLength": 11,
+              "device": 10008163935479661397,
+              "fileId": 562949955129084,
+              "mode": 33206,
+              "mtimeNs": 1792245402229963100,
+              "ctimeNs": 1792245402229963100,
+              "birthtimeNs": 1792245402229963100,
+              "links": 1,
+              "fileAttributes": 32
+            }
+          }
+        },
+        "native": {
+          "status": 0,
+          "stdoutBytes": 922,
+          "stdoutSha256": "2d1d93e6187c894f5316c1f394e9ccc87ac6345a7a06997b6bb5e3bf0867b7f9",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "space name.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129089,
+            "mode": 33206,
+            "mtimeNs": 1792245402263685300,
+            "ctimeNs": 1792245402262180800,
+            "birthtimeNs": 1792245402262180800,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129089,
+            "mode": 33206,
+            "mtimeNs": 1792245402263685300,
+            "ctimeNs": 1792245402262180800,
+            "birthtimeNs": 1792245402262180800,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 1,
+          "namespaceBefore": [
+            "space name.cr3"
+          ],
+          "namespaceAfter": [
+            "PreviewImage.jpg",
+            "space name.cr3"
+          ],
+          "outputFiles": {
+            "PreviewImage.jpg": {
+              "sha256": "964f00609b7e8e2e91835fc83e68566eb5a32ead4c3afec074b860ced4df6251",
+              "byteLength": 11,
+              "device": 10008163935479661397,
+              "fileId": 562949955129100,
+              "mode": 33206,
+              "mtimeNs": 1792245402285630900,
+              "ctimeNs": 1792245402284215000,
+              "birthtimeNs": 1792245402284215000,
+              "links": 1,
+              "fileAttributes": 32
+            }
+          },
+          "summaryArtifactCount": 1
+        }
+      }
+    },
+    {
+      "id": "SP-015",
+      "passed": true,
+      "observations": {
+        "reference": {
+          "status": 0,
+          "stdoutBytes": 252,
+          "stdoutSha256": "c8e29acdfc5895fe6daae50b0446b998c1bd95d3e9b6074b6037e37de4a93cf2",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129103,
+            "mode": 33206,
+            "mtimeNs": 1792245402319373300,
+            "ctimeNs": 1792245402319373300,
+            "birthtimeNs": 1792245402319373300,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129103,
+            "mode": 33206,
+            "mtimeNs": 1792245402319373300,
+            "ctimeNs": 1792245402319373300,
+            "birthtimeNs": 1792245402319373300,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 0,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "source.cr3"
+          ],
+          "outputFiles": {}
+        },
+        "native": {
+          "status": 0,
+          "stdoutBytes": 12075,
+          "stdoutSha256": "6d5b02a55f5330c10520f4738298345f0cdb07d13253eb85ab61c520afeffd0a",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129152,
+            "mode": 33206,
+            "mtimeNs": 1792245402750036200,
+            "ctimeNs": 1792245402750036200,
+            "birthtimeNs": 1792245402750036200,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129152,
+            "mode": 33206,
+            "mtimeNs": 1792245402750036200,
+            "ctimeNs": 1792245402750036200,
+            "birthtimeNs": 1792245402750036200,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 0,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "source.cr3"
+          ],
+          "outputFiles": {},
+          "summaryArtifactCount": 0
+        }
+      }
+    },
+    {
+      "id": "SP-016",
+      "passed": true,
+      "observations": {
+        "reference": {
+          "status": 0,
+          "stdoutBytes": 11,
+          "stdoutSha256": "964f00609b7e8e2e91835fc83e68566eb5a32ead4c3afec074b860ced4df6251",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129159,
+            "mode": 33206,
+            "mtimeNs": 1792245402800944200,
+            "ctimeNs": 1792245402800944200,
+            "birthtimeNs": 1792245402800944200,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129159,
+            "mode": 33206,
+            "mtimeNs": 1792245402800944200,
+            "ctimeNs": 1792245402800944200,
+            "birthtimeNs": 1792245402800944200,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 0,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "source.cr3"
+          ],
+          "outputFiles": {}
+        },
+        "native": {
+          "status": 0,
+          "stdoutBytes": 802,
+          "stdoutSha256": "1f5f310600698c386cb2e9c7ded82748e091e66792b1c4640f7611e5d59558d7",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129232,
+            "mode": 33206,
+            "mtimeNs": 1792245403338348700,
+            "ctimeNs": 1792245403338348700,
+            "birthtimeNs": 1792245403338348700,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129232,
+            "mode": 33206,
+            "mtimeNs": 1792245403338348700,
+            "ctimeNs": 1792245403338348700,
+            "birthtimeNs": 1792245403338348700,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 0,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "source.cr3"
+          ],
+          "outputFiles": {},
+          "summaryArtifactCount": 0
+        }
+      }
+    },
+    {
+      "id": "SP-017",
+      "passed": true,
+      "observations": {
+        "reference": {
+          "status": 1,
+          "stdoutBytes": 59,
+          "stdoutSha256": "dba3aa522a7db6a4e1faba2a84aefa911988afb3cfbd893cb2894ad33692701c",
+          "stderrBytes": 54,
+          "stderrSha256": "52eeb4fa03fb14746952d5e13da64dcf857cb731186d96d67670a1e1d95b0884",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129237,
+            "mode": 33206,
+            "mtimeNs": 1792245403386902700,
+            "ctimeNs": 1792245403385902300,
+            "birthtimeNs": 1792245403385902300,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129237,
+            "mode": 33206,
+            "mtimeNs": 1792245403386902700,
+            "ctimeNs": 1792245403385902300,
+            "birthtimeNs": 1792245403385902300,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": {
+            "sha256": "822d8f23728b836cbf3c7b908aeb9e30c2bb5977f70dd20319516764d03f3403",
+            "byteLength": 39,
+            "device": 10008163935479661397,
+            "fileId": 562949955129238,
+            "mode": 33206,
+            "mtimeNs": 1792245403386902700,
+            "ctimeNs": 1792245403386902700,
+            "birthtimeNs": 1792245403386902700,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedAfter": {
+            "sha256": "822d8f23728b836cbf3c7b908aeb9e30c2bb5977f70dd20319516764d03f3403",
+            "byteLength": 39,
+            "device": 10008163935479661397,
+            "fileId": 562949955129238,
+            "mode": 33206,
+            "mtimeNs": 1792245403386902700,
+            "ctimeNs": 1792245403386902700,
+            "birthtimeNs": 1792245403386902700,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "newFileCount": 0,
+          "namespaceBefore": [
+            "source.cr3",
+            "source.jpg"
+          ],
+          "namespaceAfter": [
+            "source.cr3",
+            "source.jpg"
+          ],
+          "outputFiles": {}
+        },
+        "native": {
+          "status": 1,
+          "stdoutBytes": 956,
+          "stdoutSha256": "82b54a0a54a5f633ed3476e6418357035c165f988e4558ddf323d784910e29b2",
+          "stderrBytes": 63,
+          "stderrSha256": "d265fbec53646f13b96b01932c31fda17d780eed2b93399e71efbfa5feb793c0",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129257,
+            "mode": 33206,
+            "mtimeNs": 1792245403821525000,
+            "ctimeNs": 1792245403821525000,
+            "birthtimeNs": 1792245403821525000,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129257,
+            "mode": 33206,
+            "mtimeNs": 1792245403821525000,
+            "ctimeNs": 1792245403821525000,
+            "birthtimeNs": 1792245403821525000,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": {
+            "sha256": "822d8f23728b836cbf3c7b908aeb9e30c2bb5977f70dd20319516764d03f3403",
+            "byteLength": 39,
+            "device": 10008163935479661397,
+            "fileId": 562949955129258,
+            "mode": 33206,
+            "mtimeNs": 1792245403822530800,
+            "ctimeNs": 1792245403821525000,
+            "birthtimeNs": 1792245403821525000,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedAfter": {
+            "sha256": "822d8f23728b836cbf3c7b908aeb9e30c2bb5977f70dd20319516764d03f3403",
+            "byteLength": 39,
+            "device": 10008163935479661397,
+            "fileId": 562949955129258,
+            "mode": 33206,
+            "mtimeNs": 1792245403822530800,
+            "ctimeNs": 1792245403821525000,
+            "birthtimeNs": 1792245403821525000,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "newFileCount": 0,
+          "namespaceBefore": [
+            "source.cr3",
+            "source.jpg"
+          ],
+          "namespaceAfter": [
+            "source.cr3",
+            "source.jpg"
+          ],
+          "outputFiles": {},
+          "summaryArtifactCount": 0
+        }
+      }
+    },
+    {
+      "id": "SP-018",
+      "passed": true,
+      "observations": {
+        "reference": {
+          "status": 0,
+          "stdoutBytes": 28,
+          "stdoutSha256": "30156355634c300c7b1a6f2d5e3648493d2e77df5ec08a37fb73e9ec99ab52b4",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129263,
+            "mode": 33206,
+            "mtimeNs": 1792245403867202800,
+            "ctimeNs": 1792245403867202800,
+            "birthtimeNs": 1792245403867202800,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 562949955129263,
+            "mode": 33206,
+            "mtimeNs": 1792245403867202800,
+            "ctimeNs": 1792245403867202800,
+            "birthtimeNs": 1792245403867202800,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 3,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "JpgFromRaw.jpg",
+            "PreviewImage.jpg",
+            "ThumbnailImage.jpg",
+            "source.cr3"
+          ],
+          "outputFiles": {
+            "JpgFromRaw.jpg": {
+              "sha256": "26dad17b666767b757076a9bd46972028c3af70154dbcf3ef123fcf820f97c53",
+              "byteLength": 12,
+              "device": 10008163935479661397,
+              "fileId": 844424931839875,
+              "mode": 33206,
+              "mtimeNs": 1792245404262729300,
+              "ctimeNs": 1792245404262729300,
+              "birthtimeNs": 1792245404262729300,
+              "links": 1,
+              "fileAttributes": 32
+            },
+            "PreviewImage.jpg": {
+              "sha256": "964f00609b7e8e2e91835fc83e68566eb5a32ead4c3afec074b860ced4df6251",
+              "byteLength": 11,
+              "device": 10008163935479661397,
+              "fileId": 844424931839874,
+              "mode": 33206,
+              "mtimeNs": 1792245404262729300,
+              "ctimeNs": 1792245404261727000,
+              "birthtimeNs": 1792245404261727000,
+              "links": 1,
+              "fileAttributes": 32
+            },
+            "ThumbnailImage.jpg": {
+              "sha256": "5ea980e3c60503f5bfc42d514c4dce4873234c0a79e23d7ac6ed50db2db498e8",
+              "byteLength": 10,
+              "device": 10008163935479661397,
+              "fileId": 844424931839873,
+              "mode": 33206,
+              "mtimeNs": 1792245404261727000,
+              "ctimeNs": 1792245404261727000,
+              "birthtimeNs": 1792245404261727000,
+              "links": 1,
+              "fileAttributes": 32
+            }
+          }
+        },
+        "native": {
+          "status": 2,
+          "stdoutBytes": 762,
+          "stdoutSha256": "9652167becb74ead9acf40fa123be23643fc5762e59e5b48e5c78cdfd042621a",
+          "stderrBytes": 193,
+          "stderrSha256": "820deb3ecf5c5a4973a0fcefdde17bd0881b1ab1ac1ac1a11384cd4d8841f883",
+          "inputPath": "source.cr3",
+          "inputBefore": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 844424931839878,
+            "mode": 33206,
+            "mtimeNs": 1792245404303303600,
+            "ctimeNs": 1792245404303303600,
+            "birthtimeNs": 1792245404303303600,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "inputAfter": {
+            "sha256": "75fb6dd31c216891acb5a5c9f2e3355bea2b23cb03299eda0e3e09b0a04a6db4",
+            "byteLength": 2469,
+            "device": 10008163935479661397,
+            "fileId": 844424931839878,
+            "mode": 33206,
+            "mtimeNs": 1792245404303303600,
+            "ctimeNs": 1792245404303303600,
+            "birthtimeNs": 1792245404303303600,
+            "links": 1,
+            "fileAttributes": 32
+          },
+          "occupiedBefore": null,
+          "occupiedAfter": null,
+          "newFileCount": 0,
+          "namespaceBefore": [
+            "source.cr3"
+          ],
+          "namespaceAfter": [
+            "source.cr3"
+          ],
+          "outputFiles": {},
+          "summaryArtifactCount": 0
+        }
+      }
+    }
+  ],
+  "toolsUnchangedAfter": true,
+  "passedCases": 18
+}

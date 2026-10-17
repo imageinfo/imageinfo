@@ -143,6 +143,40 @@ remain with their owning tickets. Unsupported platforms return before effects.
 
 ## Primary API basis
 
+### #0170 read-only reacquisition and #0173 availability addition
+
+`ExistingRoot` reacquires an existing ordinary private transaction directory with
+the already reviewed read-only `OpenOptions` directory/ancestry handles. It
+checks physical identity, exact spelling/case, reparse exclusion, private
+owner/DACL, directory streams and stable directory properties. It exposes only
+snapshots, checks and a five-entry bounded namespace observation; no flush,
+create, setter, rename, deletion or writable handle is returned. The root and
+its parent are actually observed while held. Directory size/write time and the
+archive bit follow the existing directory policy; regular-file snapshots remain
+exact. The root production unsafe prohibition remains unchanged.
+
+The only added SDK call is `GetDiskFreeSpaceExW` inside the existing isolated
+`native.rs` module. Its input is the checked terminated UTF-16 selected-directory
+path; a live initialized `u64` receives caller-available bytes and unused optional
+outputs are NULL. Zero API return preserves the OS error, and a successful zero
+byte result is not confused with failure. The helper owns no returned pointer or
+resource. The safe `available_bytes` caller holds the complete selected parent
+ancestry, requires local NTFS, and freshly checks identity, stable properties,
+case, directory streams and reparse exclusion before and after the query.
+No new feature, dependency, privilege, mutation API or unsafe module is added.
+
+Availability is advisory and can change immediately. It is neither reservation,
+physical allocation accounting nor action/profile authority. The query occurs
+before creating a transaction root and does not require an ordinary containing
+parent to have the transaction root's private owner-only descriptor.
+
+The [GetDiskFreeSpaceExW contract](https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-getdiskfreespaceexw)
+was checked on 2026-10-17: the selected directory need not be a volume root,
+caller-available capacity is 64-bit and can reflect per-user quotas, failure is
+reported by zero return, and symlinks would be followed. The safe ancestry
+checks explicitly refuse reparse traversal rather than relying on this query to
+guard a namespace. This addition creates no new persistence premise.
+
 Microsoft references checked 2026-10-16; live pages have no immutable revision:
 [CreateFileW](https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createfilew),
 [GetFileInformationByHandleEx](https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-getfileinformationbyhandleex),

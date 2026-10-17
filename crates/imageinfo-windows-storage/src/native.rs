@@ -45,6 +45,28 @@ fn wide(path: &Path) -> io::Result<Vec<u16>> {
     v.push(0);
     Ok(v)
 }
+
+/// One read-only advisory query. The safe caller retains and checks the complete
+/// local NTFS directory ancestry; this value reserves no capacity or authority.
+pub(crate) fn available_bytes(path: &Path) -> io::Result<u64> {
+    let path = wide(path)?;
+    let mut available = 0u64;
+    // SAFETY: path is a checked terminated UTF-16 directory string retained for
+    // the synchronous call. `available` is initialized writable u64 storage.
+    // Unused optional output pointers are NULL. No returned pointer is retained.
+    if unsafe {
+        GetDiskFreeSpaceExW(
+            path.as_ptr(),
+            &mut available,
+            ptr::null_mut(),
+            ptr::null_mut(),
+        )
+    } == 0
+    {
+        return Err(io::Error::last_os_error());
+    }
+    Ok(available)
+}
 fn sddl(descriptor: *mut c_void) -> io::Result<String> {
     let mut text = ptr::null_mut();
     let mut count = 0;

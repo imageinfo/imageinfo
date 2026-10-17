@@ -452,6 +452,31 @@ inert invocation/translation reports with finite token accounting and diagnostic
 all actual camera-derived telemetry, audit dispositions and outcomes remain private.
 See the documentation map for exact bounded evidence and retained gates.
 
+## Bounded queue wave — 2026-10-17
+
+#0170 adds bounded production read-only restart inspection with exact caller-bound
+records and held current objects. Every failed recheck permanently closes that
+inspection; a fresh inspection establishes a separate interval. Actual installed
+three-record survivors are distinct from a missing previously bound receipt.
+No restart mutation or profile admission follows. #0173 retains cumulative logical
+charges and exact caller-owned work adoption across failure, uncertainty and cleanup;
+Windows availability remains advisory, not a quota or durable global ledger.
+#0174 observes actual guest source-read and candidate construction errors, but the
+staged error loses the prepared source namespace despite retained original bytes.
+All three requested native flush-error classes remain unproduced; emulator drain
+errors are not Windows API errors. This negative/unqualified evidence retains
+exact-profile refusal under #0176, with no new device hunt or relaxed guarantee.
+#0179 implements fixed two-unit staging/order and explicit receipt-bound resume.
+Failed finalizer evidence and cancelled staged contexts stay retained; no native
+pair adapter, group atomicity or public apply is enabled.
+
+#0122/#0123 qualify finite authored native/reference metadata and stored-preview
+differences with independent typed-value/occurrence and exact-byte/output oracles.
+#0125 qualifies actual session startup/request admission with a mechanically shared
+process harness; #0127 supplies five exact native result profiles with actual CLI
+examples and rejection vectors. These scopes adopt no broad parity, importer,
+writer, storage profile or RAW permission. See the documentation map for evidence.
+
 ## Linux new-output scope — Terry's decision, 2026-10-16
 
 Terry selected #0177 option A: defer positive Linux new-output support from the
@@ -479,38 +504,36 @@ deliberately raised priorities.
 
 ## Subagent sidebar names
 
-Terry requires a compact model/effort tag, then the ticket number, then a
-Title Case description (2026-10-16). Preferred sidebar examples are
-`S_M 124 Review`, `S_H 168 Review`, `S_M 168 Implement`, `L_L 144 Check`,
-`5.6L_L 124 Docs` and `A_M 177 Design`. Put the ticket before the description
-so agents working the same ticket are easy to count. For non-ticket work use a
-clear scope label instead of inventing a ticket number.
+Terry revised subagent naming on 2026-10-17 because the sidebar normalizes case
+and removes punctuation. Use a plain-word model/effort prefix:
+`[version, only if not latest for the family] [luna|sol|astra] [light|medium|high]`.
+For ticket work, follow the prefix with the four-digit, zero-padded ticket number and a short task
+description. Examples: `Sol Medium 0039 Implement`, `Sol High 0065 Review`,
+`Luna Light 0144 Check`, and `5.6 Sol Medium 0124 Docs`. For non-ticket work,
+use a clear scope label instead of inventing a ticket number.
 
-The compact tag represents
-`[version, only if not latest for the family][L|S|A]-[L|M|H]: `; the sidebar
-underscore form above is also preferred. Family letters are L = Luna, S = Sol
-and A = Astra; effort letters are L = Light (API low), M = Medium and H = High.
-Omit the version for the latest family release; include it for older releases
-with no separator before the family letter: 5.6 Luna Light is `5.6L-L: `,
-6.1 Sol High is `S-H: ` and 6 Astra Medium is `A-M: ` at this update.
-Reassess the latest-family release mapping when releases change.
+Omit the version for the latest release of its family. At this update,
+`Sol Medium` and `Sol High` mean GPT-6.1 Sol; `Luna Light` means GPT-6 Luna.
+Render API effort `low` as `Light`. Reassess the latest-family mapping when
+releases change. This naming rule does not authorize new models or efforts;
+Astra Medium still requires Terry's explicit approval for each turn.
 
-When the spawn tool only accepts lowercase letters, digits and underscores,
-use equivalent names with the same order: `s_m_124_review`, `s_h_168_review`,
-`s_m_168_implement`, `l_l_144_check`, `5_6l_l_124_docs` or `a_m_177_design`.
-Use uppercase tags and Title Case descriptions when a supported display-name
-field permits them. Lowercase task-name constraints and app-controlled formatting
-may prevent the exact preferred sidebar rendering. Existing agents may be renamed
-only through a supported rename capability; do not claim rendering or existing
-names changed without tool support.
+When the spawn tool requires lowercase letters, digits and underscores, use
+`sol_medium_0039_implement`, `sol_high_0065_review`, `luna_light_0144_check`, or
+`5_6_sol_medium_0124_docs`. Underscores are tool separators, not a meaningful
+part of the display. Accept app-controlled capitalization rather than relying
+on punctuation or uppercase initials. Existing agents can be renamed only
+through a supported rename capability; do not claim they changed otherwise.
 
-Keep explicit model/effort spawn arguments. The compact tag already identifies
-the model and effort in delegation updates: write `S_M Integration Review`
-without repeating `(Sol / Medium)` after it (Terry, 2026-10-16). This supersedes
-earlier guidance requiring a redundant full-word pair alongside the tag.
-These examples do not authorize additional models or efforts, change per-turn
-Astra approval or alter concurrency limits. Reused agents retain a prefix
-matching their actual configured model and effort.
+Keep full explicit model and reasoning-effort spawn arguments. In delegation
+updates, the plain-word name already identifies the model/effort; do not add a
+redundant second pair. Reused agents must keep names matching their actual
+configuration. This supersedes the 2026-10-16 compact letter tags for new names,
+while preserving ticket-before-description order and concurrency limits.
+
+Terry confirmed the actual sidebar rendering on 2026-10-17: `sol_high_0105_review`
+appears as `Sol high 0105 review`, preserving the four-digit ticket. Full words
+remain legible after punctuation/case normalization; compact letter tags do not.
 
 ## Subagent authorization
 
@@ -727,6 +750,10 @@ Terry clarified lane meanings on 2026-10-11:
 
 Terry clarified the queued-work disposition on 2026-10-15: if neither
 Needs Terry nor `blocked` applies, the card belongs in Backlog or Ready for Work.
+Terry reaffirmed on 2026-10-17 that a scoped dependent implementation stays Ready
+for Work while its separate owner-decision card is Needs Terry. Ready for Work
+does not mean prerequisites are resolved; ordinary ticket dependencies never
+justify Blocked.
 Use Backlog only for insufficient scope/detail or Terry's explicit hold; use
 Ready for Work for sufficiently scoped work, including prerequisites we can
 advance. In Progress remains for active work or Terry's designated resumption point.

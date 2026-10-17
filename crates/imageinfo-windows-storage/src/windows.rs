@@ -265,6 +265,135 @@ impl GuardedSource {
     }
 }
 
+/// Read-only restart directory/ancestry hold. This type exposes no creation,
+/// flush, rename or removal operation. Dropping it only closes read handles.
+pub struct ExistingRoot {
+    path: PathBuf,
+    ancestry: Vec<(PathBuf, File)>,
+    before: FileSnapshot,
+    parent_before: FileSnapshot,
+    security: native::PrivateSecurity,
+    failed: Cell<bool>,
+}
+impl ExistingRoot {
+    pub fn open(path: &Path) -> io::Result<Self> {
+        let ancestry = hold_ancestors(path, false)?;
+        if ancestry.len() < 2 {
+            return Err(io::Error::other("ROOT_PARENT_REQUIRED"));
+        }
+        let file = &ancestry.last().unwrap().1;
+        native::check_local_ntfs(file, path)?;
+        let before = observe(file)?;
+        let parent_before = observe(&ancestry[ancestry.len() - 2].1)?;
+        let root = Self {
+            path: path.into(),
+            ancestry,
+            before,
+            parent_before,
+            security: native::PrivateSecurity::current()?,
+            failed: Cell::new(false),
+        };
+        root.check()?;
+        Ok(root)
+    }
+    pub fn snapshot(&self) -> &FileSnapshot {
+        &self.before
+    }
+    pub fn parent_snapshot(&self) -> &FileSnapshot {
+        &self.parent_before
+    }
+    pub fn check(&self) -> io::Result<()> {
+        if self.failed.get() {
+            return Err(io::Error::other("ROOT_PREVIOUS_CONFLICT"));
+        }
+        let result = self.check_inner();
+        self.failed.set(result.is_err());
+        result
+    }
+    fn check_inner(&self) -> io::Result<()> {
+        for (path, file) in &self.ancestry {
+            check_binding(path, file)?;
+            native::check_case(file)?;
+            if file.metadata()?.file_attributes() & FILE_ATTRIBUTE_REPARSE_POINT != 0 {
+                return Err(io::Error::other("ANCESTOR_REPARSE_CONFLICT"));
+            }
+        }
+        let file = &self.ancestry.last().unwrap().1;
+        self.security.check(file)?;
+        native::check_directory_streams(file)?;
+        let now = observe(file)?;
+        // Directory size/write time change as children are created. Compare the
+        // declared stable properties, never substitute file snapshot values.
+        if !same_directory_properties(&now, &self.before)
+            || now.attributes
+                & !(FILE_ATTRIBUTE_DIRECTORY
+                    | FILE_ATTRIBUTE_ARCHIVE
+                    | FILE_ATTRIBUTE_NOT_CONTENT_INDEXED)
+                != 0
+            || !same_directory_properties(
+                &observe(&self.ancestry[self.ancestry.len() - 2].1)?,
+                &self.parent_before,
+            )
+        {
+            return Err(io::Error::other("ROOT_PROPERTIES_CONFLICT"));
+        }
+        Ok(())
+    }
+    /// Complete bounded exact namespace; names are observations, never paths
+    /// imported from a transaction record.
+    pub fn entries(&self) -> io::Result<Vec<std::ffi::OsString>> {
+        self.check()?;
+        let mut names = Vec::new();
+        for entry in fs::read_dir(&self.path)?.take(7) {
+            names.push(entry?.file_name());
+        }
+        if names.len() > 5 {
+            return Err(io::Error::other("ROOT_ENTRY_BOUND"));
+        }
+        self.check()?;
+        names.sort();
+        Ok(names)
+    }
+}
+
+fn same_directory_properties(a: &FileSnapshot, b: &FileSnapshot) -> bool {
+    a.volume_serial_number == b.volume_serial_number
+        && a.file_index == b.file_index
+        && a.links == b.links
+        && a.attributes & !FILE_ATTRIBUTE_ARCHIVE == b.attributes & !FILE_ATTRIBUTE_ARCHIVE
+        && a.creation_time == b.creation_time
+        && a.owner_dacl == b.owner_dacl
+}
+
+/// Caller-available logical bytes on the selected existing local NTFS parent.
+/// Complete ancestry stays held and identity/properties are checked around the
+/// read-only query. This is advisory: no reservation, quota or free-space promise.
+pub fn available_bytes(parent: &Path) -> io::Result<u64> {
+    let ancestry = hold_ancestors(parent, false)?;
+    native::check_local_ntfs(&ancestry.last().unwrap().1, parent)?;
+    let before: Vec<_> = ancestry
+        .iter()
+        .map(|(_, file)| observe(file))
+        .collect::<io::Result<_>>()?;
+    let check = || -> io::Result<()> {
+        for ((path, file), expected) in ancestry.iter().zip(&before) {
+            check_binding(path, file)?;
+            native::check_case(file)?;
+            native::check_directory_streams(file)?;
+            if file.metadata()?.file_attributes() & FILE_ATTRIBUTE_REPARSE_POINT != 0
+                || !same_directory_properties(&observe(file)?, expected)
+            {
+                return Err(io::Error::other("AVAILABILITY_PARENT_CONFLICT"));
+            }
+        }
+        Ok(())
+    };
+    check()?;
+    let available = native::available_bytes(parent)?;
+    check()?;
+    Ok(available)
+}
+
 /// Fresh ordinary owner-only directory. Destruction retains the entire namespace.
 pub struct PrivateRoot {
     file: File,

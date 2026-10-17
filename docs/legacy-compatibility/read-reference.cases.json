@@ -1,0 +1,700 @@
+{
+  "schemaVersion": 1,
+  "ticket": "#0122",
+  "authoredOnly": true,
+  "cases": [
+    {
+      "id": "RR-001",
+      "label": "single exact name",
+      "reference": [
+        "-j",
+        "-Model"
+      ],
+      "native": [
+        "--tag",
+        "Model"
+      ],
+      "names": [
+        "Model"
+      ],
+      "referenceValues": {
+        "Model": "Canon EOS R5"
+      },
+      "nativeOccurrences": [
+        "exif:Model"
+      ]
+    },
+    {
+      "id": "RR-002",
+      "label": "family-qualified ISO",
+      "reference": [
+        "-j",
+        "-EXIF:ISO"
+      ],
+      "native": [
+        "--tag",
+        "EXIF:ISO"
+      ],
+      "names": [
+        "ISO"
+      ],
+      "referenceValues": {
+        "ISO": 800
+      },
+      "nativeOccurrences": [
+        "exif:ISO"
+      ]
+    },
+    {
+      "id": "RR-003",
+      "label": "IFD group is not native namespace",
+      "reference": [
+        "-j",
+        "-IFD0:Model"
+      ],
+      "native": [
+        "--tag",
+        "IFD0:Model"
+      ],
+      "names": [],
+      "referenceValues": {
+        "Model": "Canon EOS R5"
+      },
+      "refusal": "CAPABILITY_UNSUPPORTED",
+      "nativeOccurrences": []
+    },
+    {
+      "id": "RR-004",
+      "label": "default duplicate policy",
+      "reference": [
+        "-j",
+        "-ISO"
+      ],
+      "native": [
+        "--tag",
+        "ISO"
+      ],
+      "names": [
+        "ISO",
+        "ISO"
+      ],
+      "referenceValues": {
+        "ISO": 800
+      },
+      "nativeOccurrences": [
+        "exif:ISO",
+        "canon:ctmd:ISO"
+      ]
+    },
+    {
+      "id": "RR-005",
+      "label": "explicit duplicate request",
+      "reference": [
+        "-j",
+        "-a",
+        "-ISO"
+      ],
+      "native": [
+        "--tag",
+        "ISO"
+      ],
+      "names": [
+        "ISO",
+        "ISO"
+      ],
+      "referenceValues": {
+        "ISO": 800
+      },
+      "nativeOccurrences": [
+        "exif:ISO",
+        "canon:ctmd:ISO"
+      ]
+    },
+    {
+      "id": "RR-006",
+      "label": "reverse requested order",
+      "reference": [
+        "-j",
+        "-ISO",
+        "-Model"
+      ],
+      "native": [
+        "--tag",
+        "ISO",
+        "--tag",
+        "Model"
+      ],
+      "names": [
+        "Model",
+        "ISO",
+        "ISO"
+      ],
+      "referenceValues": {
+        "ISO": 800,
+        "Model": "Canon EOS R5"
+      },
+      "referenceOrder": [
+        "ISO",
+        "Model"
+      ],
+      "nativeOccurrences": [
+        "exif:Model",
+        "exif:ISO",
+        "canon:ctmd:ISO"
+      ]
+    },
+    {
+      "id": "RR-007",
+      "label": "source order request",
+      "reference": [
+        "-j",
+        "-Model",
+        "-ISO"
+      ],
+      "native": [
+        "--tag",
+        "Model",
+        "--tag",
+        "ISO"
+      ],
+      "names": [
+        "Model",
+        "ISO",
+        "ISO"
+      ],
+      "referenceValues": {
+        "Model": "Canon EOS R5",
+        "ISO": 800
+      },
+      "referenceOrder": [
+        "Model",
+        "ISO"
+      ],
+      "nativeOccurrences": [
+        "exif:Model",
+        "exif:ISO",
+        "canon:ctmd:ISO"
+      ]
+    },
+    {
+      "id": "RR-008",
+      "label": "repeated selector",
+      "reference": [
+        "-j",
+        "-ISO",
+        "-ISO"
+      ],
+      "native": [
+        "--tag",
+        "ISO",
+        "--tag",
+        "ISO"
+      ],
+      "names": [
+        "ISO",
+        "ISO"
+      ],
+      "referenceValues": {
+        "ISO": 800
+      },
+      "nativeOccurrences": [
+        "exif:ISO",
+        "canon:ctmd:ISO"
+      ]
+    },
+    {
+      "id": "RR-009",
+      "label": "exclusion unsupported",
+      "reference": [
+        "-j",
+        "-Model",
+        "-ISO",
+        "-x",
+        "ISO"
+      ],
+      "native": [
+        "--tag",
+        "Model",
+        "--tag",
+        "ISO",
+        "-x",
+        "ISO"
+      ],
+      "names": [],
+      "referenceValues": {
+        "Model": "Canon EOS R5"
+      },
+      "refusal": "INVALID_OPTION",
+      "nativeOccurrences": []
+    },
+    {
+      "id": "RR-010",
+      "label": "group prefixes versus native families",
+      "reference": [
+        "-G1",
+        "-Model",
+        "-ISO"
+      ],
+      "native": [
+        "--tag",
+        "Model",
+        "--tag",
+        "ISO"
+      ],
+      "names": [
+        "Model",
+        "ISO",
+        "ISO"
+      ],
+      "referenceValues": {},
+      "referenceText": [
+        "[IFD0] Model : Canon EOS R5",
+        "[ExifIFD] ISO : 800"
+      ],
+      "nativeOccurrences": [
+        "exif:Model",
+        "exif:ISO",
+        "canon:ctmd:ISO"
+      ]
+    },
+    {
+      "id": "RR-011",
+      "label": "group headings unsupported",
+      "reference": [
+        "-g1",
+        "-Model",
+        "-ISO"
+      ],
+      "native": [
+        "--tag",
+        "Model",
+        "-g1"
+      ],
+      "names": [],
+      "referenceValues": {},
+      "referenceText": [
+        "---- IFD0 ----",
+        "Model : Canon EOS R5",
+        "---- ExifIFD ----",
+        "ISO : 800"
+      ],
+      "refusal": "INVALID_OPTION",
+      "nativeOccurrences": []
+    },
+    {
+      "id": "RR-012",
+      "label": "sort unsupported",
+      "reference": [
+        "-j",
+        "-sort",
+        "-Model",
+        "-ISO"
+      ],
+      "native": [
+        "--tag",
+        "Model",
+        "--tag",
+        "ISO",
+        "-sort"
+      ],
+      "names": [],
+      "referenceValues": {
+        "ISO": 800,
+        "Model": "Canon EOS R5"
+      },
+      "referenceOrder": [
+        "ISO",
+        "Model"
+      ],
+      "refusal": "INVALID_OPTION",
+      "nativeOccurrences": []
+    },
+    {
+      "id": "RR-013",
+      "label": "numeric versus exact raw",
+      "reference": [
+        "-j",
+        "-n",
+        "-ExposureTime"
+      ],
+      "native": [
+        "--tag",
+        "ExposureTime",
+        "--values",
+        "raw"
+      ],
+      "names": [
+        "ExposureTime",
+        "ExposureTime"
+      ],
+      "referenceValues": {
+        "ExposureTime": 0.004
+      },
+      "view": "raw",
+      "nativeOccurrences": [
+        "exif:ExposureTime",
+        "canon:ctmd:ExposureTime"
+      ]
+    },
+    {
+      "id": "RR-014",
+      "label": "tag numeric suffix versus exact raw",
+      "reference": [
+        "-j",
+        "-ExposureTime#"
+      ],
+      "native": [
+        "--tag",
+        "ExposureTime",
+        "--values",
+        "raw"
+      ],
+      "names": [
+        "ExposureTime",
+        "ExposureTime"
+      ],
+      "referenceValues": {
+        "ExposureTime": 0.004
+      },
+      "view": "raw",
+      "nativeOccurrences": [
+        "exif:ExposureTime",
+        "canon:ctmd:ExposureTime"
+      ]
+    },
+    {
+      "id": "RR-015",
+      "label": "display view unreduced source",
+      "reference": [
+        "-j",
+        "-ExposureTime"
+      ],
+      "native": [
+        "--tag",
+        "ExposureTime",
+        "--values",
+        "display"
+      ],
+      "names": [
+        "ExposureTime",
+        "ExposureTime"
+      ],
+      "referenceValues": {
+        "ExposureTime": "1/250"
+      },
+      "view": "display",
+      "nativeOccurrences": [
+        "exif:ExposureTime",
+        "canon:ctmd:ExposureTime"
+      ]
+    },
+    {
+      "id": "RR-016",
+      "label": "date formatting unsupported",
+      "reference": [
+        "-j",
+        "-d",
+        "%Y-%m-%d",
+        "-DateTimeOriginal"
+      ],
+      "native": [
+        "--tag",
+        "DateTimeOriginal",
+        "-d",
+        "%Y-%m-%d"
+      ],
+      "names": [],
+      "referenceValues": {
+        "DateTimeOriginal": "2026-01-02"
+      },
+      "refusal": "INVALID_OPTION",
+      "nativeOccurrences": []
+    },
+    {
+      "id": "RR-017",
+      "label": "scalar separator no list inference",
+      "reference": [
+        "-j",
+        "-sep",
+        "|",
+        "-Model"
+      ],
+      "native": [
+        "--tag",
+        "Model",
+        "-sep",
+        "|"
+      ],
+      "names": [],
+      "referenceValues": {
+        "Model": "Canon EOS R5"
+      },
+      "refusal": "INVALID_OPTION",
+      "nativeOccurrences": []
+    },
+    {
+      "id": "RR-018",
+      "label": "scalar struct no structure inference",
+      "reference": [
+        "-j",
+        "-struct",
+        "-Model"
+      ],
+      "native": [
+        "--tag",
+        "Model",
+        "-struct"
+      ],
+      "names": [],
+      "referenceValues": {
+        "Model": "Canon EOS R5"
+      },
+      "refusal": "INVALID_OPTION",
+      "nativeOccurrences": []
+    },
+    {
+      "id": "RR-019",
+      "label": "legacy TAG refusal",
+      "reference": [
+        "-j",
+        "-Model"
+      ],
+      "native": [
+        "-Model"
+      ],
+      "names": [],
+      "referenceValues": {
+        "Model": "Canon EOS R5"
+      },
+      "refusal": "INVALID_OPTION",
+      "nativeOccurrences": []
+    },
+    {
+      "id": "RR-020",
+      "label": "legacy a refusal",
+      "reference": [
+        "-j",
+        "-a",
+        "-ISO"
+      ],
+      "native": [
+        "-a",
+        "--tag",
+        "ISO"
+      ],
+      "names": [],
+      "referenceValues": {
+        "ISO": 800
+      },
+      "refusal": "INVALID_OPTION",
+      "nativeOccurrences": []
+    },
+    {
+      "id": "RR-021",
+      "label": "legacy G refusal",
+      "reference": [
+        "-j",
+        "-G",
+        "-Model"
+      ],
+      "native": [
+        "-G",
+        "--tag",
+        "Model"
+      ],
+      "names": [],
+      "referenceValues": {
+        "EXIF:Model": "Canon EOS R5"
+      },
+      "refusal": "INVALID_OPTION",
+      "nativeOccurrences": []
+    },
+    {
+      "id": "RR-022",
+      "label": "legacy g refusal",
+      "reference": [
+        "-j",
+        "-g",
+        "-Model"
+      ],
+      "native": [
+        "-g",
+        "--tag",
+        "Model"
+      ],
+      "names": [],
+      "referenceValues": {
+        "EXIF": {
+          "Model": "Canon EOS R5"
+        }
+      },
+      "refusal": "INVALID_OPTION",
+      "nativeOccurrences": []
+    },
+    {
+      "id": "RR-023",
+      "label": "legacy n refusal",
+      "reference": [
+        "-j",
+        "-n",
+        "-ExposureTime"
+      ],
+      "native": [
+        "-n",
+        "--tag",
+        "ExposureTime"
+      ],
+      "names": [],
+      "referenceValues": {
+        "ExposureTime": 0.004
+      },
+      "refusal": "INVALID_OPTION",
+      "nativeOccurrences": []
+    },
+    {
+      "id": "RR-024",
+      "label": "normalized exact pair",
+      "reference": [
+        "-j",
+        "-n",
+        "-ExposureTime"
+      ],
+      "native": [
+        "--tag",
+        "ExposureTime",
+        "--values",
+        "normalized"
+      ],
+      "names": [
+        "ExposureTime",
+        "ExposureTime"
+      ],
+      "referenceValues": {
+        "ExposureTime": 0.004
+      },
+      "view": "normalized",
+      "nativeOccurrences": [
+        "exif:ExposureTime",
+        "canon:ctmd:ExposureTime"
+      ]
+    },
+    {
+      "id": "RR-025",
+      "label": "all layers",
+      "reference": [
+        "-j",
+        "-ExposureTime"
+      ],
+      "native": [
+        "--tag",
+        "ExposureTime",
+        "--values",
+        "all"
+      ],
+      "names": [
+        "ExposureTime",
+        "ExposureTime"
+      ],
+      "referenceValues": {
+        "ExposureTime": "1/250"
+      },
+      "view": "all",
+      "nativeOccurrences": [
+        "exif:ExposureTime",
+        "canon:ctmd:ExposureTime"
+      ]
+    },
+    {
+      "id": "RR-026",
+      "label": "empty partial selection",
+      "reference": [
+        "-j",
+        "-CTMD:DateTimeOriginal"
+      ],
+      "native": [
+        "--tag",
+        "CTMD:DateTimeOriginal"
+      ],
+      "names": [],
+      "referenceValues": {},
+      "nativeOccurrences": []
+    },
+    {
+      "id": "RR-027",
+      "label": "wildcard unsupported",
+      "reference": [
+        "-j",
+        "-Mod*"
+      ],
+      "native": [
+        "--tag",
+        "Mod*"
+      ],
+      "names": [],
+      "referenceValues": {
+        "Model": "Canon EOS R5"
+      },
+      "refusal": "TAG_UNSUPPORTED",
+      "nativeOccurrences": []
+    }
+  ],
+  "nativeOccurrenceContracts": {
+    "exif:Model": {
+      "name": "Model",
+      "namespace": "exif",
+      "nativeId": "272",
+      "ordinal": 3,
+      "value": {
+        "kind": "string",
+        "text": "Canon EOS R5"
+      },
+      "displayText": "Canon EOS R5"
+    },
+    "exif:ISO": {
+      "name": "ISO",
+      "namespace": "exif",
+      "nativeId": "34855",
+      "ordinal": 6,
+      "value": {
+        "kind": "integer",
+        "decimal": "800"
+      },
+      "displayText": "800"
+    },
+    "canon:ctmd:ISO": {
+      "name": "ISO",
+      "namespace": "canon:ctmd",
+      "nativeId": "5/8",
+      "ordinal": 22,
+      "value": {
+        "kind": "integer",
+        "decimal": "800"
+      },
+      "displayText": "800"
+    },
+    "exif:ExposureTime": {
+      "name": "ExposureTime",
+      "namespace": "exif",
+      "nativeId": "33434",
+      "ordinal": 4,
+      "value": {
+        "kind": "rational",
+        "numerator": "2",
+        "denominator": "500"
+      },
+      "displayText": "0.004"
+    },
+    "canon:ctmd:ExposureTime": {
+      "name": "ExposureTime",
+      "namespace": "canon:ctmd",
+      "nativeId": "5/4",
+      "ordinal": 21,
+      "value": {
+        "kind": "rational",
+        "numerator": "1",
+        "denominator": "250"
+      },
+      "displayText": "1/250"
+    }
+  }
+}
