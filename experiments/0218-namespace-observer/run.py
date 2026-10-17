@@ -431,7 +431,8 @@ def run_reviewed(plan_path, freeze_path, review_path, *, case, fixture_root,
                 info = path.stat()
                 inventory.append({"name": path.name, "bytes": info.st_size,
                                   "sha256": snapshot["sha256"],
-                                  "identity": {"device": info.st_dev, "inode": info.st_ino}})
+                                  "identity": {"device": info.st_dev, "inode": info.st_ino},
+                                  "snapshot": snapshot})
         native["fixture_after"]["unit_files"] = sorted(inventory, key=lambda entry: entry["name"])
         record("artifact_checkpoint", native["fixture_after"])
 

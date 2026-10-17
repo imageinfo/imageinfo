@@ -290,6 +290,7 @@ def probe_timeline_fixture():
     stat = dict(device=1, inode=2, mode=32768, size=19, mtime_ns=3, ctime_ns=4, birthtime_ns=None)
     snapshot = dict(path=fixture["source"], status="ok", error=None, reason=None,
                     stat_profile="same-fields-v1", observations_match=True, sha256=fixture["sourceSha256"], bytes_read=19,
+                    identity_bridge_profile="unavailable-non-windows-v1", bridge_before=None, bridge_after=None,
                     max_bytes=19, **{key: copy.deepcopy(stat) for key in
                                     ("path_before", "handle_before", "handle_after", "path_after")})
     rows = []
@@ -381,14 +382,14 @@ class ProbeLifetimeControls(unittest.TestCase):
 
 class HeldObjectBindingControls(unittest.TestCase):
     def test_tiny_encoded_identity_size_and_hash(self):
-        identity = dict(device=1, inode=2)
+        identity = dict(volume_serial_u32=1, file_index_u64=2)
         digest = hashlib.sha256(b"tiny authored held bytes").hexdigest()
         fields = (1, 2, 24, 1, 32, 3, 4, 0)
         raw = b"imageinfo-held-object-v1\0" + b"".join(value.to_bytes(8, "little") for value in fields) + bytes.fromhex(digest)
         binding = dict(identity=(fields[0].to_bytes(8, "little") + fields[1].to_bytes(8, "little")).hex(), facts=raw.hex())
         audit._held_binding(binding, identity, 24, digest)
-        for changed, expected in ((dict(device=9, inode=2), "identity/size"),
-                                  (dict(device=1, inode=9), "identity/size")):
+        for changed, expected in ((dict(volume_serial_u32=9, file_index_u64=2), "identity/size"),
+                                  (dict(volume_serial_u32=1, file_index_u64=9), "identity/size")):
             with self.subTest(changed=changed), self.assertRaisesRegex(audit.AuditError, expected):
                 audit._held_binding(binding, changed, 24, digest)
         with self.assertRaisesRegex(audit.AuditError, "identity/size"):
@@ -410,6 +411,9 @@ def windows_profile_fixture():
         probe = row["value"]["probe"]
         for snapshot in (probe["before"], probe["after"]):
             snapshot["stat_profile"] = "cpython-3.14.7-windows-path-creation-handle-change-v1"
+            snapshot["identity_bridge_profile"] = "win32-bhfi-same-read-fd-v1"
+            snapshot["bridge_before"] = dict(volume_serial_u32=77, file_index_u64=2)
+            snapshot["bridge_after"] = dict(volume_serial_u32=77, file_index_u64=2)
             for key in ("path_before", "handle_before", "handle_after", "path_after"):
                 snapshot[key]["birthtime_ns"] = 4
                 snapshot[key]["ctime_ns"] = 8 if key.startswith("handle") else 4
@@ -419,6 +423,46 @@ def windows_profile_fixture():
 
 
 class SnapshotStatProfileControls(unittest.TestCase):
+    def test_stat_identity_uint64_and_signed_time_domains_are_separate(self):
+        def selected_snapshot():
+            transport, _, fixture = probe_timeline_fixture()
+            snapshot = copy.deepcopy(next(row["value"]["probe"]["before"] for row in transport["transcript"]
+                                          if row["kind"] == "probe_end"))
+            return snapshot, fixture
+        def set_field(snapshot, field, value):
+            for name in ("path_before", "handle_before", "handle_after", "path_after"):
+                snapshot[name][field] = value
+        def check(snapshot, fixture):
+            return audit._snapshot(snapshot, fixture["source"], fixture["sourceSha256"], fixture["sourceBytes"])
+        for field in ("device", "inode"):
+            for value in (0, 2**63, 10008163935479661397, 2**64 - 1):
+                snapshot, fixture = selected_snapshot()
+                set_field(snapshot, field, value)
+                with self.subTest(field=field, value=value):
+                    self.assertEqual(check(snapshot, fixture)[field], value)
+            for value in (-1, 2**64, True, False, 1.0, "1"):
+                snapshot, fixture = selected_snapshot()
+                set_field(snapshot, field, value)
+                with self.subTest(field=field, value=value), self.assertRaisesRegex(audit.AuditError, "stat field type"):
+                    check(snapshot, fixture)
+        for field in ("mtime_ns", "ctime_ns", "birthtime_ns"):
+            for value in (-(2**63), -1, 0, 2**63 - 1):
+                snapshot, fixture = selected_snapshot()
+                set_field(snapshot, field, value)
+                with self.subTest(time_field=field, value=value):
+                    self.assertEqual(check(snapshot, fixture)[field], value)
+            for value in (-(2**63) - 1, 2**63, True, False, 1.0, "1"):
+                snapshot, fixture = selected_snapshot()
+                set_field(snapshot, field, value)
+                with self.subTest(time_field=field, value=value), self.assertRaisesRegex(audit.AuditError, "stat field type"):
+                    check(snapshot, fixture)
+        for field, value in (("mode", True), ("mode", -1), ("mode", 2**32),
+                             ("size", True), ("size", -1), ("size", 16 * 1024 * 1024 + 1)):
+            snapshot, fixture = selected_snapshot()
+            set_field(snapshot, field, value)
+            with self.subTest(other_field=field, value=value), self.assertRaisesRegex(audit.AuditError, "stat field type"):
+                check(snapshot, fixture)
+
     def test_windows_api_semantics_preserve_different_raw_ctimes(self):
         transport, candidate, fixture = windows_profile_fixture()
         probes = audit._probe_timeline(transport, candidate, fixture)
@@ -464,7 +508,9 @@ class SnapshotStatProfileControls(unittest.TestCase):
     def test_exact_runtime_profile_and_downgrade_refusals(self):
         observer = dict(implementation="cpython", version="3.14.7 (authored exact runtime)", platform="win32",
                         stat_profile="cpython-3.14.7-windows-path-creation-handle-change-v1")
-        plan, native = dict(observer_python=observer), dict(observer_python=copy.deepcopy(observer))
+        plan = dict(observer_python=observer, identity_bridge_profile="win32-bhfi-same-read-fd-v1",
+                    root_volume_linkage="source-same-handle-volume-pair-and-equal-python-device-v1")
+        native = dict(observer_python=copy.deepcopy(observer))
         profile = audit._observer_profile(plan, native)
         for field, value in (("implementation", "pypy"), ("version", "3.14.8 different"),
                              ("platform", "linux"), ("stat_profile", "same-fields-v1")):
@@ -481,6 +527,84 @@ class SnapshotStatProfileControls(unittest.TestCase):
         audit._require_profile(dict(stat_profile=profile), profile)
         with self.assertRaisesRegex(audit.AuditError, "differs from reviewed observer"):
             audit._require_profile(dict(stat_profile="same-fields-v1"), profile)
+        for field in ("identity_bridge_profile", "root_volume_linkage"):
+            changed = copy.deepcopy(plan)
+            changed.pop(field)
+            with self.subTest(missing=field), self.assertRaisesRegex(audit.AuditError, "volume linkage missing"):
+                audit._observer_profile(changed, native)
+
+
+class SameHandleBridgeControls(unittest.TestCase):
+    def test_same_python_volume_with_different_captured_legacy_serial_refuses(self):
+        transport, _, _ = windows_profile_fixture()
+        source = next(row["value"]["probe"]["before"] for row in transport["transcript"] if row["kind"] == "probe_end")
+        other = copy.deepcopy(source)
+        audit._same_volume_observation(other, source)
+        other["bridge_before"]["volume_serial_u32"] = 78
+        other["bridge_after"]["volume_serial_u32"] = 78
+        with self.assertRaisesRegex(audit.AuditError, "same-volume Python/legacy observations disagree"):
+            audit._same_volume_observation(other, source)
+
+    def test_legacy_identity_exact_unsigned_widths(self):
+        for volume in (0, 2**32 - 1):
+            for inode in (0, 2**63, 2**64 - 1):
+                value = dict(volume_serial_u32=volume, file_index_u64=inode)
+                self.assertEqual(audit._legacy_identity(value), value)
+
+    def test_captured_legacy_serial_is_not_derived_from_python_device(self):
+        transport, _, fixture = windows_profile_fixture()
+        snapshot = next(row["value"]["probe"]["before"] for row in transport["transcript"] if row["kind"] == "probe_end")
+        for key in ("path_before", "handle_before", "handle_after", "path_after"):
+            snapshot[key]["device"] = 2**63 + 123
+        audit._snapshot(snapshot, fixture["source"], fixture["sourceSha256"], fixture["sourceBytes"])
+        legacy = audit._bridge(snapshot)
+        self.assertEqual(legacy, dict(volume_serial_u32=77, file_index_u64=2))
+        self.assertNotEqual(legacy["volume_serial_u32"], snapshot["handle_before"]["device"] & 0xffffffff)
+        root_identity = dict(device=2**63 + 123, inode=9)
+        source_identity = dict(device=2**63 + 123, inode=2)
+        encoded_identity = (77).to_bytes(8, "little") + (9).to_bytes(8, "little")
+        facts = b"imageinfo-held-object-v1\0" + b"".join(value.to_bytes(8, "little") for value in (77, 9, 0, 1, 32, 3, 4, 0))
+        binding = dict(identity=encoded_identity.hex(), facts=facts.hex())
+        audit._root_binding(binding, root_identity, source_identity, legacy)
+        for root, source, bridge in ((dict(device=123, inode=9), source_identity, legacy),
+                                     (root_identity, dict(device=2**63 + 123, inode=3), legacy),
+                                     (root_identity, source_identity, dict(volume_serial_u32=123, file_index_u64=2)),
+                                     (dict(device=True, inode=9), source_identity, legacy)):
+            with self.assertRaises(audit.AuditError):
+                audit._root_binding(binding, root, source, bridge)
+
+    def test_bridge_absence_types_bounds_and_stability_refuse(self):
+        mutations = {
+            "profile": lambda s: s.update(identity_bridge_profile="unavailable-non-windows-v1"),
+            "absent": lambda s: s.update(bridge_before=None),
+            "serial_drift": lambda s: s["bridge_after"].update(volume_serial_u32=78),
+            "index_drift": lambda s: s["bridge_after"].update(file_index_u64=3),
+            "index_wrong_both": lambda s: [s[key].update(file_index_u64=3) for key in ("bridge_before", "bridge_after")],
+        }
+        for field, values in (("volume_serial_u32", (-1, 2**32, True, 1.0)),
+                              ("file_index_u64", (-1, 2**64, True, 1.0))):
+            for value in values:
+                mutations[(field, str(value))] = lambda s, field=field, value=value: [
+                    s[key].update({field: value}) for key in ("bridge_before", "bridge_after")]
+        for name, mutate in mutations.items():
+            transport, _, fixture = windows_profile_fixture()
+            snapshot = next(row["value"]["probe"]["before"] for row in transport["transcript"] if row["kind"] == "probe_end")
+            audit._snapshot(snapshot, fixture["source"], fixture["sourceSha256"], fixture["sourceBytes"])
+            mutate(snapshot)
+            with self.subTest(mutation=name), self.assertRaises(audit.AuditError):
+                audit._snapshot(snapshot, fixture["source"], fixture["sourceSha256"], fixture["sourceBytes"])
+
+    def test_bridge_changes_within_and_across_probes_refuse(self):
+        for across in (False, True):
+            transport, candidate, fixture = windows_profile_fixture()
+            audit._probe_timeline(transport, candidate, fixture)
+            held = next(row["value"]["probe"] for row in transport["transcript"]
+                        if row["kind"] == "probe_end" and row["value"]["phase"] == "held")
+            for snapshot in ((held["before"], held["after"]) if across else (held["after"],)):
+                snapshot["bridge_before"]["volume_serial_u32"] = 78
+                snapshot["bridge_after"]["volume_serial_u32"] = 78
+            with self.subTest(across=across), self.assertRaises(audit.AuditError):
+                audit._probe_timeline(transport, candidate, fixture)
 
 
 def binding_fixture(root):
@@ -521,7 +645,9 @@ def binding_fixture(root):
     observer_python = dict(implementation="cpython", version="3.14.7 (authored runtime control)", platform="win32",
                            stat_profile="cpython-3.14.7-windows-path-creation-handle-change-v1")
     plan = dict(schema="namespace-observer-plan-v1", executable=str(worker), argv=[str(worker)],
-                cases=["normal", "candidate-collision"], bounds=bounds, observer_python=observer_python)
+                cases=["normal", "candidate-collision"], bounds=bounds, observer_python=observer_python,
+                identity_bridge_profile="win32-bhfi-same-read-fd-v1",
+                root_volume_linkage="source-same-handle-volume-pair-and-equal-python-device-v1")
     plan_path.write_bytes(encoded(plan))
     def binding(path, name=None):
         raw = path.read_bytes()

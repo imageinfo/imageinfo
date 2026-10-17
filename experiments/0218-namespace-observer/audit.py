@@ -204,6 +204,8 @@ def audit_transport(attempt_dir):
 
 PREFIX = b"IMAGEINFO218 "
 FLAGS = ("committed", "production_profile_admitted", "raw_admitted", "authority_importable")
+BRIDGE_PROFILE = "win32-bhfi-same-read-fd-v1"
+ROOT_VOLUME_LINKAGE = "source-same-handle-volume-pair-and-equal-python-device-v1"
 NORMAL_STAGES = (
     "preflight", "create-root", "root-flush", "parent-flush", "create-Candidate",
     "check-CandidateChecked", "file-Candidate", "root-flush",
@@ -352,23 +354,31 @@ def _snapshot(snapshot, source, source_hash, source_bytes):
         "device", "inode", "mode", "size", "mtime_ns", "ctime_ns", "birthtime_ns"} for value in stats),
         "snapshot stat schema")
     for observed in stats:
-        require(all(_integer(value) for key, value in observed.items() if key != "birthtime_ns")
-                and (observed["birthtime_ns"] is None or _integer(observed["birthtime_ns"])), "source stat field type")
+        require(all(_integer(observed[key], 0, 2**64 - 1) for key in ("device", "inode"))
+                and _integer(observed["mode"], 0, 2**32 - 1)
+                and _integer(observed["size"], 0, 16 * 1024 * 1024)
+                and all(_integer(observed[key], -(2**63), 2**63 - 1) for key in ("mtime_ns", "ctime_ns"))
+                and (observed["birthtime_ns"] is None
+                     or _integer(observed["birthtime_ns"], -(2**63), 2**63 - 1)), "source stat field type")
     profile = snapshot.get("stat_profile")
     if profile == "same-fields-v1":
         require(all(_exact(value, stats[0]) for value in stats), "source snapshot identity/stat mismatch")
+        require(snapshot.get("identity_bridge_profile") == "unavailable-non-windows-v1"
+                and snapshot.get("bridge_before") is None and snapshot.get("bridge_after") is None,
+                "unexpected fallback identity bridge")
     elif profile == "cpython-3.14.7-windows-path-creation-handle-change-v1":
         # This exact interpreter exposes creation time through path-stat ctime,
         # while fstat exposes change time. Preserve both raw fields and compare
         # each API with itself; explicit birthtime is the shared creation field.
         require(_exact(stats[0], stats[3]) and _exact(stats[1], stats[2]),
                 "source snapshot identity/stat mismatch within API")
-        require(all(_integer(value["birthtime_ns"]) for value in stats)
+        require(all(_integer(value["birthtime_ns"], -(2**63), 2**63 - 1) for value in stats)
                 and all(stats[index]["ctime_ns"] == stats[index]["birthtime_ns"] for index in (0, 3)),
                 "pinned Windows path creation-time fields mismatch")
         shared = ("device", "inode", "mode", "size", "mtime_ns", "birthtime_ns")
         require(all(all(value[key] == stats[0][key] for key in shared) for value in stats),
                 "source snapshot identity/stat mismatch across shared fields")
+        _bridge(snapshot)
     else:
         raise AuditError("unknown snapshot stat profile")
     require(stats[0]["size"] == source_bytes, "source snapshot identity/stat mismatch")
@@ -377,7 +387,34 @@ def _snapshot(snapshot, source, source_hash, source_bytes):
 
 def _same_snapshot_properties(left, right):
     return left["stat_profile"] == right["stat_profile"] and all(
-        _exact(left[key], right[key]) for key in ("path_before", "handle_before", "handle_after", "path_after"))
+        _exact(left[key], right[key]) for key in ("path_before", "handle_before", "handle_after", "path_after",
+                                                  "identity_bridge_profile", "bridge_before", "bridge_after"))
+
+
+def _legacy_identity(value):
+    require(type(value) is dict and set(value) == {"volume_serial_u32", "file_index_u64"}
+            and _integer(value["volume_serial_u32"], 0, 2**32 - 1)
+            and _integer(value["file_index_u64"], 0, 2**64 - 1), "legacy identity bridge field type")
+    return value
+
+
+def _bridge(snapshot):
+    require(snapshot.get("identity_bridge_profile") == BRIDGE_PROFILE, "required same-handle identity bridge absent")
+    before = _legacy_identity(snapshot.get("bridge_before"))
+    after = _legacy_identity(snapshot.get("bridge_after"))
+    require(_exact(before, after)
+            and before["file_index_u64"] == snapshot["handle_before"]["inode"]
+            and after["file_index_u64"] == snapshot["handle_after"]["inode"],
+            "same-handle identity bridge changed or differs from Python file index")
+    return before
+
+
+def _same_volume_observation(snapshot, source_snapshot):
+    observed = _bridge(snapshot)
+    source = _bridge(source_snapshot)
+    require(snapshot["handle_before"]["device"] == source_snapshot["handle_before"]["device"]
+            and observed["volume_serial_u32"] == source["volume_serial_u32"],
+            "same-volume Python/legacy observations disagree")
 
 
 def _observer_profile(plan, native):
@@ -389,6 +426,9 @@ def _observer_profile(plan, native):
             and expected["stat_profile"] == "cpython-3.14.7-windows-path-creation-handle-change-v1",
             "exact reviewed observer interpreter/profile missing")
     require(_exact(native.get("observer_python"), expected), "actual observer interpreter/profile differs from plan")
+    require(plan.get("identity_bridge_profile") == BRIDGE_PROFILE
+            and plan.get("root_volume_linkage") == ROOT_VOLUME_LINKAGE,
+            "reviewed same-handle bridge/root volume linkage missing")
     return expected["stat_profile"]
 
 
@@ -616,6 +656,9 @@ def _artifacts(native, transport):
     require(fixture.get("rootIdentity") == {"device": info.st_dev, "inode": info.st_ino}, "fixture root identity changed")
     info = Path(fixture["source"]).stat()
     require(fixture.get("sourceIdentity") == {"device": info.st_dev, "inode": info.st_ino}, "source identity changed")
+    require(fixture["rootIdentity"]["device"] == fixture["sourceIdentity"]["device"]
+            and all(path.stat().st_dev == fixture["sourceIdentity"]["device"] for path in root.iterdir()),
+            "fixture objects are not on the observed source volume")
     after = native["fixture_after"]
     require(type(after) is dict and set(after) == {"source", "candidate", "output", "unit_files"}, "artifact snapshot schema")
     checkpoints = [row for row in transport["transcript"] if row["kind"] == "artifact_checkpoint"]
@@ -637,13 +680,18 @@ def _artifacts(native, transport):
     require(names == wanted and sorted(p.name for p in (root / "unit").iterdir()) == wanted,
             "actual unit artifact names differ from finite outcome")
     for entry in files:
-        require(set(entry) == {"name", "bytes", "sha256", "identity"}, "artifact inventory schema")
+        require(set(entry) == {"name", "bytes", "sha256", "identity", "snapshot"}, "artifact inventory schema")
         maximum = 4194304 if entry["name"].endswith(".bin") else 65536
         path = root / "unit" / entry["name"]
         raw = _read(path, maximum)
         info = path.stat()
         require(len(raw) == entry["bytes"] and _sha(raw) == entry["sha256"]
                 and entry["identity"] == {"device": info.st_dev, "inode": info.st_ino}, "current artifact binding changed")
+        observed = _snapshot(entry["snapshot"], str(path), entry["sha256"], entry["bytes"])
+        require({"device": observed["device"], "inode": observed["inode"]} == entry["identity"]
+                and observed["device"] == fixture["sourceIdentity"]["device"],
+                "artifact snapshot identity/volume differs from local fixture")
+        _same_volume_observation(entry["snapshot"], after["source"])
         if entry["name"] == "output.bin":
             require(len(raw) == fixture["candidateBytes"] and _sha(raw) == candidate_hash, "output authored bytes mismatch")
     if native["cell"] == "candidate-collision":
@@ -662,11 +710,12 @@ def _artifacts(native, transport):
 
 def _held_binding(binding, identity, size, sha256=None):
     """Decode only the documented finite in-process observation encoding."""
+    identity = _legacy_identity(identity)
     raw = bytes.fromhex(binding["facts"])
     header = b"imageinfo-held-object-v1\0"
     require(raw.startswith(header) and len(raw) >= len(header) + 64, "held facts encoding")
     values = [int.from_bytes(raw[len(header) + n * 8:len(header) + (n + 1) * 8], "little") for n in range(8)]
-    require(values[0] == identity["device"] and values[1] == identity["inode"] and values[2] == size,
+    require(values[0] == identity["volume_serial_u32"] and values[1] == identity["file_index_u64"] and values[2] == size,
             "held observation identity/size differs from artifact")
     require(bytes.fromhex(binding["identity"]) == raw[len(header):len(header) + 16], "binding identity/facts differ")
     end = len(header) + 64 + values[7]
@@ -675,7 +724,24 @@ def _held_binding(binding, identity, size, sha256=None):
         require(raw[end:] == bytes.fromhex(sha256), "held observation content digest differs")
 
 
-def _bindings(events, fixture, files):
+def _root_binding(binding, root_identity, source_identity, source_bridge):
+    source_bridge = _legacy_identity(source_bridge)
+    for identity in (root_identity, source_identity):
+        require(type(identity) is dict and set(identity) == {"device", "inode"}
+                and all(_integer(value, 0, 2**64 - 1) for value in identity.values()), "root/source identity field type")
+    require(source_bridge["file_index_u64"] == source_identity["inode"]
+            and root_identity["device"] == source_identity["device"], "root/source same-volume observation differs")
+    wanted = source_bridge["volume_serial_u32"].to_bytes(8, "little") + root_identity["inode"].to_bytes(8, "little")
+    raw = bytes.fromhex(binding["facts"])
+    prefix = b"imageinfo-held-object-v1\0"
+    require(bytes.fromhex(binding["identity"]) == wanted and raw.startswith(prefix)
+            and len(raw) >= len(prefix) + 64
+            and raw[len(prefix):len(prefix) + 16] == wanted, "held transaction root identity differs")
+    owner_len = int.from_bytes(raw[len(prefix) + 56:len(prefix) + 64], "little")
+    require(len(prefix) + 64 + owner_len <= len(raw), "held transaction root security text bound")
+
+
+def _bindings(events, fixture, files, source_snapshot):
     held = []
     for event in events:
         if event["kind"] == "backend_dropped":
@@ -687,19 +753,18 @@ def _bindings(events, fixture, files):
         require(current[:len(held)] == held and len(current) == len(held) + int(growing),
                 "held binding history changed or unexpected binding count")
         held = current
-    _held_binding(held[0], fixture["sourceIdentity"], fixture["sourceBytes"], fixture["sourceSha256"])
+    source_bridge = _bridge(source_snapshot)
+    _held_binding(held[0], source_bridge, fixture["sourceBytes"], fixture["sourceSha256"])
     unit_info = Path(fixture["candidate"]).parent.stat()
     # Directory size/properties can change during protocol operations; identity
     # linkage is historical, while native backend checks own live exclusions.
     root_binding = held[1]
-    raw_identity = bytes.fromhex(root_binding["identity"])
-    require(raw_identity == unit_info.st_dev.to_bytes(8, "little") + unit_info.st_ino.to_bytes(8, "little"),
-            "held transaction root identity differs")
+    _root_binding(root_binding, {"device": unit_info.st_dev, "inode": unit_info.st_ino}, fixture["sourceIdentity"], source_bridge)
     if len(held) > 2:
         entries = {entry["name"]: entry for entry in files}
         for binding, name in zip(held[2:], ("output.bin", "prepared.record", "intent.record", "observation.record", "receipt.record")):
             entry = entries[name]
-            _held_binding(binding, entry["identity"], entry["bytes"], entry["sha256"])
+            _held_binding(binding, _bridge(entry["snapshot"]), entry["bytes"], entry["sha256"])
 
 
 def _audit(attempt_dir, plan_path=None, freeze_path=None, review_path=None):
@@ -741,6 +806,8 @@ def _audit(attempt_dir, plan_path=None, freeze_path=None, review_path=None):
         _require_profile(probe["after"], profile)
     for name in ("source", "candidate", "output"):
         _require_profile(native["fixture_after"][name], profile)
+    for entry in files:
+        _require_profile(entry["snapshot"], profile)
     baseline_end = next(row for row in transport["transcript"] if row["kind"] == "probe_end"
                         and row["value"]["phase"] == "baseline")
     require(baseline_end["seq"] < spawned[0]["seq"], "baseline probe after actual child spawn")
@@ -748,7 +815,7 @@ def _audit(attempt_dir, plan_path=None, freeze_path=None, review_path=None):
             "final source snapshot changed after postexit probe")
     require(native["observations"] == [{"phase": phase, "probe": probe} for phase, probe in zip(
         ("baseline", "held", "after_exit"), probes)], "native/transcript probe mismatch")
-    _bindings(events, fixture, files)
+    _bindings(events, fixture, files, native["fixture_after"]["source"])
     copies = [row["value"] for row in transport["transcript"] if row["kind"] == "protocol_event"]
     require(copies == events, "retained protocol event copies differ from raw bytes")
     checkpoints = [row for row in transport["transcript"] if row["kind"] == "candidate_checkpoint"]
@@ -770,6 +837,8 @@ def _audit(attempt_dir, plan_path=None, freeze_path=None, review_path=None):
         expected_file = next(entry for entry in files if entry["name"] == ("output.bin" if normal else "candidate.bin"))
         require({"device": observed_stat["device"], "inode": observed_stat["inode"]} == expected_file["identity"],
                 "held candidate identity differs from final actual artifact")
+        require(_exact(_bridge(held_candidate), _bridge(expected_file["snapshot"])),
+                "held candidate legacy identity differs from final artifact")
     else:
         require(held_candidate.get("status") in ("error", "refused")
                 and (type(held_candidate.get("error")) is dict or type(held_candidate.get("reason")) is str),
@@ -793,6 +862,10 @@ def _audit(attempt_dir, plan_path=None, freeze_path=None, review_path=None):
         "worker_sha256": native["worker_sha256"], "plan_sha256": native["plan_sha256"],
         "freeze_sha256": native["freeze_sha256"], "review_sha256": native["review_sha256"],
         "source_name_and_bytes_preserved": True, "foreign_bytes_preserved": True if not normal else None,
+        "identity_bridge_profile": BRIDGE_PROFILE, "root_volume_linkage": ROOT_VOLUME_LINKAGE,
+        "source_volume_observation": {"python_device_u64": fixture["sourceIdentity"]["device"],
+                                      "bhfi_volume_serial_u32": _bridge(native["fixture_after"]["source"])["volume_serial_u32"]},
+        "identity_linkage_scope": "finite-trusted-local-fixture-observations; no universal serial conversion",
         "source_write_open_denied_while_paused": True, "held_probe_error": probes[1]["error"],
         "held_candidate_observation_status": held_candidate["status"],
         "explicit_release_before_runtime_drop_and_exit": True,

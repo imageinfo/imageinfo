@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 import stat
 import sys
+import ctypes
 
 
 DEFAULT_SOURCE_BYTES = 65_536
@@ -22,6 +23,79 @@ SAME_FIELDS = "same-fields-v1"
 WINDOWS_3147 = "cpython-3.14.7-windows-path-creation-handle-change-v1"
 STAT_NAMES = ("path_before", "handle_before", "handle_after", "path_after")
 SHARED_FIELDS = ("device", "inode", "mode", "size", "mtime_ns", "birthtime_ns")
+WINDOWS_BRIDGE = "win32-bhfi-same-read-fd-v1"
+NO_BRIDGE = "unavailable-non-windows-v1"
+BRIDGE_NAMES = ("identity_bridge_profile", "bridge_before", "bridge_after")
+
+
+class _FILETIME(ctypes.Structure):
+    _fields_ = [("dwLowDateTime", ctypes.c_uint32), ("dwHighDateTime", ctypes.c_uint32)]
+
+
+class _BY_HANDLE_FILE_INFORMATION(ctypes.Structure):
+    # Windows DWORD and BOOL are exactly32 bits, including on64-bit Python.
+    # https://learn.microsoft.com/windows/win32/api/fileapi/ns-fileapi-by_handle_file_information
+    _fields_ = [
+        ("dwFileAttributes", ctypes.c_uint32),
+        ("ftCreationTime", _FILETIME),
+        ("ftLastAccessTime", _FILETIME),
+        ("ftLastWriteTime", _FILETIME),
+        ("dwVolumeSerialNumber", ctypes.c_uint32),
+        ("nFileSizeHigh", ctypes.c_uint32),
+        ("nFileSizeLow", ctypes.c_uint32),
+        ("nNumberOfLinks", ctypes.c_uint32),
+        ("nFileIndexHigh", ctypes.c_uint32),
+        ("nFileIndexLow", ctypes.c_uint32),
+    ]
+
+
+def _windows_api():
+    # No DLL loading at import time. This boundary only observes the retained
+    # existing read FD: it neither opens a pathname nor duplicates/closes it.
+    import msvcrt
+    library = ctypes.WinDLL("kernel32", use_last_error=True)
+    information = library.GetFileInformationByHandle
+    information.argtypes = [ctypes.c_void_p, ctypes.POINTER(_BY_HANDLE_FILE_INFORMATION)]
+    information.restype = ctypes.c_int32
+    return information, msvcrt.get_osfhandle
+
+
+def _bridge_for_fd(fd: int) -> dict | None:
+    if os.name != "nt":
+        return None
+    information, get_osfhandle = _windows_api()
+    native_handle = get_osfhandle(fd)
+    if native_handle == -1:
+        raise OSError(errno.EBADF, "invalid retained read descriptor")
+    observed = _BY_HANDLE_FILE_INFORMATION()
+    # use_last_error keeps the calling thread's actual failure before any other
+    # Win32 call. WinError preserves its native number in the snapshot error.
+    if not information(ctypes.c_void_p(native_handle), ctypes.byref(observed)):
+        code = ctypes.get_last_error()
+        raise ctypes.WinError(code)
+    return {
+        "volume_serial_u32": int(observed.dwVolumeSerialNumber),
+        "file_index_u64": (int(observed.nFileIndexHigh) << 32) | int(observed.nFileIndexLow),
+    }
+
+
+def _bridge_matches(result: dict) -> bool:
+    profile = result["identity_bridge_profile"]
+    before, after = result["bridge_before"], result["bridge_after"]
+    if profile == NO_BRIDGE:
+        return before is None and after is None and result["stat_profile"] != WINDOWS_3147
+    if profile != WINDOWS_BRIDGE or before != after:
+        return False
+    for bridge, raw in ((before, result["handle_before"]), (after, result["handle_after"])):
+        if type(bridge) is not dict or set(bridge) != {"volume_serial_u32", "file_index_u64"}:
+            return False
+        if not (
+            type(bridge["volume_serial_u32"]) is int and 0 <= bridge["volume_serial_u32"] < 2**32
+            and type(bridge["file_index_u64"]) is int and 0 <= bridge["file_index_u64"] < 2**64
+            and bridge["file_index_u64"] == raw["inode"]
+        ):
+            return False
+    return True
 
 
 def _error(error: OSError) -> dict:
@@ -55,6 +129,8 @@ def _stat_profile() -> str:
 def _observations_match(result: dict) -> bool:
     observations = [result[key] for key in STAT_NAMES]
     if any(item is None for item in observations):
+        return False
+    if not _bridge_matches(result):
         return False
     path_before, handle_before, handle_after, path_after = observations
     if result["stat_profile"] == SAME_FIELDS:
@@ -99,6 +175,9 @@ def read_snapshot(path: str | Path, *, max_bytes: int = DEFAULT_SOURCE_BYTES) ->
         "error": None,
         "reason": None,
         "stat_profile": _stat_profile(),
+        "identity_bridge_profile": WINDOWS_BRIDGE if os.name == "nt" else NO_BRIDGE,
+        "bridge_before": None,
+        "bridge_after": None,
         "path_before": None,
         "handle_before": None,
         "handle_after": None,
@@ -122,9 +201,11 @@ def read_snapshot(path: str | Path, *, max_bytes: int = DEFAULT_SOURCE_BYTES) ->
             if not stat.S_ISREG(held.st_mode) or held.st_size > max_bytes:
                 result.update(status="refused", reason="opened_source_outside_bound")
                 return result
+            result["bridge_before"] = _bridge_for_fd(source.fileno())
             content = source.read(max_bytes + 1)
             result["bytes_read"] = len(content)
             result["handle_after"] = _stat(os.fstat(source.fileno()))
+            result["bridge_after"] = _bridge_for_fd(source.fileno())
         result["path_after"] = _stat(selected.lstat())
         if len(content) > max_bytes:
             result.update(status="refused", reason="source_grew_beyond_bound")
@@ -194,6 +275,7 @@ def write_open_probe(
         and before["sha256"] == after["sha256"]
         and before["stat_profile"] == after["stat_profile"]
         and all(before[key] == after[key] for key in STAT_NAMES)
+        and all(before[key] == after[key] for key in BRIDGE_NAMES)
     )
     access_matches = result["status"] == "opened" if expected_access else (
         result["status"] == "open_error" and result["denial_observation"] is not None

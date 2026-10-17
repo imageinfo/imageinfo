@@ -112,6 +112,22 @@ live pre-write observation, the exact downstream continuation and confirmed
 exit. The candidate checkpoint and held-source probes still require actual
 live observations; command delivery alone cannot substitute for them.
 
+A third normal attempt also completed its worker protocol, then exposed a
+signed-range assumption in the audit: this NTFS volume's valid 64-bit device
+identifier exceeds the signed maximum. Its rejected audit and unstarted
+collision cell remain retained. Device and inode observations require unsigned
+64-bit validation; timestamp and other numeric fields keep their own checks.
+
+The Python and SDK identity interfaces also expose different volume identifiers.
+The revised test-only observer queries `GetFileInformationByHandle` on the same
+existing Python read handle, retaining its legacy 32-bit volume serial and
+64-bit file index alongside Python's full volume identifier. It neither truncates
+an identifier nor changes the production SDK. Source, output and record snapshots
+retain these pairs. The root comparison requires the same observed Python volume
+as the source, and matches the SDK root's legacy serial against the captured
+source pair. This is a finite local volume observation, not a universal conversion,
+global uniqueness proof or imported authority.
+
 The independent retained-evidence audit must reconcile the exact source and
 worker bindings, request/plan, event sequence, explicit release, runtime result,
 backend drop, process exit, hold observations and final artifacts. Matching
