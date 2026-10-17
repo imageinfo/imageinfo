@@ -19,6 +19,10 @@ request IDs. It provides one-call library integration and caller-owned JSON outp
 adds opt-in bounded JSONL framing over caller-owned buffered streams.
 [#0116](../legacy-compatibility/read-session-process.md) adds its explicit CLI
 entry and finite actual pipe lifecycle evidence. Mutation integration remains separate work.
+[#0130](../legacy-compatibility/inert-translation-runtime.md) adds the separate
+`compat translate` data-only stdin/report operation. Its twelve frozen forms
+produce inert suggestions or refusals without opening referenced media/config
+paths or executing a suggestion.
 
 Implemented under **#0019**, 2026-10-10, after Terry accepted Rust/ADR-0011.
 This package provides a production library/binary boundary, command definitions,

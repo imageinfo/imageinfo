@@ -1,0 +1,1438 @@
+[
+  {
+    "schemaVersion": 1,
+    "kind": "legacy-translation-report",
+    "profile": "mig-001-012-inert-v1",
+    "request": {
+      "schemaVersion": 1,
+      "kind": "legacy-invocation",
+      "id": "MIG-001",
+      "pathStyle": "posix",
+      "workingDirectory": "/examples/raw",
+      "arguments": [
+        "-n",
+        "-ISO",
+        "photo.cr3"
+      ]
+    },
+    "status": "complete-with-differences",
+    "exitStatus": 0,
+    "accounting": [
+      {
+        "index": 0,
+        "token": "-n",
+        "role": "option",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 2,
+            "kind": "syntax",
+            "text": "-n"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 1,
+        "token": "-ISO",
+        "role": "option",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 4,
+            "kind": "syntax",
+            "text": "-ISO"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 2,
+        "token": "photo.cr3",
+        "role": "operand",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 9,
+            "kind": "literal",
+            "text": "photo.cr3"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "id": "F1",
+        "code": "READ_VIEW_DIFFERENCE",
+        "tokenIndices": [
+          0,
+          1,
+          2
+        ],
+        "message": "Native ISO includes every observed matching EXIF/CTMD occurrence in source order; normalized is a native value view, not ExifTool -n equivalence."
+      }
+    ],
+    "differences": [
+      {
+        "code": "READ_VIEW_DIFFERENCE",
+        "text": "Native ISO includes every observed matching EXIF/CTMD occurrence in source order; normalized is a native value view, not ExifTool -n equivalence."
+      }
+    ],
+    "questions": [],
+    "prerequisites": [],
+    "suggestion": {
+      "state": "usable",
+      "executable": "imageinfo",
+      "arguments": [
+        "metadata",
+        "read",
+        "--tag",
+        "ISO",
+        "--values",
+        "normalized",
+        "--",
+        "photo.cr3"
+      ],
+      "workingDirectory": "/examples/raw",
+      "operation": "metadata read",
+      "authority": "none-report-only"
+    },
+    "effects": {
+      "mediaOpened": false,
+      "referencedFilesOpened": false,
+      "commandsExecuted": false,
+      "authorizationGranted": false
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "kind": "legacy-translation-report",
+    "profile": "mig-001-012-inert-v1",
+    "request": {
+      "schemaVersion": 1,
+      "kind": "legacy-invocation",
+      "id": "MIG-002",
+      "pathStyle": "posix",
+      "workingDirectory": "/examples/raw",
+      "arguments": [
+        "-XMP-xmp:Label=",
+        "photo.xmp"
+      ]
+    },
+    "status": "unsupported",
+    "exitStatus": 1,
+    "accounting": [
+      {
+        "index": 0,
+        "token": "-XMP-xmp:Label=",
+        "role": "option",
+        "valueOwner": 0,
+        "parts": [
+          {
+            "start": 0,
+            "end": 15,
+            "kind": "syntax",
+            "text": "-XMP-xmp:Label="
+          },
+          {
+            "start": 15,
+            "end": 15,
+            "kind": "value",
+            "text": ""
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 1,
+        "token": "photo.xmp",
+        "role": "operand",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 9,
+            "kind": "literal",
+            "text": "photo.xmp"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "id": "F1",
+        "code": "DELETE_UNAVAILABLE",
+        "tokenIndices": [
+          0,
+          1
+        ],
+        "message": "Empty assignment is legacy deletion intent, never a native empty string."
+      }
+    ],
+    "differences": [
+      {
+        "code": "DELETE_UNAVAILABLE",
+        "text": "Empty assignment is legacy deletion intent, never a native empty string."
+      }
+    ],
+    "questions": [],
+    "prerequisites": [
+      {
+        "code": "DELETE_UNAVAILABLE",
+        "requirement": "Production XMP Label delete operation and exact destination/preservation/publication admission are absent.",
+        "owner": "#0015 MAP-010; #0085"
+      }
+    ],
+    "suggestion": {
+      "state": "withheld",
+      "executable": null,
+      "arguments": null,
+      "workingDirectory": null,
+      "operation": null,
+      "authority": "none-report-only"
+    },
+    "effects": {
+      "mediaOpened": false,
+      "referencedFilesOpened": false,
+      "commandsExecuted": false,
+      "authorizationGranted": false
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "kind": "legacy-translation-report",
+    "profile": "mig-001-012-inert-v1",
+    "request": {
+      "schemaVersion": 1,
+      "kind": "legacy-invocation",
+      "id": "MIG-003",
+      "pathStyle": "posix",
+      "workingDirectory": "/examples/raw",
+      "arguments": [
+        "-XMP-xmp:Label=Reviewed",
+        "photo.xmp"
+      ]
+    },
+    "status": "unsupported",
+    "exitStatus": 1,
+    "accounting": [
+      {
+        "index": 0,
+        "token": "-XMP-xmp:Label=Reviewed",
+        "role": "option",
+        "valueOwner": 0,
+        "parts": [
+          {
+            "start": 0,
+            "end": 15,
+            "kind": "syntax",
+            "text": "-XMP-xmp:Label="
+          },
+          {
+            "start": 15,
+            "end": 23,
+            "kind": "value",
+            "text": "Reviewed"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 1,
+        "token": "photo.xmp",
+        "role": "operand",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 9,
+            "kind": "literal",
+            "text": "photo.xmp"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "id": "F1",
+        "code": "WRITE_UNAVAILABLE",
+        "tokenIndices": [
+          0,
+          1
+        ],
+        "message": "Assignment can create or update upstream; no native upsert is inferred."
+      }
+    ],
+    "differences": [
+      {
+        "code": "WRITE_UNAVAILABLE",
+        "text": "Assignment can create or update upstream; no native upsert is inferred."
+      }
+    ],
+    "questions": [],
+    "prerequisites": [
+      {
+        "code": "WRITE_UNAVAILABLE",
+        "requirement": "Production Label insert/update operation, occurrence/conflict policy and admitted sidecar publication are absent.",
+        "owner": "#0015 MAP-010; #0085"
+      }
+    ],
+    "suggestion": {
+      "state": "withheld",
+      "executable": null,
+      "arguments": null,
+      "workingDirectory": null,
+      "operation": null,
+      "authority": "none-report-only"
+    },
+    "effects": {
+      "mediaOpened": false,
+      "referencedFilesOpened": false,
+      "commandsExecuted": false,
+      "authorizationGranted": false
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "kind": "legacy-translation-report",
+    "profile": "mig-001-012-inert-v1",
+    "request": {
+      "schemaVersion": 1,
+      "kind": "legacy-invocation",
+      "id": "MIG-004",
+      "pathStyle": "posix",
+      "workingDirectory": "/examples/raw",
+      "arguments": [
+        "-Subject+=travel",
+        "photo.xmp"
+      ]
+    },
+    "status": "unsupported",
+    "exitStatus": 1,
+    "accounting": [
+      {
+        "index": 0,
+        "token": "-Subject+=travel",
+        "role": "option",
+        "valueOwner": 0,
+        "parts": [
+          {
+            "start": 0,
+            "end": 10,
+            "kind": "syntax",
+            "text": "-Subject+="
+          },
+          {
+            "start": 10,
+            "end": 16,
+            "kind": "value",
+            "text": "travel"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 1,
+        "token": "photo.xmp",
+        "role": "operand",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 9,
+            "kind": "literal",
+            "text": "photo.xmp"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "id": "F1",
+        "code": "APPEND_UNAVAILABLE",
+        "tokenIndices": [
+          0,
+          1
+        ],
+        "message": "Preserve overloaded append intent and duplicates; list semantics are unresolved."
+      }
+    ],
+    "differences": [
+      {
+        "code": "APPEND_UNAVAILABLE",
+        "text": "Preserve overloaded append intent and duplicates; list semantics are unresolved."
+      }
+    ],
+    "questions": [
+      {
+        "code": "APPEND_UNAVAILABLE",
+        "text": "Which exact Subject namespace, destination occurrence and list/duplicate semantics are intended?",
+        "tokenIndices": [
+          0,
+          1
+        ]
+      }
+    ],
+    "prerequisites": [
+      {
+        "code": "APPEND_UNAVAILABLE",
+        "requirement": "A typed list/Subject mutation operation with explicit destination and sidecar publication is absent.",
+        "owner": "#0015 MAP-010; #0085"
+      }
+    ],
+    "suggestion": {
+      "state": "withheld",
+      "executable": null,
+      "arguments": null,
+      "workingDirectory": null,
+      "operation": null,
+      "authority": "none-report-only"
+    },
+    "effects": {
+      "mediaOpened": false,
+      "referencedFilesOpened": false,
+      "commandsExecuted": false,
+      "authorizationGranted": false
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "kind": "legacy-translation-report",
+    "profile": "mig-001-012-inert-v1",
+    "request": {
+      "schemaVersion": 1,
+      "kind": "legacy-invocation",
+      "id": "MIG-005",
+      "pathStyle": "posix",
+      "workingDirectory": "/examples/raw",
+      "arguments": [
+        "-DateTimeOriginal+=1",
+        "photo.cr3"
+      ]
+    },
+    "status": "unsupported",
+    "exitStatus": 1,
+    "accounting": [
+      {
+        "index": 0,
+        "token": "-DateTimeOriginal+=1",
+        "role": "option",
+        "valueOwner": 0,
+        "parts": [
+          {
+            "start": 0,
+            "end": 19,
+            "kind": "syntax",
+            "text": "-DateTimeOriginal+="
+          },
+          {
+            "start": 19,
+            "end": 20,
+            "kind": "value",
+            "text": "1"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 1,
+        "token": "photo.cr3",
+        "role": "operand",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 9,
+            "kind": "literal",
+            "text": "photo.cr3"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "id": "F1",
+        "code": "DATE_SHIFT_UNAVAILABLE",
+        "tokenIndices": [
+          0,
+          1
+        ],
+        "message": "The literal 1 has unresolved units/shape/zone; native advisory absolute-date preview is not a shift."
+      }
+    ],
+    "differences": [
+      {
+        "code": "DATE_SHIFT_UNAVAILABLE",
+        "text": "The literal 1 has unresolved units/shape/zone; native advisory absolute-date preview is not a shift."
+      }
+    ],
+    "questions": [
+      {
+        "code": "DATE_SHIFT_UNAVAILABLE",
+        "text": "What exact shift unit, datetime shape, offset and calendar semantics are intended?",
+        "tokenIndices": [
+          0,
+          1
+        ]
+      }
+    ],
+    "prerequisites": [
+      {
+        "code": "DATE_SHIFT_UNAVAILABLE",
+        "requirement": "Date-shift semantics plus production RAW writer/format/storage admission are absent.",
+        "owner": "#0133; #0078"
+      }
+    ],
+    "suggestion": {
+      "state": "withheld",
+      "executable": null,
+      "arguments": null,
+      "workingDirectory": null,
+      "operation": null,
+      "authority": "none-report-only"
+    },
+    "effects": {
+      "mediaOpened": false,
+      "referencedFilesOpened": false,
+      "commandsExecuted": false,
+      "authorizationGranted": false
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "kind": "legacy-translation-report",
+    "profile": "mig-001-012-inert-v1",
+    "request": {
+      "schemaVersion": 1,
+      "kind": "legacy-invocation",
+      "id": "MIG-006",
+      "pathStyle": "posix",
+      "workingDirectory": "/examples/raw",
+      "arguments": [
+        "-tagsFromFile",
+        "source.cr3",
+        "-all:all",
+        "target.cr3"
+      ]
+    },
+    "status": "unsupported",
+    "exitStatus": 1,
+    "accounting": [
+      {
+        "index": 0,
+        "token": "-tagsFromFile",
+        "role": "option",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 13,
+            "kind": "syntax",
+            "text": "-tagsFromFile"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 1,
+        "token": "source.cr3",
+        "role": "option-value",
+        "valueOwner": 0,
+        "parts": [
+          {
+            "start": 0,
+            "end": 10,
+            "kind": "value",
+            "text": "source.cr3"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 2,
+        "token": "-all:all",
+        "role": "option",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 8,
+            "kind": "syntax",
+            "text": "-all:all"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 3,
+        "token": "target.cr3",
+        "role": "operand",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 10,
+            "kind": "literal",
+            "text": "target.cr3"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "id": "F1",
+        "code": "COPY_ALL_UNAVAILABLE",
+        "tokenIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "message": "Copy-source position and target remain separate; no whole-file read or copy is performed."
+      }
+    ],
+    "differences": [
+      {
+        "code": "COPY_ALL_UNAVAILABLE",
+        "text": "Copy-source position and target remain separate; no whole-file read or copy is performed."
+      }
+    ],
+    "questions": [
+      {
+        "code": "COPY_ALL_UNAVAILABLE",
+        "text": "Which source occurrences and destination locations, unsupported-tag and protected-block policies are intended?",
+        "tokenIndices": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ],
+    "prerequisites": [
+      {
+        "code": "COPY_ALL_UNAVAILABLE",
+        "requirement": "Enumerated occurrence/type/location copy mapping, protected-block policy and native copy/write operation are absent.",
+        "owner": "#0015 MAP-011; #0078"
+      }
+    ],
+    "suggestion": {
+      "state": "withheld",
+      "executable": null,
+      "arguments": null,
+      "workingDirectory": null,
+      "operation": null,
+      "authority": "none-report-only"
+    },
+    "effects": {
+      "mediaOpened": false,
+      "referencedFilesOpened": false,
+      "commandsExecuted": false,
+      "authorizationGranted": false
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "kind": "legacy-translation-report",
+    "profile": "mig-001-012-inert-v1",
+    "request": {
+      "schemaVersion": 1,
+      "kind": "legacy-invocation",
+      "id": "MIG-007",
+      "pathStyle": "posix",
+      "workingDirectory": "/examples/raw",
+      "arguments": [
+        "-json=edits.json",
+        "photo.cr3"
+      ]
+    },
+    "status": "unsupported",
+    "exitStatus": 1,
+    "accounting": [
+      {
+        "index": 0,
+        "token": "-json=edits.json",
+        "role": "option",
+        "valueOwner": 0,
+        "parts": [
+          {
+            "start": 0,
+            "end": 6,
+            "kind": "syntax",
+            "text": "-json="
+          },
+          {
+            "start": 6,
+            "end": 16,
+            "kind": "value",
+            "text": "edits.json"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 1,
+        "token": "photo.cr3",
+        "role": "operand",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 9,
+            "kind": "literal",
+            "text": "photo.cr3"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "id": "F1",
+        "code": "IMPORT_UNAVAILABLE",
+        "tokenIndices": [
+          0,
+          1
+        ],
+        "message": "edits.json is an unopened literal locator; empty/null cells have no inferred deletion meaning."
+      }
+    ],
+    "differences": [
+      {
+        "code": "IMPORT_UNAVAILABLE",
+        "text": "edits.json is an unopened literal locator; empty/null cells have no inferred deletion meaning."
+      }
+    ],
+    "questions": [
+      {
+        "code": "IMPORT_UNAVAILABLE",
+        "text": "Which separately authorized inert import profile, row/target matching and empty/null policy is intended?",
+        "tokenIndices": [
+          0,
+          1
+        ]
+      }
+    ],
+    "prerequisites": [
+      {
+        "code": "IMPORT_UNAVAILABLE",
+        "requirement": "A separately selected inert import decoder/matching contract and actual target operation are absent.",
+        "owner": "#0126; LG-002; #0078"
+      }
+    ],
+    "suggestion": {
+      "state": "withheld",
+      "executable": null,
+      "arguments": null,
+      "workingDirectory": null,
+      "operation": null,
+      "authority": "none-report-only"
+    },
+    "effects": {
+      "mediaOpened": false,
+      "referencedFilesOpened": false,
+      "commandsExecuted": false,
+      "authorizationGranted": false
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "kind": "legacy-translation-report",
+    "profile": "mig-001-012-inert-v1",
+    "request": {
+      "schemaVersion": 1,
+      "kind": "legacy-invocation",
+      "id": "MIG-008",
+      "pathStyle": "posix",
+      "workingDirectory": "/examples/raw",
+      "arguments": [
+        "-r",
+        "-j",
+        "-G1",
+        "collection"
+      ]
+    },
+    "status": "needs-input",
+    "exitStatus": 1,
+    "accounting": [
+      {
+        "index": 0,
+        "token": "-r",
+        "role": "option",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 2,
+            "kind": "syntax",
+            "text": "-r"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 1,
+        "token": "-j",
+        "role": "option",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 2,
+            "kind": "syntax",
+            "text": "-j"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 2,
+        "token": "-G1",
+        "role": "option",
+        "valueOwner": 2,
+        "parts": [
+          {
+            "start": 0,
+            "end": 2,
+            "kind": "syntax",
+            "text": "-G"
+          },
+          {
+            "start": 2,
+            "end": 3,
+            "kind": "value",
+            "text": "1"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 3,
+        "token": "collection",
+        "role": "operand",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 10,
+            "kind": "literal",
+            "text": "collection"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "id": "F1",
+        "code": "ENUMERATION_REQUIRED",
+        "tokenIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "message": "Native read accepts explicit bounded files, not recursion or legacy grouped JSON."
+      }
+    ],
+    "differences": [
+      {
+        "code": "ENUMERATION_REQUIRED",
+        "text": "Native read accepts explicit bounded files, not recursion or legacy grouped JSON."
+      }
+    ],
+    "questions": [
+      {
+        "code": "ENUMERATION_REQUIRED",
+        "text": "Which explicit supported RAW files and native output consumer contract should replace recursion/grouped JSON?",
+        "tokenIndices": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ],
+    "prerequisites": [
+      {
+        "code": "ENUMERATION_REQUIRED",
+        "requirement": "Caller must supply an explicit list of at most 16 supported RAW file operands and select native JSON semantics; no directory enumeration occurs here.",
+        "owner": "#0122; #0126"
+      }
+    ],
+    "suggestion": {
+      "state": "withheld",
+      "executable": null,
+      "arguments": null,
+      "workingDirectory": null,
+      "operation": null,
+      "authority": "none-report-only"
+    },
+    "effects": {
+      "mediaOpened": false,
+      "referencedFilesOpened": false,
+      "commandsExecuted": false,
+      "authorizationGranted": false
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "kind": "legacy-translation-report",
+    "profile": "mig-001-012-inert-v1",
+    "request": {
+      "schemaVersion": 1,
+      "kind": "legacy-invocation",
+      "id": "MIG-009",
+      "pathStyle": "posix",
+      "workingDirectory": "/examples/raw",
+      "arguments": [
+        "-overwrite_original",
+        "-XMP-xmp:Label=Reviewed",
+        "photo.xmp"
+      ]
+    },
+    "status": "unsupported",
+    "exitStatus": 1,
+    "accounting": [
+      {
+        "index": 0,
+        "token": "-overwrite_original",
+        "role": "option",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 19,
+            "kind": "syntax",
+            "text": "-overwrite_original"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 1,
+        "token": "-XMP-xmp:Label=Reviewed",
+        "role": "option",
+        "valueOwner": 1,
+        "parts": [
+          {
+            "start": 0,
+            "end": 15,
+            "kind": "syntax",
+            "text": "-XMP-xmp:Label="
+          },
+          {
+            "start": 15,
+            "end": 23,
+            "kind": "value",
+            "text": "Reviewed"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 2,
+        "token": "photo.xmp",
+        "role": "operand",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 9,
+            "kind": "literal",
+            "text": "photo.xmp"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "id": "F1",
+        "code": "OVERWRITE_UNAVAILABLE",
+        "tokenIndices": [
+          0,
+          1,
+          2
+        ],
+        "message": "Overwrite-original policy cannot discard recovery or authorize application."
+      }
+    ],
+    "differences": [
+      {
+        "code": "OVERWRITE_UNAVAILABLE",
+        "text": "Overwrite-original policy cannot discard recovery or authorize application."
+      }
+    ],
+    "questions": [],
+    "prerequisites": [
+      {
+        "code": "OVERWRITE_UNAVAILABLE",
+        "requirement": "Production Label mutation/publication and explicit original-retention policy are absent.",
+        "owner": "#0085; #0093; #0094"
+      }
+    ],
+    "suggestion": {
+      "state": "withheld",
+      "executable": null,
+      "arguments": null,
+      "workingDirectory": null,
+      "operation": null,
+      "authority": "none-report-only"
+    },
+    "effects": {
+      "mediaOpened": false,
+      "referencedFilesOpened": false,
+      "commandsExecuted": false,
+      "authorizationGranted": false
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "kind": "legacy-translation-report",
+    "profile": "mig-001-012-inert-v1",
+    "request": {
+      "schemaVersion": 1,
+      "kind": "legacy-invocation",
+      "id": "MIG-010",
+      "pathStyle": "posix",
+      "workingDirectory": "/examples/raw",
+      "arguments": [
+        "-stay_open",
+        "True",
+        "-@",
+        "-"
+      ]
+    },
+    "status": "needs-input",
+    "exitStatus": 1,
+    "accounting": [
+      {
+        "index": 0,
+        "token": "-stay_open",
+        "role": "option",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 10,
+            "kind": "syntax",
+            "text": "-stay_open"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 1,
+        "token": "True",
+        "role": "option-value",
+        "valueOwner": 0,
+        "parts": [
+          {
+            "start": 0,
+            "end": 4,
+            "kind": "value",
+            "text": "True"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 2,
+        "token": "-@",
+        "role": "option",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 2,
+            "kind": "syntax",
+            "text": "-@"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 3,
+        "token": "-",
+        "role": "option-value",
+        "valueOwner": 2,
+        "parts": [
+          {
+            "start": 0,
+            "end": 1,
+            "kind": "value",
+            "text": "-"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "id": "F1",
+        "code": "SESSION_PROTOCOL_REQUIRED",
+        "tokenIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "message": "Existing imageinfo session read uses native v1 frames; legacy ready markers, argument stdin and persistent options are not accepted."
+      }
+    ],
+    "differences": [
+      {
+        "code": "SESSION_PROTOCOL_REQUIRED",
+        "text": "Existing imageinfo session read uses native v1 frames; legacy ready markers, argument stdin and persistent options are not accepted."
+      }
+    ],
+    "questions": [
+      {
+        "code": "SESSION_PROTOCOL_REQUIRED",
+        "text": "Will the client emit native v1 read/close frames and consume native summaries instead of legacy markers?",
+        "tokenIndices": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ],
+    "prerequisites": [
+      {
+        "code": "SESSION_PROTOCOL_REQUIRED",
+        "requirement": "Caller must redesign the client for session read v1 read/close frames and native results; no automatic legacy protocol translation exists.",
+        "owner": "#0125; #0128; #0116"
+      }
+    ],
+    "suggestion": {
+      "state": "withheld",
+      "executable": null,
+      "arguments": null,
+      "workingDirectory": null,
+      "operation": null,
+      "authority": "none-report-only"
+    },
+    "effects": {
+      "mediaOpened": false,
+      "referencedFilesOpened": false,
+      "commandsExecuted": false,
+      "authorizationGranted": false
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "kind": "legacy-translation-report",
+    "profile": "mig-001-012-inert-v1",
+    "request": {
+      "schemaVersion": 1,
+      "kind": "legacy-invocation",
+      "id": "MIG-011",
+      "pathStyle": "posix",
+      "workingDirectory": "/examples/raw",
+      "arguments": [
+        "-config",
+        "custom.config",
+        "-if",
+        "EXPR",
+        "photo.cr3"
+      ]
+    },
+    "status": "unsupported",
+    "exitStatus": 1,
+    "accounting": [
+      {
+        "index": 0,
+        "token": "-config",
+        "role": "option",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 7,
+            "kind": "syntax",
+            "text": "-config"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 1,
+        "token": "custom.config",
+        "role": "option-value",
+        "valueOwner": 0,
+        "parts": [
+          {
+            "start": 0,
+            "end": 13,
+            "kind": "value",
+            "text": "custom.config"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 2,
+        "token": "-if",
+        "role": "option",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 3,
+            "kind": "syntax",
+            "text": "-if"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 3,
+        "token": "EXPR",
+        "role": "option-value",
+        "valueOwner": 2,
+        "parts": [
+          {
+            "start": 0,
+            "end": 4,
+            "kind": "value",
+            "text": "EXPR"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 4,
+        "token": "photo.cr3",
+        "role": "operand",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 9,
+            "kind": "literal",
+            "text": "photo.cr3"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "id": "F1",
+        "code": "EXECUTABLE_CONFIG_UNSUPPORTED",
+        "tokenIndices": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "message": "Configuration and expression remain literal inert data; no Perl/config/filter evaluation."
+      }
+    ],
+    "differences": [
+      {
+        "code": "EXECUTABLE_CONFIG_UNSUPPORTED",
+        "text": "Configuration and expression remain literal inert data; no Perl/config/filter evaluation."
+      }
+    ],
+    "questions": [],
+    "prerequisites": [
+      {
+        "code": "EXECUTABLE_CONFIG_UNSUPPORTED",
+        "requirement": "Automatic executable configuration/expression translation is unsupported; any future supported declarative subset needs an explicit contract and runtime.",
+        "owner": "#0054; #0131; LG-003"
+      }
+    ],
+    "suggestion": {
+      "state": "withheld",
+      "executable": null,
+      "arguments": null,
+      "workingDirectory": null,
+      "operation": null,
+      "authority": "none-report-only"
+    },
+    "effects": {
+      "mediaOpened": false,
+      "referencedFilesOpened": false,
+      "commandsExecuted": false,
+      "authorizationGranted": false
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "kind": "legacy-translation-report",
+    "profile": "mig-001-012-inert-v1",
+    "request": {
+      "schemaVersion": 1,
+      "kind": "legacy-invocation",
+      "id": "MIG-012",
+      "pathStyle": "posix",
+      "workingDirectory": "/examples/raw",
+      "arguments": [
+        "-all=",
+        "photo.cr3"
+      ]
+    },
+    "status": "unsupported",
+    "exitStatus": 1,
+    "accounting": [
+      {
+        "index": 0,
+        "token": "-all=",
+        "role": "option",
+        "valueOwner": 0,
+        "parts": [
+          {
+            "start": 0,
+            "end": 5,
+            "kind": "syntax",
+            "text": "-all="
+          },
+          {
+            "start": 5,
+            "end": 5,
+            "kind": "value",
+            "text": ""
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      },
+      {
+        "index": 1,
+        "token": "photo.cr3",
+        "role": "operand",
+        "valueOwner": null,
+        "parts": [
+          {
+            "start": 0,
+            "end": 9,
+            "kind": "literal",
+            "text": "photo.cr3"
+          }
+        ],
+        "findingIds": [
+          "F1"
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "id": "F1",
+        "code": "BLANKET_DELETE_UNSUPPORTED",
+        "tokenIndices": [
+          0,
+          1
+        ],
+        "message": "Blanket removal cannot establish privacy, safety or anonymity; opaque/calibration dependencies remain."
+      }
+    ],
+    "differences": [
+      {
+        "code": "BLANKET_DELETE_UNSUPPORTED",
+        "text": "Blanket removal cannot establish privacy, safety or anonymity; opaque/calibration dependencies remain."
+      }
+    ],
+    "questions": [],
+    "prerequisites": [
+      {
+        "code": "BLANKET_DELETE_UNSUPPORTED",
+        "requirement": "Catalog-scoped inspection/removal semantics plus operation-specific writer admission are absent.",
+        "owner": "#0087; #0088; #0078"
+      }
+    ],
+    "suggestion": {
+      "state": "withheld",
+      "executable": null,
+      "arguments": null,
+      "workingDirectory": null,
+      "operation": null,
+      "authority": "none-report-only"
+    },
+    "effects": {
+      "mediaOpened": false,
+      "referencedFilesOpened": false,
+      "commandsExecuted": false,
+      "authorizationGranted": false
+    }
+  }
+]

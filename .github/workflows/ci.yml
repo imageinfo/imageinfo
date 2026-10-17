@@ -356,6 +356,20 @@ jobs:
         run: python scripts/check_preview_pair_arguments.py
       - name: Check current operation result profiles
         run: python -c "import os,pathlib,subprocess,sys; binary=pathlib.Path('target/release/imageinfo'+('.exe' if os.name=='nt' else '')).resolve(); subprocess.run([sys.executable,'scripts/check_result_profiles.py','--binary',str(binary),'--check-current'],check=True)"
+      - name: Check actual session result profiles
+        run: python -c "import os,pathlib,subprocess,sys; out=pathlib.Path('.local/compat-qualification-ci'); out.mkdir(parents=True,exist_ok=True); binary=pathlib.Path('target/release/imageinfo'+('.exe' if os.name=='nt' else '')).resolve(); subprocess.run([sys.executable,'scripts/check_session_result_profiles.py','--binary',str(binary),'--public',str(out/'session-profiles.json')],check=True)"
+      - name: Qualify direct command shells
+        run: python -c "import os,pathlib,subprocess,sys; out=pathlib.Path('.local/compat-qualification-ci'); out.mkdir(parents=True,exist_ok=True); binary=pathlib.Path('target/release/imageinfo'+('.exe' if os.name=='nt' else '')).resolve(); subprocess.run([sys.executable,'scripts/check_command_shells.py','--binary',str(binary),'--public-results',str(out/'command-shells.json')],check=True)"
+      - name: Qualify plain narrow terminals
+        run: python -c "import os,pathlib,subprocess,sys; out=pathlib.Path('.local/compat-qualification-ci'); out.mkdir(parents=True,exist_ok=True); binary=pathlib.Path('target/release/imageinfo'+('.exe' if os.name=='nt' else '')).resolve(); subprocess.run([sys.executable,'scripts/check_plain_terminals.py','--binary',str(binary),'--public-results',str(out/'plain-terminals.json')],check=True)"
+      - name: Retain authored compatibility observations
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: compatibility-${{ matrix.os }}
+          path: .local/compat-qualification-ci/*.json
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
       - name: Check authored difference and native-error tooling syntax
         run: python -m compileall -q scripts/check_read_reference.py scripts/check_stored_preview_differences.py experiments/0174-native-errors
       - name: Check authored read-resource grid

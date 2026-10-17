@@ -585,3 +585,143 @@ impl HeldArtifact {
         self.check(root)
     }
 }
+
+/// Explicit finalization capability, separate from read-only restart inspection.
+/// Existing objects are opened, never renamed, truncated, overwritten or removed.
+pub struct FinalizationRoot {
+    read: ExistingRoot,
+    writable: Vec<(PathBuf, File)>,
+    parent: Vec<(PathBuf, File)>,
+}
+impl FinalizationRoot {
+    pub fn open(path: &Path) -> io::Result<Self> {
+        let read = ExistingRoot::open(path)?;
+        let writable = hold_ancestors(path, true)?;
+        let parent = hold_ancestors(
+            path.parent()
+                .ok_or_else(|| io::Error::other("PARENT_REQUIRED"))?,
+            true,
+        )?;
+        let result = Self {
+            read,
+            writable,
+            parent,
+        };
+        result.check()?;
+        Ok(result)
+    }
+    pub fn snapshot(&self) -> &FileSnapshot {
+        self.read.snapshot()
+    }
+    pub fn parent_snapshot(&self) -> &FileSnapshot {
+        self.read.parent_snapshot()
+    }
+    pub fn check(&self) -> io::Result<()> {
+        self.read.check()?;
+        for (path, file) in self.writable.iter().chain(&self.parent) {
+            check_binding(path, file)?;
+            native::check_case(file)?;
+            if file.metadata()?.file_attributes() & FILE_ATTRIBUTE_REPARSE_POINT != 0 {
+                return Err(io::Error::other("ANCESTOR_REPARSE_CONFLICT"));
+            }
+        }
+        if !same_directory_properties(
+            &observe(&self.writable.last().unwrap().1)?,
+            self.read.snapshot(),
+        ) || !same_directory_properties(
+            &observe(&self.parent.last().unwrap().1)?,
+            self.read.parent_snapshot(),
+        ) {
+            return Err(io::Error::other("FINALIZATION_ROOT_CONFLICT"));
+        }
+        Ok(())
+    }
+    pub fn entries(&self) -> io::Result<Vec<std::ffi::OsString>> {
+        self.check()?;
+        self.read.entries()
+    }
+    pub fn flush(&self) -> io::Result<()> {
+        self.check()?;
+        self.writable.last().unwrap().1.sync_all()
+    }
+    pub fn flush_parent(&self) -> io::Result<()> {
+        self.check()?;
+        self.parent.last().unwrap().1.sync_all()
+    }
+    /// The sole new-name effect: fixed expected-absent receipt, exclusive creation.
+    /// Partial/error material remains. There is no arbitrary-name creation seam.
+    pub fn create_receipt(&self, bytes: &[u8]) -> io::Result<FinalizationFile> {
+        if bytes.is_empty() || bytes.len() as u64 > crate::MAX_RECORD_BYTES {
+            return Err(io::Error::new(io::ErrorKind::Unsupported, "RECEIPT_BOUND"));
+        }
+        self.check()?;
+        let path = self.read.path.join("receipt.record");
+        let mut file = self.read.security.create_file(&path)?;
+        file.write_all(bytes)?;
+        let before = observe(&file)?;
+        let mut result = FinalizationFile(GuardedSource {
+            file,
+            path,
+            before,
+            bytes: bytes.to_vec(),
+            ancestry: Vec::new(),
+            failed: false,
+        });
+        result.check()?;
+        self.check()?;
+        Ok(result)
+    }
+}
+
+/// Existing-file read/write handle solely for flush and exact checks. No byte
+/// writer, rename or removal API is exposed; no write/delete sharing is granted.
+pub struct FinalizationFile(GuardedSource);
+impl FinalizationFile {
+    pub fn open(path: &Path, max_bytes: u64) -> io::Result<Self> {
+        validate_path(path)?;
+        if max_bytes > MAX_ARTIFACT_BYTES {
+            return Err(io::Error::new(io::ErrorKind::Unsupported, "SOURCE_BOUND"));
+        }
+        let ancestry = hold_ancestors(
+            path.parent()
+                .ok_or_else(|| io::Error::other("PARENT_REQUIRED"))?,
+            false,
+        )?;
+        native::check_local_ntfs(&ancestry.last().unwrap().1, path)?;
+        let mut file = OpenOptions::new()
+            .read(true)
+            .write(true)
+            .share_mode(FILE_SHARE_READ)
+            .custom_flags(FILE_FLAG_OPEN_REPARSE_POINT)
+            .open(path)?;
+        let before = observe(&file)?;
+        if before.size > max_bytes {
+            return Err(io::Error::new(io::ErrorKind::Unsupported, "SOURCE_BOUND"));
+        }
+        check_plain(&file, &before)?;
+        check_binding(path, &file)?;
+        let bytes = bounded_read(&mut file, before.size)?;
+        let mut result = Self(GuardedSource {
+            file,
+            path: path.into(),
+            before,
+            bytes,
+            ancestry,
+            failed: false,
+        });
+        result.check()?;
+        Ok(result)
+    }
+    pub fn snapshot(&self) -> &FileSnapshot {
+        self.0.snapshot()
+    }
+    pub fn check(&mut self) -> io::Result<()> {
+        self.0.check()
+    }
+    pub fn read_exact_bytes(&mut self) -> io::Result<Vec<u8>> {
+        self.0.read_exact_bytes()
+    }
+    pub fn flush(&self) -> io::Result<()> {
+        self.0.file.sync_all()
+    }
+}

@@ -28,7 +28,8 @@ the backend, one checked charge admits:
 - Four maximum 65,536-byte transaction records and four maximum caller captures,
   as enforced by the existing executor and native adapter.
 - One additional 65,536-byte allowance for the bounded ledger entry and retained
-  result, including its operation/root keys.
+  terminal accounting state, including its operation/root keys. Actual runtime
+  results remain caller-owned.
 
 The charge is therefore `candidate_length + 9 * 65,536`. Overflow or a total above
 the session limit refuses before construction/backend invocation. The session

@@ -1,0 +1,428 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/imageinfo/imageinfo/raw/main/docs/legacy-compatibility/session-result-profiles/schema.v1.json",
+  "title": "Actual bounded read-session v1 output frames (#0112/#0116)",
+  "description": "Closed actual output shapes. Companion checker enforces identity, counts, lifecycle, process exit and transport completion; a frame alone never proves delivery.",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z][A-Za-z0-9._:-]{0,127}$",
+      "not": {
+        "pattern": "[^A-Za-z0-9._:-]"
+      }
+    },
+    "ready": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "protocolVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "session-ready"
+        },
+        "limits": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "maxInputFrameBytes": {
+              "const": 524288
+            },
+            "maxOutputFrameBytes": {
+              "const": 16777728
+            },
+            "maxFrames": {
+              "const": 256
+            },
+            "maxQueuedRequests": {
+              "const": 0
+            },
+            "maxTokens": {
+              "const": 128
+            },
+            "maxTokenBytes": {
+              "const": 32768
+            },
+            "maxTotalTokenBytes": {
+              "const": 65536
+            },
+            "maxInputs": {
+              "const": 4
+            },
+            "maxMetadataBytes": {
+              "const": 8388608
+            },
+            "maxResultBytes": {
+              "const": 16777216
+            }
+          },
+          "required": [
+            "maxInputFrameBytes",
+            "maxOutputFrameBytes",
+            "maxFrames",
+            "maxQueuedRequests",
+            "maxTokens",
+            "maxTokenBytes",
+            "maxTotalTokenBytes",
+            "maxInputs",
+            "maxMetadataBytes",
+            "maxResultBytes"
+          ]
+        },
+        "allowApply": {
+          "const": false
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "kind",
+        "limits",
+        "allowApply"
+      ]
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "protocolVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "read-result"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "result": {
+          "$ref": "https://github.com/imageinfo/imageinfo/raw/main/docs/legacy-compatibility/result.schema.json#/$defs/envelope",
+          "allOf": [
+            {
+              "properties": {
+                "request": {
+                  "properties": {
+                    "operation": {
+                      "enum": [
+                        null,
+                        "metadata read"
+                      ]
+                    },
+                    "mode": {
+                      "enum": [
+                        null,
+                        "read"
+                      ]
+                    }
+                  }
+                },
+                "files": {
+                  "maxItems": 4,
+                  "items": {
+                    "properties": {
+                      "state": {
+                        "enum": [
+                          "read",
+                          "failed",
+                          "refused"
+                        ]
+                      },
+                      "transactionId": {
+                        "const": null
+                      },
+                      "effects": {
+                        "const": {
+                          "publicationMayHaveOccurred": false,
+                          "changed": false,
+                          "cleanupPending": false,
+                          "recoveryIds": [],
+                          "notes": []
+                        }
+                      },
+                      "issues": {
+                        "items": {
+                          "properties": {
+                            "path": {
+                              "const": null
+                            },
+                            "occurrenceRef": {
+                              "const": null
+                            }
+                          },
+                          "allOf": [
+                            {
+                              "if": {
+                                "properties": {
+                                  "code": {
+                                    "enum": [
+                                      "COVERAGE_PARTIAL",
+                                      "TAG_UNRESOLVED",
+                                      "PATH_DISPLAY_LOSSY"
+                                    ]
+                                  }
+                                }
+                              },
+                              "then": {
+                                "properties": {
+                                  "severity": {
+                                    "const": "warning"
+                                  }
+                                }
+                              },
+                              "else": {
+                                "properties": {
+                                  "severity": {
+                                    "const": "error"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "summary": {
+                  "properties": {
+                    "outputComplete": {
+                      "const": true
+                    },
+                    "interrupted": {
+                      "const": false
+                    },
+                    "artifacts": {
+                      "const": []
+                    },
+                    "issues": {
+                      "const": []
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "kind",
+        "id",
+        "result"
+      ]
+    },
+    "error": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "protocolVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "protocol-error"
+        },
+        "id": {
+          "const": null
+        },
+        "code": {
+          "enum": [
+            "FRAME_TOO_LARGE",
+            "FRAME_TRUNCATED",
+            "FRAME_ENCODING",
+            "FRAME_JSON",
+            "FRAME_SCHEMA",
+            "DUPLICATE_ID",
+            "INPUT_IO"
+          ]
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "kind",
+        "id",
+        "code"
+      ]
+    },
+    "complete": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "protocolVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "session-complete"
+        },
+        "reason": {
+          "enum": [
+            "eof",
+            "close",
+            "limit",
+            "protocol-error",
+            "input-error"
+          ]
+        },
+        "exitStatus": {
+          "enum": [
+            0,
+            1,
+            2
+          ]
+        },
+        "frames": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 256
+        },
+        "results": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 256
+        },
+        "closeId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "kind",
+        "reason",
+        "exitStatus",
+        "frames",
+        "results",
+        "closeId"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "reason": {
+                "const": "eof"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "exitStatus": {
+                "const": 0
+              },
+              "closeId": {
+                "const": null
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "reason": {
+                "const": "close"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "exitStatus": {
+                "const": 0
+              },
+              "closeId": {
+                "$ref": "#/$defs/id"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "reason": {
+                "const": "limit"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "exitStatus": {
+                "const": 0
+              },
+              "closeId": {
+                "const": null
+              },
+              "frames": {
+                "const": 256
+              },
+              "results": {
+                "const": 256
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "reason": {
+                "const": "protocol-error"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "exitStatus": {
+                "const": 2
+              },
+              "closeId": {
+                "const": null
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "reason": {
+                "const": "input-error"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "exitStatus": {
+                "const": 1
+              },
+              "closeId": {
+                "const": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    "output": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ready"
+        },
+        {
+          "$ref": "#/$defs/result"
+        },
+        {
+          "$ref": "#/$defs/error"
+        },
+        {
+          "$ref": "#/$defs/complete"
+        }
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/output"
+    }
+  ]
+}

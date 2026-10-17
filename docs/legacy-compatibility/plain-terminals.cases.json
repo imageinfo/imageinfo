@@ -1,0 +1,369 @@
+{
+  "schemaVersion": 1,
+  "ticket": 138,
+  "columns": [
+    40,
+    80
+  ],
+  "cases": [
+    {
+      "id": "help-root",
+      "argv": [
+        [
+          "--help"
+        ],
+        [
+          "help"
+        ]
+      ],
+      "status": 0,
+      "channel": "help"
+    },
+    {
+      "id": "help-version",
+      "argv": [
+        [
+          "version",
+          "--help"
+        ],
+        [
+          "help",
+          "version"
+        ]
+      ],
+      "status": 0,
+      "channel": "help"
+    },
+    {
+      "id": "help-session",
+      "argv": [
+        [
+          "session",
+          "--help"
+        ],
+        [
+          "help",
+          "session"
+        ]
+      ],
+      "status": 0,
+      "channel": "help"
+    },
+    {
+      "id": "help-session-read",
+      "argv": [
+        [
+          "session",
+          "read",
+          "--help"
+        ],
+        [
+          "help",
+          "session",
+          "read"
+        ]
+      ],
+      "status": 0,
+      "channel": "help"
+    },
+    {
+      "id": "help-metadata",
+      "argv": [
+        [
+          "metadata",
+          "--help"
+        ],
+        [
+          "help",
+          "metadata"
+        ]
+      ],
+      "status": 0,
+      "channel": "help"
+    },
+    {
+      "id": "help-metadata-read",
+      "argv": [
+        [
+          "metadata",
+          "read",
+          "--help"
+        ],
+        [
+          "help",
+          "metadata",
+          "read"
+        ]
+      ],
+      "status": 0,
+      "channel": "help"
+    },
+    {
+      "id": "help-binary",
+      "argv": [
+        [
+          "binary",
+          "--help"
+        ],
+        [
+          "help",
+          "binary"
+        ]
+      ],
+      "status": 0,
+      "channel": "help"
+    },
+    {
+      "id": "help-binary-list",
+      "argv": [
+        [
+          "binary",
+          "list",
+          "--help"
+        ],
+        [
+          "help",
+          "binary",
+          "list"
+        ]
+      ],
+      "status": 0,
+      "channel": "help"
+    },
+    {
+      "id": "help-binary-extract",
+      "argv": [
+        [
+          "binary",
+          "extract",
+          "--help"
+        ],
+        [
+          "help",
+          "binary",
+          "extract"
+        ]
+      ],
+      "status": 0,
+      "channel": "help"
+    },
+    {
+      "id": "help-preview",
+      "argv": [
+        [
+          "preview",
+          "--help"
+        ],
+        [
+          "help",
+          "preview"
+        ]
+      ],
+      "status": 0,
+      "channel": "help"
+    },
+    {
+      "id": "help-preview-date-time-original",
+      "argv": [
+        [
+          "preview",
+          "date-time-original",
+          "--help"
+        ],
+        [
+          "help",
+          "preview",
+          "date-time-original"
+        ]
+      ],
+      "status": 0,
+      "channel": "help"
+    },
+    {
+      "id": "help-sidecar",
+      "argv": [
+        [
+          "sidecar",
+          "--help"
+        ],
+        [
+          "help",
+          "sidecar"
+        ]
+      ],
+      "status": 0,
+      "channel": "help"
+    },
+    {
+      "id": "help-sidecar-pair",
+      "argv": [
+        [
+          "sidecar",
+          "pair",
+          "--help"
+        ],
+        [
+          "help",
+          "sidecar",
+          "pair"
+        ]
+      ],
+      "status": 0,
+      "channel": "help"
+    },
+    {
+      "id": "help-compat",
+      "argv": [
+        [
+          "compat",
+          "--help"
+        ],
+        [
+          "help",
+          "compat"
+        ]
+      ],
+      "status": 0,
+      "channel": "help"
+    },
+    {
+      "id": "help-compat-translate",
+      "argv": [
+        [
+          "compat",
+          "translate",
+          "--help"
+        ],
+        [
+          "help",
+          "compat",
+          "translate"
+        ]
+      ],
+      "status": 0,
+      "channel": "help"
+    },
+    {
+      "id": "guided-text",
+      "argv": [
+        [
+          "--interactive"
+        ]
+      ],
+      "status": 2,
+      "channel": "text",
+      "contains": "Guided mode is not implemented"
+    },
+    {
+      "id": "guided-json",
+      "argv": [
+        [
+          "--interactive",
+          "--output",
+          "json"
+        ]
+      ],
+      "status": 2,
+      "channel": "json",
+      "contains": "Guided mode is not implemented"
+    },
+    {
+      "id": "syntax-text",
+      "argv": [
+        [
+          "metadata",
+          "read",
+          "--unknown"
+        ]
+      ],
+      "status": 2,
+      "channel": "text",
+      "contains": "INVALID_OPTION"
+    },
+    {
+      "id": "syntax-json",
+      "argv": [
+        [
+          "metadata",
+          "read",
+          "--unknown",
+          "--output",
+          "json"
+        ]
+      ],
+      "status": 2,
+      "channel": "json",
+      "contains": "INVALID_OPTION"
+    },
+    {
+      "id": "control-path-text",
+      "argv": [
+        [
+          "metadata",
+          "read",
+          "--",
+          "$CONTROL"
+        ]
+      ],
+      "status": 1,
+      "channel": "text",
+      "contains": "INPUT_IO"
+    },
+    {
+      "id": "control-path-json",
+      "argv": [
+        [
+          "metadata",
+          "read",
+          "--output",
+          "json",
+          "--",
+          "$CONTROL"
+        ]
+      ],
+      "status": 1,
+      "channel": "json",
+      "contains": "INPUT_IO"
+    },
+    {
+      "id": "forced-color-help",
+      "argv": [
+        [
+          "--color",
+          "always",
+          "--output",
+          "json",
+          "help"
+        ]
+      ],
+      "status": 0,
+      "channel": "help"
+    },
+    {
+      "id": "extract-missing",
+      "argv": [
+        [
+          "binary",
+          "extract"
+        ]
+      ],
+      "status": 2,
+      "channel": "text",
+      "contains": "MISSING_ARGUMENT"
+    },
+    {
+      "id": "translate-selector-refusal",
+      "argv": [
+        [
+          "compat",
+          "translate",
+          "--output",
+          "json"
+        ]
+      ],
+      "status": 2,
+      "channel": "json",
+      "contains": "INVALID_OPTION"
+    }
+  ]
+}

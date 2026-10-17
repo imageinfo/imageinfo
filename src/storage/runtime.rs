@@ -35,7 +35,7 @@ pub(crate) struct LiveEvidence {
 }
 
 impl LiveEvidence {
-    fn target(phase: Phase) -> AckTarget {
+    pub(super) fn target(phase: Phase) -> AckTarget {
         use Artifact::*;
         use Phase::*;
         match phase {
@@ -62,6 +62,15 @@ impl LiveEvidence {
     }
 
     pub(crate) fn complete(&self, bindings: &[Binding]) -> bool {
+        self.acknowledgements
+            .last()
+            .is_some_and(|ack| ack.phase == Phase::TerminalExport)
+            && self.valid_prefix(bindings)
+    }
+
+    /// Exact actual ordered prefix, including each phase's immutable binding revision.
+    /// Only the native caller retention seam uses this; disk records cannot construct it.
+    pub(super) fn valid_prefix(&self, bindings: &[Binding]) -> bool {
         use Phase::*;
         const REQUIRED: &[Phase] = &[
             Preflight,
@@ -104,7 +113,8 @@ impl LiveEvidence {
         self.protocol == PROTOCOL
             && !self.profile.is_empty()
             && !self.implementation.is_empty()
-            && self.acknowledgements.len() == REQUIRED.len()
+            && !self.acknowledgements.is_empty()
+            && self.acknowledgements.len() <= REQUIRED.len()
             && self
                 .acknowledgements
                 .iter()
@@ -244,6 +254,8 @@ pub(crate) trait Backend {
     /// Retains actual live results independently of transaction-file claims.
     /// Called before executor return while all continuous guards remain held.
     fn retain_live_evidence(&mut self, _evidence: &LiveEvidence) {}
+    /// Terminal failure provenance is retained outside editable records.
+    fn retain_outcome(&mut self, _phase: Phase, _failure: Option<Failure>) {}
 }
 
 struct Attempt {
@@ -710,6 +722,7 @@ fn execute_inner(
         Ok(())
     })();
     backend.retain_live_evidence(&attempt.evidence);
+    backend.retain_outcome(attempt.phase, run.as_ref().err().copied());
     match run {
         Ok(()) => attempt.result(None, true, admitted),
         Err(error) => attempt.result(Some(error), false, false),

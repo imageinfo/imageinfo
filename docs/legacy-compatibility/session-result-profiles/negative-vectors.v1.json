@@ -1,0 +1,764 @@
+{
+  "description": "Authored mutations of actual read-statuses-close capture; never producer-generated expected outcomes.",
+  "mutations": [
+    {
+      "name": "ready-authority",
+      "path": [
+        0,
+        "allowApply"
+      ],
+      "value": true
+    },
+    {
+      "name": "queue-adoption",
+      "path": [
+        0,
+        "limits",
+        "maxQueuedRequests"
+      ],
+      "value": 1
+    },
+    {
+      "name": "ready-type",
+      "path": [
+        0,
+        "protocolVersion"
+      ],
+      "value": true
+    },
+    {
+      "name": "ready-float",
+      "path": [
+        0,
+        "protocolVersion"
+      ],
+      "value": 1.0
+    },
+    {
+      "name": "ready-extra",
+      "path": [
+        0,
+        "queue"
+      ],
+      "value": []
+    },
+    {
+      "name": "unknown-output-kind",
+      "path": [
+        0,
+        "kind"
+      ],
+      "value": "cancelled"
+    },
+    {
+      "name": "outer-id",
+      "path": [
+        1,
+        "id"
+      ],
+      "value": "foreign"
+    },
+    {
+      "name": "envelope-id",
+      "path": [
+        1,
+        "result",
+        "requestId"
+      ],
+      "value": "foreign"
+    },
+    {
+      "name": "request-id",
+      "path": [
+        1,
+        "result",
+        "request",
+        "requestId"
+      ],
+      "value": "foreign"
+    },
+    {
+      "name": "summary-id",
+      "path": [
+        1,
+        "result",
+        "summary",
+        "requestId"
+      ],
+      "value": "foreign"
+    },
+    {
+      "name": "file-id",
+      "path": [
+        1,
+        "result",
+        "files",
+        0,
+        "requestId"
+      ],
+      "value": "foreign"
+    },
+    {
+      "name": "input-id",
+      "path": [
+        1,
+        "result",
+        "files",
+        0,
+        "inputId"
+      ],
+      "value": "input-9"
+    },
+    {
+      "name": "status-contradiction",
+      "path": [
+        1,
+        "result",
+        "summary",
+        "exitStatus"
+      ],
+      "value": 3
+    },
+    {
+      "name": "status-type",
+      "path": [
+        1,
+        "result",
+        "summary",
+        "exitStatus"
+      ],
+      "value": false
+    },
+    {
+      "name": "count-mismatch",
+      "path": [
+        1,
+        "result",
+        "summary",
+        "counts",
+        "discovered"
+      ],
+      "value": 0
+    },
+    {
+      "name": "count-type",
+      "path": [
+        1,
+        "result",
+        "summary",
+        "counts",
+        "discovered"
+      ],
+      "value": "1"
+    },
+    {
+      "name": "state-count",
+      "path": [
+        1,
+        "result",
+        "summary",
+        "counts",
+        "byState"
+      ],
+      "value": {
+        "read": 2
+      }
+    },
+    {
+      "name": "inner-incomplete",
+      "path": [
+        1,
+        "result",
+        "summary",
+        "outputComplete"
+      ],
+      "value": false
+    },
+    {
+      "name": "interrupted",
+      "path": [
+        1,
+        "result",
+        "summary",
+        "interrupted"
+      ],
+      "value": true
+    },
+    {
+      "name": "selection",
+      "path": [
+        1,
+        "result",
+        "summary",
+        "selectionComplete"
+      ],
+      "value": false
+    },
+    {
+      "name": "effect",
+      "path": [
+        1,
+        "result",
+        "files",
+        0,
+        "effects",
+        "changed"
+      ],
+      "value": true
+    },
+    {
+      "name": "transaction",
+      "path": [
+        1,
+        "result",
+        "files",
+        0,
+        "transactionId"
+      ],
+      "value": "tx-1"
+    },
+    {
+      "name": "missing-snapshot",
+      "path": [
+        1,
+        "result",
+        "files",
+        0,
+        "snapshot"
+      ],
+      "value": null
+    },
+    {
+      "name": "future-operation",
+      "path": [
+        1,
+        "result",
+        "request",
+        "operation"
+      ],
+      "value": "apply"
+    },
+    {
+      "name": "refusal-with-status-zero",
+      "path": [
+        3,
+        "result",
+        "summary",
+        "exitStatus"
+      ],
+      "value": 0
+    },
+    {
+      "name": "refusal-complete-selection",
+      "path": [
+        3,
+        "result",
+        "summary",
+        "selectionComplete"
+      ],
+      "value": true
+    },
+    {
+      "name": "completion-count",
+      "path": [
+        5,
+        "results"
+      ],
+      "value": 3
+    },
+    {
+      "name": "completion-attempts",
+      "path": [
+        5,
+        "frames"
+      ],
+      "value": 4
+    },
+    {
+      "name": "completion-exit",
+      "path": [
+        5,
+        "exitStatus"
+      ],
+      "value": 2
+    },
+    {
+      "name": "completion-closeid",
+      "path": [
+        5,
+        "closeId"
+      ],
+      "value": "foreign"
+    },
+    {
+      "name": "completion-closeid-null",
+      "path": [
+        5,
+        "closeId"
+      ],
+      "value": null
+    },
+    {
+      "name": "completion-reason",
+      "path": [
+        5,
+        "reason"
+      ],
+      "value": "eof"
+    },
+    {
+      "name": "completion-float",
+      "path": [
+        5,
+        "frames"
+      ],
+      "value": 5.0
+    },
+    {
+      "name": "completion-bool",
+      "path": [
+        5,
+        "results"
+      ],
+      "value": true
+    },
+    {
+      "name": "completion-extra",
+      "path": [
+        5,
+        "cancelled"
+      ],
+      "value": false
+    },
+    {
+      "name": "historical-kind",
+      "path": [
+        5,
+        "kind"
+      ],
+      "value": "queue-complete"
+    },
+    {
+      "name": "unrequested-file-path",
+      "path": [
+        1,
+        "result",
+        "files",
+        0,
+        "path"
+      ],
+      "value": "unrequested.cr3"
+    },
+    {
+      "name": "coherent-unrequested-path",
+      "edits": [
+        {
+          "path": [
+            1,
+            "result",
+            "files",
+            0,
+            "path"
+          ],
+          "value": "unrequested.cr3"
+        },
+        {
+          "path": [
+            1,
+            "result",
+            "files",
+            0,
+            "snapshot",
+            "sources",
+            0,
+            "displayPath"
+          ],
+          "value": "unrequested.cr3"
+        }
+      ]
+    },
+    {
+      "name": "cross-file-source-path",
+      "path": [
+        1,
+        "result",
+        "files",
+        0,
+        "snapshot",
+        "sources",
+        0,
+        "displayPath"
+      ],
+      "value": "missing.cr3"
+    },
+    {
+      "name": "cross-file-issue-inputid",
+      "path": [
+        1,
+        "result",
+        "files",
+        0,
+        "issues",
+        0,
+        "inputId"
+      ],
+      "value": "input-3"
+    },
+    {
+      "name": "read-warning-promoted-error",
+      "path": [
+        1,
+        "result",
+        "files",
+        0,
+        "issues",
+        0,
+        "severity"
+      ],
+      "value": "error"
+    },
+    {
+      "name": "file-issue-path",
+      "path": [
+        1,
+        "result",
+        "files",
+        0,
+        "issues",
+        0,
+        "path"
+      ],
+      "value": "foreign.cr3"
+    },
+    {
+      "name": "file-issue-code",
+      "path": [
+        1,
+        "result",
+        "files",
+        0,
+        "issues",
+        0,
+        "code"
+      ],
+      "value": "TAG_UNRESOLVED"
+    },
+    {
+      "name": "source-length",
+      "path": [
+        1,
+        "result",
+        "files",
+        0,
+        "snapshot",
+        "sources",
+        0,
+        "byteLength"
+      ],
+      "value": "0"
+    },
+    {
+      "name": "unexpected-tag-selection",
+      "path": [
+        1,
+        "result",
+        "files",
+        0,
+        "snapshot",
+        "occurrences",
+        0,
+        "tag",
+        "name"
+      ],
+      "value": "Model"
+    },
+    {
+      "name": "wrong-default-view",
+      "path": [
+        1,
+        "result",
+        "files",
+        0,
+        "snapshot",
+        "occurrences",
+        0,
+        "values",
+        "display",
+        "reason"
+      ],
+      "value": "Requested"
+    },
+    {
+      "name": "coherent-wrong-iso-value",
+      "edits": [
+        {
+          "path": [
+            1,
+            "result",
+            "files",
+            0,
+            "snapshot",
+            "occurrences",
+            0,
+            "values",
+            "raw",
+            "value",
+            "decimal"
+          ],
+          "value": "200"
+        },
+        {
+          "path": [
+            1,
+            "result",
+            "files",
+            0,
+            "snapshot",
+            "occurrences",
+            0,
+            "values",
+            "normalized",
+            "value",
+            "decimal"
+          ],
+          "value": "200"
+        }
+      ]
+    },
+    {
+      "name": "coherent-wrong-file-outcome",
+      "edits": [
+        {
+          "path": [
+            1,
+            "result",
+            "files",
+            0,
+            "state"
+          ],
+          "value": "failed"
+        },
+        {
+          "path": [
+            1,
+            "result",
+            "files",
+            0,
+            "snapshot"
+          ],
+          "value": null
+        },
+        {
+          "path": [
+            1,
+            "result",
+            "files",
+            0,
+            "issues",
+            0,
+            "code"
+          ],
+          "value": "INPUT_IO"
+        },
+        {
+          "path": [
+            1,
+            "result",
+            "files",
+            0,
+            "issues",
+            0,
+            "severity"
+          ],
+          "value": "error"
+        },
+        {
+          "path": [
+            1,
+            "result",
+            "summary",
+            "counts",
+            "byState"
+          ],
+          "value": {
+            "failed": 1
+          }
+        },
+        {
+          "path": [
+            1,
+            "result",
+            "summary",
+            "exitStatus"
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "missing-file-success-snapshot",
+      "path": [
+        2,
+        "result",
+        "files",
+        0,
+        "snapshot"
+      ],
+      "value": {}
+    },
+    {
+      "name": "refusal-wrong-code",
+      "path": [
+        3,
+        "result",
+        "request",
+        "issues",
+        0,
+        "code"
+      ],
+      "value": "CLI_USAGE"
+    }
+  ],
+  "malformed": [
+    {
+      "name": "trailing",
+      "hex": "7b7d207b7d0a"
+    },
+    {
+      "name": "array",
+      "hex": "5b5d0a"
+    },
+    {
+      "name": "bool",
+      "hex": "747275650a"
+    },
+    {
+      "name": "null",
+      "hex": "6e756c6c0a"
+    },
+    {
+      "name": "malformed",
+      "hex": "7b0a"
+    }
+  ],
+  "errorMutations": [
+    {
+      "name": "error-id",
+      "path": [
+        1,
+        "id"
+      ],
+      "value": "rejected"
+    },
+    {
+      "name": "error-code",
+      "path": [
+        1,
+        "code"
+      ],
+      "value": "FUTURE_QUEUE"
+    },
+    {
+      "name": "input-error-in-protocol",
+      "path": [
+        1,
+        "code"
+      ],
+      "value": "INPUT_IO"
+    },
+    {
+      "name": "error-extra",
+      "path": [
+        1,
+        "tokens"
+      ],
+      "value": []
+    },
+    {
+      "name": "error-null-code",
+      "path": [
+        1,
+        "code"
+      ],
+      "value": null
+    },
+    {
+      "name": "error-kind",
+      "path": [
+        1,
+        "kind"
+      ],
+      "value": "cancelled"
+    },
+    {
+      "name": "error-missing-attempt",
+      "path": [
+        2,
+        "frames"
+      ],
+      "value": 0
+    },
+    {
+      "name": "error-invented-result",
+      "path": [
+        2,
+        "results"
+      ],
+      "value": 1
+    },
+    {
+      "name": "error-status",
+      "path": [
+        2,
+        "exitStatus"
+      ],
+      "value": 0
+    },
+    {
+      "name": "error-closeid",
+      "path": [
+        2,
+        "closeId"
+      ],
+      "value": "done"
+    },
+    {
+      "name": "error-reason",
+      "path": [
+        2,
+        "reason"
+      ],
+      "value": "input-error"
+    }
+  ],
+  "lexicalControls": [
+    {
+      "name": "duplicate",
+      "method": "Mutate otherwise accepted actual baseline; removing only targeted detector must admit control."
+    },
+    {
+      "name": "nan",
+      "method": "Direct strict-JSON layer on actual-ready numeric field; bypass finite-number detector must parse NaN without any schema-rejection credit."
+    },
+    {
+      "name": "surrogate",
+      "method": "Mutate otherwise accepted actual baseline; removing only targeted detector must admit control."
+    },
+    {
+      "name": "crlf",
+      "method": "Mutate otherwise accepted actual baseline; removing only targeted detector must admit control."
+    },
+    {
+      "name": "bom",
+      "method": "Mutate otherwise accepted actual baseline; removing only targeted detector must admit control."
+    },
+    {
+      "name": "bad-utf8",
+      "method": "Mutate otherwise accepted actual baseline; removing only targeted detector must admit control."
+    },
+    {
+      "name": "no-lf",
+      "method": "Mutate otherwise accepted actual baseline; removing only targeted detector must admit control."
+    }
+  ]
+}

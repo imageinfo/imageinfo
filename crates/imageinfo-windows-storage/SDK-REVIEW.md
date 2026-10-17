@@ -186,3 +186,42 @@ and [ordinary namespace grammar](https://learn.microsoft.com/en-us/windows/win32
 The preexisting #0032 review supplies the unchanged token, security, native-create
 and resource-release references. Documentation supports API reasoning, not
 universal persistence or profile admission.
+
+## #0171 explicit finalization capabilities
+
+The read-only `ExistingRoot` API is unchanged. Separate safe `FinalizationRoot`
+and `FinalizationFile` capabilities reuse the already reviewed `OpenOptions`,
+ancestry checks, private `CREATE_NEW` file helper, held-object observation,
+bounded reads and `File::sync_all` operations. No new OS API, unsafe code,
+SDK feature, dependency, privilege, security setter or unsafe module is added.
+
+`FinalizationRoot` retains the existing read directory guard plus writable root
+and containing-parent handles with complete checked ancestry and no delete
+sharing. Their actual physical identities/stable directory properties match
+independently held observations before use. It exposes flush/check and one
+fixed-name exclusive `receipt.record` constructor; arbitrary artifact creation,
+rename, replacement and removal are unavailable. Foreign-winner and partial
+creation errors retain existing material.
+
+`FinalizationFile` opens existing regular local NTFS objects with generic read
+and write access, `OPEN_EXISTING`, open-reparse-point semantics and only read
+sharing. There is no truncate/create fallback and no exposed `File` or write,
+rename/delete method. It reuses exact byte/property/name checks and sticky
+conflict state. The writable access exists solely for supported held-file
+flushes. Freshly created receipts use the existing current-owner private
+exclusive creation helper, then the same exact check/flush capability.
+
+Production finalization acquires these final handles directly for its new guard
+interval, compares complete actual state against explicit independently retained
+caller bindings, and retains every handle through checked/terminal export.
+Reacquisition never claims an uninterrupted historical guard. Existing source
+handles remain read-only. Same-owner property changes remain checked at declared
+boundaries under option A, not continuously excluded.
+
+The authored native #0171 controls independently reopen retained source/output
+and original records after guard release; their exact identities, complete bytes
+and properties match. A separate direct exclusive-create control preserves a
+foreign receipt winner. Writer attempts against held source/output/prior records
+fail through both context exports. Injected before/after return failures are
+controller observations, not physical-device failure evidence. No configuration,
+persistence profile, public mutation or RAW admission is established.

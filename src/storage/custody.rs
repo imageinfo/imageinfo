@@ -199,7 +199,7 @@ impl CurrentBindings {
         Ok(size)
     }
 
-    fn compare(&self, fresh: &Self) -> Result<(), CustodyRefusal> {
+    pub(super) fn compare(&self, fresh: &Self) -> Result<(), CustodyRefusal> {
         if self.operation != fresh.operation
             || self.bindings[1].identity != fresh.bindings[1].identity
         {
@@ -209,6 +209,23 @@ impl CurrentBindings {
             return Err(CustodyRefusal::ChangedBindings);
         }
         Ok(())
+    }
+
+    /// One finalization may append a receipt while every prior field stays exact.
+    pub(super) fn extends(&self, prior: &Self) -> bool {
+        self.operation == prior.operation
+            && self.profile == prior.profile
+            && self.implementation == prior.implementation
+            && self.output == prior.output
+            && self.parent == prior.parent
+            && self.published == prior.published
+            && self.bindings.starts_with(&prior.bindings)
+            && self.records.starts_with(&prior.records)
+    }
+
+    /// Borrow the already bounded actual object revision; no decoder or authority.
+    pub(super) fn object_bindings(&self) -> &[Binding] {
+        &self.bindings
     }
 
     /// External caller saves are bounded observations, never a decoder/authority
@@ -362,6 +379,16 @@ pub(crate) struct ActionAuthority {
 impl ActionAuthority {
     pub(crate) fn validate(
         self,
+        action: RestartAction,
+        fresh: &CurrentBindings,
+    ) -> Result<(), CustodyRefusal> {
+        self.check(action, fresh)
+    }
+
+    /// Keep the same live authority revocable throughout one guarded action.
+    /// Rechecking never issues a new token or widens its exact starting binding.
+    pub(super) fn check(
+        &self,
         action: RestartAction,
         fresh: &CurrentBindings,
     ) -> Result<(), CustodyRefusal> {

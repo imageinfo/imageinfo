@@ -477,6 +477,18 @@ process harness; #0127 supplies five exact native result profiles with actual CL
 examples and rejection vectors. These scopes adopt no broad parity, importer,
 writer, storage profile or RAW permission. See the documentation map for evidence.
 
+The following eight-card wave adds #0171 actual guarded installed-output
+finalization/recognition without republishing, with unqualified admission retained.
+#0197 extends the shared retained-resource ledger and records a real bounded
+Windows disk-full refusal before constructors/publication; cumulative logical
+charges are distinct from simultaneous allocation or reservation.
+#0128 qualifies actual session frames and independently bound input/outcome/issue
+invariants. #0130 adds the twelve-form bounded inert translator with fixed JSON
+stdin/report transport and no referenced-path access or execution. #0134/#0135
+qualify public snapshot/query ownership and twelve overlapping session lifetimes.
+#0137/#0138 qualify direct shells and plain 40/80-column terminals, with actual
+platform evidence separate from authored controls. See the documentation map.
+
 ## Linux new-output scope — Terry's decision, 2026-10-16
 
 Terry selected #0177 option A: defer positive Linux new-output support from the
@@ -534,6 +546,17 @@ while preserving ticket-before-description order and concurrency limits.
 Terry confirmed the actual sidebar rendering on 2026-10-17: `sol_high_0105_review`
 appears as `Sol high 0105 review`, preserving the four-digit ticket. Full words
 remain legible after punctuation/case normalization; compact letter tags do not.
+
+## In Progress before ticket work
+
+Terry made this a mandatory execution gate on 2026-10-17. Move an eligible card
+to In Progress before design, implementation, documentation, acceptance recording,
+tests, verification or independent review. Move it before spawning or resuming an
+assigned agent, and recheck the lane when resuming. Keep it In Progress through
+implementation and review, then move to a handoff lane when that work stops.
+Preserve owner-controlled Completed cards; never silently reopen or continue them.
+Ready for Work may retain dependencies, but prerequisite and execution gates still
+apply before work starts.
 
 ## Subagent authorization
 

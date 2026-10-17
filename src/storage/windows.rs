@@ -84,6 +84,7 @@ pub(crate) struct WindowsBackend {
     checked: Option<CallerCapture>,
     terminal: Option<CallerCapture>,
     live_evidence: Option<LiveEvidence>,
+    failed_check: bool,
 }
 
 impl WindowsBackend {
@@ -109,7 +110,21 @@ impl WindowsBackend {
             checked: None,
             terminal: None,
             live_evidence: None,
+            failed_check: false,
         }
+    }
+
+    /// Retain actual creator provenance independently from editable records.
+    pub(crate) fn finalization_prior(
+        &mut self,
+        operation: &str,
+    ) -> Result<super::finalization::PriorProof, Failure> {
+        if self.failed_check {
+            return Err(Failure::CallerHistory);
+        }
+        let current = self.custody_snapshot(operation)?;
+        let evidence = self.live_evidence.as_ref().ok_or(Failure::CallerHistory)?;
+        super::finalization::PriorProof::from_actual(current, evidence.clone())
     }
 
     fn remember(&mut self, binding: Binding) -> Binding {
@@ -405,6 +420,28 @@ impl Backend for WindowsBackend {
         }
         self.terminal = Some(self.capture(bindings)?);
         Ok(())
+    }
+    fn retain_outcome(&mut self, phase: Phase, failure: Option<Failure>) {
+        if failure.is_some_and(|failure| failure != Failure::Cancelled)
+            && matches!(
+                phase,
+                Phase::CandidateChecked
+                    | Phase::PreparedChecked
+                    | Phase::IntentChecked
+                    | Phase::Prepublication
+                    | Phase::Installed
+                    | Phase::InstalledRechecked
+                    | Phase::ObservationChecked
+                    | Phase::ReceiptChecked
+                    | Phase::ReceiptFileChecked
+                    | Phase::ReceiptParentChecked
+                    | Phase::CheckedContext
+                    | Phase::Final
+                    | Phase::TerminalExport
+            )
+        {
+            self.failed_check = true;
+        }
     }
     fn retain_live_evidence(&mut self, evidence: &LiveEvidence) {
         self.live_evidence = Some(evidence.clone());

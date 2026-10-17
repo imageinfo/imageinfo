@@ -4,7 +4,7 @@
 use super::runtime::{Backend, ValidatedCandidate, execute};
 use super::{Cancellation, Failure, LogicalBudget, MAX_RECORD_BYTES, UnitResult};
 
-/// Bounds ledger identity/result storage before either identity is copied.
+/// Bounds ledger identities and terminal accounting before either key is copied.
 pub(crate) const ENTRY_BYTES: u64 = MAX_RECORD_BYTES;
 const MAX_OPERATIONS: usize = 256;
 
@@ -43,8 +43,8 @@ struct Entry {
     operation: String,
     root: String,
     charged: u64,
-    /// None means execution was interrupted/uncertain in this caller.
-    result: Option<UnitResult>,
+    /// False means execution was interrupted/uncertain in this caller.
+    terminal: bool,
     extra: [u64; 3],
 }
 
@@ -97,7 +97,7 @@ impl RetainedSession {
                         .iter()
                         .any(|entry| entry.operation == key.operation && entry.root == key.root)
             })
-            || work.entries.iter().any(|entry| entry.result.is_none())
+            || work.entries.iter().any(|entry| !entry.terminal)
         {
             return Err((Failure::CallerHistory, work));
         }
@@ -141,7 +141,7 @@ impl RetainedSession {
             || key.operation != request.operation
             || self.retained.entries.len() >= MAX_OPERATIONS
             || self.retained.entries.iter().any(|entry| {
-                entry.result.is_none() || entry.operation == key.operation || entry.root == key.root
+                !entry.terminal || entry.operation == key.operation || entry.root == key.root
             })
         {
             return Err(Failure::CallerHistory);
@@ -162,7 +162,7 @@ impl RetainedSession {
             operation: key.operation.into(),
             root: key.root.into(),
             charged: total,
-            result: None,
+            terminal: false,
             extra: [0; 3],
         });
         self.retained.uncertain = false;
@@ -201,11 +201,56 @@ impl RetainedSession {
                 protocol_complete: false,
             },
         };
-        self.retained.entries[index].result = Some(result.clone());
+        self.retained.entries[index].terminal = true;
         Ok(result)
     }
 
-    /// Actual native admission always queries that backend's selected parent.
+    /// Charge a complete bounded retained-original plan through the same owner.
+    /// Both the availability query and constructor run after the full charge.
+    /// A terminal failure keeps its entry; panic/uncertainty prevents adoption.
+    pub(crate) fn attempt<T>(
+        &mut self,
+        key: OperationKey<'_>,
+        bounded_bytes: u64,
+        available: impl FnOnce() -> Result<u64, Failure>,
+        constructor: impl FnOnce() -> Result<T, Failure>,
+    ) -> Result<T, Failure> {
+        if self.retained.uncertain
+            || !key.valid()
+            || self.retained.entries.len() >= MAX_OPERATIONS
+            || self.retained.entries.iter().any(|entry| {
+                !entry.terminal || entry.operation == key.operation || entry.root == key.root
+            })
+        {
+            return Err(Failure::CallerHistory);
+        }
+        let total = bounded_bytes
+            .checked_add(ENTRY_BYTES)
+            .ok_or(Failure::LengthOverflow)?;
+        self.retained.budget.reserve_construction(total)?;
+        self.retained.uncertain = true;
+        self.retained
+            .entries
+            .try_reserve(1)
+            .map_err(|_| Failure::BackendIo)?;
+        self.retained.entries.push(Entry {
+            operation: key.operation.into(),
+            root: key.root.into(),
+            charged: total,
+            terminal: false,
+            extra: [0; 3],
+        });
+        self.retained.uncertain = false;
+        let index = self.retained.entries.len() - 1;
+        let outcome = match available() {
+            Ok(bytes) if bytes >= bounded_bytes => constructor(),
+            Ok(_) => Err(Failure::StorageUnavailable),
+            Err(error) => Err(error),
+        };
+        self.retained.entries[index].terminal = true;
+        outcome
+    }
+
     /// An arbitrary availability callback is not part of this Windows seam.
     #[cfg(windows)]
     pub(crate) fn run_windows(
@@ -234,13 +279,7 @@ impl RetainedSession {
         if bounded_bytes > MAX_RECORD_BYTES {
             return Err(Failure::RecordTooLarge);
         }
-        if self.retained.uncertain
-            || self
-                .retained
-                .entries
-                .iter()
-                .any(|entry| entry.result.is_none())
-        {
+        if self.retained.uncertain || self.retained.entries.iter().any(|entry| !entry.terminal) {
             return Err(Failure::CallerHistory);
         }
         let index = self.index(key)?;

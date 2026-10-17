@@ -1,0 +1,34 @@
+[
+  {
+    "allowApply": false,
+    "kind": "session-ready",
+    "limits": {
+      "maxFrames": 256,
+      "maxInputFrameBytes": 524288,
+      "maxInputs": 4,
+      "maxMetadataBytes": 8388608,
+      "maxOutputFrameBytes": 16777728,
+      "maxQueuedRequests": 0,
+      "maxResultBytes": 16777216,
+      "maxTokenBytes": 32768,
+      "maxTokens": 128,
+      "maxTotalTokenBytes": 65536
+    },
+    "protocolVersion": 1
+  },
+  {
+    "code": "FRAME_JSON",
+    "id": null,
+    "kind": "protocol-error",
+    "protocolVersion": 1
+  },
+  {
+    "closeId": null,
+    "exitStatus": 2,
+    "frames": 1,
+    "kind": "session-complete",
+    "protocolVersion": 1,
+    "reason": "protocol-error",
+    "results": 0
+  }
+]

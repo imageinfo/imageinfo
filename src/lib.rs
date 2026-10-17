@@ -4,6 +4,7 @@
 //! built-in definitions; neither operation reads input files or configuration.
 
 pub mod cli;
+pub mod inert_translation;
 pub mod output;
 pub mod pairing;
 pub mod plan;

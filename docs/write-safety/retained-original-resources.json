@@ -1,0 +1,45 @@
+{
+  "schema": "imageinfo-0197-resource-observations-v1",
+  "scope": "authored normal-full resource refusal; no replacement or profile admission",
+  "workerSha256": "a75ae0ec24a90ae4dbe077f8df0f6f5feab1362f0bc60bca99e38ac85644cfe0",
+  "frozenWorkerSource": {
+    "Cargo.toml": "0fb2a109c53af64a97139f2c88d9d715d9d577e77282f9367a8886d68b602d66",
+    "Cargo.lock": "28e48ee1d73a3f1160157fe206a860406c428a9918e52ac4103850b2441272ab",
+    "src/storage/resources.rs": "6e14631417a170a92cfaf71e020dc709ac58951330800318c74a811886c9d391",
+    "src/storage/replacement_resources.rs": "879d33421ec8015c9c330e0f173f1ff9d7732fd459c759096d2935304ba91b32",
+    "src/storage/replacement_resources/tests.rs": "0d73bb2b1680950bbfd7c1100abf9dc60a5071896ef75838a22d3314b38d16b7",
+    "src/storage/replacement_resources/tests/native.rs": "77d363f7c381cbd9c18aa21c2e8f2aea4f5d70d7487befae36de562ff7a07042",
+    "src/storage/windows.rs": "ff23d7e8bc0d032fe0e3c1b66038dbe9840d76a2779e36a2f920edfd1ebbe197",
+    "crates/imageinfo-windows-storage/src/lib.rs": "b8ce0c173256ef7f22ed5a889a91ca22c5230b3cb7e642277a0e8e40193a4a01"
+  },
+  "fixture": {
+    "secondaryRawBytes": 134217728,
+    "ntfsVolumeBytes": 133165056,
+    "standardUser": true,
+    "ordinaryBoundedFill": true,
+    "faultInjection": false,
+    "powerOperations": false,
+    "cameraInputs": false
+  },
+  "observations": {
+    "schema": "imageinfo-0197-full-v1",
+    "windowsError": 112,
+    "availableBefore": 118374400,
+    "availableFull": 16384,
+    "fillerCompleteBytes": 118358016,
+    "retainedCharge": 135405696,
+    "planCharge": 67702848,
+    "sourceSha256": "9ce2519c0561bb0b06617143d723160ce3a095ce9fa2bada3403d84d32045e47",
+    "originalSha256": "957269f144778a4554482f666a89cbe723252ac16cf79c02fd0d5de9dd91dfa6",
+    "attempts": 2,
+    "constructorCalls": 0,
+    "operationRootAbsent": true,
+    "publicationPossible": false
+  },
+  "limits": [
+    "Logical bytes are not physical allocation accounting or reservation.",
+    "Available-byte query is advisory and process-local accounting is not durable custody.",
+    "No constructor or publication ran in either admission; no replacement mechanism or profile is qualified.",
+    "Guest startup failures preceded the worker and are retained privately; one actual worker cell ran."
+  ]
+}

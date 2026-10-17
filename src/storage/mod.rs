@@ -181,11 +181,15 @@ pub enum Phase {
 #[allow(dead_code)]
 pub(crate) mod custody;
 #[allow(dead_code)]
+pub(crate) mod finalization;
+#[allow(dead_code)]
 pub(crate) mod group;
 #[allow(dead_code)]
 pub(crate) mod inspection;
 #[cfg(all(test, windows))]
 mod native_errors;
+#[allow(dead_code)]
+pub(crate) mod replacement_resources;
 #[allow(dead_code)]
 pub(crate) mod resources;
 #[allow(dead_code)]

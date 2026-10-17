@@ -1,0 +1,355 @@
+{
+  "schemaVersion": 1,
+  "ticket": 137,
+  "cases": [
+    {
+      "id": "CS-E01",
+      "operation": "extraction",
+      "name": "plain",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-E02",
+      "operation": "extraction",
+      "name": "space name",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-E03",
+      "operation": "extraction",
+      "name": "\u5199\u771f \ud83e\udd86",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-E04",
+      "operation": "extraction",
+      "name": "quote'name",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-E05",
+      "operation": "extraction",
+      "name": "semi;dollar$",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-E06",
+      "operation": "extraction",
+      "name": "back`tick & amp",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-E07",
+      "operation": "extraction",
+      "name": "bracket[glob]",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-E08",
+      "operation": "extraction",
+      "name": "line\nbreak",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-D01",
+      "operation": "date-preview",
+      "name": "plain",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 1
+    },
+    {
+      "id": "CS-D02",
+      "operation": "date-preview",
+      "name": "space name",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 1
+    },
+    {
+      "id": "CS-D03",
+      "operation": "date-preview",
+      "name": "\u5199\u771f \ud83e\udd86",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 1
+    },
+    {
+      "id": "CS-D04",
+      "operation": "date-preview",
+      "name": "quote'name",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 1
+    },
+    {
+      "id": "CS-D05",
+      "operation": "date-preview",
+      "name": "semi;dollar$",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 1
+    },
+    {
+      "id": "CS-D06",
+      "operation": "date-preview",
+      "name": "back`tick & amp",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 1
+    },
+    {
+      "id": "CS-D07",
+      "operation": "date-preview",
+      "name": "bracket[glob]",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 1
+    },
+    {
+      "id": "CS-D08",
+      "operation": "date-preview",
+      "name": "line\nbreak",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "status": 1
+    },
+    {
+      "id": "CS-P01",
+      "operation": "pair",
+      "name": "plain",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-P02",
+      "operation": "pair",
+      "name": "space name",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-P03",
+      "operation": "pair",
+      "name": "\u5199\u771f \ud83e\udd86",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 1,
+      "code": "PAIRING_NAME_UNSUPPORTED"
+    },
+    {
+      "id": "CS-P04",
+      "operation": "pair",
+      "name": "quote'name",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-P05",
+      "operation": "pair",
+      "name": "semi;dollar$",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-P06",
+      "operation": "pair",
+      "name": "back`tick & amp",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-P07",
+      "operation": "pair",
+      "name": "bracket[glob]",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-P08",
+      "operation": "pair",
+      "name": "line\nbreak",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-S01",
+      "operation": "session",
+      "name": "plain",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-S02",
+      "operation": "session",
+      "name": "space name",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-S03",
+      "operation": "session",
+      "name": "\u5199\u771f \ud83e\udd86",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-S04",
+      "operation": "session",
+      "name": "quote'name",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-S05",
+      "operation": "session",
+      "name": "semi;dollar$",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-S06",
+      "operation": "session",
+      "name": "back`tick & amp",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-S07",
+      "operation": "session",
+      "name": "bracket[glob]",
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    },
+    {
+      "id": "CS-S08",
+      "operation": "session",
+      "name": "line\nbreak",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "status": 0
+    }
+  ]
+}

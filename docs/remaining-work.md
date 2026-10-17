@@ -76,6 +76,14 @@ retains its original historical baseline.
 
 ## Count the queue consistently
 
+The fifth execution wave selects #0171, #0197, #0128, #0130, #0134, #0135,
+#0137 and #0138 after Terry accepted the fourth wave. All eight move to In
+Progress before work or delegation. This leaves 68 Ready for Work cards
+(58 executable scopes and ten tracking umbrellas), with no successor cards
+created. The seven Backlog cards remain genuinely unscoped or explicitly held;
+their 2026-10-17 board comments name concrete RFW eligibility work and exit
+criteria. Ordinary dependencies remain Ready for Work.
+
 | Scope | Ready for Work | Needs Terry | Insufficient scope |
 | --- | ---: | ---: | ---: |
 | RAW format admission | 2 | 1 | 1 |

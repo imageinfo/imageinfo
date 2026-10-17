@@ -38,13 +38,13 @@ pub(crate) enum Survivor {
     RecoveryRequired,
 }
 
-const ORDER: [Artifact; 4] = [
+pub(super) const ORDER: [Artifact; 4] = [
     Artifact::Prepared,
     Artifact::Intent,
     Artifact::Observation,
     Artifact::Receipt,
 ];
-const PRIOR_PHASES: &[&str] = &[
+pub(super) const PRIOR_PHASES: &[&str] = &[
     "RootFlushed",
     "ParentFlushed",
     "CandidateChecked",
@@ -110,7 +110,7 @@ impl<'a> Cursor<'a> {
 /// nesting, path or extension is allocated. Values are borrowed until validated.
 type ParsedBindings<'a> = Vec<(&'a [u8], &'a [u8])>;
 
-fn parse<'a>(
+pub(super) fn parse<'a>(
     bytes: &'a [u8],
     kind: Artifact,
     spec: &InspectionSpec<'_>,
@@ -161,7 +161,7 @@ fn parse<'a>(
 }
 
 #[cfg(windows)]
-mod native {
+pub(super) mod native {
     use super::*;
     use imageinfo_windows_storage::{
         ExistingRoot, FileSnapshot, GuardedSource, MAX_ARTIFACT_BYTES, validate_leaf,
@@ -169,7 +169,7 @@ mod native {
     use sha2::{Digest, Sha256};
     use std::{ffi::OsString, path::Path};
 
-    fn binding(snapshot: &FileSnapshot, bytes: Option<&[u8]>) -> Binding {
+    pub(in crate::storage) fn binding(snapshot: &FileSnapshot, bytes: Option<&[u8]>) -> Binding {
         let mut identity = snapshot.volume_serial_number.to_le_bytes().to_vec();
         identity.extend_from_slice(&snapshot.file_index.to_le_bytes());
         let mut facts = snapshot.binding_bytes();
@@ -181,7 +181,7 @@ mod native {
     const PREFIX: &[u8] = b"imageinfo-held-object-v1\0";
     const PARENT: &[u8] = b"held-containing-parent-v1\0";
 
-    fn snapshot_length(bytes: &[u8]) -> Result<usize, InspectionFailure> {
+    pub(in crate::storage) fn snapshot_length(bytes: &[u8]) -> Result<usize, InspectionFailure> {
         if !bytes.starts_with(PREFIX) {
             return Err(InspectionFailure::Malformed);
         }
@@ -203,7 +203,10 @@ mod native {
 
     /// Mutable directory size/write time and the archive bit are excluded by the
     /// existing declared directory policy. All other captured facts must match.
-    fn directory_matches(now: &FileSnapshot, old: &[u8]) -> Result<(), InspectionFailure> {
+    pub(in crate::storage) fn directory_matches(
+        now: &FileSnapshot,
+        old: &[u8],
+    ) -> Result<(), InspectionFailure> {
         let length = snapshot_length(old)?;
         if length != old.len() {
             return Err(InspectionFailure::Malformed);

@@ -64,6 +64,7 @@ pub enum Invocation {
     DatePreview(DatePreviewRequest),
     Pair(PairRequest),
     ReadSession,
+    InertTranslation,
 }
 
 #[derive(Debug, PartialEq, Eq)]
@@ -87,6 +88,11 @@ pub fn command() -> Command {
     common(Command::new("imageinfo").about("Camera RAW metadata tooling"))
         .after_help("Reads a declared Canon EOS R5 full RAW metadata/preview subset, describes a read-only date intent, and associates explicit existing RAW/sidecar paths. Other cameras, variants, XMP content operations and metadata writes are not supported yet.")
         .subcommand(help_command())
+        .subcommand(common(Command::new("compat").about("Report finite legacy invocation translations"))
+            .subcommand(help_command())
+            .subcommand(common(Command::new("translate").about("Read one inert UTF-8 invocation object from stdin"))
+                .subcommand(help_command())
+                .after_help("Writes one fixed JSON translation report. Omit --output. Only twelve frozen forms are recognized; referenced paths are never opened and suggestions are never executed.")))
         .subcommand(common(Command::new("version").about("Show version and current implementation scope")))
         .subcommand(common(Command::new("session").about("Run bounded read-only JSONL sessions"))
             .subcommand(help_command())
@@ -302,6 +308,7 @@ where
         || path == ["preview"]
         || path == ["sidecar"]
         || path == ["session"]
+        || path == ["compat"]
     {
         return render_help(&tree, &path, output);
     }
@@ -316,6 +323,13 @@ where
             ));
         }
         return Ok(Invocation::ReadSession);
+    }
+
+    if path == ["compat", "translate"] {
+        if !output_values.is_empty() {
+            return Err(usage("INVALID_OPTION", "Inert translation owns fixed JSON transport; omit --output. See imageinfo compat translate help.".into(), output));
+        }
+        return Ok(Invocation::InertTranslation);
     }
 
     let inputs: Vec<PathBuf> = current

@@ -58,7 +58,12 @@ establish accepted equivalence or a measured reference difference.
 
 ## Actual native surface
 
-The manifest binds the reviewed production source revision and hashes. Its `native`
+The #0130 amendment on 2026-10-17 adds the bounded inert translator and refreshes
+current native source hashes. `nativeSourceRevision` identifies its pre-amendment
+baseline; `nativeSourceSha256` binds the amended files. The pinned upstream
+denominators and unresolved parity obligations are unchanged.
+
+The manifest binds the reviewed production source baseline and hashes. Its `native`
 object gives exact command paths, every declared long option, finite value enums,
 all 20 canonical selector names, two selector-name aliases, eight namespace
 spellings, request limits and session fields. The implemented commands are:
@@ -72,6 +77,7 @@ spellings, request limits and session fields. The implemented commands are:
 | `preview date-time-original INPUT` | Exact Gregorian ASCII20 advisory intent with optional allocation offset assertion; no apply. |
 | `sidecar pair INPUT` | Explicit existing sidecar path association; no content parsing or creation. |
 | `session read` | Fixed v1 read/close JSONL over stdin/stdout; no CLI output selector. |
+| `compat translate` | One bounded stdin invocation and fixed inert JSON report for twelve frozen forms; no referenced-path access or suggestion execution. |
 
 Common options are declared at each command scope, not globally propagated.
 `--output` and `--color` may each appear once across the invocation. Help validates
@@ -102,6 +108,9 @@ in-memory success cannot establish successful transport.
 token arrays reuse that narrower request API, with exact v1 read/close members,
 bounded frames and request-local state. CLI startup exposes that runtime without
 adding persistent upstream options, shell parsing or legacy ready markers.
+The separate [inert translator](inert-translation-runtime.md) exposes bounded
+document and caller-owned I/O functions; it neither executes a native read nor
+extends request/session admission.
 See [request/result](read-request-result.md), [session library](read-session-library.md)
 and [session process](read-session-process.md) for existing verification. Public
 reader, snapshot, selector, preview, saved-plan, source-revalidation and pairing

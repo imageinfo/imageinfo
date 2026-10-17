@@ -1,0 +1,78 @@
+[
+  {
+    "allowApply": false,
+    "kind": "session-ready",
+    "limits": {
+      "maxFrames": 256,
+      "maxInputFrameBytes": 524288,
+      "maxInputs": 4,
+      "maxMetadataBytes": 8388608,
+      "maxOutputFrameBytes": 16777728,
+      "maxQueuedRequests": 0,
+      "maxResultBytes": 16777216,
+      "maxTokenBytes": 32768,
+      "maxTokens": 128,
+      "maxTotalTokenBytes": 65536
+    },
+    "protocolVersion": 1
+  },
+  {
+    "protocolVersion": 1,
+    "kind": "read-result",
+    "id": "same",
+    "result": {
+      "schemaVersion": 1,
+      "requestId": "same",
+      "request": {
+        "schemaVersion": 1,
+        "kind": "request",
+        "requestId": "same",
+        "operation": null,
+        "mode": null,
+        "issues": [
+          {
+            "code": "REQUEST_OPERATION_UNSUPPORTED",
+            "severity": "error",
+            "message": "This API admits metadata read only; help, version, preview, binary, pairing and mutation commands are outside this entry point.",
+            "inputId": null,
+            "path": null,
+            "occurrenceRef": null
+          }
+        ]
+      },
+      "files": [],
+      "summary": {
+        "schemaVersion": 1,
+        "kind": "summary",
+        "requestId": "same",
+        "exitStatus": 2,
+        "selectionComplete": false,
+        "counts": {
+          "discovered": 0,
+          "excluded": 0,
+          "deduplicated": 0,
+          "byState": {}
+        },
+        "artifacts": [],
+        "issues": [],
+        "interrupted": false,
+        "outputComplete": true
+      }
+    }
+  },
+  {
+    "code": "DUPLICATE_ID",
+    "id": null,
+    "kind": "protocol-error",
+    "protocolVersion": 1
+  },
+  {
+    "closeId": null,
+    "exitStatus": 2,
+    "frames": 2,
+    "kind": "session-complete",
+    "protocolVersion": 1,
+    "reason": "protocol-error",
+    "results": 1
+  }
+]

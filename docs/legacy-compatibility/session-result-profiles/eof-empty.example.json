@@ -1,0 +1,28 @@
+[
+  {
+    "allowApply": false,
+    "kind": "session-ready",
+    "limits": {
+      "maxFrames": 256,
+      "maxInputFrameBytes": 524288,
+      "maxInputs": 4,
+      "maxMetadataBytes": 8388608,
+      "maxOutputFrameBytes": 16777728,
+      "maxQueuedRequests": 0,
+      "maxResultBytes": 16777216,
+      "maxTokenBytes": 32768,
+      "maxTokens": 128,
+      "maxTotalTokenBytes": 65536
+    },
+    "protocolVersion": 1
+  },
+  {
+    "closeId": null,
+    "exitStatus": 0,
+    "frames": 0,
+    "kind": "session-complete",
+    "protocolVersion": 1,
+    "reason": "eof",
+    "results": 0
+  }
+]

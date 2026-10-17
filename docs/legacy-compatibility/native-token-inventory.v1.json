@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ticket": "#0121",
-  "observedOn": "2026-10-16",
+  "observedOn": "2026-10-17",
   "status": "finite-source-inventory-not-parity",
   "upstream": {
     "version": "13.59",
@@ -22,9 +22,9 @@
     },
     "denominatorRule": "CLI Option Details item headings; API METHODS head2; Options item headings union AvailableOptions registry; SetNewValue option headings. Identifier syntax only, not every value, abbreviation, overload or undocumented CLI parser branch."
   },
-  "nativeSourceRevision": "9dcbf2729bd99d0b0e6477e61bc34abde5b3f9dd",
+  "nativeSourceRevision": "dc5628c3422704899febff7462d03becae6a239c",
   "nativeSourceSha256": {
-    "src/cli.rs": "d891461f5f83b0e92fd5b81b43236aab408024dd5cf81033d321f775abbe749c",
+    "src/cli.rs": "334109d3903df8528fa4daeec72340137dcf177bc82440b0db46e7b3e695adb4",
     "src/read_request.rs": "612f84defa717f481e34e7ebf18f662c2935ded67d1c20ce2238f1645bbe9ee1",
     "src/read_session.rs": "4815a17dd4b21fe3d864177ab51060b97d278011bbb9413ac647d230ee6ad473",
     "src/reader/mod.rs": "a1377465287cf87ac1d44698aeea5d4cb017d6ce9c74888ab9ce79ed5b3e84a3",
@@ -32,7 +32,11 @@
     "src/plan.rs": "2b577dde8b8df377606123abd6a69042374bec973f9aee0e4544d6693fcb9ccc",
     "src/preview.rs": "4b6b7568621b8e7a6df27ea51a848d3614c23f0ae48b60ced67998feac15d745",
     "src/source_binding.rs": "7a56fd81449825c12b6309f0342bf21330cef881067b9741cc6e42f83e7b9b68",
-    "src/pairing.rs": "a17564bdc53a41137bf04b3a59fbff50146683c6248ee382904e394bafd85530"
+    "src/pairing.rs": "a17564bdc53a41137bf04b3a59fbff50146683c6248ee382904e394bafd85530",
+    "src/lib.rs": "c097ca4da0f4ba5a3a381c42230d86b0964a4a480dfa8b97f347da9b72fc52ad",
+    "src/main.rs": "b2877196c69acac9014062be0bcd458a81f86f7136a173c48076e87590f79214",
+    "src/inert_translation.rs": "e4289ccfca646aabb8625cfbaf0bcf4d522da461fb4c35865d9e8078eff90164",
+    "src/inert_translation_templates.json": "a803dfea7ec1be9ad9f23d20b06754a9e6230f5f679de9686ff5e204b5782386"
   },
   "families": [
     {
@@ -2386,7 +2390,8 @@
       "binary extract INPUT",
       "preview date-time-original INPUT",
       "sidecar pair INPUT",
-      "session read"
+      "session read",
+      "compat translate"
     ],
     "commonOptions": {
       "--help": [],
@@ -2441,6 +2446,9 @@
       },
       "session read": {
         "--output": "forbidden; fixed v1 JSONL"
+      },
+      "compat translate": {
+        "--output": "forbidden; one bounded UTF-8 stdin object and fixed inert JSON report"
       }
     },
     "terminator": "-- makes following operands literal; =attached values supported by clap; no short flag aliases declared",
@@ -2493,7 +2501,7 @@
         "resultBytesIncludingLF": 16777216
       },
       "outputSelector": "forbidden before --, including attached form",
-      "nonReadOperations": "help/version/preview/binary/pair/session refused; --interactive refuses in parser",
+      "nonReadOperations": "help/version/preview/binary/pair/session/compat refused; --interactive refuses in parser",
       "paths": "relative paths use caller cwd; no argument files/config/shell expansion"
     },
     "sessionAPI": {
@@ -2519,6 +2527,18 @@
         "depth": 8
       },
       "unimplemented": "no queue, cancellation, deadline, non-Unicode wire paths or broader operations"
+    },
+    "inertTranslationAPI": {
+      "entry": "inert_translation::document(&[u8]) -> serde_json::Value; run(caller Read, caller Write) -> io::Result<u8>",
+      "profile": "mig-001-012-inert-v1; twelve frozen forms only",
+      "input": "one bounded UTF-8 legacy-invocation object; no shell parsing or referenced-path access",
+      "limits": {
+        "documentBytes": 131072,
+        "depth": 8,
+        "reportBytes": 1048576
+      },
+      "effects": "data-only suggestions/refusals; no media/config/argument-file probing or suggestion execution"
     }
-  }
+  },
+  "nativeSourceState": "Pre-amendment baseline plus #0130 current-source hash bindings; the hashes identify the amended implementation."
 }

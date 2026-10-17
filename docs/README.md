@@ -14,6 +14,14 @@ The first camera/format target is **Canon EOS R5 CR3**.
 
 | Document | Purpose |
 | --- | --- |
+| [Guarded production finalization](write-safety/production-finalization.md) | #0171 current-caller completion of supported installed-output obligations, expected-absent receipt creation and completion recognition without republishing; profile admission remains closed. |
+| [Retained-original resource bounds](write-safety/retained-original-resources.md) | #0197 shared precharges for replacement/restore/two-member work and an actual bounded full-volume refusal; cumulative logical history is not allocation or reservation. |
+| [Actual session result profiles](legacy-compatibility/session-result-profiles.md) | #0128 closed emitted frames, authored-input and cross-frame invariants, actual lifecycle cases and separately labeled trait faults. |
+| [Inert translation runtime](legacy-compatibility/inert-translation-runtime.md) | #0130 bounded stdin/report translation of twelve frozen forms; referenced paths and suggestions are never executed. |
+| [Snapshot/query public API](legacy-compatibility/snapshot-query-api.md) | #0134 twenty-two public-consumer cases, retained snapshot observations and explicit missing API semantics. |
+| [Read-request isolation](legacy-compatibility/read-request-isolation.md) | #0135 twelve overlapping sessions with bounded failure-safe rendezvous and independent selector/view/stream ownership checks. |
+| [Direct command shells](legacy-compatibility/command-shells.md) | #0137 actual PowerShell/Bash token and effect checks for extract, preview, pair and session, with distinct preview witnesses. |
+| [Plain narrow terminals](legacy-compatibility/plain-terminals.md) | #0138 redirected and real 40/80-column PTY observations across current help nodes, channels and control-containing paths; natural wrapping limits are explicit. |
 | [Production restart inspection](write-safety/production-restart-inspection.md) | #0170 bounded read-only held-object collection, exact record parsing and current-caller survivor classification; failed rechecks permanently close that inspection, with no restart mutation. |
 | [Retained resource accounting](write-safety/production-resource-retention.md) | #0173 cumulative logical charges across retained work, failures and cleanup, exact adoption and advisory Windows availability; no physical quota or durable global ledger. |
 | [Production guest native errors](write-safety/production-native-errors.md) | #0174 actual read/construction errors, negative staged-source namespace evidence and unproduced native flush-error classes; exact-profile admission remains refused. |
