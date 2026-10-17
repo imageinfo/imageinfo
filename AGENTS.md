@@ -542,14 +542,14 @@ use available slots for eligible implementation first. As an author finishes,
 start a fresh independent reviewer at the permitted model/effort appropriate
 to that review. Do not reserve idle reviewer pairs. The author cannot review
 its own work; route findings for correction and re-review material changes
-before handoff. Retain the eight-active-direct-subagent/depth-1 limits and
+before handoff. Retain the 16-active-direct-subagent/depth-1 limits and
 the parent's integration, verification, commit/push and handoff responsibilities.
 
 Terry authorized parallel subagent work on all tickets authorized to work,
 2026-10-14. Use parallel subagents where practical: separate independent
 implementation, verification, documentation and review work when that helps the
-authorized ticket. Terry updated the limit on 2026-10-15 to **one parent plus up to
-eight direct subagents: nine total threads**, with **maximum depth 1** below the parent.
+authorized ticket. Terry updated the limit on 2026-10-17 to **one parent plus up to
+16 direct subagents (width 16): 17 total threads**, with **maximum depth 1** below the parent.
 Subagents must not spawn subagents. The limit is a ceiling, not a quota; use the
 number of agents the work benefits from. No separate per-ticket delegation
 approval is needed. This does not authorize pulling or starting another ticket
@@ -576,7 +576,7 @@ may vary from turn to turn with task complexity; no fixed distribution or perman
 per-agent model is required. Set model and effort explicitly when spawning. Use a
 fresh context for overrides and supply scope, authority, file ownership, constraints
 and handoff criteria. If an existing agent cannot be retuned, use a freshly
-configured agent while respecting the eight-active-direct-subagent/depth-1 limits.
+configured agent while respecting the 16-active-direct-subagent/depth-1 limits.
 
 Terry chose **Standard speed** for the parent and subagents on 2026-10-15,
 superseding the earlier Fast-mode requirement. Subagents inherit the root
