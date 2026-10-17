@@ -76,6 +76,16 @@ retains its original historical baseline.
 
 ## Count the queue consistently
 
+After Terry accepted #0176/#0075, all 33 remaining executable Ready for Work
+scopes still had unmet positive prerequisites; the other ten cards are tracking
+umbrellas. A bounded #0217 diagnostic was added under #0022 for the concrete
+prepared-source namespace counterexample left unattributed by #0174 and named
+as corrective work in #0176. It reuses existing authored evidence before any
+new diagnostic execution. This is one missing corrective scope, with no new
+feature family or replacement implementation batch. Its causal result does
+not supply a correction or positive storage admission; see the
+[attribution method](write-safety/prepared-source-namespace-attribution.md).
+
 The eighth execution wave selects #0176 and #0075 from the existing queue after
 Terry accepts all six seventh-wave handoffs. Both move In Progress before work;
 this leaves 43 Ready for Work cards (33 executable scopes and ten umbrellas).

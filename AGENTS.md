@@ -480,6 +480,12 @@ staged error loses the prepared source namespace despite retained original bytes
 All three requested native flush-error classes remain unproduced; emulator drain
 errors are not Windows API errors. This negative/unqualified evidence retains
 exact-profile refusal under #0176, with no new device hunt or relaxed guarantee.
+#0217 narrows that counterexample through frozen source/event reconciliation and
+one reviewed read-only stopped-copy metadata observation. Successful pre-fault
+directory flushes, persistent whole-volume fault exposure and unobserved
+post-result ordering remain distinct. Direct record/name views narrow identity;
+zero-exit lookup errors remain errors. Cause, correction and positive admission
+remain unproved. See `docs/write-safety/prepared-source-namespace-attribution.md`.
 #0176 now implements that exact refusal in a production-owned selector and intended
 new-output caller seam before deferred construction or resource charges. Five
 necessary predicates remain unmet; the sealed positive token is uninhabited.
