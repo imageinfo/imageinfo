@@ -657,9 +657,19 @@ and reasoning defaults remain GPT-6.1 Sol with Medium effort.
   public findings, new-media or broader mutation grant. Decode only after an
   independently reviewed authored-qualified profile supports the exact input and
   fresh identity/syntax/extent checks pass. This decision records permission only;
-  #0075's technical work and actual assertion remain unrun. See
+  #0075's technical work and actual assertion were unrun at that decision handoff.
+  Current camera execution evidence belongs only in the restricted local record. See
   `docs/fixture-plan/p0-assertion-gaps.md` and private
   `.local/rfw-decomposition-20261016/corpus.decoder-decision.private.json`.
+
+- #0075's separate bounded warning-aware profile now has reviewed authored
+  qualification: 43 full decoded-output controls, 14 syntax refusals and two
+  native entropy refusals. Exact encoder/decoder runtime inventories stay separate;
+  bounded worker reports retain full diagnostics without raising pipe limits.
+  See `docs/fixture-plan/preview-entropy-qualification.md` and its authored-only
+  results. These finite controls do not widen historical #0111, certify a camera
+  family, enable a production decoder or add a preview-extraction prerequisite.
+  Keep actual private assertion execution and outcomes restricted locally.
 
 - Terry selected #0157 option A on 2026-10-16: retain direct commits/pushes after
   required checks, practical agent review without independent-human claims, and

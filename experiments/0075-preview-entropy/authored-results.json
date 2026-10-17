@@ -1,0 +1,1260 @@
+{
+  "schemaVersion": 1,
+  "ticket": 75,
+  "evidence": "authored-only; generated public formula inputs, no camera observations",
+  "executionSourceCommit": "b5495053ad3cd90633376ffb9895c8102385abce",
+  "profileId": "0075-baseline-interleaved-rgb-zero-padding-v2",
+  "declaredCells": 59,
+  "expectedCounts": {
+    "pass": 43,
+    "unsupported": 14,
+    "fail": 2
+  },
+  "auditOutcome": "valid",
+  "finiteAuthoredProfileQualified": true,
+  "limits": "Exact finite authored controls; not a universal JPEG validator or camera-family acceptance. Historical first encoder preparation failure remains recorded in the method.",
+  "cells": [
+    {
+      "id": "formula-64-444",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "850a0cd5c6ddb456ea10c8f6b4b4fbe14d484b57d06f33b591150d3eb1d6b5cf",
+        "byteLength": 6388
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero1",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "c70a8b4e5543590e0b7be55e1b1337bec4016b53aa29a508b8d5362bc302eb07",
+        "byteLength": 6389
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero2",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "6e19ac9d7d743cfa7fd57f758348376dcbee2c7e3c5b7470e2ee059f8f232c05",
+        "byteLength": 6390
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero3",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "fd7cc3e910ce8bd9345ef2fd9b0539ce024428a5d72b50b55445c680729048b8",
+        "byteLength": 6391
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero4",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "fcbf122d489ebcbb4b2a806cf8e7beb2bcb5dc8f0e8c22e3e0b3a9b990f9ed88",
+        "byteLength": 6392
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero5",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "103b4cd79f97b1d1f2d3508c591bca89abca8f0cce78a7127cbe3c9e61dcc8d5",
+        "byteLength": 6393
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero6",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "e7a4cc9d07c543e58c0125c1085a0bb874fe7deb756b2c9be6db694b075068cf",
+        "byteLength": 6394
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero7",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "36b75f42c51547b1408af72967297c15dcce47cbc0e73fc4df231c86e1e9ca93",
+        "byteLength": 6395
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero8",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "8f274637fe4e1bf49f1691b813e7d1c0c4856571c28e1927ce959f8e9db0febd",
+        "byteLength": 6396
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero9",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "c263c5326e4097d638592448a0aa47492a121197e8f79a8cf8d26245e2d99b06",
+        "byteLength": 6397
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero10",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "ebc2c6b2b5167fb34b046812c94512d6cf2f9fbc6d109b503d0eeeece9d13524",
+        "byteLength": 6398
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero11",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "67ba553e33ad1aae20ef35ab591d665db5ec5e1c4b482618a231a808ef1c9c75",
+        "byteLength": 6399
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero12",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "56b52debdc448cd92cf907950c24ed2c8a56528f299e47b8a1934dd1d1ff2ac8",
+        "byteLength": 6400
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero13",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "4018ba8ab203587a00fdad3267aae876bf83737612054e4999629f43a90e58c6",
+        "byteLength": 6401
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero14",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "20c94853f577eca71c11abbc4e97068f753052106e327f51440eb28f859b7aa6",
+        "byteLength": 6402
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero15",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "c24ad8ad0429a83a3773fb10229b98608c73035b26547941e79b885cd3889e3d",
+        "byteLength": 6403
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero16",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "f71f2a57f4a6d5d9b332f744b1a9196962dc27f65dec3cc1b93dc8c499a18b48",
+        "byteLength": 6404
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero17",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "29a2942629d7e70882e17f7a7d8283fe575765a897e17ff2bc2452673148e8d5",
+        "byteLength": 6405
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero18",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "9f8514f1e639fa0d139c2e523be47f9d445f814d8f614f948d8e1d8489106942",
+        "byteLength": 6406
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero19",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "857c37801e942169880c4604eff6491fb42b8b8c74dc62d0110035b5d658d8e4",
+        "byteLength": 6407
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero20",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "f58e193d2dd6ed3738615f6124c2ec9a29223cdd4b35af12b651b634a4b75bac",
+        "byteLength": 6408
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero21",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "dda30398709478c13019e76c4f4bdd9131897ad29bfa16e6d37988c1be1d935a",
+        "byteLength": 6409
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero22",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "92bb2e409c0c493e58798113a8d6c186d03eb863836e3ecc2a3015f3774f1c60",
+        "byteLength": 6410
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero23",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "3fd37c4b82900212c7e9e71098ad391d413935dedfe6e7e318f3024c87f2dc5d",
+        "byteLength": 6411
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero24",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "26c404a2ea6539ae43465c5de47151693a230e925a92ab1adde8bbbb76736852",
+        "byteLength": 6412
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero25",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "31e74618cd5578f1dd61ad647771d8421ed1b947156c63fadcd4f2aeafd22541",
+        "byteLength": 6413
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero26",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "979e9b9cdd5bb6d898eece3ab0e8507be9c982db88189d9dc53f7dfa31eda229",
+        "byteLength": 6414
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero27",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "8a9ad8052f1d3fc17fc5074137dd931ce20bf727dcc22044ffd5e7e1d7e3723b",
+        "byteLength": 6415
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero28",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "4763581ab0de03ebb6a2f9e9d154c0d95c07aa164293ff3ce105c24c2fc48f03",
+        "byteLength": 6416
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero29",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "1c6a335b59eb16f8cb8c3a43ab60663a2667f29f43accc25002db653aaa20aaa",
+        "byteLength": 6417
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero30",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "9ed2e80578640c2b052fa4db0eb3d81f7eed573390aa7741d8cb99cb85ba860d",
+        "byteLength": 6418
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero31",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "45e7bf44c7c5163ccede6999036598eaca448d4efd758ca50219554eee25424d",
+        "byteLength": 6419
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-64-444-zero32",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "32045fae0b6d0015aa156c8b184d524c1bf2dc813f77124dffb8c4b86f264397",
+        "byteLength": 6420
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 12288,
+        "sha256": "d935349883ae2202d42145be6de4a4c02ccf60a10ce24d774ed32b4b93b95c9b"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "odd-19x17-420",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "2b710f5fcefe5d0f5eac83780b29f3d57f54875f40962f6fb90858626d75988b",
+        "byteLength": 970
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 969,
+        "sha256": "27209d4f192a8ab2f1c4ed70413ec8f5e1a056360bfdf8b3c4643cd30602e60a"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "odd-19x17-420-zero32",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "49ef8dddc31386a9505d2c92e3d9c52b67519d38ee5a13e53f92e7abed4ae2fe",
+        "byteLength": 1002
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 969,
+        "sha256": "27209d4f192a8ab2f1c4ed70413ec8f5e1a056360bfdf8b3c4643cd30602e60a"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-256-422",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "3906cab8bd73abb0207a445672b8d60edb73f333df4301b7f13bbd3d5fe7975b",
+        "byteLength": 64741
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 196608,
+        "sha256": "5cd56644dc4c4117a0457f631ee7bfe9974dfe63c67bba1b193f6d0e6e800268"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "formula-256-422-zero32",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "7ccae653e53d5bc71c918186abd8f5d17158c44e1e63512d2dfa46827c4a78c9",
+        "byteLength": 64773
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 196608,
+        "sha256": "5cd56644dc4c4117a0457f631ee7bfe9974dfe63c67bba1b193f6d0e6e800268"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "wide-8192x1-444",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "78bc9142c5b6e5d1d6ac87fc9af3af7841a9687569d3a1736dde83496dea204e",
+        "byteLength": 2421
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 24576,
+        "sha256": "098337e21117aea34b24e263377bc5ab2e44bc116f654a71a0925ff17878b4bd"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "wide-8192x1-444-zero32",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "73fe732ce7918e779acc398977958453a152caab4546f87f721770dbedaba815",
+        "byteLength": 2453
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 24576,
+        "sha256": "098337e21117aea34b24e263377bc5ab2e44bc116f654a71a0925ff17878b4bd"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "tall-1x8192-444",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "e21b60fa08d6c6317121365535eea8516dfc009a87e7d07d7ecfcb57e097aa5e",
+        "byteLength": 2421
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 24576,
+        "sha256": "098337e21117aea34b24e263377bc5ab2e44bc116f654a71a0925ff17878b4bd"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "tall-1x8192-444-zero32",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "549a3eae7bab803493a2a2091263ed7e8edff6e0b7270845a21d9187f7d10cc5",
+        "byteLength": 2453
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 24576,
+        "sha256": "098337e21117aea34b24e263377bc5ab2e44bc116f654a71a0925ff17878b4bd"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "square-8192-420",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "6865974d8e487828cc39985951d32c4a8910f65fa92c530d19220ba14cefa777",
+        "byteLength": 1049205
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 201326592,
+        "sha256": "6853d2ee8dab0ffe227e73480f696f6886ff4b0d39f5d1411e743fc78b62cf15"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "square-8192-420-zero32",
+      "expectedAssertionOutcome": "pass",
+      "auditedAssertionOutcome": "pass",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "64e875ab62e94beb09876dc89e44f6d435b429bac1b7dcddc5ec0a4a8640eae2",
+        "byteLength": 1049237
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "warning-free-pixels",
+      "consumedRgb": {
+        "byteLength": 201326592,
+        "sha256": "6853d2ee8dab0ffe227e73480f696f6886ff4b0d39f5d1411e743fc78b62cf15"
+      },
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      }
+    },
+    {
+      "id": "entropy-truncated",
+      "expectedAssertionOutcome": "unsupported",
+      "auditedAssertionOutcome": "unsupported",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "c61acf016aadaeb30b69fcb0ecc01149106d04c7e7f982a3e079ee41f783711b",
+        "byteLength": 3504
+      },
+      "nativeInvoked": false,
+      "decoderOutcome": "syntax-refused"
+    },
+    {
+      "id": "early-eoi",
+      "expectedAssertionOutcome": "fail",
+      "auditedAssertionOutcome": "fail",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "12ad4addefe26a8a2cf6fd69827d2f6014ca2233caac9075cb4bc95072db00d2",
+        "byteLength": 3506
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "native-refused",
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": -1,
+        "severityMeaningful": true,
+        "severityRaw": 0
+      }
+    },
+    {
+      "id": "immediate-eoi",
+      "expectedAssertionOutcome": "fail",
+      "auditedAssertionOutcome": "fail",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "510e58dbe3ef19c77861d17c3b2f5237cdcd663ba9a1753701e69e57e4bbc7e7",
+        "byteLength": 625
+      },
+      "nativeInvoked": true,
+      "decoderOutcome": "native-refused",
+      "header": {
+        "returnCode": 0,
+        "severityMeaningful": false
+      },
+      "decode": {
+        "returnCode": -1,
+        "severityMeaningful": true,
+        "severityRaw": 0
+      }
+    },
+    {
+      "id": "suffix-nonzero-middle",
+      "expectedAssertionOutcome": "unsupported",
+      "auditedAssertionOutcome": "unsupported",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "3aaefd5d4e433112481db8aa4824521f8fb87a3770c49f0cacf8f41c4df7945d",
+        "byteLength": 6420
+      },
+      "nativeInvoked": false,
+      "decoderOutcome": "syntax-refused"
+    },
+    {
+      "id": "suffix-nonzero-last",
+      "expectedAssertionOutcome": "unsupported",
+      "auditedAssertionOutcome": "unsupported",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "c177769e8383ab452fe8619bdaa813d62cdd50a38ed92aa8450ab356bf7d872e",
+        "byteLength": 6420
+      },
+      "nativeInvoked": false,
+      "decoderOutcome": "syntax-refused"
+    },
+    {
+      "id": "suffix-zero33",
+      "expectedAssertionOutcome": "unsupported",
+      "auditedAssertionOutcome": "unsupported",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "dc104378bc398c25a1f410f262755abaab362f5acfd8467a3bfffd0420c74a25",
+        "byteLength": 6421
+      },
+      "nativeInvoked": false,
+      "decoderOutcome": "syntax-refused"
+    },
+    {
+      "id": "suffix-nonzero",
+      "expectedAssertionOutcome": "unsupported",
+      "auditedAssertionOutcome": "unsupported",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "f0d8c6e36a462a3b82c62b526f95315108cf7a64cdafdbd8d9ec05df17a669fe",
+        "byteLength": 6420
+      },
+      "nativeInvoked": false,
+      "decoderOutcome": "syntax-refused"
+    },
+    {
+      "id": "suffix-second-jpeg",
+      "expectedAssertionOutcome": "unsupported",
+      "auditedAssertionOutcome": "unsupported",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "552da98176348562913b0fb23cc8c8a405526d0e4ea3a09e0c37ba01d5dab64b",
+        "byteLength": 12776
+      },
+      "nativeInvoked": false,
+      "decoderOutcome": "syntax-refused"
+    },
+    {
+      "id": "segment-length-one",
+      "expectedAssertionOutcome": "unsupported",
+      "auditedAssertionOutcome": "unsupported",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "30760bca65107864d411d46cbac562c552e5320886687680515bca70257643a1",
+        "byteLength": 6388
+      },
+      "nativeInvoked": false,
+      "decoderOutcome": "syntax-refused"
+    },
+    {
+      "id": "segment-length-overrun",
+      "expectedAssertionOutcome": "unsupported",
+      "auditedAssertionOutcome": "unsupported",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "5693ae9c42bbc4e5a1f2993f03968d3389d1f95677d02ae00b4024d074d4abcb",
+        "byteLength": 6388
+      },
+      "nativeInvoked": false,
+      "decoderOutcome": "syntax-refused"
+    },
+    {
+      "id": "quant-table-selector",
+      "expectedAssertionOutcome": "unsupported",
+      "auditedAssertionOutcome": "unsupported",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "d46fbf7b92239772695c29f60d45cf42a79861c44b3687520cac5af9323dcc8d",
+        "byteLength": 6388
+      },
+      "nativeInvoked": false,
+      "decoderOutcome": "syntax-refused"
+    },
+    {
+      "id": "huffman-table-selector",
+      "expectedAssertionOutcome": "unsupported",
+      "auditedAssertionOutcome": "unsupported",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "8678dfc7a159c0f7e69ced2c835997ce0101eef750909d1048274cb58e28e234",
+        "byteLength": 6388
+      },
+      "nativeInvoked": false,
+      "decoderOutcome": "syntax-refused"
+    },
+    {
+      "id": "scan-nonbaseline",
+      "expectedAssertionOutcome": "unsupported",
+      "auditedAssertionOutcome": "unsupported",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "b3ca056bbc23f3c3567547b179178265788ed7cc2cf010476c3328c5fcd3c726",
+        "byteLength": 6388
+      },
+      "nativeInvoked": false,
+      "decoderOutcome": "syntax-refused"
+    },
+    {
+      "id": "entropy-restart-marker",
+      "expectedAssertionOutcome": "unsupported",
+      "auditedAssertionOutcome": "unsupported",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "f2406fd3a72e7e022f6470da3c862b89de48c273015604a3dfa3d6e70f863063",
+        "byteLength": 6390
+      },
+      "nativeInvoked": false,
+      "decoderOutcome": "syntax-refused"
+    },
+    {
+      "id": "entropy-tem-marker",
+      "expectedAssertionOutcome": "unsupported",
+      "auditedAssertionOutcome": "unsupported",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "18e6b82699736f793db5e700e04611e2dc89e47118bdf7194dfb9ebee0e33fdd",
+        "byteLength": 6390
+      },
+      "nativeInvoked": false,
+      "decoderOutcome": "syntax-refused"
+    },
+    {
+      "id": "duplicate-soi",
+      "expectedAssertionOutcome": "unsupported",
+      "auditedAssertionOutcome": "unsupported",
+      "auditOutcome": "valid",
+      "input": {
+        "sha256": "416a16ea2b456e80b21c1a1609220aa0758860e2bed7bd044ad734e8b8f25a37",
+        "byteLength": 6390
+      },
+      "nativeInvoked": false,
+      "decoderOutcome": "syntax-refused"
+    }
+  ]
+}

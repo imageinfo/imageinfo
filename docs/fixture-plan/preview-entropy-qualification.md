@@ -95,16 +95,16 @@ imageinfo's extracted bytes.
 
 The first fixed six-base encoder campaign failed its exact loaded-module closure
 guard during preparation. All six process attempts were retained and audited;
-no base or provenance was published, and no decoder campaign artifacts exist.
+no base or provenance was published, and that campaign has no decoder artifacts.
 Therefore, no decoder invocation or entropy assertion was evaluated. This is a
 preparation failure, not a failed JPEG control or a change to the declared
 expectations.
 
-A load-only diagnosis identifies a missing separate encoder-closure pin. The
-source authors are correcting that exact pin while leaving the decoder pin and
-59-case denominator unchanged. The correction needs new source review and a
-fresh authored campaign; the failed attempts cannot be replayed or counted as
-qualification. The retained authored audit is
+A load-only diagnosis identified a missing separate encoder-closure pin. The
+reviewed correction preserved the decoder pin and 59-case denominator. Its
+fresh campaign is recorded under [actual authored qualification](#actual-authored-qualification);
+the failed attempts were neither replayed nor counted as qualification.
+The retained authored failure audit is
 `.local/work-wave-20261017e/75-first-encoder-failure-audit.private.json`.
 
 [The positive recipe](../../experiments/0075-preview-entropy/controls.py) declares
@@ -186,7 +186,26 @@ immutability from retained artifacts. It does not invoke the producer and accept
 matching self-report as independent evidence. Private execution additionally needs
 the exact scoped phase/grant/source bindings; public controls cannot stand in for it.
 
-## Completion and limits
+## Actual authored qualification
+
+The corrected source at `b5495053ad3cd90633376ffb9895c8102385abce` ran the
+fixed campaign after the separate encoder-closure and bounded-report corrections.
+All six formula encoders retained exact provenance. The
+[authored-only results](../../experiments/0075-preview-entropy/authored-results.json)
+retain input identities and complete consumed RGB identities without runtime paths.
+
+| Declared controls | Actual audited assertion | Count |
+|---|---|---|
+| Supported complete inputs, including zero suffixes | Full warning-free decode and complete output consumption | 43 |
+| Unsupported syntax or stored extent | Syntax refusal before native invocation | 14 |
+| Syntax-admitted early/immediate EOI | Native entropy failure under warning enforcement | 2 |
+
+Every declared cell has valid retained-artifact audit evidence. All positive
+suffix variants match their unsuffixed base's complete RGB identity. These
+results qualify this finite authored profile only; the separately authorized
+private assertion and its independent review are separate work.
+
+## Private completion and limits
 
 The private record must distinguish `pass`, `fail`, `unsupported`, `not-run` and
 `invalid-experiment`. A source/profile mismatch is unsupported or not-run as
