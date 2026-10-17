@@ -1,9 +1,9 @@
 # Post-operation namespace observer — #0218
 
-**This increment prepares a separately bound, test-only observer for the
+**This increment qualifies a separately bound, test-only observer for the
 post-candidate boundary missing from [#0217](prepared-source-namespace-attribution.md).**
-At this drafting checkpoint, the two local native controls below are planned;
-no actual control result is claimed. The historical prepared-source discrepancy
+Two fresh local native controls have passing retained-evidence audits. The
+historical prepared-source discrepancy
 and its causal uncertainty remain. This observer supplies no correction,
 qualified storage profile, durable acknowledgement or RAW admission.
 
@@ -70,7 +70,7 @@ Three test helpers now place future cases in fresh process-session directories;
 historical artifacts, assertions and production limits remain intact. The exact
 regression and required root checks pass with normal host filesystem access.
 
-Both planned cells use fresh disposable authored markers, with a 16 MiB source
+Both cells use fresh disposable authored markers, with a 16 MiB source
 and an independently generated 4 MiB candidate. Candidate bytes are not copied
 from the source. The fixture preparer refuses existing roots and observed path
 aliases; these checks do not promise adversarial pathname exclusion. The exact
@@ -93,6 +93,41 @@ source bindings; an absent source or unrelated failure does not satisfy it.
 Bounded read snapshots and artifact inventories reconcile source identity,
 length and hash across these observations. The source, partial artifacts and
 foreign collision bytes must survive the attempt and audit.
+
+### Actual finite outcomes — 2026-10-17
+
+The passing declaration binds source
+`92bfbd10eff50ec0353361990b808344240857b9` and worker SHA-256
+`cb32947dfe6aa38eff3c8dacd931718355e10494e81f0dc4644bf7a9c3d684cb`.
+Each cell ran once in a fresh fixture and attempt directory.
+
+| Cell | Actual observation | Retained outcome |
+| --- | --- | --- |
+| Normal | 74 protocol events, 37 commands, successful candidate operation, explicit release, runtime result, backend drop and confirmed zero exit. | Unqualified runtime `Refused` at `TerminalExport`; the source and 4 MiB authored output match their expected names and bytes. |
+| Candidate collision | 12 events, six commands, actual `AlreadyExists` / Windows error 80, explicit release and confirmed zero exit. | `Conflict` at `CandidateCreated`, no output publication and unchanged foreign candidate bytes. |
+
+Both cells show baseline write-open access, CRT `EACCES` without a native error
+while paused, and access after confirmed exit. All source snapshots match.
+The normal held-candidate read was denied and remains recorded as an error;
+its live bytes are not claimed observed. Its final output is independently
+readable and matches the authored candidate. The collision marker was readable
+at the pause and preserved afterward. Both audits reconcile the raw identity
+bridges, exact release order and final artifacts. Every commitment, production
+profile, RAW and importable-authority flag remains false.
+
+Four two-cell declarations were retained in total. The first three each have
+one failed normal attempt and one explicitly unstarted collision cell; their
+failures are explained below. The fourth has two passing controls. No failed
+attempt was overwritten, relabeled as passing or retried under the same identity.
+
+Verification includes independent source, exact-plan and retained-evidence review:
+
+- All 115 combined Python controls pass on Windows. The 54 changed probe/audit
+  controls also pass on Ubuntu WSL; earlier complete portable runs remain retained.
+- Eleven pure Rust diagnostic controls and the required root formatting, lint,
+  test and release-build checks pass. The native worker remains ignored in CI.
+- The independent reviewer recomputes both finite audits and separately reconciles
+  captures, release/exit ordering, probes, identity pairs and actual artifacts.
 
 The first declared normal attempt stopped during its baseline snapshot, before
 launching a worker or requesting write access; its collision cell stayed unstarted.

@@ -486,6 +486,15 @@ directory flushes, persistent whole-volume fault exposure and unobserved
 post-result ordering remain distinct. Direct record/name views narrow identity;
 zero-exit lookup errors remain errors. Cause, correction and positive admission
 remain unproved. See `docs/write-safety/prepared-source-namespace-attribution.md`.
+#0218 adds a separately identified test-only post-candidate observer, bounded
+current-parent stdio exchange and retained-evidence auditor. Two fresh local
+authored controls pass: normal unqualified protocol completion and native
+candidate collision, with explicit release, source-hold observations and confirmed
+exit. Three earlier failed declarations remain retained. The Windows-only test
+probe preserves raw timestamp semantics and pairs Python/SDK volume identifiers
+through a read-only query on the same handle; production Rust/SDK is unchanged.
+The historical fault/no-error contrast remains unrun, with no cause, correction,
+profile or RAW admission. See `docs/write-safety/post-operation-namespace-observer.md`.
 #0176 now implements that exact refusal in a production-owned selector and intended
 new-output caller seam before deferred construction or resource charges. Five
 necessary predicates remain unmet; the sealed positive token is uninhabited.

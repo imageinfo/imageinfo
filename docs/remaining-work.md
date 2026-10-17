@@ -76,9 +76,9 @@ retains its original historical baseline.
 
 ## Count the queue consistently
 
-#0218 is the next separately scoped corrective increment from accepted #0217:
-implement and rehearse the post-candidate observer on two fresh authored local
-controls. Its worker, controller and audit have separate source identities;
+#0218 delivers the separately scoped corrective increment from accepted #0217:
+the post-candidate observer and two passing fresh authored local controls.
+Its worker, controller and audit have separate source identities;
 the historical storage-fault contrast remains unrun by this increment. The
 43 existing Ready for Work cards retain their positive prerequisites. Observer
 qualification cannot supply a storage profile, correction or RAW admission.
