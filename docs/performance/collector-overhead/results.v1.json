@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "ticket": 150,
+  "status": "actual-authored-campaign-independently-audited",
+  "sourceCommit": "61e6e8b719c35d9fc48412f6702faea7f14ea618",
+  "fixedUtc": "2026-10-17T16:07:24.694056+00:00",
+  "binarySha256": "6da5f13d712fa075b8dd77f705dc36725212f226f16c32cf1d6a0814993ee20e",
+  "fixtureKind": "authored-structural",
+  "fixtureSha256": "7781896f985d5af5153e17b8959df04053fe8418262ca99a7ef2290d853992af",
+  "fixtureBytes": 2331,
+  "commandTemplate": [
+    "imageinfo",
+    "metadata",
+    "read",
+    "--values",
+    "all",
+    "--output",
+    "json",
+    "--max-bytes",
+    "8388608",
+    "--",
+    "<authored-fixture>"
+  ],
+  "protocol": {
+    "rounds": 3,
+    "warmupPairsPerRound": 3,
+    "measuredPairsPerRound": 30,
+    "firstArm": "elapsed when (zero-based round + within-round pair index) is even; telemetry otherwise",
+    "pairIndex": "0..32; 0..2 warmup; 3..32 measured",
+    "measuredFirstArmCountsPerRound": {
+      "elapsed": 15,
+      "telemetry": 15
+    },
+    "timeoutMs": 30000,
+    "captureBytesPerChannel": 4194304,
+    "sampleIntervalMs": 10,
+    "stopping": "198 attempts; no retries, trimming or adaptive stopping; retain failures and censoring",
+    "conditions": {
+      "cache": "application fresh; preflight hashes expose warm OS cache; OS/device uncontrolled",
+      "consumer": "same shared concurrent 4096-byte bounded stdout/stderr drain; correctness outside timing",
+      "storage": "same local C: volume; physical topology unknown",
+      "background": "shared developer workstation; uncontrolled",
+      "power": "unchanged inherited host; not controlled",
+      "host": "Windows-11-10.0.26200-SP0"
+    }
+  },
+  "denominators": {
+    "planned": 198,
+    "attempted": 198,
+    "missing": 0,
+    "warmup": 18,
+    "measured": 180,
+    "measuredPairs": 90,
+    "failedOutput": 0,
+    "censored": 0,
+    "telemetryAttempted": 99,
+    "telemetryValid": 99,
+    "pairedExcluded": 0
+  },
+  "trials": [
+    {
+      "round": 0,
+      "arms": {
+        "elapsed": {
+          "planned": 30,
+          "attempted": 30,
+          "missing": 0,
+          "failed": 0,
+          "censored": 0,
+          "distribution": {
+            "count": 30,
+            "medianNs": 9489050.0,
+            "madNs": 292200.0,
+            "p95Ns": 13239000,
+            "cv": 0.13520424868305458,
+            "windowDriftNs": -201250.0
+          },
+          "driftRequiresCompleteSeries": true
+        },
+        "telemetry": {
+          "planned": 30,
+          "attempted": 30,
+          "missing": 0,
+          "failed": 0,
+          "censored": 0,
+          "distribution": {
+            "count": 30,
+            "medianNs": 9443150.0,
+            "madNs": 310200.0,
+            "p95Ns": 10971100,
+            "cv": 0.09597304058376314,
+            "windowDriftNs": -344300.0
+          },
+          "driftRequiresCompleteSeries": true
+        }
+      },
+      "pairedTelemetryMinusElapsed": {
+        "count": 30,
+        "medianNs": 116400.0,
+        "madNs": 542100.0,
+        "p95Ns": 1829500,
+        "cv": null,
+        "windowDriftNs": 26150.0
+      },
+      "pairedPlanned": 30,
+      "pairedExcluded": 0
+    },
+    {
+      "round": 1,
+      "arms": {
+        "elapsed": {
+          "planned": 30,
+          "attempted": 30,
+          "missing": 0,
+          "failed": 0,
+          "censored": 0,
+          "distribution": {
+            "count": 30,
+            "medianNs": 9689500.0,
+            "madNs": 349450.0,
+            "p95Ns": 11149300,
+            "cv": 0.11902148438575955,
+            "windowDriftNs": -120850.0
+          },
+          "driftRequiresCompleteSeries": true
+        },
+        "telemetry": {
+          "planned": 30,
+          "attempted": 30,
+          "missing": 0,
+          "failed": 0,
+          "censored": 0,
+          "distribution": {
+            "count": 30,
+            "medianNs": 9552250.0,
+            "madNs": 258700.0,
+            "p95Ns": 13980900,
+            "cv": 0.13613225023281905,
+            "windowDriftNs": -163900.0
+          },
+          "driftRequiresCompleteSeries": true
+        }
+      },
+      "pairedTelemetryMinusElapsed": {
+        "count": 30,
+        "medianNs": 126300.0,
+        "madNs": 658000.0,
+        "p95Ns": 4300900,
+        "cv": null,
+        "windowDriftNs": -19150.0
+      },
+      "pairedPlanned": 30,
+      "pairedExcluded": 0
+    },
+    {
+      "round": 2,
+      "arms": {
+        "elapsed": {
+          "planned": 30,
+          "attempted": 30,
+          "missing": 0,
+          "failed": 0,
+          "censored": 0,
+          "distribution": {
+            "count": 30,
+            "medianNs": 9176400.0,
+            "madNs": 463300.0,
+            "p95Ns": 10612600,
+            "cv": 0.11373513177603098,
+            "windowDriftNs": -183050.0
+          },
+          "driftRequiresCompleteSeries": true
+        },
+        "telemetry": {
+          "planned": 30,
+          "attempted": 30,
+          "missing": 0,
+          "failed": 0,
+          "censored": 0,
+          "distribution": {
+            "count": 30,
+            "medianNs": 9444550.0,
+            "madNs": 278550.0,
+            "p95Ns": 14015700,
+            "cv": 0.14633233158270978,
+            "windowDriftNs": 102150.0
+          },
+          "driftRequiresCompleteSeries": true
+        }
+      },
+      "pairedTelemetryMinusElapsed": {
+        "count": 30,
+        "medianNs": 462000.0,
+        "madNs": 789750.0,
+        "p95Ns": 4832400,
+        "cv": null,
+        "windowDriftNs": 579500.0
+      },
+      "pairedPlanned": 30,
+      "pairedExcluded": 0
+    }
+  ],
+  "allOutputCorrect": true,
+  "allTelemetryValid": true,
+  "statistics": {
+    "unit": "nanoseconds; CV dimensionless",
+    "mad": "median absolute deviation from sample median",
+    "p95": "descriptive nearest-rank ceil(0.95*n)",
+    "cv": "sample standard deviation / arithmetic mean",
+    "windowDrift": "last-ten minus first-ten median, requiring complete ordered valid measured series",
+    "pairedDifference": "telemetry elapsed minus adjacent elapsed-only elapsed per pair; signed CV omitted"
+  },
+  "frozenVerification": {
+    "trackedFilesBeforeAfter": 910,
+    "binariesBeforeAfter": 2,
+    "unchanged": true,
+    "independentRetainedOutputAndStatisticsAudit": "pass"
+  },
+  "toolSha256": {
+    "scripts/audit_collector_overhead_150.py": "ffe74d92681159a8991e047c45b1120a9dbb85c517db7b52be27a8cfcfccc528",
+    "scripts/audit_read_resources_144.py": "f88d58b330e2f11e63c3c2da3c8cd750866e2716927cd9f6591988e102784a4e",
+    "scripts/audit_read_telemetry.py": "9c0836aad9813df941c3734f89fd9531ff587e06278f1323264cda80e9654a56",
+    "scripts/measure_batch_read.py": "645ec366c5b6cb6d9a049752fd25030db9e5ffd1d582133662cc01e44942cf73",
+    "scripts/measure_collector_overhead_150.py": "02237bfb2ddaaca6682e5dfa65e6cf991e02155d0f7c460502467cce8832a159",
+    "scripts/qualify_batch_read.py": "d52fa1558983ee0af82f75ec5342f3952544ec6d9053ebe10ecc2705fc92bb68",
+    "scripts/read_benchmark.py": "4a919eb267cd1a3cdd548ec44b0e433337abf5eab2a5cf98bf0c828df8d18cff",
+    "scripts/read_telemetry.py": "0af7eff3dbdbc7df96659be106db88d45788ccdc77494c469be402744c949f2b"
+  },
+  "limits": "success-conditional descriptive ns; failed/censored/missing retained; no subtraction, release gate or cross-host inference; tiny authored structural read; OS/device cache and background uncontrolled; raw captures retained privately"
+}

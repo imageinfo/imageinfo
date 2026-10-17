@@ -1,0 +1,573 @@
+{
+  "ticket": 147,
+  "revision": "output-consumers-v1",
+  "kind": "actual-single-host-authored-output-consumer-qualification",
+  "observedUtc": "2026-10-17T16:05:06.126192+00:00",
+  "privateMediaUsed": false,
+  "bindings": {
+    "sourceCommit": "61e6e8b719c35d9fc48412f6702faea7f14ea618",
+    "sourceTree": "e610cfd79419066f8d0a5cee573ee59cca9e35b8",
+    "sourceFreezeManifestSha256": "67fca8899cf70e20b2355e2adf61d9a05080012d3dfbc3f7b36938403cfa0390",
+    "binarySha256": "6da5f13d712fa075b8dd77f705dc36725212f226f16c32cf1d6a0814993ee20e",
+    "fixtureSha256": "7781896f985d5af5153e17b8959df04053fe8418262ca99a7ef2290d853992af",
+    "fixtureBytes": 2331,
+    "retainedRecordSha256": "3bd511e394426e44e1608b3625403f6a111af4877ec8bb74dac8f1facbaf43b2",
+    "tools": {
+      "collectorSha256": "6e704e806a3297729c0e7e4f869749d082dae42d287eb672c0a3c8ca653827ef",
+      "auditorSha256": "10dc24fb79592cf1388935365ed503ce4a4498de1878e2b24986e1343cdc2c4e",
+      "telemetrySha256": "0af7eff3dbdbc7df96659be106db88d45788ccdc77494c469be402744c949f2b",
+      "sharedCollectorSha256": "4a919eb267cd1a3cdd548ec44b0e433337abf5eab2a5cf98bf0c828df8d18cff",
+      "fixtureBuilderSha256": "c8354d2609aa664d1b86ceca75a7d9500973fcf222cdd267ce9b3c7bafe34104",
+      "oracleSha256": "004b655c0e174c03e298c2735cf5c4829f11d0c39342d485dcbb6dc815a37bec"
+    },
+    "validationToolsAndSchemas": {
+      "scripts/check_native_read_json.py": "f9f4b8996324445783db6f899e6ea0d5503ecaa01db1dd66101dbf9c282e92d7",
+      "scripts/check_read_session.py": "c9e5af8acb8f93f943a92eeec96a8f71f14f99d6e60aee3871e239257cf6c30a",
+      "scripts/audit_read_telemetry.py": "9c0836aad9813df941c3734f89fd9531ff587e06278f1323264cda80e9654a56",
+      "docs/metadata-model/metadata-contract.schema.json": "f053933be413876923ff99a197b26eee33ded012cc267346f249e5158011f1b6",
+      "docs/legacy-compatibility/result.schema.json": "484d6e5e0b1c7ece7b4a2b2588c1aeaf505cdcbb6de6e8e525b5189956ba8bbd",
+      "docs/legacy-compatibility/read-session/schema.v1.json": "d624a154df84c2f145daef75e9d6c8671102c1d31683fc55ea4992f20d3ea200",
+      "docs/legacy-compatibility/native-read-json/snapshot.schema.v1.json": "8677731ee9cb76c92eefc1e700bd4bea5007b9d4c0634e8eef77f6dd35be2e4c"
+    }
+  },
+  "fixedConfiguration": {
+    "transports": [
+      "json",
+      "jsonl"
+    ],
+    "ordinaryRead": "metadata read --output=json --values all -- authored.cr3",
+    "sessionReadId": "r147",
+    "sessionCloseId": "done147",
+    "consumers": [
+      "fast",
+      "slow"
+    ],
+    "warmupsPerTransportConsumer": 2,
+    "samplesPerTransportConsumer": 10,
+    "closeControlsPerTransport": 1,
+    "readRequestBytes": 1024,
+    "slowMinimumReadStartIntervalNs": 5000000,
+    "researchWatchdogMs": 30000,
+    "stdoutCaptureBytes": 262144,
+    "stderrCaptureBytes": 8192,
+    "stdinBytesBound": 2048,
+    "readEventsBound": 4096,
+    "telemetryRequestedIntervalMs": 10
+  },
+  "denominators": {
+    "attempts": 50,
+    "warmups": 8,
+    "samples": 40,
+    "closeControls": 2,
+    "completeExactOutputs": 48,
+    "eligibleSamples": 40,
+    "validTelemetryRecords": 50,
+    "ordinaryOutputFailures": 0,
+    "intentionalCloseOutputFailures": 2,
+    "outcomes": {
+      "exited": 50
+    },
+    "exitCodeCounts": {
+      "0": 48,
+      "1": 2
+    },
+    "censored": 0,
+    "captureOverflows": 0,
+    "launchErrors": 0,
+    "consumerErrors": 0,
+    "timeouts": 0,
+    "cancelled": 0,
+    "telemetryLimit": 0,
+    "discarded": 0,
+    "adaptiveRetries": 0
+  },
+  "verification": {
+    "exactOutputBytesAndSchemas": true,
+    "exactRequestIdsAndFrameOrder": true,
+    "consumerScheduleAudited": true,
+    "counterArithmeticAndEndpointsAudited": true,
+    "allFrozenSourceHashesBeforeAndAfter": true,
+    "allManifestBinariesBeforeAndAfter": true,
+    "trackedSourceTreeCleanBeforeAndAfter": true,
+    "binaryUnchanged": true,
+    "fixtureUnchanged": true,
+    "independentPreparationReview": "passed",
+    "independentActualCampaignReview": "passed",
+    "authoredCollectorControlsPassed": 12
+  },
+  "statisticsPopulation": "Ten measured samples per transport/consumer; warmups and close controls excluded from cell statistics. All attempted cells retained.",
+  "statisticOrder": [
+    "minimum",
+    "median",
+    "maximum"
+  ],
+  "timingUnit": "ns",
+  "memoryAndTransferUnit": "bytes",
+  "cells": [
+    {
+      "mode": "json",
+      "consumer": "fast",
+      "samples": 10,
+      "outputBytes": {
+        "minimum": 34535,
+        "median": 34535.0,
+        "maximum": 34535
+      },
+      "timingsNs": {
+        "firstByteNs": {
+          "minimum": 6568300,
+          "median": 6963200.0,
+          "maximum": 7548500
+        },
+        "firstUsableNs": {
+          "minimum": 6802800,
+          "median": 7179200.0,
+          "maximum": 8053800
+        },
+        "deliveryCompleteNs": {
+          "minimum": 7850700,
+          "median": 8310000.0,
+          "maximum": 9219200
+        },
+        "exitObservedNs": {
+          "minimum": 8524500,
+          "median": 9609500.0,
+          "maximum": 10913600
+        },
+        "elapsedNs": {
+          "minimum": 9084100,
+          "median": 10192700.0,
+          "maximum": 11574800
+        }
+      },
+      "resources": {
+        "userCpuNs": {
+          "available": 10,
+          "stats": {
+            "minimum": 0,
+            "median": 0.0,
+            "maximum": 15625000
+          }
+        },
+        "systemCpuNs": {
+          "available": 10,
+          "stats": {
+            "minimum": 0,
+            "median": 0.0,
+            "maximum": 15625000
+          }
+        },
+        "peakWorkingSetBytes": {
+          "available": 10,
+          "stats": {
+            "minimum": 5812224,
+            "median": 5828608.0,
+            "maximum": 5849088
+          }
+        },
+        "readTransferBytes": {
+          "available": 10,
+          "stats": {
+            "minimum": 2044,
+            "median": 2044.0,
+            "maximum": 2044
+          }
+        },
+        "writeTransferBytes": {
+          "available": 10,
+          "stats": {
+            "minimum": 34535,
+            "median": 34535.0,
+            "maximum": 34535
+          }
+        },
+        "otherTransferBytes": {
+          "available": 10,
+          "stats": {
+            "minimum": 1548,
+            "median": 1548.0,
+            "maximum": 1548
+          }
+        },
+        "sampledMaximumWorkingSetBytes": {
+          "minimum": 2101248,
+          "median": 2134016.0,
+          "maximum": 2211840
+        },
+        "sampledMaximumPrivateCommitBytes": {
+          "minimum": 393216,
+          "median": 403456.0,
+          "maximum": 409600
+        }
+      },
+      "observerWallNs": {
+        "minimum": 1051600,
+        "median": 1116400.0,
+        "maximum": 1378700
+      }
+    },
+    {
+      "mode": "json",
+      "consumer": "slow",
+      "samples": 10,
+      "outputBytes": {
+        "minimum": 34530,
+        "median": 34535.0,
+        "maximum": 34535
+      },
+      "timingsNs": {
+        "firstByteNs": {
+          "minimum": 6703500,
+          "median": 7297450.0,
+          "maximum": 12062000
+        },
+        "firstUsableNs": {
+          "minimum": 511638500,
+          "median": 521975650.0,
+          "maximum": 529804200
+        },
+        "deliveryCompleteNs": {
+          "minimum": 527343600,
+          "median": 537631150.0,
+          "maximum": 545558500
+        },
+        "exitObservedNs": {
+          "minimum": 451874200,
+          "median": 462799650.0,
+          "maximum": 470561200
+        },
+        "elapsedNs": {
+          "minimum": 528953400,
+          "median": 539137200.0,
+          "maximum": 546760400
+        }
+      },
+      "resources": {
+        "userCpuNs": {
+          "available": 10,
+          "stats": {
+            "minimum": 0,
+            "median": 0.0,
+            "maximum": 15625000
+          }
+        },
+        "systemCpuNs": {
+          "available": 10,
+          "stats": {
+            "minimum": 0,
+            "median": 0.0,
+            "maximum": 15625000
+          }
+        },
+        "peakWorkingSetBytes": {
+          "available": 10,
+          "stats": {
+            "minimum": 5812224,
+            "median": 5830656.0,
+            "maximum": 5840896
+          }
+        },
+        "readTransferBytes": {
+          "available": 10,
+          "stats": {
+            "minimum": 2044,
+            "median": 2044.0,
+            "maximum": 2044
+          }
+        },
+        "writeTransferBytes": {
+          "available": 10,
+          "stats": {
+            "minimum": 34530,
+            "median": 34535.0,
+            "maximum": 34535
+          }
+        },
+        "otherTransferBytes": {
+          "available": 10,
+          "stats": {
+            "minimum": 1548,
+            "median": 1548.0,
+            "maximum": 1548
+          }
+        },
+        "sampledMaximumWorkingSetBytes": {
+          "minimum": 5582848,
+          "median": 5601280.0,
+          "maximum": 5623808
+        },
+        "sampledMaximumPrivateCommitBytes": {
+          "minimum": 1560576,
+          "median": 1634304.0,
+          "maximum": 1691648
+        }
+      },
+      "observerWallNs": {
+        "minimum": 24867100,
+        "median": 28095900.0,
+        "maximum": 35431600
+      },
+      "actualReadStartIntervalsNs": {
+        "minimum": 6252400,
+        "median": 15741150.0,
+        "maximum": 19252400
+      }
+    },
+    {
+      "mode": "jsonl",
+      "consumer": "fast",
+      "samples": 10,
+      "outputBytes": {
+        "minimum": 34901,
+        "median": 34901.0,
+        "maximum": 34901
+      },
+      "timingsNs": {
+        "firstByteNs": {
+          "minimum": 5383900,
+          "median": 5717200.0,
+          "maximum": 6347000
+        },
+        "firstUsableNs": {
+          "minimum": 7311400,
+          "median": 7814750.0,
+          "maximum": 8403800
+        },
+        "deliveryCompleteNs": {
+          "minimum": 8280300,
+          "median": 8936650.0,
+          "maximum": 9542100
+        },
+        "exitObservedNs": {
+          "minimum": 9060700,
+          "median": 10203950.0,
+          "maximum": 11273900
+        },
+        "elapsedNs": {
+          "minimum": 9580600,
+          "median": 10775250.0,
+          "maximum": 11776700
+        }
+      },
+      "resources": {
+        "userCpuNs": {
+          "available": 10,
+          "stats": {
+            "minimum": 0,
+            "median": 0.0,
+            "maximum": 15625000
+          }
+        },
+        "systemCpuNs": {
+          "available": 10,
+          "stats": {
+            "minimum": 0,
+            "median": 0.0,
+            "maximum": 15625000
+          }
+        },
+        "peakWorkingSetBytes": {
+          "available": 10,
+          "stats": {
+            "minimum": 6021120,
+            "median": 6031360.0,
+            "maximum": 6037504
+          }
+        },
+        "readTransferBytes": {
+          "available": 10,
+          "stats": {
+            "minimum": 2210,
+            "median": 2210.0,
+            "maximum": 2210
+          }
+        },
+        "writeTransferBytes": {
+          "available": 10,
+          "stats": {
+            "minimum": 34901,
+            "median": 34901.0,
+            "maximum": 34901
+          }
+        },
+        "otherTransferBytes": {
+          "available": 10,
+          "stats": {
+            "minimum": 1548,
+            "median": 1548.0,
+            "maximum": 1548
+          }
+        },
+        "sampledMaximumWorkingSetBytes": {
+          "minimum": 2121728,
+          "median": 2134016.0,
+          "maximum": 2207744
+        },
+        "sampledMaximumPrivateCommitBytes": {
+          "minimum": 385024,
+          "median": 403456.0,
+          "maximum": 405504
+        }
+      },
+      "observerWallNs": {
+        "minimum": 979200,
+        "median": 1020450.0,
+        "maximum": 1113800
+      }
+    },
+    {
+      "mode": "jsonl",
+      "consumer": "slow",
+      "samples": 10,
+      "outputBytes": {
+        "minimum": 34901,
+        "median": 34901.0,
+        "maximum": 34901
+      },
+      "timingsNs": {
+        "firstByteNs": {
+          "minimum": 5558400,
+          "median": 5802050.0,
+          "maximum": 6256400
+        },
+        "firstUsableNs": {
+          "minimum": 530743200,
+          "median": 537379250.0,
+          "maximum": 541881600
+        },
+        "deliveryCompleteNs": {
+          "minimum": 546271100,
+          "median": 552919900.0,
+          "maximum": 558302500
+        },
+        "exitObservedNs": {
+          "minimum": 471893500,
+          "median": 477342050.0,
+          "maximum": 483691000
+        },
+        "elapsedNs": {
+          "minimum": 547847900,
+          "median": 554303150.0,
+          "maximum": 559864000
+        }
+      },
+      "resources": {
+        "userCpuNs": {
+          "available": 10,
+          "stats": {
+            "minimum": 0,
+            "median": 0.0,
+            "maximum": 15625000
+          }
+        },
+        "systemCpuNs": {
+          "available": 10,
+          "stats": {
+            "minimum": 0,
+            "median": 0.0,
+            "maximum": 31250000
+          }
+        },
+        "peakWorkingSetBytes": {
+          "available": 10,
+          "stats": {
+            "minimum": 6021120,
+            "median": 6025216.0,
+            "maximum": 6041600
+          }
+        },
+        "readTransferBytes": {
+          "available": 10,
+          "stats": {
+            "minimum": 2210,
+            "median": 2210.0,
+            "maximum": 2210
+          }
+        },
+        "writeTransferBytes": {
+          "available": 10,
+          "stats": {
+            "minimum": 34901,
+            "median": 34901.0,
+            "maximum": 34901
+          }
+        },
+        "otherTransferBytes": {
+          "available": 10,
+          "stats": {
+            "minimum": 1548,
+            "median": 1548.0,
+            "maximum": 1548
+          }
+        },
+        "sampledMaximumWorkingSetBytes": {
+          "minimum": 5754880,
+          "median": 5769216.0,
+          "maximum": 5783552
+        },
+        "sampledMaximumPrivateCommitBytes": {
+          "minimum": 1617920,
+          "median": 1638400.0,
+          "maximum": 1650688
+        }
+      },
+      "observerWallNs": {
+        "minimum": 24858300,
+        "median": 27091850.0,
+        "maximum": 29910900
+      },
+      "actualReadStartIntervalsNs": {
+        "minimum": 8536600,
+        "median": 15662850.0,
+        "maximum": 19833200
+      }
+    }
+  ],
+  "closeControls": [
+    {
+      "transport": "json",
+      "outcome": "exited",
+      "exitCode": 1,
+      "consumedStdoutBytes": 0,
+      "stderrBytes": 57,
+      "diagnosticClass": "OUTPUT_INCOMPLETE/BrokenPipe",
+      "elapsedNs": 9873300,
+      "actualOutputFailure": true,
+      "finalFramePromised": false
+    },
+    {
+      "transport": "jsonl",
+      "outcome": "exited",
+      "exitCode": 1,
+      "consumedStdoutBytes": 0,
+      "stderrBytes": 57,
+      "diagnosticClass": "OUTPUT_INCOMPLETE/BrokenPipe",
+      "elapsedNs": 12781300,
+      "actualOutputFailure": true,
+      "finalFramePromised": false
+    }
+  ],
+  "environment": {
+    "os": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.7",
+    "architecture": "AMD64",
+    "logicalProcessors": 20,
+    "processor": "Intel64 Family 6 Model 186 Stepping 2",
+    "physicalMemory": "unavailable; unprivileged inventory query denied",
+    "storage": "Fixture, executable and captures on the same workspace volume; filesystem/device/cache layering not independently qualified",
+    "power": "Host power/thermal policy unknown; no power-state change made",
+    "cache": "Uncontrolled/warm-exposed; no cold-cache claim",
+    "load": "Serialized measurement campaign; other editor/background host load uncontrolled"
+  },
+  "limits": {
+    "fixtureScope": "One public authored structural fixture, not a camera baseline",
+    "slowTiming": "Includes deliberate harness waits and actual scheduler/read delays; no cost subtracted",
+    "writerBlockedDurationNs": null,
+    "writerBlockedDurationReason": "Writer wait states and kernel pipe capacity were not instrumented; longer delivery does not prove pipe saturation",
+    "physicalIoBytes": null,
+    "physicalIoReason": "Logical process transfers are not device traffic",
+    "sampling": "Direct-process sampled membership is not containment; sampled current-memory maxima are not allocation peaks",
+    "cpu": "Returned CPU medians are zero for these short cells; this does not prove zero CPU work",
+    "policy": "No resource defaults, queue/spill policy, terminal-rendering cost, product timeout or final-frame guarantee"
+  }
+}

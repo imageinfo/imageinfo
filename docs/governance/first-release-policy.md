@@ -144,7 +144,7 @@ open until those steps have actual evidence.
 | Duty | Consenting person and evidence needed | Current state |
 | --- | --- | --- |
 | Release authority | Approve the exact candidate and notes; resolve scope/provenance/compatibility gaps | Terry; policy accepted, concrete candidate approval pending |
-| Candidate preparation and publication execution | Codex may prepare the candidate and perform the specifically authorized publication using existing authorized access; Terry retains authority | Candidate preparation and actual publication unrun; no new access grant |
+| Candidate preparation and publication execution | Codex may prepare the candidate and perform the specifically authorized publication using existing authorized access; Terry retains authority | Candidate preparation uses the #0160 recipe and separately retained exact-source evidence; publication not performed; no new access grant |
 | Verification | Required exact-source automated checks and agent artifact/claim review, with results and limitations recorded | No independent human verifier or backup claimed; additional human coverage is a future goal |
 | Security coverage | Solo best-effort route adopted separately under #0155–0156 | Private reporting enabled/configuration-verified; synthetic report refused for admin account, external submission/delivery unverified; exact candidate notes must disclose this limit |
 

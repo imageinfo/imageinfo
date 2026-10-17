@@ -501,6 +501,12 @@ EOF and censored watchdog observations. #0145–0150 separate authored controls
 from actual serialized frozen-build resource campaigns; camera reports stay
 private. #0160 prepares the adopted source-only unsigned alpha, with exact-source
 CI and archive evidence separate from Terry's later publication approval.
+The frozen #0145–0150 campaigns retain every fixed-denominator attempt; actual
+results are separate from tool controls. #0149's 45 structural outcomes verify,
+but its strict resource audit retains one inconsistent memory pair and remains
+failed (44 other attempts validate). Do not erase that observation, retry it away,
+relax its invariant or describe the full resource campaign as passing. Its cause
+and affected memory observation remain unqualified; see the scoped evidence.
 
 ## Linux new-output scope — Terry's decision, 2026-10-16
 

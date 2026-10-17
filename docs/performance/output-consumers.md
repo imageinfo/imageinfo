@@ -7,9 +7,74 @@ Work under **#0147**, recipe `output-consumers-v1`. The
 ordinary JSON and session JSONL transports. The experiment uses public authored
 structural bytes from the existing Rust test fixture. It reads no camera media.
 
-The timed campaign is pending the final frozen executable and a serialized
-measurement slot. Preparation and authored collector controls establish the
-measurement mechanism, not measured imageinfo timings or a resource policy.
+The **2026-10-17** serialized campaign retained exactly 50 attempts: eight warmups,
+40 measured samples and two closed-consumer controls. All 48 ordinary outputs
+passed independent complete-byte/schema/ID/order checks; all 40 samples were
+eligible. All 50 direct-process telemetry records validated. Both closed-consumer
+controls observed status 1 with `OUTPUT_INCOMPLETE/BrokenPipe` and zero consumed
+stdout bytes. There were no ordinary-output failures, censored attempts, capture
+overflows, timeouts, discarded attempts or adaptive retries. Preparation and actual
+campaign received independent review. The
+[sanitized qualification](output-consumers/qualification.v1.json) retains exact
+denominators, bindings and descriptive sample ranges; raw records remain private.
+
+## Actual bounded observations
+
+The executable was built at source commit
+`61e6e8b719c35d9fc48412f6702faea7f14ea618`, tree
+`e610cfd79419066f8d0a5cee573ee59cca9e35b8`. Its SHA-256 was
+`6da5f13d712fa075b8dd77f705dc36725212f226f16c32cf1d6a0814993ee20e`.
+The complete source-freeze manifest SHA-256 was
+`67fca8899cf70e20b2355e2adf61d9a05080012d3dfbc3f7b36938403cfa0390`.
+Before and after collection, independent boundary checks verified every tracked
+source hash and the complete inventory, source commit/tree, both manifest binaries
+and clean tracked status. The qualification also binds the exact fixture, tools,
+schemas and retained record. This documentation update follows that frozen run.
+
+The 2331-byte authored fixture produced 34530–34535 ordinary JSON bytes, with the
+size variation entirely within the independently checked invocation IDs. Session
+JSONL delivered exactly 34901 bytes. Both remain below the 262144-byte experiment
+bound. The host reported Windows 11 build 26200, Python 3.14.7 and 20 logical
+processors. Cache state was warm-exposed/uncontrolled; background host load,
+storage/cache layering, physical memory and power/thermal policy were not fully
+qualified. No cold-cache, camera baseline or resource-default claim follows.
+
+Each row below contains ten measured samples and excludes the two preceding
+warmups. Timings are medians in milliseconds; the machine summary also supplies
+every minimum and maximum.
+
+| Transport / consumer | First byte | First usable result | Delivery EOF | Exit observed | Total elapsed |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| JSON / fast | 6.963 | 7.179 | 8.310 | 9.610 | 10.193 |
+| JSON / slow | 7.297 | 521.976 | 537.631 | 462.800 | 539.137 |
+| JSONL / fast | 5.717 | 7.815 | 8.937 | 10.204 | 10.775 |
+| JSONL / slow | 5.802 | 537.379 | 552.920 | 477.342 | 554.303 |
+
+The slow consumer deliberately waited between reads. Its actual read-start
+intervals ranged from 6.252 to 19.833 ms; the JSON and JSONL interval medians were
+15.741 and 15.663 ms. The requested 5 ms minimum was not an exact delivery cadence.
+Slow delivery includes those waits and scheduler/read delays. Writer wait states
+and kernel pipe capacity were not instrumented, so these timings do not measure
+blocked-writer duration or prove pipe saturation.
+
+Resource medians below are bytes. Working-set high-water is the OS lifetime value;
+the sampled columns are maxima of available current-memory observations.
+
+| Transport / consumer | OS working-set high-water | Sampled working-set maximum | Sampled private-commit maximum | Logical read transfers | Logical write transfers |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| JSON / fast | 5828608 | 2134016 | 403456 | 2044 | 34535 |
+| JSON / slow | 5830656 | 5601280 | 1634304 | 2044 | 34535 |
+| JSONL / fast | 6031360 | 2134016 | 403456 | 2210 | 34901 |
+| JSONL / slow | 6025216 | 5769216 | 1638400 | 2210 | 34901 |
+
+The short fast runs' sampled working-set maxima missed their OS high-water;
+slower delivery provides more sampling opportunities. These sampled differences
+are not allocation-growth or leak findings. User/kernel CPU medians returned zero
+in every cell, which does not establish zero CPU work; the exact observed ranges
+remain in the summary. Logical transfers include pipe/process activity and are
+not device traffic. Median summed observer brackets were 1.020–1.116 ms for fast
+cells and 27.092–28.096 ms for slow cells, included in elapsed time without
+subtraction. These observations select no performance or resource defaults.
 
 ## Fixed workload and oracle
 

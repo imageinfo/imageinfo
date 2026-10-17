@@ -365,7 +365,7 @@ jobs:
       - name: Qualify actual native session handles
         run: python -c "import os,pathlib,subprocess,sys; binary=pathlib.Path('target/release/imageinfo'+('.exe' if os.name=='nt' else '')).resolve(); subprocess.run([sys.executable,'scripts/check_native_session_handles.py','--binary',str(binary),'--output','.local/native-session-handles-ci'],check=True)"
       - name: Retain native session handle observations
-        uses: actions/upload-artifact@95fe7274e8f033c0a14258ed0dc250532a479d7789f # v6
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: native-session-handles-${{ matrix.os }}
           path: .local/native-session-handles-ci/report.json

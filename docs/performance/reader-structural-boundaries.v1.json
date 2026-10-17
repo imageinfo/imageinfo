@@ -1,0 +1,824 @@
+{
+  "schemaVersion": 1,
+  "ticket": 149,
+  "corpus": "public authored CR3 structures; no camera data",
+  "sourceCommit": "61e6e8b719c35d9fc48412f6702faea7f14ea618",
+  "binarySha256": "6da5f13d712fa075b8dd77f705dc36725212f226f16c32cf1d6a0814993ee20e",
+  "sourceFreezeManifestSha256": "67fca8899cf70e20b2355e2adf61d9a05080012d3dfbc3f7b36938403cfa0390",
+  "campaignRecordSha256": "142d79f0d91114ca2677acc73a800fe7fff59b6fdebbd696c7e405f1036ea6f2",
+  "outcome": {
+    "cells": 15,
+    "attemptsPerCell": 3,
+    "attempts": 45,
+    "nativeSuccesses": 30,
+    "expectedRefusals": 15,
+    "censored": 0,
+    "nativeStructureOutputEffectsAudit": "verified for all 45 attempts",
+    "encodedOracleCells": 15,
+    "sourceAndBinaryUnchanged": true,
+    "corpusUnchanged": true,
+    "strictResourceAudit": "failed",
+    "strictResourceValidAttempts": 44,
+    "strictResourceInvalidAttempts": 1,
+    "resourceQualification": "unqualified observation; no blanket pass"
+  },
+  "inconsistentObservation": {
+    "cell": "boxes-above",
+    "attemptIndex": 1,
+    "sampleIndex": 1,
+    "indexBase": 0,
+    "finalSample": false,
+    "workingSetBytes": 3604480,
+    "peakWorkingSetBytes": 3600384,
+    "currentExceedsReportedPeakBytes": 4096,
+    "counterApiErrors": [],
+    "producerReportedValid": true,
+    "independentResourceAudit": "failed",
+    "cause": "unproven; no validator relaxation or retry"
+  },
+  "method": {
+    "platform": "Windows direct child",
+    "tagSelection": "Make",
+    "attemptScope": "fresh direct process through exit and bounded pipe drain",
+    "timeoutMs": 10000,
+    "captureBytesPerPipe": 4194304,
+    "requestedTelemetryIntervalMs": 1,
+    "cache": "OS/device uncontrolled; preflight hashing may warm bytes",
+    "physicalIoBytes": null,
+    "physicalIoReason": "not instrumented; process logical transfers are not device traffic",
+    "validOnlyRangeDenominator": 44,
+    "excludedAttemptCount": 1,
+    "resourceStatistics": "ranges include only whole attempts passing the unchanged resource validator; all 45 attempts remain in native outcome denominator",
+    "memory": "OS lifetime peak working set and sampled working/private maxima are distinct",
+    "parserRequestedBytes": "exact recorded native source reads; distinct from process logical I/O",
+    "cpu": "direct-process counters; zero is retained where reported; no speed policy inferred"
+  },
+  "cases": [
+    {
+      "id": "boxes-below",
+      "attempted": 3,
+      "nativeSuccesses": 3,
+      "expectedRefusals": 0,
+      "censored": 0,
+      "strictResourceValidAttempts": 3,
+      "excludedAttemptIndexes": [],
+      "parserRequestedBytes": 34356,
+      "validOnlyRanges": {
+        "elapsedNs": {
+          "min": 15256600,
+          "max": 28229500
+        },
+        "cpuNs": {
+          "min": 15625000,
+          "max": 15625000
+        },
+        "lifetimePeakWorkingSetBytes": {
+          "min": 5484544,
+          "max": 5509120
+        },
+        "sampledMaxWorkingSetBytes": {
+          "min": 5361664,
+          "max": 5484544
+        },
+        "sampledMaxPrivateCommitBytes": {
+          "min": 1482752,
+          "max": 1499136
+        },
+        "readOperations": {
+          "min": 4137,
+          "max": 4137
+        },
+        "writeOperations": {
+          "min": 10,
+          "max": 10
+        },
+        "logicalReadBytes": {
+          "min": 34356,
+          "max": 34356
+        },
+        "logicalWriteBytes": {
+          "min": 9884,
+          "max": 9884
+        }
+      }
+    },
+    {
+      "id": "boxes-at",
+      "attempted": 3,
+      "nativeSuccesses": 3,
+      "expectedRefusals": 0,
+      "censored": 0,
+      "strictResourceValidAttempts": 3,
+      "excludedAttemptIndexes": [],
+      "parserRequestedBytes": 34364,
+      "validOnlyRanges": {
+        "elapsedNs": {
+          "min": 15566900,
+          "max": 19249800
+        },
+        "cpuNs": {
+          "min": 0,
+          "max": 15625000
+        },
+        "lifetimePeakWorkingSetBytes": {
+          "min": 5492736,
+          "max": 5509120
+        },
+        "sampledMaxWorkingSetBytes": {
+          "min": 5353472,
+          "max": 5509120
+        },
+        "sampledMaxPrivateCommitBytes": {
+          "min": 1478656,
+          "max": 1503232
+        },
+        "readOperations": {
+          "min": 4138,
+          "max": 4138
+        },
+        "writeOperations": {
+          "min": 10,
+          "max": 10
+        },
+        "logicalReadBytes": {
+          "min": 34364,
+          "max": 34364
+        },
+        "logicalWriteBytes": {
+          "min": 9873,
+          "max": 9878
+        }
+      }
+    },
+    {
+      "id": "boxes-above",
+      "attempted": 3,
+      "nativeSuccesses": 0,
+      "expectedRefusals": 3,
+      "censored": 0,
+      "strictResourceValidAttempts": 2,
+      "excludedAttemptIndexes": [
+        1
+      ],
+      "parserRequestedBytes": 32808,
+      "validOnlyRanges": {
+        "elapsedNs": {
+          "min": 15664400,
+          "max": 19977500
+        },
+        "cpuNs": {
+          "min": 15625000,
+          "max": 15625000
+        },
+        "lifetimePeakWorkingSetBytes": {
+          "min": 5382144,
+          "max": 5386240
+        },
+        "sampledMaxWorkingSetBytes": {
+          "min": 5369856,
+          "max": 5369856
+        },
+        "sampledMaxPrivateCommitBytes": {
+          "min": 1495040,
+          "max": 1507328
+        },
+        "readOperations": {
+          "min": 4099,
+          "max": 4099
+        },
+        "writeOperations": {
+          "min": 3,
+          "max": 3
+        },
+        "logicalReadBytes": {
+          "min": 32808,
+          "max": 32808
+        },
+        "logicalWriteBytes": {
+          "min": 1106,
+          "max": 1106
+        }
+      }
+    },
+    {
+      "id": "bmff-depth-below",
+      "attempted": 3,
+      "nativeSuccesses": 3,
+      "expectedRefusals": 0,
+      "censored": 0,
+      "strictResourceValidAttempts": 3,
+      "excludedAttemptIndexes": [],
+      "parserRequestedBytes": 2172,
+      "validOnlyRanges": {
+        "elapsedNs": {
+          "min": 8665800,
+          "max": 20010600
+        },
+        "cpuNs": {
+          "min": 0,
+          "max": 15625000
+        },
+        "lifetimePeakWorkingSetBytes": {
+          "min": 5410816,
+          "max": 5455872
+        },
+        "sampledMaxWorkingSetBytes": {
+          "min": 4816896,
+          "max": 5451776
+        },
+        "sampledMaxPrivateCommitBytes": {
+          "min": 880640,
+          "max": 1019904
+        },
+        "readOperations": {
+          "min": 114,
+          "max": 114
+        },
+        "writeOperations": {
+          "min": 10,
+          "max": 10
+        },
+        "logicalReadBytes": {
+          "min": 2172,
+          "max": 2172
+        },
+        "logicalWriteBytes": {
+          "min": 9888,
+          "max": 9893
+        }
+      }
+    },
+    {
+      "id": "bmff-depth-at",
+      "attempted": 3,
+      "nativeSuccesses": 3,
+      "expectedRefusals": 0,
+      "censored": 0,
+      "strictResourceValidAttempts": 3,
+      "excludedAttemptIndexes": [],
+      "parserRequestedBytes": 2180,
+      "validOnlyRanges": {
+        "elapsedNs": {
+          "min": 9872000,
+          "max": 12020300
+        },
+        "cpuNs": {
+          "min": 0,
+          "max": 15625000
+        },
+        "lifetimePeakWorkingSetBytes": {
+          "min": 5414912,
+          "max": 5439488
+        },
+        "sampledMaxWorkingSetBytes": {
+          "min": 4960256,
+          "max": 5038080
+        },
+        "sampledMaxPrivateCommitBytes": {
+          "min": 942080,
+          "max": 1155072
+        },
+        "readOperations": {
+          "min": 115,
+          "max": 115
+        },
+        "writeOperations": {
+          "min": 10,
+          "max": 10
+        },
+        "logicalReadBytes": {
+          "min": 2180,
+          "max": 2180
+        },
+        "logicalWriteBytes": {
+          "min": 9882,
+          "max": 9887
+        }
+      }
+    },
+    {
+      "id": "bmff-depth-above",
+      "attempted": 3,
+      "nativeSuccesses": 0,
+      "expectedRefusals": 3,
+      "censored": 0,
+      "strictResourceValidAttempts": 3,
+      "excludedAttemptIndexes": [],
+      "parserRequestedBytes": 624,
+      "validOnlyRanges": {
+        "elapsedNs": {
+          "min": 8792500,
+          "max": 10667900
+        },
+        "cpuNs": {
+          "min": 0,
+          "max": 31250000
+        },
+        "lifetimePeakWorkingSetBytes": {
+          "min": 5255168,
+          "max": 5271552
+        },
+        "sampledMaxWorkingSetBytes": {
+          "min": 4677632,
+          "max": 5267456
+        },
+        "sampledMaxPrivateCommitBytes": {
+          "min": 786432,
+          "max": 950272
+        },
+        "readOperations": {
+          "min": 76,
+          "max": 76
+        },
+        "writeOperations": {
+          "min": 3,
+          "max": 3
+        },
+        "logicalReadBytes": {
+          "min": 624,
+          "max": 624
+        },
+        "logicalWriteBytes": {
+          "min": 1120,
+          "max": 1120
+        }
+      }
+    },
+    {
+      "id": "tiff-depth-below",
+      "attempted": 3,
+      "nativeSuccesses": 3,
+      "expectedRefusals": 0,
+      "censored": 0,
+      "strictResourceValidAttempts": 3,
+      "excludedAttemptIndexes": [],
+      "parserRequestedBytes": 2134,
+      "validOnlyRanges": {
+        "elapsedNs": {
+          "min": 9110600,
+          "max": 10305100
+        },
+        "cpuNs": {
+          "min": 0,
+          "max": 15625000
+        },
+        "lifetimePeakWorkingSetBytes": {
+          "min": 5423104,
+          "max": 5427200
+        },
+        "sampledMaxWorkingSetBytes": {
+          "min": 4993024,
+          "max": 5423104
+        },
+        "sampledMaxPrivateCommitBytes": {
+          "min": 884736,
+          "max": 954368
+        },
+        "readOperations": {
+          "min": 98,
+          "max": 98
+        },
+        "writeOperations": {
+          "min": 10,
+          "max": 10
+        },
+        "logicalReadBytes": {
+          "min": 2134,
+          "max": 2134
+        },
+        "logicalWriteBytes": {
+          "min": 9893,
+          "max": 9893
+        }
+      }
+    },
+    {
+      "id": "tiff-depth-at",
+      "attempted": 3,
+      "nativeSuccesses": 3,
+      "expectedRefusals": 0,
+      "censored": 0,
+      "strictResourceValidAttempts": 3,
+      "excludedAttemptIndexes": [],
+      "parserRequestedBytes": 2140,
+      "validOnlyRanges": {
+        "elapsedNs": {
+          "min": 8198800,
+          "max": 10470400
+        },
+        "cpuNs": {
+          "min": 0,
+          "max": 0
+        },
+        "lifetimePeakWorkingSetBytes": {
+          "min": 5402624,
+          "max": 5419008
+        },
+        "sampledMaxWorkingSetBytes": {
+          "min": 5013504,
+          "max": 5046272
+        },
+        "sampledMaxPrivateCommitBytes": {
+          "min": 876544,
+          "max": 999424
+        },
+        "readOperations": {
+          "min": 98,
+          "max": 98
+        },
+        "writeOperations": {
+          "min": 10,
+          "max": 10
+        },
+        "logicalReadBytes": {
+          "min": 2140,
+          "max": 2140
+        },
+        "logicalWriteBytes": {
+          "min": 9887,
+          "max": 9887
+        }
+      }
+    },
+    {
+      "id": "tiff-depth-above",
+      "attempted": 3,
+      "nativeSuccesses": 0,
+      "expectedRefusals": 3,
+      "censored": 0,
+      "strictResourceValidAttempts": 3,
+      "excludedAttemptIndexes": [],
+      "parserRequestedBytes": 1116,
+      "validOnlyRanges": {
+        "elapsedNs": {
+          "min": 8477900,
+          "max": 9692000
+        },
+        "cpuNs": {
+          "min": 0,
+          "max": 15625000
+        },
+        "lifetimePeakWorkingSetBytes": {
+          "min": 5259264,
+          "max": 5296128
+        },
+        "sampledMaxWorkingSetBytes": {
+          "min": 4816896,
+          "max": 5259264
+        },
+        "sampledMaxPrivateCommitBytes": {
+          "min": 851968,
+          "max": 917504
+        },
+        "readOperations": {
+          "min": 64,
+          "max": 64
+        },
+        "writeOperations": {
+          "min": 3,
+          "max": 3
+        },
+        "logicalReadBytes": {
+          "min": 1116,
+          "max": 1116
+        },
+        "logicalWriteBytes": {
+          "min": 1116,
+          "max": 1116
+        }
+      }
+    },
+    {
+      "id": "entries-per-cmt-below",
+      "attempted": 3,
+      "nativeSuccesses": 3,
+      "expectedRefusals": 0,
+      "censored": 0,
+      "strictResourceValidAttempts": 3,
+      "excludedAttemptIndexes": [],
+      "parserRequestedBytes": 51184,
+      "validOnlyRanges": {
+        "elapsedNs": {
+          "min": 35032900,
+          "max": 37597900
+        },
+        "cpuNs": {
+          "min": 31250000,
+          "max": 31250000
+        },
+        "lifetimePeakWorkingSetBytes": {
+          "min": 26697728,
+          "max": 26746880
+        },
+        "sampledMaxWorkingSetBytes": {
+          "min": 25702400,
+          "max": 26746880
+        },
+        "sampledMaxPrivateCommitBytes": {
+          "min": 22499328,
+          "max": 23584768
+        },
+        "readOperations": {
+          "min": 98,
+          "max": 98
+        },
+        "writeOperations": {
+          "min": 826,
+          "max": 826
+        },
+        "logicalReadBytes": {
+          "min": 51184,
+          "max": 51184
+        },
+        "logicalWriteBytes": {
+          "min": 835291,
+          "max": 835291
+        }
+      }
+    },
+    {
+      "id": "entries-per-cmt-at",
+      "attempted": 3,
+      "nativeSuccesses": 3,
+      "expectedRefusals": 0,
+      "censored": 0,
+      "strictResourceValidAttempts": 3,
+      "excludedAttemptIndexes": [],
+      "parserRequestedBytes": 51196,
+      "validOnlyRanges": {
+        "elapsedNs": {
+          "min": 33155900,
+          "max": 38003000
+        },
+        "cpuNs": {
+          "min": 31250000,
+          "max": 46875000
+        },
+        "lifetimePeakWorkingSetBytes": {
+          "min": 26787840,
+          "max": 26824704
+        },
+        "sampledMaxWorkingSetBytes": {
+          "min": 26783744,
+          "max": 26824704
+        },
+        "sampledMaxPrivateCommitBytes": {
+          "min": 23580672,
+          "max": 23629824
+        },
+        "readOperations": {
+          "min": 98,
+          "max": 98
+        },
+        "writeOperations": {
+          "min": 826,
+          "max": 826
+        },
+        "logicalReadBytes": {
+          "min": 51196,
+          "max": 51196
+        },
+        "logicalWriteBytes": {
+          "min": 835487,
+          "max": 835487
+        }
+      }
+    },
+    {
+      "id": "entries-per-cmt-above",
+      "attempted": 3,
+      "nativeSuccesses": 0,
+      "expectedRefusals": 3,
+      "censored": 0,
+      "strictResourceValidAttempts": 3,
+      "excludedAttemptIndexes": [],
+      "parserRequestedBytes": 50178,
+      "validOnlyRanges": {
+        "elapsedNs": {
+          "min": 8087100,
+          "max": 10444300
+        },
+        "cpuNs": {
+          "min": 0,
+          "max": 15625000
+        },
+        "lifetimePeakWorkingSetBytes": {
+          "min": 5267456,
+          "max": 5328896
+        },
+        "sampledMaxWorkingSetBytes": {
+          "min": 4886528,
+          "max": 5279744
+        },
+        "sampledMaxPrivateCommitBytes": {
+          "min": 905216,
+          "max": 921600
+        },
+        "readOperations": {
+          "min": 64,
+          "max": 64
+        },
+        "writeOperations": {
+          "min": 3,
+          "max": 3
+        },
+        "logicalReadBytes": {
+          "min": 50178,
+          "max": 50178
+        },
+        "logicalWriteBytes": {
+          "min": 1128,
+          "max": 1128
+        }
+      }
+    },
+    {
+      "id": "timed-records-below",
+      "attempted": 3,
+      "nativeSuccesses": 3,
+      "expectedRefusals": 0,
+      "censored": 0,
+      "strictResourceValidAttempts": 3,
+      "excludedAttemptIndexes": [],
+      "parserRequestedBytes": 100300,
+      "validOnlyRanges": {
+        "elapsedNs": {
+          "min": 28884700,
+          "max": 30540300
+        },
+        "cpuNs": {
+          "min": 15625000,
+          "max": 31250000
+        },
+        "lifetimePeakWorkingSetBytes": {
+          "min": 12296192,
+          "max": 12349440
+        },
+        "sampledMaxWorkingSetBytes": {
+          "min": 11644928,
+          "max": 11685888
+        },
+        "sampledMaxPrivateCommitBytes": {
+          "min": 8491008,
+          "max": 8552448
+        },
+        "readOperations": {
+          "min": 8286,
+          "max": 8286
+        },
+        "writeOperations": {
+          "min": 10,
+          "max": 10
+        },
+        "logicalReadBytes": {
+          "min": 100300,
+          "max": 100300
+        },
+        "logicalWriteBytes": {
+          "min": 9909,
+          "max": 9909
+        }
+      }
+    },
+    {
+      "id": "timed-records-at",
+      "attempted": 3,
+      "nativeSuccesses": 3,
+      "expectedRefusals": 0,
+      "censored": 0,
+      "strictResourceValidAttempts": 3,
+      "excludedAttemptIndexes": [],
+      "parserRequestedBytes": 100324,
+      "validOnlyRanges": {
+        "elapsedNs": {
+          "min": 29932000,
+          "max": 31153300
+        },
+        "cpuNs": {
+          "min": 31250000,
+          "max": 31250000
+        },
+        "lifetimePeakWorkingSetBytes": {
+          "min": 12292096,
+          "max": 12300288
+        },
+        "sampledMaxWorkingSetBytes": {
+          "min": 11616256,
+          "max": 11681792
+        },
+        "sampledMaxPrivateCommitBytes": {
+          "min": 8515584,
+          "max": 8531968
+        },
+        "readOperations": {
+          "min": 8288,
+          "max": 8288
+        },
+        "writeOperations": {
+          "min": 10,
+          "max": 10
+        },
+        "logicalReadBytes": {
+          "min": 100324,
+          "max": 100324
+        },
+        "logicalWriteBytes": {
+          "min": 9903,
+          "max": 9903
+        }
+      }
+    },
+    {
+      "id": "timed-records-above",
+      "attempted": 3,
+      "nativeSuccesses": 0,
+      "expectedRefusals": 3,
+      "censored": 0,
+      "strictResourceValidAttempts": 3,
+      "excludedAttemptIndexes": [],
+      "parserRequestedBytes": 100324,
+      "validOnlyRanges": {
+        "elapsedNs": {
+          "min": 27803400,
+          "max": 30899100
+        },
+        "cpuNs": {
+          "min": 15625000,
+          "max": 46875000
+        },
+        "lifetimePeakWorkingSetBytes": {
+          "min": 11993088,
+          "max": 12038144
+        },
+        "sampledMaxWorkingSetBytes": {
+          "min": 11661312,
+          "max": 11988992
+        },
+        "sampledMaxPrivateCommitBytes": {
+          "min": 8536064,
+          "max": 8859648
+        },
+        "readOperations": {
+          "min": 8288,
+          "max": 8288
+        },
+        "writeOperations": {
+          "min": 3,
+          "max": 3
+        },
+        "logicalReadBytes": {
+          "min": 100324,
+          "max": 100324
+        },
+        "logicalWriteBytes": {
+          "min": 1128,
+          "max": 1128
+        }
+      }
+    }
+  ],
+  "validOnlyOverallRanges": {
+    "elapsedNs": {
+      "min": 8087100,
+      "max": 38003000
+    },
+    "cpuNs": {
+      "min": 0,
+      "max": 46875000
+    },
+    "lifetimePeakWorkingSetBytes": {
+      "min": 5255168,
+      "max": 26824704
+    },
+    "sampledMaxWorkingSetBytes": {
+      "min": 4677632,
+      "max": 26824704
+    },
+    "sampledMaxPrivateCommitBytes": {
+      "min": 786432,
+      "max": 23629824
+    },
+    "readOperations": {
+      "min": 64,
+      "max": 8288
+    },
+    "writeOperations": {
+      "min": 3,
+      "max": 826
+    },
+    "logicalReadBytes": {
+      "min": 624,
+      "max": 100324
+    },
+    "logicalWriteBytes": {
+      "min": 1106,
+      "max": 835487
+    }
+  },
+  "limits": [
+    "finite current default parser profile only",
+    "hard configuration checks do not saturate hard counts or depth",
+    "no quota, physical-I/O, generic completeness or performance-default claim",
+    "no RAW mutation or storage-profile admission"
+  ]
+}

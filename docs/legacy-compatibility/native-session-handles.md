@@ -9,8 +9,12 @@ files. These observations are separate from normal pipe EOF in
 
 The initial Windows run retained eight cases against executable SHA-256
 `9497e9ce14c6c9623003cdf58abc4d94cddba46394c44c9609758499f94ffab4`.
-Seven ended naturally with exact canonical LF frames, exact stderr and exact
-process status. One was censored by the harness watchdog:
+Independent final Windows verification against source commit
+`61e6e8b719c35d9fc48412f6702faea7f14ea618` and executable SHA-256
+`6da5f13d712fa075b8dd77f705dc36725212f226f16c32cf1d6a0814993ee20e`
+reproduced the same eight cases. Seven ended naturally with exact canonical LF
+frames, exact stderr and exact process status. One was censored by the harness
+watchdog:
 
 | Caller-supplied handles | Actual observed result |
 | --- | --- |
@@ -41,6 +45,17 @@ The initial result is retained privately under
 `.local/work-wave-20261017c/140-qualified-initial/report.json`; it is not evidence
 for a subsequently changed executable.
 
+The final independent ordinary-host report is retained at
+`.local/work-wave-20261017c/140-review-final-native-escalated/report.json`.
+Independent preflight/postflight checks bound the exact tracked source set and
+every tracked source digest to the frozen source manifest before and after the
+run. Raw captures, parsed frames, reviewed-tool hashes, executable binding and
+unchanged protected inventories were independently audited. The separately
+retained restricted attempt at `140-review-final-native/report.json` contains a
+closed-stdin child initialization failure (`0xC0000142`); it is a failed sandbox
+attempt. The proper ordinary-host retry passed the same declared cases without
+expanding their denominator.
+
 ## Injection and portability limits
 
 The [test-only launcher](../../scripts/native_session_handles.py) calls Windows
@@ -66,6 +81,9 @@ directory stdin, read-only stdout and broken-pipe stdout. Platform results must
 be retained from an actual native execution; a portable script alone qualifies
 neither Linux nor macOS. Runtime normalization of missing descriptors must be
 distinguished from a read failure. No general handle-type coverage is claimed.
+Hosted Linux/macOS qualification is established only by the separately retained
+exact-source CI run and artifacts; these local Windows observations do not
+qualify those platforms.
 
 Native flush-only failure injection is **unavailable** in these cases. Failed
 stdout targets fail a write; they do not demonstrate a successful native write

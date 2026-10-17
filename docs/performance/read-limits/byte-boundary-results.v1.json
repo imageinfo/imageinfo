@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "ticket": 148,
+  "status": "observed-authored-six-cell-campaign",
+  "date": "2026-10-17",
+  "inputClass": "deterministic authored valid CR3-shaped controls; no camera inputs",
+  "sourceCommit": "61e6e8b719c35d9fc48412f6702faea7f14ea618",
+  "probe": "reader_byte_boundaries.exe",
+  "probeSha256": "d0dce969ec80b1e03b483dc3fc221c80013733f5bd8d661262efd4050260a90c",
+  "parentSourceFreezeSha256": "67fca8899cf70e20b2355e2adf61d9a05080012d3dfbc3f7b36938403cfa0390",
+  "independentCampaignFreezeSha256": "b53d90f10da44a0ced792366f2d33581f7819be0674491bbbfc982fe107e1ca6",
+  "denominator": {
+    "plannedCells": 6,
+    "attempts": 6,
+    "repeatsPerCell": 1,
+    "warmups": 0,
+    "nativeSuccesses": 4,
+    "expectedNativeLimitRefusals": 2,
+    "unexpectedFailures": 0,
+    "censoredOrMissingAttempts": 0,
+    "adaptiveRetries": 0
+  },
+  "verification": {
+    "independentPreparationReview": "passed after two auditor corrections",
+    "independentActualEvidenceReview": "passed",
+    "orderedSourceRangePrefixAndSum": "passed",
+    "sourceByteImmutability": "passed",
+    "refusalBeforeOffendingUnderlyingRead": "passed",
+    "allRequiredCpuMemoryLogicalIoCounters": "passed",
+    "independentResourceAndCaptureAudit": "passed",
+    "allTrackedSourceAndBothBinariesBeforeAfter": "unchanged"
+  },
+  "limits": {
+    "metadataBytes": 8388608,
+    "blockBytes": 1048576
+  },
+  "cells": [
+    {
+      "axis": "metadata",
+      "delta": -1,
+      "status": "OK",
+      "plannedBytes": 8388607,
+      "requestedBytes": 8388607,
+      "requestCount": 98,
+      "readElapsedNs": 2962100,
+      "processElapsedNs": 91475200,
+      "sampledMaxima": {
+        "workingSetBytes": 19210240,
+        "privateCommitBytes": 21721088
+      },
+      "largestPlannedRequestBytes": 1048576,
+      "finalProcessCounters": {
+        "userCpuNs": 15625000,
+        "systemCpuNs": 0,
+        "workingSetBytes": 32768,
+        "peakWorkingSetBytes": 21307392,
+        "privateCommitBytes": 77824,
+        "readOperations": 0,
+        "writeOperations": 2,
+        "otherOperations": 150,
+        "readTransferBytes": 0,
+        "writeTransferBytes": 9599,
+        "otherTransferBytes": 1852,
+        "physicalIoBytes": null
+      }
+    },
+    {
+      "axis": "metadata",
+      "delta": 0,
+      "status": "OK",
+      "plannedBytes": 8388608,
+      "requestedBytes": 8388608,
+      "requestCount": 98,
+      "readElapsedNs": 3331800,
+      "processElapsedNs": 28501000,
+      "sampledMaxima": {
+        "workingSetBytes": 20692992,
+        "privateCommitBytes": 17485824
+      },
+      "largestPlannedRequestBytes": 1048576,
+      "finalProcessCounters": {
+        "userCpuNs": 15625000,
+        "systemCpuNs": 0,
+        "workingSetBytes": 32768,
+        "peakWorkingSetBytes": 20795392,
+        "privateCommitBytes": 77824,
+        "readOperations": 0,
+        "writeOperations": 2,
+        "otherOperations": 49,
+        "readTransferBytes": 0,
+        "writeTransferBytes": 9598,
+        "otherTransferBytes": 356,
+        "physicalIoBytes": null
+      }
+    },
+    {
+      "axis": "metadata",
+      "delta": 1,
+      "status": "LIMIT_EXCEEDED",
+      "plannedBytes": 8388609,
+      "requestedBytes": 8388597,
+      "requestCount": 97,
+      "readElapsedNs": 2449400,
+      "processElapsedNs": 24454100,
+      "sampledMaxima": {
+        "workingSetBytes": 16269312,
+        "privateCommitBytes": 17481728
+      },
+      "largestPlannedRequestBytes": 1048576,
+      "finalProcessCounters": {
+        "userCpuNs": 15625000,
+        "systemCpuNs": 0,
+        "workingSetBytes": 32768,
+        "peakWorkingSetBytes": 20791296,
+        "privateCommitBytes": 77824,
+        "readOperations": 0,
+        "writeOperations": 2,
+        "otherOperations": 49,
+        "readTransferBytes": 0,
+        "writeTransferBytes": 9560,
+        "otherTransferBytes": 356,
+        "physicalIoBytes": null
+      }
+    },
+    {
+      "axis": "block",
+      "delta": -1,
+      "status": "OK",
+      "plannedBytes": 1050570,
+      "requestedBytes": 1050570,
+      "requestCount": 98,
+      "readElapsedNs": 452400,
+      "processElapsedNs": 12093600,
+      "sampledMaxima": {
+        "workingSetBytes": 5156864,
+        "privateCommitBytes": 2809856
+      },
+      "largestPlannedRequestBytes": 1048575,
+      "finalProcessCounters": {
+        "userCpuNs": 15625000,
+        "systemCpuNs": 0,
+        "workingSetBytes": 32768,
+        "peakWorkingSetBytes": 7172096,
+        "privateCommitBytes": 77824,
+        "readOperations": 0,
+        "writeOperations": 2,
+        "otherOperations": 49,
+        "readTransferBytes": 0,
+        "writeTransferBytes": 9475,
+        "otherTransferBytes": 356,
+        "physicalIoBytes": null
+      }
+    },
+    {
+      "axis": "block",
+      "delta": 0,
+      "status": "OK",
+      "plannedBytes": 1050571,
+      "requestedBytes": 1050571,
+      "requestCount": 98,
+      "readElapsedNs": 489700,
+      "processElapsedNs": 15246700,
+      "sampledMaxima": {
+        "workingSetBytes": 5296128,
+        "privateCommitBytes": 2842624
+      },
+      "largestPlannedRequestBytes": 1048576,
+      "finalProcessCounters": {
+        "userCpuNs": 0,
+        "systemCpuNs": 0,
+        "workingSetBytes": 32768,
+        "peakWorkingSetBytes": 7208960,
+        "privateCommitBytes": 77824,
+        "readOperations": 0,
+        "writeOperations": 2,
+        "otherOperations": 49,
+        "readTransferBytes": 0,
+        "writeTransferBytes": 9474,
+        "otherTransferBytes": 356,
+        "physicalIoBytes": null
+      }
+    },
+    {
+      "axis": "block",
+      "delta": 1,
+      "status": "LIMIT_EXCEEDED",
+      "plannedBytes": 1050572,
+      "requestedBytes": 492,
+      "requestCount": 60,
+      "readElapsedNs": 84700,
+      "processElapsedNs": 12398100,
+      "sampledMaxima": {
+        "workingSetBytes": 5124096,
+        "privateCommitBytes": 2768896
+      },
+      "largestPlannedRequestBytes": 1048577,
+      "finalProcessCounters": {
+        "userCpuNs": 0,
+        "systemCpuNs": 0,
+        "workingSetBytes": 32768,
+        "peakWorkingSetBytes": 7208960,
+        "privateCommitBytes": 77824,
+        "readOperations": 0,
+        "writeOperations": 2,
+        "otherOperations": 49,
+        "readTransferBytes": 0,
+        "writeTransferBytes": 7654,
+        "otherTransferBytes": 356,
+        "physicalIoBytes": null
+      }
+    }
+  ],
+  "measurementScope": [
+    "native read elapsed excludes fixture creation, hashing and JSON output",
+    "process elapsed and CPU/memory/logical-I/O include the complete probe lifecycle",
+    "underlying source is in-memory; source Read requests are distinct from OS logical-I/O counters",
+    "CPU counters retain their observed resolution; zero means observed zero counter ticks",
+    "sampled maxima are not OS memory quotas or allocation peaks; final memory counters can be lower",
+    "physicalIoBytes remains unavailable; logical transfer counts do not measure physical device traffic",
+    "one attempt per cell supplies no distribution, noise/regression budget or policy adoption",
+    "hard-ceiling acceptance remains small-input configuration-only evidence"
+  ],
+  "detailedEvidence": "complete captures, frozen manifests and audit artifacts retained privately; this is a sanitized authored-only summary"
+}

@@ -1,0 +1,1001 @@
+{
+  "schemaVersion": 1,
+  "ticket": 146,
+  "revision": "session-resources-146-v1",
+  "observedDate": "2026-10-17",
+  "evidence": "actual authored structural fixtures; no camera content",
+  "independentReview": "passed preparation and actual retained-campaign review",
+  "sourceCommit": "61e6e8b719c35d9fc48412f6702faea7f14ea618",
+  "sourceTree": "e610cfd79419066f8d0a5cee573ee59cca9e35b8",
+  "binarySha256": "6da5f13d712fa075b8dd77f705dc36725212f226f16c32cf1d6a0814993ee20e",
+  "fullSourceManifestSha256": "67fca8899cf70e20b2355e2adf61d9a05080012d3dfbc3f7b36938403cfa0390",
+  "frozenTrackedFiles": 910,
+  "toolSha256": {
+    "scripts/measure_session_resources.py": "c09816b788e122b8830c34823f7d2fbc592c7640c47bdb599ae58a802219454e",
+    "scripts/audit_session_resources.py": "a9062da505c96da3d70b1b515eee21f109913986810dd95871eb6680cfa0cbf3",
+    "scripts/read_telemetry.py": "0af7eff3dbdbc7df96659be106db88d45788ccdc77494c469be402744c949f2b",
+    "scripts/audit_read_telemetry.py": "9c0836aad9813df941c3734f89fd9531ff587e06278f1323264cda80e9654a56",
+    "scripts/read_benchmark.py": "4a919eb267cd1a3cdd548ec44b0e433337abf5eab2a5cf98bf0c828df8d18cff",
+    "scripts/check_read_arguments.py": "6e420b276f9d4c529b051992f895234f0b30567b2073568e815391a18db408e7",
+    "tests/support/mod.rs": "c8354d2609aa664d1b86ceca75a7d9500973fcf222cdd267ce9b3c7bafe34104"
+  },
+  "platform": "Windows-11-10.0.26200-SP0",
+  "pythonVersion": "3.14.7",
+  "campaign": {
+    "attemptedCells": 16,
+    "auditedEligibleCells": 16,
+    "censoredCells": 0,
+    "failedCells": 0,
+    "lifetimeReadResults": 960,
+    "automaticCloseReadResults": 256,
+    "duplicateIdControlReadResults": 1,
+    "totalReadResults": 1217,
+    "totalStdoutBytes": 18637339,
+    "sourceEffectsObserved": false,
+    "sourceAndBinaryBoundariesPassed": true,
+    "adaptiveRetries": 0
+  },
+  "method": {
+    "clock": "perf_counter_ns",
+    "requestLatency": "before writer scheduling through complete matching LF, before JSON parse",
+    "readyLatency": "before Popen through complete ready LF",
+    "totalExit": "through direct child exit, pipe drains and final resource sample",
+    "telemetry": "Windows direct process; ordinary 10ms plus ready/result checkpoints",
+    "memoryEndpoint": "new nonfinal sample bracketed by observed-live child checks; after LF and before next send",
+    "resourceUnits": "CPU ns; current/peak memory bytes; process logical I/O operations/bytes; physical I/O unavailable",
+    "cache": "uncontrolled repeated authored reads",
+    "overhead": "included; none subtracted"
+  },
+  "lifetimeSummary": [
+    {
+      "readsPerSession": 1,
+      "sessions": 3,
+      "readyMsRange": [
+        5.3932,
+        14.2519
+      ],
+      "requestMedianMsRange": [
+        5.6027,
+        5.8245
+      ],
+      "totalExitMsRange": [
+        16.3937,
+        25.1901
+      ],
+      "workingSetGrowthBytesRange": [
+        671744,
+        688128
+      ],
+      "privateCommitGrowthBytesRange": [
+        274432,
+        397312
+      ]
+    },
+    {
+      "readsPerSession": 64,
+      "sessions": 3,
+      "readyMsRange": [
+        5.5823,
+        7.2057
+      ],
+      "requestMedianMsRange": [
+        5.625,
+        5.8168
+      ],
+      "totalExitMsRange": [
+        499.4203,
+        518.145
+      ],
+      "workingSetGrowthBytesRange": [
+        1007616,
+        1167360
+      ],
+      "privateCommitGrowthBytesRange": [
+        413696,
+        647168
+      ]
+    },
+    {
+      "readsPerSession": 255,
+      "sessions": 3,
+      "readyMsRange": [
+        5.8356,
+        6.1147
+      ],
+      "requestMedianMsRange": [
+        5.6144,
+        5.7634
+      ],
+      "totalExitMsRange": [
+        2003.3254,
+        2369.6155
+      ],
+      "workingSetGrowthBytesRange": [
+        1560576,
+        1798144
+      ],
+      "privateCommitGrowthBytesRange": [
+        1134592,
+        1609728
+      ]
+    }
+  ],
+  "cells": [
+    {
+      "name": "reads-1-0",
+      "eligible": true,
+      "censored": false,
+      "readResults": 1,
+      "requestExitStatusCounts": {
+        "0": 1
+      },
+      "sessionExitStatus": 0,
+      "completion": "close",
+      "protocolError": null,
+      "readyLatencyNs": 14251900,
+      "totalExitNs": 25190100,
+      "requestLatencyNs": {
+        "count": 1,
+        "min": 5824500,
+        "median": 5824500,
+        "max": 5824500
+      },
+      "stdoutBytes": 11187,
+      "stderrBytes": 0,
+      "cpuFinalNs": {
+        "userCpuNs": 0,
+        "systemCpuNs": 15625000
+      },
+      "logicalIoFinal": {
+        "readOperations": 100,
+        "writeOperations": 13,
+        "otherOperations": 82,
+        "readTransferBytes": 2243,
+        "writeTransferBytes": 11187,
+        "otherTransferBytes": 1538
+      },
+      "physicalIoBytes": null,
+      "sampledMemoryMaxima": {
+        "workingSetBytes": 5283840,
+        "privateCommitBytes": 1220608
+      },
+      "samples": 5,
+      "observerWallNs": 2926700,
+      "liveReadyCheckpoint": true,
+      "liveResultCheckpoints": 1,
+      "retainedState": {
+        "workingSetBytes": {
+          "ready": 4571136,
+          "lastResult": 5259264,
+          "delta": 688128,
+          "unavailableReason": null
+        },
+        "privateCommitBytes": {
+          "ready": 835584,
+          "lastResult": 1216512,
+          "delta": 380928,
+          "unavailableReason": null
+        }
+      },
+      "retainedStateUnavailableReason": null
+    },
+    {
+      "name": "reads-1-1",
+      "eligible": true,
+      "censored": false,
+      "readResults": 1,
+      "requestExitStatusCounts": {
+        "0": 1
+      },
+      "sessionExitStatus": 0,
+      "completion": "close",
+      "protocolError": null,
+      "readyLatencyNs": 5393200,
+      "totalExitNs": 16547300,
+      "requestLatencyNs": {
+        "count": 1,
+        "min": 5785800,
+        "median": 5785800,
+        "max": 5785800
+      },
+      "stdoutBytes": 11187,
+      "stderrBytes": 0,
+      "cpuFinalNs": {
+        "userCpuNs": 0,
+        "systemCpuNs": 15625000
+      },
+      "logicalIoFinal": {
+        "readOperations": 100,
+        "writeOperations": 13,
+        "otherOperations": 82,
+        "readTransferBytes": 2243,
+        "writeTransferBytes": 11187,
+        "otherTransferBytes": 1538
+      },
+      "physicalIoBytes": null,
+      "sampledMemoryMaxima": {
+        "workingSetBytes": 5267456,
+        "privateCommitBytes": 1101824
+      },
+      "samples": 5,
+      "observerWallNs": 2677400,
+      "liveReadyCheckpoint": true,
+      "liveResultCheckpoints": 1,
+      "retainedState": {
+        "workingSetBytes": {
+          "ready": 4571136,
+          "lastResult": 5242880,
+          "delta": 671744,
+          "unavailableReason": null
+        },
+        "privateCommitBytes": {
+          "ready": 823296,
+          "lastResult": 1097728,
+          "delta": 274432,
+          "unavailableReason": null
+        }
+      },
+      "retainedStateUnavailableReason": null
+    },
+    {
+      "name": "reads-1-2",
+      "eligible": true,
+      "censored": false,
+      "readResults": 1,
+      "requestExitStatusCounts": {
+        "0": 1
+      },
+      "sessionExitStatus": 0,
+      "completion": "close",
+      "protocolError": null,
+      "readyLatencyNs": 5678900,
+      "totalExitNs": 16393700,
+      "requestLatencyNs": {
+        "count": 1,
+        "min": 5602700,
+        "median": 5602700,
+        "max": 5602700
+      },
+      "stdoutBytes": 11187,
+      "stderrBytes": 0,
+      "cpuFinalNs": {
+        "userCpuNs": 0,
+        "systemCpuNs": 0
+      },
+      "logicalIoFinal": {
+        "readOperations": 100,
+        "writeOperations": 13,
+        "otherOperations": 82,
+        "readTransferBytes": 2243,
+        "writeTransferBytes": 11187,
+        "otherTransferBytes": 1538
+      },
+      "physicalIoBytes": null,
+      "sampledMemoryMaxima": {
+        "workingSetBytes": 5259264,
+        "privateCommitBytes": 1187840
+      },
+      "samples": 5,
+      "observerWallNs": 2617700,
+      "liveReadyCheckpoint": true,
+      "liveResultCheckpoints": 1,
+      "retainedState": {
+        "workingSetBytes": {
+          "ready": 4554752,
+          "lastResult": 5234688,
+          "delta": 679936,
+          "unavailableReason": null
+        },
+        "privateCommitBytes": {
+          "ready": 790528,
+          "lastResult": 1187840,
+          "delta": 397312,
+          "unavailableReason": null
+        }
+      },
+      "retainedStateUnavailableReason": null
+    },
+    {
+      "name": "reads-64-0",
+      "eligible": true,
+      "censored": false,
+      "readResults": 64,
+      "requestExitStatusCounts": {
+        "2": 10,
+        "0": 36,
+        "1": 18
+      },
+      "sessionExitStatus": 0,
+      "completion": "close",
+      "protocolError": null,
+      "readyLatencyNs": 7205700,
+      "totalExitNs": 499420300,
+      "requestLatencyNs": {
+        "count": 64,
+        "min": 699600,
+        "median": 5625000.0,
+        "max": 20976600
+      },
+      "stdoutBytes": 838687,
+      "stderrBytes": 0,
+      "cpuFinalNs": {
+        "userCpuNs": 46875000,
+        "systemCpuNs": 15625000
+      },
+      "logicalIoFinal": {
+        "readOperations": 3602,
+        "writeOperations": 840,
+        "otherOperations": 1888,
+        "readTransferBytes": 82121,
+        "writeTransferBytes": 838687,
+        "otherTransferBytes": 47400
+      },
+      "physicalIoBytes": null,
+      "sampledMemoryMaxima": {
+        "workingSetBytes": 6111232,
+        "privateCommitBytes": 1916928
+      },
+      "samples": 77,
+      "observerWallNs": 44459900,
+      "liveReadyCheckpoint": true,
+      "liveResultCheckpoints": 64,
+      "retainedState": {
+        "workingSetBytes": {
+          "ready": 4591616,
+          "lastResult": 5599232,
+          "delta": 1007616,
+          "unavailableReason": null
+        },
+        "privateCommitBytes": {
+          "ready": 913408,
+          "lastResult": 1327104,
+          "delta": 413696,
+          "unavailableReason": null
+        }
+      },
+      "retainedStateUnavailableReason": null
+    },
+    {
+      "name": "reads-64-1",
+      "eligible": true,
+      "censored": false,
+      "readResults": 64,
+      "requestExitStatusCounts": {
+        "2": 10,
+        "0": 36,
+        "1": 18
+      },
+      "sessionExitStatus": 0,
+      "completion": "close",
+      "protocolError": null,
+      "readyLatencyNs": 5582300,
+      "totalExitNs": 518145000,
+      "requestLatencyNs": {
+        "count": 64,
+        "min": 729500,
+        "median": 5800400.0,
+        "max": 25143900
+      },
+      "stdoutBytes": 838687,
+      "stderrBytes": 0,
+      "cpuFinalNs": {
+        "userCpuNs": 31250000,
+        "systemCpuNs": 31250000
+      },
+      "logicalIoFinal": {
+        "readOperations": 3602,
+        "writeOperations": 840,
+        "otherOperations": 1888,
+        "readTransferBytes": 82121,
+        "writeTransferBytes": 838687,
+        "otherTransferBytes": 47400
+      },
+      "physicalIoBytes": null,
+      "sampledMemoryMaxima": {
+        "workingSetBytes": 6049792,
+        "privateCommitBytes": 1912832
+      },
+      "samples": 79,
+      "observerWallNs": 47509400,
+      "liveReadyCheckpoint": true,
+      "liveResultCheckpoints": 64,
+      "retainedState": {
+        "workingSetBytes": {
+          "ready": 4579328,
+          "lastResult": 5746688,
+          "delta": 1167360,
+          "unavailableReason": null
+        },
+        "privateCommitBytes": {
+          "ready": 835584,
+          "lastResult": 1482752,
+          "delta": 647168,
+          "unavailableReason": null
+        }
+      },
+      "retainedStateUnavailableReason": null
+    },
+    {
+      "name": "reads-64-2",
+      "eligible": true,
+      "censored": false,
+      "readResults": 64,
+      "requestExitStatusCounts": {
+        "2": 10,
+        "0": 36,
+        "1": 18
+      },
+      "sessionExitStatus": 0,
+      "completion": "close",
+      "protocolError": null,
+      "readyLatencyNs": 5663000,
+      "totalExitNs": 511741900,
+      "requestLatencyNs": {
+        "count": 64,
+        "min": 758000,
+        "median": 5816800.0,
+        "max": 19053700
+      },
+      "stdoutBytes": 838687,
+      "stderrBytes": 0,
+      "cpuFinalNs": {
+        "userCpuNs": 0,
+        "systemCpuNs": 46875000
+      },
+      "logicalIoFinal": {
+        "readOperations": 3602,
+        "writeOperations": 840,
+        "otherOperations": 1888,
+        "readTransferBytes": 82121,
+        "writeTransferBytes": 838687,
+        "otherTransferBytes": 47400
+      },
+      "physicalIoBytes": null,
+      "sampledMemoryMaxima": {
+        "workingSetBytes": 6066176,
+        "privateCommitBytes": 1904640
+      },
+      "samples": 75,
+      "observerWallNs": 44841600,
+      "liveReadyCheckpoint": true,
+      "liveResultCheckpoints": 64,
+      "retainedState": {
+        "workingSetBytes": {
+          "ready": 4571136,
+          "lastResult": 5734400,
+          "delta": 1163264,
+          "unavailableReason": null
+        },
+        "privateCommitBytes": {
+          "ready": 819200,
+          "lastResult": 1466368,
+          "delta": 647168,
+          "unavailableReason": null
+        }
+      },
+      "retainedStateUnavailableReason": null
+    },
+    {
+      "name": "reads-255-0",
+      "eligible": true,
+      "censored": false,
+      "readResults": 255,
+      "requestExitStatusCounts": {
+        "2": 37,
+        "0": 145,
+        "1": 73
+      },
+      "sessionExitStatus": 0,
+      "completion": "close",
+      "protocolError": null,
+      "readyLatencyNs": 6114700,
+      "totalExitNs": 2003325400,
+      "requestLatencyNs": {
+        "count": 255,
+        "min": 608100,
+        "median": 5689700,
+        "max": 21636600
+      },
+      "stdoutBytes": 3363752,
+      "stderrBytes": 0,
+      "cpuFinalNs": {
+        "userCpuNs": 140625000,
+        "systemCpuNs": 140625000
+      },
+      "logicalIoFinal": {
+        "readOperations": 14502,
+        "writeOperations": 3363,
+        "otherOperations": 7436,
+        "readTransferBytes": 330506,
+        "writeTransferBytes": 3363752,
+        "otherTransferBytes": 189890
+      },
+      "physicalIoBytes": null,
+      "sampledMemoryMaxima": {
+        "workingSetBytes": 6524928,
+        "privateCommitBytes": 2269184
+      },
+      "samples": 298,
+      "observerWallNs": 177497500,
+      "liveReadyCheckpoint": true,
+      "liveResultCheckpoints": 255,
+      "retainedState": {
+        "workingSetBytes": {
+          "ready": 4567040,
+          "lastResult": 6135808,
+          "delta": 1568768,
+          "unavailableReason": null
+        },
+        "privateCommitBytes": {
+          "ready": 831488,
+          "lastResult": 1970176,
+          "delta": 1138688,
+          "unavailableReason": null
+        }
+      },
+      "retainedStateUnavailableReason": null
+    },
+    {
+      "name": "reads-255-1",
+      "eligible": true,
+      "censored": false,
+      "readResults": 255,
+      "requestExitStatusCounts": {
+        "2": 37,
+        "0": 145,
+        "1": 73
+      },
+      "sessionExitStatus": 0,
+      "completion": "close",
+      "protocolError": null,
+      "readyLatencyNs": 5845100,
+      "totalExitNs": 2369615500,
+      "requestLatencyNs": {
+        "count": 255,
+        "min": 597700,
+        "median": 5763400,
+        "max": 33486300
+      },
+      "stdoutBytes": 3363752,
+      "stderrBytes": 0,
+      "cpuFinalNs": {
+        "userCpuNs": 171875000,
+        "systemCpuNs": 125000000
+      },
+      "logicalIoFinal": {
+        "readOperations": 14502,
+        "writeOperations": 3363,
+        "otherOperations": 7436,
+        "readTransferBytes": 330506,
+        "writeTransferBytes": 3363752,
+        "otherTransferBytes": 189890
+      },
+      "physicalIoBytes": null,
+      "sampledMemoryMaxima": {
+        "workingSetBytes": 6529024,
+        "privateCommitBytes": 2265088
+      },
+      "samples": 315,
+      "observerWallNs": 205909500,
+      "liveReadyCheckpoint": true,
+      "liveResultCheckpoints": 255,
+      "retainedState": {
+        "workingSetBytes": {
+          "ready": 4579328,
+          "lastResult": 6139904,
+          "delta": 1560576,
+          "unavailableReason": null
+        },
+        "privateCommitBytes": {
+          "ready": 831488,
+          "lastResult": 1966080,
+          "delta": 1134592,
+          "unavailableReason": null
+        }
+      },
+      "retainedStateUnavailableReason": null
+    },
+    {
+      "name": "reads-255-2",
+      "eligible": true,
+      "censored": false,
+      "readResults": 255,
+      "requestExitStatusCounts": {
+        "2": 37,
+        "0": 145,
+        "1": 73
+      },
+      "sessionExitStatus": 0,
+      "completion": "close",
+      "protocolError": null,
+      "readyLatencyNs": 5835600,
+      "totalExitNs": 2047291200,
+      "requestLatencyNs": {
+        "count": 255,
+        "min": 646700,
+        "median": 5614400,
+        "max": 29331400
+      },
+      "stdoutBytes": 3363752,
+      "stderrBytes": 0,
+      "cpuFinalNs": {
+        "userCpuNs": 109375000,
+        "systemCpuNs": 156250000
+      },
+      "logicalIoFinal": {
+        "readOperations": 14502,
+        "writeOperations": 3363,
+        "otherOperations": 7436,
+        "readTransferBytes": 330506,
+        "writeTransferBytes": 3363752,
+        "otherTransferBytes": 189890
+      },
+      "physicalIoBytes": null,
+      "sampledMemoryMaxima": {
+        "workingSetBytes": 6565888,
+        "privateCommitBytes": 2535424
+      },
+      "samples": 296,
+      "observerWallNs": 180790700,
+      "liveReadyCheckpoint": true,
+      "liveResultCheckpoints": 255,
+      "retainedState": {
+        "workingSetBytes": {
+          "ready": 4591616,
+          "lastResult": 6389760,
+          "delta": 1798144,
+          "unavailableReason": null
+        },
+        "privateCommitBytes": {
+          "ready": 913408,
+          "lastResult": 2523136,
+          "delta": 1609728,
+          "unavailableReason": null
+        }
+      },
+      "retainedStateUnavailableReason": null
+    },
+    {
+      "name": "id-128",
+      "eligible": true,
+      "censored": false,
+      "readResults": 0,
+      "requestExitStatusCounts": {},
+      "sessionExitStatus": 0,
+      "completion": "close",
+      "protocolError": null,
+      "readyLatencyNs": 6415700,
+      "totalExitNs": 11116100,
+      "requestLatencyNs": {
+        "count": 0,
+        "min": null,
+        "median": null,
+        "max": null
+      },
+      "stdoutBytes": 548,
+      "stderrBytes": 0,
+      "cpuFinalNs": {
+        "userCpuNs": 0,
+        "systemCpuNs": 0
+      },
+      "logicalIoFinal": {
+        "readOperations": 1,
+        "writeOperations": 2,
+        "otherOperations": 50,
+        "readTransferBytes": 173,
+        "writeTransferBytes": 548,
+        "otherTransferBytes": 312
+      },
+      "physicalIoBytes": null,
+      "sampledMemoryMaxima": {
+        "workingSetBytes": 4952064,
+        "privateCommitBytes": 946176
+      },
+      "samples": 4,
+      "observerWallNs": 2313000,
+      "liveReadyCheckpoint": true,
+      "liveResultCheckpoints": 0,
+      "retainedState": null,
+      "retainedStateUnavailableReason": "no read-result endpoint in this boundary control"
+    },
+    {
+      "name": "id-129",
+      "eligible": true,
+      "censored": false,
+      "readResults": 0,
+      "requestExitStatusCounts": {},
+      "sessionExitStatus": 2,
+      "completion": "protocol-error",
+      "protocolError": "FRAME_SCHEMA",
+      "readyLatencyNs": 5719400,
+      "totalExitNs": 11468000,
+      "requestLatencyNs": {
+        "count": 0,
+        "min": null,
+        "median": null,
+        "max": null
+      },
+      "stdoutBytes": 509,
+      "stderrBytes": 0,
+      "cpuFinalNs": {
+        "userCpuNs": 0,
+        "systemCpuNs": 0
+      },
+      "logicalIoFinal": {
+        "readOperations": 1,
+        "writeOperations": 3,
+        "otherOperations": 51,
+        "readTransferBytes": 174,
+        "writeTransferBytes": 509,
+        "otherTransferBytes": 312
+      },
+      "physicalIoBytes": null,
+      "sampledMemoryMaxima": {
+        "workingSetBytes": 4673536,
+        "privateCommitBytes": 827392
+      },
+      "samples": 4,
+      "observerWallNs": 2973000,
+      "liveReadyCheckpoint": true,
+      "liveResultCheckpoints": 0,
+      "retainedState": null,
+      "retainedStateUnavailableReason": "no read-result endpoint in this boundary control"
+    },
+    {
+      "name": "duplicate-id",
+      "eligible": true,
+      "censored": false,
+      "readResults": 1,
+      "requestExitStatusCounts": {
+        "0": 1
+      },
+      "sessionExitStatus": 2,
+      "completion": "protocol-error",
+      "protocolError": "DUPLICATE_ID",
+      "readyLatencyNs": 5790900,
+      "totalExitNs": 17114300,
+      "requestLatencyNs": {
+        "count": 1,
+        "min": 5866100,
+        "median": 5866100,
+        "max": 5866100
+      },
+      "stdoutBytes": 11284,
+      "stderrBytes": 0,
+      "cpuFinalNs": {
+        "userCpuNs": 0,
+        "systemCpuNs": 0
+      },
+      "logicalIoFinal": {
+        "readOperations": 100,
+        "writeOperations": 14,
+        "otherOperations": 83,
+        "readTransferBytes": 2245,
+        "writeTransferBytes": 11284,
+        "otherTransferBytes": 1538
+      },
+      "physicalIoBytes": null,
+      "sampledMemoryMaxima": {
+        "workingSetBytes": 5238784,
+        "privateCommitBytes": 1064960
+      },
+      "samples": 5,
+      "observerWallNs": 3249600,
+      "liveReadyCheckpoint": true,
+      "liveResultCheckpoints": 1,
+      "retainedState": {
+        "workingSetBytes": {
+          "ready": 4554752,
+          "lastResult": 5214208,
+          "delta": 659456,
+          "unavailableReason": null
+        },
+        "privateCommitBytes": {
+          "ready": 794624,
+          "lastResult": 1064960,
+          "delta": 270336,
+          "unavailableReason": null
+        }
+      },
+      "retainedStateUnavailableReason": null
+    },
+    {
+      "name": "frame-lf-cap",
+      "eligible": true,
+      "censored": false,
+      "readResults": 0,
+      "requestExitStatusCounts": {},
+      "sessionExitStatus": 0,
+      "completion": "close",
+      "protocolError": null,
+      "readyLatencyNs": 5758000,
+      "totalExitNs": 12125800,
+      "requestLatencyNs": {
+        "count": 0,
+        "min": null,
+        "median": null,
+        "max": null
+      },
+      "stdoutBytes": 423,
+      "stderrBytes": 0,
+      "cpuFinalNs": {
+        "userCpuNs": 31250000,
+        "systemCpuNs": 0
+      },
+      "logicalIoFinal": {
+        "readOperations": 43,
+        "writeOperations": 2,
+        "otherOperations": 92,
+        "readTransferBytes": 524288,
+        "writeTransferBytes": 423,
+        "otherTransferBytes": 312
+      },
+      "physicalIoBytes": null,
+      "sampledMemoryMaxima": {
+        "workingSetBytes": 5980160,
+        "privateCommitBytes": 2342912
+      },
+      "samples": 4,
+      "observerWallNs": 2297900,
+      "liveReadyCheckpoint": true,
+      "liveResultCheckpoints": 0,
+      "retainedState": null,
+      "retainedStateUnavailableReason": "no read-result endpoint in this boundary control"
+    },
+    {
+      "name": "frame-crlf-cap",
+      "eligible": true,
+      "censored": false,
+      "readResults": 0,
+      "requestExitStatusCounts": {},
+      "sessionExitStatus": 0,
+      "completion": "close",
+      "protocolError": null,
+      "readyLatencyNs": 5670800,
+      "totalExitNs": 11999000,
+      "requestLatencyNs": {
+        "count": 0,
+        "min": null,
+        "median": null,
+        "max": null
+      },
+      "stdoutBytes": 423,
+      "stderrBytes": 0,
+      "cpuFinalNs": {
+        "userCpuNs": 0,
+        "systemCpuNs": 0
+      },
+      "logicalIoFinal": {
+        "readOperations": 43,
+        "writeOperations": 2,
+        "otherOperations": 92,
+        "readTransferBytes": 524288,
+        "writeTransferBytes": 423,
+        "otherTransferBytes": 312
+      },
+      "physicalIoBytes": null,
+      "sampledMemoryMaxima": {
+        "workingSetBytes": 5947392,
+        "privateCommitBytes": 2351104
+      },
+      "samples": 4,
+      "observerWallNs": 2618400,
+      "liveReadyCheckpoint": true,
+      "liveResultCheckpoints": 0,
+      "retainedState": null,
+      "retainedStateUnavailableReason": "no read-result endpoint in this boundary control"
+    },
+    {
+      "name": "frame-over",
+      "eligible": true,
+      "censored": false,
+      "readResults": 0,
+      "requestExitStatusCounts": {},
+      "sessionExitStatus": 2,
+      "completion": "protocol-error",
+      "protocolError": "FRAME_TOO_LARGE",
+      "readyLatencyNs": 6637200,
+      "totalExitNs": 12161300,
+      "requestLatencyNs": {
+        "count": 0,
+        "min": null,
+        "median": null,
+        "max": null
+      },
+      "stdoutBytes": 512,
+      "stderrBytes": 0,
+      "cpuFinalNs": {
+        "userCpuNs": 0,
+        "systemCpuNs": 0
+      },
+      "logicalIoFinal": {
+        "readOperations": 43,
+        "writeOperations": 3,
+        "otherOperations": 93,
+        "readTransferBytes": 524288,
+        "writeTransferBytes": 512,
+        "otherTransferBytes": 312
+      },
+      "physicalIoBytes": null,
+      "sampledMemoryMaxima": {
+        "workingSetBytes": 5894144,
+        "privateCommitBytes": 2342912
+      },
+      "samples": 4,
+      "observerWallNs": 2440900,
+      "liveReadyCheckpoint": true,
+      "liveResultCheckpoints": 0,
+      "retainedState": null,
+      "retainedStateUnavailableReason": "no read-result endpoint in this boundary control"
+    },
+    {
+      "name": "auto-256",
+      "eligible": true,
+      "censored": false,
+      "readResults": 256,
+      "requestExitStatusCounts": {
+        "0": 256
+      },
+      "sessionExitStatus": 0,
+      "completion": "limit",
+      "protocolError": null,
+      "readyLatencyNs": 5323000,
+      "totalExitNs": 3818015600,
+      "requestLatencyNs": {
+        "count": 256,
+        "min": 5376400,
+        "median": 14153900.0,
+        "max": 33565300
+      },
+      "stdoutBytes": 5982762,
+      "stderrBytes": 0,
+      "cpuFinalNs": {
+        "userCpuNs": 218750000,
+        "systemCpuNs": 265625000
+      },
+      "logicalIoFinal": {
+        "readOperations": 25344,
+        "writeOperations": 6018,
+        "otherOperations": 11441,
+        "readTransferBytes": 592128,
+        "writeTransferBytes": 5982762,
+        "otherTransferBytes": 314168
+      },
+      "physicalIoBytes": null,
+      "sampledMemoryMaxima": {
+        "workingSetBytes": 6365184,
+        "privateCommitBytes": 2166784
+      },
+      "samples": 347,
+      "observerWallNs": 237375100,
+      "liveReadyCheckpoint": true,
+      "liveResultCheckpoints": 255,
+      "retainedState": {
+        "workingSetBytes": {
+          "ready": 4571136,
+          "lastResult": null,
+          "delta": null,
+          "unavailableReason": "live endpoint unavailable; post-exit memory excluded"
+        },
+        "privateCommitBytes": {
+          "ready": 823296,
+          "lastResult": null,
+          "delta": null,
+          "unavailableReason": "live endpoint unavailable; post-exit memory excluded"
+        }
+      },
+      "retainedStateUnavailableReason": null
+    }
+  ],
+  "limits": [
+    "single host and one frozen executable",
+    "three fresh sessions per lifetime count; not confidence bounds",
+    "authored small fixture; no camera performance inference",
+    "sampled memory growth is not leak proof or quota",
+    "logical I/O is not device traffic",
+    "sampled membership is not containment",
+    "harness watchdog is not a product deadline",
+    "no queue, concurrency, persistent cache, cancellation or resource policy selected",
+    "automatic-close last live endpoint unavailable; post-exit memory excluded"
+  ]
+}

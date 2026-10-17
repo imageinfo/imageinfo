@@ -101,5 +101,53 @@ and [process](../legacy-compatibility/read-session-process.md) correctness and
 lifecycle limits remain unchanged. No cancellation policy, queue, concurrency,
 performance recommendation, mutation or production storage admission follows.
 
-Actual campaign results are pending the serialized final-executable slot; the
-functional controls alone are not a latency or resource baseline.
+## Actual frozen authored campaign
+
+The 2026-10-17 serialized campaign and independent retained-output review passed
+all 16 fixed cells, with zero failed or censored sessions and no adaptive retries.
+The [sanitized machine summary](read-session-resources/qualification.v1.json)
+records exact per-cell timings, final CPU/logical-I/O counters, sampled memory
+maxima, checkpoint availability, output sizes and expected request statuses.
+Detailed frames, observation series and verification records remain privately
+retained. All content was independently authored; no camera content was measured.
+
+The executable was built from source commit
+`61e6e8b719c35d9fc48412f6702faea7f14ea618`, tree
+`e610cfd79419066f8d0a5cee573ee59cca9e35b8`, with executable SHA-256
+`6da5f13d712fa075b8dd77f705dc36725212f226f16c32cf1d6a0814993ee20e`.
+The complete 910-file frozen tracked-source manifest has SHA-256
+`67fca8899cf70e20b2355e2adf61d9a05080012d3dfbc3f7b36938403cfa0390`.
+Its source hashes, the commit, executable and clean tracked state matched before
+and after collection. The fixture byte/name/mtime/physical-identity inventories
+also matched. The host ran Windows 11 build 26200 with Python 3.14.7.
+
+The nine explicit-close sessions produced all 960 expected ordered read results.
+All request-level failures and following valid reads matched the independent
+standalone oracles. The automatic-close cell produced 256 more results and its
+complete limit frame; the duplicate-ID control produced one result before its
+expected refusal, for 1,217 total read results. ID129, duplicate-ID and oversized
+frame refusals are successful boundary controls, rather than failed sessions.
+The campaign retained 18,637,339 stdout bytes and no stderr bytes.
+
+The following ranges span the three fresh sessions in each lifetime group.
+Request medians include that group's planned request failures as well as valid
+reads; they are not per-success-only processing costs. All times include the
+declared harness/observer overhead and uncontrolled warm exposure.
+
+| Reads per session | Ready latency, ms | Within-session request median, ms | Total through exit/sampling, ms | Live working-set growth, bytes | Live private-commit growth, bytes |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 5.39–14.25 | 5.60–5.82 | 16.39–25.19 | 671,744–688,128 | 274,432–397,312 |
+| 64 | 5.58–7.21 | 5.63–5.82 | 499.42–518.15 | 1,007,616–1,167,360 | 413,696–647,168 |
+| 255 | 5.84–6.11 | 5.61–5.76 | 2,003.33–2,369.62 | 1,560,576–1,798,144 | 1,134,592–1,609,728 |
+
+All nine explicit-close lifetime sessions had live ready/last-result memory
+endpoints. The automatic-close process exited before its final live checkpoint
+could be established; that endpoint and both memory-growth deltas remain
+unavailable. The earlier 255 results in that cell have live checkpoints. Its
+post-exit sample supplies final lifetime CPU/logical-I/O observations, without
+substituting post-exit memory for retained state. Every cell passed the independent
+telemetry alignment/arithmetic audit.
+
+These observations establish the finite method and bounded authored session
+behavior. They select no latency target, memory allowance, persistent cache,
+product timeout or broader performance policy.

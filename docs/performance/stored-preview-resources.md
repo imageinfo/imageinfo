@@ -6,6 +6,11 @@ camera-derived protocols, captures, extracted bytes, reports, values, counts and
 outcomes stay in ignored `.local` storage. This public document records the
 method and authored tool checks only; it reports no camera result.
 
+The campaign bound to frozen source commit
+`61e6e8b719c35d9fc48412f6702faea7f14ea618` was collected, and its retained
+evidence was independently reviewed privately. Camera-derived values, counts,
+outcomes and statistics remain private under the existing grants.
+
 The [collector](../../scripts/measure_preview_resources_145.py) requires the exact
 existing admitted full-RAW fixture, original private grant, restricted privacy
 review, current derivative permission and prior extraction correctness. The
