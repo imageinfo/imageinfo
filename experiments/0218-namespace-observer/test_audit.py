@@ -116,38 +116,58 @@ class TransportControls(unittest.TestCase):
                     audit.audit_transport(root)
 
 
-def collision_protocol_fixture():
-    """Independent authored five-operation failed-candidate transcript model."""
+def collision_protocol_fixture(cell="candidate-collision"):
+    """Independent authored transcript for either finite protocol control."""
+    normal = cell == "normal"
+    stages = (
+        "preflight", "create-root", "root-flush", "parent-flush", "create-Candidate",
+        "check-CandidateChecked", "file-Candidate", "root-flush", "create-Prepared",
+        "check-PreparedChecked", "file-Prepared", "root-flush", "create-Intent", "check-IntentChecked",
+        "file-Intent", "root-flush", "release", "check-Prepublication", "publish", "check-Installed",
+        "file-Candidate", "root-flush", "check-InstalledRechecked", "create-Observation",
+        "check-ObservationChecked", "file-Observation", "root-flush", "create-Receipt", "check-ReceiptChecked",
+        "file-Receipt", "check-ReceiptFileChecked", "root-flush", "check-ReceiptParentChecked",
+        "checked-context", "check-Final", "terminal",
+    ) if normal else ("preflight", "create-root", "root-flush", "parent-flush", "create-Candidate")
     pairs = [("before_operation", stage) if offset == 0 else
              ("candidate_result" if stage == "create-Candidate" else "operation_result", stage)
-             for stage in ("preflight", "create-root", "root-flush", "parent-flush", "create-Candidate")
+             for stage in stages
              for offset in (0, 1)]
     pairs.extend((("runtime_result", "runtime"), ("backend_dropped", "backend-drop")))
-    raw_lines, received, commands = [], [], []
+    raw_lines, received, commands, transcript = [], [], [], []
     position = 0
     for sequence, (kind, stage) in enumerate(pairs, 1):
         result = None
         if kind in ("operation_result", "candidate_result"):
-            failed = kind == "candidate_result"
+            failed = kind == "candidate_result" and not normal
             result = dict(success=not failed, failure="Conflict" if failed else None,
                           native_error_kind="AlreadyExists" if failed else None,
                           native_os_error=183 if failed else None)
         elif kind == "runtime_result":
-            result = dict(status="Conflict", phase="CandidateCreated", failure="Conflict",
-                          publication_possible=False, release_possible=False, protocol_complete=False,
+            result = dict(status="Refused" if normal else "Conflict", phase="TerminalExport" if normal else "CandidateCreated",
+                          failure=None if normal else "Conflict",
+                          publication_possible=normal, release_possible=normal, protocol_complete=normal,
                           retained_material=True, pending_cleanup=True, charged_bytes=32)
         event = dict(v=1, unit="authored218", seq=sequence, kind=kind, stage=stage,
                      result=result, bindings=[], **dict.fromkeys(audit.FLAGS, False))
         raw_lines.append(audit.PREFIX + encoded(event))
         position += 1
-        received.append(dict(seq=position, value={"line": sequence}))
+        row = dict(kind="stdout_line", seq=position, child_alive=True, value={"line": sequence})
+        received.append(row)
+        transcript.append(row)
         if kind in ("before_operation", "candidate_result"):
             command = dict(v=1, unit="authored218", seq=sequence, stage=stage,
                            command="release" if kind == "candidate_result" else "continue")
             position += 1
-            commands.append(dict(seq=position, value={"bytes_hex": encoded(command).hex()}))
-    return dict(raw_lines=raw_lines, received=received, commands=commands,
-                exit={"seq": position + 1})
+            transcript.append(dict(kind="observation_acknowledged", seq=position, child_alive=True,
+                                   value={"event_seq": sequence, "command": command["command"]}))
+            position += 1
+            row = dict(kind="command_sent", seq=position, child_alive=True, value={"bytes_hex": encoded(command).hex()})
+            commands.append(row)
+            transcript.append(row)
+    exit_row = dict(kind="exit", seq=position + 1, child_alive=False, value={"exit_confirmed": True})
+    transcript.append(exit_row)
+    return dict(raw_lines=raw_lines, received=received, commands=commands, transcript=transcript, exit=exit_row)
 
 
 class DiagnosticOrderControls(unittest.TestCase):
@@ -185,6 +205,83 @@ class DiagnosticOrderControls(unittest.TestCase):
             mutate(value)
             with self.subTest(name=name), self.assertRaises(audit.AuditError):
                 audit._protocol(value, "candidate-collision", "authored218")
+
+
+def postwrite_exit_fixture(cell):
+    value = collision_protocol_fixture(cell)
+    sent = value["commands"][-1]
+    for row in value["transcript"]:
+        if row["seq"] >= sent["seq"]:
+            row["child_alive"] = False
+    return value
+
+
+class PostwriteExitSampleControls(unittest.TestCase):
+    def test_both_final_gate_races_require_and_retain_consumption_proof(self):
+        for cell in ("normal", "candidate-collision"):
+            value = postwrite_exit_fixture(cell)
+            events, runtime, _ = audit._protocol(value, cell, "authored218")
+            self.assertFalse(value["commands"][-1]["child_alive"])
+            self.assertEqual(events[-1]["kind"], "backend_dropped")
+            self.assertEqual(runtime["protocol_complete"], cell == "normal")
+            with self.subTest(cell=cell), temporary_directory() as directory:
+                root = Path(directory)
+                bounds = dict(deadline_seconds=30.0, stdout_bytes=65536, stderr_bytes=4096,
+                              line_bytes=4096, events=128, command_bytes=1024, commands=64)
+                command = ["authored-placeholder-not-an-executable"]
+                for row in value["transcript"]:
+                    row["seq"] += 1
+                    row["elapsed_ns"] = row["seq"]
+                value["exit"]["value"] = dict(exit_code=0, exit_confirmed=True, status="transport_complete", reason="child_exit_zero")
+                value["transcript"].insert(0, dict(kind="start", seq=1, elapsed_ns=1, child_alive=False,
+                                                  value=dict(command=command, bounds=bounds)))
+                stdout = b"".join(value["raw_lines"])
+                result = dict(schema="namespace-observer-run-v1", command=command, bounds=bounds,
+                              status="transport_complete", reason="child_exit_zero", exit_code=0,
+                              lines=len(value["raw_lines"]), commands=len(value["commands"]), stdout_bytes=len(stdout), stderr_bytes=0,
+                              child_killed=False, replayed=False, threads_stopped=True, elapsed_seconds=0.01,
+                              exit_confirmed=True, capture_drain_complete=True, cleanup_errors=[], child_pid=218)
+                write_transport(root, dict(result=result, stdout=stdout, stderr=b"",
+                                          events=[dict(line=index, bytes_hex=line.hex()) for index, line in enumerate(value["raw_lines"], 1)],
+                                          transcript=value["transcript"]))
+                audited = audit.audit_transport(root)
+                self.assertFalse(audited["commands"][-1]["child_alive"])
+
+    def test_missing_live_prewrite_or_downstream_evidence_refuses(self):
+        def ack(value):
+            return next(row for row in value["transcript"] if row["kind"] == "observation_acknowledged"
+                        and row["value"]["event_seq"] == (71 if len(value["raw_lines"]) == 74 else 10))
+        def runtime(value):
+            event = json.loads(value["raw_lines"][-2][len(audit.PREFIX):])
+            event["result"]["phase"] = "Preflight"
+            value["raw_lines"][-2] = audit.PREFIX + encoded(event)
+        mutations = {
+            "prewrite_not_alive": lambda v: ack(v).update(child_alive=False),
+            "prewrite_wrong_command": lambda v: ack(v)["value"].update(command="cancel"),
+            "prewrite_wrong_sequence": lambda v: ack(v)["value"].update(event_seq=1),
+            "missing_prewrite": lambda v: v["transcript"].remove(ack(v)),
+            "late_prewrite": lambda v: ack(v).update(seq=v["commands"][-1]["seq"] + 1),
+            "receive_not_alive": lambda v: v["received"][-4 if len(v["raw_lines"]) == 74 else -3].update(child_alive=False),
+            "child_resurrection": lambda v: v["received"][-1].update(child_alive=True),
+            "unconfirmed_exit": lambda v: v["exit"]["value"].update(exit_confirmed=False),
+            "missing_drop": lambda v: v["raw_lines"].pop(),
+            "wrong_runtime": runtime,
+            "nonfinal_command_not_alive": lambda v: v["commands"][0].update(child_alive=False),
+            "wrong_final_ack": lambda v: v["commands"][-1]["value"].update(bytes_hex=encoded(dict(v=1, unit="authored218", seq=1, stage="preflight", command="continue")).hex()),
+        }
+        for cell in ("normal", "candidate-collision"):
+            for name, mutate in mutations.items():
+                value = postwrite_exit_fixture(cell)
+                audit._protocol(value, cell, "authored218")
+                mutate(value)
+                with self.subTest(cell=cell, mutation=name), self.assertRaises(audit.AuditError):
+                    audit._protocol(value, cell, "authored218")
+            value = collision_protocol_fixture(cell)
+            audit._protocol(value, cell, "authored218")
+            value["commands"][0]["child_alive"] = False
+            with self.subTest(cell=cell, mutation="only_nonfinal_sample_dead"), self.assertRaisesRegex(
+                    audit.AuditError, "nonfinal command sampled child exit"):
+                audit._protocol(value, cell, "authored218")
 
 
 def probe_timeline_fixture():

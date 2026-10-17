@@ -173,17 +173,24 @@ def _audit_transport(attempt_dir):
     for row in commands:
         require(set(row["value"]) == {"bytes_hex"}, "command transcript schema")
         raw = _hex(row["value"]["bytes_hex"], bounds["command_bytes"])
-        require(raw.endswith(b"\n") and b"\n" not in raw[:-1] and row["child_alive"],
-                "command framing/lifetime")
+        require(raw.endswith(b"\n") and b"\n" not in raw[:-1], "command framing")
     exits = [row for row in transcript if row["kind"] == "exit"]
     require(len(exits) == 1 and exits[0]["child_alive"] is False, "actual child exit required")
     require(_exact(exits[0]["value"], {"exit_code": 0, "exit_confirmed": True,
                                      "status": "transport_complete", "reason": "child_exit_zero"}),
             "exit/result mismatch")
     require(all(row["seq"] < exits[0]["seq"] for row in received + commands), "post-exit transport event")
-    return {"root": root, "result": result, "bounds": bounds, "stdout": stdout,
-            "stderr": stderr, "raw_lines": raw_lines, "transcript": transcript,
-            "commands": commands, "received": received, "exit": exits[0]}
+    transport = {"root": root, "result": result, "bounds": bounds, "stdout": stdout,
+                 "stderr": stderr, "raw_lines": raw_lines, "transcript": transcript,
+                 "commands": commands, "received": received, "exit": exits[0]}
+    if any(not row["child_alive"] for row in commands):
+        # A successful write/flush can be consumed and the child can exit before
+        # this later poll. Do not infer consumption from that poll: require the
+        # entire exact finite protocol and its live prewrite observation below.
+        command = _json(_hex(commands[-1]["value"]["bytes_hex"], 1024)[:-1])
+        cell = "normal" if command.get("stage") == "terminal" else "candidate-collision"
+        _protocol(transport, cell, command.get("unit"))
+    return transport
 
 
 def audit_transport(attempt_dir):
@@ -277,6 +284,7 @@ def _protocol(transport, cell, unit):
             candidate = {"event": event, "receive_seq": positions[index], "before_receive_seq": positions[index - 1]}
     require(len(transport["commands"]) == len(required_commands), "missing/extra acknowledgements")
     for sent, (wanted, lower, upper) in zip(transport["commands"], required_commands):
+        require(type(sent.get("child_alive")) is bool, "missing command child-state sample")
         raw = _hex(sent["value"]["bytes_hex"], 1024)
         require(b"\r" not in raw and _exact(_json(raw[:-1]), wanted), "stale/duplicate/wrong acknowledgement")
         require(lower < sent["seq"] < upper, "acknowledgement outside its actual event gate")
@@ -290,7 +298,45 @@ def _protocol(transport, cell, unit):
         require(type(runtime[key]) is bool, "runtime boolean type")
     require(_integer(runtime["charged_bytes"], 0, 2**64 - 1), "runtime charge bound")
     require(positions[-2] < positions[-1] < transport["exit"]["seq"], "runtime/drop/exit order")
+    _postwrite_exit_samples(transport, cell, events, positions, required_commands)
     return events, runtime, candidate
+
+
+def _postwrite_exit_samples(transport, cell, events, positions, required_commands):
+    sampled_dead = [row for row in transport["commands"] if row["child_alive"] is False]
+    if not sampled_dead:
+        return
+    require(len(sampled_dead) == 1 and sampled_dead[0] is transport["commands"][-1],
+            "nonfinal command sampled child exit")
+    sent = sampled_dead[0]
+    wanted, lower, upper = required_commands[-1]
+    normal = cell == "normal"
+    require((wanted["command"], wanted["stage"], wanted["seq"]) == (
+        ("continue", "terminal", 71) if normal else ("release", "create-Candidate", 10)),
+        "postwrite exit lacks a finite final gate")
+    prewrite = [row for row in transport["transcript"] if row["kind"] == "observation_acknowledged"
+                and _exact(row["value"], {"event_seq": wanted["seq"], "command": wanted["command"]})]
+    received = next(row for row in transport["received"] if row["seq"] == lower)
+    require(len(prewrite) == 1 and lower < prewrite[0]["seq"] < sent["seq"] < upper
+            and received.get("child_alive") is True and prewrite[0].get("child_alive") is True,
+            "postwrite exit lacks matching live prewrite observation")
+    require(not any(row["child_alive"] for row in transport["transcript"] if row["seq"] > sent["seq"]),
+            "child-state samples contradict observed exit")
+    require(transport["exit"].get("child_alive") is False
+            and transport["exit"].get("value", {}).get("exit_confirmed") is True,
+            "postwrite exit lacks confirmed process exit")
+    runtime = events[-2]["result"]
+    require(runtime["status"] == ("Refused" if normal else "Conflict")
+            and runtime["phase"] == ("TerminalExport" if normal else "CandidateCreated")
+            and runtime["failure"] == (None if normal else "Conflict")
+            and runtime["protocol_complete"] is normal,
+            "postwrite exit lacks matching runtime consumption")
+    if normal:
+        require(events[-3]["kind"] == "operation_result" and events[-3]["stage"] == "terminal"
+                and events[-3]["result"]["success"] is True and positions[-3] == upper,
+                "final continue lacks matching operation-result consumption")
+    else:
+        require(positions[-2] == upper, "candidate release lacks matching runtime consumption")
 
 
 def _snapshot(snapshot, source, source_hash, source_bytes):

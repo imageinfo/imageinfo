@@ -104,6 +104,14 @@ shared identity, mode, length, modification time and explicit birth time across
 APIs under an exact interpreter profile. A changed property still refuses.
 The failed declaration is retained separately from any freshly reviewed run.
 
+The next normal attempt completed its worker protocol, but its audit rejected
+a post-write liveness poll taken after the worker consumed its final command
+and exited. That audit failure and its unstarted collision cell also remain
+retained. The revised audit preserves the false poll and requires a matching
+live pre-write observation, the exact downstream continuation and confirmed
+exit. The candidate checkpoint and held-source probes still require actual
+live observations; command delivery alone cannot substitute for them.
+
 The independent retained-evidence audit must reconcile the exact source and
 worker bindings, request/plan, event sequence, explicit release, runtime result,
 backend drop, process exit, hold observations and final artifacts. Matching
