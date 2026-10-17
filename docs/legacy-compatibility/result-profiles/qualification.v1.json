@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "ticket": 127,
   "platform": "nt",
-  "binarySha256": "382759c18bfc521b4959c80a5e4431b190e597368800f3c739e2e4ebc49cf4d1",
+  "binarySha256": "286ca4b6fb36cd744f9a1029460512a2a49ffa6bc6c8429ac47e162d737cb499",
   "sourceSha256": {
     "src/main.rs": "15d94e58407c8efed48e5dbf611551c9d19f7056887d043ad7281df1fb4488b8",
     "src/lib.rs": "8510d35f963e6a1c8da9bf4a9bb488b2af145f0659983432891d0c87769aa821",
@@ -101,7 +101,7 @@
     {
       "id": "list-refusal",
       "exitStatus": 1,
-      "stdoutBytes": 946,
+      "stdoutBytes": 942,
       "stderrBytes": 72,
       "sourceEffects": "unchanged",
       "inputSha256": {
@@ -126,7 +126,7 @@
     {
       "id": "list-deduplicated",
       "exitStatus": 0,
-      "stdoutBytes": 11261,
+      "stdoutBytes": 11266,
       "stderrBytes": 0,
       "sourceEffects": "unchanged",
       "inputSha256": {
@@ -162,7 +162,7 @@
     {
       "id": "extract-dry-run",
       "exitStatus": 0,
-      "stdoutBytes": 802,
+      "stdoutBytes": 806,
       "stderrBytes": 0,
       "sourceEffects": "unchanged",
       "inputSha256": {

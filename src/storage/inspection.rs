@@ -2,8 +2,11 @@
 //! never authority, replay, cleanup or a claim of an admitted storage profile.
 
 use super::MAX_RECORD_BYTES;
+#[cfg(windows)]
 use super::custody::{ActionAuthority, CurrentBindings, RestartAction};
-use super::runtime::{Artifact, Binding, PROTOCOL};
+#[cfg(any(windows, test))]
+use super::runtime::Binding;
+use super::runtime::{Artifact, PROTOCOL};
 
 pub(crate) const PROFILE: &str = "windows-ntfs-unqualified-internal-v1";
 pub(crate) const IMPLEMENTATION: &str =
