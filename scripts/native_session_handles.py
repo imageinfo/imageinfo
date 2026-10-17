@@ -52,6 +52,15 @@ def launch(binary, case, fixture, captures):
             status, native = _windows(binary, case, fixture, source, output, errors)
             detail.update(native)
         else:
+            import fcntl
+            access = {os.O_RDONLY: 'read-only', os.O_WRONLY: 'write-only', os.O_RDWR: 'read-write'}
+            detail['stdinAccessMode'] = access[fcntl.fcntl(source, fcntl.F_GETFL) & os.O_ACCMODE]
+            detail['stdoutAccessMode'] = access[fcntl.fcntl(output, fcntl.F_GETFL) & os.O_ACCMODE]
+            if case == 'stdin-write-only':
+                assert detail['stdinAccessMode'] == 'write-only', 'stdin injection access mode'
+            if case == 'stdout-read-only':
+                assert detail['stdoutAccessMode'] == 'read-only', 'stdout injection access mode'
+            detail['stdinClosedInPreexec'] = case == 'stdin-closed'
             def setup():
                 if case == 'stdin-closed':
                     os.close(0)

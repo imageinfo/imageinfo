@@ -85,9 +85,38 @@ Hosted Linux/macOS qualification is established only by the separately retained
 exact-source CI run and artifacts; these local Windows observations do not
 qualify those platforms.
 
+An actual Linux MUSL executable built from production source
+`2a3d2084c937a46987c4f822583f8194218c7c67` was run in existing WSL Ubuntu with
+Python 3.14.4 and kernel `6.18.33.2-microsoft-standard-WSL2`. The static
+`x86_64-unknown-linux-musl` build used Rust 1.99.0, `rust-lld` and
+`-C link-self-contained=yes`; executable SHA-256 is
+`30652a10f3660b9919ad98a2304c6549290f3d8b7b3441ff3181e61de23ede75`.
+The same seven cases, with actual POSIX descriptor access modes checked before
+launch, produced these exact observations:
+
+| Caller-supplied Linux descriptors | Actual observed result |
+| --- | --- |
+| Empty regular-file / closed-writer pipe stdin | Ready, EOF completion; status 0; empty stderr |
+| Closed stdin / valid write-only regular-file stdin | Ready, EOF completion; status 0; empty stderr |
+| Directory stdin | Ready, `INPUT_IO`, input-error completion; status 1; empty stderr |
+| Valid read-only regular-file stdout | No captured frames or stderr; natural status 0; delivery unestablished |
+| Pipe stdout with its reader already closed | No captured stdout; status 1; `OUTPUT_INCOMPLETE` with `BrokenPipe` |
+
+The initial POSIX oracle wrongly expected input/output errors for both
+wrong-access regular-file setups. The actual failed run remains at
+`.local/work-wave-20261017c/140-linux-musl-before-fix/report.json`. The corrected
+strict oracle passes the same seven cases at `140-linux-musl-corrected/report.json`,
+with unchanged protected inventories. This correction records observed outcomes;
+it adds no successful-delivery guarantee. In particular, status 0 with no captured
+stdout is a known delivery limit for the existing compatibility scope. It is
+neither an observed output error nor a successful session transcript. Directory
+stdin supplies the distinct positive native `INPUT_IO` observation on this run.
+WSL/MUSL evidence does not qualify hosted GNU Linux or macOS; those native CI
+results remain separate requirements.
+
 Native flush-only failure injection is **unavailable** in these cases. Failed
-stdout targets fail a write; they do not demonstrate a successful native write
-followed only by a failed flush. The actual library faulting-writer tests retain
+stdout observations do not demonstrate a successful native write followed only
+by a failed flush. The actual library faulting-writer tests retain
 that distinct path. Successful flushes never prove later consumer delivery.
 
 ## Reproduction
@@ -105,6 +134,10 @@ as `censored-watchdog`, separately from `natural-exact`; matching that observati
 does not turn it into a natural session outcome. The ten-second per-child
 watchdog and post-run 8 KiB capture validation are harness checks, not production
 timeouts or physical disk quotas.
+
+Unexpected cases also print concise case/status/byte-count/watchdog/inventory
+metadata before exiting. Raw frame and capture bytes remain in retained artifacts,
+allowing a failed CI step to identify its failing case without dumping transcripts.
 
 This work enables no media mutation, publication, recovery, cancellation,
 flush-only native qualification, broad compatibility or storage-profile admission.

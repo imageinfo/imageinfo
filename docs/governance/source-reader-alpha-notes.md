@@ -56,6 +56,9 @@ reference-tool option compatibility.
 
 Reading may update filesystem access times. Preview extraction has documented
 partial/uncertain outcomes, and process termination may leave a temporary file.
+Exit status alone does not prove JSONL delivery: the bounded
+[native standard-handle observations](../legacy-compatibility/native-session-handles.md)
+include normalized EOF and zero-status/no-output cases.
 Source length/mtime checks are not continuous adversarial guards. Hostile namespace
 races, directory persistence, remote filesystem guarantees and physical power
 survival are not certified. The project uses
