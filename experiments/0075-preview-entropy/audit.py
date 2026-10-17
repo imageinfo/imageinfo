@@ -486,11 +486,18 @@ def rebind_runtime_files(request, manifest):
         file_binding(path, profile["components"][key])
     for name, binding in profile["loadedNonOsModules"].items():
         file_binding(local_path(root, name), binding)
+    # The encoder's plugin preparation has a separately reviewed closure. It
+    # neither widens nor replaces the exact decoder closure above.
+    for field in ("loadedEncoderNonOsModules", "encoderSourceModules"):
+        require(type(profile.get(field)) is dict and bool(profile[field]), "encoder-component-map")
+        for name, binding in profile[field].items():
+            file_binding(local_path(root, name), binding)
     manifest_path = root / "native/libheif/manifest.json"
     require(sha(manifest_path.read_bytes()) == profile["manifest"]["sha256"] and
             read_json(manifest_path) == profile["manifest"]["package"], "package-manifest")
     return {"componentProfileCanonicalSha256": canonical_sha(profile),
-            "loadedNonOsModulesRebound": True, "noticesRebound": True}
+            "loadedNonOsModulesRebound": True, "encoderComponentsRebound": True,
+            "encoderSourcesRebound": True, "noticesRebound": True}
 
 
 def audit_run(run_root, expectations_path):
@@ -665,6 +672,18 @@ def audit_encoder_recipe(provenance, base_id, manifest):
             "encoder-component-identities")
 
 
+def audit_encoder_closure(provenance, manifest):
+    """Both actual encoder observations must equal its separate exact pin."""
+    pins = manifest["componentProfile"]["loadedEncoderNonOsModules"]
+    mandatory = {"python/python.exe", "python/python312.dll",
+                 "python/Lib/site-packages/PIL/_imaging.cp312-win_amd64.pyd"}
+    require(type(pins) is dict and mandatory <= set(pins), "encoder-closure-pin")
+    require(provenance.get("loadedEncoderClosureBefore") ==
+            provenance.get("loadedEncoderClosureAfter") ==
+            provenance.get("loadedEncoderClosure") == pins, "encoder-loaded-closure")
+    return pins
+
+
 def audit_encoder_provenance(plan):
     """Rebind six retained encodings, source formulas and their actual processes.
 
@@ -751,12 +770,7 @@ def audit_encoder_provenance(plan):
                 read_json(root / "encoding" / (base_id + ".result.json")) == row,
                 "encoder-provenance-binding")
         audit_encoder_recipe(provenance, base_id, manifest)
-        closure = provenance.get("loadedEncoderClosure")
-        pins = manifest["componentProfile"]["loadedNonOsModules"]
-        mandatory = {"python/python.exe", "python/python312.dll",
-                     "python/Lib/site-packages/PIL/_imaging.cp312-win_amd64.pyd"}
-        require(type(closure) is dict and mandatory <= set(closure) and
-                all(pins.get(name) == bound for name, bound in closure.items()), "encoder-loaded-closure")
+        closure = audit_encoder_closure(provenance, manifest)
         bundle = interpreter_path.parent.parent
         for name, bound in closure.items():
             file_binding(local_path(bundle, name), bound)

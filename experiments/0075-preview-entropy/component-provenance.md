@@ -45,3 +45,19 @@ Module checks enumerate actual loaded non-OS modules and require the reviewed
 closure, including byte identities. Modules under the actual Windows directory
 are excluded. That exclusion is an explicit OS provenance limit; component hashes
 are a local binding rather than a sandbox or complete runtime trust proof.
+
+The encoder and decoder have separate exact native-module inventories. Pillow's
+format-selected `Image.save` imports/registers its standard plugin set through
+`Image.preinit`; the PNG plugin imports `fractions`, which imports `decimal`
+and its bundled native extension. An inventory of decoder imports alone omits
+that encoder dependency. Import-only probes establish this difference without
+constructing an image or calling a JPEG operation.
+
+`loadedEncoderNonOsModules` pins the encoder inventory, while
+`loadedNonOsModules` retains the separate decoder inventory. Both native sets
+and the encoder's declared Python source modules are hashed before encoder
+preparation. `prepare_encoder` imports/registers the fixed plugin set, checks
+the exact encoder inventory before image operations, and the caller checks it
+again afterward. Encoder preparation loads no TurboJPEG decoder DLL. An extra,
+missing or changed module refuses; the failed initial campaign remains a
+retained failure and supplies no encoder or entropy qualification.

@@ -91,6 +91,22 @@ imageinfo's extracted bytes.
 
 ## Authored qualification and denominators
 
+### First encoder campaign: preparation failure
+
+The first fixed six-base encoder campaign failed its exact loaded-module closure
+guard during preparation. All six process attempts were retained and audited;
+no base or provenance was published, and no decoder campaign artifacts exist.
+Therefore, no decoder invocation or entropy assertion was evaluated. This is a
+preparation failure, not a failed JPEG control or a change to the declared
+expectations.
+
+A load-only diagnosis identifies a missing separate encoder-closure pin. The
+source authors are correcting that exact pin while leaving the decoder pin and
+59-case denominator unchanged. The correction needs new source review and a
+fresh authored campaign; the failed attempts cannot be replayed or counted as
+qualification. The retained authored audit is
+`.local/work-wave-20261017e/75-first-encoder-failure-audit.private.json`.
+
 [The positive recipe](../../experiments/0075-preview-entropy/controls.py) declares
 43 cases before execution under `0075-authored-controls-v2-zero-interval`. It uses modular
 integer RGB formulas and a solid RGB formula, explicit encoder settings and named

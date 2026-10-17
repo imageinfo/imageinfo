@@ -104,6 +104,24 @@ def freeze(root, *, interpreter, runtime_manifest):
     return write(root / "freeze.json", value)
 
 
+def _encode_with_verified_closure(case_id, verified):
+    """Bind the separate encoder closure before any image operation.
+
+    prepare_encoder performs only verified module loading. Closure equality is
+    exact on both sides of construction; decoder closure remains independent.
+    """
+    before = verified.prepare_encoder()
+    expected = verified.profile["loadedEncoderNonOsModules"]
+    if before != expected:
+        raise ValueError("encoder pre-operation closure differs")
+    source_hash = controls.source_pixel_digest(case_id)
+    data = controls.build_control(case_id, verified.assert_encoder_closure)
+    after = verified.assert_encoder_closure()
+    if after != expected or after != before:
+        raise ValueError("encoder post-operation closure differs")
+    return data, source_hash, before, after
+
+
 def _encoder_worker(request_binding):
     """One exact formula base, invoked only by a reviewed six-base campaign."""
     request = read_json(request_binding)
@@ -125,14 +143,7 @@ def _encoder_worker(request_binding):
     if read_json(proposal["runtimeManifest"]) != identity_before:
         raise ValueError("reviewed encoder runtime differs")
     specification = controls.control_spec(case_id)
-    source_hash = controls.source_pixel_digest(case_id)
-    data = controls.build_control(case_id, runtime.verify_encoder)
-    # Enumerate the encoder's actual closure without loading a decoder solely
-    # to match a decoder process's larger closure. Every loaded entry is pinned.
-    actual = runtime.loaded_components(verified.root)
-    expected = verified.profile["loadedNonOsModules"]
-    if any(expected.get(name) != identity for name, identity in actual.items()):
-        raise ValueError("encoder loaded unpinned component")
+    data, source_hash, closure_before, closure_after = _encode_with_verified_closure(case_id, verified)
     identity_after = runtime.verify_runtime().identity()
     if identity_before != identity_after:
         raise ValueError("encoder components changed")
@@ -149,7 +160,9 @@ def _encoder_worker(request_binding):
                            "subsampling": specification["subsampling"],
                            "options": specification["encoderOptions"]},
             "componentIdentityBefore": identity_before, "componentIdentityAfter": identity_after,
-            "loadedEncoderClosure": actual}
+            "loadedEncoderClosureBefore": closure_before,
+            "loadedEncoderClosureAfter": closure_after,
+            "loadedEncoderClosure": closure_after}
     # Component identities are larger than the bounded process capture. Retain
     # them separately and emit only their exact binding on the worker pipe.
     return {"provenance": write(root / "encoding" / (case_id + ".provenance.json"), provenance)}

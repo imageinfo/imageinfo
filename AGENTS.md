@@ -480,6 +480,12 @@ staged error loses the prepared source namespace despite retained original bytes
 All three requested native flush-error classes remain unproduced; emulator drain
 errors are not Windows API errors. This negative/unqualified evidence retains
 exact-profile refusal under #0176, with no new device hunt or relaxed guarantee.
+#0176 now implements that exact refusal in a production-owned selector and intended
+new-output caller seam before deferred construction or resource charges. Five
+necessary predicates remain unmet; the sealed positive token is uninhabited.
+Its complete WS/SAF trace and authored caller controls satisfy the card's explicit
+unsupported alternative, not positive #0022 or downstream RAW/XMP admission.
+See `docs/write-safety/new-output-admission.md` for corrective owners and evidence.
 #0179 implements fixed two-unit staging/order and explicit receipt-bound resume.
 Failed finalizer evidence and cancelled staged contexts stay retained; no native
 pair adapter, group atomicity or public apply is enabled.

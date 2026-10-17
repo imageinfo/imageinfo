@@ -141,5 +141,193 @@
     },
     "sha256": "eb9e6ab42754eb3b3faa0c28ba1507b74793bcca58141ce618e233177ce9dd41"
   },
-  "schemaVersion": 1
+  "schemaVersion": 1,
+  "loadedEncoderNonOsModules": {
+    "python/DLLs/_bz2.pyd": {
+      "byteLength": 88880,
+      "sha256": "86aba3f32102e218946eff789d921195a64ab7c122eaa55ceab3de4ffb69b2b5"
+    },
+    "python/DLLs/_ctypes.pyd": {
+      "byteLength": 131888,
+      "sha256": "b739ab763f9e4a1820b9de653567d04c7467087f3a89c00e4b3f93df72dabb13"
+    },
+    "python/DLLs/_decimal.pyd": {
+      "byteLength": 263984,
+      "sha256": "8441a0567738f194c0b3e31008ac8ddcdfb0d9eec0b4b2aba195b83d92b082d6"
+    },
+    "python/DLLs/_hashlib.pyd": {
+      "byteLength": 70448,
+      "sha256": "0477fbbd7a3425331a5f4de89e840d024ff4b7c6c662d7b68061b5850305e00a"
+    },
+    "python/DLLs/_lzma.pyd": {
+      "byteLength": 168240,
+      "sha256": "5912bc75f3d49efd57d857787da0890696e50fae02c30469989766adb516bef4"
+    },
+    "python/DLLs/_socket.pyd": {
+      "byteLength": 87344,
+      "sha256": "a6cd5a1070b62cdd3b8b91cac60200bff4a400a54daf7d4e9ca6b50a4854c8ce"
+    },
+    "python/DLLs/_wmi.pyd": {
+      "byteLength": 41264,
+      "sha256": "9755d0a51bd15aff76b82bd8d2528775b3797b0dce090f49ff4a876612eb5232"
+    },
+    "python/DLLs/libcrypto-3-x64.dll": {
+      "byteLength": 8003376,
+      "sha256": "d38dcde789d3e3854caa68ae9273d48d0ee2dc4f143cfcf7cfe83b59d224dff8"
+    },
+    "python/DLLs/libffi-8.dll": {
+      "byteLength": 43824,
+      "sha256": "e49daa31bad9b9c1094ba25a40579e5d3f0a4adbd727341e1c0acea0bc167787"
+    },
+    "python/DLLs/select.pyd": {
+      "byteLength": 34608,
+      "sha256": "529d8e5b4dcdc853792a699595508e982a161828de4f53ade3bf365ffc46948f"
+    },
+    "python/Lib/site-packages/PIL/_imaging.cp312-win_amd64.pyd": {
+      "byteLength": 2648368,
+      "sha256": "36445b8d5d07c2dc8263b4008f06fe94d24b9d0f8d0130025a07a14a22af90d6"
+    },
+    "python/Lib/site-packages/PIL/_imagingmath.cp312-win_amd64.pyd": {
+      "byteLength": 37168,
+      "sha256": "fd94eb9f01895bada7a312c3dced932e1754a7070797759959557430dee19993"
+    },
+    "python/python.exe": {
+      "byteLength": 107312,
+      "sha256": "7d938c92a08d6495421f2f1076ccd7198aec0b288471abc0a55e90b1150d96a1"
+    },
+    "python/python3.dll": {
+      "byteLength": 71984,
+      "sha256": "e588188088c15e2f08d2b114e842cff7f6a9efd73dd8d759534a97ce7e6a6727"
+    },
+    "python/python312.dll": {
+      "byteLength": 6985520,
+      "sha256": "70e319bca85e7c776bfb2501361b03c0ed5714adcada4105bd5efa779d5e63d6"
+    },
+    "python/vcruntime140.dll": {
+      "byteLength": 124544,
+      "sha256": "d5e4d9a3e835fa679450145d6a7d94e36573a509317111904d9b3712c30d9066"
+    },
+    "python/vcruntime140_1.dll": {
+      "byteLength": 49792,
+      "sha256": "1f2d41c4aa5db0bc33ebf7b66d72943a817d7ce6cbe880502a9403823633093f"
+    }
+  },
+  "encoderSourceModules": {
+    "python/Lib/site-packages/PIL/PngImagePlugin.py": {
+      "byteLength": 53977,
+      "sha256": "26e6495edc516f7589dea911c330d7f16d4ec96eed78af838da00902e77e6040"
+    },
+    "python/Lib/site-packages/PIL/PaletteFile.py": {
+      "byteLength": 1270,
+      "sha256": "41d11af7d8cb0be3cf844a86cbaff87c3b9af13cca4925339007987029455fb3"
+    },
+    "python/Lib/site-packages/PIL/ImageFile.py": {
+      "byteLength": 30828,
+      "sha256": "e972c9d8785ad1fd44f860a375d8719f3fdff8e46da1cc311950699f93e4f539"
+    },
+    "python/Lib/site-packages/PIL/_binary.py": {
+      "byteLength": 2664,
+      "sha256": "ba6dc47fa221e747297ee81afcbdaef2ea9be664c7a4b51f5382563132e0b20b"
+    },
+    "python/Lib/site-packages/PIL/__init__.py": {
+      "byteLength": 2122,
+      "sha256": "3fffff8502f4b59ca61d39cce713d55ffef046954262fce1abac3e97f3803734"
+    },
+    "python/Lib/site-packages/PIL/ImageChops.py": {
+      "byteLength": 8257,
+      "sha256": "859f043d43e5408cee82c11e755f2dae4297d230420c66fa0acce66ba65e3194"
+    },
+    "python/Lib/site-packages/PIL/PpmImagePlugin.py": {
+      "byteLength": 12719,
+      "sha256": "22331d42c009691d13c90bb591ddebe28eaad28e49295c2ae21475d0e7804715"
+    },
+    "python/Lib/site-packages/PIL/ImageMode.py": {
+      "byteLength": 2480,
+      "sha256": "50b900fa3b02806c31563af62cf48fe367439a3ea759a424f4be142a3eca7d28"
+    },
+    "python/Lib/site-packages/PIL/BmpImagePlugin.py": {
+      "byteLength": 20377,
+      "sha256": "e23760527cf54ebb06b6e56d73be70ff896666c04f55fdd1047bf99434f9da63"
+    },
+    "python/Lib/site-packages/PIL/ImagePalette.py": {
+      "byteLength": 9498,
+      "sha256": "f4a973fbb23a253494a7695f64933a5740f270540a926e91c5fc970d3e14fe7c"
+    },
+    "python/Lib/site-packages/PIL/ImageSequence.py": {
+      "byteLength": 2341,
+      "sha256": "82e64751da56af39f3664718d0e6290f3b85d2e15794212edbad283feedefdf2"
+    },
+    "python/Lib/site-packages/PIL/_version.py": {
+      "byteLength": 91,
+      "sha256": "8367607a728dc206da64e3de6b24f826f3030d7f3c053f25c3b3a1fde94fb9d7"
+    },
+    "python/Lib/site-packages/PIL/Image.py": {
+      "byteLength": 158171,
+      "sha256": "59f1b98ed7bfd7b516b9f13ffd9dd3bc0aa1a495042accdb5ae4609b41c329d5"
+    },
+    "python/Lib/fractions.py": {
+      "byteLength": 38147,
+      "sha256": "d52d1ab9d5be26924e4914a5e40069c992bbfa68f773694c2e5ee8452d0766a0"
+    },
+    "python/Lib/site-packages/PIL/TiffTags.py": {
+      "byteLength": 17772,
+      "sha256": "16c76a6c8409388ee2846ecc67f2b8614403678ce8fab6986e28550dee3653d1"
+    },
+    "python/Lib/decimal.py": {
+      "byteLength": 2805,
+      "sha256": "c3e37c55ef72b3dd6cb7b466a907b966467b6a9c58d85302193e64cbb5fd53d0"
+    },
+    "python/Lib/numbers.py": {
+      "byteLength": 11467,
+      "sha256": "ac381960a3dc1db0498b0bd43d8ef278d6599713121a186b153ff09d9552e0db"
+    },
+    "python/Lib/site-packages/PIL/JpegImagePlugin.py": {
+      "byteLength": 32223,
+      "sha256": "049fc12cf436b101a5622456a1b83ba8b28b54cf8106d3953aed751bb0c08f3f"
+    },
+    "python/Lib/site-packages/PIL/ExifTags.py": {
+      "byteLength": 10339,
+      "sha256": "362cafb665044fbf41322a248a3313a7fabc75e596ce9c9db5371305f272f0a1"
+    },
+    "python/Lib/site-packages/PIL/GifImagePlugin.py": {
+      "byteLength": 43596,
+      "sha256": "0cf9dd837ba23b412c95765aea4422bbf6e7c2210c6eefde91eab43d4308b0d5"
+    },
+    "python/Lib/site-packages/PIL/_deprecate.py": {
+      "byteLength": 2106,
+      "sha256": "522ac3970b3279feaeeac2ffae51379a72ad45fd666af9a7864b7fd4f03b43c0"
+    },
+    "python/Lib/site-packages/PIL/ImageMath.py": {
+      "byteLength": 10659,
+      "sha256": "d39d8fd05608b184178f75263ff0b04a0509de58e8e6945f14dfe4eac85e4496"
+    },
+    "python/Lib/site-packages/PIL/ImageColor.py": {
+      "byteLength": 9761,
+      "sha256": "295faeec79d95abacbdf3b8100e2ea7ab23eeef15c5d3c5d2dea1a6158ec9f02"
+    },
+    "python/Lib/site-packages/PIL/GimpGradientFile.py": {
+      "byteLength": 4137,
+      "sha256": "cec216d4c915ea4a39964e072555de8121d4df250fc16d695329d1b39cf48990"
+    },
+    "python/Lib/site-packages/PIL/JpegPresets.py": {
+      "byteLength": 12621,
+      "sha256": "51422c2b3bf2cdd3f3b2774e0ddf747aefe5b8ca9ab86d4f261d7450eb90be68"
+    },
+    "python/Lib/site-packages/PIL/GimpPaletteFile.py": {
+      "byteLength": 1935,
+      "sha256": "126047710f44c42e1fe3bb5a0fb4bb1ba55a324afd1e3ca7955f0d7535d5e624"
+    },
+    "python/Lib/site-packages/PIL/_util.py": {
+      "byteLength": 713,
+      "sha256": "78ff087e658999b13f3ea6d425be2a4ea18d2e2e334f44d369daebaa6ca483b6"
+    },
+    "python/Lib/site-packages/PIL/ImageOps.py": {
+      "byteLength": 26446,
+      "sha256": "ad146c4c218335150d4099e851f1f78c582f5df6c46648893f0ab56dea38a3e4"
+    },
+    "python/Lib/site-packages/PIL/features.py": {
+      "byteLength": 11118,
+      "sha256": "cbf7a5342ce007a46030ff4031fdc274e3f78dda0de21a38bf1a122b383a7967"
+    }
+  }
 }

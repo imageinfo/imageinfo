@@ -15,7 +15,7 @@ import sys
 HERE = Path(__file__).resolve().parent
 ORIGINAL = HERE.parent / "0111-warning-jpeg"
 ORIGINAL_PROFILE_CANONICAL_SHA256 = "885ae7003d6272ac4527b23b5471467f2546beeaa87bf5877f73214c7997011e"
-COMPONENT_PROFILE_CANONICAL_SHA256 = "04e8673816a10605df35cf9a631cdce59b79d8e77e01216b199a3dcc6ef3626a"
+COMPONENT_PROFILE_CANONICAL_SHA256 = "847fc454f0e125970e4de0b01778e34de5ef4cf996494dcf3075d208946346e5"
 PROFILE_ID = "0075-baseline-interleaved-rgb-zero-padding-v2"
 SETTINGS = {
     "inputBytes": 32 * 1024 * 1024, "dimension": 8192,
@@ -83,6 +83,27 @@ class VerifiedRuntime:
         self.profile = original
         self.library_path = _inside(root, "native/libheif/libheif/bin/turbojpeg.dll")
 
+    def prepare_encoder(self):
+        """Bind/import the exact encoder plugin closure before image operations.
+
+        Image.save's format-selected path calls Image.preinit. Import/register
+        that same finite plugin set explicitly so its native dependencies can
+        be checked before constructing pixels or invoking the JPEG encoder.
+        No image is constructed and no codec entry point is called here.
+        """
+        for name in ("loadedEncoderNonOsModules", "encoderSourceModules"):
+            for relative, identity in self.profile[name].items():
+                _check(_inside(self.root, relative), identity)
+        from PIL import Image
+        Image.preinit()
+        return self.assert_encoder_closure()
+
+    def assert_encoder_closure(self):
+        actual = loaded_components(self.root)
+        if actual != self.profile["loadedEncoderNonOsModules"]:
+            raise RuntimeRefusal("loaded encoder non-OS module closure differs")
+        return actual
+
     def load_library(self):
         """Caller grants/stage checks must precede this native-load seam."""
         # Match the reviewed current deterministic closure without pixel generation.
@@ -130,8 +151,9 @@ def verify_runtime(manifest_path=None):
         raise RuntimeRefusal("encoder component set differs")
     for name, path in paths.items():
         _check(path, expected[name])
-    for relative, identity in profile["loadedNonOsModules"].items():
-        _check(_inside(root, relative), identity)
+    for group in ("loadedNonOsModules", "loadedEncoderNonOsModules", "encoderSourceModules"):
+        for relative, identity in profile[group].items():
+            _check(_inside(root, relative), identity)
     manifest = _inside(root, "native/libheif/manifest.json")
     if (digest(manifest.read_bytes()) != profile["manifest"]["sha256"] or
             json.loads(manifest.read_text(encoding="utf-8")) != profile["manifest"]["package"]):
@@ -146,7 +168,9 @@ def verify_runtime(manifest_path=None):
 
 def verify_encoder():
     """Controls callback, called before any Pillow import."""
-    return verify_runtime()
+    verified = verify_runtime()
+    verified.prepare_encoder()
+    return verified
 
 
 def loaded_components(root):

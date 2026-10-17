@@ -223,6 +223,33 @@ class IndependentReconstructionTests(unittest.TestCase):
             with self.assertRaisesRegex(audit.InvalidEvidence, reason):
                 audit.audit_encoder_recipe(altered, "formula-64-444", manifest)
 
+    def test_encoder_closure_has_separate_exact_before_and_after_pins(self):
+        identities = {name: {"byteLength": 1, "sha256": str(index) * 64} for index, name in enumerate((
+            "python/python.exe", "python/python312.dll",
+            "python/Lib/site-packages/PIL/_imaging.cp312-win_amd64.pyd",
+            "python/Lib/site-packages/PIL/synthetic_encoder_plugin.pyd"), start=1)}
+        decoder_only = {"synthetic-decoder-only.dll": {"byteLength": 1, "sha256": "0" * 64}}
+        manifest = {"componentProfile": {"loadedEncoderNonOsModules": identities,
+                                         "loadedNonOsModules": decoder_only}}
+        provenance = {field: copy.deepcopy(identities) for field in
+                      ("loadedEncoderClosureBefore", "loadedEncoderClosureAfter", "loadedEncoderClosure")}
+        self.assertEqual(audit.audit_encoder_closure(provenance, manifest), identities)
+        self.assertEqual(manifest["componentProfile"]["loadedNonOsModules"], decoder_only)
+        for field in ("loadedEncoderClosureBefore", "loadedEncoderClosureAfter", "loadedEncoderClosure"):
+            for mutation in ("missing", "extra", "changed", "decoder-substitution"):
+                with self.subTest(field=field, mutation=mutation):
+                    altered = copy.deepcopy(provenance)
+                    if mutation == "missing":
+                        altered[field].pop("python/python312.dll")
+                    elif mutation == "extra":
+                        altered[field]["unexpected.dll"] = {"byteLength": 1, "sha256": "f" * 64}
+                    elif mutation == "changed":
+                        altered[field]["python/python.exe"]["sha256"] = "f" * 64
+                    else:
+                        altered[field] = decoder_only
+                    with self.assertRaisesRegex(audit.InvalidEvidence, "encoder-loaded-closure"):
+                        audit.audit_encoder_closure(altered, manifest)
+
 
 class SyntheticPositivePlanTests(unittest.TestCase):
     """Exercise actual audit_run -> audit_plan return propagation, without native I/O.
