@@ -93,7 +93,10 @@ handoffs. Public contributors use ordinary PRs. No mandatory PR approvals,
 CODEOWNERS or new branch-rule requirements were adopted by #0157; see the
 [current review policy](docs/governance/review-routing-plan.md#accepted-solo-workflow--0157-2026-10-16).
 Agent review does not establish independent human review, and technical evidence
-requirements remain applicable.
+requirements remain applicable. The [dated retained-policy verification](docs/governance/retained-review-policy.md)
+records the actual direct-push/check/board route and separates project procedure
+from absent machine enforcement. Run its offline record checker when changing
+that record; it does not exercise GitHub permissions or replace actual checks.
 
 Explain the problem, changed behavior, evidence, compatibility/safety effects and
 remaining limits. Favor small reviewable changes, conventional names and ordinary

@@ -76,6 +76,24 @@ retains its original historical baseline.
 
 ## Count the queue consistently
 
+The seventh execution wave selects seven existing scopes: #0175, #0141,
+#0143, #0151, #0152, #0158 and the exact publication preparation for #0161.
+All move In Progress before work or delegation. This leaves 45 Ready for Work
+cards (35 executable scopes and ten tracking umbrellas), without new cards.
+Sixteen direct agents split implementation components, followed by fresh
+independent review. The VM-off and timing campaigns run serially against
+reviewed, frozen tools. #0161 retains its explicit exact-candidate publication
+approval requirement; preparation acceptance alone does not authorize a tag or release.
+Terry subsequently requested infrequent releases. #0161's reviewed proposal is
+held in Backlog at his direction because publishing now would chiefly rehearse
+hosting; no release was created and actual publication acceptance remains unmet.
+See the [recorded release cadence](governance/release-cadence.md).
+Terry then requested one future 1.0 release reminder: #0216 is Blocked at his
+explicit direction until 1.0 is ready. This requested milestone card is not a
+replacement implementation batch and adds no current Ready for Work scope.
+The completed negative prerequisites for #0198/#0185/#0194 and the finite
+technical-fit limit for #0075 still do not establish their positive capabilities.
+
 The fifth execution wave selects #0171, #0197, #0128, #0130, #0134, #0135,
 #0137 and #0138 after Terry accepted the fourth wave. All eight move to In
 Progress before work or delegation. This leaves 68 Ready for Work cards

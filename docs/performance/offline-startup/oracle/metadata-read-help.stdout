@@ -1,0 +1,30 @@
+Read the declared R5 metadata subset
+
+Usage: imageinfo metadata read [OPTIONS] [INPUT]...
+
+Arguments:
+  [INPUT]...  Literal input paths; use -- before paths named help or starting with -
+
+Options:
+      --help
+          Show help for this command
+      --version
+          Show version after validating arguments
+      --output <output>
+          Result format (help always uses plain text) [possible values: text, json]
+      --color <color>
+          Presentation preference; foundation output is plain text [possible values: auto, always, never]
+      --no-interactive
+          Keep this invocation noninteractive
+      --interactive
+          Request guided mode (not implemented yet)
+      --max-bytes <max-bytes>
+          Metadata read byte budget (default 8388608)
+      --max-preview-bytes <max-preview-bytes>
+          Maximum one-preview size (default 67108864)
+      --tag <tag>
+          Select a tag; repeat to select several
+      --values <values>
+          Select the metadata value view [possible values: raw, normalized, display, all]
+
+Coverage is partial and explicit. Source bytes are never modified; --tag selects every matching implemented occurrence.

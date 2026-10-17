@@ -22,6 +22,10 @@ protection rehearsal or recruit reviewers merely to complete the retained-policy
 branch. Record only actual observations; no enforced review or independent human
 coverage is claimed. Revisit enforcement only if Terry selects a different policy.
 
+The [#0158 verification](retained-review-policy.md) records the actual retained
+route, exact-source check evidence and bounded negative-case dispositions. It
+does not activate the historical proposal below.
+
 ## Historical unselected #0069 proposal
 
 **#0069 / GOV-OPEN-04, 2026-10-15**, revision `review-routing-v1`.

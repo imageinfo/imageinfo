@@ -190,6 +190,8 @@ pub(crate) mod group;
 pub(crate) mod inspection;
 #[cfg(all(test, windows))]
 mod native_errors;
+#[cfg(all(test, windows))]
+mod qualification;
 #[allow(dead_code)]
 pub(crate) mod replacement_resources;
 #[allow(dead_code)]

@@ -332,6 +332,18 @@ mod native {
     ) -> CleanupResult {
         run(source, root, request, cancel, |_, _| Ok(()))
     }
+
+    /// Test-only interruption hook around the actual cleanup implementation.
+    #[cfg(test)]
+    pub(in crate::storage) fn cleanup_observed(
+        source: &Path,
+        root: &Path,
+        request: CleanupRequest,
+        cancel: &Cancellation,
+        before: impl FnMut(usize, &CleanupRequest) -> Result<(), Failure>,
+    ) -> CleanupResult {
+        run(source, root, request, cancel, before)
+    }
     fn run(
         source: &Path,
         root: &Path,
@@ -456,3 +468,6 @@ mod native {
 #[cfg(windows)]
 #[allow(unused_imports)]
 pub(crate) use native::cleanup;
+
+#[cfg(all(test, windows))]
+pub(in crate::storage) use native::cleanup_observed;

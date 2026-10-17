@@ -330,7 +330,38 @@ mod native {
             cancel,
             save,
             Admission::Unqualified,
-            |_, _| Ok(()),
+            |_, _, _| Ok(()),
+        )
+    }
+
+    /// Qualification observes the real unqualified implementation at exact
+    /// operation boundaries. This test-only hook cannot supply admission.
+    #[cfg(test)]
+    #[allow(clippy::too_many_arguments)]
+    pub(in crate::storage) fn finalize_observed(
+        source: &Path,
+        root: &Path,
+        spec: &InspectionSpec<'_>,
+        attempt: &str,
+        prior: PriorProof,
+        authority: ActionAuthority,
+        budget: &mut LogicalBudget,
+        cancel: &Cancellation,
+        save: impl FnMut(Phase, &CompletionContext) -> Result<(), Failure>,
+        boundary: impl FnMut(Phase, bool, &[Binding]) -> Result<(), Failure>,
+    ) -> FinalizationResult {
+        run(
+            source,
+            root,
+            spec,
+            attempt,
+            prior,
+            authority,
+            budget,
+            cancel,
+            save,
+            Admission::Unqualified,
+            boundary,
         )
     }
 
@@ -361,7 +392,7 @@ mod native {
         cancel: &Cancellation,
         mut save: impl FnMut(Phase, &CompletionContext) -> Result<(), Failure>,
         admission: Admission,
-        mut boundary: impl FnMut(Phase, bool) -> Result<(), Failure>,
+        mut boundary: impl FnMut(Phase, bool, &[Binding]) -> Result<(), Failure>,
     ) -> FinalizationResult {
         let mut phase = Phase::Installed;
         let mut charged = 0;
@@ -431,7 +462,7 @@ mod native {
                 if cancel.is_requested() {
                     return Err(Failure::Cancelled);
                 }
-                boundary(step, false)?;
+                boundary(step, false, &held.bindings)?;
                 authority
                     .check(RestartAction::FinalizeExisting, &current)
                     .map_err(|_| Failure::CallerHistory)?;
@@ -462,7 +493,7 @@ mod native {
                     }
                     _ => held.check()?,
                 }
-                boundary(step, true)?;
+                boundary(step, true, &held.bindings)?;
                 authority
                     .check(RestartAction::FinalizeExisting, &current)
                     .map_err(|_| Failure::CallerHistory)?;
@@ -556,3 +587,6 @@ mod native {
 pub(crate) use native::{
     CompletionContext, FinalizationResult, finalize, recognize, recognize_finalized,
 };
+
+#[cfg(all(test, windows))]
+pub(in crate::storage) use native::finalize_observed;

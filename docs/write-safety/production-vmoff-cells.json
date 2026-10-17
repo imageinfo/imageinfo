@@ -1,0 +1,485 @@
+{
+  "schema": "imageinfo-0175-method-v1",
+  "state": "prepared",
+  "possible_publication_selection": "pre-api-conservative",
+  "production_profile_admitted": false,
+  "raw_admitted": false,
+  "cells": [
+    {
+      "id": "normal",
+      "kind": "normal",
+      "mode": "run",
+      "checkpoint": "none",
+      "nr": [
+        "NR-01",
+        "NR-02",
+        "NR-03",
+        "NR-04",
+        "NR-05",
+        "NR-06",
+        "NR-07",
+        "NR-08",
+        "NR-09",
+        "NR-10",
+        "NR-11",
+        "NR-12",
+        "NR-13",
+        "NR-14"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "kill-candidate-ready",
+      "kind": "process-kill",
+      "mode": "run",
+      "checkpoint": "candidate-ready",
+      "nr": [
+        "NR-01"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "kill-intent-ready",
+      "kind": "process-kill",
+      "mode": "run",
+      "checkpoint": "intent-ready",
+      "nr": [
+        "NR-02",
+        "NR-03"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "kill-possible-publication",
+      "kind": "process-kill",
+      "mode": "run",
+      "checkpoint": "possible-publication",
+      "nr": [
+        "NR-04",
+        "NR-05"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "kill-installed-ack",
+      "kind": "process-kill",
+      "mode": "run",
+      "checkpoint": "installed-ack",
+      "nr": [
+        "NR-06",
+        "NR-07",
+        "NR-08"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "kill-receipt-before-ack",
+      "kind": "process-kill",
+      "mode": "run",
+      "checkpoint": "receipt-before-ack",
+      "nr": [
+        "NR-09",
+        "NR-10",
+        "NR-11",
+        "NR-12",
+        "NR-13"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "kill-final-success-response",
+      "kind": "process-kill",
+      "mode": "run",
+      "checkpoint": "final-success-response",
+      "nr": [
+        "NR-14"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "vmoff-possible-publication",
+      "kind": "vm-off",
+      "mode": "run",
+      "checkpoint": "possible-publication",
+      "nr": [
+        "NR-04",
+        "NR-05"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "vmoff-receipt-before-ack",
+      "kind": "vm-off",
+      "mode": "run",
+      "checkpoint": "receipt-before-ack",
+      "nr": [
+        "NR-11",
+        "NR-12",
+        "NR-13"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "vmoff-completed-predicate",
+      "kind": "vm-off",
+      "mode": "run",
+      "checkpoint": "completed-predicate",
+      "nr": [
+        "NR-14"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "kill-restart-finalize",
+      "kind": "process-kill",
+      "mode": "finalize",
+      "checkpoint": "finalize-receipt-created",
+      "nr": [
+        "NR-15"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "kill-partial-cleanup",
+      "kind": "process-kill",
+      "mode": "cleanup",
+      "checkpoint": "cleanup-one-removed",
+      "nr": [
+        "NR-16"
+      ],
+      "status": "prepared"
+    }
+  ],
+  "control_sources": {
+    "runtime-failures": {
+      "path": "src/storage/runtime/tests.rs",
+      "test": "every_backend_failure_is_terminal_and_keeps_publication_uncertainty",
+      "kind": "model"
+    },
+    "length": {
+      "path": "src/storage/runtime/tests.rs",
+      "test": "exact_length_short_overlong_and_overflow_are_bounded",
+      "kind": "model"
+    },
+    "acks": {
+      "path": "src/storage/runtime/tests.rs",
+      "test": "complete_predicate_rejects_missing_reordered_reused_or_foreign_acknowledgements",
+      "kind": "model"
+    },
+    "live-failures": {
+      "path": "src/storage/windows/live_ack_tests.rs",
+      "test": "native_every_phase_before_after_reported_errors_and_lost_responses",
+      "kind": "native-software"
+    },
+    "collision": {
+      "path": "src/storage/windows/live_ack_tests.rs",
+      "test": "native_collision_property_and_cancellation_keep_truthful_artifacts",
+      "kind": "native-software"
+    },
+    "finalize-failures": {
+      "path": "src/storage/finalization/native/tests.rs",
+      "test": "errors_and_lost_responses_at_every_actual_boundary_retain_without_republish",
+      "kind": "native-software"
+    },
+    "cleanup-partial": {
+      "path": "src/storage/cleanup/native/tests.rs",
+      "test": "native_partial_removal_stale_retry_and_cancellation_are_truthful",
+      "kind": "native-software"
+    },
+    "cleanup-foreign": {
+      "path": "src/storage/cleanup/native/tests.rs",
+      "test": "native_foreign_reinsertion_extra_entry_changed_and_inaccessible_refuse",
+      "kind": "native-software"
+    },
+    "finalize-conflicts": {
+      "path": "src/storage/finalization/native/tests.rs",
+      "test": "conflicts_missing_objects_stale_authority_and_receipt_winner_preserve_artifacts",
+      "kind": "native-software"
+    }
+  },
+  "nr_trace": [
+    {
+      "id": "NR-01",
+      "obligation": "candidate-copy-and-flush",
+      "cells": [
+        "normal",
+        "kill-candidate-ready"
+      ],
+      "controls": [
+        "runtime-failures",
+        "live-failures",
+        "length"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "NR-02",
+      "obligation": "prepared-record",
+      "cells": [
+        "normal",
+        "kill-intent-ready"
+      ],
+      "controls": [
+        "runtime-failures",
+        "live-failures"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "NR-03",
+      "obligation": "intent-record",
+      "cells": [
+        "normal",
+        "kill-intent-ready"
+      ],
+      "controls": [
+        "runtime-failures",
+        "live-failures"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "NR-04",
+      "obligation": "release-and-final-prepublication-check",
+      "cells": [
+        "normal",
+        "kill-possible-publication",
+        "vmoff-possible-publication"
+      ],
+      "controls": [
+        "runtime-failures",
+        "live-failures",
+        "collision"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "NR-05",
+      "obligation": "no-replace-publication-uncertainty",
+      "cells": [
+        "normal",
+        "kill-possible-publication",
+        "vmoff-possible-publication"
+      ],
+      "controls": [
+        "runtime-failures",
+        "live-failures",
+        "collision"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "NR-06",
+      "obligation": "installed-binding-check",
+      "cells": [
+        "normal",
+        "kill-installed-ack"
+      ],
+      "controls": [
+        "runtime-failures",
+        "live-failures",
+        "collision"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "NR-07",
+      "obligation": "installed-file-flush",
+      "cells": [
+        "normal",
+        "kill-installed-ack"
+      ],
+      "controls": [
+        "runtime-failures",
+        "live-failures"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "NR-08",
+      "obligation": "namespace-parent-acknowledgement",
+      "cells": [
+        "normal",
+        "kill-installed-ack"
+      ],
+      "controls": [
+        "runtime-failures",
+        "live-failures",
+        "acks"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "NR-09",
+      "obligation": "observation-file",
+      "cells": [
+        "normal",
+        "kill-receipt-before-ack"
+      ],
+      "controls": [
+        "runtime-failures",
+        "live-failures"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "NR-10",
+      "obligation": "observation-parent-and-final-check",
+      "cells": [
+        "normal",
+        "kill-receipt-before-ack"
+      ],
+      "controls": [
+        "runtime-failures",
+        "live-failures"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "NR-11",
+      "obligation": "exclusive-receipt-creation",
+      "cells": [
+        "normal",
+        "kill-receipt-before-ack",
+        "vmoff-receipt-before-ack"
+      ],
+      "controls": [
+        "runtime-failures",
+        "live-failures"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "NR-12",
+      "obligation": "receipt-file-flush",
+      "cells": [
+        "normal",
+        "kill-receipt-before-ack",
+        "vmoff-receipt-before-ack"
+      ],
+      "controls": [
+        "runtime-failures",
+        "live-failures",
+        "acks"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "NR-13",
+      "obligation": "receipt-parent-acknowledgement",
+      "cells": [
+        "normal",
+        "kill-receipt-before-ack",
+        "vmoff-receipt-before-ack"
+      ],
+      "controls": [
+        "runtime-failures",
+        "live-failures",
+        "acks"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "NR-14",
+      "obligation": "final-guarded-check-and-response",
+      "cells": [
+        "normal",
+        "kill-final-success-response",
+        "vmoff-completed-predicate"
+      ],
+      "controls": [
+        "runtime-failures",
+        "live-failures",
+        "acks"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "NR-15",
+      "obligation": "fresh-guarded-finalization",
+      "cells": [
+        "kill-restart-finalize"
+      ],
+      "controls": [
+        "finalize-failures",
+        "finalize-conflicts"
+      ],
+      "status": "prepared"
+    },
+    {
+      "id": "NR-16",
+      "obligation": "exact-owned-partial-cleanup",
+      "cells": [
+        "kill-partial-cleanup"
+      ],
+      "controls": [
+        "cleanup-partial",
+        "cleanup-foreign"
+      ],
+      "status": "prepared"
+    }
+  ],
+  "profile_required_fields": [
+    "guest_os_edition",
+    "guest_os_version",
+    "guest_os_build",
+    "guest_architecture",
+    "guest_account_kind",
+    "guest_boot_identity_before",
+    "guest_volume_identity",
+    "guest_filesystem",
+    "guest_volume_cluster_bytes",
+    "guest_volume_size_bytes",
+    "hypervisor_version",
+    "hypervisor_executable_sha256",
+    "hypervisor_arguments",
+    "controller_model",
+    "controller_driver",
+    "virtual_disk_format",
+    "virtual_disk_backing_chain",
+    "host_cache_mode",
+    "guest_cache_policy",
+    "host_boot_identity",
+    "host_os_build",
+    "actor_source_sha256",
+    "actor_executable_sha256",
+    "actor_toolchain",
+    "actor_build_command",
+    "actor_invocation",
+    "controller_sha256",
+    "guest_script_sha256",
+    "auditor_sha256",
+    "method_ledger_sha256",
+    "native_baseline_evidence_sha256",
+    "freeze_review_evidence_sha256",
+    "guest_volume_kind",
+    "production_source_manifest_sha256",
+    "cargo_lock_sha256",
+    "rust_toolchain_file_sha256",
+    "adapter_crate_sha256",
+    "platform_facade_sha256"
+  ],
+  "assertions_required": [
+    "source-object-bytes-preserved",
+    "output-name-object-bytes-classified",
+    "record-name-object-bytes-classified",
+    "properties-compared-with-original",
+    "no-republication",
+    "no-unowned-removal",
+    "no-imported-authority",
+    "truthful-terminal-status"
+  ],
+  "vmoff_mechanism": "qmp-quit-graceful-emulator-exit",
+  "vmoff_limits": [
+    "emulator-cleanup-may-flush",
+    "host-caches-survive",
+    "no-abrupt-sigkill-claim"
+  ],
+  "diagnostic_transport": {
+    "guest_log": "buffered-no-device-cache-flush",
+    "checkpoint": "host-retained-owned-child-stdout-lf-prefix-http-eventFileBase64",
+    "protocol_flush_schedule": "unchanged",
+    "stdout": "schema-pid-validated-owned-child-private-pipe",
+    "guest_file_capture": "guestDiagnosticBase64-separate-nondurable-not-gate-source"
+  }
+}

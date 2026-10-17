@@ -1,0 +1,1216 @@
+{
+  "schema": "imageinfo.compatibility-lg-evidence.v1",
+  "revision": "2026-10-17.1",
+  "ticket": 141,
+  "kind": "read-only-requirement-evidence-audit",
+  "source_baseline": "de24e58fd88c1b64f350ac19c8854d3716ef66e6",
+  "claims": {
+    "full_parity": false,
+    "drop_in_parity": false,
+    "first_raw_acceptance": false,
+    "writer_authority": false,
+    "differences_accepted": false
+  },
+  "original_lg": [
+    {
+      "id": "LG-001",
+      "source": {
+        "path": "docs/legacy-compatibility/surface-ledger.md",
+        "anchor": "explicit-open-gaps",
+        "line": 74
+      },
+      "text": "Exhaustive grammar, abbreviations, aliases, API options and ordering interactions | Expand token/option-level cases against the pinned executable on lawful fixtures; record each difference. Compatibility evidence follow-up, with corpus #0013.",
+      "original_unresolved": "Exhaustive grammar, abbreviations, aliases, API options and ordering interactions",
+      "original_required_closure": "Expand token/option-level cases against the pinned executable on lawful fixtures; record each difference. Compatibility evidence follow-up, with corpus #0013.",
+      "status": "partially_evidenced_open",
+      "evidence": [
+        {
+          "path": "docs/legacy-compatibility/native-token-inventory.v1.json",
+          "kind": "source_inventory",
+          "scope": "Pinned 32 MAP families, 39 method headings, 87 CLI headings, 102 API options and 12 SetNewValue options; every row retains residual. Inventory is not overload/value/ordering qualification.",
+          "owner_ticket": 121
+        },
+        {
+          "path": "docs/legacy-compatibility/read-reference.results.json",
+          "kind": "actual_authored_reference_native",
+          "scope": "27 frozen selection/view cases; positive reads and explicit refusals. No general aliases, wildcard, ordering or group equivalence.",
+          "owner_ticket": 122
+        },
+        {
+          "path": "docs/legacy-compatibility/stored-preview-differences.results.json",
+          "kind": "actual_authored_reference_native",
+          "scope": "Finite stored-preview list/extract comparison; no decoder, arbitrary preview-type or general extraction equivalence.",
+          "owner_ticket": 123
+        },
+        {
+          "path": "docs/legacy-compatibility/preview-pair-arguments.results.json",
+          "kind": "actual_authored_native",
+          "scope": "Finite current advisory preview and explicit-pair argv boundaries; no publication.",
+          "owner_ticket": 124
+        },
+        {
+          "path": "docs/legacy-compatibility/session-token-admission.md",
+          "kind": "actual_authored_native",
+          "scope": "Actual current session startup/token admission; v1 accepts its closed read/close wire grammar only.",
+          "owner_ticket": 125
+        },
+        {
+          "path": "docs/legacy-compatibility/inert-translation-runtime.md",
+          "kind": "production_implementation",
+          "scope": "Twelve frozen MIG templates; only MIG-001 yields a native suggestion, never execution. No arbitrary legacy grammar adapter.",
+          "owner_ticket": 130
+        },
+        {
+          "path": "docs/legacy-compatibility/snapshot-query-api.md",
+          "kind": "actual_authored_native",
+          "scope": "22 public Rust consumer cases; no reference API ABI, overload or full option equivalence.",
+          "owner_ticket": 134
+        }
+      ],
+      "residuals": [
+        {
+          "id": "LG-001-r01",
+          "scope": "Exhaustive grammar: individually define and qualify every still-current RAW token/value form outside the finite current native denominator; retain unsupported forms and reference differences.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "scope_definition"
+        },
+        {
+          "id": "LG-001-r02",
+          "scope": "Abbreviations and aliases: exact matching, ambiguity, attached/separate values and case rules need finite selected native/reference contracts and runtime evidence; native canonical selectors do not satisfy all legacy aliases.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "scope_definition"
+        },
+        {
+          "id": "LG-001-r03",
+          "scope": "API options and method overloads: every current-RAW-unresolved inventory row retains full semantic/qualification obligations, including option defaults, combinations and SetNewValuesFromFile inheritance.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "scope_definition"
+        },
+        {
+          "id": "LG-001-r04",
+          "scope": "Ordering interactions and argument-file recursion/encoding require individually bounded cases beyond current actual argv and session tests. Never infer exhaustive ordering from a finite passing matrix.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "scope_definition"
+        },
+        {
+          "id": "LG-001-r05",
+          "scope": "Pinned-executable lawful-fixture comparisons and explicit per-difference disposition remain mandatory for each newly selected compatibility cell; original corpus/rights acceptance remains with #0013.",
+          "owner_tickets": [
+            15,
+            13
+          ],
+          "classification": "finite_current_work"
+        },
+        {
+          "id": "LG-001-r06",
+          "scope": "Document/ID3/RIFF-specific and password-only breadth explicitly classified deferred-breadth in #0121 remains eventual functional parity; mixed RAW-relevant options remain with #0015.",
+          "owner_tickets": [
+            12
+          ],
+          "classification": "eventual_0012"
+        }
+      ],
+      "original_requirement": {
+        "unresolved": "Exhaustive grammar, abbreviations, aliases, API options and ordering interactions",
+        "requiredClosure": "Expand token/option-level cases against the pinned executable on lawful fixtures; record each difference. Compatibility evidence follow-up, with corpus #0013."
+      }
+    },
+    {
+      "id": "LG-002",
+      "source": {
+        "path": "docs/legacy-compatibility/surface-ledger.md",
+        "anchor": "explicit-open-gaps",
+        "line": 75
+      },
+      "text": "Exact legacy reports/imports, templates, filename formatting and serialization adapters | Specify field/encoding/escaping/lookup rules with collision, newline, duplicate and round-trip cases. Compatibility follow-up; no exact serializer claimed here.",
+      "original_unresolved": "Exact legacy reports/imports, templates, filename formatting and serialization adapters",
+      "original_required_closure": "Specify field/encoding/escaping/lookup rules with collision, newline, duplicate and round-trip cases. Compatibility follow-up; no exact serializer claimed here.",
+      "status": "partially_evidenced_open",
+      "evidence": [
+        {
+          "path": "docs/legacy-compatibility/report-import/profiles.v1.json",
+          "kind": "specification_model",
+          "scope": "16 report/import profiles with shared encoding/escaping/lookup/collision/round-trip dimensions. Legacy renderers and importers remain unimplemented.",
+          "owner_ticket": 126
+        },
+        {
+          "path": "docs/legacy-compatibility/native-read-json/qualification.v1.json",
+          "kind": "actual_authored_native",
+          "scope": "Exact finite native metadata JSON subset with semantic and lexical checks; native JSON is distinct from legacy JSON.",
+          "owner_ticket": 53
+        },
+        {
+          "path": "docs/legacy-compatibility/result-profiles/qualification.v1.json",
+          "kind": "actual_authored_native",
+          "scope": "Actual five CLI result profile envelopes; no importer or general serializer parity.",
+          "owner_ticket": 127
+        },
+        {
+          "path": "docs/legacy-compatibility/session-result-profiles/qualification.v1.json",
+          "kind": "actual_authored_native",
+          "scope": "Actual session v1 emitted frame profiles plus faulting-I/O boundaries; no complete generic session schema.",
+          "owner_ticket": 128
+        },
+        {
+          "path": "docs/legacy-compatibility/inert-translation-runtime.md",
+          "kind": "production_implementation",
+          "scope": "Finite inert source-token accounting and fixed reports; no report replay, SourceFile matching, metadata importer or automatic apply.",
+          "owner_ticket": 130
+        }
+      ],
+      "residuals": [
+        {
+          "id": "LG-002-r01",
+          "scope": "Native JSON evidence covers its exact existing scalar/binary-range/partial-coverage subset only. Richer list/structure/language alternatives require explicit profile revisions, semantics and emitted-output evidence.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "scope_definition"
+        },
+        {
+          "id": "LG-002-r02",
+          "scope": "Exact legacy reports: JSON, CSV, XML, short, plain, args, PHP and plot each need their #0126 closed positive grammar/projection plus actual output comparison. Native renderers or inert model refusals do not implement them.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "finite_current_work"
+        },
+        {
+          "id": "LG-002-r03",
+          "scope": "Templates require a bounded nonexecuting placeholder AST, escaping, missing/duplicate/ambiguous lookup and output schema before renderer implementation; arbitrary executable templates remain separate LG-003.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "scope_definition"
+        },
+        {
+          "id": "LG-002-r04",
+          "scope": "Filename formatting requires component-result/counter/extension/width/collision/path-separator contracts and actual pure formatting evidence; physical pairing/path resolution does not satisfy it.",
+          "owner_tickets": [
+            15,
+            26
+          ],
+          "classification": "scope_definition"
+        },
+        {
+          "id": "LG-002-r05",
+          "scope": "Serialization adapters must preserve or expose every group/occurrence/list/language/binary/numeric loss, exact encoding/escaping/newline/duplicate/missing/empty/null behavior and round-trip claim separately.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "finite_current_work"
+        },
+        {
+          "id": "LG-002-r06",
+          "scope": "Inert JSON/CSV scalar intent decoders remain unimplemented product importers. Implement bounded lexical/row matching and all-or-nothing behavior without authorizing effects.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "finite_current_work"
+        },
+        {
+          "id": "LG-002-r07",
+          "scope": "Legacy -j=/-csv= imports require exact SourceFile/wildcard/empty/missing/header/duplicate/encoding contracts and explicit target/loss diagnostics before an inert adapter. No report path or imported intent grants apply.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "scope_definition"
+        },
+        {
+          "id": "LG-002-r08",
+          "scope": "Unselected non-RAW report/import breadth retains eventual full functional ambition; no claim that accepting these finite native profiles adopts drop-in report parity.",
+          "owner_tickets": [
+            12
+          ],
+          "classification": "eventual_0012"
+        }
+      ],
+      "original_requirement": {
+        "unresolved": "Exact legacy reports/imports, templates, filename formatting and serialization adapters",
+        "requiredClosure": "Specify field/encoding/escaping/lookup rules with collision, newline, duplicate and round-trip cases. Compatibility follow-up; no exact serializer claimed here."
+      }
+    },
+    {
+      "id": "LG-003",
+      "source": {
+        "path": "docs/legacy-compatibility/surface-ledger.md",
+        "anchor": "explicit-open-gaps",
+        "line": 76
+      },
+      "text": "Arbitrary executable expressions, modules and user-defined parsing/conversion | Choose an explicit trusted-code model later; document provenance, authority and failure isolation. No automatic execution or invented sandbox guarantee.",
+      "original_unresolved": "Arbitrary executable expressions, modules and user-defined parsing/conversion",
+      "original_required_closure": "Choose an explicit trusted-code model later; document provenance, authority and failure isolation. No automatic execution or invented sandbox guarantee.",
+      "status": "partially_evidenced_open",
+      "evidence": [
+        {
+          "path": "docs/legacy-compatibility/pure-data-boundary.md",
+          "kind": "specification_model",
+          "scope": "Accepted pure/data direction refined with exact grammar, aliases/parameters/XMP declarations, frozen bounds and all EXT-001–009 dispositions. No parser/evaluator/importer/code loader is implemented.",
+          "owner_ticket": 131
+        },
+        {
+          "path": "docs/legacy-compatibility/pure-data/vectors.v1.json",
+          "kind": "authored_model",
+          "scope": "Finite envelope/declaration/authority specification controls; futureEvidence remains unrun implementation acceptance.",
+          "owner_ticket": 131
+        },
+        {
+          "path": "docs/legacy-compatibility/executable-extension-boundary.md",
+          "kind": "historical_alternatives",
+          "scope": "EXT alternatives A/B/C and executable trust costs. #0131 supersedes pending-choice wording only for already accepted pure/data forms.",
+          "owner_ticket": 54
+        }
+      ],
+      "residuals": [
+        {
+          "id": "LG-003-r01",
+          "scope": "Implement accepted EXT-001 pure grammar/parser/evaluator with exact rationals, three-valued coverage, all branch preflight, token/depth/visit/byte limits and actual native observation/status evidence.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "finite_current_work"
+        },
+        {
+          "id": "LG-003-r02",
+          "scope": "Implement accepted EXT-002/003 explicit alias/parameter/XMP definitions with exact registry revision, whole-set collision/type/refusal behavior and actual per-request CLI/API/session isolation; declarations never authorize parsing or writes.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "finite_current_work"
+        },
+        {
+          "id": "LG-003-r03",
+          "scope": "EXT-004 custom calculation/composites remain unmet: define units, arithmetic/rounding, input multiplicity and limits before any positive capability. Current refusal is not equivalence.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "scope_definition"
+        },
+        {
+          "id": "LG-003-r04",
+          "scope": "EXT-005 bounded native date mapping remains independently admitted under sidecar owners; the pure/data boundary grants no publication.",
+          "owner_tickets": [
+            24,
+            85,
+            86
+          ],
+          "classification": "finite_current_work"
+        },
+        {
+          "id": "LG-003-r05",
+          "scope": "EXT-006 regex/interpolation, print and filename effects remain LG-002/PR-013/018 obligations; no automatic expression execution or translation.",
+          "owner_tickets": [
+            15,
+            26
+          ],
+          "classification": "scope_definition"
+        },
+        {
+          "id": "LG-003-r06",
+          "scope": "EXT-007 executable modules/parsers/conversions, EXT-008 implicit lookup and EXT-009 hooks/persistent orchestration remain unavailable. Any future positive executable model needs Terry to choose exact provenance, load paths, startup consent, authority, failures, resource isolation and versioning; no sandbox is inferred.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "permission_guarantee_decision"
+        },
+        {
+          "id": "LG-003-r07",
+          "scope": "Historical option C explicit trusted executable support is conditional on that separate chosen contract; caller-side code/orchestration owns its own effects and supplies no imageinfo guarantees.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "conditional_alternative"
+        },
+        {
+          "id": "LG-003-r08",
+          "scope": "Full arbitrary executable equivalence and broader extension/ordering behavior remain eventual #0012 ambition; native refusals and accepted data-only direction do not close MAP-026 or LG-003.",
+          "owner_tickets": [
+            12
+          ],
+          "classification": "eventual_0012"
+        }
+      ],
+      "original_requirement": {
+        "unresolved": "Arbitrary executable expressions, modules and user-defined parsing/conversion",
+        "requiredClosure": "Choose an explicit trusted-code model later; document provenance, authority and failure isolation. No automatic execution or invented sandbox guarantee."
+      }
+    },
+    {
+      "id": "LG-004",
+      "source": {
+        "path": "docs/legacy-compatibility/surface-ledger.md",
+        "anchor": "explicit-open-gaps",
+        "line": 77
+      },
+      "text": "Complete persisted plan grammar for all operations | The WS-002 field obligations remain binding. A complete per-operation wire schema needs actual planner effects, platform identities and recovery profiles; this card supplies request/result schemas, not a fake universal executable plan.",
+      "original_unresolved": "Complete persisted plan grammar for all operations",
+      "original_required_closure": "The WS-002 field obligations remain binding. A complete per-operation wire schema needs actual planner effects, platform identities and recovery profiles; this card supplies request/result schemas, not a fake universal executable plan.",
+      "status": "partially_evidenced_open",
+      "evidence": [
+        {
+          "path": "docs/legacy-compatibility/operation-plan-map.v1.json",
+          "kind": "requirements_allocation",
+          "scope": "Seven operation families each bind all eleven P-* WS-002 duties and exact planner owners/wire status. Only existing date intent has a bounded saved schema; inventory is not a universal schema.",
+          "owner_ticket": 132
+        },
+        {
+          "path": "docs/legacy-compatibility/cr3-preview-plan.md",
+          "kind": "production_implementation",
+          "scope": "One inert nonexecuting date intent plus actual advisory preview; imported intent never authorizes apply.",
+          "owner_ticket": 55
+        },
+        {
+          "path": "docs/legacy-compatibility/cr3-preview-source-binding.md",
+          "kind": "actual_authored_native",
+          "scope": "Bounded SHA-256/occurrence revalidation is content binding, never object identity or a continuing guard.",
+          "owner_ticket": 77
+        }
+      ],
+      "residuals": [
+        {
+          "id": "LG-004-r01",
+          "scope": "All WS-002 field duties remain binding for every eventual persisted operation: immutable read/copy sources, exact write/expected-state, physical identity/guards, properties, effects/protected dependencies, loss consent, revision/replan, publication, recovery, order/partial outcomes and fresh authority. #0132 is allocation, not their implementation.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "unknown_planner_scope"
+        },
+        {
+          "id": "LG-004-r02",
+          "scope": "New CR3 date apply wire/effects contract awaits exact typed adapter and independently admitted format/storage profile; existing saved preview intent must never be promoted to an executable plan.",
+          "owner_tickets": [
+            23,
+            78,
+            22,
+            119
+          ],
+          "classification": "unknown_planner_scope"
+        },
+        {
+          "id": "LG-004-r03",
+          "scope": "New XMP date wire contract awaits actual admitted derivative, guarded source/candidate and publication adapter; packet inspection and authored in-memory effects do not define it.",
+          "owner_tickets": [
+            24,
+            85,
+            185,
+            186
+          ],
+          "classification": "unknown_planner_scope"
+        },
+        {
+          "id": "LG-004-r04",
+          "scope": "Paired date sync wire contract awaits both admitted member operations and typed executor, order/partial/receipt-bound resume behavior without group atomicity.",
+          "owner_tickets": [
+            24,
+            86,
+            78,
+            85,
+            179,
+            180,
+            181
+          ],
+          "classification": "unknown_planner_scope"
+        },
+        {
+          "id": "LG-004-r05",
+          "scope": "XMP owner-removal persisted wire/effects contract awaits actual removal/publication path, exact rights/lineage and all-artifact residual reporting.",
+          "owner_tickets": [
+            25,
+            89,
+            188,
+            189,
+            190,
+            90
+          ],
+          "classification": "unknown_planner_scope"
+        },
+        {
+          "id": "LG-004-r06",
+          "scope": "Fresh/occupied restore wire contract awaits actual original/current custody, complete properties and distinct absent/expected-old destination/profile adapters.",
+          "owner_tickets": [
+            26,
+            95,
+            199,
+            200,
+            210
+          ],
+          "classification": "unknown_planner_scope"
+        },
+        {
+          "id": "LG-004-r07",
+          "scope": "Grouped effects wire contract awaits selected member operations, deterministic physical guard order, loss rules, distinct profiles and receipt-bound non-replay resume.",
+          "owner_tickets": [
+            26,
+            96,
+            24,
+            86,
+            179,
+            180,
+            181,
+            200,
+            208
+          ],
+          "classification": "unknown_planner_scope"
+        },
+        {
+          "id": "LG-004-r08",
+          "scope": "Universal/all-operation plan interoperability remains unmet under #0015; unselected broader-parity operations remain eventual #0012. Request/result schemas never substitute for a complete operation plan.",
+          "owner_tickets": [
+            15,
+            12
+          ],
+          "classification": "eventual_0012"
+        },
+        {
+          "id": "LG-004-r09",
+          "scope": "scalar-assignment: General set/delete, file-sourced values, raw/normalized conversion and implicit updates beyond one ASCII20 field. Wire remains undefined-until-typed-effects-bindings-known.",
+          "owner_tickets": [
+            15,
+            23,
+            78
+          ],
+          "classification": "unknown_planner_scope"
+        },
+        {
+          "id": "LG-004-r10",
+          "scope": "insertion-block: Missing field/block creation, allocation/defaults and group creation; existing singleton replacement does not qualify insertion. Wire remains undefined-until-typed-effects-bindings-known.",
+          "owner_tickets": [
+            15,
+            23,
+            24
+          ],
+          "classification": "unknown_planner_scope"
+        },
+        {
+          "id": "LG-004-r11",
+          "scope": "list-operations: Replace, append, remove exact duplicate/index, explicit deduplication and sequence/bag shape. Wire remains undefined-until-typed-effects-bindings-known.",
+          "owner_tickets": [
+            15,
+            23,
+            24
+          ],
+          "classification": "unknown_planner_scope"
+        },
+        {
+          "id": "LG-004-r12",
+          "scope": "structure-operations: Explicit path updates, whole replacement and recursive merge with sibling/unknown-namespace preservation. Wire remains undefined-until-typed-effects-bindings-known.",
+          "owner_tickets": [
+            15,
+            24
+          ],
+          "classification": "unknown_planner_scope"
+        },
+        {
+          "id": "LG-004-r13",
+          "scope": "language-alternatives: Named language/x-default updates/deletion, whole-property deletion and unrelated-language preservation. Wire remains undefined-until-typed-effects-bindings-known.",
+          "owner_tickets": [
+            15,
+            24
+          ],
+          "classification": "unknown_planner_scope"
+        },
+        {
+          "id": "LG-004-r14",
+          "scope": "date-geotag: Shifts, AllDates sets, calendar/duration/zone assumptions, clock correction, track interpolation, geotag destinations and inverse lookup/export. Wire remains undefined-until-typed-effects-bindings-known.",
+          "owner_tickets": [
+            15,
+            133
+          ],
+          "classification": "unknown_planner_scope"
+        },
+        {
+          "id": "LG-004-r15",
+          "scope": "copy-redirection: General immutable copy/context/redirection, all:all location identity, new-group creation and mapping/loss forms. Wire remains undefined-until-typed-effects-bindings-known.",
+          "owner_tickets": [
+            15,
+            24,
+            85,
+            86
+          ],
+          "classification": "unknown_planner_scope"
+        },
+        {
+          "id": "LG-004-r16",
+          "scope": "rename-move-cycle: Ordinary/case-only rename, same-volume cycle, cross-volume move and paired path effects need exact typed bindings and order. Wire remains undefined-until-typed-effects-bindings-known.",
+          "owner_tickets": [
+            15,
+            26,
+            201,
+            202,
+            212,
+            213
+          ],
+          "classification": "unknown_planner_scope"
+        },
+        {
+          "id": "LG-004-r17",
+          "scope": "restore-prune: Occupied-name actual media restore, complete property backup and explicit finalized-backup prune remain distinct from #108 fresh-name markers. Wire remains undefined-until-typed-effects-bindings-known.",
+          "owner_tickets": [
+            15,
+            26,
+            95,
+            203,
+            210,
+            211
+          ],
+          "classification": "unknown_planner_scope"
+        },
+        {
+          "id": "LG-004-r18",
+          "scope": "intent-group-lifetime: General inspect/count/save/restore intent lifetime, conflicts and broader groups; imported values never carry execution authority. Wire remains undefined-until-typed-effects-bindings-known.",
+          "owner_tickets": [
+            15,
+            23,
+            24,
+            26,
+            96,
+            179
+          ],
+          "classification": "unknown_planner_scope"
+        },
+        {
+          "id": "LG-004-r19",
+          "scope": "other-format-privacy-repair: Other RAW layouts, native GPS/serial/provenance removal, stored-preview mutations and general repair/validation remain unqualified. Wire remains undefined-until-typed-effects-bindings-known.",
+          "owner_tickets": [
+            15,
+            25,
+            90,
+            133
+          ],
+          "classification": "unknown_planner_scope"
+        }
+      ],
+      "original_requirement": {
+        "unresolved": "Complete persisted plan grammar for all operations",
+        "requiredClosure": "The WS-002 field obligations remain binding. A complete per-operation wire schema needs actual planner effects, platform identities and recovery profiles; this card supplies request/result schemas, not a fake universal executable plan."
+      }
+    },
+    {
+      "id": "LG-005",
+      "source": {
+        "path": "docs/legacy-compatibility/surface-ledger.md",
+        "anchor": "explicit-open-gaps",
+        "line": 78
+      },
+      "text": "Advanced lookup datasets, repair, unusual flags and mapping catalogs | Separate scoped requirements and lawful resources; preserve every unmet functional goal in the ledger.",
+      "original_unresolved": "Advanced lookup datasets, repair, unusual flags and mapping catalogs",
+      "original_required_closure": "Separate scoped requirements and lawful resources; preserve every unmet functional goal in the ledger.",
+      "status": "partially_evidenced_open",
+      "evidence": [
+        {
+          "path": "docs/legacy-compatibility/advanced-date-contract.v1.json",
+          "kind": "specification_model",
+          "scope": "Ten advanced date/location/repair rows and 42 authored vectors; all runtime statuses unavailable. Lawful-resource and unsupported/unselected distinctions retained.",
+          "owner_ticket": 133
+        },
+        {
+          "path": "docs/legacy-compatibility/r5-date-mapping.v1.json",
+          "kind": "finite_native_baseline",
+          "scope": "Four fields/twenty scoped observation/refusal/unverified cells; ASCII literals and advisory DTO preview are not arithmetic, zone or repair.",
+          "owner_ticket": 56
+        },
+        {
+          "path": "docs/sidecars/native-date-adapter.md",
+          "kind": "actual_authored_in_memory",
+          "scope": "Bounded original DTO/fraction/offset mapping with independent sidecar admission/publication residuals.",
+          "owner_ticket": 104
+        }
+      ],
+      "residuals": [
+        {
+          "id": "LG-005-r01",
+          "scope": "Advanced calendar-months, elapsed-seconds and fixed-offset conversion need actual read-bound DTO/companion coverage and independently evidenced field-target policy, bounds and refusal semantics; authored arithmetic is not runtime.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "finite_current_work"
+        },
+        {
+          "id": "LG-005-r02",
+          "scope": "Named-zone conversion needs a selected versioned lawful database and exact fold/gap/historical-range rules before implementation; no database/service is selected or newly authorized here.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "scope_definition"
+        },
+        {
+          "id": "LG-005-r03",
+          "scope": "Clock correction/track matching and geotag destinations require exact time-scale/anchor/track interpolation/uncertainty/units/source-rights and field-target contracts before runtime; no new GPS aliases are inferred.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "scope_definition"
+        },
+        {
+          "id": "LG-005-r04",
+          "scope": "Advanced lookup datasets retain licensing, version/provenance, offline/privacy, lookup/export semantics and lawful-resource acquisition requirements; no implicit network or download authority.",
+          "owner_tickets": [
+            15,
+            13
+          ],
+          "classification": "scope_definition"
+        },
+        {
+          "id": "LG-005-r05",
+          "scope": "Validation and repair remain separate. Exact repair effects/protected dependencies/expected-old/preservation/storage/recovery must be independently defined and admitted; warnings/minor-error flags cannot bypass preservation gates.",
+          "owner_tickets": [
+            15,
+            14,
+            26
+          ],
+          "classification": "unknown_planner_scope"
+        },
+        {
+          "id": "LG-005-r06",
+          "scope": "Unusual flags and mapping catalogs retain every native/reference identity and exact operation obligation; legacy shift grammar, AllDates, calendar day/year, textual inverses, UTC/Z, fractions/companions and variable allocations are unimplemented and need finite definitions.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "scope_definition"
+        },
+        {
+          "id": "LG-005-r07",
+          "scope": "Broader advanced datasets/repair/catalog families beyond selected RAW scope remain #0012; unavailable/refused vectors do not satisfy positive functional requirements.",
+          "owner_tickets": [
+            12
+          ],
+          "classification": "eventual_0012"
+        }
+      ],
+      "original_requirement": {
+        "unresolved": "Advanced lookup datasets, repair, unusual flags and mapping catalogs",
+        "requiredClosure": "Separate scoped requirements and lawful resources; preserve every unmet functional goal in the ledger."
+      }
+    },
+    {
+      "id": "LG-006",
+      "source": {
+        "path": "docs/legacy-compatibility/surface-ledger.md",
+        "anchor": "explicit-open-gaps",
+        "line": 79
+      },
+      "text": "Actual CLI/API/process behavior, precision, performance and robustness | Real implementation, reference binaries, OS/stream tests and user review. Synthetic records do not close this gap; #0013/#0014/#0016 supply evidence under the #0008 measurement protocol.",
+      "original_unresolved": "Actual CLI/API/process behavior, precision, performance and robustness",
+      "original_required_closure": "Real implementation, reference binaries, OS/stream tests and user review. Synthetic records do not close this gap; #0013/#0014/#0016 supply evidence under the #0008 measurement protocol.",
+      "status": "partially_evidenced_open",
+      "evidence": [
+        {
+          "path": "docs/legacy-compatibility/native-json-errors.md",
+          "kind": "production_implementation",
+          "scope": "One unambiguous explicit JSON output selector survives syntax failure on the declared native grammar; no general syntax parity.",
+          "owner_ticket": 37
+        },
+        {
+          "path": "docs/legacy-compatibility/read-reference.results.json",
+          "kind": "actual_authored_reference_native",
+          "scope": "Frozen exact selection/view differences; no acceptance of differences or untested formats.",
+          "owner_ticket": 122
+        },
+        {
+          "path": "docs/legacy-compatibility/stored-preview-differences.results.json",
+          "kind": "actual_authored_reference_native",
+          "scope": "Frozen actual stored-preview comparison; no general extraction/rendering or resource guarantee.",
+          "owner_ticket": 123
+        },
+        {
+          "path": "docs/legacy-compatibility/result-profiles/qualification.v1.json",
+          "kind": "actual_authored_native",
+          "scope": "Actual five operation envelope subset.",
+          "owner_ticket": 127
+        },
+        {
+          "path": "docs/legacy-compatibility/session-result-profiles/qualification.v1.json",
+          "kind": "actual_authored_native",
+          "scope": "Actual emitted v1 frames and trait-fault evidence; separate native OS faults.",
+          "owner_ticket": 128
+        },
+        {
+          "path": "docs/legacy-compatibility/snapshot-query-api.md",
+          "kind": "actual_authored_native",
+          "scope": "Finite owned projection/query lifetimes; public fields remain mutable and binary ranges retain no payload/live guard.",
+          "owner_ticket": 134
+        },
+        {
+          "path": "docs/legacy-compatibility/read-request-isolation.md",
+          "kind": "actual_authored_native",
+          "scope": "Twelve overlapping callers and request-local state checks; no queue/worker containment or all concurrent schedules.",
+          "owner_ticket": 135
+        },
+        {
+          "path": "docs/legacy-compatibility/shell-terminal-baseline/ledger.v1.json",
+          "kind": "evidence_baseline",
+          "scope": "Declared shell/plain-terminal platform cells; evidence kinds/platforms and pending missing cells remain explicit.",
+          "owner_ticket": 136
+        },
+        {
+          "path": "docs/legacy-compatibility/command-shells/windows.results.json",
+          "kind": "actual_authored_native",
+          "scope": "Declared Windows cmd/PowerShell current-command argv/output observations; does not qualify untested shells.",
+          "owner_ticket": 137
+        },
+        {
+          "path": "docs/legacy-compatibility/plain-terminals.results.json",
+          "kind": "actual_authored_native",
+          "scope": "Finite narrow plain-terminal/help/error observations; no GUI/menu or arbitrary encoding/terminal promise.",
+          "owner_ticket": 138
+        },
+        {
+          "path": "docs/legacy-compatibility/read-cancellation.md",
+          "kind": "specification",
+          "scope": "Existing synchronous v1 outcome matrix and proposed cooperative v2; cancellation runtime and native signal campaign unavailable.",
+          "owner_ticket": 139
+        },
+        {
+          "path": "docs/legacy-compatibility/native-session-handles.md",
+          "kind": "actual_native_handles",
+          "scope": "Exact Windows/POSIX finite standard-handle observations; NULL input censor, EBADF input→EOF normalization and status-0/no-stdout delivery limit remain material. No flush-only native fault or consumer-delivery proof.",
+          "owner_ticket": 140
+        },
+        {
+          "path": "docs/performance/read-telemetry.md",
+          "kind": "actual_authored_telemetry",
+          "scope": "Opt-in Windows-only sampled direct-process counters; logical I/O not device I/O, membership not containment.",
+          "owner_ticket": 142
+        },
+        {
+          "path": "docs/performance/reader-structural-boundaries.md",
+          "kind": "actual_authored_resource",
+          "scope": "All 45 native outcomes retained; strict resource audit FAILED: 44 valid and one inconsistent memory pair, with cause unproven. No waiver/retry or default selection.",
+          "owner_ticket": 149
+        },
+        {
+          "path": "docs/performance/collector-overhead.md",
+          "kind": "finite_measurement",
+          "scope": "Declared collector overhead/repeatability scope; evidence does not select general performance defaults.",
+          "owner_ticket": 150
+        }
+      ],
+      "residuals": [
+        {
+          "id": "LG-006-r01",
+          "scope": "Actual CLI/API/process behavior remains finite by operation, OS/shell/transport/profile. Requalify selected implemented cells with real executables and independent expected values, preserving accepted differences as a separate Terry judgment; no passing inventory/model implies parity.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "finite_current_work"
+        },
+        {
+          "id": "LG-006-r02",
+          "scope": "Full precision/conversion/escaping/duplicate/lifetime/resource/robustness coverage outside the finite native tests needs scoped contracts and actual positive/error outcomes. Rational/display differences and mutable caller-created data cannot be silently treated as equivalent.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "scope_definition"
+        },
+        {
+          "id": "LG-006-r03",
+          "scope": "The #0140 native standard-handle EBADF normalization and status-0/no-delivery outcome are known limitations of current scope, not successful delivery, demonstrated output error or resolved guarantee. Native flush-only failure remains unavailable; successful flush never proves consumer receipt.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "scope_definition"
+        },
+        {
+          "id": "LG-006-r04",
+          "scope": "Read cancellation has no current token/deadline/portable signal policy. #0139 proposed cooperative v2 needs actual API/process integration and cancellation/output-failure/no-effect evidence before support; external termination guarantees remain unqualified.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "finite_current_work"
+        },
+        {
+          "id": "LG-006-r05",
+          "scope": "Exact shell/terminal/stream/platform cells outside retained qualification need actual observations; synthetic baseline records do not qualify OS support, GUI/menu behavior or arbitrary terminals.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "finite_current_work"
+        },
+        {
+          "id": "LG-006-r06",
+          "scope": "Current help/version startup measurements remain scoped #0143 work; comparable native/pinned-reference subset #0151 and resource-policy evidence review #0152 remain separate unfinished scopes. Do not derive measurements or limits from this audit.",
+          "owner_tickets": [
+            143,
+            151,
+            152,
+            16
+          ],
+          "classification": "finite_current_work"
+        },
+        {
+          "id": "LG-006-r07",
+          "scope": "#0144–0150 finite read/batch/preview/session/consumer/budget/structural/overhead observations remain their exact workload/cache/OS/rights scope. #0149 strict resource audit failure and unproven cause stay explicit; no automatic defaults or requirement waiver.",
+          "owner_tickets": [
+            16,
+            152
+          ],
+          "classification": "finite_current_work"
+        },
+        {
+          "id": "LG-006-r08",
+          "scope": "Actual media admission/rights, actual safe-write behavior and measured performance remain separately owned by #0013/#0014/#0016 under #0008. Private camera-derived outcomes are not republished by this public audit.",
+          "owner_tickets": [
+            13,
+            14,
+            16
+          ],
+          "classification": "finite_current_work"
+        },
+        {
+          "id": "LG-006-r09",
+          "scope": "User acceptance of functional differences/full or drop-in parity requires the exact reviewable achieved operation/profile and unresolved list. This audit adds no renewed adoption gate for accepted ordinary engineering and cannot infer acceptance from finite tests.",
+          "owner_tickets": [
+            15
+          ],
+          "classification": "permission_guarantee_decision"
+        },
+        {
+          "id": "LG-006-r10",
+          "scope": "Full/drop-in behavior beyond selected native RAW operations remains eventual #0012; no first-RAW or parity completion follows while runtime/difference obligations remain.",
+          "owner_tickets": [
+            12
+          ],
+          "classification": "eventual_0012"
+        }
+      ],
+      "original_requirement": {
+        "unresolved": "Actual CLI/API/process behavior, precision, performance and robustness",
+        "requiredClosure": "Real implementation, reference binaries, OS/stream tests and user review. Synthetic records do not close this gap; #0013/#0014/#0016 supply evidence under the #0008 measurement protocol."
+      }
+    }
+  ],
+  "sources": [
+    {
+      "path": "docs/legacy-compatibility/advanced-date-contract.v1.json",
+      "sha256": "caf1765a6c22ced240bd0dbc10f0cb03d4b9c4bab90f2eb907af67dd880c2d8e"
+    },
+    {
+      "path": "docs/legacy-compatibility/command-shells/windows.results.json",
+      "sha256": "f3eace0ed19e8a57dde8e63a8659802d66941655c6e305bd4d018232d17455d8"
+    },
+    {
+      "path": "docs/legacy-compatibility/cr3-preview-plan.md",
+      "sha256": "7b7b4838cf47d15e72d54366c02481693f0696892b4cb10c0b9e1b0f644d1a65"
+    },
+    {
+      "path": "docs/legacy-compatibility/cr3-preview-source-binding.md",
+      "sha256": "261a64c05467650bb04aacbb7166bbb156b1a7e69e52bd15b9f2d2e2bf0173ad"
+    },
+    {
+      "path": "docs/legacy-compatibility/delivery-matrix.v1.json",
+      "sha256": "fec02815565304b575445b1bae2ac2204b018d0896e3f04e107939159886c345"
+    },
+    {
+      "path": "docs/legacy-compatibility/executable-extension-boundary.md",
+      "sha256": "d7bf88e3188724eb5fada4e8aea91c27e945921ad0cbc4cc6bce4a1f7352003c"
+    },
+    {
+      "path": "docs/legacy-compatibility/inert-translation-runtime.md",
+      "sha256": "cb36421292ca9279ba03e8b83f256cc46ce262601e43d2075aabee244b33e197"
+    },
+    {
+      "path": "docs/legacy-compatibility/native-json-errors.md",
+      "sha256": "acba21b390f8cf1953d014365c38720b28a7e235e2d425ce4fc6833dd3e6c643"
+    },
+    {
+      "path": "docs/legacy-compatibility/native-read-json/qualification.v1.json",
+      "sha256": "626df4fe1fa7e7a450fe756e62b8dfd2889792874357b51ca622c704a0017fb6"
+    },
+    {
+      "path": "docs/legacy-compatibility/native-session-handles.md",
+      "sha256": "b5780aa367b21689bd163a52f8fcf885499a10fb5630508058bda9128c287583"
+    },
+    {
+      "path": "docs/legacy-compatibility/native-token-inventory.v1.json",
+      "sha256": "2f8b36567f1892c8af721ba6d8fe6eace2346b305348541a254dfde5c1d9f4c0"
+    },
+    {
+      "path": "docs/legacy-compatibility/operation-plan-map.v1.json",
+      "sha256": "3aef6f0710d462595815b9c584f5f52cfd8ab70065210af49adfc280a7c1885d"
+    },
+    {
+      "path": "docs/legacy-compatibility/plain-terminals.results.json",
+      "sha256": "95638e4f82044eca6a68ec27b31f16a4b304042cc48af8af9b9770ed4e71d1d0"
+    },
+    {
+      "path": "docs/legacy-compatibility/preview-pair-arguments.results.json",
+      "sha256": "f5aeabaaa16843a9a468287400757e1f97324fb008907c4c2deb204a085ac595"
+    },
+    {
+      "path": "docs/legacy-compatibility/pure-data-boundary.md",
+      "sha256": "9c7872e4abe92c92279b4399db7c22483e9fd334d32bf5bc299696b1ed8a8ff8"
+    },
+    {
+      "path": "docs/legacy-compatibility/pure-data/vectors.v1.json",
+      "sha256": "77596d9bca3e45fe8a15c5b7dc091447624ac6fdf19e9e15a2412b7c0a11b8e0"
+    },
+    {
+      "path": "docs/legacy-compatibility/r5-date-mapping.v1.json",
+      "sha256": "63554521d0106a418b76c8dd60a91c1206876e7fbce6ae06423cd0d15db7d76c"
+    },
+    {
+      "path": "docs/legacy-compatibility/read-cancellation.md",
+      "sha256": "6344faadb4c9f3bf32ba4bbf1bb1ead9c17a0969e4a7212be1a99020e67da594"
+    },
+    {
+      "path": "docs/legacy-compatibility/read-reference.results.json",
+      "sha256": "647c088a3b5715594cf1faeeacda44852e17b69b20f579b6b1b9e6b8c49f5a7b"
+    },
+    {
+      "path": "docs/legacy-compatibility/read-request-isolation.md",
+      "sha256": "9cfc0e737c6eb696bb85d35bedc6d5f5fa04b3322e3f04c4a0550643c7e21a86"
+    },
+    {
+      "path": "docs/legacy-compatibility/report-import/profiles.v1.json",
+      "sha256": "d84ec3d6715a4a0fdace41c4f0f7bd1177611f29f274fe070c54f4ed55db0040"
+    },
+    {
+      "path": "docs/legacy-compatibility/result-profiles/qualification.v1.json",
+      "sha256": "481669c9f4bd3073807fb63aec41d04d0ddcbd1f6053ff0edd6f5ffdc2b75a70"
+    },
+    {
+      "path": "docs/legacy-compatibility/session-result-profiles/qualification.v1.json",
+      "sha256": "0f11a6e0bcb12f5d1bd4d93f325abb7dbe8f40dce5f627ec57fa0f82921972b2"
+    },
+    {
+      "path": "docs/legacy-compatibility/session-token-admission.md",
+      "sha256": "2cefac30430ca6fe8b9e1730dde64bac270b1fd114d2887b5f5eb38039f1bffd"
+    },
+    {
+      "path": "docs/legacy-compatibility/shell-terminal-baseline/ledger.v1.json",
+      "sha256": "9f11ba5db5b6ba529d51ba5487b5eafe24dfd04dd00dcb583d28e4bd221a5b2e"
+    },
+    {
+      "path": "docs/legacy-compatibility/snapshot-query-api.md",
+      "sha256": "d42c1f03522b210c96c48346ca20104fadd45dc9aa7e001cdb8b4ed670ffff22"
+    },
+    {
+      "path": "docs/legacy-compatibility/stored-preview-differences.results.json",
+      "sha256": "681457b01ac6a1cb93fd6ac440b1a7633f11089047d322afa249c57a30eea24d"
+    },
+    {
+      "path": "docs/legacy-compatibility/surface-ledger.md",
+      "sha256": "a78eed6dc8e0d2bf2bb2d0acff3b85fc2b19d0537fd87846d18081a539f5a593"
+    },
+    {
+      "path": "docs/performance/collector-overhead.md",
+      "sha256": "d365b1922d8b8121ff1f72cc375f40746a7525b861cf5ae021142e6f847102c4"
+    },
+    {
+      "path": "docs/performance/read-telemetry.md",
+      "sha256": "6ac8c3647eff46426707e52165ef13eb2012ebbae003ceb285a72b8971b06194"
+    },
+    {
+      "path": "docs/performance/reader-structural-boundaries.md",
+      "sha256": "c507d96952993c94c694653a84fb1dd5a6630edda067f1b78020627907b8a480"
+    },
+    {
+      "path": "docs/sidecars/native-date-adapter.md",
+      "sha256": "7f17695f8fbbe67efd6125b3e7c4764036655b5acd1e87fbb350e41a38bc8bab"
+    }
+  ],
+  "reverse_evidence": [
+    {
+      "path": "docs/legacy-compatibility/advanced-date-contract.v1.json",
+      "lg_ids": [
+        "LG-005"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/command-shells/windows.results.json",
+      "lg_ids": [
+        "LG-006"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/cr3-preview-plan.md",
+      "lg_ids": [
+        "LG-004"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/cr3-preview-source-binding.md",
+      "lg_ids": [
+        "LG-004"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/executable-extension-boundary.md",
+      "lg_ids": [
+        "LG-003"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/inert-translation-runtime.md",
+      "lg_ids": [
+        "LG-001",
+        "LG-002"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/native-json-errors.md",
+      "lg_ids": [
+        "LG-006"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/native-read-json/qualification.v1.json",
+      "lg_ids": [
+        "LG-002"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/native-session-handles.md",
+      "lg_ids": [
+        "LG-006"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/native-token-inventory.v1.json",
+      "lg_ids": [
+        "LG-001"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/operation-plan-map.v1.json",
+      "lg_ids": [
+        "LG-004"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/plain-terminals.results.json",
+      "lg_ids": [
+        "LG-006"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/preview-pair-arguments.results.json",
+      "lg_ids": [
+        "LG-001"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/pure-data-boundary.md",
+      "lg_ids": [
+        "LG-003"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/pure-data/vectors.v1.json",
+      "lg_ids": [
+        "LG-003"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/r5-date-mapping.v1.json",
+      "lg_ids": [
+        "LG-005"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/read-cancellation.md",
+      "lg_ids": [
+        "LG-006"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/read-reference.results.json",
+      "lg_ids": [
+        "LG-001",
+        "LG-006"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/read-request-isolation.md",
+      "lg_ids": [
+        "LG-006"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/report-import/profiles.v1.json",
+      "lg_ids": [
+        "LG-002"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/result-profiles/qualification.v1.json",
+      "lg_ids": [
+        "LG-002",
+        "LG-006"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/session-result-profiles/qualification.v1.json",
+      "lg_ids": [
+        "LG-002",
+        "LG-006"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/session-token-admission.md",
+      "lg_ids": [
+        "LG-001"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/shell-terminal-baseline/ledger.v1.json",
+      "lg_ids": [
+        "LG-006"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/snapshot-query-api.md",
+      "lg_ids": [
+        "LG-001",
+        "LG-006"
+      ]
+    },
+    {
+      "path": "docs/legacy-compatibility/stored-preview-differences.results.json",
+      "lg_ids": [
+        "LG-001",
+        "LG-006"
+      ]
+    },
+    {
+      "path": "docs/performance/collector-overhead.md",
+      "lg_ids": [
+        "LG-006"
+      ]
+    },
+    {
+      "path": "docs/performance/read-telemetry.md",
+      "lg_ids": [
+        "LG-006"
+      ]
+    },
+    {
+      "path": "docs/performance/reader-structural-boundaries.md",
+      "lg_ids": [
+        "LG-006"
+      ]
+    },
+    {
+      "path": "docs/sidecars/native-date-adapter.md",
+      "lg_ids": [
+        "LG-005"
+      ]
+    }
+  ],
+  "limits": [
+    "No media/reference execution, implementation, ticket creation, permission expansion or difference acceptance occurred in this audit.",
+    "Evidence kind/finite scope must accompany every link; specification/model/refusal and inventory never establish positive runtime support.",
+    "Sources bind this observed repository snapshot only. Evidence with its own source/binary/fixture/platform identifiers retains those identities; these hashes do not requalify another executable.",
+    "Residual owner #0015 retains the entire original LG obligation; assigned child outcomes only discharge their declared finite slices. No completed child is silently reopened.",
+    "Pinned upstream observation remains ExifTool 13.59 commit 2200871d9cef988051d2a99d67df3bda6cbb30a8; no current/latest claim.",
+    "Residual owner_tickets retain the existing requirement/planner allocation, including historical contract owners. A completed specification child is not assigned new runtime execution; #0015 or the named live operation owner must scope that work explicitly."
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {
+      "id": "root-help",
+      "argv": [
+        "help"
+      ],
+      "exitCode": 0,
+      "stdout": "root-help.stdout",
+      "stderr": "root-help.stderr"
+    },
+    {
+      "id": "metadata-read-help",
+      "argv": [
+        "metadata",
+        "read",
+        "help"
+      ],
+      "exitCode": 0,
+      "stdout": "metadata-read-help.stdout",
+      "stderr": "metadata-read-help.stderr"
+    },
+    {
+      "id": "session-read-help",
+      "argv": [
+        "session",
+        "read",
+        "help"
+      ],
+      "exitCode": 0,
+      "stdout": "session-read-help.stdout",
+      "stderr": "session-read-help.stderr"
+    },
+    {
+      "id": "version-text",
+      "argv": [
+        "--version"
+      ],
+      "exitCode": 0,
+      "stdout": "version-text.stdout",
+      "stderr": "version-text.stderr"
+    },
+    {
+      "id": "version-json",
+      "argv": [
+        "--version",
+        "--output",
+        "json"
+      ],
+      "exitCode": 0,
+      "stdout": "version-json.stdout",
+      "stderr": "version-json.stderr"
+    }
+  ]
+}

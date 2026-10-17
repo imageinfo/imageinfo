@@ -272,7 +272,7 @@ fn eligible_actual_unfinished_phases_finish_and_unqualified_gate_stays_closed() 
                 Ok(())
             },
             Admission::Authored,
-            |_, _| Ok(()),
+            |_, _, _| Ok(()),
         );
         assert_eq!(
             result.result.status,
@@ -385,7 +385,7 @@ fn errors_and_lost_responses_at_every_actual_boundary_retain_without_republish()
                 &Cancellation::default(),
                 |_, _| Ok(()),
                 Admission::Authored,
-                |phase, returned| {
+                |phase, returned, _| {
                     if phase == at && returned == after {
                         Err(Failure::BackendIo)
                     } else {
@@ -496,7 +496,7 @@ fn conflicts_missing_objects_stale_authority_and_receipt_winner_preserve_artifac
                 }
             },
             Admission::Authored,
-            |phase, after| {
+            |phase, after, _| {
                 if case == "revoked-during-attempt" && phase == Phase::ReceiptCreated && !after {
                     caller.revoke();
                 }
@@ -596,7 +596,7 @@ fn fresh_completion_has_its_own_terminal_recognition_without_duplicate_effects()
             Ok(())
         },
         Admission::Authored,
-        |_, _| Ok(()),
+        |_, _, _| Ok(()),
     );
     assert_eq!(result.result.status, Status::Committed);
     let context = result.context.unwrap();

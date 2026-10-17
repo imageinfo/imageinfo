@@ -27,6 +27,12 @@ direct commits/pushes after required checks, practical agent review and Terry's
 board acceptance. No mandatory PR approval, CODEOWNERS or new branch rules are
 adopted; the earlier multi-maintainer enforcement plan remains historical.
 
+The [#0158 retained-policy verification](retained-review-policy.md) supplies the
+actual allowed-route observation and distinguishes required procedure from absent
+machine enforcement. Validate its finite public ledger offline with
+`python scripts/check_retained_review_policy.py`; this does not rerun GitHub
+operations or establish independent human review.
+
 ## Delivered artifacts
 
 - [GOVERNANCE.md](../../GOVERNANCE.md): twelve rules, six ownership areas, review and

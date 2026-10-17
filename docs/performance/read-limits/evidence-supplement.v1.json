@@ -1,0 +1,3062 @@
+{
+  "schemaVersion": 1,
+  "ticket": 152,
+  "adoption": "none; historical proposal remains unadopted",
+  "privateCameraEvidenceUsed": false,
+  "evidence": {
+    "64": {
+      "path": "docs/performance/read-limits/proposal.v1.json",
+      "sha256": "668ce3fcdfba4e1b31d39f5f8bc92ac8d887191f6c5e48ed20b48dd72ba4ea59",
+      "distributions": [
+        {
+          "pointer": "/limits",
+          "value": [
+            {
+              "name": "metadata_bytes",
+              "unit": "successful request bytes per reader invocation including repeated reads",
+              "implementedDefault": 8388608,
+              "proposedDefault": 8388608,
+              "proposedOperatingCeiling": 8388608,
+              "implementedHardCeiling": 268435456
+            },
+            {
+              "name": "block_bytes",
+              "unit": "bytes per metadata read request",
+              "implementedDefault": 1048576,
+              "proposedDefault": 1048576,
+              "proposedOperatingCeiling": 1048576,
+              "implementedHardCeiling": 8388608
+            },
+            {
+              "name": "boxes",
+              "unit": "scanned boxes per input",
+              "implementedDefault": 4096,
+              "proposedDefault": 4096,
+              "proposedOperatingCeiling": 4096,
+              "implementedHardCeiling": 65536
+            },
+            {
+              "name": "depth",
+              "unit": "internal BMFF parent-path or TIFF traversal depth",
+              "implementedDefault": 16,
+              "proposedDefault": 16,
+              "proposedOperatingCeiling": 16,
+              "implementedHardCeiling": 64
+            },
+            {
+              "name": "entries",
+              "unit": "cumulative entries per TIFF parse",
+              "implementedDefault": 4096,
+              "proposedDefault": 4096,
+              "proposedOperatingCeiling": 4096,
+              "implementedHardCeiling": 65536
+            },
+            {
+              "name": "records",
+              "unit": "timed records per supported track sample",
+              "implementedDefault": 4096,
+              "proposedDefault": 4096,
+              "proposedOperatingCeiling": 4096,
+              "implementedHardCeiling": 65536
+            }
+          ]
+        }
+      ]
+    },
+    "146": {
+      "path": "docs/performance/read-session-resources/qualification.v1.json",
+      "sha256": "dfd4d35aac114d7b39d953c771e2c7421d80ad2848421944344dcb14361b1dca",
+      "distributions": [
+        {
+          "pointer": "/campaign",
+          "value": {
+            "attemptedCells": 16,
+            "auditedEligibleCells": 16,
+            "censoredCells": 0,
+            "failedCells": 0,
+            "lifetimeReadResults": 960,
+            "automaticCloseReadResults": 256,
+            "duplicateIdControlReadResults": 1,
+            "totalReadResults": 1217,
+            "totalStdoutBytes": 18637339,
+            "sourceEffectsObserved": false,
+            "sourceAndBinaryBoundariesPassed": true,
+            "adaptiveRetries": 0
+          }
+        },
+        {
+          "pointer": "/lifetimeSummary",
+          "value": [
+            {
+              "readsPerSession": 1,
+              "sessions": 3,
+              "readyMsRange": [
+                5.3932,
+                14.2519
+              ],
+              "requestMedianMsRange": [
+                5.6027,
+                5.8245
+              ],
+              "totalExitMsRange": [
+                16.3937,
+                25.1901
+              ],
+              "workingSetGrowthBytesRange": [
+                671744,
+                688128
+              ],
+              "privateCommitGrowthBytesRange": [
+                274432,
+                397312
+              ]
+            },
+            {
+              "readsPerSession": 64,
+              "sessions": 3,
+              "readyMsRange": [
+                5.5823,
+                7.2057
+              ],
+              "requestMedianMsRange": [
+                5.625,
+                5.8168
+              ],
+              "totalExitMsRange": [
+                499.4203,
+                518.145
+              ],
+              "workingSetGrowthBytesRange": [
+                1007616,
+                1167360
+              ],
+              "privateCommitGrowthBytesRange": [
+                413696,
+                647168
+              ]
+            },
+            {
+              "readsPerSession": 255,
+              "sessions": 3,
+              "readyMsRange": [
+                5.8356,
+                6.1147
+              ],
+              "requestMedianMsRange": [
+                5.6144,
+                5.7634
+              ],
+              "totalExitMsRange": [
+                2003.3254,
+                2369.6155
+              ],
+              "workingSetGrowthBytesRange": [
+                1560576,
+                1798144
+              ],
+              "privateCommitGrowthBytesRange": [
+                1134592,
+                1609728
+              ]
+            }
+          ]
+        },
+        {
+          "pointer": "/cells",
+          "value": [
+            {
+              "name": "reads-1-0",
+              "eligible": true,
+              "censored": false,
+              "readResults": 1,
+              "requestExitStatusCounts": {
+                "0": 1
+              },
+              "sessionExitStatus": 0,
+              "completion": "close",
+              "protocolError": null,
+              "readyLatencyNs": 14251900,
+              "totalExitNs": 25190100,
+              "requestLatencyNs": {
+                "count": 1,
+                "min": 5824500,
+                "median": 5824500,
+                "max": 5824500
+              },
+              "stdoutBytes": 11187,
+              "stderrBytes": 0,
+              "cpuFinalNs": {
+                "userCpuNs": 0,
+                "systemCpuNs": 15625000
+              },
+              "logicalIoFinal": {
+                "readOperations": 100,
+                "writeOperations": 13,
+                "otherOperations": 82,
+                "readTransferBytes": 2243,
+                "writeTransferBytes": 11187,
+                "otherTransferBytes": 1538
+              },
+              "physicalIoBytes": null,
+              "sampledMemoryMaxima": {
+                "workingSetBytes": 5283840,
+                "privateCommitBytes": 1220608
+              },
+              "samples": 5,
+              "observerWallNs": 2926700,
+              "liveReadyCheckpoint": true,
+              "liveResultCheckpoints": 1,
+              "retainedState": {
+                "workingSetBytes": {
+                  "ready": 4571136,
+                  "lastResult": 5259264,
+                  "delta": 688128,
+                  "unavailableReason": null
+                },
+                "privateCommitBytes": {
+                  "ready": 835584,
+                  "lastResult": 1216512,
+                  "delta": 380928,
+                  "unavailableReason": null
+                }
+              },
+              "retainedStateUnavailableReason": null
+            },
+            {
+              "name": "reads-1-1",
+              "eligible": true,
+              "censored": false,
+              "readResults": 1,
+              "requestExitStatusCounts": {
+                "0": 1
+              },
+              "sessionExitStatus": 0,
+              "completion": "close",
+              "protocolError": null,
+              "readyLatencyNs": 5393200,
+              "totalExitNs": 16547300,
+              "requestLatencyNs": {
+                "count": 1,
+                "min": 5785800,
+                "median": 5785800,
+                "max": 5785800
+              },
+              "stdoutBytes": 11187,
+              "stderrBytes": 0,
+              "cpuFinalNs": {
+                "userCpuNs": 0,
+                "systemCpuNs": 15625000
+              },
+              "logicalIoFinal": {
+                "readOperations": 100,
+                "writeOperations": 13,
+                "otherOperations": 82,
+                "readTransferBytes": 2243,
+                "writeTransferBytes": 11187,
+                "otherTransferBytes": 1538
+              },
+              "physicalIoBytes": null,
+              "sampledMemoryMaxima": {
+                "workingSetBytes": 5267456,
+                "privateCommitBytes": 1101824
+              },
+              "samples": 5,
+              "observerWallNs": 2677400,
+              "liveReadyCheckpoint": true,
+              "liveResultCheckpoints": 1,
+              "retainedState": {
+                "workingSetBytes": {
+                  "ready": 4571136,
+                  "lastResult": 5242880,
+                  "delta": 671744,
+                  "unavailableReason": null
+                },
+                "privateCommitBytes": {
+                  "ready": 823296,
+                  "lastResult": 1097728,
+                  "delta": 274432,
+                  "unavailableReason": null
+                }
+              },
+              "retainedStateUnavailableReason": null
+            },
+            {
+              "name": "reads-1-2",
+              "eligible": true,
+              "censored": false,
+              "readResults": 1,
+              "requestExitStatusCounts": {
+                "0": 1
+              },
+              "sessionExitStatus": 0,
+              "completion": "close",
+              "protocolError": null,
+              "readyLatencyNs": 5678900,
+              "totalExitNs": 16393700,
+              "requestLatencyNs": {
+                "count": 1,
+                "min": 5602700,
+                "median": 5602700,
+                "max": 5602700
+              },
+              "stdoutBytes": 11187,
+              "stderrBytes": 0,
+              "cpuFinalNs": {
+                "userCpuNs": 0,
+                "systemCpuNs": 0
+              },
+              "logicalIoFinal": {
+                "readOperations": 100,
+                "writeOperations": 13,
+                "otherOperations": 82,
+                "readTransferBytes": 2243,
+                "writeTransferBytes": 11187,
+                "otherTransferBytes": 1538
+              },
+              "physicalIoBytes": null,
+              "sampledMemoryMaxima": {
+                "workingSetBytes": 5259264,
+                "privateCommitBytes": 1187840
+              },
+              "samples": 5,
+              "observerWallNs": 2617700,
+              "liveReadyCheckpoint": true,
+              "liveResultCheckpoints": 1,
+              "retainedState": {
+                "workingSetBytes": {
+                  "ready": 4554752,
+                  "lastResult": 5234688,
+                  "delta": 679936,
+                  "unavailableReason": null
+                },
+                "privateCommitBytes": {
+                  "ready": 790528,
+                  "lastResult": 1187840,
+                  "delta": 397312,
+                  "unavailableReason": null
+                }
+              },
+              "retainedStateUnavailableReason": null
+            },
+            {
+              "name": "reads-64-0",
+              "eligible": true,
+              "censored": false,
+              "readResults": 64,
+              "requestExitStatusCounts": {
+                "2": 10,
+                "0": 36,
+                "1": 18
+              },
+              "sessionExitStatus": 0,
+              "completion": "close",
+              "protocolError": null,
+              "readyLatencyNs": 7205700,
+              "totalExitNs": 499420300,
+              "requestLatencyNs": {
+                "count": 64,
+                "min": 699600,
+                "median": 5625000.0,
+                "max": 20976600
+              },
+              "stdoutBytes": 838687,
+              "stderrBytes": 0,
+              "cpuFinalNs": {
+                "userCpuNs": 46875000,
+                "systemCpuNs": 15625000
+              },
+              "logicalIoFinal": {
+                "readOperations": 3602,
+                "writeOperations": 840,
+                "otherOperations": 1888,
+                "readTransferBytes": 82121,
+                "writeTransferBytes": 838687,
+                "otherTransferBytes": 47400
+              },
+              "physicalIoBytes": null,
+              "sampledMemoryMaxima": {
+                "workingSetBytes": 6111232,
+                "privateCommitBytes": 1916928
+              },
+              "samples": 77,
+              "observerWallNs": 44459900,
+              "liveReadyCheckpoint": true,
+              "liveResultCheckpoints": 64,
+              "retainedState": {
+                "workingSetBytes": {
+                  "ready": 4591616,
+                  "lastResult": 5599232,
+                  "delta": 1007616,
+                  "unavailableReason": null
+                },
+                "privateCommitBytes": {
+                  "ready": 913408,
+                  "lastResult": 1327104,
+                  "delta": 413696,
+                  "unavailableReason": null
+                }
+              },
+              "retainedStateUnavailableReason": null
+            },
+            {
+              "name": "reads-64-1",
+              "eligible": true,
+              "censored": false,
+              "readResults": 64,
+              "requestExitStatusCounts": {
+                "2": 10,
+                "0": 36,
+                "1": 18
+              },
+              "sessionExitStatus": 0,
+              "completion": "close",
+              "protocolError": null,
+              "readyLatencyNs": 5582300,
+              "totalExitNs": 518145000,
+              "requestLatencyNs": {
+                "count": 64,
+                "min": 729500,
+                "median": 5800400.0,
+                "max": 25143900
+              },
+              "stdoutBytes": 838687,
+              "stderrBytes": 0,
+              "cpuFinalNs": {
+                "userCpuNs": 31250000,
+                "systemCpuNs": 31250000
+              },
+              "logicalIoFinal": {
+                "readOperations": 3602,
+                "writeOperations": 840,
+                "otherOperations": 1888,
+                "readTransferBytes": 82121,
+                "writeTransferBytes": 838687,
+                "otherTransferBytes": 47400
+              },
+              "physicalIoBytes": null,
+              "sampledMemoryMaxima": {
+                "workingSetBytes": 6049792,
+                "privateCommitBytes": 1912832
+              },
+              "samples": 79,
+              "observerWallNs": 47509400,
+              "liveReadyCheckpoint": true,
+              "liveResultCheckpoints": 64,
+              "retainedState": {
+                "workingSetBytes": {
+                  "ready": 4579328,
+                  "lastResult": 5746688,
+                  "delta": 1167360,
+                  "unavailableReason": null
+                },
+                "privateCommitBytes": {
+                  "ready": 835584,
+                  "lastResult": 1482752,
+                  "delta": 647168,
+                  "unavailableReason": null
+                }
+              },
+              "retainedStateUnavailableReason": null
+            },
+            {
+              "name": "reads-64-2",
+              "eligible": true,
+              "censored": false,
+              "readResults": 64,
+              "requestExitStatusCounts": {
+                "2": 10,
+                "0": 36,
+                "1": 18
+              },
+              "sessionExitStatus": 0,
+              "completion": "close",
+              "protocolError": null,
+              "readyLatencyNs": 5663000,
+              "totalExitNs": 511741900,
+              "requestLatencyNs": {
+                "count": 64,
+                "min": 758000,
+                "median": 5816800.0,
+                "max": 19053700
+              },
+              "stdoutBytes": 838687,
+              "stderrBytes": 0,
+              "cpuFinalNs": {
+                "userCpuNs": 0,
+                "systemCpuNs": 46875000
+              },
+              "logicalIoFinal": {
+                "readOperations": 3602,
+                "writeOperations": 840,
+                "otherOperations": 1888,
+                "readTransferBytes": 82121,
+                "writeTransferBytes": 838687,
+                "otherTransferBytes": 47400
+              },
+              "physicalIoBytes": null,
+              "sampledMemoryMaxima": {
+                "workingSetBytes": 6066176,
+                "privateCommitBytes": 1904640
+              },
+              "samples": 75,
+              "observerWallNs": 44841600,
+              "liveReadyCheckpoint": true,
+              "liveResultCheckpoints": 64,
+              "retainedState": {
+                "workingSetBytes": {
+                  "ready": 4571136,
+                  "lastResult": 5734400,
+                  "delta": 1163264,
+                  "unavailableReason": null
+                },
+                "privateCommitBytes": {
+                  "ready": 819200,
+                  "lastResult": 1466368,
+                  "delta": 647168,
+                  "unavailableReason": null
+                }
+              },
+              "retainedStateUnavailableReason": null
+            },
+            {
+              "name": "reads-255-0",
+              "eligible": true,
+              "censored": false,
+              "readResults": 255,
+              "requestExitStatusCounts": {
+                "2": 37,
+                "0": 145,
+                "1": 73
+              },
+              "sessionExitStatus": 0,
+              "completion": "close",
+              "protocolError": null,
+              "readyLatencyNs": 6114700,
+              "totalExitNs": 2003325400,
+              "requestLatencyNs": {
+                "count": 255,
+                "min": 608100,
+                "median": 5689700,
+                "max": 21636600
+              },
+              "stdoutBytes": 3363752,
+              "stderrBytes": 0,
+              "cpuFinalNs": {
+                "userCpuNs": 140625000,
+                "systemCpuNs": 140625000
+              },
+              "logicalIoFinal": {
+                "readOperations": 14502,
+                "writeOperations": 3363,
+                "otherOperations": 7436,
+                "readTransferBytes": 330506,
+                "writeTransferBytes": 3363752,
+                "otherTransferBytes": 189890
+              },
+              "physicalIoBytes": null,
+              "sampledMemoryMaxima": {
+                "workingSetBytes": 6524928,
+                "privateCommitBytes": 2269184
+              },
+              "samples": 298,
+              "observerWallNs": 177497500,
+              "liveReadyCheckpoint": true,
+              "liveResultCheckpoints": 255,
+              "retainedState": {
+                "workingSetBytes": {
+                  "ready": 4567040,
+                  "lastResult": 6135808,
+                  "delta": 1568768,
+                  "unavailableReason": null
+                },
+                "privateCommitBytes": {
+                  "ready": 831488,
+                  "lastResult": 1970176,
+                  "delta": 1138688,
+                  "unavailableReason": null
+                }
+              },
+              "retainedStateUnavailableReason": null
+            },
+            {
+              "name": "reads-255-1",
+              "eligible": true,
+              "censored": false,
+              "readResults": 255,
+              "requestExitStatusCounts": {
+                "2": 37,
+                "0": 145,
+                "1": 73
+              },
+              "sessionExitStatus": 0,
+              "completion": "close",
+              "protocolError": null,
+              "readyLatencyNs": 5845100,
+              "totalExitNs": 2369615500,
+              "requestLatencyNs": {
+                "count": 255,
+                "min": 597700,
+                "median": 5763400,
+                "max": 33486300
+              },
+              "stdoutBytes": 3363752,
+              "stderrBytes": 0,
+              "cpuFinalNs": {
+                "userCpuNs": 171875000,
+                "systemCpuNs": 125000000
+              },
+              "logicalIoFinal": {
+                "readOperations": 14502,
+                "writeOperations": 3363,
+                "otherOperations": 7436,
+                "readTransferBytes": 330506,
+                "writeTransferBytes": 3363752,
+                "otherTransferBytes": 189890
+              },
+              "physicalIoBytes": null,
+              "sampledMemoryMaxima": {
+                "workingSetBytes": 6529024,
+                "privateCommitBytes": 2265088
+              },
+              "samples": 315,
+              "observerWallNs": 205909500,
+              "liveReadyCheckpoint": true,
+              "liveResultCheckpoints": 255,
+              "retainedState": {
+                "workingSetBytes": {
+                  "ready": 4579328,
+                  "lastResult": 6139904,
+                  "delta": 1560576,
+                  "unavailableReason": null
+                },
+                "privateCommitBytes": {
+                  "ready": 831488,
+                  "lastResult": 1966080,
+                  "delta": 1134592,
+                  "unavailableReason": null
+                }
+              },
+              "retainedStateUnavailableReason": null
+            },
+            {
+              "name": "reads-255-2",
+              "eligible": true,
+              "censored": false,
+              "readResults": 255,
+              "requestExitStatusCounts": {
+                "2": 37,
+                "0": 145,
+                "1": 73
+              },
+              "sessionExitStatus": 0,
+              "completion": "close",
+              "protocolError": null,
+              "readyLatencyNs": 5835600,
+              "totalExitNs": 2047291200,
+              "requestLatencyNs": {
+                "count": 255,
+                "min": 646700,
+                "median": 5614400,
+                "max": 29331400
+              },
+              "stdoutBytes": 3363752,
+              "stderrBytes": 0,
+              "cpuFinalNs": {
+                "userCpuNs": 109375000,
+                "systemCpuNs": 156250000
+              },
+              "logicalIoFinal": {
+                "readOperations": 14502,
+                "writeOperations": 3363,
+                "otherOperations": 7436,
+                "readTransferBytes": 330506,
+                "writeTransferBytes": 3363752,
+                "otherTransferBytes": 189890
+              },
+              "physicalIoBytes": null,
+              "sampledMemoryMaxima": {
+                "workingSetBytes": 6565888,
+                "privateCommitBytes": 2535424
+              },
+              "samples": 296,
+              "observerWallNs": 180790700,
+              "liveReadyCheckpoint": true,
+              "liveResultCheckpoints": 255,
+              "retainedState": {
+                "workingSetBytes": {
+                  "ready": 4591616,
+                  "lastResult": 6389760,
+                  "delta": 1798144,
+                  "unavailableReason": null
+                },
+                "privateCommitBytes": {
+                  "ready": 913408,
+                  "lastResult": 2523136,
+                  "delta": 1609728,
+                  "unavailableReason": null
+                }
+              },
+              "retainedStateUnavailableReason": null
+            },
+            {
+              "name": "id-128",
+              "eligible": true,
+              "censored": false,
+              "readResults": 0,
+              "requestExitStatusCounts": {},
+              "sessionExitStatus": 0,
+              "completion": "close",
+              "protocolError": null,
+              "readyLatencyNs": 6415700,
+              "totalExitNs": 11116100,
+              "requestLatencyNs": {
+                "count": 0,
+                "min": null,
+                "median": null,
+                "max": null
+              },
+              "stdoutBytes": 548,
+              "stderrBytes": 0,
+              "cpuFinalNs": {
+                "userCpuNs": 0,
+                "systemCpuNs": 0
+              },
+              "logicalIoFinal": {
+                "readOperations": 1,
+                "writeOperations": 2,
+                "otherOperations": 50,
+                "readTransferBytes": 173,
+                "writeTransferBytes": 548,
+                "otherTransferBytes": 312
+              },
+              "physicalIoBytes": null,
+              "sampledMemoryMaxima": {
+                "workingSetBytes": 4952064,
+                "privateCommitBytes": 946176
+              },
+              "samples": 4,
+              "observerWallNs": 2313000,
+              "liveReadyCheckpoint": true,
+              "liveResultCheckpoints": 0,
+              "retainedState": null,
+              "retainedStateUnavailableReason": "no read-result endpoint in this boundary control"
+            },
+            {
+              "name": "id-129",
+              "eligible": true,
+              "censored": false,
+              "readResults": 0,
+              "requestExitStatusCounts": {},
+              "sessionExitStatus": 2,
+              "completion": "protocol-error",
+              "protocolError": "FRAME_SCHEMA",
+              "readyLatencyNs": 5719400,
+              "totalExitNs": 11468000,
+              "requestLatencyNs": {
+                "count": 0,
+                "min": null,
+                "median": null,
+                "max": null
+              },
+              "stdoutBytes": 509,
+              "stderrBytes": 0,
+              "cpuFinalNs": {
+                "userCpuNs": 0,
+                "systemCpuNs": 0
+              },
+              "logicalIoFinal": {
+                "readOperations": 1,
+                "writeOperations": 3,
+                "otherOperations": 51,
+                "readTransferBytes": 174,
+                "writeTransferBytes": 509,
+                "otherTransferBytes": 312
+              },
+              "physicalIoBytes": null,
+              "sampledMemoryMaxima": {
+                "workingSetBytes": 4673536,
+                "privateCommitBytes": 827392
+              },
+              "samples": 4,
+              "observerWallNs": 2973000,
+              "liveReadyCheckpoint": true,
+              "liveResultCheckpoints": 0,
+              "retainedState": null,
+              "retainedStateUnavailableReason": "no read-result endpoint in this boundary control"
+            },
+            {
+              "name": "duplicate-id",
+              "eligible": true,
+              "censored": false,
+              "readResults": 1,
+              "requestExitStatusCounts": {
+                "0": 1
+              },
+              "sessionExitStatus": 2,
+              "completion": "protocol-error",
+              "protocolError": "DUPLICATE_ID",
+              "readyLatencyNs": 5790900,
+              "totalExitNs": 17114300,
+              "requestLatencyNs": {
+                "count": 1,
+                "min": 5866100,
+                "median": 5866100,
+                "max": 5866100
+              },
+              "stdoutBytes": 11284,
+              "stderrBytes": 0,
+              "cpuFinalNs": {
+                "userCpuNs": 0,
+                "systemCpuNs": 0
+              },
+              "logicalIoFinal": {
+                "readOperations": 100,
+                "writeOperations": 14,
+                "otherOperations": 83,
+                "readTransferBytes": 2245,
+                "writeTransferBytes": 11284,
+                "otherTransferBytes": 1538
+              },
+              "physicalIoBytes": null,
+              "sampledMemoryMaxima": {
+                "workingSetBytes": 5238784,
+                "privateCommitBytes": 1064960
+              },
+              "samples": 5,
+              "observerWallNs": 3249600,
+              "liveReadyCheckpoint": true,
+              "liveResultCheckpoints": 1,
+              "retainedState": {
+                "workingSetBytes": {
+                  "ready": 4554752,
+                  "lastResult": 5214208,
+                  "delta": 659456,
+                  "unavailableReason": null
+                },
+                "privateCommitBytes": {
+                  "ready": 794624,
+                  "lastResult": 1064960,
+                  "delta": 270336,
+                  "unavailableReason": null
+                }
+              },
+              "retainedStateUnavailableReason": null
+            },
+            {
+              "name": "frame-lf-cap",
+              "eligible": true,
+              "censored": false,
+              "readResults": 0,
+              "requestExitStatusCounts": {},
+              "sessionExitStatus": 0,
+              "completion": "close",
+              "protocolError": null,
+              "readyLatencyNs": 5758000,
+              "totalExitNs": 12125800,
+              "requestLatencyNs": {
+                "count": 0,
+                "min": null,
+                "median": null,
+                "max": null
+              },
+              "stdoutBytes": 423,
+              "stderrBytes": 0,
+              "cpuFinalNs": {
+                "userCpuNs": 31250000,
+                "systemCpuNs": 0
+              },
+              "logicalIoFinal": {
+                "readOperations": 43,
+                "writeOperations": 2,
+                "otherOperations": 92,
+                "readTransferBytes": 524288,
+                "writeTransferBytes": 423,
+                "otherTransferBytes": 312
+              },
+              "physicalIoBytes": null,
+              "sampledMemoryMaxima": {
+                "workingSetBytes": 5980160,
+                "privateCommitBytes": 2342912
+              },
+              "samples": 4,
+              "observerWallNs": 2297900,
+              "liveReadyCheckpoint": true,
+              "liveResultCheckpoints": 0,
+              "retainedState": null,
+              "retainedStateUnavailableReason": "no read-result endpoint in this boundary control"
+            },
+            {
+              "name": "frame-crlf-cap",
+              "eligible": true,
+              "censored": false,
+              "readResults": 0,
+              "requestExitStatusCounts": {},
+              "sessionExitStatus": 0,
+              "completion": "close",
+              "protocolError": null,
+              "readyLatencyNs": 5670800,
+              "totalExitNs": 11999000,
+              "requestLatencyNs": {
+                "count": 0,
+                "min": null,
+                "median": null,
+                "max": null
+              },
+              "stdoutBytes": 423,
+              "stderrBytes": 0,
+              "cpuFinalNs": {
+                "userCpuNs": 0,
+                "systemCpuNs": 0
+              },
+              "logicalIoFinal": {
+                "readOperations": 43,
+                "writeOperations": 2,
+                "otherOperations": 92,
+                "readTransferBytes": 524288,
+                "writeTransferBytes": 423,
+                "otherTransferBytes": 312
+              },
+              "physicalIoBytes": null,
+              "sampledMemoryMaxima": {
+                "workingSetBytes": 5947392,
+                "privateCommitBytes": 2351104
+              },
+              "samples": 4,
+              "observerWallNs": 2618400,
+              "liveReadyCheckpoint": true,
+              "liveResultCheckpoints": 0,
+              "retainedState": null,
+              "retainedStateUnavailableReason": "no read-result endpoint in this boundary control"
+            },
+            {
+              "name": "frame-over",
+              "eligible": true,
+              "censored": false,
+              "readResults": 0,
+              "requestExitStatusCounts": {},
+              "sessionExitStatus": 2,
+              "completion": "protocol-error",
+              "protocolError": "FRAME_TOO_LARGE",
+              "readyLatencyNs": 6637200,
+              "totalExitNs": 12161300,
+              "requestLatencyNs": {
+                "count": 0,
+                "min": null,
+                "median": null,
+                "max": null
+              },
+              "stdoutBytes": 512,
+              "stderrBytes": 0,
+              "cpuFinalNs": {
+                "userCpuNs": 0,
+                "systemCpuNs": 0
+              },
+              "logicalIoFinal": {
+                "readOperations": 43,
+                "writeOperations": 3,
+                "otherOperations": 93,
+                "readTransferBytes": 524288,
+                "writeTransferBytes": 512,
+                "otherTransferBytes": 312
+              },
+              "physicalIoBytes": null,
+              "sampledMemoryMaxima": {
+                "workingSetBytes": 5894144,
+                "privateCommitBytes": 2342912
+              },
+              "samples": 4,
+              "observerWallNs": 2440900,
+              "liveReadyCheckpoint": true,
+              "liveResultCheckpoints": 0,
+              "retainedState": null,
+              "retainedStateUnavailableReason": "no read-result endpoint in this boundary control"
+            },
+            {
+              "name": "auto-256",
+              "eligible": true,
+              "censored": false,
+              "readResults": 256,
+              "requestExitStatusCounts": {
+                "0": 256
+              },
+              "sessionExitStatus": 0,
+              "completion": "limit",
+              "protocolError": null,
+              "readyLatencyNs": 5323000,
+              "totalExitNs": 3818015600,
+              "requestLatencyNs": {
+                "count": 256,
+                "min": 5376400,
+                "median": 14153900.0,
+                "max": 33565300
+              },
+              "stdoutBytes": 5982762,
+              "stderrBytes": 0,
+              "cpuFinalNs": {
+                "userCpuNs": 218750000,
+                "systemCpuNs": 265625000
+              },
+              "logicalIoFinal": {
+                "readOperations": 25344,
+                "writeOperations": 6018,
+                "otherOperations": 11441,
+                "readTransferBytes": 592128,
+                "writeTransferBytes": 5982762,
+                "otherTransferBytes": 314168
+              },
+              "physicalIoBytes": null,
+              "sampledMemoryMaxima": {
+                "workingSetBytes": 6365184,
+                "privateCommitBytes": 2166784
+              },
+              "samples": 347,
+              "observerWallNs": 237375100,
+              "liveReadyCheckpoint": true,
+              "liveResultCheckpoints": 255,
+              "retainedState": {
+                "workingSetBytes": {
+                  "ready": 4571136,
+                  "lastResult": null,
+                  "delta": null,
+                  "unavailableReason": "live endpoint unavailable; post-exit memory excluded"
+                },
+                "privateCommitBytes": {
+                  "ready": 823296,
+                  "lastResult": null,
+                  "delta": null,
+                  "unavailableReason": "live endpoint unavailable; post-exit memory excluded"
+                }
+              },
+              "retainedStateUnavailableReason": null
+            }
+          ]
+        }
+      ]
+    },
+    "147": {
+      "path": "docs/performance/output-consumers/qualification.v1.json",
+      "sha256": "806d5a84d123f1a7538628c6d69bd88b1728b39ad80cf8552c2a60def0fd5d03",
+      "distributions": [
+        {
+          "pointer": "/denominators",
+          "value": {
+            "attempts": 50,
+            "warmups": 8,
+            "samples": 40,
+            "closeControls": 2,
+            "completeExactOutputs": 48,
+            "eligibleSamples": 40,
+            "validTelemetryRecords": 50,
+            "ordinaryOutputFailures": 0,
+            "intentionalCloseOutputFailures": 2,
+            "outcomes": {
+              "exited": 50
+            },
+            "exitCodeCounts": {
+              "0": 48,
+              "1": 2
+            },
+            "censored": 0,
+            "captureOverflows": 0,
+            "launchErrors": 0,
+            "consumerErrors": 0,
+            "timeouts": 0,
+            "cancelled": 0,
+            "telemetryLimit": 0,
+            "discarded": 0,
+            "adaptiveRetries": 0
+          }
+        },
+        {
+          "pointer": "/cells",
+          "value": [
+            {
+              "mode": "json",
+              "consumer": "fast",
+              "samples": 10,
+              "outputBytes": {
+                "minimum": 34535,
+                "median": 34535.0,
+                "maximum": 34535
+              },
+              "timingsNs": {
+                "firstByteNs": {
+                  "minimum": 6568300,
+                  "median": 6963200.0,
+                  "maximum": 7548500
+                },
+                "firstUsableNs": {
+                  "minimum": 6802800,
+                  "median": 7179200.0,
+                  "maximum": 8053800
+                },
+                "deliveryCompleteNs": {
+                  "minimum": 7850700,
+                  "median": 8310000.0,
+                  "maximum": 9219200
+                },
+                "exitObservedNs": {
+                  "minimum": 8524500,
+                  "median": 9609500.0,
+                  "maximum": 10913600
+                },
+                "elapsedNs": {
+                  "minimum": 9084100,
+                  "median": 10192700.0,
+                  "maximum": 11574800
+                }
+              },
+              "resources": {
+                "userCpuNs": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 0,
+                    "median": 0.0,
+                    "maximum": 15625000
+                  }
+                },
+                "systemCpuNs": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 0,
+                    "median": 0.0,
+                    "maximum": 15625000
+                  }
+                },
+                "peakWorkingSetBytes": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 5812224,
+                    "median": 5828608.0,
+                    "maximum": 5849088
+                  }
+                },
+                "readTransferBytes": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 2044,
+                    "median": 2044.0,
+                    "maximum": 2044
+                  }
+                },
+                "writeTransferBytes": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 34535,
+                    "median": 34535.0,
+                    "maximum": 34535
+                  }
+                },
+                "otherTransferBytes": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 1548,
+                    "median": 1548.0,
+                    "maximum": 1548
+                  }
+                },
+                "sampledMaximumWorkingSetBytes": {
+                  "minimum": 2101248,
+                  "median": 2134016.0,
+                  "maximum": 2211840
+                },
+                "sampledMaximumPrivateCommitBytes": {
+                  "minimum": 393216,
+                  "median": 403456.0,
+                  "maximum": 409600
+                }
+              },
+              "observerWallNs": {
+                "minimum": 1051600,
+                "median": 1116400.0,
+                "maximum": 1378700
+              }
+            },
+            {
+              "mode": "json",
+              "consumer": "slow",
+              "samples": 10,
+              "outputBytes": {
+                "minimum": 34530,
+                "median": 34535.0,
+                "maximum": 34535
+              },
+              "timingsNs": {
+                "firstByteNs": {
+                  "minimum": 6703500,
+                  "median": 7297450.0,
+                  "maximum": 12062000
+                },
+                "firstUsableNs": {
+                  "minimum": 511638500,
+                  "median": 521975650.0,
+                  "maximum": 529804200
+                },
+                "deliveryCompleteNs": {
+                  "minimum": 527343600,
+                  "median": 537631150.0,
+                  "maximum": 545558500
+                },
+                "exitObservedNs": {
+                  "minimum": 451874200,
+                  "median": 462799650.0,
+                  "maximum": 470561200
+                },
+                "elapsedNs": {
+                  "minimum": 528953400,
+                  "median": 539137200.0,
+                  "maximum": 546760400
+                }
+              },
+              "resources": {
+                "userCpuNs": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 0,
+                    "median": 0.0,
+                    "maximum": 15625000
+                  }
+                },
+                "systemCpuNs": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 0,
+                    "median": 0.0,
+                    "maximum": 15625000
+                  }
+                },
+                "peakWorkingSetBytes": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 5812224,
+                    "median": 5830656.0,
+                    "maximum": 5840896
+                  }
+                },
+                "readTransferBytes": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 2044,
+                    "median": 2044.0,
+                    "maximum": 2044
+                  }
+                },
+                "writeTransferBytes": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 34530,
+                    "median": 34535.0,
+                    "maximum": 34535
+                  }
+                },
+                "otherTransferBytes": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 1548,
+                    "median": 1548.0,
+                    "maximum": 1548
+                  }
+                },
+                "sampledMaximumWorkingSetBytes": {
+                  "minimum": 5582848,
+                  "median": 5601280.0,
+                  "maximum": 5623808
+                },
+                "sampledMaximumPrivateCommitBytes": {
+                  "minimum": 1560576,
+                  "median": 1634304.0,
+                  "maximum": 1691648
+                }
+              },
+              "observerWallNs": {
+                "minimum": 24867100,
+                "median": 28095900.0,
+                "maximum": 35431600
+              },
+              "actualReadStartIntervalsNs": {
+                "minimum": 6252400,
+                "median": 15741150.0,
+                "maximum": 19252400
+              }
+            },
+            {
+              "mode": "jsonl",
+              "consumer": "fast",
+              "samples": 10,
+              "outputBytes": {
+                "minimum": 34901,
+                "median": 34901.0,
+                "maximum": 34901
+              },
+              "timingsNs": {
+                "firstByteNs": {
+                  "minimum": 5383900,
+                  "median": 5717200.0,
+                  "maximum": 6347000
+                },
+                "firstUsableNs": {
+                  "minimum": 7311400,
+                  "median": 7814750.0,
+                  "maximum": 8403800
+                },
+                "deliveryCompleteNs": {
+                  "minimum": 8280300,
+                  "median": 8936650.0,
+                  "maximum": 9542100
+                },
+                "exitObservedNs": {
+                  "minimum": 9060700,
+                  "median": 10203950.0,
+                  "maximum": 11273900
+                },
+                "elapsedNs": {
+                  "minimum": 9580600,
+                  "median": 10775250.0,
+                  "maximum": 11776700
+                }
+              },
+              "resources": {
+                "userCpuNs": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 0,
+                    "median": 0.0,
+                    "maximum": 15625000
+                  }
+                },
+                "systemCpuNs": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 0,
+                    "median": 0.0,
+                    "maximum": 15625000
+                  }
+                },
+                "peakWorkingSetBytes": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 6021120,
+                    "median": 6031360.0,
+                    "maximum": 6037504
+                  }
+                },
+                "readTransferBytes": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 2210,
+                    "median": 2210.0,
+                    "maximum": 2210
+                  }
+                },
+                "writeTransferBytes": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 34901,
+                    "median": 34901.0,
+                    "maximum": 34901
+                  }
+                },
+                "otherTransferBytes": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 1548,
+                    "median": 1548.0,
+                    "maximum": 1548
+                  }
+                },
+                "sampledMaximumWorkingSetBytes": {
+                  "minimum": 2121728,
+                  "median": 2134016.0,
+                  "maximum": 2207744
+                },
+                "sampledMaximumPrivateCommitBytes": {
+                  "minimum": 385024,
+                  "median": 403456.0,
+                  "maximum": 405504
+                }
+              },
+              "observerWallNs": {
+                "minimum": 979200,
+                "median": 1020450.0,
+                "maximum": 1113800
+              }
+            },
+            {
+              "mode": "jsonl",
+              "consumer": "slow",
+              "samples": 10,
+              "outputBytes": {
+                "minimum": 34901,
+                "median": 34901.0,
+                "maximum": 34901
+              },
+              "timingsNs": {
+                "firstByteNs": {
+                  "minimum": 5558400,
+                  "median": 5802050.0,
+                  "maximum": 6256400
+                },
+                "firstUsableNs": {
+                  "minimum": 530743200,
+                  "median": 537379250.0,
+                  "maximum": 541881600
+                },
+                "deliveryCompleteNs": {
+                  "minimum": 546271100,
+                  "median": 552919900.0,
+                  "maximum": 558302500
+                },
+                "exitObservedNs": {
+                  "minimum": 471893500,
+                  "median": 477342050.0,
+                  "maximum": 483691000
+                },
+                "elapsedNs": {
+                  "minimum": 547847900,
+                  "median": 554303150.0,
+                  "maximum": 559864000
+                }
+              },
+              "resources": {
+                "userCpuNs": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 0,
+                    "median": 0.0,
+                    "maximum": 15625000
+                  }
+                },
+                "systemCpuNs": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 0,
+                    "median": 0.0,
+                    "maximum": 31250000
+                  }
+                },
+                "peakWorkingSetBytes": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 6021120,
+                    "median": 6025216.0,
+                    "maximum": 6041600
+                  }
+                },
+                "readTransferBytes": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 2210,
+                    "median": 2210.0,
+                    "maximum": 2210
+                  }
+                },
+                "writeTransferBytes": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 34901,
+                    "median": 34901.0,
+                    "maximum": 34901
+                  }
+                },
+                "otherTransferBytes": {
+                  "available": 10,
+                  "stats": {
+                    "minimum": 1548,
+                    "median": 1548.0,
+                    "maximum": 1548
+                  }
+                },
+                "sampledMaximumWorkingSetBytes": {
+                  "minimum": 5754880,
+                  "median": 5769216.0,
+                  "maximum": 5783552
+                },
+                "sampledMaximumPrivateCommitBytes": {
+                  "minimum": 1617920,
+                  "median": 1638400.0,
+                  "maximum": 1650688
+                }
+              },
+              "observerWallNs": {
+                "minimum": 24858300,
+                "median": 27091850.0,
+                "maximum": 29910900
+              },
+              "actualReadStartIntervalsNs": {
+                "minimum": 8536600,
+                "median": 15662850.0,
+                "maximum": 19833200
+              }
+            }
+          ]
+        },
+        {
+          "pointer": "/closeControls",
+          "value": [
+            {
+              "transport": "json",
+              "outcome": "exited",
+              "exitCode": 1,
+              "consumedStdoutBytes": 0,
+              "stderrBytes": 57,
+              "diagnosticClass": "OUTPUT_INCOMPLETE/BrokenPipe",
+              "elapsedNs": 9873300,
+              "actualOutputFailure": true,
+              "finalFramePromised": false
+            },
+            {
+              "transport": "jsonl",
+              "outcome": "exited",
+              "exitCode": 1,
+              "consumedStdoutBytes": 0,
+              "stderrBytes": 57,
+              "diagnosticClass": "OUTPUT_INCOMPLETE/BrokenPipe",
+              "elapsedNs": 12781300,
+              "actualOutputFailure": true,
+              "finalFramePromised": false
+            }
+          ]
+        }
+      ]
+    },
+    "148": {
+      "path": "docs/performance/read-limits/byte-boundary-results.v1.json",
+      "sha256": "2c34c3e3ee9f0a1b7d64c26bfa64c6be0e070c14c5dd77baaf41592f362edb0d",
+      "distributions": [
+        {
+          "pointer": "/denominator",
+          "value": {
+            "plannedCells": 6,
+            "attempts": 6,
+            "repeatsPerCell": 1,
+            "warmups": 0,
+            "nativeSuccesses": 4,
+            "expectedNativeLimitRefusals": 2,
+            "unexpectedFailures": 0,
+            "censoredOrMissingAttempts": 0,
+            "adaptiveRetries": 0
+          }
+        },
+        {
+          "pointer": "/cells",
+          "value": [
+            {
+              "axis": "metadata",
+              "delta": -1,
+              "status": "OK",
+              "plannedBytes": 8388607,
+              "requestedBytes": 8388607,
+              "requestCount": 98,
+              "readElapsedNs": 2962100,
+              "processElapsedNs": 91475200,
+              "sampledMaxima": {
+                "workingSetBytes": 19210240,
+                "privateCommitBytes": 21721088
+              },
+              "largestPlannedRequestBytes": 1048576,
+              "finalProcessCounters": {
+                "userCpuNs": 15625000,
+                "systemCpuNs": 0,
+                "workingSetBytes": 32768,
+                "peakWorkingSetBytes": 21307392,
+                "privateCommitBytes": 77824,
+                "readOperations": 0,
+                "writeOperations": 2,
+                "otherOperations": 150,
+                "readTransferBytes": 0,
+                "writeTransferBytes": 9599,
+                "otherTransferBytes": 1852,
+                "physicalIoBytes": null
+              }
+            },
+            {
+              "axis": "metadata",
+              "delta": 0,
+              "status": "OK",
+              "plannedBytes": 8388608,
+              "requestedBytes": 8388608,
+              "requestCount": 98,
+              "readElapsedNs": 3331800,
+              "processElapsedNs": 28501000,
+              "sampledMaxima": {
+                "workingSetBytes": 20692992,
+                "privateCommitBytes": 17485824
+              },
+              "largestPlannedRequestBytes": 1048576,
+              "finalProcessCounters": {
+                "userCpuNs": 15625000,
+                "systemCpuNs": 0,
+                "workingSetBytes": 32768,
+                "peakWorkingSetBytes": 20795392,
+                "privateCommitBytes": 77824,
+                "readOperations": 0,
+                "writeOperations": 2,
+                "otherOperations": 49,
+                "readTransferBytes": 0,
+                "writeTransferBytes": 9598,
+                "otherTransferBytes": 356,
+                "physicalIoBytes": null
+              }
+            },
+            {
+              "axis": "metadata",
+              "delta": 1,
+              "status": "LIMIT_EXCEEDED",
+              "plannedBytes": 8388609,
+              "requestedBytes": 8388597,
+              "requestCount": 97,
+              "readElapsedNs": 2449400,
+              "processElapsedNs": 24454100,
+              "sampledMaxima": {
+                "workingSetBytes": 16269312,
+                "privateCommitBytes": 17481728
+              },
+              "largestPlannedRequestBytes": 1048576,
+              "finalProcessCounters": {
+                "userCpuNs": 15625000,
+                "systemCpuNs": 0,
+                "workingSetBytes": 32768,
+                "peakWorkingSetBytes": 20791296,
+                "privateCommitBytes": 77824,
+                "readOperations": 0,
+                "writeOperations": 2,
+                "otherOperations": 49,
+                "readTransferBytes": 0,
+                "writeTransferBytes": 9560,
+                "otherTransferBytes": 356,
+                "physicalIoBytes": null
+              }
+            },
+            {
+              "axis": "block",
+              "delta": -1,
+              "status": "OK",
+              "plannedBytes": 1050570,
+              "requestedBytes": 1050570,
+              "requestCount": 98,
+              "readElapsedNs": 452400,
+              "processElapsedNs": 12093600,
+              "sampledMaxima": {
+                "workingSetBytes": 5156864,
+                "privateCommitBytes": 2809856
+              },
+              "largestPlannedRequestBytes": 1048575,
+              "finalProcessCounters": {
+                "userCpuNs": 15625000,
+                "systemCpuNs": 0,
+                "workingSetBytes": 32768,
+                "peakWorkingSetBytes": 7172096,
+                "privateCommitBytes": 77824,
+                "readOperations": 0,
+                "writeOperations": 2,
+                "otherOperations": 49,
+                "readTransferBytes": 0,
+                "writeTransferBytes": 9475,
+                "otherTransferBytes": 356,
+                "physicalIoBytes": null
+              }
+            },
+            {
+              "axis": "block",
+              "delta": 0,
+              "status": "OK",
+              "plannedBytes": 1050571,
+              "requestedBytes": 1050571,
+              "requestCount": 98,
+              "readElapsedNs": 489700,
+              "processElapsedNs": 15246700,
+              "sampledMaxima": {
+                "workingSetBytes": 5296128,
+                "privateCommitBytes": 2842624
+              },
+              "largestPlannedRequestBytes": 1048576,
+              "finalProcessCounters": {
+                "userCpuNs": 0,
+                "systemCpuNs": 0,
+                "workingSetBytes": 32768,
+                "peakWorkingSetBytes": 7208960,
+                "privateCommitBytes": 77824,
+                "readOperations": 0,
+                "writeOperations": 2,
+                "otherOperations": 49,
+                "readTransferBytes": 0,
+                "writeTransferBytes": 9474,
+                "otherTransferBytes": 356,
+                "physicalIoBytes": null
+              }
+            },
+            {
+              "axis": "block",
+              "delta": 1,
+              "status": "LIMIT_EXCEEDED",
+              "plannedBytes": 1050572,
+              "requestedBytes": 492,
+              "requestCount": 60,
+              "readElapsedNs": 84700,
+              "processElapsedNs": 12398100,
+              "sampledMaxima": {
+                "workingSetBytes": 5124096,
+                "privateCommitBytes": 2768896
+              },
+              "largestPlannedRequestBytes": 1048577,
+              "finalProcessCounters": {
+                "userCpuNs": 0,
+                "systemCpuNs": 0,
+                "workingSetBytes": 32768,
+                "peakWorkingSetBytes": 7208960,
+                "privateCommitBytes": 77824,
+                "readOperations": 0,
+                "writeOperations": 2,
+                "otherOperations": 49,
+                "readTransferBytes": 0,
+                "writeTransferBytes": 7654,
+                "otherTransferBytes": 356,
+                "physicalIoBytes": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "149": {
+      "path": "docs/performance/reader-structural-boundaries.v1.json",
+      "sha256": "42017cb03b70f00475464f6dc18ae3bac95ea6cb016a7df6e21e712b8e9ed0fa",
+      "distributions": [
+        {
+          "pointer": "/outcome",
+          "value": {
+            "cells": 15,
+            "attemptsPerCell": 3,
+            "attempts": 45,
+            "nativeSuccesses": 30,
+            "expectedRefusals": 15,
+            "censored": 0,
+            "nativeStructureOutputEffectsAudit": "verified for all 45 attempts",
+            "encodedOracleCells": 15,
+            "sourceAndBinaryUnchanged": true,
+            "corpusUnchanged": true,
+            "strictResourceAudit": "failed",
+            "strictResourceValidAttempts": 44,
+            "strictResourceInvalidAttempts": 1,
+            "resourceQualification": "unqualified observation; no blanket pass"
+          }
+        },
+        {
+          "pointer": "/inconsistentObservation",
+          "value": {
+            "cell": "boxes-above",
+            "attemptIndex": 1,
+            "sampleIndex": 1,
+            "indexBase": 0,
+            "finalSample": false,
+            "workingSetBytes": 3604480,
+            "peakWorkingSetBytes": 3600384,
+            "currentExceedsReportedPeakBytes": 4096,
+            "counterApiErrors": [],
+            "producerReportedValid": true,
+            "independentResourceAudit": "failed",
+            "cause": "unproven; no validator relaxation or retry"
+          }
+        },
+        {
+          "pointer": "/validOnlyOverallRanges",
+          "value": {
+            "elapsedNs": {
+              "min": 8087100,
+              "max": 38003000
+            },
+            "cpuNs": {
+              "min": 0,
+              "max": 46875000
+            },
+            "lifetimePeakWorkingSetBytes": {
+              "min": 5255168,
+              "max": 26824704
+            },
+            "sampledMaxWorkingSetBytes": {
+              "min": 4677632,
+              "max": 26824704
+            },
+            "sampledMaxPrivateCommitBytes": {
+              "min": 786432,
+              "max": 23629824
+            },
+            "readOperations": {
+              "min": 64,
+              "max": 8288
+            },
+            "writeOperations": {
+              "min": 3,
+              "max": 826
+            },
+            "logicalReadBytes": {
+              "min": 624,
+              "max": 100324
+            },
+            "logicalWriteBytes": {
+              "min": 1106,
+              "max": 835487
+            }
+          }
+        },
+        {
+          "pointer": "/cases",
+          "value": [
+            {
+              "id": "boxes-below",
+              "attempted": 3,
+              "nativeSuccesses": 3,
+              "expectedRefusals": 0,
+              "censored": 0,
+              "strictResourceValidAttempts": 3,
+              "excludedAttemptIndexes": [],
+              "parserRequestedBytes": 34356,
+              "validOnlyRanges": {
+                "elapsedNs": {
+                  "min": 15256600,
+                  "max": 28229500
+                },
+                "cpuNs": {
+                  "min": 15625000,
+                  "max": 15625000
+                },
+                "lifetimePeakWorkingSetBytes": {
+                  "min": 5484544,
+                  "max": 5509120
+                },
+                "sampledMaxWorkingSetBytes": {
+                  "min": 5361664,
+                  "max": 5484544
+                },
+                "sampledMaxPrivateCommitBytes": {
+                  "min": 1482752,
+                  "max": 1499136
+                },
+                "readOperations": {
+                  "min": 4137,
+                  "max": 4137
+                },
+                "writeOperations": {
+                  "min": 10,
+                  "max": 10
+                },
+                "logicalReadBytes": {
+                  "min": 34356,
+                  "max": 34356
+                },
+                "logicalWriteBytes": {
+                  "min": 9884,
+                  "max": 9884
+                }
+              }
+            },
+            {
+              "id": "boxes-at",
+              "attempted": 3,
+              "nativeSuccesses": 3,
+              "expectedRefusals": 0,
+              "censored": 0,
+              "strictResourceValidAttempts": 3,
+              "excludedAttemptIndexes": [],
+              "parserRequestedBytes": 34364,
+              "validOnlyRanges": {
+                "elapsedNs": {
+                  "min": 15566900,
+                  "max": 19249800
+                },
+                "cpuNs": {
+                  "min": 0,
+                  "max": 15625000
+                },
+                "lifetimePeakWorkingSetBytes": {
+                  "min": 5492736,
+                  "max": 5509120
+                },
+                "sampledMaxWorkingSetBytes": {
+                  "min": 5353472,
+                  "max": 5509120
+                },
+                "sampledMaxPrivateCommitBytes": {
+                  "min": 1478656,
+                  "max": 1503232
+                },
+                "readOperations": {
+                  "min": 4138,
+                  "max": 4138
+                },
+                "writeOperations": {
+                  "min": 10,
+                  "max": 10
+                },
+                "logicalReadBytes": {
+                  "min": 34364,
+                  "max": 34364
+                },
+                "logicalWriteBytes": {
+                  "min": 9873,
+                  "max": 9878
+                }
+              }
+            },
+            {
+              "id": "boxes-above",
+              "attempted": 3,
+              "nativeSuccesses": 0,
+              "expectedRefusals": 3,
+              "censored": 0,
+              "strictResourceValidAttempts": 2,
+              "excludedAttemptIndexes": [
+                1
+              ],
+              "parserRequestedBytes": 32808,
+              "validOnlyRanges": {
+                "elapsedNs": {
+                  "min": 15664400,
+                  "max": 19977500
+                },
+                "cpuNs": {
+                  "min": 15625000,
+                  "max": 15625000
+                },
+                "lifetimePeakWorkingSetBytes": {
+                  "min": 5382144,
+                  "max": 5386240
+                },
+                "sampledMaxWorkingSetBytes": {
+                  "min": 5369856,
+                  "max": 5369856
+                },
+                "sampledMaxPrivateCommitBytes": {
+                  "min": 1495040,
+                  "max": 1507328
+                },
+                "readOperations": {
+                  "min": 4099,
+                  "max": 4099
+                },
+                "writeOperations": {
+                  "min": 3,
+                  "max": 3
+                },
+                "logicalReadBytes": {
+                  "min": 32808,
+                  "max": 32808
+                },
+                "logicalWriteBytes": {
+                  "min": 1106,
+                  "max": 1106
+                }
+              }
+            },
+            {
+              "id": "bmff-depth-below",
+              "attempted": 3,
+              "nativeSuccesses": 3,
+              "expectedRefusals": 0,
+              "censored": 0,
+              "strictResourceValidAttempts": 3,
+              "excludedAttemptIndexes": [],
+              "parserRequestedBytes": 2172,
+              "validOnlyRanges": {
+                "elapsedNs": {
+                  "min": 8665800,
+                  "max": 20010600
+                },
+                "cpuNs": {
+                  "min": 0,
+                  "max": 15625000
+                },
+                "lifetimePeakWorkingSetBytes": {
+                  "min": 5410816,
+                  "max": 5455872
+                },
+                "sampledMaxWorkingSetBytes": {
+                  "min": 4816896,
+                  "max": 5451776
+                },
+                "sampledMaxPrivateCommitBytes": {
+                  "min": 880640,
+                  "max": 1019904
+                },
+                "readOperations": {
+                  "min": 114,
+                  "max": 114
+                },
+                "writeOperations": {
+                  "min": 10,
+                  "max": 10
+                },
+                "logicalReadBytes": {
+                  "min": 2172,
+                  "max": 2172
+                },
+                "logicalWriteBytes": {
+                  "min": 9888,
+                  "max": 9893
+                }
+              }
+            },
+            {
+              "id": "bmff-depth-at",
+              "attempted": 3,
+              "nativeSuccesses": 3,
+              "expectedRefusals": 0,
+              "censored": 0,
+              "strictResourceValidAttempts": 3,
+              "excludedAttemptIndexes": [],
+              "parserRequestedBytes": 2180,
+              "validOnlyRanges": {
+                "elapsedNs": {
+                  "min": 9872000,
+                  "max": 12020300
+                },
+                "cpuNs": {
+                  "min": 0,
+                  "max": 15625000
+                },
+                "lifetimePeakWorkingSetBytes": {
+                  "min": 5414912,
+                  "max": 5439488
+                },
+                "sampledMaxWorkingSetBytes": {
+                  "min": 4960256,
+                  "max": 5038080
+                },
+                "sampledMaxPrivateCommitBytes": {
+                  "min": 942080,
+                  "max": 1155072
+                },
+                "readOperations": {
+                  "min": 115,
+                  "max": 115
+                },
+                "writeOperations": {
+                  "min": 10,
+                  "max": 10
+                },
+                "logicalReadBytes": {
+                  "min": 2180,
+                  "max": 2180
+                },
+                "logicalWriteBytes": {
+                  "min": 9882,
+                  "max": 9887
+                }
+              }
+            },
+            {
+              "id": "bmff-depth-above",
+              "attempted": 3,
+              "nativeSuccesses": 0,
+              "expectedRefusals": 3,
+              "censored": 0,
+              "strictResourceValidAttempts": 3,
+              "excludedAttemptIndexes": [],
+              "parserRequestedBytes": 624,
+              "validOnlyRanges": {
+                "elapsedNs": {
+                  "min": 8792500,
+                  "max": 10667900
+                },
+                "cpuNs": {
+                  "min": 0,
+                  "max": 31250000
+                },
+                "lifetimePeakWorkingSetBytes": {
+                  "min": 5255168,
+                  "max": 5271552
+                },
+                "sampledMaxWorkingSetBytes": {
+                  "min": 4677632,
+                  "max": 5267456
+                },
+                "sampledMaxPrivateCommitBytes": {
+                  "min": 786432,
+                  "max": 950272
+                },
+                "readOperations": {
+                  "min": 76,
+                  "max": 76
+                },
+                "writeOperations": {
+                  "min": 3,
+                  "max": 3
+                },
+                "logicalReadBytes": {
+                  "min": 624,
+                  "max": 624
+                },
+                "logicalWriteBytes": {
+                  "min": 1120,
+                  "max": 1120
+                }
+              }
+            },
+            {
+              "id": "tiff-depth-below",
+              "attempted": 3,
+              "nativeSuccesses": 3,
+              "expectedRefusals": 0,
+              "censored": 0,
+              "strictResourceValidAttempts": 3,
+              "excludedAttemptIndexes": [],
+              "parserRequestedBytes": 2134,
+              "validOnlyRanges": {
+                "elapsedNs": {
+                  "min": 9110600,
+                  "max": 10305100
+                },
+                "cpuNs": {
+                  "min": 0,
+                  "max": 15625000
+                },
+                "lifetimePeakWorkingSetBytes": {
+                  "min": 5423104,
+                  "max": 5427200
+                },
+                "sampledMaxWorkingSetBytes": {
+                  "min": 4993024,
+                  "max": 5423104
+                },
+                "sampledMaxPrivateCommitBytes": {
+                  "min": 884736,
+                  "max": 954368
+                },
+                "readOperations": {
+                  "min": 98,
+                  "max": 98
+                },
+                "writeOperations": {
+                  "min": 10,
+                  "max": 10
+                },
+                "logicalReadBytes": {
+                  "min": 2134,
+                  "max": 2134
+                },
+                "logicalWriteBytes": {
+                  "min": 9893,
+                  "max": 9893
+                }
+              }
+            },
+            {
+              "id": "tiff-depth-at",
+              "attempted": 3,
+              "nativeSuccesses": 3,
+              "expectedRefusals": 0,
+              "censored": 0,
+              "strictResourceValidAttempts": 3,
+              "excludedAttemptIndexes": [],
+              "parserRequestedBytes": 2140,
+              "validOnlyRanges": {
+                "elapsedNs": {
+                  "min": 8198800,
+                  "max": 10470400
+                },
+                "cpuNs": {
+                  "min": 0,
+                  "max": 0
+                },
+                "lifetimePeakWorkingSetBytes": {
+                  "min": 5402624,
+                  "max": 5419008
+                },
+                "sampledMaxWorkingSetBytes": {
+                  "min": 5013504,
+                  "max": 5046272
+                },
+                "sampledMaxPrivateCommitBytes": {
+                  "min": 876544,
+                  "max": 999424
+                },
+                "readOperations": {
+                  "min": 98,
+                  "max": 98
+                },
+                "writeOperations": {
+                  "min": 10,
+                  "max": 10
+                },
+                "logicalReadBytes": {
+                  "min": 2140,
+                  "max": 2140
+                },
+                "logicalWriteBytes": {
+                  "min": 9887,
+                  "max": 9887
+                }
+              }
+            },
+            {
+              "id": "tiff-depth-above",
+              "attempted": 3,
+              "nativeSuccesses": 0,
+              "expectedRefusals": 3,
+              "censored": 0,
+              "strictResourceValidAttempts": 3,
+              "excludedAttemptIndexes": [],
+              "parserRequestedBytes": 1116,
+              "validOnlyRanges": {
+                "elapsedNs": {
+                  "min": 8477900,
+                  "max": 9692000
+                },
+                "cpuNs": {
+                  "min": 0,
+                  "max": 15625000
+                },
+                "lifetimePeakWorkingSetBytes": {
+                  "min": 5259264,
+                  "max": 5296128
+                },
+                "sampledMaxWorkingSetBytes": {
+                  "min": 4816896,
+                  "max": 5259264
+                },
+                "sampledMaxPrivateCommitBytes": {
+                  "min": 851968,
+                  "max": 917504
+                },
+                "readOperations": {
+                  "min": 64,
+                  "max": 64
+                },
+                "writeOperations": {
+                  "min": 3,
+                  "max": 3
+                },
+                "logicalReadBytes": {
+                  "min": 1116,
+                  "max": 1116
+                },
+                "logicalWriteBytes": {
+                  "min": 1116,
+                  "max": 1116
+                }
+              }
+            },
+            {
+              "id": "entries-per-cmt-below",
+              "attempted": 3,
+              "nativeSuccesses": 3,
+              "expectedRefusals": 0,
+              "censored": 0,
+              "strictResourceValidAttempts": 3,
+              "excludedAttemptIndexes": [],
+              "parserRequestedBytes": 51184,
+              "validOnlyRanges": {
+                "elapsedNs": {
+                  "min": 35032900,
+                  "max": 37597900
+                },
+                "cpuNs": {
+                  "min": 31250000,
+                  "max": 31250000
+                },
+                "lifetimePeakWorkingSetBytes": {
+                  "min": 26697728,
+                  "max": 26746880
+                },
+                "sampledMaxWorkingSetBytes": {
+                  "min": 25702400,
+                  "max": 26746880
+                },
+                "sampledMaxPrivateCommitBytes": {
+                  "min": 22499328,
+                  "max": 23584768
+                },
+                "readOperations": {
+                  "min": 98,
+                  "max": 98
+                },
+                "writeOperations": {
+                  "min": 826,
+                  "max": 826
+                },
+                "logicalReadBytes": {
+                  "min": 51184,
+                  "max": 51184
+                },
+                "logicalWriteBytes": {
+                  "min": 835291,
+                  "max": 835291
+                }
+              }
+            },
+            {
+              "id": "entries-per-cmt-at",
+              "attempted": 3,
+              "nativeSuccesses": 3,
+              "expectedRefusals": 0,
+              "censored": 0,
+              "strictResourceValidAttempts": 3,
+              "excludedAttemptIndexes": [],
+              "parserRequestedBytes": 51196,
+              "validOnlyRanges": {
+                "elapsedNs": {
+                  "min": 33155900,
+                  "max": 38003000
+                },
+                "cpuNs": {
+                  "min": 31250000,
+                  "max": 46875000
+                },
+                "lifetimePeakWorkingSetBytes": {
+                  "min": 26787840,
+                  "max": 26824704
+                },
+                "sampledMaxWorkingSetBytes": {
+                  "min": 26783744,
+                  "max": 26824704
+                },
+                "sampledMaxPrivateCommitBytes": {
+                  "min": 23580672,
+                  "max": 23629824
+                },
+                "readOperations": {
+                  "min": 98,
+                  "max": 98
+                },
+                "writeOperations": {
+                  "min": 826,
+                  "max": 826
+                },
+                "logicalReadBytes": {
+                  "min": 51196,
+                  "max": 51196
+                },
+                "logicalWriteBytes": {
+                  "min": 835487,
+                  "max": 835487
+                }
+              }
+            },
+            {
+              "id": "entries-per-cmt-above",
+              "attempted": 3,
+              "nativeSuccesses": 0,
+              "expectedRefusals": 3,
+              "censored": 0,
+              "strictResourceValidAttempts": 3,
+              "excludedAttemptIndexes": [],
+              "parserRequestedBytes": 50178,
+              "validOnlyRanges": {
+                "elapsedNs": {
+                  "min": 8087100,
+                  "max": 10444300
+                },
+                "cpuNs": {
+                  "min": 0,
+                  "max": 15625000
+                },
+                "lifetimePeakWorkingSetBytes": {
+                  "min": 5267456,
+                  "max": 5328896
+                },
+                "sampledMaxWorkingSetBytes": {
+                  "min": 4886528,
+                  "max": 5279744
+                },
+                "sampledMaxPrivateCommitBytes": {
+                  "min": 905216,
+                  "max": 921600
+                },
+                "readOperations": {
+                  "min": 64,
+                  "max": 64
+                },
+                "writeOperations": {
+                  "min": 3,
+                  "max": 3
+                },
+                "logicalReadBytes": {
+                  "min": 50178,
+                  "max": 50178
+                },
+                "logicalWriteBytes": {
+                  "min": 1128,
+                  "max": 1128
+                }
+              }
+            },
+            {
+              "id": "timed-records-below",
+              "attempted": 3,
+              "nativeSuccesses": 3,
+              "expectedRefusals": 0,
+              "censored": 0,
+              "strictResourceValidAttempts": 3,
+              "excludedAttemptIndexes": [],
+              "parserRequestedBytes": 100300,
+              "validOnlyRanges": {
+                "elapsedNs": {
+                  "min": 28884700,
+                  "max": 30540300
+                },
+                "cpuNs": {
+                  "min": 15625000,
+                  "max": 31250000
+                },
+                "lifetimePeakWorkingSetBytes": {
+                  "min": 12296192,
+                  "max": 12349440
+                },
+                "sampledMaxWorkingSetBytes": {
+                  "min": 11644928,
+                  "max": 11685888
+                },
+                "sampledMaxPrivateCommitBytes": {
+                  "min": 8491008,
+                  "max": 8552448
+                },
+                "readOperations": {
+                  "min": 8286,
+                  "max": 8286
+                },
+                "writeOperations": {
+                  "min": 10,
+                  "max": 10
+                },
+                "logicalReadBytes": {
+                  "min": 100300,
+                  "max": 100300
+                },
+                "logicalWriteBytes": {
+                  "min": 9909,
+                  "max": 9909
+                }
+              }
+            },
+            {
+              "id": "timed-records-at",
+              "attempted": 3,
+              "nativeSuccesses": 3,
+              "expectedRefusals": 0,
+              "censored": 0,
+              "strictResourceValidAttempts": 3,
+              "excludedAttemptIndexes": [],
+              "parserRequestedBytes": 100324,
+              "validOnlyRanges": {
+                "elapsedNs": {
+                  "min": 29932000,
+                  "max": 31153300
+                },
+                "cpuNs": {
+                  "min": 31250000,
+                  "max": 31250000
+                },
+                "lifetimePeakWorkingSetBytes": {
+                  "min": 12292096,
+                  "max": 12300288
+                },
+                "sampledMaxWorkingSetBytes": {
+                  "min": 11616256,
+                  "max": 11681792
+                },
+                "sampledMaxPrivateCommitBytes": {
+                  "min": 8515584,
+                  "max": 8531968
+                },
+                "readOperations": {
+                  "min": 8288,
+                  "max": 8288
+                },
+                "writeOperations": {
+                  "min": 10,
+                  "max": 10
+                },
+                "logicalReadBytes": {
+                  "min": 100324,
+                  "max": 100324
+                },
+                "logicalWriteBytes": {
+                  "min": 9903,
+                  "max": 9903
+                }
+              }
+            },
+            {
+              "id": "timed-records-above",
+              "attempted": 3,
+              "nativeSuccesses": 0,
+              "expectedRefusals": 3,
+              "censored": 0,
+              "strictResourceValidAttempts": 3,
+              "excludedAttemptIndexes": [],
+              "parserRequestedBytes": 100324,
+              "validOnlyRanges": {
+                "elapsedNs": {
+                  "min": 27803400,
+                  "max": 30899100
+                },
+                "cpuNs": {
+                  "min": 15625000,
+                  "max": 46875000
+                },
+                "lifetimePeakWorkingSetBytes": {
+                  "min": 11993088,
+                  "max": 12038144
+                },
+                "sampledMaxWorkingSetBytes": {
+                  "min": 11661312,
+                  "max": 11988992
+                },
+                "sampledMaxPrivateCommitBytes": {
+                  "min": 8536064,
+                  "max": 8859648
+                },
+                "readOperations": {
+                  "min": 8288,
+                  "max": 8288
+                },
+                "writeOperations": {
+                  "min": 3,
+                  "max": 3
+                },
+                "logicalReadBytes": {
+                  "min": 100324,
+                  "max": 100324
+                },
+                "logicalWriteBytes": {
+                  "min": 1128,
+                  "max": 1128
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "150": {
+      "path": "docs/performance/collector-overhead/results.v1.json",
+      "sha256": "5a540010bb51830a776d3ec348c90d6a068cad83986358bec52777dd10cf173f",
+      "distributions": [
+        {
+          "pointer": "/denominators",
+          "value": {
+            "planned": 198,
+            "attempted": 198,
+            "missing": 0,
+            "warmup": 18,
+            "measured": 180,
+            "measuredPairs": 90,
+            "failedOutput": 0,
+            "censored": 0,
+            "telemetryAttempted": 99,
+            "telemetryValid": 99,
+            "pairedExcluded": 0
+          }
+        },
+        {
+          "pointer": "/trials",
+          "value": [
+            {
+              "round": 0,
+              "arms": {
+                "elapsed": {
+                  "planned": 30,
+                  "attempted": 30,
+                  "missing": 0,
+                  "failed": 0,
+                  "censored": 0,
+                  "distribution": {
+                    "count": 30,
+                    "medianNs": 9489050.0,
+                    "madNs": 292200.0,
+                    "p95Ns": 13239000,
+                    "cv": 0.13520424868305458,
+                    "windowDriftNs": -201250.0
+                  },
+                  "driftRequiresCompleteSeries": true
+                },
+                "telemetry": {
+                  "planned": 30,
+                  "attempted": 30,
+                  "missing": 0,
+                  "failed": 0,
+                  "censored": 0,
+                  "distribution": {
+                    "count": 30,
+                    "medianNs": 9443150.0,
+                    "madNs": 310200.0,
+                    "p95Ns": 10971100,
+                    "cv": 0.09597304058376314,
+                    "windowDriftNs": -344300.0
+                  },
+                  "driftRequiresCompleteSeries": true
+                }
+              },
+              "pairedTelemetryMinusElapsed": {
+                "count": 30,
+                "medianNs": 116400.0,
+                "madNs": 542100.0,
+                "p95Ns": 1829500,
+                "cv": null,
+                "windowDriftNs": 26150.0
+              },
+              "pairedPlanned": 30,
+              "pairedExcluded": 0
+            },
+            {
+              "round": 1,
+              "arms": {
+                "elapsed": {
+                  "planned": 30,
+                  "attempted": 30,
+                  "missing": 0,
+                  "failed": 0,
+                  "censored": 0,
+                  "distribution": {
+                    "count": 30,
+                    "medianNs": 9689500.0,
+                    "madNs": 349450.0,
+                    "p95Ns": 11149300,
+                    "cv": 0.11902148438575955,
+                    "windowDriftNs": -120850.0
+                  },
+                  "driftRequiresCompleteSeries": true
+                },
+                "telemetry": {
+                  "planned": 30,
+                  "attempted": 30,
+                  "missing": 0,
+                  "failed": 0,
+                  "censored": 0,
+                  "distribution": {
+                    "count": 30,
+                    "medianNs": 9552250.0,
+                    "madNs": 258700.0,
+                    "p95Ns": 13980900,
+                    "cv": 0.13613225023281905,
+                    "windowDriftNs": -163900.0
+                  },
+                  "driftRequiresCompleteSeries": true
+                }
+              },
+              "pairedTelemetryMinusElapsed": {
+                "count": 30,
+                "medianNs": 126300.0,
+                "madNs": 658000.0,
+                "p95Ns": 4300900,
+                "cv": null,
+                "windowDriftNs": -19150.0
+              },
+              "pairedPlanned": 30,
+              "pairedExcluded": 0
+            },
+            {
+              "round": 2,
+              "arms": {
+                "elapsed": {
+                  "planned": 30,
+                  "attempted": 30,
+                  "missing": 0,
+                  "failed": 0,
+                  "censored": 0,
+                  "distribution": {
+                    "count": 30,
+                    "medianNs": 9176400.0,
+                    "madNs": 463300.0,
+                    "p95Ns": 10612600,
+                    "cv": 0.11373513177603098,
+                    "windowDriftNs": -183050.0
+                  },
+                  "driftRequiresCompleteSeries": true
+                },
+                "telemetry": {
+                  "planned": 30,
+                  "attempted": 30,
+                  "missing": 0,
+                  "failed": 0,
+                  "censored": 0,
+                  "distribution": {
+                    "count": 30,
+                    "medianNs": 9444550.0,
+                    "madNs": 278550.0,
+                    "p95Ns": 14015700,
+                    "cv": 0.14633233158270978,
+                    "windowDriftNs": 102150.0
+                  },
+                  "driftRequiresCompleteSeries": true
+                }
+              },
+              "pairedTelemetryMinusElapsed": {
+                "count": 30,
+                "medianNs": 462000.0,
+                "madNs": 789750.0,
+                "p95Ns": 4832400,
+                "cv": null,
+                "windowDriftNs": 579500.0
+              },
+              "pairedPlanned": 30,
+              "pairedExcluded": 0
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "dimensions": [
+    {
+      "name": "source_length",
+      "unit": "bytes",
+      "scope": "one stored input extent; not bytes requested",
+      "evidence": [
+        "147",
+        "148"
+      ],
+      "distribution": "147 fixtureBytes; 148 authored fixture extents are separate from planned/requested byte sums",
+      "boundary": "no new length cap",
+      "failureOverride": "source-binding length restriction remains separate",
+      "unknown": "larger legitimate strata unmeasured",
+      "disposition": "separate review; no numeric bound selected"
+    },
+    {
+      "name": "metadata_reads",
+      "unit": "bytes",
+      "scope": "cumulative successful metadata requests in one reader invocation",
+      "evidence": [
+        "148"
+      ],
+      "distribution": "148 cells plannedBytes/requestedBytes/requestCount; six one-shot observations",
+      "boundary": "8388607/8388608/8388609 planned bytes",
+      "failureOverride": "above refuses final 12-byte request; earlier reads remain; CLI 1..268435456",
+      "unknown": "hard envelope resource saturation unmeasured",
+      "disposition": "retain implemented boundary; no policy adoption"
+    },
+    {
+      "name": "block_request",
+      "unit": "bytes",
+      "scope": "one metadata allocation/read request",
+      "evidence": [
+        "148"
+      ],
+      "distribution": "148 largestPlannedRequestBytes and cells; not peak memory",
+      "boundary": "1048575/1048576/1048577 bytes",
+      "failureOverride": "above refuses before offending read; supported configured hard ceiling 8388608",
+      "unknown": "all-allocation peak and allocation failure unmeasured",
+      "disposition": "retain implemented boundary; no policy adoption"
+    },
+    {
+      "name": "boxes",
+      "unit": "boxes",
+      "scope": "total scanned BMFF boxes per input",
+      "evidence": [
+        "149"
+      ],
+      "distribution": "149 cases; all45 native outcomes; valid-only resource ranges44",
+      "boundary": "4095/4096/4097",
+      "failureOverride": "refuses before header index4096; relevant +1 override succeeds",
+      "unknown": "hard65536 configuration-only; resource audit failed",
+      "disposition": "retain implemented boundary; no policy adoption"
+    },
+    {
+      "name": "bmff_depth",
+      "unit": "parent-path components",
+      "scope": "BMFF traversal parent path",
+      "evidence": [
+        "149"
+      ],
+      "distribution": "149 cases; three native attempts per below/at/above cell",
+      "boundary": "15/16/17 parent components",
+      "failureOverride": "depth17 refuses before leaf read; relevant +1 override succeeds",
+      "unknown": "not generic tag nesting; hard64 configuration-only",
+      "disposition": "retain implemented boundary; no policy adoption"
+    },
+    {
+      "name": "tiff_depth",
+      "unit": "directory links from zero",
+      "scope": "independent TIFF directory traversal starting at zero",
+      "evidence": [
+        "149"
+      ],
+      "distribution": "149 cases; three native attempts per cell",
+      "boundary": "15/16/17 directory depth",
+      "failureOverride": "whole CMT read precedes depth refusal; relevant +1 override succeeds",
+      "unknown": "not BMFF nesting; hard64 configuration-only",
+      "disposition": "retain implemented boundary; no policy adoption"
+    },
+    {
+      "name": "entries",
+      "unit": "entries per CMT parse",
+      "scope": "cumulative TIFF entries within one CMT parse",
+      "evidence": [
+        "149"
+      ],
+      "distribution": "149 cases and separate authored accumulation controls",
+      "boundary": "4095/4096/4097; 2048+2048 versus2048+2049",
+      "failureOverride": "whole CMT read precedes iteration refusal; +1 override succeeds",
+      "unknown": "not file total; hard65536 configuration-only",
+      "disposition": "retain implemented boundary; no policy adoption"
+    },
+    {
+      "name": "records",
+      "unit": "records per track sample",
+      "scope": "timed records within one supported track sample",
+      "evidence": [
+        "149"
+      ],
+      "distribution": "149 cases; all native outcomes retained",
+      "boundary": "4095/4096/4097 records",
+      "failureOverride": "refuses before record header index4096; +1 override succeeds",
+      "unknown": "not video frames or request queue; hard65536 configuration-only",
+      "disposition": "retain implemented boundary; no policy adoption"
+    },
+    {
+      "name": "output",
+      "unit": "UTF-8 bytes",
+      "scope": "encoded ordinary JSON or session JSONL including framing",
+      "evidence": [
+        "146",
+        "147"
+      ],
+      "distribution": "147 per-cell outputBytes; 146 stdoutBytes per cell and campaign total",
+      "boundary": "147 research262144-byte capture; session capture32MiB is harness-only",
+      "failureOverride": "BrokenPipe status1 OUTPUT_INCOMPLETE; no final frame promise",
+      "unknown": "no memory/source-byte substitution or production output quota",
+      "disposition": "separate review; no numeric bound selected"
+    },
+    {
+      "name": "cpu",
+      "unit": "process CPU ns",
+      "scope": "direct-process lifetime CPU counters, not native read timer",
+      "evidence": [
+        "146",
+        "147",
+        "148",
+        "149"
+      ],
+      "distribution": "per-cell user/system CPU ns;149 only44 validated resource attempts",
+      "boundary": "no CPU bound selected",
+      "failureOverride": "zero observed counters retained; missing/error stays invalid or unavailable",
+      "unknown": "counter resolution; not zero work or process containment",
+      "disposition": "separate review; no numeric bound selected"
+    },
+    {
+      "name": "working_set",
+      "unit": "bytes",
+      "scope": "OS peak, sampled maxima and live checkpoint deltas kept distinct",
+      "evidence": [
+        "146",
+        "147",
+        "148",
+        "149"
+      ],
+      "distribution": "146 lifetimeSummary/cells;147 resources;148 sampledMaxima;149 valid-only ranges",
+      "boundary": "no quota or allocation peak",
+      "failureOverride": "149 strict audit FAILED1 inconsistent pair;44 valid; automatic-close live endpoint unavailable",
+      "unknown": "cause unproven; no retry/validator relaxation",
+      "disposition": "separate review; no numeric bound selected"
+    },
+    {
+      "name": "private_commit",
+      "unit": "bytes",
+      "scope": "sampled private commit and live ready-to-last-result growth",
+      "evidence": [
+        "146",
+        "147",
+        "148",
+        "149"
+      ],
+      "distribution": "source per-cell maxima and explicit live deltas;149 valid-only44",
+      "boundary": "no OS allowance selected",
+      "failureOverride": "automatic-close endpoint unavailable; post-exit memory not substituted",
+      "unknown": "sampled growth is not leak proof or all-allocation maximum",
+      "disposition": "separate review; no numeric bound selected"
+    },
+    {
+      "name": "logical_io",
+      "unit": "operations and transfer bytes",
+      "scope": "direct-process read/write/other counters including pipes",
+      "evidence": [
+        "146",
+        "147",
+        "148",
+        "149"
+      ],
+      "distribution": "source cells retain operation/transfer counters separately from native requested bytes",
+      "boundary": "no device bound selected",
+      "failureOverride": "unavailable/error fields never zero-imputed",
+      "unknown": "physical traffic, amplification and storage cache unmeasured",
+      "disposition": "separate review; no numeric bound selected"
+    },
+    {
+      "name": "physical_io",
+      "unit": "unavailable",
+      "scope": "device traffic unavailable in these tools",
+      "evidence": [
+        "146",
+        "147",
+        "148",
+        "149"
+      ],
+      "distribution": "none; explicit unavailable",
+      "boundary": "no measurement",
+      "failureOverride": "do not replace with logical I/O",
+      "unknown": "device attribution and physical topology unmeasured",
+      "disposition": "separate review; no numeric bound selected"
+    },
+    {
+      "name": "retained_ids",
+      "unit": "UTF-8 bytes and admitted request count",
+      "scope": "sequential session unique IDs and lifetime admitted reads",
+      "evidence": [
+        "146"
+      ],
+      "distribution": "16 cells,1217 results; three lifetimes each1/64/255 plus controls",
+      "boundary": "128/129 ID bytes;256 automatic-close reads",
+      "failureOverride": "duplicate/overlong IDs refuse; no new override",
+      "unknown": "retained-ID memory not isolated; no concurrent queue",
+      "disposition": "retain implemented boundary; no policy adoption"
+    },
+    {
+      "name": "frames",
+      "unit": "UTF-8 bytes including LF/CRLF",
+      "scope": "session input frame extent with terminators",
+      "evidence": [
+        "146"
+      ],
+      "distribution": "fixed boundary controls among16 cells",
+      "boundary": "524288 bytes including LF/CRLF;524288 non-LF refuses",
+      "failureOverride": "bounded valid frame admitted; overlong frame refuses",
+      "unknown": "input framing not output capture or product memory cap",
+      "disposition": "retain implemented boundary; no policy adoption"
+    },
+    {
+      "name": "elapsed",
+      "unit": "ns or explicitly labelled ms",
+      "scope": "distinct native-read/process/request/first-usable/delivery/exit scopes",
+      "evidence": [
+        "146",
+        "147",
+        "148",
+        "149",
+        "150"
+      ],
+      "distribution": "original per-cell/group distributions;148 single observations;149 valid-only44",
+      "boundary": "no product/release deadline",
+      "failureOverride": "retain failures/censors; do not compare refused less-work speed as improvement",
+      "unknown": "single shared host; smallest/slowest environment undeclared",
+      "disposition": "separate review; no numeric bound selected"
+    },
+    {
+      "name": "observer",
+      "unit": "ns",
+      "scope": "elapsed instrumentation effect plus scheduling noise",
+      "evidence": [
+        "150"
+      ],
+      "distribution": "three rounds30pairs; signed paired distributions;198 attempts/90measured pairs",
+      "boundary": "no numeric regression threshold selected",
+      "failureOverride": "no overhead subtraction; retain all99 valid telemetry attempts",
+      "unknown": "dispersion exceeds medians; not stable/zero overhead",
+      "disposition": "separate review; no numeric bound selected"
+    },
+    {
+      "name": "scratch",
+      "unit": "unmeasured filesystem allocated bytes",
+      "scope": "product scratch versus captured output and allocated filesystem space",
+      "evidence": [
+        "146",
+        "147",
+        "150"
+      ],
+      "distribution": "only declared harness output caps and actual encoded output bytes",
+      "boundary": "no product scratch quota",
+      "failureOverride": "overflow/timeout retains partial harness captures",
+      "unknown": "no physical allocation/free-space reserve evidence",
+      "disposition": "separate review; no numeric bound selected"
+    },
+    {
+      "name": "workers",
+      "unit": "unselected count",
+      "scope": "sequential direct child observations",
+      "evidence": [
+        "146",
+        "147",
+        "150"
+      ],
+      "distribution": "one fresh direct process/session at a time",
+      "boundary": "no worker count selected",
+      "failureOverride": "sampled membership not containment",
+      "unknown": "concurrent worker/resource envelope unmeasured",
+      "disposition": "separate review; no numeric bound selected"
+    },
+    {
+      "name": "deadlines",
+      "unit": "research watchdog ms only",
+      "scope": "10s/30s research execution/delivery watchdog scopes",
+      "evidence": [
+        "146",
+        "147",
+        "149",
+        "150"
+      ],
+      "distribution": "no deadline-success distribution; watchdog conditions explicit",
+      "boundary": "harness only; no product timeout",
+      "failureOverride": "timeout/cancellation censored and retained; no automatic retry",
+      "unknown": "product cancellation and failing native handles separate",
+      "disposition": "separate review; no numeric bound selected"
+    },
+    {
+      "name": "filters",
+      "unit": "named workload stratum",
+      "scope": "Make, ISO/raw, all-metadata/all-values are distinct workloads",
+      "evidence": [
+        "146",
+        "147",
+        "149",
+        "150"
+      ],
+      "distribution": "source strata kept separate",
+      "boundary": "no executable runtime filter bound",
+      "failureOverride": "selected output does not prove less parsing/opaque coverage",
+      "unknown": "dynamic executable filters unsupported",
+      "disposition": "separate review; no numeric bound selected"
+    },
+    {
+      "name": "queues",
+      "unit": "unsupported",
+      "scope": "sequential protocol only",
+      "evidence": [
+        "146"
+      ],
+      "distribution": "none for concurrent requests or runtime tag-discovery queue",
+      "boundary": "no implemented tunable",
+      "failureOverride": "unsupported capability cannot be selected by numeric policy",
+      "unknown": "queue/concurrency mechanism absent",
+      "disposition": "unsupported; not tunable"
+    },
+    {
+      "name": "storage_cache",
+      "unit": "declared uncontrolled stratum",
+      "scope": "fresh application process with warm-exposed uncontrolled OS/device caches",
+      "evidence": [
+        "146",
+        "147",
+        "148",
+        "149",
+        "150"
+      ],
+      "distribution": "host/build-specific observations only",
+      "boundary": "no cache/storage policy selected",
+      "failureOverride": "preflight hashing may warm inputs; no cache reset inferred",
+      "unknown": "cold strata, power/background and physical topology uncontrolled",
+      "disposition": "separate review; no numeric bound selected"
+    },
+    {
+      "name": "unsupported",
+      "unit": "unavailable capability",
+      "scope": "mutation/storage/RAW-write/repair/privacy admission",
+      "evidence": [
+        "64"
+      ],
+      "distribution": "none from read evidence",
+      "boundary": "no capability enabled",
+      "failureOverride": "unsupported operation remains refused",
+      "unknown": "read performance never grants write or storage permission",
+      "disposition": "unsupported; not tunable"
+    }
+  ]
+}

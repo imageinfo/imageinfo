@@ -16,7 +16,7 @@ jobs:
       matrix:
         os: [windows-2025, ubuntu-24.04, macos-15]
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - name: Check out public source
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
@@ -92,6 +92,25 @@ jobs:
           python -m py_compile scripts/check_date_mapping.py scripts/check_read_session.py scripts/check_read_arguments.py
       - name: Check proposed read-limit arithmetic
         run: python scripts/check_read_limits.py
+      - name: Check coverage, limits and retained review evidence
+        shell: bash
+        run: |
+          python scripts/check_compatibility_coverage.py --schema --self-test
+          python scripts/check_read_limits_supplement.py
+          python scripts/check_retained_review_policy.py
+      - name: Check finite interruption and measurement controls
+        shell: bash
+        run: |
+          python scripts/check_production_vmoff_trace.py
+          python scripts/test_production_vmoff_trace.py
+          python scripts/test_storage_vmoff_175.py
+          python scripts/test_audit_storage_vmoff_175.py
+          python scripts/test_offline_startup.py
+          python scripts/test_measure_comparable_read_151.py
+          python scripts/test_audit_comparable_read_151.py
+      - name: Check actual Windows read-only artifact observer
+        if: runner.os == 'Windows'
+        run: python scripts/test_read_storage_artifacts_175.py
       - name: Check authored reference audit and policy models
         run: |
           python -m unittest discover -s experiments/0073-reference-reproduction -p "test_*.py"

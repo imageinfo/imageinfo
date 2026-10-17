@@ -1,0 +1,23 @@
+Camera RAW metadata tooling
+
+Usage: imageinfo [OPTIONS] [COMMAND]
+
+Commands:
+  help      Show contextual help without opening inputs
+  compat    Report finite legacy invocation translations
+  version   Show version and current implementation scope
+  session   Run bounded read-only JSONL sessions
+  metadata  Inspect camera RAW metadata
+  binary    List or extract stored R5 previews
+  preview   Describe read-only metadata intents
+  sidecar   Inspect explicit RAW/sidecar associations
+
+Options:
+      --help             Show help for this command
+      --version          Show version after validating arguments
+      --output <output>  Result format (help always uses plain text) [possible values: text, json]
+      --color <color>    Presentation preference; foundation output is plain text [possible values: auto, always, never]
+      --no-interactive   Keep this invocation noninteractive
+      --interactive      Request guided mode (not implemented yet)
+
+Reads a declared Canon EOS R5 full RAW metadata/preview subset, describes a read-only date intent, and associates explicit existing RAW/sidecar paths. Other cameras, variants, XMP content operations and metadata writes are not supported yet.

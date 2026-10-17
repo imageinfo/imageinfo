@@ -1,0 +1,13 @@
+Read metadata requests from stdin using session protocol v1
+
+Usage: imageinfo session read [OPTIONS]
+
+Options:
+      --help             Show help for this command
+      --version          Show version after validating arguments
+      --output <output>  Result format (help always uses plain text) [possible values: text, json]
+      --color <color>    Presentation preference; foundation output is plain text [possible values: auto, always, never]
+      --no-interactive   Keep this invocation noninteractive
+      --interactive      Request guided mode (not implemented yet)
+
+Uses fixed v1 JSONL on stdout; omit --output. Reads Unicode token arrays sequentially with request-local settings. No queue, cancellation, metadata writes or elapsed-time guarantee.

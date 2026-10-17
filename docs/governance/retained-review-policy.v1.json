@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "ticket": 158,
+  "policy": "retained-0157-option-a",
+  "repository": "imageinfo/imageinfo",
+  "branch": "main",
+  "requirements": {
+    "authorizedDirectPush": true,
+    "projectChecks": true,
+    "practicalAgentReview": true,
+    "terryBoardAcceptance": true,
+    "mandatoryPullRequest": false,
+    "mandatoryHumanApproval": false,
+    "codeownersRequired": false,
+    "newProtectionRequired": false
+  },
+  "observation": {
+    "date": "2026-10-17",
+    "sha": "de24e58fd88c1b64f350ac19c8854d3716ef66e6",
+    "rulesets": 0,
+    "mainProtected": false,
+    "trackedCodeowners": [],
+    "status": "observed",
+    "dedicatedProtectionEndpoint": "403-unknown",
+    "collaboratorPermissionEndpoint": "403-unknown",
+    "sources": [
+      "https://api.github.com/repos/imageinfo/imageinfo/rulesets",
+      "https://api.github.com/repos/imageinfo/imageinfo/branches/main",
+      "https://api.github.com/repos/imageinfo/imageinfo/git/trees/de24e58fd88c1b64f350ac19c8854d3716ef66e6?recursive=1"
+    ]
+  },
+  "directPush": {
+    "sha": "de24e58fd88c1b64f350ac19c8854d3716ef66e6",
+    "url": "https://github.com/imageinfo/imageinfo/commit/de24e58fd88c1b64f350ac19c8854d3716ef66e6",
+    "runUrl": "https://github.com/imageinfo/imageinfo/actions/runs/39049795799",
+    "event": "parent-retained-direct-push-operation",
+    "checks": [
+      {
+        "name": "windows-2025",
+        "conclusion": "success"
+      },
+      {
+        "name": "ubuntu-24.04",
+        "conclusion": "success"
+      },
+      {
+        "name": "macos-15",
+        "conclusion": "success"
+      }
+    ],
+    "status": "observed",
+    "scope": "Existing 2026-10-17 authorized main publication; API metadata alone does not establish the push actor/event."
+  },
+  "cases": [
+    {
+      "id": "RP-01",
+      "case": "current rules and ownership",
+      "result": "observed-no-new-enforcement",
+      "basis": "Read-only rulesets, branch and tracked-tree observations."
+    },
+    {
+      "id": "RP-02",
+      "case": "authorized direct push with project checks",
+      "result": "observed-allowed-route",
+      "basis": "Actual main push and exact-SHA hosted checks; no enforcement inference."
+    },
+    {
+      "id": "RP-03",
+      "case": "agent review and board handoff",
+      "result": "observed-procedural-route",
+      "basis": "Fresh independent agent review precedes handoff; Terry alone accepts Completed. No independent human review claimed."
+    },
+    {
+      "id": "RP-04",
+      "case": "missing review",
+      "result": "no-adopted-machine-denial",
+      "basis": "No mandatory PR approval or CODEOWNERS requirement adopted. Omission is not authorized by the project procedure; no missing-review push attempted."
+    },
+    {
+      "id": "RP-05",
+      "case": "failed or missing project checks",
+      "result": "no-adopted-machine-denial",
+      "basis": "Checks remain a project prerequisite. No deliberately failed/unchecked push attempted; no GitHub denial claimed."
+    },
+    {
+      "id": "RP-06",
+      "case": "bypass or forced update",
+      "result": "not-executed-outside-retained-scope",
+      "basis": "No changed rule exists to rehearse bypass against. No force push, deletion, extra actor or settings change attempted."
+    }
+  ],
+  "settingsChanged": false,
+  "reviewersContacted": false,
+  "permissionsChanged": false,
+  "independentHumanVerificationClaimed": false,
+  "historical18CaseRehearsalExecuted": false,
+  "boardAcceptance": {
+    "ticket": 160,
+    "date": "2026-10-17",
+    "state": "completed",
+    "actor": "terry",
+    "scope": "Source-candidate preparation acceptance only; no release publication approval."
+  },
+  "agentReview": {
+    "result": "independent-agent-review-retained",
+    "scope": "Previous publication integration, including correction and re-review; automation is not independent human verification."
+  }
+}

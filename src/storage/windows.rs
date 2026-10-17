@@ -88,6 +88,14 @@ pub(crate) struct WindowsBackend {
 }
 
 impl WindowsBackend {
+    /// Borrow immutable creator observations for the bounded test-only guest
+    /// collector. This constructs no custody object or action capability and
+    /// performs no extra protocol check at an interruption boundary.
+    #[cfg(test)]
+    pub(in crate::storage) fn qualification_bindings(&self) -> &[Binding] {
+        &self.expected
+    }
+
     /// Read-only advisory for the actual selected output parent. This neither
     /// reserves storage nor replaces the runtime's later native parent guards.
     pub(crate) fn available_bytes(&self) -> Result<u64, Failure> {

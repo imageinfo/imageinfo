@@ -1,5 +1,19 @@
 # imageinfo project guidance
 
+## Release cadence — Terry's decision, 2026-10-17
+
+Keep public releases infrequent. Do not publish a release merely to rehearse
+hosting when retained candidate/archive/build checks provide the useful test.
+Terry deferred #0161's prepared exact source-reader alpha; no tag/release was
+created. Keep the publication card Backlog as an explicit owner hold, with its
+actual publication acceptance unfulfilled. Resume for an important publication
+test or intended authorized release, rechecking the exact candidate/notes and
+readiness. Terry assigned the exercise to the intended 1.0 public release;
+#0216 is Blocked at his explicit request until 1.0 is ready, as an owner-directed
+milestone hold rather than a newly invented external obstacle. No 1.0 work starts
+now. Ordinary source commits/pushes retain standing approval. See
+`docs/governance/release-cadence.md`.
+
 ## Ticket priority default — corrected 2026-10-16
 
 Terry clarified that **P3 is Normal**, superseding the earlier P2 default.
