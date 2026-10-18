@@ -811,8 +811,13 @@ class HttpEndpointTests(unittest.TestCase):
         controller.prepare()
         endpoint, _, port = self.endpoint(controller=controller)
         for seq, stage in enumerate(("prepared", "source_reopened_hold"), 1):
-            self.assertEqual(self.request(port, "POST", "/event/authored219",
-                                          h.protocol.encode_event(outer(stage, seq)))[0], 200,
+            try:
+                status = self.request(port, "POST", "/event/authored219",
+                                      h.protocol.encode_event(outer(stage, seq)))[0]
+            except Exception as exc:
+                self.fail({"stage": stage, "sequence": seq, "failure": endpoint.failure,
+                           "client_error": repr(exc)})
+            self.assertEqual(status, 200,
                              {"stage": stage, "sequence": seq, "failure": endpoint.failure})
         fake.fail_arm = True
         self.assertEqual(self.request(port, "POST", "/event/authored219",
@@ -944,7 +949,7 @@ class HttpEndpointTests(unittest.TestCase):
         event = outer("failure")
         event["observation"] = {"exit_confirmed": False, "error": "authored child stop uncertain"}
         self.assertEqual(self.request(port, "POST", "/event/authored219", h.protocol.encode_event(event))[0], 200)
-        self.assertTrue(endpoint.stop.is_set())
+        self.assertTrue(endpoint.stop.wait(1), "server must finish its terminal refusal after the response")
         self.assertEqual(self.upload(port)[0], 400)
         self.assertEqual(sink, [])
 

@@ -2,10 +2,9 @@
 //!
 //! The protocol is #0097's existing contract. Every call moves one retained
 //! original, never a copied artifact, and every uncertain boundary is terminal.
-use std::{
-    io,
-    path::{Path, PathBuf},
-};
+#[cfg(any(windows, test))]
+use std::path::Path;
+use std::{io, path::PathBuf};
 
 #[derive(Clone, Debug)]
 pub(crate) struct Plan {

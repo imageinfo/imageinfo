@@ -22,6 +22,9 @@ jobs:
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           persist-credentials: false
+      - name: Check guest namespace contrast controls
+        shell: bash
+        run: python -W error::ResourceWarning -m unittest discover -s experiments/0219-namespace-guest-contrast -p 'test_*.py'
       - name: Install pinned Rust toolchain
         run: rustup toolchain install 1.99.0 --profile minimal --component clippy,rustfmt
       - name: Check production Windows storage boundary
@@ -118,9 +121,6 @@ jobs:
       - name: Check post-operation namespace observer controls
         shell: bash
         run: python -W error::ResourceWarning -m unittest discover -s experiments/0218-namespace-observer -p 'test_*.py'
-      - name: Check guest namespace contrast controls
-        shell: bash
-        run: python -W error::ResourceWarning -m unittest discover -s experiments/0219-namespace-guest-contrast -p 'test_*.py'
       - name: Parse guest namespace bootstrap
         if: runner.os == 'Windows'
         shell: pwsh
