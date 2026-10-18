@@ -1,5 +1,28 @@
 # Remaining work for the RAW milestone
 
+## Current readiness audit — 2026-10-18
+
+The [full readiness audit](planning/readiness-audit-2026-10-18.md) supersedes
+earlier live-count statements below; those remain dated planning history.
+All 43 cards then in Ready for Work were reviewed against actual prerequisite
+outcomes, rather than their Completed state alone. Two existing marker scopes
+(#0201/#0202) can reach their complete bounded handoffs now. Twenty-nine scopes
+retain real positive prerequisites, ten are tracking umbrellas, and #0194/#0198
+need sufficient mechanism/producer designs before returning from Backlog.
+
+Three separately closeable preparation gaps are defined in the audit: #0220
+guarded OwnerName candidate, #0221 explicit-artifact residual reporter, and #0222
+native staged two-new-output adapter. They implement missing mechanisms without claiming the
+positive #0089/#0090/#0180 parent outcomes. The resulting Ready for Work inventory
+is **44 cards: five immediately executable scopes, 29 dependent scopes and ten
+tracking umbrellas**. #0219 remains In Progress with its diagnostic cells unrun.
+
+Next implementation dispatch should advance multiple independent cards using
+the rolling up-to-16-subagent workflow. Consider #0219 first, then the eligible
+frontier; coordinate shared guards/module declarations and serialize actual
+native/VM qualification. Do not create another speculative successor program or
+count partial preparation as a completed positive-capability ticket.
+
 Planning revision `2026-10-16.1`. This is the decomposition of the twenty Ready for Work cards reviewed on 2026-10-16, after the #0113–0116 implementation batch. It changes delivery scopes and relationships; it implements no new capability and adopts no product policy.
 
 The original twenty cards hid ten tracking umbrellas and ten executable outcomes. Their full acceptance remains in the tracking map. The final human-lane review removed nine self-imposed approval gates and a duplicate of completed #0064. Ordinary engineering/preparation uses existing authorization; explicit guarantee changes and real external consent remain human decisions. The board now separates **99 bounded Ready for Work outcomes**, **six explicit Terry decisions**, and **four insufficient-scope items**. Ten tracking umbrellas remain Ready for Work under the standing lane rule and are excluded from executable counts. Eleven existing identities were reused, including the existing insufficient-scope #0092; 99 cards were created; one redundant approval card was archived after review, leaving 98 active new scopes.

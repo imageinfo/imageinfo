@@ -1,15 +1,34 @@
 # imageinfo project guidance
 
-## Next requested readiness audit — 2026-10-18
+## Readiness and multiple-card dispatch — 2026-10-18
 
-After the current #0219 handoff, Terry wants the next turn devoted to making
-all Ready for Work cards actually ready to execute. Audit stale prerequisite
-results, missing concrete scope and each card's actionable next step; make
-remaining technical risks explicit. Do not call queued positive-capability work
-executable merely because a negative feasibility prerequisite is Completed.
-Preserve the standing lane rules while reconciling readiness; an ordinary
-dependency alone does not justify Backlog or Blocked. Perform this audit before
-starting another implementation wave.
+Terry requested the full readiness audit now, before more implementation.
+Use `docs/planning/readiness-audit-2026-10-18.md` for the dated result and
+concrete next actions on every audited card. Keep Ready for Work's standing
+dependency semantics, but count immediately executable handoffs separately
+from dependent positive scopes and tracking umbrellas. A completed negative
+feasibility result never satisfies a required positive capability. Preparation
+that cannot close a card is not an executable whole-card handoff.
+
+Work multiple eligible cards per turn when independent work exists. Consider
+existing In Progress work first, assign it a useful bounded team, then assign
+available slots to the next eligible cards in triage order. Do not concentrate
+all 16 subagents on one card while independent eligible cards wait. Sixteen is
+a ceiling, not a quota: avoid invented tasks, duplicate probes and idle reviewer
+pairs. Use rolling fresh independent review, coordinate shared-file changes and
+serialize native/VM experiments where their evidence requires it. Keep every
+selected card In Progress throughout its implementation and review.
+
+The audit exposes two insufficiently specified replacement mechanisms on
+#0194/#0198; their Backlog exit criteria require actual sufficient designs,
+not another ordinary dependency or a repetition of accepted negative evidence.
+Other scoped dependencies remain Ready for Work. Preserve original positive
+acceptance when adding an independently closeable preparation child, and report
+both counts so preparatory progress cannot hide the remaining capability work.
+Keep #0219's actual execution status explicit; source preparation is published,
+but its guest diagnostic cells have not run and the audit does not complete it.
+The immediately executable RFW frontier is #0201, #0202, #0220, #0221 and #0222;
+recheck actual prerequisites and current lanes on the next implementation turn.
 
 ## Release cadence — Terry's decision, 2026-10-17
 

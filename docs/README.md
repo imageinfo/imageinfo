@@ -173,6 +173,7 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Known-provenance policy proposal](privacy/known-provenance-policy.md) | #0091 one existing Canon indicator, explicit refusal/invalidation alternatives and authored policy vectors; no signature validation or adopted mutation permission. |
 | [Two-name cycle specification](write-safety/two-name-cycle.md) | #0097 bounded proposed moves, foreign winners and partial states; model checks do not qualify a native rename mechanism. |
 | [Remaining-work inventory](remaining-work.md) | Bounded executable scopes, exact human decisions, tracking umbrellas and explicit unresolved branches from the full RFW decomposition. |
+| [Ready for Work audit — 2026-10-18](planning/readiness-audit-2026-10-18.md) | All 43 queued cards reconciled against actual prerequisites, with concrete next steps, missing mechanism scope and a multiple-card execution frontier. |
 | [Product requirements](product-requirements.md) | Scope, users, feature requirements, priorities, and acceptance criteria. |
 | [ExifTool capabilities](exiftool-capabilities.md) | What the upstream tool does, including formats beyond images. |
 | [ExifTool CLI semantics](exiftool-cli-semantics.md) | Behaviors and interactions that a workalike must account for. |
