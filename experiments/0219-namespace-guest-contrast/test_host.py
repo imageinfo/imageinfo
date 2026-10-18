@@ -377,6 +377,88 @@ def outer(stage="prepared", seq=1, bound=None):
             **{flag: False for flag in h.protocol.FLAGS}}
 
 
+class BlkdebugReadbackControls(unittest.TestCase):
+    def config(self, flat=False, rule=True):
+        b = binding()
+        value = {"driver": "blkdebug", "image": {"driver": "file", "filename": b.disk_path}}
+        if flat:
+            if rule:
+                value.update({"inject-error.0." + key: item for key, item in h.RULE.items()})
+        else:
+            value["inject-error"] = [copy.deepcopy(h.RULE)] if rule else []
+        return value
+
+    def parse(self, value, expected=h.RULE):
+        raw = value if type(value) is str else json.dumps(value)
+        return h._blkdebug_rules("json:" + raw, binding(), expected)
+
+    def test_blkdebug_nested_flat_error_and_empty_control_are_exactly_equivalent(self):
+        for flat in (False, True):
+            self.assertEqual(self.parse(self.config(flat)), [h.RULE])
+            self.assertEqual(self.parse(self.config(flat, False), None), [])
+            with self.assertRaises(h.HostError): self.parse(self.config(flat, False))
+            with self.assertRaises(h.HostError): self.parse(self.config(flat), None)
+        named = self.config();named.update(image=binding().file_node, **{"node-name": binding().filter_node})
+        self.assertEqual(self.parse(named), [h.RULE])
+
+    def test_blkdebug_unknown_mixed_duplicate_type_index_and_sector_refuse(self):
+        flat, nested = self.config(True), self.config()
+        invalid = []
+        for key, item in (("inject-error.0.errno", True), ("inject-error.0.errno", 28.0),
+                          ("inject-error.0.errno", "28"), ("inject-error.0.once", 0),
+                          ("inject-error.0.once", "false"), ("inject-error.0.once", True),
+                          ("inject-error.0.event", "read_aio"), ("inject-error.0.iotype", "read")):
+            changed = copy.deepcopy(flat);changed[key] = item;invalid.append(changed)
+        for field in h.RULE:
+            changed = copy.deepcopy(flat);changed.pop("inject-error.0." + field);invalid.append(changed)
+        for field, item in (("inject-error.1.event", "write_aio"), ("inject-error.00.event", "write_aio"),
+                            ("inject-error.0.sector", None), ("inject-error.0.unknown", False),
+                            ("set-state.0.event", "write_aio"), ("unknown", False), ("inject-error", [])):
+            changed = copy.deepcopy(flat);changed[field] = item;invalid.append(changed)
+        for field, item in (("errno", True), ("errno", 28.0), ("once", 0), ("sector", None), ("unknown", False)):
+            changed = copy.deepcopy(nested);changed["inject-error"][0][field] = item;invalid.append(changed)
+        for rules in (None, {}, [h.RULE, h.RULE]):
+            changed = copy.deepcopy(nested);changed["inject-error"] = rules;invalid.append(changed)
+        for image in ("foreign", {"driver":"file","filename":"/foreign.raw"},
+                      {"driver":"file","filename":binding().disk_path,"read-only":True}):
+            changed = copy.deepcopy(flat);changed["image"] = image;invalid.append(changed)
+        changed = copy.deepcopy(flat);changed["node-name"] = "foreign";invalid.append(changed)
+        flat_wire = json.dumps(flat, separators=(",", ":"))
+        nested_wire = json.dumps(nested, separators=(",", ":"))
+        invalid += [flat_wire.replace('"inject-error.0.errno":28', '"inject-error.0.errno":28,"inject-error.0.errno":28'),
+                    nested_wire.replace('"once":false', '"once":false,"once":false'),
+                    flat_wire.replace('"driver":"blkdebug"', '"driver":"blkdebug","driver":"blkdebug"')]
+        for index, value in enumerate(invalid):
+            with self.subTest(vector=index), self.assertRaises(h.HostError): self.parse(value)
+        for index in ("1", "00", "-1"):
+            invalid_index = {key.replace("inject-error.0.", "inject-error." + index + "."):value for key,value in flat.items()}
+            with self.assertRaises(h.HostError): self.parse(invalid_index)
+        with self.assertRaises(h.HostError): self.parse("\ufeff" + flat_wire)
+        for field, value in (("set-state.0.event", "write_aio"), ("inject-error", False), ("inject-error.0.sector", 0)):
+            control = self.config(True, False);control[field] = value
+            with self.assertRaises(h.HostError): self.parse(control, None)
+        for expected in (dict(h.RULE, once=0), dict(h.RULE, errno=28.0), {}):
+            with self.assertRaises(h.HostError): self.parse(flat, expected)
+
+    def test_blkdebug_flattened_readback_retains_complete_fake_controller_lifecycle(self):
+        for case in ("persistent-write-error", "no-error"):
+            b = binding(case);fake = FakeQmp(b);records = []
+            def transport(command, arguments=None):
+                result = fake(command, arguments)
+                if command == "query-named-block-nodes":
+                    for node in result:
+                        if node.get("drv") == "blkdebug":
+                            value = {"driver":"blkdebug", "image":{"driver":"file", "filename":b.disk_path}}
+                            if case == "persistent-write-error":
+                                value.update({"inject-error.0." + key:item for key,item in h.RULE.items()})
+                            node["image"]["filename"] = "json:" + json.dumps(value)
+                return result
+            controller = h.Controller(h.QmpChannel(transport), b, records.append)
+            controller.prepare();controller.arm();controller.clear()
+            self.assertEqual(controller.state, "cleared")
+            self.assertEqual(fake.selected, b.file_node)
+
+
 class ControllerTests(unittest.TestCase):
     def test_exact_qdev_legacy_zero_form_preserves_device_identity(self):
         b=binding()

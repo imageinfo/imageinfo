@@ -1,12 +1,52 @@
 # Post-operation guest namespace contrast — #0219
 
-**The two guest cells below are not yet run.** This method carries the
+**The two diagnostic guest cells remain NOT RUN.** One retained persistent-error
+attempt stopped at preparation; the matched no-error slot was unattempted.
+The strict controller check refused QEMU rule readback before starting an HTTP
+endpoint, diagnostic guest command, collector, worker, source move or injected fault. There
+is no actual namespace contrast result, cause or correction for #0174.
+
+This delivered method carries the
 separately bound [#0218 observer](post-operation-namespace-observer.md) into
 the finite historical-rule contrast proposed by
 [#0217](prepared-source-namespace-attribution.md). It does not establish a
 cause or correction for #0174's prepared-source namespace discrepancy.
-Actual execution and retained-evidence review must be recorded separately
-before either cell is described as completed.
+Actual two-cell execution and retained-evidence review remain a bounded
+follow-up before either diagnostic cell can be described as completed.
+
+## Delivered method and actual preparation result
+
+The source method provides the separately bound guest observer entry, staged
+[host controller](../../experiments/0219-namespace-guest-contrast/host_controller.py),
+[transport](../../experiments/0219-namespace-guest-contrast/protocol.py),
+[collector](../../experiments/0219-namespace-guest-contrast/guest_collector.py)
+and [retained-evidence auditor](../../experiments/0219-namespace-guest-contrast/audit.py).
+Its finite gates preserve live source/name
+observations, rule arm/clear confirmation, explicit release and confirmed child
+exit. Source preparation and [authored host controls](../../experiments/0219-namespace-guest-contrast/test_host.py)
+are distinct from guest execution.
+
+| Scope | Actual result |
+| --- | --- |
+| Earlier literal-loopback source controls | The 187-control suite passes across Windows, Linux and macOS at that source revision, with declared platform skips; this is method/control evidence, not either diagnostic guest cell. |
+| Canonical QEMU readback correction | 193 current local authored controls pass, including six new controls independently checked in review. Both strict decoders accept the unchanged retained dotted readback offline. This does not rerun the stopped attempt or establish new hosted results. |
+| DNS startup control | An authored injected resolver delay exposed endpoint-constructor deadline consumption. The endpoint now binds literal IPv4 loopback without reverse-DNS discovery; actual macOS DNS latency was not measured. |
+| Persistent-error attempt | Preparation refused: QEMU accepted an **unselected** blkdebug node, but returned dotted `inject-error.0.*` fields where the strict check expected a nested `inject-error` array. No guest operation or fault was reached. |
+| Matched no-error slot | Unattempted after the first preparation refusal. |
+| Two actual diagnostic cells | NOT RUN; no positive storage/profile or namespace-preservation outcome. |
+
+The preparation failure and its artifacts remain retained under their original
+attempt identity. The independently reviewed compatibility correction accepts
+only the exact nested or dotted rule representation. Unknown, mixed, duplicate,
+wrong-type, extra-index and sector options refuse; the existing topology, file
+path and device checks remain. This engineering correction does not retry or
+complete the original attempted contrast. A fresh exact follow-up execution
+plan still needs independent review; command acceptance alone never establishes
+an active fault.
+
+Remaining execution is recorded as **#0223**, the exact two-cell bounded follow-up
+below, with explicit bindings, deadlines and retained failures. It is not an
+open-ended campaign or adaptive replay.
 
 ## Exact two-cell question
 

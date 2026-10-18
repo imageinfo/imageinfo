@@ -197,18 +197,19 @@ def main():
                 for width in (40, 80):
                     status2, raw, backend = capture(argv, folder, width, env)
                     stem.with_suffix(f'.{width}.pty').write_bytes(raw)
-                    assert status2 == status
                     rendered, controls = screen(raw, width)
                     stem.with_suffix(f'.{width}.screen.txt').write_text(rendered + '\n', encoding='utf-8')
                     # stderr/stdout ordering under the merged PTY is not a
                     # machine-channel promise. Both must be complete in order
                     # for these sequentially emitted finite cases.
                     expected = stdout + stderr
-                    assert compact(rendered) == compact(expected), 'PTY display lost/changed output'
+                    exact = compact(rendered) == compact(expected)
                     observations.append({'spelling': spelling_index, 'columns': width,
                                          'backend': backend, 'status': status2,
                                          'ptyBytes': len(raw), 'hostControls': controls,
-                                         'exactVisibleNonWhitespace': True})
+                                         'exactVisibleNonWhitespace': exact})
+                    assert status2 == status, 'PTY child status differs from redirected status'
+                    assert exact, 'PTY display lost/changed output'
             result = {'id': case['id'], 'passed': True, 'observations': observations}
         except Exception as error:
             result = {'id': case['id'], 'passed': False, 'failure': str(error),
@@ -220,7 +221,7 @@ def main():
     if help_nodes != discovered:
         failures.append({'failure': 'authored help cases differ from actual command inventory'})
     (folder / 'results.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
-    if not failures and args.public_results:
+    if args.public_results:
         args.public_results.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8', newline='\n')
     print(json.dumps({'cases': len(cases), 'failures': failures, 'retained': str(folder)}))
     return bool(failures)

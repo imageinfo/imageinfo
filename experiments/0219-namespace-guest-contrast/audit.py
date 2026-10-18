@@ -687,6 +687,44 @@ def audit_guest(attempt_dir):
             "held_candidate_final_name": held_candidate_final_name}
 
 
+def _blkdebug_rules(filename, binding, expected_rule):
+    """Independently normalize exact nested/flattened retained rule readback."""
+    require(type(filename) is str and filename.startswith("json:"), "QMP loaded rule configuration missing")
+    try:
+        raw = filename[5:].encode("utf-8")
+    except UnicodeError as exc:
+        raise AuditError("QMP loaded rule JSON encoding invalid") from exc
+    require(len(raw) + 5 <= 65536, "QMP loaded rule configuration bounded")
+    value = _json(raw)  # rejects duplicate members at every depth
+    require(type(value) is dict and value.get("driver") == "blkdebug", "QMP rule driver differs")
+    if "node-name" in value:
+        require(value["node-name"] == binding["filter_node"], "QMP rule node differs")
+    if "image" in value:
+        reference = value["image"]
+        require(reference == binding["file_node"] or (type(reference) is dict
+                and set(reference) == {"driver", "filename"} and reference["driver"] == "file"
+                and reference["filename"] == binding["disk_path"]), "QMP rule image/path differs")
+    remaining = set(value).difference(("driver", "image", "node-name"))
+    names = ("event", "iotype", "errno", "once")
+    flattened = {"inject-error.0." + name for name in names}
+    if not remaining:
+        result = []
+    elif remaining == flattened:
+        result = [{name: value["inject-error.0." + name] for name in names}]
+    else:
+        require(remaining == {"inject-error"} and type(value["inject-error"]) is list
+                and len(value["inject-error"]) <= 1, "QMP extra/mixed/missing/unknown injection options or indices")
+        result = value["inject-error"]
+    for item in result:
+        require(type(item) is dict and set(item) == set(names)
+                and type(item["event"]) is str and type(item["iotype"]) is str
+                and type(item["errno"]) is int and type(item["once"]) is bool and _exact(item, RULE),
+                "QMP loaded rule fields/types differ or narrow the whole-volume fault")
+    require(expected_rule is None or _exact(expected_rule, RULE), "QMP expected rule unsupported")
+    require(_exact(result, [] if expected_rule is None else [RULE]), "QMP missing/extra rule for selected error/control cell")
+    return result
+
+
 def _graph(nodes, blocks, binding, selected, rule, *, filter_exists=True):
     require(type(nodes) is list and 2 <= len(nodes) <= 256 and type(blocks) is list and len(blocks) <= 256,
             "QMP graph bounds")
@@ -706,10 +744,8 @@ def _graph(nodes, blocks, binding, selected, rule, *, filter_exists=True):
         require(filt.get("drv") == "blkdebug" and filt.get("children") == [
             {"node-name": binding["file_node"], "child": "image"}], "QMP filter child differs")
         filename = filt.get("image", {}).get("filename")
-        require(type(filename) is str and filename.startswith("json:") and len(filename) <= 65536,
-                "QMP loaded rule configuration missing")
-        config = _json(filename[5:].encode("utf-8"))
-        require(config.get("driver") == "blkdebug" and _exact(config.get("inject-error"), [rule] if rule else []),
+        observed_rules = _blkdebug_rules(filename, binding, rule)
+        require(_exact(observed_rules, [rule] if rule else []),
                 "QMP loaded rule is not exact persistent whole-volume rule/control")
     else:
         require(binding["filter_node"] not in lookup, "existing filter adopted")

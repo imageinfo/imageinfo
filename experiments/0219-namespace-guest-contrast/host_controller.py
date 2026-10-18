@@ -94,6 +94,55 @@ def resident_code_sha256():
                                         protocol.STAGES, protocol.COMMANDS))).hexdigest()
 
 
+def _blkdebug_rules(filename, binding, expected_rule):
+    """Decode only the two equivalent finite rule readback representations.
+
+    QEMU may flatten array index zero into dotted option names. Absence of all
+    injection fields denotes the empty control, never the required error rule.
+    Raw node/child/file/device checks remain independent in Controller._graph.
+    """
+    _require(type(filename) is str and filename.startswith("json:"), "missing blkdebug JSON")
+    try:
+        raw = filename[5:].encode("utf-8")
+        _require(len(raw) + 5 <= 65536, "bounded blkdebug JSON")
+        config = json.loads(raw.decode("utf-8"), object_pairs_hook=protocol.worker_protocol._pairs,
+                            parse_constant=lambda _: (_ for _ in ()).throw(HostError("nonfinite blkdebug JSON")))
+    except (ValueError, UnicodeError, RecursionError) as exc:
+        raise HostError("invalid/duplicate blkdebug JSON") from exc
+    _require(type(config) is dict and config.get("driver") == "blkdebug", "wrong blkdebug driver")
+    metadata = {"driver", "image", "node-name"}
+    if "node-name" in config:
+        _require(config["node-name"] == binding.filter_node, "blkdebug node identity differs")
+    if "image" in config:
+        image = config["image"]
+        _require(image == binding.file_node or (type(image) is dict and set(image) == {"driver", "filename"}
+                 and image["driver"] == "file" and image["filename"] == binding.disk_path),
+                 "blkdebug image/path differs")
+    option_keys = set(config) - metadata
+    fields = {"event", "iotype", "errno", "once"}
+    dotted = {"inject-error.0." + key for key in fields}
+    if option_keys == {"inject-error"}:
+        rules = config["inject-error"]
+        _require(type(rules) is list and len(rules) <= 1, "extra/malformed nested injection rules")
+    elif option_keys == dotted:
+        rules = [{key: config["inject-error.0." + key] for key in fields}]
+    elif not option_keys:
+        rules = []
+    else:
+        raise HostError("mixed/missing/unknown injection fields or indices")
+    for rule in rules:
+        _require(type(rule) is dict and set(rule) == fields and type(rule["event"]) is str
+                 and type(rule["iotype"]) is str and type(rule["errno"]) is int and type(rule["once"]) is bool,
+                 "inexact rule fields/types; sector narrowing unsupported")
+        _require(rule == RULE, "readback is not the exact persistent whole-volume rule")
+    _require(expected_rule is None or (type(expected_rule) is dict and set(expected_rule) == fields
+             and type(expected_rule["event"]) is str and type(expected_rule["iotype"]) is str
+             and type(expected_rule["errno"]) is int and type(expected_rule["once"]) is bool and expected_rule == RULE),
+             "unsupported expected rule")
+    _require(rules == ([] if expected_rule is None else [RULE]), "missing/extra rule for selected error/control cell")
+    return deepcopy(rules)
+
+
 class JsonSocketChannel:
     """Explicit bounded local QEMU socket adapter; never constructed on import."""
     def __init__(self, path, *, mode="qmp", timeout=5, clock=time.monotonic):
@@ -390,9 +439,8 @@ class Controller:
             filt = nodes.get(b.filter_node, {})
             _require(filt.get("drv") == "blkdebug" and filt.get("children") == [{"node-name": b.file_node, "child": "image"}], "filter child binding changed")
             filename = filt.get("image", {}).get("filename", "")
-            _require(type(filename) is str and filename.startswith("json:"), "missing resident blkdebug configuration")
-            config = json.loads(filename[5:])
-            _require(config.get("driver") == "blkdebug" and config.get("inject-error") == ([self.rule] if self.rule else []), "resident rule differs from actual requested rule")
+            rules = _blkdebug_rules(filename, b, self.rule)
+            _require(rules == ([self.rule] if self.rule else []), "resident rule differs from actual requested rule")
         else:
             _require(b.filter_node not in nodes, "filter name already exists; no adoption")
         blocks = self._call("query-block")

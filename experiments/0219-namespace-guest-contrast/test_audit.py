@@ -976,6 +976,79 @@ def pair_fixture(root, *, http=False):
     return cells[0][0], cells[1][0], plan_path, freeze_path, review_path
 
 
+class BlkdebugRetainedReadbackControls(unittest.TestCase):
+    def setUp(self):
+        self.bound = dict(filter_node="filter219", file_node="file219", disk_path="/authored.raw",
+                          raw_node="raw219", device_id="usb219")
+        self.flat = {"driver":"blkdebug", "image":{"driver":"file", "filename":"/authored.raw"},
+                     **{"inject-error.0." + name:value for name,value in audit.RULE.items()}}
+        self.nested = {"driver":"blkdebug", "image":"file219", "inject-error":[deepcopy(audit.RULE)]}
+
+    def parse(self, value, expected=audit.RULE):
+        wire = value if type(value) is str else json.dumps(value)
+        return audit._blkdebug_rules("json:" + wire, self.bound, expected)
+
+    def test_blkdebug_exact_nested_flat_and_empty_control(self):
+        for value in (self.flat, self.nested):
+            self.assertEqual(self.parse(value), [audit.RULE])
+            with self.assertRaises(audit.AuditError): self.parse(value, None)
+        for value in ({"driver":"blkdebug", "image":{"driver":"file", "filename":"/authored.raw"}},
+                      {"driver":"blkdebug", "inject-error":[]}):
+            self.assertEqual(self.parse(value, None), [])
+            with self.assertRaises(audit.AuditError): self.parse(value)
+
+    def test_blkdebug_retained_unknown_duplicate_types_indices_and_narrowing_refuse(self):
+        vectors = []
+        changes = {"inject-error.0.errno":(True,28.0,"28",27), "inject-error.0.once":(0,"false",True),
+                   "inject-error.0.event":("read_aio",), "inject-error.0.iotype":("read",)}
+        for key, values in changes.items():
+            for value in values:
+                item = deepcopy(self.flat);item[key] = value;vectors.append(item)
+        for name in audit.RULE:
+            item = deepcopy(self.flat);item.pop("inject-error.0." + name);vectors.append(item)
+        for key, value in (("inject-error.1.once",False), ("inject-error.00.event","write_aio"),
+                           ("inject-error.0.sector",None), ("inject-error.0.extra",0),
+                           ("set-state.0.event","write_aio"), ("inject-error",[]), ("unknown",False)):
+            item = deepcopy(self.flat);item[key] = value;vectors.append(item)
+        for key, value in (("errno",True), ("errno",28.0), ("once",0), ("sector",None), ("other",False)):
+            item = deepcopy(self.nested);item["inject-error"][0][key] = value;vectors.append(item)
+        for value in (None, {}, [audit.RULE,audit.RULE]):
+            item = deepcopy(self.nested);item["inject-error"] = value;vectors.append(item)
+        for image in ("foreign", {"driver":"file","filename":"/other.raw"},
+                      {"driver":"file","filename":"/authored.raw","read-only":True}):
+            item = deepcopy(self.flat);item["image"] = image;vectors.append(item)
+        item = deepcopy(self.flat);item["node-name"] = "other";vectors.append(item)
+        wire = json.dumps(self.flat, separators=(",", ":"))
+        vectors.append(wire.replace('"inject-error.0.once":false', '"inject-error.0.once":false,"inject-error.0.once":false'))
+        wire = json.dumps(self.nested, separators=(",", ":"))
+        vectors.append(wire.replace('"errno":28', '"errno":28,"errno":28'))
+        vectors.append(wire.replace('"driver":"blkdebug"', '"driver":"blkdebug","driver":"blkdebug"'))
+        for index, value in enumerate(vectors):
+            with self.subTest(vector=index), self.assertRaises(audit.AuditError): self.parse(value)
+        for index in ("1", "00", "-1"):
+            invalid_index = {key.replace("inject-error.0.","inject-error."+index+"."):value for key,value in self.flat.items()}
+            with self.assertRaises(audit.AuditError): self.parse(invalid_index)
+        with self.assertRaises(audit.AuditError): self.parse("\ufeff" + wire)
+        for field, value in (("set-state.0.event","write_aio"),("inject-error",False),("inject-error.0.sector",0)):
+            control = {"driver":"blkdebug",field:value}
+            with self.assertRaises(audit.AuditError): self.parse(control,None)
+        for expected in ({},dict(audit.RULE,once=0),dict(audit.RULE,errno=28.0)):
+            with self.assertRaises(audit.AuditError): self.parse(self.flat,expected)
+
+    def test_blkdebug_flat_rule_does_not_replace_raw_child_or_path_guards(self):
+        nodes=[{"node-name":"file219","drv":"file","image":{"filename":"/authored.raw"},"children":[]},
+               {"node-name":"raw219","drv":"raw","children":[{"node-name":"file219","child":"file"}]},
+               {"node-name":"filter219","drv":"blkdebug","children":[{"node-name":"file219","child":"image"}],
+                "image":{"filename":"json:"+json.dumps(self.flat)}}]
+        blocks=[{"qdev":"usb219","inserted":{"node-name":"raw219"}}]
+        audit._graph(nodes,blocks,self.bound,"file219",audit.RULE)
+        for mutate in (lambda n:n[0]["image"].update(filename="/foreign.raw"),
+                       lambda n:n[1].update(children=[{"node-name":"foreign","child":"file"}]),
+                       lambda n:n[2].update(children=[{"node-name":"foreign","child":"image"}])):
+            changed=deepcopy(nodes);mutate(changed)
+            with self.assertRaises(audit.AuditError): audit._graph(changed,blocks,self.bound,"file219",audit.RULE)
+
+
 class QdevIdentityControls(unittest.TestCase):
     def test_exact_qdev_legacy_zero_form_rejects_foreign_paths(self):
         binding=dict(raw_node="raw219",file_node="file219",filter_node="filter219",disk_path="/authored.raw",device_id="usb219")

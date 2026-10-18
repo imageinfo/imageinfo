@@ -2,12 +2,14 @@
 
 ## Multiple-card execution wave — 2026-10-18
 
-The next wave selects existing In Progress #0219 plus #0222, #0201, #0202,
+This wave selected existing In Progress #0219 plus #0222, #0201, #0202,
 #0220 and #0221, moving every selected card In Progress before delegation.
 Sixteen direct agents split independent source, tests, evidence and documentation,
-followed by fresh independent review. This consumes existing scoped work; no
-successor batch is created. The unselected RFW inventory is 39 cards: 29 dependent
-scopes and ten tracking umbrellas. Live lanes remain authoritative.
+followed by fresh independent review. This consumes existing scoped work. The
+unselected inventory was 39 cards: 29 dependent scopes and ten tracking umbrellas.
+One concrete execution follow-up, #0223, retains the unfulfilled guest contrast
+after an actual preparation refusal; the resulting queued inventory is 40 cards.
+No successor implementation batch was created. Live lanes remain authoritative.
 
 #0201's ten native name-plan cells pass. #0202's immediate method exposes a real
 creation-time change, retained as contrary evidence; one explicitly selected
@@ -18,10 +20,13 @@ observations, not universal NTFS preservation or final #0213/#0206 qualification
 #0222's eight native/sixteen runtime controls pass. Their methods and remaining
 positive parent requirements are linked in the [documentation map](README.md).
 
-#0219's readiness and source preparation do not complete the diagnostic itself.
-The actual two-cell guest execution/evidence status belongs to its
-[method](write-safety/post-operation-guest-contrast.md); no positive storage
-admission follows from the preparation or contrast.
+#0219 delivers the bounded transport and independently reviewed strict QEMU
+readback correction. Its one actual preparation attempt refused while the new
+filter remained unselected; the second slot was unattempted. Neither diagnostic
+cell ran. #0223 retains exactly that remaining execution under #0022, preserving
+the earlier failure and requiring a new fixed plan and independent review. See
+the [method](write-safety/post-operation-guest-contrast.md); no positive namespace,
+storage or RAW admission follows from the source delivery or refused preparation.
 
 ## Current readiness audit — 2026-10-18
 

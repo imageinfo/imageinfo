@@ -42,8 +42,8 @@ def capture(argv, cwd, columns, env, seconds=10):
                     break
                 data.extend(chunk)
                 assert len(data) <= LIMIT, 'PTY capture limit exceeded'
-            elif process.poll() is not None:
-                break
+            # Child exit does not establish that the PTY has drained. Wait for
+            # EOF/EIO under the same deadline, including delayed final output.
         return process.wait(timeout=2), bytes(data), 'posix-pty'
     finally:
         if process is not None and process.poll() is None:

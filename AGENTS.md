@@ -56,11 +56,17 @@ unreturned partial paths; never invent a hold or identity for them. The positive
 #0089/#0090/#0180 parent acceptance remains open. See the three linked methods in
 the documentation map. No writer/profile or new source-media authority follows.
 
-#0219 now has actual ordinary-user QEMU readiness with two distinct physical USB
+#0219 has actual ordinary-user QEMU readiness with two distinct physical USB
 bindings, a verified 54-file Python runtime and exact source pins. Its public
 bootstrap separates diagnostic-plan and volume-plan digests; the host/auditor
-recognize the exact observed QMP `legacy[0]` device spelling. Diagnostic cells
-remain unrun until the final integrated source/build/plan is frozen and reviewed.
+recognize the exact observed QMP `legacy[0]` device spelling. The first actual
+attempt refused during preparation because QEMU returned dotted rule fields;
+the added filter remained unselected, and the control slot was unattempted.
+The strict nested/dotted compatibility correction has independent source review
+and 193 passing local authored controls. Neither diagnostic cell ran. #0223
+retains their bounded execution; never treat acceptance of #0219's delivered
+software/refusal handoff as a positive contrast or replay its stopped attempt.
+Require fresh live boot/volume facts and an exact reviewed source/build/plan.
 Equal NTFS serial/file IDs across the disposable volumes are not global identity;
 retain the distinct physical/disk/volume/path bindings. Preserve the observed CIM
 size discrepancy and use the verified Get-Disk/QMP extents, not a guessed size.
