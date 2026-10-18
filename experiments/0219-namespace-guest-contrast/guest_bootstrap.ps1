@@ -62,11 +62,22 @@ function Read-Namespace219PinnedJson {
 }
 
 function Get-Namespace219VolumeBinding {
-    param([string]$PlanPath,[string]$PlanSha256,[string]$Destination)
+    param([string]$PlanPath,[string]$PlanSha256,[string]$DiagnosticPlanSha256,[string]$Destination)
     $ErrorActionPreference='Stop'
     $null=Get-Namespace219GuestReadiness
     Assert-Namespace219LocalPath $Destination
-    $plan219=Read-Namespace219PinnedJson $PlanPath $PlanSha256
+    Assert-Namespace219PinnedFile $PlanPath $PlanSha256
+    if ($DiagnosticPlanSha256 -cnotmatch '^[0-9a-f]{64}$') { throw 'Exact diagnostic plan digest required' }
+    # Retain the exact selection bytes that are hashed and parsed, separately
+    # from the whole diagnostic plan. A path hash is not a resident-code claim.
+    $selectionBytes219=[IO.File]::ReadAllBytes($PlanPath)
+    if ($selectionBytes219.Length -eq 0 -or $selectionBytes219.Length -gt 16384) { throw 'Volume selection byte bound' }
+    $selectionHasher219=[Security.Cryptography.SHA256]::Create()
+    try { $selectionDigest219=([BitConverter]::ToString($selectionHasher219.ComputeHash($selectionBytes219))).Replace('-','').ToLowerInvariant() }
+    finally { $selectionHasher219.Dispose() }
+    if ($selectionDigest219 -cne $PlanSha256) { throw 'Volume selection changed before capture' }
+    $selectionEncoding219=New-Object Text.UTF8Encoding($false,$true)
+    $plan219=$selectionEncoding219.GetString($selectionBytes219) | ConvertFrom-Json
     if ($plan219.unit -cnotmatch '^[A-Za-z0-9_-]{1,64}$' -or
         $plan219.fixture_relative -cnotmatch '^[A-Za-z0-9_-]{1,64}$' -or
         $plan219.min_disk_bytes -lt 33554432 -or
@@ -103,7 +114,9 @@ function Get-Namespace219VolumeBinding {
         partition_is_boot=[bool]$partition219.IsBoot; partition_is_system=[bool]$partition219.IsSystem
         disk_size_bytes=$disk219.Size; partition_size_bytes=$partition219.Size; volume_size_bytes=$volume219.Size
         disk_bus_type=[string]$disk219.BusType; disk_friendly_name=$disk219.FriendlyName
-        partition_offset=$partition219.Offset; plan_sha256=$PlanSha256; guestUtc=[DateTime]::UtcNow.ToString('o')
+        partition_offset=$partition219.Offset; plan_sha256=$DiagnosticPlanSha256
+        volume_plan_sha256=$selectionDigest219; volume_plan_bytes_base64=[Convert]::ToBase64String($selectionBytes219)
+        guestUtc=[DateTime]::UtcNow.ToString('o')
     }
     Write-Namespace219NewJson $Destination $binding219
     return [pscustomobject]$binding219
@@ -271,6 +284,7 @@ function Invoke-Namespace219GuestCollector {
         [string]$Endpoint,
         [Parameter(Mandatory=$true)][string]$VolumePlanPath,
         [Parameter(Mandatory=$true)][string]$VolumePlanSha256,
+        [Parameter(Mandatory=$true)][string]$DiagnosticPlanSha256,
         [Parameter(Mandatory=$true)][string]$CaptureDirectory,
         [Parameter(Mandatory=$true)][ValidateRange(30,1800)][int]$DeadlineSeconds,
         [ValidateRange(4096,1048576)][int]$CaptureCharacters=1048576,
@@ -315,7 +329,13 @@ function Invoke-Namespace219GuestCollector {
         Assert-Namespace219PinnedFile $BootstrapPath $BootstrapSha256
         $requestData219=Read-Namespace219PinnedJson $RequestPath $RequestSha256
         Assert-Namespace219LocalPath $requestData219.volume_binding_path
-        $binding219=Get-Namespace219VolumeBinding $VolumePlanPath $VolumePlanSha256 $requestData219.volume_binding_path
+        if ($DiagnosticPlanSha256 -cnotmatch '^[0-9a-f]{64}$' -or
+            $requestData219.bindings.plan_sha256 -cne $DiagnosticPlanSha256 -or
+            $requestData219.volume_plan_sha256 -cne $VolumePlanSha256) { throw 'Diagnostic/volume plan request bindings differ' }
+        $volumeSelection219=Read-Namespace219PinnedJson $VolumePlanPath $VolumePlanSha256
+        if (($volumeSelection219 | ConvertTo-Json -Depth 24 -Compress) -cne
+            ($requestData219.volume_plan | ConvertTo-Json -Depth 24 -Compress)) { throw 'Actual volume selection differs from request' }
+        $binding219=Get-Namespace219VolumeBinding $VolumePlanPath $VolumePlanSha256 $DiagnosticPlanSha256 $requestData219.volume_binding_path
         if ($binding219.root -cne $requestData219.fixture_root -or $binding219.unit -cne $requestData219.unit) { throw 'Actual volume binding differs from collector request' }
         $runtime219=Get-Namespace219PythonRuntime $PythonPath $PythonSha256 $ExpectedPythonVersion (Join-Path $CaptureDirectory 'runtime.json')
         if ($runtime219.failed) { throw 'Pinned portable runtime probe refused; see runtime.json' }
@@ -333,6 +353,7 @@ function Invoke-Namespace219GuestCollector {
             schema='imageinfo-0219-bootstrap-start-v1'; readiness=$readiness219
             pythonSha256=$PythonSha256; collectorSha256=$CollectorSha256
             requestSha256=$RequestSha256; bootstrapSha256=$BootstrapSha256
+            diagnosticPlanSha256=$DiagnosticPlanSha256; volumePlanSha256=$VolumePlanSha256
             deadlineSeconds=$DeadlineSeconds; captureCharacters=$CaptureCharacters
             caller='explicit-current-owning-parent'; guestUtc=[DateTime]::UtcNow.ToString('o')
         })

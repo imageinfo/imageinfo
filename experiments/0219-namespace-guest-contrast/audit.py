@@ -7,6 +7,8 @@ custody rests on the explicit current-parent transcript, not file hashes.
 from __future__ import annotations
 
 import argparse
+import base64
+import binascii
 from functools import wraps
 import hashlib
 import importlib.util
@@ -714,7 +716,8 @@ def _graph(nodes, blocks, binding, selected, rule, *, filter_exists=True):
     matches = [block for block in blocks if type(block) is dict
                and block.get("inserted", {}).get("node-name") == binding["raw_node"]]
     require(len(matches) == 1 and matches[0].get("qdev") in (
-        binding["device_id"], "/machine/peripheral/" + binding["device_id"] + "/" + binding["device_id"] + ".0"),
+        binding["device_id"], "/machine/peripheral/" + binding["device_id"] + "/" + binding["device_id"] + ".0",
+        "/machine/peripheral/" + binding["device_id"] + "/" + binding["device_id"] + ".0/legacy[0]"),
         "QMP attached device differs")
 
 
@@ -1011,6 +1014,7 @@ def audit_inputs(plan_path, freeze_path, review_path):
     _identities(plan["identities"])
     for row in cases:
         _identities(row.get("identities", plan["identities"]))
+        _planned_volume(row, row.get("identities", plan["identities"]))
     if any("identities" in row for row in cases):
         require(_exact(loaded["disk_configuration"].get("cases"), {
             row["case"]: row.get("identities", plan["identities"]) for row in cases}), "per-cell disk configuration differs")
@@ -1085,6 +1089,47 @@ def _parent_transport(value):
                                              for stage in STAGES]), "guest parent HTTP state incomplete/poisoned/replayed")
 
 
+def _planned_volume(selection, identities):
+    """The reviewed cell owns both exact selection content and its byte digest."""
+    value = selection.get("volume_plan")
+    keys = {"unit", "fixture_relative", "min_disk_bytes", "max_disk_bytes", "label", "bus_type",
+            "device_serial", "volume_serial", "volume_unique_id", "disk_number", "partition_number", "root"}
+    require(type(value) is dict and set(value) == keys and _digest(selection.get("volume_plan_sha256")),
+            "reviewed exact volume selection missing")
+    require(value["unit"] == selection["unit"] and value["root"] == selection["root"]
+            and value["device_serial"] == identities["disk"]["device_serial"]
+            and value["volume_serial"] == identities["volume"]["volume_serial"],
+            "reviewed volume selection differs from cell/controller")
+    require(all(type(value[k]) is str and value[k] for k in ("fixture_relative", "label", "volume_unique_id"))
+            and type(value["min_disk_bytes"]) is int and type(value["max_disk_bytes"]) is int
+            and 33554432 <= value["min_disk_bytes"] <= value["max_disk_bytes"] <= 1073741824
+            and _integer(value["disk_number"], 0, 2**32-1) and _integer(value["partition_number"], 1, 2**32-1)
+            and value["bus_type"] == "USB", "reviewed volume selection geometry/identity missing")
+    return value
+
+
+def _volume_selection(actual, request, selection, identities, diagnostic_sha256):
+    """Check actual captured bytes, both independent digests, and planned facts."""
+    planned = _planned_volume(selection, identities)
+    require(actual.get("plan_sha256") == diagnostic_sha256 and _digest(diagnostic_sha256),
+            "actual volume capture selects another diagnostic plan")
+    expected_sha = selection["volume_plan_sha256"]
+    require(actual.get("volume_plan_sha256") == request.get("volume_plan_sha256") == expected_sha
+            and _exact(request.get("volume_plan"), planned), "volume selection request/digests differ")
+    encoded = actual.get("volume_plan_bytes_base64")
+    require(type(encoded) is str and 0 < len(encoded) <= 21848, "actual volume selection bytes missing/bounded")
+    try:
+        raw = base64.b64decode(encoded, validate=True)
+    except (ValueError, binascii.Error) as exc:
+        raise AuditError("actual volume selection encoding invalid") from exc
+    require(0 < len(raw) <= 16384 and _sha(raw) == expected_sha and _exact(_json(raw), planned),
+            "actual volume selection bytes/hash/content differ from review")
+    require(all(_exact(actual.get(key), planned[key]) for key in
+                ("unit", "root", "device_serial", "volume_serial", "volume_unique_id", "disk_number", "partition_number")),
+            "actual volume facts differ from reviewed selection")
+    return raw
+
+
 def _audit_cell(attempt_dir, inputs):
     root = Path(attempt_dir)
     cell = audit_guest(root)
@@ -1128,9 +1173,9 @@ def _audit_cell(attempt_dir, inputs):
     require(_sha(volume_raw) == prepared["volume_binding_file_sha256"]
             and _exact(_json(volume_raw), prepared["volume_binding"]), "retained actual volume capture differs")
     actual_volume = prepared["volume_binding"]
-    require(actual_volume.get("plan_sha256") == inputs["plan_sha256"]
-            and actual_volume.get("drive_root") == cell["fixture"]["sourceVolumeRoot"],
-            "actual bootstrap volume capture selects another plan/drive root")
+    _volume_selection(actual_volume, request, selected, selected.get("identities", plan["identities"]), inputs["plan_sha256"])
+    require(actual_volume.get("drive_root") == cell["fixture"]["sourceVolumeRoot"],
+            "actual bootstrap volume capture selects another drive root")
     artifacts = audit_artifacts(root / "artifacts.json", cell)
     return cell, host, artifacts
 

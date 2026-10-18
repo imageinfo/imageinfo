@@ -1,4 +1,7 @@
 //! One bounded in-memory R5P-026 sidecar derivative. No file publication.
+#[cfg(windows)]
+#[allow(dead_code)]
+pub(crate) mod candidate;
 pub mod provenance;
 
 use crate::xmp::{self, Form, Property, Value};

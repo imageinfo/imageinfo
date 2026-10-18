@@ -100,7 +100,9 @@ pub use windows::{
 #[cfg(windows)]
 mod existing_move;
 #[cfg(windows)]
-pub use existing_move::{ExistingMoveOutcome, HeldExistingMove};
+pub use existing_move::{
+    ExistingMoveBinding, ExistingMoveOutcome, HeldExistingMove, HeldExistingMoveSession,
+};
 
 #[cfg(not(windows))]
 mod unsupported {

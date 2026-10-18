@@ -1,0 +1,17 @@
+[package]
+name = "imageinfo-privacy-artifact-audit"
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.99"
+license = "MIT"
+publish = false
+
+[dependencies]
+imageinfo = { path = "../.." }
+imageinfo-privacy-coverage-research = { path = "../0088-privacy-coverage" }
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = "=1.0.152"
+sha2 = { version = "=0.10.9", default-features = false, features = ["std"] }
+
+[lints.rust]
+unsafe_code = "forbid"

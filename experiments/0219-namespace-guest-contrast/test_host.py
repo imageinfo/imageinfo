@@ -378,6 +378,21 @@ def outer(stage="prepared", seq=1, bound=None):
 
 
 class ControllerTests(unittest.TestCase):
+    def test_exact_qdev_legacy_zero_form_preserves_device_identity(self):
+        b=binding()
+        base="/machine/peripheral/"+b.device_id+"/"+b.device_id+".0"
+        for qdev in (b.device_id,base,base+"/legacy[0]"):
+            controller,fake,_=self.make()
+            fake.device=qdev
+            controller.prepare()
+            self.assertEqual(controller.state,"prepared")
+        for qdev in (base+"/legacy[1]",base+"/legacy[00]",base+"/legacy[0]/extra",
+                     "/other"+base,base.replace(b.device_id,"foreign",1),base.replace(b.device_id+".0","foreign.0")):
+            controller,fake,_=self.make()
+            fake.device=qdev
+            with self.subTest(qdev=qdev),self.assertRaises(h.HostError): controller.prepare()
+            self.assertIsNone(fake.config)
+
     def make(self, case="persistent-write-error"):
         b = binding(case)
         fake, records = FakeQmp(b), []

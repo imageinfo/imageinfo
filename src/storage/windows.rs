@@ -4,7 +4,7 @@
 use super::runtime::{Artifact, Backend, Binding, LiveEvidence, ValidatedCandidate, execute};
 use super::{Cancellation, Failure, LogicalBudget, MAX_RECORD_BYTES, Phase, UnitResult};
 use imageinfo_windows_storage::{
-    GuardedSource, HeldArtifact, MAX_ARTIFACT_BYTES, PrivateRoot, validate_leaf,
+    ExistingRoot, GuardedSource, HeldArtifact, MAX_ARTIFACT_BYTES, PrivateRoot, validate_leaf,
 };
 use sha2::{Digest, Sha256};
 use std::{
@@ -62,6 +62,23 @@ fn bound(snapshot: &imageinfo_windows_storage::FileSnapshot, bytes: Option<&[u8]
     Binding { identity, facts }
 }
 
+/// In-process original observation helper; this grants no execution authority.
+pub(super) fn binding_snapshot(
+    snapshot: &imageinfo_windows_storage::FileSnapshot,
+    bytes: Option<&[u8]>,
+) -> Binding {
+    bound(snapshot, bytes)
+}
+
+pub(super) const GROUP_MANIFEST_LEAF: &str = "group.manifest";
+
+/// A separate group-owned object, deliberately absent from every unit record,
+/// binding array, acknowledgement and caller-capture/parser shape.
+struct GroupManifest {
+    held: HeldArtifact,
+    binding: Binding,
+}
+
 /// Caller state is independently retained in the actual original caller, never
 /// imported from transaction records. It is not automatic restart authority.
 #[derive(Clone)]
@@ -85,6 +102,10 @@ pub(crate) struct WindowsBackend {
     terminal: Option<CallerCapture>,
     live_evidence: Option<LiveEvidence>,
     failed_check: bool,
+    group_source: Option<Binding>,
+    group_parent: Option<ExistingRoot>,
+    group_parent_binding: Option<Binding>,
+    group_manifest: Option<GroupManifest>,
 }
 
 impl WindowsBackend {
@@ -119,7 +140,120 @@ impl WindowsBackend {
             terminal: None,
             live_evidence: None,
             failed_check: false,
+            group_source: None,
+            group_parent: None,
+            group_parent_binding: None,
+            group_manifest: None,
         }
+    }
+
+    /// Acquire the original group's source/containing-parent holds before any
+    /// staging. On every error, already acquired handles remain in this owner.
+    /// Runtime preflight subsequently consumes these same holds without reopen.
+    pub(super) fn acquire_group_guard(
+        &mut self,
+        binding: &Binding,
+        source: &Binding,
+        parent: &Binding,
+    ) -> Result<(), Failure> {
+        if binding != source && binding != parent {
+            return Err(Failure::InvalidBinding);
+        }
+        if binding == source {
+            if self.source.is_none() {
+                let held =
+                    GuardedSource::open(&self.source_path, MAX_ARTIFACT_BYTES).map_err(classify)?;
+                self.source = Some(held);
+            }
+            let held = self.source.as_mut().ok_or(Failure::InvalidBinding)?;
+            let bytes = held.read_exact_bytes().map_err(classify)?;
+            let actual = bound(held.snapshot(), Some(&bytes));
+            self.group_source = Some(actual.clone());
+            if &actual != source {
+                return Err(Failure::Conflict);
+            }
+        }
+        if binding == parent {
+            if self.group_parent.is_none() {
+                let path = self.root_path.parent().ok_or(Failure::InvalidBinding)?;
+                self.group_parent = Some(ExistingRoot::open(path).map_err(classify)?);
+            }
+            let held = self.group_parent.as_ref().ok_or(Failure::InvalidBinding)?;
+            held.check().map_err(classify)?;
+            let actual = bound(held.snapshot(), None);
+            self.group_parent_binding = Some(actual.clone());
+            if &actual != parent {
+                return Err(Failure::Conflict);
+            }
+        }
+        Ok(())
+    }
+
+    pub(super) fn retain_group_manifest(&mut self, bytes: &[u8]) -> Result<Binding, Failure> {
+        if bytes.is_empty()
+            || bytes.len() as u64 > MAX_RECORD_BYTES
+            || self.group_manifest.is_some()
+            || self.release.is_some()
+            || self.published
+            || self.group_parent.is_none()
+        {
+            return Err(Failure::InvalidBinding);
+        }
+        // The group charged this exact bounded object once before constructors.
+        // Never reserve it through either unit's already charged ledger.
+        let held = self
+            .root()?
+            .create_artifact(GROUP_MANIFEST_LEAF, bytes, MAX_RECORD_BYTES)
+            .map_err(classify)?;
+        let binding = bound(held.snapshot(), Some(bytes));
+        self.group_manifest = Some(GroupManifest {
+            held,
+            binding: binding.clone(),
+        });
+        // Store ownership before any fallible flush/check, retaining the exact
+        // handle and binding if any later operation fails or is cancelled.
+        self.group_manifest
+            .as_ref()
+            .unwrap()
+            .held
+            .flush()
+            .map_err(classify)?;
+        self.root()?.flush().map_err(classify)?;
+        self.check_group_manifest(&binding, bytes)?;
+        Ok(binding)
+    }
+
+    pub(super) fn group_manifest_binding(&self) -> Option<&Binding> {
+        self.group_manifest.as_ref().map(|m| &m.binding)
+    }
+
+    /// Exact known native unit objects, excluding the separately owned manifest.
+    pub(super) fn retained_bindings(&self) -> Vec<Binding> {
+        let mut values = self.expected.clone();
+        if let Some(source) = &self.group_source
+            && !values.iter().any(|old| old.identity == source.identity)
+        {
+            values.insert(0, source.clone());
+        }
+        values
+    }
+
+    pub(super) fn check_group_manifest(
+        &mut self,
+        binding: &Binding,
+        bytes: &[u8],
+    ) -> Result<(), Failure> {
+        let root = self.root.as_ref().ok_or(Failure::InvalidBinding)?;
+        let manifest = self
+            .group_manifest
+            .as_mut()
+            .ok_or(Failure::InvalidBinding)?;
+        if &manifest.binding != binding || manifest.held.bytes() != bytes {
+            return Err(Failure::Conflict);
+        }
+        manifest.held.check(root).map_err(classify)?;
+        let expected = self.expected.clone();
+        self.check(Phase::IntentChecked, &expected)
     }
 
     /// Retain actual creator provenance independently from editable records.
@@ -259,11 +393,31 @@ impl Backend for WindowsBackend {
 
     fn preflight(&mut self, output: &str) -> Result<Binding, Failure> {
         validate_leaf(output).map_err(classify)?;
-        if self.source.is_some()
+        let grouped = self.group_source.is_some() && self.group_parent.is_some();
+        if (self.source.is_some() && !grouped)
+            || !self.expected.is_empty()
             || self.root.is_some()
             || self.root_path.try_exists().map_err(classify)?
         {
             return Err(Failure::Conflict);
+        }
+        if grouped {
+            if output.eq_ignore_ascii_case(GROUP_MANIFEST_LEAF) {
+                return Err(Failure::Conflict);
+            }
+            self.group_parent
+                .as_ref()
+                .unwrap()
+                .check()
+                .map_err(classify)?;
+            let source = self.source.as_mut().ok_or(Failure::InvalidBinding)?;
+            let bytes = source.read_exact_bytes().map_err(classify)?;
+            let binding = bound(source.snapshot(), Some(&bytes));
+            if self.group_source.as_ref() != Some(&binding) {
+                return Err(Failure::Conflict);
+            }
+            self.output = output.into();
+            return Ok(self.remember(binding));
         }
         self.output = output.into();
         let mut source =
@@ -278,6 +432,9 @@ impl Backend for WindowsBackend {
         if self.root.is_some() {
             return Err(Failure::InvalidBinding);
         }
+        if let Some(parent) = &self.group_parent {
+            parent.check().map_err(classify)?;
+        }
         let root = PrivateRoot::create(&self.root_path).map_err(classify)?;
         let mut binding = bound(root.snapshot(), None);
         let parent_binding = bound(root.parent_snapshot(), None);
@@ -290,7 +447,16 @@ impl Backend for WindowsBackend {
         binding.facts.extend_from_slice(&parent_binding.facts);
         self.parent_binding = Some(parent_binding);
         self.root = Some(root);
-        Ok(self.remember(binding))
+        let binding = self.remember(binding);
+        if let Some(parent) = &self.group_parent {
+            parent.check().map_err(classify)?;
+            if self.group_parent_binding.as_ref().map(|b| &b.identity)
+                != self.parent_binding.as_ref().map(|b| &b.identity)
+            {
+                return Err(Failure::Conflict);
+            }
+        }
+        Ok(binding)
     }
 
     fn create(&mut self, artifact: Artifact, bytes: &[u8]) -> Result<Binding, Failure> {
@@ -320,10 +486,16 @@ impl Backend for WindowsBackend {
             .ok_or(Failure::InvalidBinding)?
             .check()
             .map_err(classify)?;
+        if let Some(parent) = &self.group_parent {
+            parent.check().map_err(classify)?;
+        }
         let root = self.root.as_ref().ok_or(Failure::InvalidBinding)?;
         root.check().map_err(classify)?;
         for (_, artifact) in &mut self.artifacts {
             artifact.check(root).map_err(classify)?;
+        }
+        if let Some(manifest) = &mut self.group_manifest {
+            manifest.held.check(root).map_err(classify)?;
         }
         // Exact bounded namespace, with no foreign entries or case aliases. No
         // path reopening for mutation and no attempt to remove unexpected names.
@@ -342,6 +514,11 @@ impl Backend for WindowsBackend {
                 }
             })
             .collect();
+        // One optional exact slot, enabled only by its held native object. The
+        // unit's five-artifact bound and every record/capture shape stay fixed.
+        if self.group_manifest.is_some() {
+            expected.push(GROUP_MANIFEST_LEAF.into());
+        }
         actual.sort();
         expected.sort();
         if actual != expected {

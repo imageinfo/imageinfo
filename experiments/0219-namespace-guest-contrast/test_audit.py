@@ -2,10 +2,13 @@
 from __future__ import annotations
 
 from copy import deepcopy
+import base64
 import hashlib
 import json
 from pathlib import Path, PureWindowsPath
 import tempfile
+import shutil
+import sys
 import subprocess
 import unittest
 
@@ -887,9 +890,16 @@ def pair_fixture(root, *, http=False):
                 fault=dict(event="write_aio", iotype="write", errno=28, once=False, sector=None, arm_stage="create-Candidate", arm_seq=9),
                 bounds=cells[0][1]["worker"]["transport"]["bounds"], **dict.fromkeys(audit.FLAGS, False))
     plan["cases"] += host_values[1][1]["cases"]
-    for selection, (_, host_plan) in zip(plan["cases"], host_values):
+    for index, (selection, (_, host_plan)) in enumerate(zip(plan["cases"], host_values)):
         selection["identities"] = deepcopy(host_plan["identities"])
         selection["identities"]["guest"] = dict(machine="authored-only")
+        volume = json.loads((cells[index][0] / "volume-binding.json").read_bytes())
+        selection["volume_plan"] = dict(unit=selection["unit"], fixture_relative=PureWindowsPath(selection["root"]).name,
+            min_disk_bytes=134217728, max_disk_bytes=134217728, label="AUTHORED", bus_type="USB",
+            device_serial=volume["device_serial"], volume_serial=volume["volume_serial"],
+            volume_unique_id=volume["volume_unique_id"], disk_number=volume["disk_number"],
+            partition_number=volume["partition_number"], root=selection["root"])
+        selection["volume_plan_sha256"] = hashlib.sha256(encoded(selection["volume_plan"])).hexdigest()
     plan["resident_expected"]["controller"].update(host_values[1][1]["resident_expected"]["controller"])
     plan["resident_expected"]["guest"] = runtime
     if http:
@@ -924,6 +934,8 @@ def pair_fixture(root, *, http=False):
         guest["request"] = dict(unit=guest["unit"], case=guest["case"], fixture_root=cell["fixture"]["root"],
                                 bounds=plan["bounds"], argv=argv, worker_test_name=audit.WORKER_TEST, bindings=guest["bindings"],
                                 observer_python=guest["observer_python"], reviewed_files=runtime["files"])
+        selection = next(item for item in plan["cases"] if item["case"] == guest["case"])
+        guest["request"].update(volume_plan=deepcopy(selection["volume_plan"]), volume_plan_sha256=selection["volume_plan_sha256"])
         guest["request"]["volume_binding_path"] = str(folder / "volume-binding.json")
         guest["request"]["attempt_dir"] = "C:\\captures\\" + guest["unit"]
         if http:
@@ -946,7 +958,9 @@ def pair_fixture(root, *, http=False):
                                      source_bytes=binding(input_paths["controller_source"])["bytes"], pid=219)
         (folder / "host.jsonl").write_bytes(b"".join(map(encoded, rows)))
         volume = json.loads((folder / "volume-binding.json").read_bytes())
-        volume.update(plan_sha256=plan_sha, drive_root=cell["fixture"]["sourceVolumeRoot"])
+        volume.update(plan_sha256=plan_sha, drive_root=cell["fixture"]["sourceVolumeRoot"],
+                      volume_plan_sha256=selection["volume_plan_sha256"],
+                      volume_plan_bytes_base64=base64.b64encode(encoded(selection["volume_plan"])).decode("ascii"))
         (folder / "volume-binding.json").write_bytes(encoded(volume))
         def prepared_delta(event):
             if event["stage"] == "prepared":
@@ -960,6 +974,92 @@ def pair_fixture(root, *, http=False):
     (root / "attempts.jsonl").write_bytes(b"".join(encoded(dict(seq=index, case=cell["guest"]["case"], unit=cell["guest"]["unit"], attempt_dir=folder.name))
                                                 for index, (folder, cell) in enumerate(cells, 1)))
     return cells[0][0], cells[1][0], plan_path, freeze_path, review_path
+
+
+class QdevIdentityControls(unittest.TestCase):
+    def test_exact_qdev_legacy_zero_form_rejects_foreign_paths(self):
+        binding=dict(raw_node="raw219",file_node="file219",filter_node="filter219",disk_path="/authored.raw",device_id="usb219")
+        nodes=[{"node-name":"raw219","drv":"raw","children":[{"node-name":"file219","child":"file"}]},
+               {"node-name":"file219","drv":"file","image":{"filename":"/authored.raw"},"children":[]}]
+        base="/machine/peripheral/usb219/usb219.0"
+        def check(qdev):
+            audit._graph(nodes,[{"qdev":qdev,"inserted":{"node-name":"raw219"}}],binding,"file219",None,filter_exists=False)
+        for qdev in ("usb219",base,base+"/legacy[0]"): check(qdev)
+        for qdev in (base+"/legacy[1]",base+"/legacy[00]",base+"/legacy[0]/extra",
+                     "/other"+base,"/machine/peripheral/foreign/usb219.0/legacy[0]",
+                     "/machine/peripheral/usb219/foreign.0/legacy[0]"):
+            with self.subTest(qdev=qdev),self.assertRaises(audit.AuditError): check(qdev)
+
+
+class VolumeSelectionBindings(unittest.TestCase):
+    @unittest.skipUnless(sys.platform == "win32" and (shutil.which("pwsh") or shutil.which("powershell")),
+                         "authored PowerShell function control requires Windows PowerShell")
+    def test_bootstrap_function_keeps_both_pins_with_authored_inventory(self):
+        with temporary_directory() as directory:
+            root = Path(directory)
+            plan = dict(unit="fresh219", root="E:\\case219", fixture_relative="case219", min_disk_bytes=134217728,
+                        max_disk_bytes=134217728, label="AUTHORED", bus_type="USB", device_serial="USB219",
+                        volume_serial="1234ABCD", volume_unique_id="authored-guid", disk_number=2, partition_number=1)
+            raw = encoded(plan)
+            selection = root / "selection.json"
+            selection.write_bytes(raw)
+            destination = root / "actual-binding.json"
+            def quote(value):
+                return "'" + str(value).replace("'", "''") + "'"
+            # These functions return authored objects; no storage/native guest
+            # command, file source, runtime, worker or controller is invoked.
+            script = "\n".join((
+                "$ErrorActionPreference='Stop'",
+                ". " + quote(Path(__file__).with_name("guest_bootstrap.ps1")),
+                "function Get-Namespace219GuestReadiness { return @{authored=$true} }",
+                "function Join-Path { param($Path,$ChildPath) return $Path+$ChildPath }",
+                "function Get-Volume { return [pscustomobject]@{FileSystemLabel='AUTHORED';FileSystem='NTFS';DriveLetter='E';UniqueId='authored-guid';Size=133169152} }",
+                "function Get-Partition { param($DriveLetter) return [pscustomobject]@{DiskNumber=2;PartitionNumber=1;IsBoot=$false;IsSystem=$false;Size=133169152;Offset=1048576} }",
+                "function Get-Disk { param($Number) return [pscustomobject]@{Number=2;SerialNumber='USB219';IsBoot=$false;IsSystem=$false;Size=134217728;BusType='USB';FriendlyName='authored'} }",
+                "function Get-CimInstance { param($ClassName,$Filter) return [pscustomobject]@{DriveType=3;VolumeSerialNumber='1234ABCD'} }",
+                "$binding219=Get-Namespace219VolumeBinding -PlanPath " + quote(selection)
+                    + " -PlanSha256 " + quote(hashlib.sha256(raw).hexdigest())
+                    + " -DiagnosticPlanSha256 " + quote("d"*64) + " -Destination " + quote(destination),
+                "if($binding219.plan_sha256 -cne " + quote("d"*64) + "){throw 'Diagnostic hash confused'}",
+                "if($binding219.volume_plan_sha256 -cne " + quote(hashlib.sha256(raw).hexdigest()) + "){throw 'Selection hash confused'}",
+                "Write-Output 'authored-both-pins-pass'"))
+            result = subprocess.run([shutil.which("pwsh") or shutil.which("powershell"), "-NoProfile", "-NonInteractive", "-Command", script],
+                                    capture_output=True, text=True, timeout=30)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            actual = json.loads(destination.read_bytes())
+            self.assertEqual(actual["plan_sha256"], "d"*64)
+            self.assertEqual(actual["volume_plan_sha256"], hashlib.sha256(raw).hexdigest())
+            self.assertEqual(base64.b64decode(actual["volume_plan_bytes_base64"], validate=True), raw)
+
+    def test_distinct_diagnostic_and_selection_hashes_with_exact_actual_bytes(self):
+        planned = dict(unit="fresh219", root="E:\\case219", fixture_relative="case219", min_disk_bytes=134217728,
+                       max_disk_bytes=134217728, label="AUTHORED", bus_type="USB", device_serial="USB219",
+                       volume_serial="1234ABCD", volume_unique_id="authored-guid", disk_number=2, partition_number=1)
+        raw = encoded(planned)
+        selection_sha, diagnostic_sha = hashlib.sha256(raw).hexdigest(), "d" * 64
+        selection = dict(unit=planned["unit"], root=planned["root"], volume_plan=planned, volume_plan_sha256=selection_sha)
+        identities = dict(disk=dict(device_serial="USB219"), volume=dict(volume_serial="1234ABCD"))
+        request = dict(volume_plan=deepcopy(planned), volume_plan_sha256=selection_sha)
+        actual = dict(planned, plan_sha256=diagnostic_sha, volume_plan_sha256=selection_sha,
+                      volume_plan_bytes_base64=base64.b64encode(raw).decode("ascii"))
+        self.assertNotEqual(diagnostic_sha, selection_sha)
+        self.assertEqual(audit._volume_selection(actual, request, selection, identities, diagnostic_sha), raw)
+        mutations = {
+            "old_digest_confusion": lambda a,r,s: a.update(plan_sha256=selection_sha),
+            "selection_claims_diagnostic_digest": lambda a,r,s: a.update(volume_plan_sha256=diagnostic_sha),
+            "request_selection_digest_changed": lambda a,r,s: r.update(volume_plan_sha256="f" * 64),
+            "request_selection_content_changed": lambda a,r,s: r["volume_plan"].update(disk_number=3),
+            "reviewed_selection_content_changed": lambda a,r,s: s["volume_plan"].update(volume_unique_id="other"),
+            "actual_selection_bytes_changed": lambda a,r,s: a.update(volume_plan_bytes_base64=base64.b64encode(raw+b" ").decode("ascii")),
+            "actual_selection_bytes_missing": lambda a,r,s: a.pop("volume_plan_bytes_base64"),
+            "actual_selection_bad_base64": lambda a,r,s: a.update(volume_plan_bytes_base64="!"),
+            "actual_observed_disk_changed": lambda a,r,s: a.update(disk_number=3),
+        }
+        for name, mutate in mutations.items():
+            a,r,s = deepcopy(actual),deepcopy(request),deepcopy(selection)
+            mutate(a,r,s)
+            with self.subTest(name=name), self.assertRaises(audit.AuditError):
+                audit._volume_selection(a,r,s,identities,diagnostic_sha)
 
 
 class PairControls(unittest.TestCase):

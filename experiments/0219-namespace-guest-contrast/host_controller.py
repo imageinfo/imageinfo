@@ -399,7 +399,8 @@ class Controller:
         matching = [v for v in blocks if type(v) is dict and v.get("inserted", {}).get("node-name") == b.raw_node]
         _require(len(matching) == 1, "disk attachment absent or ambiguous")
         device = matching[0]
-        _require(device.get("qdev") in (b.device_id, "/machine/peripheral/" + b.device_id + "/" + b.device_id + ".0"), "disk device changed")
+        _require(device.get("qdev") in (b.device_id, "/machine/peripheral/" + b.device_id + "/" + b.device_id + ".0",
+                 "/machine/peripheral/" + b.device_id + "/" + b.device_id + ".0/legacy[0]"), "disk device changed")
         serial = self._call("qom-get", {"path": "/machine/peripheral/" + b.device_id,
                                         "property": "serial"})
         _require(serial == b.device_serial, "actual QMP device serial changed")

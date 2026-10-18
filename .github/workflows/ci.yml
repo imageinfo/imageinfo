@@ -71,6 +71,12 @@ jobs:
           cargo test --manifest-path experiments/0088-privacy-coverage/Cargo.toml --locked
           cargo build --manifest-path experiments/0088-privacy-coverage/Cargo.toml --locked --release --examples
           cargo build --manifest-path experiments/0088-privacy-coverage/Cargo.toml --locked --release
+      - name: Check explicit-artifact privacy residual reporting
+        run: |
+          cargo fmt --manifest-path experiments/privacy-artifact-audit/Cargo.toml --check
+          cargo clippy --manifest-path experiments/privacy-artifact-audit/Cargo.toml --locked --all-targets -- -D warnings
+          cargo test --manifest-path experiments/privacy-artifact-audit/Cargo.toml --locked
+          cargo build --manifest-path experiments/privacy-artifact-audit/Cargo.toml --locked --release
       - name: Check retained-budget and collector tooling syntax
         run: python -m py_compile experiments/0048-native-storage-failures/audit.py experiments/0049-cumulative-budget/supervisor.py experiments/0049-cumulative-budget/qualify.py scripts/read_benchmark.py scripts/test_read_benchmark.py
       - name: Check benchmark collector contracts

@@ -27,8 +27,43 @@ acceptance when adding an independently closeable preparation child, and report
 both counts so preparatory progress cannot hide the remaining capability work.
 Keep #0219's actual execution status explicit; source preparation is published,
 but its guest diagnostic cells have not run and the audit does not complete it.
-The immediately executable RFW frontier is #0201, #0202, #0220, #0221 and #0222;
-recheck actual prerequisites and current lanes on the next implementation turn.
+At that audit, the executable RFW frontier was #0201, #0202, #0220, #0221 and
+#0222. Those cards and the existing #0219 were selected for the following wave;
+consult live lanes and the recorded outcomes before selecting them again.
+
+## Bounded multiple-card wave — 2026-10-18
+
+#0201 implements ordinary/case-only same-object marker name plans through a
+retained SDK session; ten native cells and retained-artifact audit pass.
+#0202 retains the immediate-method creation-time counterexample. Its explicitly
+selected `GuardHeldQuiet20Seconds` continuation passes the bounded fresh-namespace
+matrix and sixteen retained-fixture audits, with both original guards retained
+and strict properties unchanged by the implementation in those positive cells.
+It normally requests about forty seconds across two gaps. This is preliminary
+marker evidence, not a general NTFS tunnel-expiry/history, persistence or
+production-profile guarantee. Never silently use the immediate diagnostic policy
+as the qualified selected method, reset timestamps, or conceal the counterexample.
+See `docs/write-safety/case-rename-plan.md` and `held-marker-cycle.md` there.
+
+#0220 adds the Windows internal, nonpublishing held OwnerName candidate; ten
+authored native controls pass. #0221 adds the bounded explicit-artifact reporter;
+twelve authored controls pass. Declared expected-slot completeness never proves
+whole-operation enumeration, custody or privacy certification. #0222 adds actual
+retained two-unit staging/continuation and a separately held manifest; eight
+native and sixteen portable runtime controls pass. Unqualified first execution
+leaves the second unit staged/unattempted. Existing SDK create failures can leave
+unreturned partial paths; never invent a hold or identity for them. The positive
+#0089/#0090/#0180 parent acceptance remains open. See the three linked methods in
+the documentation map. No writer/profile or new source-media authority follows.
+
+#0219 now has actual ordinary-user QEMU readiness with two distinct physical USB
+bindings, a verified 54-file Python runtime and exact source pins. Its public
+bootstrap separates diagnostic-plan and volume-plan digests; the host/auditor
+recognize the exact observed QMP `legacy[0]` device spelling. Diagnostic cells
+remain unrun until the final integrated source/build/plan is frozen and reviewed.
+Equal NTFS serial/file IDs across the disposable volumes are not global identity;
+retain the distinct physical/disk/volume/path bindings. Preserve the observed CIM
+size discrepancy and use the verified Get-Disk/QMP extents, not a guessed size.
 
 ## Release cadence — Terry's decision, 2026-10-17
 

@@ -1,5 +1,28 @@
 # Remaining work for the RAW milestone
 
+## Multiple-card execution wave — 2026-10-18
+
+The next wave selects existing In Progress #0219 plus #0222, #0201, #0202,
+#0220 and #0221, moving every selected card In Progress before delegation.
+Sixteen direct agents split independent source, tests, evidence and documentation,
+followed by fresh independent review. This consumes existing scoped work; no
+successor batch is created. The unselected RFW inventory is 39 cards: 29 dependent
+scopes and ten tracking umbrellas. Live lanes remain authoritative.
+
+#0201's ten native name-plan cells pass. #0202's immediate method exposes a real
+creation-time change, retained as contrary evidence; one explicitly selected
+guard-held interval method passes its control and sixteen-fixture matrix/audit.
+Its normal two intervals request about forty seconds. These are bounded marker
+observations, not universal NTFS preservation or final #0213/#0206 qualification.
+#0220's ten held-candidate controls, #0221's twelve artifact-report controls and
+#0222's eight native/sixteen runtime controls pass. Their methods and remaining
+positive parent requirements are linked in the [documentation map](README.md).
+
+#0219's readiness and source preparation do not complete the diagnostic itself.
+The actual two-cell guest execution/evidence status belongs to its
+[method](write-safety/post-operation-guest-contrast.md); no positive storage
+admission follows from the preparation or contrast.
+
 ## Current readiness audit — 2026-10-18
 
 The [full readiness audit](planning/readiness-audit-2026-10-18.md) supersedes

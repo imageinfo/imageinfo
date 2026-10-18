@@ -311,11 +311,20 @@ impl Attempt {
         cancel: &Cancellation,
         effect: impl FnOnce() -> Result<T, Failure>,
     ) -> Result<T, Failure> {
+        self.step_with_evidence(phase, cancel, |_| effect())
+    }
+
+    fn step_with_evidence<T: SuccessfulEffect>(
+        &mut self,
+        phase: Phase,
+        cancel: &Cancellation,
+        effect: impl FnOnce(&LiveEvidence) -> Result<T, Failure>,
+    ) -> Result<T, Failure> {
         self.phase = phase;
         if cancel.is_requested() {
             return Err(Failure::Cancelled);
         }
-        let value = effect()?;
+        let value = effect(&self.evidence)?;
         if let Some(binding) = value.binding() {
             capture(&mut self.acknowledged_bindings, binding.clone())?;
         }
@@ -349,7 +358,7 @@ pub(super) fn field(out: &mut Vec<u8>, value: &[u8]) -> Result<(), Failure> {
 /// phases. No record contains its own future identity or flush assertion.
 fn record(
     kind: Artifact,
-    request: &ValidatedCandidate<'_>,
+    request: &LiveEvidence,
     backend: &impl Backend,
     bindings: &[Binding],
     phases: &[Phase],
@@ -359,14 +368,14 @@ fn record(
         PROTOCOL,
         backend.profile(),
         backend.implementation(),
-        request.operation,
-        request.format_revision,
-        request.output.0,
+        &request.operation,
+        &request.format_revision,
+        &request.output,
         kind.leaf(),
     ] {
         field(&mut bytes, value.as_bytes())?;
     }
-    field(&mut bytes, &request.planned_len.to_le_bytes())?;
+    field(&mut bytes, &request.candidate_len.to_le_bytes())?;
     for binding in bindings {
         binding.validate()?;
         field(&mut bytes, &binding.identity)?;
@@ -476,6 +485,92 @@ pub(crate) fn execute_test_admitted(
     )
 }
 
+/// Original protocol state at the before-caller-release boundary. No source
+/// reader or reconstructed request can replace these already charged bindings.
+struct PreparedState {
+    attempt: Attempt,
+    bindings: Vec<Binding>,
+    phases: Vec<Phase>,
+    failure: Option<Failure>,
+}
+
+/// Move-only owner of the actual backend and original protocol state. Even a
+/// failed preparation retains its backend's guards and partial artifacts here.
+/// Dropping this owner ends its holds; no cleanup or charge refund is performed.
+pub(crate) struct Preparation<B> {
+    backend: B,
+    state: PreparedState,
+}
+
+impl<B> Preparation<B> {
+    pub(crate) fn ready(&self) -> bool {
+        self.state.failure.is_none()
+    }
+
+    pub(crate) fn result(&self) -> UnitResult {
+        self.state.attempt.result(self.state.failure, false, false)
+    }
+
+    pub(crate) fn backend(&self) -> &B {
+        &self.backend
+    }
+
+    pub(crate) fn backend_mut(&mut self) -> &mut B {
+        &mut self.backend
+    }
+
+    pub(crate) fn bindings(&self) -> &[Binding] {
+        &self.state.bindings
+    }
+
+    pub(crate) fn evidence(&self) -> &LiveEvidence {
+        &self.state.attempt.evidence
+    }
+}
+
+/// Completion keeps the same backend alive until its surviving owner takes it.
+pub(crate) struct Completion<B> {
+    backend: B,
+    result: UnitResult,
+}
+
+impl<B> Completion<B> {
+    pub(crate) fn backend(&self) -> &B {
+        &self.backend
+    }
+
+    pub(crate) fn result(&self) -> &UnitResult {
+        &self.result
+    }
+
+    pub(crate) fn into_parts(self) -> (B, UnitResult) {
+        (self.backend, self.result)
+    }
+}
+
+/// Stage only through IntentParentFlushed; neither caller release nor publish
+/// can occur here. The original helper budget is charged once before effects.
+pub(crate) fn prepare<B: Backend>(
+    mut backend: B,
+    request: ValidatedCandidate<'_>,
+    budget: &mut LogicalBudget,
+    cancel: &Cancellation,
+) -> Preparation<B> {
+    let state = prepare_inner(&mut backend, request, budget, cancel);
+    Preparation { backend, state }
+}
+
+/// Consume the original preparation exactly once, without revalidation through
+/// a fresh request, rebuilding artifacts or reserving its retained charge again.
+pub(crate) fn continue_prepared<B: Backend>(
+    preparation: Preparation<B>,
+    cancel: &Cancellation,
+) -> Completion<B> {
+    let Preparation { mut backend, state } = preparation;
+    let result = continue_inner(&mut backend, state, cancel, false);
+    Completion { backend, result }
+}
+
 fn execute_inner(
     backend: &mut impl Backend,
     request: ValidatedCandidate<'_>,
@@ -484,6 +579,16 @@ fn execute_inner(
     admission: Admission,
 ) -> UnitResult {
     let admitted = admission.accepts(backend);
+    let state = prepare_inner(backend, request, budget, cancel);
+    continue_inner(backend, state, cancel, admitted)
+}
+
+fn prepare_inner(
+    backend: &mut impl Backend,
+    request: ValidatedCandidate<'_>,
+    budget: &mut LogicalBudget,
+    cancel: &Cancellation,
+) -> PreparedState {
     let mut attempt = Attempt {
         phase: Phase::Preflight,
         possible: false,
@@ -622,7 +727,7 @@ fn execute_inner(
                 Phase::IntentParentFlushed,
             ),
         ] {
-            let bytes = record(kind, &request, backend, &bindings, &phases)?;
+            let bytes = record(kind, &attempt.evidence, backend, &bindings, &phases)?;
             capture(
                 &mut bindings,
                 attempt.step(created, cancel, || backend.create(kind, &bytes))?,
@@ -632,6 +737,39 @@ fn execute_inner(
             attempt.step(parent, cancel, || backend.flush_root())?;
             phases.extend([created, checked, flushed, parent]);
         }
+        Ok(())
+    })();
+    let failure = run.err();
+    if failure.is_some() {
+        // Preserve the original failure provenance immediately, while the same
+        // backend and all successfully captured bindings remain owned.
+        backend.retain_live_evidence(&attempt.evidence);
+        backend.retain_outcome(attempt.phase, failure);
+    }
+    PreparedState {
+        attempt,
+        bindings,
+        phases,
+        failure,
+    }
+}
+
+fn continue_inner(
+    backend: &mut impl Backend,
+    state: PreparedState,
+    cancel: &Cancellation,
+    admitted: bool,
+) -> UnitResult {
+    let PreparedState {
+        mut attempt,
+        mut bindings,
+        mut phases,
+        failure,
+    } = state;
+    if let Some(failure) = failure {
+        return attempt.result(Some(failure), false, false);
+    }
+    let run = (|| -> Result<(), Failure> {
         if cancel.is_requested() {
             return Err(Failure::Cancelled);
         }
@@ -649,7 +787,9 @@ fn execute_inner(
             return Err(Failure::Cancelled);
         }
         attempt.possible = true;
-        attempt.step(Phase::Publish, cancel, || backend.publish(request.output.0))?;
+        attempt.step_with_evidence(Phase::Publish, cancel, |evidence| {
+            backend.publish(&evidence.output)
+        })?;
         attempt.step(Phase::Installed, cancel, || {
             backend.check(Phase::Installed, &bindings)
         })?;
@@ -687,7 +827,7 @@ fn execute_inner(
                 Phase::ReceiptParentFlushed,
             ),
         ] {
-            let bytes = record(kind, &request, backend, &bindings, &phases)?;
+            let bytes = record(kind, &attempt.evidence, backend, &bindings, &phases)?;
             capture(
                 &mut bindings,
                 attempt.step(created, cancel, || backend.create(kind, &bytes))?,

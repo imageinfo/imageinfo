@@ -15,6 +15,8 @@ struct Fake<'a> {
     creates: BTreeMap<String, Vec<u8>>,
     history: Vec<String>,
     evidence: Option<LiveEvidence>,
+    held_owner: Option<std::rc::Rc<()>>,
+    outcomes: Vec<(Phase, Option<Failure>)>,
 }
 
 impl Fake<'_> {
@@ -94,6 +96,9 @@ impl Backend for Fake<'_> {
     }
     fn retain_live_evidence(&mut self, evidence: &LiveEvidence) {
         self.evidence = Some(evidence.clone());
+    }
+    fn retain_outcome(&mut self, phase: Phase, failure: Option<Failure>) {
+        self.outcomes.push((phase, failure));
     }
 }
 
@@ -504,4 +509,248 @@ fn source_io_and_record_bound_have_no_unaccounted_effects() {
     assert!(fake.creates.is_empty());
     let mut bytes = vec![0; MAX_RECORD_BYTES as usize - 3];
     assert_eq!(field(&mut bytes, b""), Err(Failure::RecordTooLarge));
+}
+
+// Frozen original single-unit effect sequence: the preparation seam must not
+// reorder native methods or the existing #0195 caller-history boundaries.
+const ORIGINAL_METHOD_TRACE: &[&str] = &[
+    "preflight",
+    "create-root",
+    "root-flush",
+    "parent-flush",
+    "create-Candidate",
+    "check-CandidateChecked",
+    "file-Candidate",
+    "root-flush",
+    "create-Prepared",
+    "check-PreparedChecked",
+    "file-Prepared",
+    "root-flush",
+    "create-Intent",
+    "check-IntentChecked",
+    "file-Intent",
+    "root-flush",
+    "caller-release",
+    "check-Prepublication",
+    "publish",
+    "check-Installed",
+    "file-Candidate",
+    "root-flush",
+    "check-InstalledRechecked",
+    "create-Observation",
+    "check-ObservationChecked",
+    "file-Observation",
+    "root-flush",
+    "create-Receipt",
+    "check-ReceiptChecked",
+    "file-Receipt",
+    "check-ReceiptFileChecked",
+    "root-flush",
+    "check-ReceiptParentChecked",
+    "context",
+    "check-Final",
+    "terminal",
+];
+
+fn stage<'a>(
+    fake: Fake<'a>,
+    budget: &mut LogicalBudget,
+    cancel: &Cancellation,
+) -> Preparation<Fake<'a>> {
+    let mut source = Cursor::new(b"abc".as_slice());
+    prepare(
+        fake,
+        ValidatedCandidate {
+            operation: "authored-unit-1",
+            format_revision: "authored-bytes-v1",
+            source: &mut source,
+            planned_len: 3,
+            max_len: 1024 * 1024,
+            output: ExpectedAbsent("output.bin"),
+        },
+        budget,
+        cancel,
+    )
+}
+
+#[test]
+fn split_preparation_preserves_original_method_trace_records_and_live_state() {
+    let cancel = Cancellation::default();
+    let mut ordinary = Fake::default();
+    let ordinary_result = run(
+        &mut ordinary,
+        b"abc",
+        3,
+        &mut LogicalBudget::new(u64::MAX),
+        &cancel,
+    );
+    assert_eq!(ordinary.history, ORIGINAL_METHOD_TRACE);
+    let mut budget = LogicalBudget::new(u64::MAX);
+    let staged = stage(Fake::default(), &mut budget, &cancel);
+    assert!(staged.ready());
+    assert_eq!(staged.backend().history, ORIGINAL_METHOD_TRACE[..16]);
+    assert_eq!(staged.result().phase, Phase::IntentParentFlushed);
+    assert_eq!(staged.bindings().len(), 5);
+    assert!(staged.evidence().valid_prefix(staged.bindings()));
+    assert_eq!(staged.evidence().operation, "authored-unit-1");
+    assert_eq!(staged.evidence().format_revision, "authored-bytes-v1");
+    assert_eq!(staged.evidence().output, "output.bin");
+    assert!(!staged.result().publication_possible && !staged.result().release_possible);
+    let charged = budget.charged();
+    let completed = continue_prepared(staged, &cancel);
+    assert_eq!(completed.result(), &ordinary_result);
+    assert_eq!(budget.charged(), charged);
+    assert_eq!(completed.backend().history, ORIGINAL_METHOD_TRACE);
+    assert_eq!(completed.backend().creates, ordinary.creates);
+    assert_eq!(completed.backend().evidence, ordinary.evidence);
+    assert_eq!(completed.backend().outcomes, ordinary.outcomes);
+    let (_, result) = completed.into_parts();
+    assert_eq!(result.charged_bytes, charged);
+}
+
+#[test]
+fn failed_preparations_retain_backend_artifacts_exact_failure_and_charge() {
+    for at in 1..=16 {
+        let hold = std::rc::Rc::new(());
+        let fake = Fake {
+            fail_at: Some(at),
+            held_owner: Some(hold.clone()),
+            ..Fake::default()
+        };
+        let cancel = Cancellation::default();
+        let mut budget = LogicalBudget::new(u64::MAX);
+        let staged = stage(fake, &mut budget, &cancel);
+        assert!(!staged.ready());
+        assert_eq!(std::rc::Rc::strong_count(&hold), 2);
+        assert!(std::rc::Rc::ptr_eq(
+            staged.backend().held_owner.as_ref().unwrap(),
+            &hold
+        ));
+        let failed = staged.result();
+        let artifacts = staged.backend().creates.clone();
+        assert_eq!(failed.failure, Some(Failure::BackendIo));
+        assert_eq!(failed.charged_bytes, 3 + 8 * MAX_RECORD_BYTES);
+        assert_eq!(staged.backend().history, ORIGINAL_METHOD_TRACE[..at]);
+        // A later cancellation cannot replace the original failure provenance.
+        cancel.request();
+        let completed = continue_prepared(staged, &cancel);
+        assert_eq!(completed.result(), &failed);
+        assert_eq!(
+            completed.backend().outcomes,
+            [(failed.phase, failed.failure)]
+        );
+        assert_eq!(completed.backend().history, ORIGINAL_METHOD_TRACE[..at]);
+        assert_eq!(completed.backend().creates, artifacts);
+        assert_eq!(budget.charged(), failed.charged_bytes);
+        assert_eq!(std::rc::Rc::strong_count(&hold), 2);
+        drop(completed);
+        assert_eq!(std::rc::Rc::strong_count(&hold), 1);
+    }
+}
+
+#[test]
+fn cancelled_preparation_and_continuation_retain_original_holds_and_artifacts() {
+    for at in 1..=16 {
+        let cancel = Cancellation::default();
+        let hold = std::rc::Rc::new(());
+        let fake = Fake {
+            cancel_after: Some(at),
+            cancel: Some(&cancel),
+            held_owner: Some(hold.clone()),
+            ..Fake::default()
+        };
+        let mut budget = LogicalBudget::new(u64::MAX);
+        let staged = stage(fake, &mut budget, &cancel);
+        // Cancellation after the final stage method is observed by continuation.
+        assert_eq!(staged.ready(), at == 16);
+        let artifacts = staged.backend().creates.clone();
+        let completed = continue_prepared(staged, &cancel);
+        assert_eq!(completed.result().failure, Some(Failure::Cancelled));
+        assert_eq!(completed.result().status, Status::CancelledBeforePublish);
+        assert!(!completed.result().release_possible);
+        assert_eq!(completed.backend().history, ORIGINAL_METHOD_TRACE[..at]);
+        assert_eq!(completed.backend().creates, artifacts);
+        assert_eq!(completed.result().charged_bytes, budget.charged());
+        assert_eq!(std::rc::Rc::strong_count(&hold), 2);
+        drop(completed);
+        assert_eq!(std::rc::Rc::strong_count(&hold), 1);
+    }
+}
+
+#[test]
+fn continuation_failures_retain_exact_original_backend_and_terminal_provenance() {
+    for at in 17..=ORIGINAL_METHOD_TRACE.len() {
+        let cancel = Cancellation::default();
+        let mut ordinary = Fake {
+            fail_at: Some(at),
+            ..Fake::default()
+        };
+        let expected = run(
+            &mut ordinary,
+            b"abc",
+            3,
+            &mut LogicalBudget::new(u64::MAX),
+            &cancel,
+        );
+        let hold = std::rc::Rc::new(());
+        let fake = Fake {
+            fail_at: Some(at),
+            held_owner: Some(hold.clone()),
+            ..Fake::default()
+        };
+        let mut budget = LogicalBudget::new(u64::MAX);
+        let staged = stage(fake, &mut budget, &cancel);
+        assert!(staged.ready());
+        assert!(staged.backend().outcomes.is_empty());
+        let completed = continue_prepared(staged, &cancel);
+        assert_eq!(completed.result(), &expected);
+        assert_eq!(completed.backend().history, ORIGINAL_METHOD_TRACE[..at]);
+        assert_eq!(completed.backend().creates, ordinary.creates);
+        assert_eq!(completed.backend().evidence, ordinary.evidence);
+        assert_eq!(completed.backend().outcomes, ordinary.outcomes);
+        assert_eq!(completed.backend().outcomes.len(), 1);
+        assert_eq!(completed.result().charged_bytes, budget.charged());
+        assert_eq!(std::rc::Rc::strong_count(&hold), 2);
+        drop(completed);
+        assert_eq!(std::rc::Rc::strong_count(&hold), 1);
+    }
+}
+
+#[test]
+fn continuation_cancellation_keeps_same_holds_artifacts_and_publication_uncertainty() {
+    for at in 17..ORIGINAL_METHOD_TRACE.len() {
+        let cancel = Cancellation::default();
+        let hold = std::rc::Rc::new(());
+        let fake = Fake {
+            cancel_after: Some(at),
+            cancel: Some(&cancel),
+            held_owner: Some(hold.clone()),
+            ..Fake::default()
+        };
+        let mut budget = LogicalBudget::new(u64::MAX);
+        let staged = stage(fake, &mut budget, &cancel);
+        assert!(staged.ready());
+        let completed = continue_prepared(staged, &cancel);
+        let result = completed.result();
+        assert_eq!(result.failure, Some(Failure::Cancelled));
+        assert!(result.release_possible);
+        assert_eq!(result.publication_possible, at >= 19);
+        assert_eq!(
+            result.status,
+            if at >= 19 {
+                Status::RecoveryRequired
+            } else {
+                Status::CancelledBeforePublish
+            }
+        );
+        assert_eq!(completed.backend().history, ORIGINAL_METHOD_TRACE[..at]);
+        assert_eq!(
+            completed.backend().outcomes,
+            [(result.phase, result.failure)]
+        );
+        assert_eq!(result.charged_bytes, budget.charged());
+        assert_eq!(std::rc::Rc::strong_count(&hold), 2);
+        drop(completed);
+        assert_eq!(std::rc::Rc::strong_count(&hold), 1);
+    }
 }
