@@ -1,5 +1,22 @@
 # Remaining work for the RAW milestone
 
+## Live exchange caller increment — 2026-10-18
+
+#0213 now connects the actual retained #0202 cycle to exact current-caller
+authority and shared cancellation/failure reporting. Its six native controls and
+independent fresh six-fixture/23-journal audit pass. This completes the bounded
+caller mechanism; #0215 still owns final frozen operation-adapter qualification,
+and #0026 retains its full positive replacement/grouped-operation requirements.
+See the [caller evidence and limits](write-safety/exchange-caller.md).
+
+#0223's execution remains unfinished: the retained installed guest refused
+ordinary access before readiness, and a normal restart did not restore a
+signed-in desktop. Both new diagnostic slots remain unattempted. Retained setup
+definitions agree, which does not prove the installed password. Restore verified
+guest access, then capture fresh readiness and independently review the exact
+plan before the fixed pair. See the [explicit prerequisite observations](write-safety/post-operation-guest-contrast.md#0223-access-prerequisite-observation--2026-10-18).
+No successor card or replacement diagnostic batch is created for this failure.
+
 ## Multiple-card execution wave — 2026-10-18
 
 This wave selected existing In Progress #0219 plus #0222, #0201, #0202,

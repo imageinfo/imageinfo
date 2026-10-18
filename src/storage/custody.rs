@@ -382,11 +382,46 @@ impl TrustedCurrentCaller {
         self.retained = None;
         self.generation.fetch_add(1, Ordering::AcqRel);
     }
+
+    /// Issue only the live generation component of the bounded exchange seam.
+    /// Exchange bindings are checked separately; this cannot authorize any
+    /// restart action or construct the publication-shaped `CurrentBindings`.
+    pub(super) fn begin_exchange(&mut self) -> Result<ExchangeGeneration, CustodyRefusal> {
+        self.revoke();
+        if self.constructions >= 4 {
+            return Err(CustodyRefusal::ConstructionBound);
+        }
+        self.constructions += 1;
+        Ok(ExchangeGeneration {
+            generation: self.generation.load(Ordering::Acquire),
+            caller: Arc::downgrade(&self.generation),
+        })
+    }
 }
 
 impl Drop for TrustedCurrentCaller {
     fn drop(&mut self) {
         self.revoke();
+    }
+}
+
+/// Same caller lifetime/revocation domain as restart tokens, with no restart
+/// action or record-shaped authority. Only the exact exchange seam uses this.
+pub(super) struct ExchangeGeneration {
+    generation: u64,
+    caller: Weak<AtomicU64>,
+}
+
+impl ExchangeGeneration {
+    pub(super) fn check(&self) -> Result<(), CustodyRefusal> {
+        let caller = self
+            .caller
+            .upgrade()
+            .ok_or(CustodyRefusal::StaleAuthority)?;
+        if caller.load(Ordering::Acquire) != self.generation {
+            return Err(CustodyRefusal::StaleAuthority);
+        }
+        Ok(())
     }
 }
 

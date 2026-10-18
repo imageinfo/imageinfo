@@ -188,6 +188,10 @@ pub(crate) mod cleanup;
 #[allow(dead_code)]
 pub(crate) mod custody;
 #[allow(dead_code)]
+pub(crate) mod exchange;
+#[allow(dead_code)]
+pub(crate) mod exchange_authority;
+#[allow(dead_code)]
 pub(crate) mod finalization;
 #[allow(dead_code)]
 pub(crate) mod group;

@@ -1,5 +1,28 @@
 # imageinfo project guidance
 
+## Live exchange caller — 2026-10-18
+
+#0213 integrates the actual #0202 retained cycle with exact plan/original-snapshot
+bindings and existing current-caller revocation/construction limits. It selects
+only `GuardHeldQuiet20Seconds`, retains both originals and exact prefix/unknown
+maps, and stops terminally on cancellation, revoked authority or uncertainty.
+Six native controls and a fresh independent six-fixture/23-journal audit pass.
+The property control changes last-write time; the uncertainty control deliberately
+discards a call response. Neither is relabeled as identity substitution or an
+observed OS ambiguity. `CompleteObserved` is not durable commitment, a qualified
+receipt, restart authority or a storage profile. See
+`docs/write-safety/exchange-caller.md`; #0215 retains final frozen-adapter scope.
+
+#0223's new disposable fixture disks reached attachment, but ordinary guest
+access failed before readiness or either diagnostic cell. Two credential
+refusals, a normal restart returning to lock, and Boolean-only agreement of
+retained setup definitions are explicit operational observations, not a storage
+result or proof of the installed password. Preserve both unattempted slots and
+#0219's separate original refusal. Restore verified access and obtain fresh
+readiness/exact plan review before execution; do not infer positive acceptance
+from this incomplete increment. See the current execution-status section in
+`docs/write-safety/post-operation-guest-contrast.md`.
+
 ## Readiness and multiple-card dispatch — 2026-10-18
 
 Terry requested the full readiness audit now, before more implementation.

@@ -196,6 +196,36 @@ scheme is introduced.
 
 ## Interpretation and retained history
 
+### #0223 access prerequisite observation — 2026-10-18
+
+The corrected published source was isolated in a read-only qualification tree.
+Two fresh authored-marker disks were prepared and attached to the retained
+installed disposable guest. No diagnostic plan or freeze was assembled, no
+diagnostic worker/collector started, and neither of #0223's two fixed slots ran.
+No source move, candidate publication or error rule was attempted.
+
+The ordinary test account refused the retained setup credential twice: once
+with immediate key events, then once with the earlier held-key cadence after
+an independent review of that concrete transport difference. Both refusal
+screens and exclusive input journals are retained. This does not establish
+whether input delivery or the installed account state caused the refusals.
+No third password attempt, account reset or installation followed.
+
+One normal Windows UI Restart returned to the lock screen; it did not restore
+an observed signed-in desktop. A separate bounded read-only comparison found
+the saved original installation configuration and current setup XML agree,
+including their intended account/password definitions. Only Boolean results
+were recorded. Agreement of retained definitions does not prove the current
+installed password, layout, account state or an actual authentication success.
+
+This is an unfinished execution prerequisite, not a successful contrast or a
+storage result. #0223 retains its original positive acceptance and both new
+unattempted slots; #0219's earlier preparation refusal remains separate and
+unchanged. Next work must restore verified ordinary guest access, capture fresh
+boot/runtime/device/source readiness, and obtain exact independent plan review
+before starting the original fixed pair. It must preserve these refusals rather
+than replaying consumed login/diagnostic journals or treating them as cells.
+
 Preparation has observable steps, not an independently qualified durable
 baseline. The frozen historical worker did return successful case/unit/root
 flush acknowledgements; those returns do not establish persistence of the
