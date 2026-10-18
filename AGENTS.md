@@ -1,5 +1,16 @@
 # imageinfo project guidance
 
+## Next requested readiness audit — 2026-10-18
+
+After the current #0219 handoff, Terry wants the next turn devoted to making
+all Ready for Work cards actually ready to execute. Audit stale prerequisite
+results, missing concrete scope and each card's actionable next step; make
+remaining technical risks explicit. Do not call queued positive-capability work
+executable merely because a negative feasibility prerequisite is Completed.
+Preserve the standing lane rules while reconciling readiness; an ordinary
+dependency alone does not justify Backlog or Blocked. Perform this audit before
+starting another implementation wave.
+
 ## Release cadence — Terry's decision, 2026-10-17
 
 Keep public releases infrequent. Do not publish a release merely to rehearse

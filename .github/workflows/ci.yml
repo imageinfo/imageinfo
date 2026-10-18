@@ -112,6 +112,16 @@ jobs:
       - name: Check post-operation namespace observer controls
         shell: bash
         run: python -W error::ResourceWarning -m unittest discover -s experiments/0218-namespace-observer -p 'test_*.py'
+      - name: Check guest namespace contrast controls
+        shell: bash
+        run: python -W error::ResourceWarning -m unittest discover -s experiments/0219-namespace-guest-contrast -p 'test_*.py'
+      - name: Parse guest namespace bootstrap
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $parseErrors = $null
+          [System.Management.Automation.Language.Parser]::ParseFile((Join-Path $PWD 'experiments/0219-namespace-guest-contrast/guest_bootstrap.ps1'), [ref]$null, [ref]$parseErrors) | Out-Null
+          if ($parseErrors.Count) { throw ($parseErrors | Out-String) }
       - name: Check finite interruption and measurement controls
         shell: bash
         run: |

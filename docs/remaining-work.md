@@ -76,6 +76,14 @@ retains its original historical baseline.
 
 ## Count the queue consistently
 
+#0219 carries the accepted observer into one bounded guest/controller contrast.
+Its separate test-only guest entry preserves the local #0218 entry's guard and
+wire behavior. Preparation, execution and evidence-review status are recorded
+in the [guest contrast method](write-safety/post-operation-guest-contrast.md).
+This corrective work does not make the other positive-capability cards executable.
+Terry requested a full Ready for Work readiness audit for the turn after this
+handoff, including stale prerequisite results and actionable missing scopes.
+
 #0218 delivers the separately scoped corrective increment from accepted #0217:
 the post-candidate observer and two passing fresh authored local controls.
 Its worker, controller and audit have separate source identities;

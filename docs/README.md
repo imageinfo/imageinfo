@@ -15,6 +15,7 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | Document | Purpose |
 | --- | --- |
 | [Post-operation namespace observer](write-safety/post-operation-namespace-observer.md) | #0218 separately bound test-only pause/release observer and finite authored controls; historical fault contrast and storage admission remain separate. |
+| [Post-operation guest contrast](write-safety/post-operation-guest-contrast.md) | #0219 bounded guest/controller contrast and separate guest entry; actual execution status and remaining attribution limits are explicit. |
 | [Prepared-source namespace attribution](write-safety/prepared-source-namespace-attribution.md) | #0217 bounded causal investigation of the native-error namespace counterexample; observed facts and missing causal boundaries remain separate from storage admission. |
 | [Exact new-output admission](write-safety/new-output-admission.md) | #0176 integrated selector/caller refusal with five concrete unresolved predicates; positive backend admission remains unfulfilled. |
 | [Preview entropy qualification](fixture-plan/preview-entropy-qualification.md) | #0075 versioned authored warning-aware validator method and separately gated private assertion; no root decoder capability. |

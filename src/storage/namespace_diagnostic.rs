@@ -352,20 +352,33 @@ fn authored_fixture(path: &Path) -> io::Result<()> {
     if !actual.starts_with(&allowed) || actual == allowed {
         return Err(io::Error::other("DIAGNOSTIC_LOCAL_FIXTURE_REQUIRED"));
     }
+    authored_marker_fixture(path, "fixture218.marker", MARKER)
+}
+
+/// Bounded marker/source checks shared by the separately gated test entries.
+/// Callers select their path boundary before invoking these read-only checks.
+pub(super) fn authored_marker_fixture(
+    path: &Path,
+    marker_name: &str,
+    marker_value: &[u8],
+) -> io::Result<()> {
     let meta = std::fs::symlink_metadata(path)?;
     if !meta.is_dir() || meta.file_attributes() & 0x400 != 0 {
         return Err(io::Error::other("DIAGNOSTIC_FIXTURE_DIRECTORY"));
     }
-    let marker = path.join("fixture218.marker");
+    let marker = path.join(marker_name);
     let meta = std::fs::symlink_metadata(&marker)?;
-    if !meta.is_file() || meta.len() != MARKER.len() as u64 || meta.file_attributes() & 0x400 != 0 {
+    if !meta.is_file()
+        || meta.len() != marker_value.len() as u64
+        || meta.file_attributes() & 0x400 != 0
+    {
         return Err(io::Error::other("DIAGNOSTIC_FIXTURE_MARKER"));
     }
     let mut marker_bytes = Vec::new();
     std::fs::File::open(marker)?
-        .take(MARKER.len() as u64 + 1)
+        .take(marker_value.len() as u64 + 1)
         .read_to_end(&mut marker_bytes)?;
-    if marker_bytes != MARKER {
+    if marker_bytes != marker_value {
         return Err(io::Error::other("DIAGNOSTIC_FIXTURE_MARKER"));
     }
     let source = path.join("source.bin");
@@ -404,6 +417,22 @@ fn local_namespace_diagnostic_worker() {
                 .all(|byte| byte.is_ascii_alphanumeric() || matches!(byte, b'_' | b'-'))
     );
     authored_fixture(&path).expect("exact fresh authored fixture required");
+    run_authored_observer(
+        &path,
+        unit,
+        "218-authored-namespace-diagnostic",
+        "218-authored-v1",
+    );
+}
+
+/// Run the unchanged raw #0218 protocol after the entry-specific fixture gate.
+/// This function supplies no guest, volume, custody or admission authority.
+pub(super) fn run_authored_observer(
+    path: &Path,
+    unit: String,
+    operation: &'static str,
+    format_revision: &'static str,
+) {
     // Terminate libtest's `test ... ` prefix before the first protocol frame.
     let mut output = io::stdout();
     output.write_all(b"\n").unwrap();
@@ -423,8 +452,8 @@ fn local_namespace_diagnostic_worker() {
     let outcome = super::runtime::execute(
         &mut backend,
         ValidatedCandidate {
-            operation: "218-authored-namespace-diagnostic",
-            format_revision: "218-authored-v1",
+            operation,
+            format_revision,
             source: &mut source,
             planned_len: bytes.len() as u64,
             max_len: bytes.len() as u64,
