@@ -19,6 +19,7 @@ from pathlib import Path
 import platform
 import re
 import socket
+import socketserver
 import sys
 import threading
 import time
@@ -589,6 +590,14 @@ def drive_mailbox(controller, qga, event_path, command_path, *, timeout=120,
         raise
 
 
+class _LiteralLoopbackHttpServer(http.server.HTTPServer):
+    """Bind the fixed IPv4 loopback address without reverse-DNS discovery."""
+    def server_bind(self):
+        socketserver.TCPServer.server_bind(self)
+        self.server_name = self.server_address[0]
+        self.server_port = self.server_address[1]
+
+
 class HttpEndpoint:
     """Existing disposable-guest NAT topology with an exact finite endpoint.
 
@@ -829,7 +838,7 @@ class HttpEndpoint:
                         except OSError:
                             pass
 
-        self.server = http.server.HTTPServer(("127.0.0.1", port), Handler)
+        self.server = _LiteralLoopbackHttpServer(("127.0.0.1", port), Handler)
         self.thread = None
         self.watchdog = None
         controller._emit("http-assets", {"port": port, "assets": {

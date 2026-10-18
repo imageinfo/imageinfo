@@ -663,6 +663,14 @@ class FakeHttpController:
 
 
 class HttpEndpointTests(unittest.TestCase):
+    def test_literal_loopback_bind_never_resolves_a_hostname(self):
+        with patch.object(socket, "getfqdn", side_effect=AssertionError("DNS is not an endpoint prerequisite")):
+            endpoint, _, port = self.endpoint()
+            self.assertEqual(endpoint.server.server_address, ("127.0.0.1", port))
+            self.assertEqual(endpoint.server.server_name, "127.0.0.1")
+            self.assertEqual(endpoint.server.server_port, port)
+            self.assertEqual(self.request(port, "GET", "/asset.py"), (200, b"original-authored-bytes"))
+
     def endpoint(self, *, controller=None, assets=None, timeout=5, **kwargs):
         with socket.socket() as reservation:
             reservation.bind(("127.0.0.1", 0))
@@ -670,6 +678,9 @@ class HttpEndpointTests(unittest.TestCase):
         controller = controller or FakeHttpController()
         endpoint = h.HttpEndpoint(controller, assets or {"/asset.py": b"original-authored-bytes"},
                                   port=port, timeout=timeout, **kwargs)
+        if not hasattr(self, "endpoints_by_port"):
+            self.endpoints_by_port = {}
+        self.endpoints_by_port[port] = endpoint
         self.addCleanup(endpoint.close)
         endpoint.start()
         return endpoint, controller, port
@@ -679,7 +690,13 @@ class HttpEndpointTests(unittest.TestCase):
         try:
             connection.request(method, path, body=body, headers=headers or {})
             response = connection.getresponse()
-            return response.status, response.read()
+            result = response.status, response.read()
+            # Receiving the reply precedes the handler's final state updates.
+            # Observe those updates before making in-process test assertions.
+            endpoint = self.endpoints_by_port[port]
+            self.assertTrue(endpoint.lock.acquire(timeout=1), "HTTP handler completion bound")
+            endpoint.lock.release()
+            return result
         finally:
             connection.close()
 
