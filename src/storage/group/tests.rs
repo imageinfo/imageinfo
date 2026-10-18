@@ -99,6 +99,11 @@ struct Fake<'a> {
     manifest_checks: usize,
     cancel_manifest_check_at: usize,
     cleanup_failed: bool,
+    rename: bool,
+    supports_rename: bool,
+    invalid_rename: bool,
+    omit_rename_artifact: bool,
+    revoke_after_execute: Option<Arc<AtomicBool>>,
     current: CurrentBindings,
 }
 fn current(index: usize) -> CurrentBindings {
@@ -144,6 +149,11 @@ impl<'a> Fake<'a> {
             manifest_checks: 0,
             cancel_manifest_check_at: 1,
             cleanup_failed: false,
+            rename: false,
+            supports_rename: true,
+            invalid_rename: false,
+            omit_rename_artifact: false,
+            revoke_after_execute: None,
             current: current(index),
         }
     }
@@ -184,6 +194,9 @@ impl<'a> Fake<'a> {
 impl UnitAdapter for Fake<'_> {
     type ExecuteAuthority = Permit;
     type Staged = Staged;
+    fn supports_observed_rename(&self) -> bool {
+        self.supports_rename
+    }
     fn preflight(
         &mut self,
         _unit: UnitIntent<'_>,
@@ -288,7 +301,38 @@ impl UnitAdapter for Fake<'_> {
         if self.cancel_execute {
             cancel.request();
         }
+        if let Some(authority) = &self.revoke_after_execute {
+            authority.store(false, Ordering::Release);
+        }
         value
+    }
+    fn execute_observed_rename(
+        &mut self,
+        staged: Staged,
+        unit: UnitIntent<'_>,
+        original: &[u8],
+        authority: Permit,
+        cancel: &Cancellation,
+    ) -> RenameExecution {
+        let value = self.execute(staged, unit, original, authority, cancel);
+        if !self.rename || value.result.status != Status::Committed {
+            return RenameExecution::Failed(value);
+        }
+        let mut installed = unit.source.clone();
+        installed.facts = unit.output.as_bytes().to_vec();
+        if self.invalid_rename {
+            installed.identity.push(0);
+        }
+        let artifacts = if self.omit_rename_artifact {
+            vec![]
+        } else {
+            vec![installed.clone()]
+        };
+        RenameExecution::Complete(ObservedRename {
+            installed,
+            artifacts,
+            charged_bytes: value.result.charged_bytes,
+        })
     }
     fn verify_completed(
         &mut self,
@@ -1271,4 +1315,309 @@ fn claimed_finalization_omitting_prior_artifact_cannot_synthesize_completion() {
     assert!(observed.artifacts.contains(&binding(221)));
     assert_eq!(seen.borrow().calls, [1, 0]);
     assert_eq!(seen.borrow().effects, [1, 0]);
+}
+
+#[test]
+fn live_rename_completion_uses_shared_order_without_publication_receipts() {
+    let f = Fixture::new();
+    let (mut a, mut b, seen) = pair();
+    a.rename = true;
+    b.rename = true;
+    let mut budget = LogicalBudget::new(u64::MAX);
+    let run = start_observed_renames(
+        f.intent(),
+        &mut a,
+        &mut b,
+        permits(),
+        &mut budget,
+        &Cancellation::default(),
+    )
+    .unwrap();
+    assert_eq!(statuses(&run), [MemberStatus::ObservedRenameComplete; 2]);
+    for (index, member) in run.members().iter().enumerate() {
+        assert!(member.execution().is_none());
+        let observed = member.observed_rename().unwrap();
+        assert_eq!(observed.installed.identity, f.sources[index].identity);
+        assert_eq!(observed.installed.facts, f.unit(index).output.as_bytes());
+        assert!(observed.artifacts.contains(&observed.installed));
+        assert_eq!(
+            observed.charged_bytes,
+            LogicalBudget::unit_charge(3).unwrap()
+        );
+    }
+    assert_eq!(
+        budget.charged(),
+        2 * LogicalBudget::unit_charge(3).unwrap() + run.manifest().len() as u64
+    );
+    assert_eq!(
+        &run.manifest()[4..4 + RENAME_PROTOCOL.len()],
+        RENAME_PROTOCOL
+    );
+    let seen = seen.borrow();
+    let position = |name: &str| seen.log.iter().position(|entry| entry == name).unwrap();
+    assert!(position("stage1") < position("execute0"));
+    assert!(position("manifest0") < position("execute0"));
+    assert!(position("execute0") < position("execute1"));
+    assert!(
+        seen.originals
+            .iter()
+            .all(|value| value == b"frozen-original-date")
+    );
+}
+
+#[test]
+fn live_rename_requires_both_static_adapter_opt_ins_before_any_construction() {
+    for index in 0..2 {
+        let f = Fixture::new();
+        let (mut a, mut b, seen) = pair();
+        if index == 0 {
+            a.supports_rename = false;
+        } else {
+            b.supports_rename = false;
+        }
+        let mut budget = LogicalBudget::new(u64::MAX);
+        let result = start_observed_renames(
+            f.intent(),
+            &mut a,
+            &mut b,
+            permits(),
+            &mut budget,
+            &Cancellation::default(),
+        );
+        assert!(matches!(result, Err(Refusal::AdapterUnavailable)));
+        assert_eq!(budget.charged(), 0);
+        assert!(seen.borrow().log.is_empty());
+    }
+}
+
+#[test]
+fn publication_entry_keeps_its_original_protocol_and_qualified_completion() {
+    let f = Fixture::new();
+    let (mut a, mut b, _) = pair();
+    a.rename = true;
+    b.rename = true;
+    let run = start(
+        f.intent(),
+        &mut a,
+        &mut b,
+        permits(),
+        &mut LogicalBudget::new(u64::MAX),
+        &Cancellation::default(),
+    )
+    .unwrap();
+    assert_eq!(statuses(&run), [MemberStatus::Committed; 2]);
+    assert_eq!(&run.manifest()[4..4 + PROTOCOL.len()], PROTOCOL);
+    assert!(
+        run.members()
+            .iter()
+            .all(|member| member.observed_rename().is_none()
+                && member.execution().unwrap().receipt.is_some())
+    );
+}
+
+#[test]
+fn publication_receipt_cannot_substitute_for_live_rename_observation() {
+    let f = Fixture::new();
+    let (mut a, mut b, seen) = pair();
+    let run = start_observed_renames(
+        f.intent(),
+        &mut a,
+        &mut b,
+        permits(),
+        &mut LogicalBudget::new(u64::MAX),
+        &Cancellation::default(),
+    )
+    .unwrap();
+    assert_eq!(
+        statuses(&run),
+        [MemberStatus::RecoveryRequired, MemberStatus::Unattempted]
+    );
+    assert_eq!(seen.borrow().calls, [1, 0]);
+    let execution = run.members()[0].execution().unwrap();
+    assert_eq!(execution.result.status, Status::RecoveryRequired);
+    assert!(!execution.result.protocol_complete);
+    assert!(execution.receipt.is_some()); // Retained evidence never grants continuation.
+}
+
+#[test]
+fn live_rename_requires_original_identity_and_retained_installed_binding() {
+    for missing in [false, true] {
+        let f = Fixture::new();
+        let (mut a, mut b, seen) = pair();
+        a.rename = true;
+        b.rename = true;
+        a.invalid_rename = !missing;
+        a.omit_rename_artifact = missing;
+        let run = start_observed_renames(
+            f.intent(),
+            &mut a,
+            &mut b,
+            permits(),
+            &mut LogicalBudget::new(u64::MAX),
+            &Cancellation::default(),
+        )
+        .unwrap();
+        assert_eq!(
+            statuses(&run),
+            [MemberStatus::RecoveryRequired, MemberStatus::Unattempted]
+        );
+        assert_eq!(
+            run.members()[0].refusal(),
+            Some(Failure::InvalidBinding.into())
+        );
+        assert!(run.members()[0].observed_rename().is_some());
+        assert_eq!(seen.borrow().calls, [1, 0]);
+    }
+}
+
+#[test]
+fn cancellation_after_first_observed_rename_is_terminal_for_the_exact_run() {
+    let f = Fixture::new();
+    let (mut a, mut b, seen) = pair();
+    a.rename = true;
+    b.rename = true;
+    a.cancel_execute = true;
+    let mut run = start_observed_renames(
+        f.intent(),
+        &mut a,
+        &mut b,
+        permits(),
+        &mut LogicalBudget::new(u64::MAX),
+        &Cancellation::default(),
+    )
+    .unwrap();
+    let before = statuses(&run);
+    assert_eq!(
+        before,
+        [
+            MemberStatus::ObservedRenameComplete,
+            MemberStatus::CancelledBeforePublish
+        ]
+    );
+    assert!(run.staged_b.is_some());
+    let (_caller, authority) = authorize(0, RestartAction::RecognizeCompletion);
+    resume(
+        &mut run,
+        &mut a,
+        &mut b,
+        (Some(authority), None),
+        permits(),
+        &Cancellation::default(),
+    );
+    assert_eq!(statuses(&run), before);
+    assert_eq!(run.members()[0].refusal(), Some(Refusal::LiveOnly));
+    assert_eq!(seen.borrow().calls, [1, 0]);
+    assert!(
+        !seen
+            .borrow()
+            .log
+            .iter()
+            .any(|entry| entry.starts_with("verify") || entry.starts_with("inspect"))
+    );
+}
+
+#[test]
+fn ambiguous_second_rename_retains_first_and_never_finalizes_or_replays() {
+    let f = Fixture::new();
+    let (mut a, mut b, seen) = pair();
+    a.rename = true;
+    b.rename = true;
+    b.behavior = Behavior::Uncertain;
+    b.extra_uncertain_artifact = true;
+    b.unavailable_finalizer = false;
+    let mut run = start_observed_renames(
+        f.intent(),
+        &mut a,
+        &mut b,
+        permits(),
+        &mut LogicalBudget::new(u64::MAX),
+        &Cancellation::default(),
+    )
+    .unwrap();
+    assert_eq!(
+        statuses(&run),
+        [
+            MemberStatus::ObservedRenameComplete,
+            MemberStatus::RecoveryRequired
+        ]
+    );
+    let prior = run.members()[1].execution().unwrap().artifacts.clone();
+    for _ in 0..2 {
+        let (_caller, authority) = authorize(1, RestartAction::FinalizeExisting);
+        resume(
+            &mut run,
+            &mut a,
+            &mut b,
+            (None, Some(authority)),
+            permits(),
+            &Cancellation::default(),
+        );
+    }
+    assert_eq!(run.members()[1].execution().unwrap().artifacts, prior);
+    assert!(prior.contains(&binding(221)));
+    assert_eq!(seen.borrow().calls, [1, 1]);
+    assert_eq!(seen.borrow().effects, [1, 1]);
+    assert!(
+        !seen
+            .borrow()
+            .log
+            .iter()
+            .any(|entry| entry.starts_with("inspect"))
+    );
+}
+
+#[test]
+fn live_rename_early_cancellation_cannot_be_resumed_with_new_authority() {
+    let f = Fixture::new();
+    let (mut a, mut b, seen) = pair();
+    let cancel = Cancellation::default();
+    cancel.request();
+    let mut run = start_observed_renames(
+        f.intent(),
+        &mut a,
+        &mut b,
+        permits(),
+        &mut LogicalBudget::new(u64::MAX),
+        &cancel,
+    )
+    .unwrap();
+    resume(
+        &mut run,
+        &mut a,
+        &mut b,
+        (None, None),
+        permits(),
+        &Cancellation::default(),
+    );
+    assert_eq!(run.members()[0].refusal(), Some(Refusal::LiveOnly));
+    assert!(seen.borrow().log.is_empty());
+}
+
+#[test]
+fn revoked_second_live_authority_preserves_first_observation_without_second_effect() {
+    let f = Fixture::new();
+    let (mut a, mut b, seen) = pair();
+    a.rename = true;
+    b.rename = true;
+    let second = Permit::fresh();
+    a.revoke_after_execute = Some(second.0.clone());
+    let run = start_observed_renames(
+        f.intent(),
+        &mut a,
+        &mut b,
+        (Some(Permit::fresh()), Some(second)),
+        &mut LogicalBudget::new(u64::MAX),
+        &Cancellation::default(),
+    )
+    .unwrap();
+    assert_eq!(
+        statuses(&run),
+        [MemberStatus::ObservedRenameComplete, MemberStatus::Refused]
+    );
+    assert_eq!(seen.borrow().calls, [1, 1]);
+    assert_eq!(seen.borrow().effects, [1, 0]);
+    assert_eq!(
+        run.members()[1].execution().unwrap().result.failure,
+        Some(Failure::CallerHistory)
+    );
 }

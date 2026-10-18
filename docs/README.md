@@ -14,6 +14,7 @@ The first camera/format target is **Canon EOS R5 CR3**.
 
 | Document | Purpose |
 | --- | --- |
+| [Explicit paired rename caller](write-safety/paired-rename-caller.md) | #0212 retained ordinary/case-only pair caller through the shared executor; live observed completion and public authored evidence remain separate from receipts, restart and profile admission. |
 | [Live two-name exchange caller](write-safety/exchange-caller.md) | #0213 retained three-move cycle with current-caller authority; six native controls and fresh artifact audit, without committed/profile admission. |
 | [Post-operation namespace observer](write-safety/post-operation-namespace-observer.md) | #0218 separately bound test-only pause/release observer and finite authored controls; historical fault contrast and storage admission remain separate. |
 | [Post-operation guest contrast](write-safety/post-operation-guest-contrast.md) | #0219 bounded guest/controller contrast and separate guest entry; actual execution status and remaining attribution limits are explicit. |

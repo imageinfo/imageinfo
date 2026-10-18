@@ -196,6 +196,30 @@ scheme is introduced.
 
 ## Interpretation and retained history
 
+### Further access diagnosis — 2026-10-18
+
+The retained guest was normally launched with separate new operation journals
+and the retained authored-marker disks. A nonsecret input probe sent `aAzZ09-_`
+through the earlier held-key route; a captured reveal showed `zZ09-_`, omitting
+the first two authored characters. That probe was cleared without submission.
+An independently reviewed slower, settled route delivered the entire same probe
+exactly, and its subsequent clear was observed before one separately reviewed
+credential continuation. The credential itself was never revealed or logged.
+
+Authentication was still refused. The finite input correction does not establish
+the installed password or prove the cause of either earlier refusal. The
+Accessibility action did not produce observed keyboard/layout evidence; configured
+locale is not substituted for it. No further credential submission followed.
+The guest was normally shut down and its original QEMU PID was observed absent.
+
+Both fixed diagnostic slots remain unattempted; no diagnostic worker, fault rule
+or source move ran. All earlier preparation/access failures remain separate.
+The next proposed step is one new isolated disposable guest preserving the old
+guest and evidence, reusing retained media/tools and enforcing the original
+evaluation cutoff. This proposal is independently reviewed but is not execution:
+the current card explicitly excludes installation and Terry's scope decision is
+pending. No installation, account reset, rearm or host change occurred.
+
 ### #0223 access prerequisite observation — 2026-10-18
 
 The corrected published source was isolated in a read-only qualification tree.

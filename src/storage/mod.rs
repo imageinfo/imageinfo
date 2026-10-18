@@ -207,6 +207,10 @@ mod namespace_guest_diagnostic;
 #[cfg(all(test, windows))]
 mod native_errors;
 #[allow(dead_code)]
+pub(crate) mod pair_rename;
+#[allow(dead_code)]
+pub(crate) mod pair_rename_authority;
+#[allow(dead_code)]
 pub(crate) mod path_cycle;
 #[allow(dead_code)]
 pub(crate) mod path_rename;

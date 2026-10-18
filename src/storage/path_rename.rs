@@ -285,6 +285,25 @@ mod native {
             self.observe()
         }
 
+        /// Fresh boundary inspection through the retained original and parent
+        /// guards, including after the final move. This never advances a call,
+        /// clears uncertainty or grants restart authority.
+        pub(crate) fn checkpoint(&mut self) -> RenameObservation {
+            if self.state != RenameState::RecoveryRequired {
+                let failure = if self.held.check().is_err() {
+                    Some(StopReason::CheckpointFailed)
+                } else if !self.expected_map() {
+                    Some(StopReason::NameMapChanged)
+                } else {
+                    None
+                };
+                if let Some(reason) = failure {
+                    self.state = RenameState::RecoveryRequired;
+                    self.reason = Some(reason);
+                }
+            }
+            self.observe()
+        }
         /// A lost response never authorizes a second move or automatic repair.
         /// The fresh map is reported separately from the unknown call history.
         pub(crate) fn mark_uncertain(&mut self) -> RenameObservation {

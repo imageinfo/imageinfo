@@ -397,6 +397,12 @@ impl TrustedCurrentCaller {
             caller: Arc::downgrade(&self.generation),
         })
     }
+
+    /// The paired live-name operation shares the existing finite generation
+    /// and revocation domain; it grants no publication or restart authority.
+    pub(super) fn begin_pair_rename(&mut self) -> Result<ExchangeGeneration, CustodyRefusal> {
+        self.begin_exchange()
+    }
 }
 
 impl Drop for TrustedCurrentCaller {
@@ -406,7 +412,8 @@ impl Drop for TrustedCurrentCaller {
 }
 
 /// Same caller lifetime/revocation domain as restart tokens, with no restart
-/// action or record-shaped authority. Only the exact exchange seam uses this.
+/// action or record-shaped authority. Exact exchange and paired live-name seams
+/// bind their operation-specific observations separately.
 pub(super) struct ExchangeGeneration {
     generation: u64,
     caller: Weak<AtomicU64>,

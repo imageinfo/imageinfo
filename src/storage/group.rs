@@ -6,6 +6,30 @@ use super::runtime::{Binding, field};
 use super::{Cancellation, Failure, LogicalBudget, MAX_RECORD_BYTES, Status, UnitResult};
 
 const PROTOCOL: &[u8] = b"imageinfo-two-unit-group-v1";
+const RENAME_PROTOCOL: &[u8] = b"imageinfo-two-unit-live-observed-renames-v1";
+
+#[derive(Clone, Copy, PartialEq, Eq)]
+enum Completion {
+    QualifiedPublication,
+    ObservedRename,
+}
+
+impl Completion {
+    fn protocol(self) -> &'static [u8] {
+        match self {
+            Self::QualifiedPublication => PROTOCOL,
+            Self::ObservedRename => RENAME_PROTOCOL,
+        }
+    }
+
+    fn accepts(self, status: MemberStatus) -> bool {
+        status
+            == match self {
+                Self::QualifiedPublication => MemberStatus::Committed,
+                Self::ObservedRename => MemberStatus::ObservedRenameComplete,
+            }
+    }
+}
 
 /// Immutable values captured by the format caller before either member changes.
 /// The borrow lasts for the entire run and every explicit resume.
@@ -48,6 +72,26 @@ pub(crate) struct Execution {
     pub artifacts: Vec<Binding>,
 }
 
+/// A successful live same-object rename observation. The selected adapter must
+/// retain its original guard and verify current bytes, properties and exact name
+/// after every planned step. This is neither a receipt nor a durable commitment.
+/// It is intentionally separate from UnitResult and has no restart constructor.
+#[derive(Debug)]
+pub(crate) struct ObservedRename {
+    pub installed: Binding,
+    pub artifacts: Vec<Binding>,
+    pub charged_bytes: u64,
+}
+
+#[derive(Debug)]
+pub(crate) enum RenameExecution {
+    Complete(ObservedRename),
+    /// Includes every retained object and possible effect after any failed or
+    /// uncertain call. Even a supplied publication receipt cannot complete a
+    /// live rename member through this variant.
+    Failed(Execution),
+}
+
 #[derive(Debug)]
 pub(crate) struct PreparationFailure {
     pub refusal: Refusal,
@@ -67,6 +111,7 @@ pub(crate) enum Refusal {
     AdapterUnavailable,
     MissingAuthority,
     ReceiptConflict,
+    LiveOnly,
     Unit(Failure),
 }
 
@@ -86,6 +131,12 @@ impl From<Failure> for Refusal {
 pub(crate) trait UnitAdapter {
     type ExecuteAuthority;
     type Staged;
+
+    /// Static implementation opt-in, checked before staging or effects. Existing
+    /// publication adapters cannot accidentally enter the live rename path.
+    fn supports_observed_rename(&self) -> bool {
+        false
+    }
 
     fn preflight(
         &mut self,
@@ -115,6 +166,18 @@ pub(crate) trait UnitAdapter {
         authority: Self::ExecuteAuthority,
         cancel: &Cancellation,
     ) -> Execution;
+    /// Selected only by start_observed_renames. Existing publication adapters
+    /// retain their execute and qualified receipt contracts without alteration.
+    fn execute_observed_rename(
+        &mut self,
+        staged: Self::Staged,
+        unit: UnitIntent<'_>,
+        original: &[u8],
+        authority: Self::ExecuteAuthority,
+        cancel: &Cancellation,
+    ) -> RenameExecution {
+        RenameExecution::Failed(self.execute(staged, unit, original, authority, cancel))
+    }
     /// Validate current authority and fresh qualified receipt against the exact
     /// old witness. No publication/reapplication is permitted by this method.
     fn verify_completed(
@@ -150,6 +213,7 @@ pub(crate) enum MemberStatus {
     Refused,
     CancelledBeforePublish,
     Committed,
+    ObservedRenameComplete,
     RecoveryRequired,
 }
 
@@ -157,6 +221,7 @@ pub(crate) enum MemberStatus {
 pub(crate) struct Member {
     status: MemberStatus,
     execution: Option<Execution>,
+    observed_rename: Option<ObservedRename>,
     refusal: Option<Refusal>,
     preparation_artifacts: Vec<Binding>,
 }
@@ -166,6 +231,7 @@ impl Member {
         Self {
             status: MemberStatus::Unattempted,
             execution: None,
+            observed_rename: None,
             refusal: None,
             preparation_artifacts: Vec::new(),
         }
@@ -177,6 +243,9 @@ impl Member {
     pub(crate) fn execution(&self) -> Option<&Execution> {
         self.execution.as_ref()
     }
+    pub(crate) fn observed_rename(&self) -> Option<&ObservedRename> {
+        self.observed_rename.as_ref()
+    }
     pub(crate) fn refusal(&self) -> Option<Refusal> {
         self.refusal
     }
@@ -186,7 +255,7 @@ impl Member {
 
     fn refuse(&mut self, why: Refusal) {
         self.refusal = Some(why);
-        if self.execution.is_none() {
+        if self.execution.is_none() && self.observed_rename.is_none() {
             self.status = if why == Refusal::Unit(Failure::Cancelled) {
                 MemberStatus::CancelledBeforePublish
             } else {
@@ -215,6 +284,31 @@ impl Member {
         self.refusal = None;
         self.execution = Some(execution);
     }
+
+    fn capture_rename(&mut self, outcome: RenameExecution, source: &Binding) {
+        match outcome {
+            RenameExecution::Complete(observed) => {
+                let valid = valid_binding(&observed.installed)
+                    && observed.installed.identity == source.identity
+                    && valid_artifacts(&observed.artifacts)
+                    && observed.artifacts.contains(&observed.installed);
+                self.status = if valid {
+                    MemberStatus::ObservedRenameComplete
+                } else {
+                    MemberStatus::RecoveryRequired
+                };
+                self.refusal = (!valid).then_some(Failure::InvalidBinding.into());
+                self.observed_rename = Some(observed);
+            }
+            RenameExecution::Failed(mut execution) => {
+                if execution.result.status == Status::Committed {
+                    execution.result.status = Status::RecoveryRequired;
+                }
+                execution.result.protocol_complete = false;
+                self.capture(execution);
+            }
+        }
+    }
 }
 
 /// In-memory provenance: created only by start, not Clone or deserializable.
@@ -222,6 +316,7 @@ impl Member {
 /// boolean or self-attesting group receipt. The manifest grants no authority.
 pub(crate) struct Run<'a, S, T> {
     intent: Intent<'a>,
+    completion: Completion,
     manifest: Vec<u8>,
     manifest_binding: Option<Binding>,
     manifest_failed: bool,
@@ -273,9 +368,10 @@ fn valid_execution(value: &Execution) -> bool {
 
 fn fields(
     intent: Intent<'_>,
+    completion: Completion,
     mut put: impl FnMut(&[u8]) -> Result<(), Failure>,
 ) -> Result<(), Failure> {
-    put(PROTOCOL)?;
+    put(completion.protocol())?;
     put(intent.identity)?;
     put(intent.original)?;
     // Declared order is encoded; it is never selected from a record at runtime.
@@ -308,6 +404,10 @@ fn fields(
 }
 
 fn manifest_len(intent: Intent<'_>) -> Result<u64, Refusal> {
+    manifest_len_for(intent, Completion::QualifiedPublication)
+}
+
+fn manifest_len_for(intent: Intent<'_>, completion: Completion) -> Result<u64, Refusal> {
     if intent.identity.is_empty()
         || intent.identity.len() > 256
         || intent.original.is_empty()
@@ -338,7 +438,7 @@ fn manifest_len(intent: Intent<'_>) -> Result<u64, Refusal> {
         }
     }
     let mut length = 0u64;
-    fields(intent, |bytes| {
+    fields(intent, completion, |bytes| {
         length = length
             .checked_add(4)
             .and_then(|n| n.checked_add(bytes.len() as u64))
@@ -421,12 +521,58 @@ pub(crate) fn start<'a, A: UnitAdapter, B: UnitAdapter>(
     budget: &mut LogicalBudget,
     cancel: &Cancellation,
 ) -> Result<Run<'a, A::Staged, B::Staged>, Refusal> {
-    let length = manifest_len(intent)?;
+    start_with_completion(
+        intent,
+        a,
+        b,
+        authorities,
+        budget,
+        cancel,
+        Completion::QualifiedPublication,
+    )
+}
+
+/// The same fixed executor and ordering, explicitly selected for two live
+/// same-object rename observations. Its manifest uses a distinct domain. No
+/// member gains committed status, receipt authority or any resume path.
+pub(crate) fn start_observed_renames<'a, A: UnitAdapter, B: UnitAdapter>(
+    intent: Intent<'a>,
+    a: &mut A,
+    b: &mut B,
+    authorities: (Option<A::ExecuteAuthority>, Option<B::ExecuteAuthority>),
+    budget: &mut LogicalBudget,
+    cancel: &Cancellation,
+) -> Result<Run<'a, A::Staged, B::Staged>, Refusal> {
+    if !a.supports_observed_rename() || !b.supports_observed_rename() {
+        return Err(Refusal::AdapterUnavailable);
+    }
+    start_with_completion(
+        intent,
+        a,
+        b,
+        authorities,
+        budget,
+        cancel,
+        Completion::ObservedRename,
+    )
+}
+
+fn start_with_completion<'a, A: UnitAdapter, B: UnitAdapter>(
+    intent: Intent<'a>,
+    a: &mut A,
+    b: &mut B,
+    authorities: (Option<A::ExecuteAuthority>, Option<B::ExecuteAuthority>),
+    budget: &mut LogicalBudget,
+    cancel: &Cancellation,
+    completion: Completion,
+) -> Result<Run<'a, A::Staged, B::Staged>, Refusal> {
+    let length = manifest_len_for(intent, completion)?;
     let [first, second] = budget.reserve_group(intent.units.map(|u| u.candidate_len), length)?;
     let mut manifest = Vec::with_capacity(length as usize);
-    fields(intent, |bytes| field(&mut manifest, bytes))?;
+    fields(intent, completion, |bytes| field(&mut manifest, bytes))?;
     let mut run = Run {
         intent,
+        completion,
         manifest,
         manifest_binding: None,
         manifest_failed: false,
@@ -462,7 +608,7 @@ fn continue_unattempted<A: UnitAdapter, B: UnitAdapter>(
     let needs = run
         .members
         .each_ref()
-        .map(|m| m.status != MemberStatus::Committed);
+        .map(|m| !run.completion.accepts(m.status));
     let checked = (|| -> Result<(), (usize, Refusal)> {
         if cancel.is_requested() {
             return Err((usize::from(!needs[0]), Failure::Cancelled.into()));
@@ -573,14 +719,26 @@ fn continue_unattempted<A: UnitAdapter, B: UnitAdapter>(
         return;
     }
     if let (Some(staged), Some(authority)) = (run.staged_a.take(), first) {
-        run.members[0].capture(a.execute(
-            staged,
-            run.intent.units[0],
-            run.intent.original,
-            authority,
-            cancel,
-        ));
-        if run.members[0].status != MemberStatus::Committed {
+        match run.completion {
+            Completion::QualifiedPublication => run.members[0].capture(a.execute(
+                staged,
+                run.intent.units[0],
+                run.intent.original,
+                authority,
+                cancel,
+            )),
+            Completion::ObservedRename => run.members[0].capture_rename(
+                a.execute_observed_rename(
+                    staged,
+                    run.intent.units[0],
+                    run.intent.original,
+                    authority,
+                    cancel,
+                ),
+                run.intent.units[0].source,
+            ),
+        }
+        if !run.completion.accepts(run.members[0].status) {
             return;
         }
     }
@@ -600,13 +758,25 @@ fn continue_unattempted<A: UnitAdapter, B: UnitAdapter>(
         return;
     }
     if let (Some(staged), Some(authority)) = (run.staged_b.take(), second) {
-        run.members[1].capture(b.execute(
-            staged,
-            run.intent.units[1],
-            run.intent.original,
-            authority,
-            cancel,
-        ));
+        match run.completion {
+            Completion::QualifiedPublication => run.members[1].capture(b.execute(
+                staged,
+                run.intent.units[1],
+                run.intent.original,
+                authority,
+                cancel,
+            )),
+            Completion::ObservedRename => run.members[1].capture_rename(
+                b.execute_observed_rename(
+                    staged,
+                    run.intent.units[1],
+                    run.intent.original,
+                    authority,
+                    cancel,
+                ),
+                run.intent.units[1].source,
+            ),
+        }
     }
 }
 
@@ -691,6 +861,10 @@ pub(crate) fn resume<A: UnitAdapter, B: UnitAdapter>(
     execution: (Option<A::ExecuteAuthority>, Option<B::ExecuteAuthority>),
     cancel: &Cancellation,
 ) {
+    if run.completion == Completion::ObservedRename {
+        run.members[0].refuse(Refusal::LiveOnly);
+        return;
+    }
     if cancel.is_requested() {
         return;
     }

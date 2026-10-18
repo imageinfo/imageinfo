@@ -1,5 +1,24 @@
 # Remaining work for the RAW milestone
 
+## Explicit pair increment — 2026-10-18
+
+The current wave selected #0212 and #0223 after reading the queued scopes and
+actual prerequisites. Five implementation/qualification/documentation agents
+worked on #0212 and three on #0223, followed by independent rolling review under
+the temporary eight-agent ceiling. No successor batch was created.
+
+#0212 implements the live pair caller through the shared executor, with distinct
+observed completion and no receipt/restart/profile promotion. Public authored
+controls and independent retained-object inspection pass; operation-specific
+private evidence stays restricted. See the [method and limits](write-safety/paired-rename-caller.md).
+Its final frozen qualification remains part of #0215.
+
+#0223 still has two unattempted diagnostic slots. A demonstrated nonsecret input
+defect was corrected and calibrated, but the retained guest still refused login.
+A fresh disposable guest proposal awaits Terry's scope decision under the card's
+explicit no-install limit. This is not positive contrast evidence or storage
+admission; see the [access observations](write-safety/post-operation-guest-contrast.md#further-access-diagnosis--2026-10-18).
+
 ## Live exchange caller increment — 2026-10-18
 
 #0213 now connects the actual retained #0202 cycle to exact current-caller

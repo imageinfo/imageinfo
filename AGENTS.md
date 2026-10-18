@@ -1,5 +1,29 @@
 # imageinfo project guidance
 
+## Explicit paired rename caller — 2026-10-18
+
+#0212 composes the actual #0201 retained rename sessions through the existing
+two-unit executor. Its explicitly selected live observed-rename mode requires
+both adapters to opt in before effects, binds the ordered pair/current caller,
+and never creates `Committed` or `QualifiedReceipt`. Observed-only runs cannot
+resume; saved manifests and copied observations grant no authority. Source
+guards and final property/name checkpoints remain held through both members.
+Seven public authored controls and fresh independent artifact/journal inspection
+pass: six acceptance controls plus final-step revocation regression. Injected
+planner-boundary response loss is not an observed ambiguous OS result. Exact
+private phase and operation reports remain restricted; do not publish their
+counts/outcomes or infer format/storage admission. See
+`docs/write-safety/paired-rename-caller.md`; #0215 retains final frozen qualification.
+
+#0223's further access diagnosis observed a finite nonsecret input-delivery
+mismatch, followed by an exact slower calibration. The single corrected credential
+continuation was still refused; this does not prove the installed password or
+explain earlier refusals. No diagnostic slot ran. The old guest was normally shut
+down with its evidence retained. A concrete independently reviewed fresh-guest
+proposal is pending Terry's decision because the card explicitly excludes new
+installation; do not install, reset accounts or replay the consumed attempts
+without the relevant scope change. Existing two-slot acceptance remains open.
+
 ## Live exchange caller — 2026-10-18
 
 #0213 integrates the actual #0202 retained cycle with exact plan/original-snapshot
