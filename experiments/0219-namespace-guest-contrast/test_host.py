@@ -809,10 +809,11 @@ class HttpEndpointTests(unittest.TestCase):
         fake, records = FakeQmp(bound), []
         controller = h.Controller(h.QmpChannel(fake), bound, records.append)
         controller.prepare()
-        _, _, port = self.endpoint(controller=controller)
+        endpoint, _, port = self.endpoint(controller=controller)
         for seq, stage in enumerate(("prepared", "source_reopened_hold"), 1):
             self.assertEqual(self.request(port, "POST", "/event/authored219",
-                                          h.protocol.encode_event(outer(stage, seq)))[0], 200)
+                                          h.protocol.encode_event(outer(stage, seq)))[0], 200,
+                             {"stage": stage, "sequence": seq, "failure": endpoint.failure})
         fake.fail_arm = True
         self.assertEqual(self.request(port, "POST", "/event/authored219",
                                       h.protocol.encode_event(outer("before_candidate_hold", 3)))[0], 400)
