@@ -8,6 +8,7 @@ pub mod inert_translation;
 pub mod output;
 pub mod pairing;
 pub mod plan;
+pub mod plan_observation;
 pub mod preview;
 pub mod privacy;
 pub mod read_request;

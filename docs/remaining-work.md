@@ -1,5 +1,26 @@
 # Remaining work for the RAW milestone
 
+## Executable runway — 2026-10-19
+
+Four independently reviewed, substantive implementation scopes are Ready for
+Work: #0224 optional held retain-and-install, #0225 independent read-only artifact
+inspection, #0226 pure-filter library/native observations, and #0227 inert
+scalar-v1 JSON/CSV decoding. See the [runway and preserved gaps](planning/executable-runway-2026-10-19.md).
+These are unimplemented scopes, not four completed capabilities. #0012 remains
+an explicit owner hold. Strict RAW/replacement/immutable-backup gates stay open.
+
+The exact native inert scalar-v1 profiles are selected for library
+implementation; other previously conditional alternatives remain conditional.
+#0078's advisory recomputation/diff and #0085's deferred operation preparation
+are partial checkpoints, not positive apply/publication handoffs.
+
+#0223's separate fresh guest is approved and prepared. Unattended Windows setup
+was observed; its own restart left QEMU in `internal-error`. A reviewed controlled
+exit and one same-disk/firmware/TPM cold continuation resumed installation with
+both setup CDROMs removed, without declaring `installed=true`. Ordinary access,
+full readiness and both fixed diagnostic slots remain unestablished. Preserve
+the old guest and all prior failures; this is not a diagnostic contrast result.
+
 ## Explicit pair increment — 2026-10-18
 
 The current wave selected #0212 and #0223 after reading the queued scopes and
@@ -15,8 +36,9 @@ Its final frozen qualification remains part of #0215.
 
 #0223 still has two unattempted diagnostic slots. A demonstrated nonsecret input
 defect was corrected and calibrated, but the retained guest still refused login.
-A fresh disposable guest proposal awaits Terry's scope decision under the card's
-explicit no-install limit. This is not positive contrast evidence or storage
+A fresh disposable guest proposal then awaited Terry's scope decision under the
+card's explicit no-install limit; the 2026-10-19 entry above supersedes that
+pending decision. This is not positive contrast evidence or storage
 admission; see the [access observations](write-safety/post-operation-guest-contrast.md#further-access-diagnosis--2026-10-18).
 
 ## Live exchange caller increment — 2026-10-18

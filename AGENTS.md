@@ -1,5 +1,27 @@
 # imageinfo project guidance
 
+## Executable work runway — Terry's goal, 2026-10-19
+
+Optimize planning for at least four substantive cards that can each start and
+reach Ready for Review in one turn. Spend multiple turns resolving Backlog
+evidence/scope gaps when that builds a useful executable queue. Count immediately
+executable whole-card handoffs separately from dependency waits, partial
+checkpoints and tracking umbrellas. Do not manufacture filler cards, count
+preparation as positive capability delivery, or silently weaken acceptance to
+meet the throughput goal. Split oversized work into distinct useful outcomes
+with concrete acceptance, consumers and truthful prerequisites.
+
+#0012 remains explicitly held by Terry and excluded from work. Its Backlog lane
+represents an owner hold, not insufficient scope or clarity. Do not promote or
+assign it as part of the readiness/runway effort without Terry lifting the hold.
+
+Terry approved the separately named optional retain-and-install direction on
+2026-10-19. See `docs/write-safety/retain-install-policy.md` for the target-name
+gap, foreign-winner/partial outcomes, mutable retained old object, explicit new
+candidate properties and always-keep initial policy. Begin with bounded authored
+markers; strict #0194/#0198 and real-media/profile acceptance remain open. Do not
+infer atomic replacement, immutable backup, replay or cleanup authority.
+
 ## Explicit paired rename caller — 2026-10-18
 
 #0212 composes the actual #0201 retained rename sessions through the existing
@@ -19,10 +41,15 @@ counts/outcomes or infer format/storage admission. See
 mismatch, followed by an exact slower calibration. The single corrected credential
 continuation was still refused; this does not prove the installed password or
 explain earlier refusals. No diagnostic slot ran. The old guest was normally shut
-down with its evidence retained. A concrete independently reviewed fresh-guest
-proposal is pending Terry's decision because the card explicitly excludes new
-installation; do not install, reset accounts or replay the consumed attempts
-without the relevant scope change. Existing two-slot acceptance remains open.
+down with its evidence retained. Terry approved the reviewed ONE separate fresh
+96 GiB guest; it was prepared on 2026-10-19 using retained media, with truthful
+new creation time and the original evaluation cutoff enforced separately.
+Unattended Windows setup was observed, but its own restart left QEMU in
+`internal-error`. After retaining that failure and confirming controlled emulator
+exit, one reviewed cold continuation resumed setup on the same disk/vars/TPM with
+both CDROMs removed and `installed=false`. Installation/access success remains
+unestablished. No account reset, rearm, new installation or replay is authorized.
+Existing two-slot acceptance remains open; neither diagnostic slot has run.
 
 ## Live exchange caller — 2026-10-18
 

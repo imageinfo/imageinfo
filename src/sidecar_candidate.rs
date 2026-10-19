@@ -4,6 +4,7 @@
 mod adapter;
 mod mapping;
 mod preservation;
+mod publication;
 
 use imageinfo_windows_storage::GuardedSource;
 use sha2::{Digest, Sha256};

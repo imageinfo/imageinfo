@@ -67,6 +67,11 @@ acknowledgements required by WS-002. Fresh checks must not silently broaden inte
 
 ## Verification and coverage
 
+#0078's bounded [advisory recomputation](cr3-plan-observation.md) compares this
+intent to a fresh source snapshot and exposes changed fields and the requested
+fresh-name effect. It adds no executable wire fields or apply authority; the
+complete WS-002 execution gaps remain explicit there.
+
 [Typed negative vectors](preview-plan/negative.v1.json) replace fields in the
 positive vector and must refuse. They cover self-authorization, invented storage,
 stale rules, malformed digest, wrong/out-of-range allocations, wrong tag, invalid

@@ -81,3 +81,5 @@ shared-maintenance model, and [SECURITY.md](SECURITY.md) for security concerns.
 Work is tracked on a local localswim board. Private board data, credentials, service
 descriptors, and logs are excluded from this repository. See
 [local board setup](docs/local-board.md) for the workflow.
+The [dated executable runway](docs/planning/executable-runway-2026-10-19.md)
+distinguishes immediately executable handoffs from dependency waits and owner holds.
