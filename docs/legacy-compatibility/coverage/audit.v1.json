@@ -133,7 +133,7 @@
     {
       "path": "docs/legacy-compatibility/coverage/lg-evidence.v1.json",
       "key": "original_lg",
-      "sha256": "2ba11ce026e740502ac0fa6013de9b0f7d720d012db99604a9ca3195f8d9100c"
+      "sha256": "f9dff472623ff49e6bb9edfd138e06bcc2d9392880389771bbe4984127a5f276"
     },
     {
       "path": "docs/legacy-compatibility/coverage/gap-evidence.v1.json",
@@ -12870,7 +12870,7 @@
     "docs/legacy-compatibility/advanced-date-contract.v1.json": "caf1765a6c22ced240bd0dbc10f0cb03d4b9c4bab90f2eb907af67dd880c2d8e",
     "docs/legacy-compatibility/command-shells.md": "16097a5a6877c4bc0cd1f12130db7ecda520b7c88a108b7d72312b00a0cdcb24",
     "docs/legacy-compatibility/command-shells/windows.results.json": "f3eace0ed19e8a57dde8e63a8659802d66941655c6e305bd4d018232d17455d8",
-    "docs/legacy-compatibility/cr3-preview-plan.md": "7b7b4838cf47d15e72d54366c02481693f0696892b4cb10c0b9e1b0f644d1a65",
+    "docs/legacy-compatibility/cr3-preview-plan.md": "854263f6989877c23d98b8f57da144ba97271950d176827f8ded8667bda95e5b",
     "docs/legacy-compatibility/cr3-preview-source-binding.md": "261a64c05467650bb04aacbb7166bbb156b1a7e69e52bd15b9f2d2e2bf0173ad",
     "docs/legacy-compatibility/delivery-matrix.v1.json": "fec02815565304b575445b1bae2ac2204b018d0896e3f04e107939159886c345",
     "docs/legacy-compatibility/executable-extension-boundary.md": "d7bf88e3188724eb5fada4e8aea91c27e945921ad0cbc4cc6bce4a1f7352003c",
