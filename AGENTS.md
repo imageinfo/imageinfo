@@ -22,6 +22,33 @@ candidate properties and always-keep initial policy. Begin with bounded authored
 markers; strict #0194/#0198 and real-media/profile acceptance remain open. Do not
 infer atomic replacement, immutable backup, replay or cleanup authority.
 
+## Current #0223 stop point — 2026-10-19
+
+The approved fresh guest completed setup and verified ordinary nonadministrator
+access, normal disk-only lifecycle, both retained fixture bindings and all 54
+runtime files. Preserve the original evaluation cutoff and every earlier failure.
+Its installed relaunch retained the same Windows kernel boot timestamp; emulator
+restart is not evidence of a new kernel boot. See the current status in
+`docs/write-safety/post-operation-guest-contrast.md`.
+
+The exact frozen follow-up attempted one host preparation prefix. The runner
+held its QMP connection while the separate console path required another client
+on the same socket; a parent read-only client timed out awaiting its greeting.
+No console operate, diagnostic collector/worker, source move or selected fault
+ran. The existing endpoint deadline stopped the attempt. The runner exited;
+both raw nodes remained directly bound, with the prepared error node retained
+unselected. Zero diagnostic cells completed; the second slot is unattempted.
+
+Do not replay the consumed attempt, run the remaining control independently,
+or infer positive acceptance from readiness or source controls. Repair the
+single-owner console transport on #0228 before any separately reviewed fresh execution
+scope. Existing qualification checkout, helper revisions, receipts and artifacts
+stay immutable. #0223's positive acceptance remains open.
+The fresh guest and diagnostic runner are stopped with actual process absence
+verified; the failed single ACPI request and later reviewed nonforcing normal
+guest shutdown are retained separately. Do not leave a live guest implicit at
+handoff or infer a new kernel boot from an emulator restart.
+
 ## Explicit paired rename caller — 2026-10-18
 
 #0212 composes the actual #0201 retained rename sessions through the existing
@@ -47,9 +74,9 @@ new creation time and the original evaluation cutoff enforced separately.
 Unattended Windows setup was observed, but its own restart left QEMU in
 `internal-error`. After retaining that failure and confirming controlled emulator
 exit, one reviewed cold continuation resumed setup on the same disk/vars/TPM with
-both CDROMs removed and `installed=false`. Installation/access success remains
-unestablished. No account reset, rearm, new installation or replay is authorized.
-Existing two-slot acceptance remains open; neither diagnostic slot has run.
+both CDROMs removed and `installed=false`. The current dated stop point above
+records subsequent installation/access/readiness and the stopped host prefix.
+No account reset, rearm, additional installation or replay is authorized.
 
 ## Live exchange caller — 2026-10-18
 
@@ -64,14 +91,14 @@ observed OS ambiguity. `CompleteObserved` is not durable commitment, a qualified
 receipt, restart authority or a storage profile. See
 `docs/write-safety/exchange-caller.md`; #0215 retains final frozen-adapter scope.
 
-#0223's new disposable fixture disks reached attachment, but ordinary guest
+At the 2026-10-18 stop, #0223's new disposable fixture disks reached attachment, but ordinary guest
 access failed before readiness or either diagnostic cell. Two credential
 refusals, a normal restart returning to lock, and Boolean-only agreement of
 retained setup definitions are explicit operational observations, not a storage
 result or proof of the installed password. Preserve both unattempted slots and
 #0219's separate original refusal. Restore verified access and obtain fresh
 readiness/exact plan review before execution; do not infer positive acceptance
-from this incomplete increment. See the current execution-status section in
+from that incomplete increment. See the current execution-status section in
 `docs/write-safety/post-operation-guest-contrast.md`.
 
 ## Readiness and multiple-card dispatch — 2026-10-18

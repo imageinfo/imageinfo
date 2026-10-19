@@ -1,4 +1,4 @@
-# Post-operation guest namespace contrast — #0219
+# Post-operation guest namespace contrast — #0219 / #0223
 
 **The two diagnostic guest cells remain NOT RUN.** One retained persistent-error
 attempt stopped at preparation; the matched no-error slot was unattempted.
@@ -11,8 +11,61 @@ separately bound [#0218 observer](post-operation-namespace-observer.md) into
 the finite historical-rule contrast proposed by
 [#0217](prepared-source-namespace-attribution.md). It does not establish a
 cause or correction for #0174's prepared-source namespace discrepancy.
-Actual two-cell execution and retained-evidence review remain a bounded
-follow-up before either diagnostic cell can be described as completed.
+Actual two-cell execution and retained-evidence review remain unfulfilled.
+
+## Current #0223 stop point — 2026-10-19
+
+**Incomplete: one new host preparation prefix, zero completed diagnostic cells,
+matched control unattempted.** This is separate from #0219's original preparation
+refusal above; neither failed prefix may be replayed or relabeled as a diagnostic.
+
+Terry approved one separate disposable guest. Setup completed after retaining an
+installer-restart emulator failure and one controlled cold continuation. Ordinary
+nonadministrator access, a normal disk-only lifecycle, two distinct fixture
+device bindings and the exact 54-file runtime were actually verified. The
+installed relaunch retained its kernel boot timestamp; it is not called a new
+Windows kernel boot. The original evaluation cutoff remains unchanged.
+
+Readiness retained three distinct stages: an overbroad root-inventory refusal,
+a truncated runtime download rejected before extraction/execution, then a full
+length/hash/54-file/version success. The reviewed inventory exception allows only
+the observed plain `System Volume Information` sibling as opaque metadata outside
+the new case directories. It grants no traversal, content/origin trust, deletion,
+quiet-volume claim or attribution of whole-volume errors to one particular I/O.
+Source/case guards and runtime integrity checks were preserved.
+
+The exact corrected source, retained static worker, runtime, plan, freeze and
+physical bindings passed independent file review. The host runner then prepared
+the first unselected error node and its bounded HTTP endpoint. It retained its
+QMP connection while the separate console path required a second client on the
+same socket. A separate read-only parent observation timed out awaiting a QMP
+greeting. Source review confirms this missing connection-lifetime mechanism;
+the timeout is consistent with contention but does not uniquely prove its cause.
+
+No console operate or diagnostic command was sent. No collector/worker, source
+move, filter selection, native diagnostic error, result/export or collector-exit
+confirmation occurred. The existing 300-second endpoint deadline cancelled the
+prepared attempt to `refused`; the runner exited with its failure retained.
+Final read-only inspection found both raw nodes still directly bound and the
+prepared error node retained unselected. This is not an active-rule clear, node
+deletion, successful diagnostic or namespace-preservation result.
+
+Independent raw-journal/artifact review accepts this only as an **incomplete
+retained prefix**. Two host preparation attempts now exist across #0219/#0223,
+with zero completed diagnostic cells. The second #0223 slot stays unattempted.
+Repair the competing-client transport before any separately reviewed fresh
+execution scope; do not resume this attempt or run its control independently.
+The reviewed #0228 correction keeps one runner-owned QMP connection and explicit live
+parent handoffs, with authored single-client and lifecycle regression tests.
+Its implementation and any later guest outcome remain separate work.
+
+The single normal ACPI shutdown request did not establish exit within its bounded
+wait; that failure remains retained. After a fresh observed idle ordinary console,
+one separately reviewed normal guest `shutdown.exe /s /t 0` command was sent,
+with no force flag. Actual emulator and runner PID absence and absence of the
+work listeners were then verified. No forced termination, second ACPI request,
+diagnostic replay or exclusive attribution of exit to one shutdown request is
+claimed. Both guests, fixture disks and all captures remain retained.
 
 ## Delivered method and actual preparation result
 
@@ -196,7 +249,7 @@ scheme is introduced.
 
 ## Interpretation and retained history
 
-### Further access diagnosis — 2026-10-18
+### Historical further access diagnosis — 2026-10-18
 
 The retained guest was normally launched with separate new operation journals
 and the retained authored-marker disks. A nonsecret input probe sent `aAzZ09-_`
@@ -217,8 +270,9 @@ or source move ran. All earlier preparation/access failures remain separate.
 The next proposed step is one new isolated disposable guest preserving the old
 guest and evidence, reusing retained media/tools and enforcing the original
 evaluation cutoff. This proposal is independently reviewed but is not execution:
-the current card explicitly excludes installation and Terry's scope decision is
-pending. No installation, account reset, rearm or host change occurred.
+at that stop the card excluded installation and Terry's scope decision was
+pending. Terry subsequently approved the one fresh guest recorded above. No
+account reset or rearm is authorized by that approval.
 
 ### #0223 access prerequisite observation — 2026-10-18
 
