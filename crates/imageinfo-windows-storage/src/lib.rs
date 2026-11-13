@@ -14,6 +14,15 @@ use std::path::Path;
 pub const MAX_ARTIFACT_BYTES: u64 = 64 * 1024 * 1024;
 pub const MAX_RECORD_BYTES: u64 = 65_536;
 
+/// Read-only identity disposition at one explicitly selected private-root leaf.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum ArtifactBinding {
+    Absent,
+    HeldObject,
+    ForeignObject,
+    CaseAlias,
+}
+
 /// Actual held-object observation. Security text is private account information.
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct FileSnapshot {
@@ -170,6 +179,12 @@ mod unsupported {
             unreachable!("unconstructible")
         }
         pub fn check(&mut self, _: &PrivateRoot) -> io::Result<()> {
+            refusal()
+        }
+        pub fn check_object(&mut self, _: &PrivateRoot) -> io::Result<()> {
+            refusal()
+        }
+        pub fn binding(&self, _: &PrivateRoot, _: &str) -> io::Result<ArtifactBinding> {
             refusal()
         }
         pub fn flush(&self) -> io::Result<()> {

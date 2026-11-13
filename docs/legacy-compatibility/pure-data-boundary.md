@@ -4,8 +4,9 @@ The accepted #0007 direction is bounded pure filters and explicit data definitio
 #0131 refines that direction; it does not request another adoption decision.
 The [#0054 EXT survey](executable-extension-boundary.md) remains the historical
 alternatives record. This contract supersedes its pending-choice wording for the
-pure/data scope only. No production filter, definition importer, code loader or
-sandbox is implemented here.
+pure/data scope only. The [bounded Rust library runtime](inert-library-consumers.md#pure-filter-evaluation)
+implements this filter contract against explicit observations; CLI and session
+routing, a general definition importer, code loading and sandboxing remain separate.
 
 ## Exact scope and grammar
 
@@ -110,7 +111,7 @@ classes. The dependency-free [checker](../../scripts/check_pure_data_boundary.py
 checks this schema's finite keyword subset, duplicate members, byte bounds,
 declaration identity rules and complete EXT trace. It does not parse/evaluate
 filter expressions, inspect media, validate arbitrary JSON Schemas or execute code.
-The records marked `futureEvidence` are required unrun implementation cells,
+The frozen `futureEvidence` records list the original implementation obligations,
 not passes obtained by this checker:
 
 - Parser: precedence, parentheses, escapes, valid exponent numbers, trailing tokens,
@@ -128,5 +129,8 @@ not passes obtained by this checker:
   behavior without claiming a sandbox for arbitrary executable code.
 
 Run `python scripts/check_pure_data_boundary.py`, `python scripts/check_docs.py`
-and `git diff --check`. Authored schema/vector checks are specification evidence
-only; actual runtime, integration, source-coverage and failure evidence remain unrun.
+and `git diff --check`. Those are specification checks. Separately, the
+[public Rust consumer tests](inert-library-consumers.md#pure-filter-evaluation)
+exercise the compiler/evaluator and retained authored CR3 observations. Native
+coverage remains partial. CLI/session integration and generalized XMP input
+remain unimplemented.

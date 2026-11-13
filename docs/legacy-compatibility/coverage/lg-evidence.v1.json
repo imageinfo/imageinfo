@@ -136,6 +136,12 @@
       "status": "partially_evidenced_open",
       "evidence": [
         {
+          "path": "docs/legacy-compatibility/inert-library-consumers.md#inert-scalar-intents",
+          "kind": "authored_runtime",
+          "scope": "Public Rust native scalar-v1 JSON/CSV decoder returns owned intents with exact caller observation binding; no CLI, legacy import or writer.",
+          "owner_ticket": 15
+        },
+        {
           "path": "docs/legacy-compatibility/report-import/profiles.v1.json",
           "kind": "specification_model",
           "scope": "16 report/import profiles with shared encoding/escaping/lookup/collision/round-trip dimensions. Legacy renderers and importers remain unimplemented.",
@@ -210,7 +216,7 @@
         },
         {
           "id": "LG-002-r06",
-          "scope": "Inert JSON/CSV scalar intent decoders remain unimplemented product importers. Implement bounded lexical/row matching and all-or-nothing behavior without authorizing effects.",
+          "scope": "The native scalar-v1 Rust decoder implements bounded lexical/row matching and all-or-nothing nonexecuting intents. CLI and application import remain unimplemented; no decoding grants authority to apply.",
           "owner_tickets": [
             15
           ],
@@ -251,6 +257,12 @@
       "status": "partially_evidenced_open",
       "evidence": [
         {
+          "path": "docs/legacy-compatibility/inert-library-consumers.md#pure-filter-evaluation",
+          "kind": "authored_runtime",
+          "scope": "Public Rust pure-filter runtime and actual authored CR3 retained-metadata adapter; only observed presence is positive under native partial coverage. No CLI or session routing.",
+          "owner_ticket": 15
+        },
+        {
           "path": "docs/legacy-compatibility/pure-data-boundary.md",
           "kind": "specification_model",
           "scope": "Accepted pure/data direction refined with exact grammar, aliases/parameters/XMP declarations, frozen bounds and all EXT-001–009 dispositions. No parser/evaluator/importer/code loader is implemented.",
@@ -272,7 +284,7 @@
       "residuals": [
         {
           "id": "LG-003-r01",
-          "scope": "Implement accepted EXT-001 pure grammar/parser/evaluator with exact rationals, three-valued coverage, all branch preflight, token/depth/visit/byte limits and actual native observation/status evidence.",
+          "scope": "The bounded Rust parser/evaluator and retained native observation adapter implement the library scope. CLI/session selection routing and complete native observation coverage remain separate.",
           "owner_tickets": [
             15
           ],
@@ -280,7 +292,7 @@
         },
         {
           "id": "LG-003-r02",
-          "scope": "Implement accepted EXT-002/003 explicit alias/parameter/XMP definitions with exact registry revision, whole-set collision/type/refusal behavior and actual per-request CLI/API/session isolation; declarations never authorize parsing or writes.",
+          "scope": "The explicit Rust request implements the alias/parameter/XMP declaration library scope with exact registry and whole-set validation. CLI/session isolation and general definition import remain separate; declarations never authorize parsing or writes.",
           "owner_tickets": [
             15
           ],

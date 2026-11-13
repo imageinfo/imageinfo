@@ -1,4 +1,4 @@
-use crate::{FileSnapshot, MAX_ARTIFACT_BYTES, native, validate_leaf};
+use crate::{ArtifactBinding, FileSnapshot, MAX_ARTIFACT_BYTES, native, validate_leaf};
 use std::{
     cell::Cell,
     fs::{self, File, OpenOptions},
@@ -549,12 +549,33 @@ impl HeldArtifact {
         result
     }
     fn check_inner(&mut self, root: &PrivateRoot) -> io::Result<()> {
+        self.check_root(root)?;
+        root.security.check(&self.file)?;
+        check_binding(&self.path, &self.file)?;
+        self.check_contents()
+    }
+    fn check_root(&self, root: &PrivateRoot) -> io::Result<()> {
         if self.root_identity != (root.before.volume_serial_number, root.before.file_index) {
             return Err(io::Error::other("FOREIGN_ROOT"));
         }
-        root.check()?;
+        root.check()
+    }
+    /// Check the actual held object independently of any selected pathname.
+    /// Conflicts latch just as with `check`. This never resets publication.
+    pub fn check_object(&mut self, root: &PrivateRoot) -> io::Result<()> {
+        if self.failed {
+            return Err(io::Error::other("ARTIFACT_PREVIOUS_CONFLICT"));
+        }
+        let result = self.check_object_inner(root);
+        self.failed |= result.is_err();
+        result
+    }
+    fn check_object_inner(&mut self, root: &PrivateRoot) -> io::Result<()> {
+        self.check_root(root)?;
         root.security.check(&self.file)?;
-        check_binding(&self.path, &self.file)?;
+        self.check_contents()
+    }
+    fn check_contents(&mut self) -> io::Result<()> {
         check_plain(&self.file, &self.before)?;
         if observe(&self.file)? != self.before
             || bounded_read(&mut self.file, self.before.size)? != self.bytes
@@ -563,6 +584,53 @@ impl HeldArtifact {
             return Err(io::Error::other("ARTIFACT_PROPERTY_OR_BYTE_CONFLICT"));
         }
         Ok(())
+    }
+    /// Observe one ordinary ASCII leaf beneath the actual guarded root.
+    /// This neither opens a path for mutation nor clears any failed check.
+    pub fn binding(&self, root: &PrivateRoot, leaf: &str) -> io::Result<ArtifactBinding> {
+        validate_leaf(leaf)?;
+        if !leaf.is_ascii() {
+            return Err(io::Error::other("ARTIFACT_BINDING_LEAF_UNSUPPORTED"));
+        }
+        self.check_root(root)?;
+        let mut spelling = None;
+        for (index, entry) in fs::read_dir(root.path())?.enumerate() {
+            if index >= 4096 {
+                return Err(io::Error::other("ARTIFACT_DIRECTORY_BOUND"));
+            }
+            let name = entry?.file_name();
+            let name = name
+                .to_str()
+                .ok_or_else(|| io::Error::other("ARTIFACT_DIRECTORY_ENCODING"))?;
+            if name.eq_ignore_ascii_case(leaf) && spelling.replace(name == leaf).is_some() {
+                return Err(io::Error::other("ARTIFACT_AMBIGUOUS_SPELLING"));
+            }
+        }
+        let file = OpenOptions::new()
+            .access_mode(0)
+            .share_mode(FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE)
+            .custom_flags(FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_OPEN_REPARSE_POINT)
+            .open(root.path().join(leaf));
+        let binding = match (spelling, file) {
+            (None, Err(error)) if error.kind() == io::ErrorKind::NotFound => {
+                ArtifactBinding::Absent
+            }
+            (Some(false), Ok(_)) => ArtifactBinding::CaseAlias,
+            (Some(true), Ok(file)) => {
+                let info = winapi_util::file::information(&file)?;
+                if info.volume_serial_number() == self.before.volume_serial_number
+                    && info.file_index() == self.before.file_index
+                {
+                    ArtifactBinding::HeldObject
+                } else {
+                    ArtifactBinding::ForeignObject
+                }
+            }
+            (_, Err(error)) => return Err(error),
+            (None, Ok(_)) => return Err(io::Error::other("ARTIFACT_COMPARISON_ALIAS")),
+        };
+        self.check_root(root)?;
+        Ok(binding)
     }
     pub fn flush(&self) -> io::Result<()> {
         self.file.sync_all()

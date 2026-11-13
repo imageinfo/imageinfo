@@ -1,8 +1,9 @@
 # Finite report and inert import boundaries (#0126)
 
 This contract selects the existing native metadata JSON as the exact reporting
-profile and proposes two data-only scalar intent encodings. The latter have no
-application importer. The [16-profile matrix](report-import/profiles.v1.json),
+profile and defines two data-only scalar intent encodings. The
+[Rust library decoder](inert-library-consumers.md#inert-scalar-intents) consumes
+both encodings without CLI or application import. The [16-profile matrix](report-import/profiles.v1.json),
 [inert JSON schema](report-import/intent.schema.v1.json) and
 [authored vectors](report-import/vectors.v1.json) are specification/model evidence.
 They add no CLI option, report renderer, import execution or mutation authority.
@@ -31,8 +32,8 @@ GAP-006 and GAP-012. No permanently deferred report family is introduced.
 | Legacy plot | Unimplemented plotting report. | Specify data/domain/ordering, missing samples and output asset schema; compare authored deterministic plots/data without claiming rendering parity. |
 | Templates | Unimplemented template renderer; no expression or callback evaluator is selected here. | Define a nonexecuting placeholder AST, escaping and missing/ambiguous lookup vectors before rendering implementation. |
 | Filename placeholders | Unimplemented filename formatter; pairing/path resolution is not formatting. | Define a pure component-result schema, counter/extension/width rules and collision/path-separator refusals; no filesystem effect. |
-| Inert JSON intent | Unimplemented product importer; proposed closed scalar-set schema below. | Use this schema and model vectors for a future decoder producing only nonexecuting intents and per-row diagnostics. |
-| Inert CSV intent | Unimplemented product importer; exact rectangular grammar below projects to the same scalar intent model. | Qualify a future decoder against JSON/CSV equivalence, lexical negatives and all-or-nothing row matching. |
+| Inert JSON intent | The Rust library decodes the closed scalar-set schema below. | Keep CLI/application import and legacy SourceFile matching separate. |
+| Inert CSV intent | The Rust library decodes the exact rectangular grammar below to the same scalar intent model. | Keep CLI/application import and legacy CSV mapping separate. |
 | Legacy JSON import | Unimplemented `-j=`/SourceFile adapter; arbitrary native snapshots are not intent input. | Specify exact pinned-reference SourceFile/wildcard/duplicate semantics and explicit loss diagnostics before an inert adapter. |
 | Legacy CSV import | Unimplemented `-csv=`/SourceFile adapter. Empty cells never silently delete. | Specify reference missing/empty/header/duplicate/encoding semantics and explicit target matching before an inert adapter. |
 

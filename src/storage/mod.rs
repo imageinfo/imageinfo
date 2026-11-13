@@ -221,6 +221,10 @@ pub(crate) mod replacement_resources;
 #[allow(dead_code)]
 pub(crate) mod resources;
 #[allow(dead_code)]
+pub(crate) mod retain_inspection;
+#[allow(dead_code)]
+pub(crate) mod retain_install;
+#[allow(dead_code)]
 pub(crate) mod runtime;
 #[cfg(windows)]
 #[allow(dead_code)]

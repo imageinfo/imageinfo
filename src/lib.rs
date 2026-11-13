@@ -4,6 +4,7 @@
 //! built-in definitions; neither operation reads input files or configuration.
 
 pub mod cli;
+pub mod inert_intents;
 pub mod inert_translation;
 pub mod output;
 pub mod pairing;
@@ -11,6 +12,7 @@ pub mod plan;
 pub mod plan_observation;
 pub mod preview;
 pub mod privacy;
+pub mod pure_filter;
 pub mod read_request;
 pub mod read_session;
 pub mod reader;

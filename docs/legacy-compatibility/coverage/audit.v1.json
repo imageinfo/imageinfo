@@ -133,7 +133,7 @@
     {
       "path": "docs/legacy-compatibility/coverage/lg-evidence.v1.json",
       "key": "original_lg",
-      "sha256": "f9dff472623ff49e6bb9edfd138e06bcc2d9392880389771bbe4984127a5f276"
+      "sha256": "13c32efd22ede5c3f73fb8111b6ec8577a6d636f5c4c82a894bfa905a1016412"
     },
     {
       "path": "docs/legacy-compatibility/coverage/gap-evidence.v1.json",
@@ -266,6 +266,12 @@
       "status": "partially_evidenced_open",
       "evidence": [
         {
+          "path": "docs/legacy-compatibility/inert-library-consumers.md#inert-scalar-intents",
+          "kind": "authored_runtime",
+          "scope": "Public Rust native scalar-v1 JSON/CSV decoder returns owned intents with exact caller observation binding; no CLI, legacy import or writer.",
+          "owner_ticket": 15
+        },
+        {
           "path": "docs/legacy-compatibility/report-import/profiles.v1.json",
           "kind": "specification_model",
           "scope": "16 report/import profiles with shared encoding/escaping/lookup/collision/round-trip dimensions. Legacy renderers and importers remain unimplemented.",
@@ -340,7 +346,7 @@
         },
         {
           "id": "LG-002-r06",
-          "scope": "Inert JSON/CSV scalar intent decoders remain unimplemented product importers. Implement bounded lexical/row matching and all-or-nothing behavior without authorizing effects.",
+          "scope": "The native scalar-v1 Rust decoder implements bounded lexical/row matching and all-or-nothing nonexecuting intents. CLI and application import remain unimplemented; no decoding grants authority to apply.",
           "owner_tickets": [
             15
           ],
@@ -381,6 +387,12 @@
       "status": "partially_evidenced_open",
       "evidence": [
         {
+          "path": "docs/legacy-compatibility/inert-library-consumers.md#pure-filter-evaluation",
+          "kind": "authored_runtime",
+          "scope": "Public Rust pure-filter runtime and actual authored CR3 retained-metadata adapter; only observed presence is positive under native partial coverage. No CLI or session routing.",
+          "owner_ticket": 15
+        },
+        {
           "path": "docs/legacy-compatibility/pure-data-boundary.md",
           "kind": "specification_model",
           "scope": "Accepted pure/data direction refined with exact grammar, aliases/parameters/XMP declarations, frozen bounds and all EXT-001–009 dispositions. No parser/evaluator/importer/code loader is implemented.",
@@ -402,7 +414,7 @@
       "residuals": [
         {
           "id": "LG-003-r01",
-          "scope": "Implement accepted EXT-001 pure grammar/parser/evaluator with exact rationals, three-valued coverage, all branch preflight, token/depth/visit/byte limits and actual native observation/status evidence.",
+          "scope": "The bounded Rust parser/evaluator and retained native observation adapter implement the library scope. CLI/session selection routing and complete native observation coverage remain separate.",
           "owner_tickets": [
             15
           ],
@@ -410,7 +422,7 @@
         },
         {
           "id": "LG-003-r02",
-          "scope": "Implement accepted EXT-002/003 explicit alias/parameter/XMP definitions with exact registry revision, whole-set collision/type/refusal behavior and actual per-request CLI/API/session isolation; declarations never authorize parsing or writes.",
+          "scope": "The explicit Rust request implements the alias/parameter/XMP declaration library scope with exact registry and whole-set validation. CLI/session isolation and general definition import remain separate; declarations never authorize parsing or writes.",
           "owner_tickets": [
             15
           ],
@@ -12854,6 +12866,7 @@
     }
   },
   "evidenceSha256": {
+    "docs/legacy-compatibility/inert-library-consumers.md": "5ece15ec01ec78a3a970a059a14fe3417ca638a52ad33a21385e7f5d52fd7d75",
     "docs/cli-walkthroughs/README.md": "5302c05c735333aed8b5b1b7ef96ea5cda5ac1c0755564733b158b120ba52b74",
     "docs/corpus-baseline/README.md": "901299583d1bc807aceb3da8593cfb4d6df7f5ea44be125472267e47b5bada7d",
     "docs/fixture-plan/date-timezone-literals.md": "a3195c3afdcfc02a969554764c955460938d674665290ebdd4be050c3bd7025f",
@@ -12872,7 +12885,7 @@
     "docs/legacy-compatibility/command-shells/windows.results.json": "f3eace0ed19e8a57dde8e63a8659802d66941655c6e305bd4d018232d17455d8",
     "docs/legacy-compatibility/cr3-preview-plan.md": "854263f6989877c23d98b8f57da144ba97271950d176827f8ded8667bda95e5b",
     "docs/legacy-compatibility/cr3-preview-source-binding.md": "261a64c05467650bb04aacbb7166bbb156b1a7e69e52bd15b9f2d2e2bf0173ad",
-    "docs/legacy-compatibility/delivery-matrix.v1.json": "fec02815565304b575445b1bae2ac2204b018d0896e3f04e107939159886c345",
+    "docs/legacy-compatibility/delivery-matrix.v1.json": "8123aed12f6b78f46ec4a51840f6aa25e104b659ecaa0ced55cec4ca4578e3b2",
     "docs/legacy-compatibility/executable-extension-boundary.md": "d7bf88e3188724eb5fada4e8aea91c27e945921ad0cbc4cc6bce4a1f7352003c",
     "docs/legacy-compatibility/inert-translation-runtime.md": "cb36421292ca9279ba03e8b83f256cc46ce262601e43d2075aabee244b33e197",
     "docs/legacy-compatibility/migration.md": "9ac4cd9d1062ce3fba56c2470fff09e4fa15f58020cb9c3fcf98d499fcdf42f7",
@@ -12889,7 +12902,7 @@
     "docs/legacy-compatibility/plain-terminals.results.json": "95638e4f82044eca6a68ec27b31f16a4b304042cc48af8af9b9770ed4e71d1d0",
     "docs/legacy-compatibility/preview-pair-arguments.md": "b8913d1bfa12c7be7f281a68df455950e255fbccff2b75414e2cbab2c084a6f6",
     "docs/legacy-compatibility/preview-pair-arguments.results.json": "f5aeabaaa16843a9a468287400757e1f97324fb008907c4c2deb204a085ac595",
-    "docs/legacy-compatibility/pure-data-boundary.md": "9c7872e4abe92c92279b4399db7c22483e9fd334d32bf5bc299696b1ed8a8ff8",
+    "docs/legacy-compatibility/pure-data-boundary.md": "dfdf8fe83a29bb36b6003eb8ae2917fd5066100a64efb9a52cef7064668a858c",
     "docs/legacy-compatibility/pure-data/vectors.v1.json": "77596d9bca3e45fe8a15c5b7dc091447624ac6fdf19e9e15a2412b7c0a11b8e0",
     "docs/legacy-compatibility/r5-date-mapping.md": "8139deaa2bc84136930a891d688e54f7e5ecbca30936fd46d9ec7c1c0479e38b",
     "docs/legacy-compatibility/r5-date-mapping.v1.json": "63554521d0106a418b76c8dd60a91c1206876e7fbce6ae06423cd0d15db7d76c",
@@ -12901,7 +12914,7 @@
     "docs/legacy-compatibility/read-request-result.md": "5418d04b3af1e448dbdd14796d179b17af995d786bc9c3f49e2837e2445bae76",
     "docs/legacy-compatibility/read-session-library.md": "a2dc2fa318d6d885fc7338033d93e5b309438c80e4e373db05c9322a071b03d8",
     "docs/legacy-compatibility/read-session-process.md": "fc7ede4c6e1e2b9fc8572b00cf906963be2fdc41a59b4747d2c6c0080097e871",
-    "docs/legacy-compatibility/report-import-boundaries.md": "67f829175504b8fc7d13b6d37203c4fbb714050c1a6a5a606621e9fd6fad473d",
+    "docs/legacy-compatibility/report-import-boundaries.md": "6037174f19f83dc2ef50b38b11df0c4a0a130df530ad0ce4d4d2c8b5050a1c7e",
     "docs/legacy-compatibility/report-import/profiles.v1.json": "d84ec3d6715a4a0fdace41c4f0f7bd1177611f29f274fe070c54f4ed55db0040",
     "docs/legacy-compatibility/result-profiles.md": "f412bf7b8fea5c348a6bbdea5426b847bc72940f53c9ff2fe2310ab9720a16bb",
     "docs/legacy-compatibility/result-profiles/qualification.v1.json": "481669c9f4bd3073807fb63aec41d04d0ddcbd1f6053ff0edd6f5ffdc2b75a70",

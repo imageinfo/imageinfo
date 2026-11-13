@@ -32,6 +32,7 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [RAW/XMP operation matrix](write-safety/raw-xmp-operation-matrix.md) | #0117 finite operation, requirement and proposal identities with explicit unsupported mutation scopes. |
 | [Report/import boundaries](legacy-compatibility/report-import-boundaries.md) | #0126 exact report and inert JSON/CSV contract distinctions; new renderers and importers remain unimplemented. |
 | [Pure data boundary](legacy-compatibility/pure-data-boundary.md) | #0131 bounded filter and explicit-definition grammar, authority and all EXT residuals; no runtime. |
+| [Inert library consumers](legacy-compatibility/inert-library-consumers.md) | Bounded pure-filter evaluation and native scalar JSON/CSV intents; caller-owned observations and no apply authority. |
 | [Advanced date contracts](legacy-compatibility/advanced-date-contract.md) | #0133 separate calendar, clock, lookup and repair semantics with rights and implementation gaps retained. |
 | [Shell/terminal baseline](legacy-compatibility/shell-terminal-baseline.md) | #0136 exact historical source, shell and terminal evidence with explicit refresh and unrun scopes. |
 | [Read cancellation](legacy-compatibility/read-cancellation.md) | #0139 current synchronous v1 behavior and a separately proposed cooperative protocol. |
@@ -72,6 +73,7 @@ The first camera/format target is **Canon EOS R5 CR3**.
 | [Held existing-object move](write-safety/held-existing-move.md) | #0195 same held-object no-replace move and twelve native cases; no expected-target replacement or durability admission. |
 | [Ordinary and case-only marker rename](write-safety/case-rename-plan.md) | #0201 retained same-object name plans and ten native controls, with explicit temporary originals and terminal uncertainty; no profile admission. |
 | [Held three-move marker cycle](write-safety/held-marker-cycle.md) | #0202 exact cycle, retained originals and prefix observations; immediate-method property counterexample and selected bounded-method evidence remain distinct. |
+| [Optional retain-and-install runtime](write-safety/optional-retain-install-runtime.md) | Held marker session and independent read-only selected-slot inspector; observations confer no replay, restoration, or profile admission. |
 | [Staged two-new-output adapter](write-safety/two-new-output-adapter.md) | #0222 actual retained preparation, separate held manifest and eight native controls; positive #0180 profile/resume qualification remains separate. |
 | [Operation/planner map](legacy-compatibility/operation-plan-map.md) | #0132 finite WS-002 planner/wire ownership, inert saved intent and explicit residual operation families. |
 | [Aggregate preview markers](fixture-plan/aggregate-preview-markers.md) | #0163 authored three-resource aggregate marker boundary, exact incomplete outcome and source/effect checks. |

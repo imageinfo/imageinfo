@@ -1,6 +1,23 @@
 # Remaining work for the RAW milestone
 
-## Executable runway — 2026-10-19
+## Native library and marker increments — 2026-11-12
+
+The migrated board numbers the four implementation scopes #0068–#0071
+(historical #0224–#0227). The [optional marker runtime](write-safety/optional-retain-install-runtime.md)
+adds the held retain-and-install session and an independent read-only
+inspector. The [inert Rust consumers](legacy-compatibility/inert-library-consumers.md)
+add bounded filtering over retained observations and scalar-v1 JSON/CSV
+decoding. The latter two deliver the library portions of LG-003-r01/r02 and
+LG-002-r06; CLI/session routing, broader coverage and legacy import remain open.
+None of these increments qualifies a storage profile, a RAW writer, or strict
+replacement and immutable retention. The explicit #0012 hold remains.
+
+The former #0228 is now #0072; the guest contrast formerly #0223 is now #0109.
+Keep the real guest off until the transport is accepted and the fresh exact
+execution scope is reviewed. Neither a transport checkpoint nor an authored
+test is a completed diagnostic cell.
+
+## Historical executable runway — 2026-10-19
 
 Five independently reviewed, substantive implementation scopes are Ready for
 Work: #0224 optional held retain-and-install, #0225 independent read-only artifact

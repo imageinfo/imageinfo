@@ -572,15 +572,16 @@
         ]
       },
       "evidenceRefs": [
+        "docs/legacy-compatibility/inert-library-consumers.md",
         "docs/legacy-compatibility/migration.md"
       ],
-      "present": "Inert import/translation proposals only.",
+      "present": "Native scalar-v1 Rust decoding yields owned inert JSON/CSV intents.",
       "nextTickets": [
         126,
         129,
         130
       ],
-      "residual": "JSON/CSV decoders, row/target matching, duplicates, empty/null semantics and loss accounting remain unmet.",
+      "residual": "Legacy import adapters, CLI/session routing and broader report/loss behavior remain unmet.",
       "residualOwner": 15,
       "complete": false
     },
@@ -659,14 +660,15 @@
         ]
       },
       "evidenceRefs": [
+        "docs/legacy-compatibility/inert-library-consumers.md",
         "docs/legacy-compatibility/executable-extension-boundary.md"
       ],
-      "present": "Pure filter/data-definition boundary specified; no filter runtime.",
+      "present": "Bounded Rust pure filter evaluates caller-owned or retained native observations.",
       "nextTickets": [
         131,
         129
       ],
-      "residual": "Traversal, hidden-file/order/empty-selection and pure filter implementation remain unmet; arbitrary expressions stay explicit future functional residuals.",
+      "residual": "Traversal, hidden-file/order/empty-selection, CLI/session filter routing and arbitrary expressions remain unmet.",
       "residualOwner": 15,
       "complete": false
     },
